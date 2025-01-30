@@ -103,7 +103,6 @@ Status game_set_player_location(Game *game, Id id) {
 Id game_get_object_location(Game *game) { return game->object_location; }
 
 Status game_set_object_location(Game *game, Id id) {
-  int i = 0;
 
   if (id == NO_ID) {
     return ERROR;
@@ -111,6 +110,7 @@ Status game_set_object_location(Game *game, Id id) {
 
   game->object_location = id;
   space_set_object(game_get_space(game, id), TRUE);
+  return OK;
 }
 
 Command* game_get_last_command(Game *game) { return game->last_cmd; }
