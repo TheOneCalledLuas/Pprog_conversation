@@ -30,35 +30,37 @@ void game_actions_back(Game *game);
    Game actions implementation
 */
 
-Status game_actions_update(Game *game, Command *command) {
-  CommandCode cmd;
+Status game_actions_update(Game *game, Command *command)
+{
+    CommandCode cmd;
 
-  game_set_last_command(game, command);
+    game_set_last_command(game, command);
 
-  cmd = command_get_code(command);
+    cmd = command_get_code(command);
 
-  switch (cmd) {
+    switch (cmd)
+    {
     case UNKNOWN:
-      game_actions_unknown(game);
-      break;
+        game_actions_unknown(game);
+        break;
 
     case EXIT:
-      game_actions_exit(game);
-      break;
+        game_actions_exit(game);
+        break;
 
     case NEXT:
-      game_actions_next(game);
-      break;
+        game_actions_next(game);
+        break;
 
     case BACK:
-      game_actions_back(game);
-      break;
+        game_actions_back(game);
+        break;
 
     default:
-      break;
-  }
+        break;
+    }
 
-  return OK;
+    return OK;
 }
 
 /**
@@ -69,37 +71,43 @@ void game_actions_unknown(Game *game) {}
 
 void game_actions_exit(Game *game) {}
 
-void game_actions_next(Game *game) {
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
+void game_actions_next(Game *game)
+{
+    Id current_id = NO_ID;
+    Id space_id = NO_ID;
 
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID) {
+    space_id = game_get_player_location(game);
+    if (space_id == NO_ID)
+    {
+        return;
+    }
+
+    current_id = space_get_south(game_get_space(game, space_id));
+    if (current_id != NO_ID)
+    {
+        game_set_player_location(game, current_id);
+    }
+
     return;
-  }
-
-  current_id = space_get_south(game_get_space(game, space_id));
-  if (current_id != NO_ID) {
-    game_set_player_location(game, current_id);
-  }
-
-  return;
 }
 
-void game_actions_back(Game *game) {
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
+void game_actions_back(Game *game)
+{
+    Id current_id = NO_ID;
+    Id space_id = NO_ID;
 
-  space_id = game_get_player_location(game);
+    space_id = game_get_player_location(game);
 
-  if (NO_ID == space_id) {
+    if (NO_ID == space_id)
+    {
+        return;
+    }
+
+    current_id = space_get_north(game_get_space(game, space_id));
+    if (current_id != NO_ID)
+    {
+        game_set_player_location(game, current_id);
+    }
+
     return;
-  }
-
-  current_id = space_get_north(game_get_space(game, space_id));
-  if (current_id != NO_ID) {
-    game_set_player_location(game, current_id);
-  }
-
-  return;
 }
