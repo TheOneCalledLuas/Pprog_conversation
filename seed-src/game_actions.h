@@ -13,6 +13,7 @@
 
 #include "command.h"
 #include "game.h"
+#include "game_reader.h"
 #include "types.h"
 
 Status game_actions_update(Game *game, Command *cmd);

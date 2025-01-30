@@ -12,6 +12,7 @@
 #define GRAPHIC_ENGINE_H
 
 #include "game.h"
+#include "game_reader.h"
 
 typedef struct _Graphic_engine Graphic_engine;
 
