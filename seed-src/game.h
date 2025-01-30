@@ -12,7 +12,7 @@
 #define GAME_H
 
 #include "command.h"
-#include "space.h"
+#include "space.h" 
 #include "types.h"
 
 #define MAX_SPACES 100
@@ -31,8 +31,6 @@ Status game_create(Game *game);
 Status game_create_from_file(Game *game, char *filename);
 
 Status game_destroy(Game *game);
-
-Space *game_get_space(Game *game, Id id);
 
 Id game_get_player_location(Game *game);
 
