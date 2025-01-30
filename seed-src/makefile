@@ -1,0 +1,16 @@
+anthill: command.o game_actions.o game_loop.o game.o graphic_engine.o space.o
+	gcc -o anthill command.o game_actions.o game_loop.o game.o graphic_engine.o space.o -L. -lscreen
+command.o: command.c command.h
+	gcc -g -Wall -c command.c
+game_actions.o: game_actions.c game_actions.h
+	gcc -g -Wall -c game_actions.c
+game_loop.o: game_loop.c
+	gcc -g -Wall -c game_loop.c
+game.o: game.c game.h
+	gcc -g -Wall -c game.c
+graphic_engine.o: graphic_engine.c graphic_engine.h types.h
+	gcc -g -Wall -c graphic_engine.c
+space.o: space.c space.h
+	gcc -g -Wall -c space.c
+clean:
+	rm -f *.o anthill
