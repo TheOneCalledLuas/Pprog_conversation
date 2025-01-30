@@ -34,6 +34,14 @@ Space *game_get_space(Game *game, Id id);
  */
 Status game_load_spaces(Game *game, char *filename);
 
+/**
+ * @brief adds a space to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param filename name of the data file where the map is stored.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
 Status game_add_space(Game *game, Space *space);
 
 Id game_get_space_id_at(Game *game, int position);

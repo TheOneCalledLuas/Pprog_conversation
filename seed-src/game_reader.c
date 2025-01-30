@@ -117,11 +117,12 @@ Status game_load_spaces(Game *game, char *filename)
 
 Status game_add_space(Game *game, Space *space)
 {
-    if ((space == NULL) || (game->n_spaces >= MAX_SPACES))
+    /*Checks the pointers.*/
+    if ((space == NULL) || (!game) || (!space) || (game->n_spaces >= MAX_SPACES))
     {
         return ERROR;
     }
-
+    /*Adds the space to the game structure and increments the space number.*/
     game->spaces[game->n_spaces] = space;
     game->n_spaces++;
 
@@ -130,10 +131,11 @@ Status game_add_space(Game *game, Space *space)
 
 Id game_get_space_id_at(Game *game, int position)
 {
-    if (position < 0 || position >= game->n_spaces)
+    /*Checks the arguments and possible errors.*/
+    if (position < 0 || position >= game->n_spaces || (!game))
     {
         return NO_ID;
     }
-
+    /*returns the id of the space with that position.*/
     return space_get_id(game->spaces[position]);
 }
