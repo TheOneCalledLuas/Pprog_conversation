@@ -19,19 +19,28 @@ Space *game_get_space(Game *game, Id id)
 {
     int i = 0;
 
+    /*Checks the pointer.*/
+    if (!game)
+    {
+        return NULL;
+    }
+
+    /*Validates the id.*/
     if (id == NO_ID)
     {
         return NULL;
     }
 
+    /*Searchs for the space.*/
     for (i = 0; i < game->n_spaces; i++)
     {
         if (id == space_get_id(game->spaces[i]))
         {
+            /*Returns the space when found.*/
             return game->spaces[i];
         }
     }
-
+    /*The space wasn't found.*/
     return NULL;
 }
 
@@ -45,21 +54,26 @@ Status game_load_spaces(Game *game, char *filename)
     Space *space = NULL;
     Status status = OK;
 
-    if (!filename)
+    /*Checks the pointers.*/
+    if (!filename || !game)
     {
         return ERROR;
     }
 
+    /*Opens the file.*/
     file = fopen(filename, "r");
     if (file == NULL)
     {
         return ERROR;
     }
 
+    /*Gets the data lie by line.*/
     while (fgets(line, WORD_SIZE, file))
     {
+        /*Checks that the line contains a room.*/
         if (strncmp("#s:", line, 3) == 0)
         {
+            /*Takes the information data by data and saves it.*/
             toks = strtok(line + 3, "|");
             id = atol(toks);
             toks = strtok(NULL, "|");
@@ -72,9 +86,11 @@ Status game_load_spaces(Game *game, char *filename)
             south = atol(toks);
             toks = strtok(NULL, "|");
             west = atol(toks);
+/*If DEBUG mode is active (defined) prints what it has read.*/
 #ifdef DEBUG
             printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
 #endif
+            /*Creates a new space and fills it with the information gathered.*/
             space = space_create(id);
             if (space != NULL)
             {
@@ -87,24 +103,26 @@ Status game_load_spaces(Game *game, char *filename)
             }
         }
     }
-
+    /*If something went wrong while reading the file.*/
     if (ferror(file))
     {
         status = ERROR;
     }
-
+    /*Closes the file.*/
     fclose(file);
 
+    /*Clean exit.*/
     return status;
 }
 
 Status game_add_space(Game *game, Space *space)
 {
-    if ((space == NULL) || (game->n_spaces >= MAX_SPACES))
+    /*Checks the pointers.*/
+    if ((space == NULL) || (!game) || (!space) || (game->n_spaces >= MAX_SPACES))
     {
         return ERROR;
     }
-
+    /*Adds the space to the game structure and increments the space number.*/
     game->spaces[game->n_spaces] = space;
     game->n_spaces++;
 
@@ -113,10 +131,11 @@ Status game_add_space(Game *game, Space *space)
 
 Id game_get_space_id_at(Game *game, int position)
 {
-    if (position < 0 || position >= game->n_spaces)
+    /*Checks the arguments and possible errors.*/
+    if (position < 0 || position >= game->n_spaces || (!game))
     {
         return NO_ID;
     }
-
+    /*returns the id of the space with that position.*/
     return space_get_id(game->spaces[position]);
 }
