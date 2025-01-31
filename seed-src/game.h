@@ -127,11 +127,11 @@ Status game_set_last_command(Game *game, Command *command);
 Bool game_get_finished(Game *game);
 
 /**
- * @brief it changes the value of the finisehd condition to what you want
+ * @brief it changes the value of the finished condition to what you want
  * @author Profesores PPROG
  *
  * @param game the pointer to the game
- * @param finished the Bool value you want to set it to (TR)
+ * @param finished the Bool value you want to set it to (TRUE/FALSE)
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status game_set_finished(Game *game, Bool finished);
