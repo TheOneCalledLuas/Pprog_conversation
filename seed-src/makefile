@@ -1,5 +1,5 @@
 anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o
-	gcc -o anthill command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o -L. -lscreen
+	gcc -o anthill *.o -L. -lscreen
 command.o: command.c command.h
 	gcc -g -Wall -c command.c
 game_actions.o: game_actions.c game_actions.h
