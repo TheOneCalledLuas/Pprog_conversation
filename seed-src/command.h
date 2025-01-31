@@ -26,7 +26,7 @@ typedef struct _Command Command;
  * @brief It creates a new command, allocating memory and initializing its members
  * @author Profesores PPROG
  *
- * @return a new command, initialized
+ * @return a pointer to a new command, initialized
  */
 
 Command* command_create();

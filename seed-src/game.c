@@ -23,11 +23,17 @@ Status game_create(Game *game)
 {
     int i;
 
+    /*Error management*/
+    if(game==NULL)
+    {
+        return ERROR;
+    }
+
     for (i = 0; i < MAX_SPACES; i++)
     {
         game->spaces[i] = NULL;
     }
-
+    /*initializes all members of the game structure*/
     game->n_spaces = 0;
     game->player_location = NO_ID;
     game->object_location = NO_ID;
@@ -39,6 +45,12 @@ Status game_create(Game *game)
 
 Status game_create_from_file(Game *game, char *filename)
 {
+    /*Error management*/
+    if(game==NULL||filename==NULL)
+    {
+        return ERROR;
+    }
+
     if (game_create(game) == ERROR)
     {
         return ERROR;
@@ -60,6 +72,12 @@ Status game_destroy(Game *game)
 {
     int i = 0;
 
+    /*Error management*/
+    if(game==NULL)
+    {
+        return ERROR;
+    }
+
     for (i = 0; i < game->n_spaces; i++)
     {
         space_destroy(game->spaces[i]);
@@ -70,11 +88,21 @@ Status game_destroy(Game *game)
     return OK;
 }
 
-Id game_get_player_location(Game *game) { return game->player_location; }
+Id game_get_player_location(Game *game)
+{
+    /*Error management*/
+    if(game==NULL)
+    {
+        return NO_ID;
+    }
+    
+    return game->player_location; 
+}
 
 Status game_set_player_location(Game *game, Id id)
 {
-    if (id == NO_ID)
+    /*Error management*/
+    if (id == NO_ID||game==NULL)
     {
         return ERROR;
     }
@@ -84,7 +112,16 @@ Status game_set_player_location(Game *game, Id id)
     return OK;
 }
 
-Id game_get_object_location(Game *game) { return game->object_location; }
+Id game_get_object_location(Game *game) 
+{
+    /*Error management*/
+    if(game==NULL)
+    {
+        return NO_ID;
+    }
+    
+    return game->object_location;
+}
 
 Status game_set_object_location(Game *game, Id id)
 {
@@ -99,10 +136,25 @@ Status game_set_object_location(Game *game, Id id)
     return OK;
 }
 
-Command *game_get_last_command(Game *game) { return game->last_cmd; }
+Command *game_get_last_command(Game *game) 
+{ 
+    /*Error management*/
+    if(game==NULL)
+    {
+        return  NULL;
+    }
+
+    return game->last_cmd;
+}
 
 Status game_set_last_command(Game *game, Command *command)
 {
+    /*Error management*/
+    if(game==NULL||command==NULL)
+    {
+        return ERROR;
+    }
+
     game->last_cmd = command;
 
     return OK;
@@ -112,6 +164,11 @@ Bool game_get_finished(Game *game) { return game->finished; }
 
 Status game_set_finished(Game *game, Bool finished)
 {
+    /*Error management*/
+    if(game==NULL)
+    {
+        return ERROR;
+    }
     game->finished = finished;
 
     return OK;

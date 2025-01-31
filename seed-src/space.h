@@ -20,7 +20,7 @@ typedef struct _Space Space;
  * @author Profesores PPROG
  *
  * @param id the identification number for the new space
- * @return a new space, initialized
+ * @return a pointer to a new space, initialized
  */
 Space* space_create(Id id);
 
