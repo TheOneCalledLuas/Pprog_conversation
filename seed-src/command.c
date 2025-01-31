@@ -29,7 +29,7 @@ struct _Command
     CommandCode code; /*!< Name of the command */
 };
 
-/** space_create allocates memory for a new space
+/** command_create allocates memory for a new command
  *  and initializes its members
  */
 Command *command_create()
@@ -50,6 +50,7 @@ Command *command_create()
 
 Status command_destroy(Command *command)
 {
+    /* Error control */
     if (!command)
     {
         return ERROR;
@@ -62,6 +63,7 @@ Status command_destroy(Command *command)
 
 Status command_set_code(Command *command, CommandCode code)
 {
+    /* Error control */
     if (!command)
     {
         return ERROR;
@@ -74,6 +76,7 @@ Status command_set_code(Command *command, CommandCode code)
 
 CommandCode command_get_code(Command *command)
 {
+    /* Error control */
     if (!command)
     {
         return NO_CMD;
@@ -86,17 +89,18 @@ Status command_get_user_input(Command *command)
     char input[CMD_LENGHT] = "", *token = NULL;
     int i = UNKNOWN - NO_CMD + 1;
     CommandCode cmd;
-
+    /* Error control */
     if (!command)
     {
         return ERROR;
     }
-
+    /*1. Gets user input*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
         token = strtok(input, " \n");
         if (!token)
         {
+            /*2.1. if there isnt a word stored in the first token, return unkown command*/
             return command_set_code(command, UNKNOWN);
         }
 
@@ -112,8 +116,9 @@ Status command_get_user_input(Command *command)
                 i++;
             }
         }
+        /*2.2. return the code that has been identified*/
         return command_set_code(command, cmd);
     }
-    else
+    else /*2.3. if it cant read the input from the user, return exit*/
         return command_set_code(command, EXIT);
 }
