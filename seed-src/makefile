@@ -15,6 +15,6 @@ graphic_engine.o: graphic_engine.c graphic_engine.h types.h
 space.o: space.c space.h
 	gcc -g -Wall -c space.c
 object.o: object.c object.h
-	gcc -g -Wall object.c
+	gcc -g -Wall -c object.c
 clean:
 	rm -f *.o anthill
