@@ -1,4 +1,4 @@
-anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o
+anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o
 	gcc -o anthill *.o -L. -lscreen
 command.o: command.c command.h
 	gcc -g -Wall -c command.c
@@ -14,5 +14,7 @@ graphic_engine.o: graphic_engine.c graphic_engine.h types.h
 	gcc -g -Wall -c graphic_engine.c
 space.o: space.c space.h
 	gcc -g -Wall -c space.c
+object.o: object.c object.h
+	gcc -g -Wall object.c
 clean:
 	rm -f *.o anthill
