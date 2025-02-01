@@ -67,7 +67,7 @@ Status game_load_spaces(Game *game, char *filename)
         return ERROR;
     }
 
-    /*Gets the data lie by line.*/
+    /*Gets the data line by line.*/
     while (fgets(line, WORD_SIZE, file))
     {
         /*Checks that the line contains a room.*/
@@ -136,6 +136,6 @@ Id game_get_space_id_at(Game *game, int position)
     {
         return NO_ID;
     }
-    /*returns the id of the space with that position.*/
+    /*Returns the id of the space with that position.*/
     return space_get_id(game->spaces[position]);
 }
