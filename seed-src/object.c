@@ -107,3 +107,19 @@ Id object_get_id(Object *object)
     /*Returns the id.*/
     return object->id;
 }
+
+Status object_print_info(Object *object)
+{
+    /*Checks the arguments.*/
+    if (!object)
+    {
+        return ERROR;
+    }
+
+    /*Prints the info.*/
+    fprintf(stdout, "Object with id [%ld] and name [%s]",object->id,object->name);
+    
+    /*Clean exit.*/
+    return OK;
+
+}

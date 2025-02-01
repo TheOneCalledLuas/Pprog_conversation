@@ -60,5 +60,14 @@ Status object_set_name(Object *object, char *name);
  */
 Id object_get_id(Object *object);
 
+/**
+ * @brief Prints the object info (debug intended).
+ * @author Saúl López Romero
+ * 
+ * @param object Pointer to the object.
+ * @return OK if it works as intended, ERROR otherwise.
+ */
+Status object_print_info(Object *object);
+
 
 #endif
