@@ -34,6 +34,12 @@ Status game_actions_update(Game *game, Command *command)
 {
     CommandCode cmd;
 
+    /*Error management*/
+    if(game==NULL || command==NULL)
+    {
+        return ERROR;
+    }
+
     game_set_last_command(game, command);
 
     cmd = command_get_code(command);

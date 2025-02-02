@@ -108,7 +108,7 @@ Status game_set_object_location(Game *game, Id id);
 Command *game_get_last_command(Game *game);
 
 /**
- * @brief It sets the lsat command to the command you want
+ * @brief It sets the last command to the command you want
  * @author Profesores PPROG
  *
  * @param game the pointer to the game

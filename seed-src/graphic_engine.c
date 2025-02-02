@@ -26,6 +26,11 @@
 #define HEIGHT_HLP 2
 #define HEIGHT_FDB 3
 
+/**
+ * @brief _Graphic_engine
+ *
+ * This struct stores all the information of the dimmensions needed for the graphic engine
+ */
 struct _Graphic_engine
 {
     Area *map, *descript, *banner, *help, *feedback;
@@ -41,12 +46,15 @@ Graphic_engine *graphic_engine_create()
     }
 
     screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4, WIDTH_MAP + WIDTH_DES + 3);
+
+    /*allocation of space and error management*/
     ge = (Graphic_engine *)malloc(sizeof(Graphic_engine));
     if (ge == NULL)
     {
         return NULL;
     }
 
+    /*it gives the value needed for each variable*/
     ge->map = screen_area_init(1, 1, WIDTH_MAP, HEIGHT_MAP);
     ge->descript = screen_area_init(WIDTH_MAP + 2, 1, WIDTH_DES, HEIGHT_MAP);
     ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 - WIDTH_BAN) / 2), HEIGHT_MAP + 2, WIDTH_BAN, HEIGHT_BAN);

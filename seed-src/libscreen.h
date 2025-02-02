@@ -67,7 +67,7 @@ Area* screen_area_init(int x, int y, int width, int height);
 void screen_area_destroy(Area* area);
 
 /**
- * @brief It cleares an area, eraising all its content
+ * @brief It clears an area, erasing all its content
  * @author Profesores PPROG
  *
  * This function should be called for earaising all the information in an area,
