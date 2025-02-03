@@ -23,6 +23,7 @@ struct _Object
 {
     Id id;                    /* Id of the object, it must be unique. */
     char name[WORD_SIZE + 1]; /* Object name. */
+    Id space_id;              /* Id of the room where the object is.*/
 };
 
 Object *object_create(Id id)
@@ -45,6 +46,7 @@ Object *object_create(Id id)
     /*Sets the vaues to default ones and establishes the id.*/
     object->id = id;
     object->name[0] = '\0';
+    object->space_id = NO_ID;
 
     /*Clean exit.*/
     return object;

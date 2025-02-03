@@ -35,7 +35,7 @@ Status game_create(Game *game)
     }
     /*initializes all members of the game structure*/
     game->n_spaces = 0;
-    game->n_objects =0;
+    game->n_objects = 0;
     game->player_location = NO_ID;
     game->object_location = NO_ID;
     game->last_cmd = command_create();

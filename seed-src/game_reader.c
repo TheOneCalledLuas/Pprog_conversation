@@ -129,4 +129,47 @@ Status game_reader_add_space(Game *game, Space *space)
     return OK;
 }
 
+Status game_reader_load_objects(Game *game, char *filename)
+{
+    FILE *file = NULL;
+    char line[WORD_SIZE] = "";
+    char name[WORD_SIZE] = "";
+    Id id = NO_ID;
+    char *toks = NULL;
 
+    /*Checks the arguments.*/
+    if (!game || !filename)
+    {
+        return ERROR;
+    }
+
+    /*Opens the file.*/
+    if (!(file = fopen(filename, "r")))
+    {
+        return ERROR;
+    }
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, file))
+    {
+        /*Checks that the line contains a room.*/
+        if (strncmp("#o:", line, 3) == 0)
+        {
+            /*Takes the information data by data and saves it.*/
+            toks = strtok(line + 3, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            /*strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            north = atol(toks);
+            toks = strtok(NULL, "|");
+            east = atol(toks);
+            toks = strtok(NULL, "|");
+            south = atol(toks);
+            toks = strtok(NULL, "|");
+            west = atol(toks);*/
+
+            return OK;
+        }
+    }
+}
