@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-Space *game_get_space(Game *game, Id id)
+Space *game_reader_get_space(Game *game, Id id)
 {
     int i = 0;
 
@@ -44,7 +44,7 @@ Space *game_get_space(Game *game, Id id)
     return NULL;
 }
 
-Status game_load_spaces(Game *game, char *filename)
+Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
     char line[WORD_SIZE] = "";
@@ -99,7 +99,7 @@ Status game_load_spaces(Game *game, char *filename)
                 space_set_east(space, east);
                 space_set_south(space, south);
                 space_set_west(space, west);
-                game_add_space(game, space);
+                game_reader_add_space(game, space);
             }
         }
     }
@@ -115,7 +115,7 @@ Status game_load_spaces(Game *game, char *filename)
     return status;
 }
 
-Status game_add_space(Game *game, Space *space)
+Status game_reader_add_space(Game *game, Space *space)
 {
     /*Checks the pointers.*/
     if ((space == NULL) || (!game) || (!space) || (game->n_spaces >= MAX_SPACES))
@@ -129,13 +129,4 @@ Status game_add_space(Game *game, Space *space)
     return OK;
 }
 
-Id game_get_space_id_at(Game *game, int position)
-{
-    /*Checks the arguments and possible errors.*/
-    if (position < 0 || position >= game->n_spaces || (!game))
-    {
-        return NO_ID;
-    }
-    /*Returns the id of the space with that position.*/
-    return space_get_id(game->spaces[position]);
-}
+

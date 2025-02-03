@@ -31,6 +31,7 @@ typedef struct _Game
     Space *spaces[MAX_SPACES];
     Object *objects[MAX_OBJECTS];
     int n_spaces;
+    int n_objects;
     Command *last_cmd;
     Bool finished;
 } Game;
@@ -138,6 +139,16 @@ Bool game_get_finished(Game *game);
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status game_set_finished(Game *game, Bool finished);
+
+/**
+ * @brief finds the id of the space where the player is.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param position the number of the room where the player is.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Id game_reader_get_space_id_at(Game *game, int position);
 
 /**
  * @brief it prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object 

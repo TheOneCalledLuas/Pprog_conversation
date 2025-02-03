@@ -22,7 +22,7 @@
  * @param id id of the space
  * @return pointer to the space, if it exists.
  */
-Space *game_get_space(Game *game, Id id);
+Space *game_reader_get_space(Game *game, Id id);
 
 /**
  * @brief loads all the spaces from the data file.
@@ -32,7 +32,7 @@ Space *game_get_space(Game *game, Id id);
  * @param filename name of the data file where the map is stored.
  * @return OK for a clean exit, otherwise ERROR.
  */
-Status game_load_spaces(Game *game, char *filename);
+Status game_reader_load_spaces(Game *game, char *filename);
 
 /**
  * @brief adds a space to the game structure.
@@ -42,16 +42,6 @@ Status game_load_spaces(Game *game, char *filename);
  * @param space the space to be added.
  * @return OK for a clean exit, otherwise ERROR.
  */
-Status game_add_space(Game *game, Space *space);
-
-/**
- * @brief finds the id of the space where the player is.
- * @author Saúl López Romero
- *
- * @param game game structure, where all the information related to game is included.
- * @param position the number of the room where the player is.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Id game_get_space_id_at(Game *game, int position);
+Status game_reader_add_space(Game *game, Space *space);
 
 #endif
