@@ -15,35 +15,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-Space *game_reader_get_space(Game *game, Id id)
-{
-    int i = 0;
-
-    /*Checks the pointer.*/
-    if (!game)
-    {
-        return NULL;
-    }
-
-    /*Validates the id.*/
-    if (id == NO_ID)
-    {
-        return NULL;
-    }
-
-    /*Searchs for the space.*/
-    for (i = 0; i < game->n_spaces; i++)
-    {
-        if (id == space_get_id(game->spaces[i]))
-        {
-            /*Returns the space when found.*/
-            return game->spaces[i];
-        }
-    }
-    /*The space wasn't found.*/
-    return NULL;
-}
-
 Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
@@ -99,7 +70,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 space_set_east(space, east);
                 space_set_south(space, south);
                 space_set_west(space, west);
-                game_reader_add_space(game, space);
+                game_add_space(game, space);
             }
         }
     }
@@ -113,20 +84,6 @@ Status game_reader_load_spaces(Game *game, char *filename)
 
     /*Clean exit.*/
     return status;
-}
-
-Status game_reader_add_space(Game *game, Space *space)
-{
-    /*Checks the pointers.*/
-    if ((space == NULL) || (!game) || (!space) || (game->n_spaces >= MAX_SPACES))
-    {
-        return ERROR;
-    }
-    /*Adds the space to the game structure and increments the space number.*/
-    game->spaces[game->n_spaces] = space;
-    game->n_spaces++;
-
-    return OK;
 }
 
 Status game_reader_add_object(Game *game, Object *object)

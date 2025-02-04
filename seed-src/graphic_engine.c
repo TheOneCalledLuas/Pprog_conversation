@@ -17,6 +17,7 @@
 #include "libscreen.h"
 #include "space.h"
 #include "types.h"
+#include "game.h"
 
 #define WIDTH_MAP 48
 #define WIDTH_DES 29
@@ -92,7 +93,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_clear(ge->map);
     if ((id_act = game_get_player_location(game)) != NO_ID)
     {
-        space_act = game_reader_get_space(game, id_act);
+        space_act = game_get_space(game, id_act);
         id_back = space_get_north(space_act);
         id_next = space_get_south(space_act);
 

@@ -15,16 +15,6 @@
 #include "game.h"
 
 /**
- * @brief locates an space by its id.
- * @author Saúl López Romero
- *
- * @param game game structure, where all the information related to game is included.
- * @param id id of the space
- * @return pointer to the space, if it exists.
- */
-Space *game_reader_get_space(Game *game, Id id);
-
-/**
  * @brief loads all the spaces from the data file.
  * @author Saúl López Romero
  *
@@ -34,15 +24,7 @@ Space *game_reader_get_space(Game *game, Id id);
  */
 Status game_reader_load_spaces(Game *game, char *filename);
 
-/** 
- * @brief adds a space to the game structure.
- * @author Saúl López Romero
- *
- * @param game game structure, where all the information related to game is included.
- * @param space the space to be added.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Status game_reader_add_space(Game *game, Space *space);
+
 
 /**
  * @brief loads all the objects from the data file.
