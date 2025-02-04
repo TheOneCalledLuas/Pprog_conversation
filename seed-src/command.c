@@ -33,6 +33,7 @@ Command *command_create()
 {
     Command *newCommand = NULL;
 
+    /*Allocation of memory and error management*/
     newCommand = (Command *)malloc(sizeof(Command));
     if (newCommand == NULL)
     {
@@ -52,7 +53,8 @@ Status command_destroy(Command *command)
     {
         return ERROR;
     }
-
+    
+    /*Free the memory*/
     free(command);
     command = NULL;
     return OK;

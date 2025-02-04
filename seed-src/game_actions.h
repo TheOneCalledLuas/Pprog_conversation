@@ -17,7 +17,7 @@
 #include "types.h"
 
 /**
- * @brief It changes the player location space, or other things depending in the commandcode entered
+ * @brief It changes the player location space, or other things depending on the command entered
  * @author Profesores PPROG
  *
  * @param game the pointer to the game you are running

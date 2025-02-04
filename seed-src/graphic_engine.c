@@ -82,7 +82,7 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID;
+    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID, id_left=NO_ID, id_right=NO_ID;
     Space *space_act = NULL;
     char obj = '\0';
     char str[255];
@@ -96,6 +96,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         space_act = game_get_space(game, id_act);
         id_back = space_get_north(space_act);
         id_next = space_get_south(space_act);
+        id_left = space_get_west(space_act);
+        id_right = space_get_east(space_act);
 
         if (game_get_object_location(game) == id_back)
             obj = '*';
@@ -119,7 +121,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         else
             obj = ' ';
 
-        if (id_act != NO_ID)
+        if (id_act != NO_ID && id_left==NO_ID && id_right==NO_ID)
         {
             sprintf(str, "  +-----------+");
             screen_area_puts(ge->map, str);

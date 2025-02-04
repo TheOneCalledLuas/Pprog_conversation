@@ -52,6 +52,7 @@ Status player_destroy(Player* player)
 
     /*Free the memory*/
     free(player);
+    player=NULL;
     return OK;
 }
 

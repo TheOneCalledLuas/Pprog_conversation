@@ -193,7 +193,7 @@ Id game_get_object_location(Game *game)
 
 Status game_set_object_location(Game *game, Id id)
 {
-
+    /*Error management*/
     if (id == NO_ID)
     {
         return ERROR;
