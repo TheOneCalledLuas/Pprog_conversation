@@ -69,5 +69,22 @@ Id object_get_id(Object *object);
  */
 Status object_print_info(Object *object);
 
+/**
+ * @brief Returns the id of the room where the object is.
+ * @author Saúl López Romero
+ * 
+ * @param object Pointer to the object.
+ * @return NO_ID if its not attached to a room or the pointer is NULL, the id otherwise.
+ */
+Id object_get_space_id_at(Object *object);
 
+/**
+ * @brief Sets the id of the space where the object is.
+ * @author Saúl López Romero
+ * 
+ * @param object Pointer to the object.
+ * @param id Id of the space.
+ * @return OK if it works as intended, ERROR otherwise.
+ */
+Status object_set_space_id_at(Object *object, Id id);
 #endif

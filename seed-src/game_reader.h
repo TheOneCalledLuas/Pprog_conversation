@@ -34,7 +34,7 @@ Space *game_reader_get_space(Game *game, Id id);
  */
 Status game_reader_load_spaces(Game *game, char *filename);
 
-/**
+/** 
  * @brief adds a space to the game structure.
  * @author Saúl López Romero
  *
@@ -44,4 +44,23 @@ Status game_reader_load_spaces(Game *game, char *filename);
  */
 Status game_reader_add_space(Game *game, Space *space);
 
+/**
+ * @brief loads all the objects from the data file.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param filename name of the data file where the map is stored.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_reader_load_objects(Game *game, char *filename);
+
+/**
+ * @brief adds an object to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param object the object to be added.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_reader_add_object(Game *game, Object *object);
 #endif

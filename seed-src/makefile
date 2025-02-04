@@ -1,5 +1,5 @@
 EXE = anthill
-CFLAGS = -g -Wall -pedantic -c -ansi
+CFLAGS = -g -Wall -c -ansi -pedantic
 
 anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o
 	gcc -o $(EXE) $^ -L. -lscreen
@@ -21,3 +21,5 @@ object.o: object.c object.h
 	gcc $(CFLAGS) object.c
 clean:
 	rm -f *.o anthill
+redo:
+	clear;make clean;make

@@ -119,9 +119,35 @@ Status object_print_info(Object *object)
     }
 
     /*Prints the info.*/
-    fprintf(stdout, "Object with id [%ld] and name [%s]",object->id,object->name);
-    
+    fprintf(stdout, "Object with id [%ld] and name [%s]", object->id, object->name);
+
     /*Clean exit.*/
     return OK;
+}
 
+Id object_get_space_id_at(Object *object)
+{
+    /*Checks the arguments.*/
+    if (!object)
+    {
+        return NO_ID;
+    }
+    /*Returns the id of the room where the object is.*/
+    return object->space_id;
+}
+
+Status object_set_space_id_at(Object *object, Id id)
+{
+    /*Checks the arguments.*/
+    if (!object)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value.*/
+    object->space_id = id;
+
+    /*Clean exit.*/
+    return OK;
+    
 }
