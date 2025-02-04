@@ -1,5 +1,7 @@
 #include "player.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 struct _Player
 {
@@ -12,7 +14,6 @@ struct _Player
 Player *player_create(Id id)
 {
     Player *player;
-    int i;
     player = (Player*)malloc(sizeof(Player));
     if(player==NULL)
     {
@@ -90,7 +91,7 @@ Id player_get_player_location(Player* player)
 {
     if(player==NULL)
     {
-        return NULL;
+        return NO_ID;
     }
     return player->player_location;
 }
@@ -99,7 +100,7 @@ Id player_get_objects_id(Player* player)
 {
     if(player==NULL)
     {
-        return NULL;
+        return NO_ID;
     }
     return player->object_id;
 }
