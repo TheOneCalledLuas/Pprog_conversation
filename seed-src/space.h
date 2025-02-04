@@ -16,7 +16,7 @@
 typedef struct _Space Space;
 
 /**
- * @brief It creates a new space, allocating memory and initializing its members
+ * @brief It creates a new space, allocating memory and initializing its variables
  * @author Profesores PPROG
  *
  * @param id the identification number for the new space
