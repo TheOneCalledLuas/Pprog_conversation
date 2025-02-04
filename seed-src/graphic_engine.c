@@ -33,7 +33,7 @@
  */
 struct _Graphic_engine
 {
-    Area *map, *descript, *banner, *help, *feedback;
+    Area *map, *descript, *banner, *help, *feedback; /*!< Dimensions of each parameter needed*/
 };
 
 Graphic_engine *graphic_engine_create()

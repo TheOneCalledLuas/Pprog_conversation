@@ -29,9 +29,6 @@ struct _Command
     CommandCode code; /*!< Name of the command */
 };
 
-/** command_create allocates memory for a new command
- *  and initializes its members
- */
 Command *command_create()
 {
     Command *newCommand = NULL;
@@ -42,7 +39,7 @@ Command *command_create()
         return NULL;
     }
 
-    /* Initialization of an empty command*/
+    /* Initialization of an empty command.*/
     newCommand->code = NO_CMD;
 
     return newCommand;
@@ -50,7 +47,7 @@ Command *command_create()
 
 Status command_destroy(Command *command)
 {
-    /* Error control */
+    /* Error control.*/
     if (!command)
     {
         return ERROR;
@@ -63,7 +60,7 @@ Status command_destroy(Command *command)
 
 Status command_set_code(Command *command, CommandCode code)
 {
-    /* Error control */
+    /* Error control.*/
     if (!command)
     {
         return ERROR;
@@ -76,7 +73,7 @@ Status command_set_code(Command *command, CommandCode code)
 
 CommandCode command_get_code(Command *command)
 {
-    /* Error control */
+    /* Error control.*/
     if (!command)
     {
         return NO_CMD;
@@ -89,18 +86,18 @@ Status command_get_user_input(Command *command)
     char input[CMD_LENGHT] = "", *token = NULL;
     int i = UNKNOWN - NO_CMD + 1;
     CommandCode cmd;
-    /* Error control */
+    /* Error control.*/
     if (!command)
     {
         return ERROR;
     }
-    /*1. Gets user input*/
+    /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
         token = strtok(input, " \n");
         if (!token)
         {
-            /*2.1. if there isnt a word stored in the first token, return unkown command*/
+            /*2.1. If there isnt a word stored in the first token, return unknown command.*/
             return command_set_code(command, UNKNOWN);
         }
 
@@ -116,9 +113,9 @@ Status command_get_user_input(Command *command)
                 i++;
             }
         }
-        /*2.2. return the code that has been identified*/
+        /*2.2. Return the code that has been identified.*/
         return command_set_code(command, cmd);
     }
-    else /*2.3. if it cant read the input from the user, return exit*/
+    else /*2.3. If it cant read the input from the user, return exit.*/
         return command_set_code(command, EXIT);
 }

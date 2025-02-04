@@ -34,7 +34,7 @@ Status game_actions_update(Game *game, Command *command)
 {
     CommandCode cmd;
 
-    /*Error management*/
+    /*Error management.*/
     if(game==NULL || command==NULL)
     {
         return ERROR;

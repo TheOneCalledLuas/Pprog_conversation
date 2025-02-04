@@ -26,14 +26,14 @@
  */
 typedef struct _Game
 {
-    Id player_location;
-    Id object_location;
-    Space *spaces[MAX_SPACES];
-    Object *objects[MAX_OBJECTS];
-    int n_spaces;
-    int n_objects;
-    Command *last_cmd;
-    Bool finished;
+    Id player_location;             /*!< Id of the space where the player is at */
+    Id object_location;             /*!< Id of the space where the object is at */
+    Space *spaces[MAX_SPACES];      /*!< An array with the information of every space */
+    Object *objects[MAX_OBJECTS];   /*!< An array with the information of every objects*/
+    int n_spaces;                   /*!< Number of spaces*/
+    int n_objects;                  /*!< Number of objects*/
+    Command *last_cmd;              /*!< A pointer to the last command entered by the user */
+    Bool finished;                  /*!< Whether the game has finished or not*/
 } Game;
 
 /**
@@ -63,6 +63,15 @@ Status game_create_from_file(Game *game, char *filename);
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status game_destroy(Game *game);
+/** 
+ * @brief returns the id of the space at that position
+ * @author Profesores PPROG
+ * 
+ * @param game the pointer to the game 
+ * @param position the position of the space you are looking for
+ * @return The id of the space at that position
+ */
+Id game_get_space_id_at(Game *game, int position);
 
 /**
  * @brief It returns the id of the space where the player is at

@@ -28,17 +28,15 @@ typedef struct _Command Command;
  *
  * @return a pointer to a new command, initialized
  */
-
 Command* command_create();
 
 /**
- * @brief It destroys an existing command, freeing the allocated memory.
+ * @brief It destroys an existing command, freeing the allocated memory
  * @author Profesores PPROG
  *
  * @param command a pointer to the space that needs to be destroyed
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-
 Status command_destroy(Command* command);
 
 /**
@@ -49,7 +47,6 @@ Status command_destroy(Command* command);
  * @param code the code that will be stored
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-
 Status command_set_code(Command* command, CommandCode code);
 
 /**
@@ -59,7 +56,6 @@ Status command_set_code(Command* command, CommandCode code);
  * @param command a pointer to the command
  * @return the code stored in the command
  */
-
 CommandCode command_get_code(Command* command);
 
 /**
@@ -69,7 +65,6 @@ CommandCode command_get_code(Command* command);
  * @param command a pointer to the command 
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-
 Status command_get_user_input(Command* command);
 
 #endif
