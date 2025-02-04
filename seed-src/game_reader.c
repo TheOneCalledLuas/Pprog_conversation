@@ -191,6 +191,11 @@ Status game_reader_load_objects(Game *game, char *filename)
             object_set_name(object, name);
             object_set_space_id_at(object, id_space);
             game_reader_add_object(game, object);
+
+            /*Adds the object to its location*/
+            if (id_space != NO_ID) {
+                game_set_object_location(game,id_space);
+            }
         }
     }
     /*Close the file.*/
