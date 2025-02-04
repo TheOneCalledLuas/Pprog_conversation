@@ -82,7 +82,7 @@ Status game_create_from_file(Game *game, char *filename)
 
     /* The player and the object are located in the first space */
     game_set_player_location(game, game_get_space_id_at(game, 0));
-    /*game_set_object_location(game, game_get_space_id_at(game, 0));*/
+    game_set_object_location(game, game_get_space_id_at(game, 0));
 
     return OK;
 }
@@ -103,7 +103,7 @@ Status game_destroy(Game *game)
     }
 
     /*Destroys the objects.*/
-    for (i = 0; i < game->n_spaces; i++)
+    for (i = 0; i < game->n_objects; i++)
     {
         object_destroy(game->objects[i]);
     }
