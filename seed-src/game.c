@@ -257,3 +257,19 @@ void game_print(Game *game)
     printf("=> Object location: %d\n", (int)game->object_location);
     printf("=> Player location: %d\n", (int)game->player_location);
 }
+
+Status game_add_object(Game *game, Object *object)
+{
+    /*Checks the arguments.*/
+    if (!game || !object || game->n_objects > MAX_OBJECTS)
+    {
+        return ERROR;
+    }
+
+    /*Adds the object.*/
+    game->objects[game->n_objects] = object;
+    game->n_objects++;
+
+    /*Clean exit.*/
+    return OK;
+}

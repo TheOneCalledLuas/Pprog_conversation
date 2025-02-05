@@ -34,13 +34,4 @@ Status game_reader_load_spaces(Game *game, char *filename);
  */
 Status game_reader_load_objects(Game *game, char *filename);
 
-/**
- * @brief adds an object to the game structure.
- * @author Saúl López Romero
- *
- * @param game game structure, where all the information related to game is included.
- * @param object the object to be added.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Status game_reader_add_object(Game *game, Object *object);
 #endif

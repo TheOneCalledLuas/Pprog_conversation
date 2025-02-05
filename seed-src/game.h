@@ -189,4 +189,14 @@ Id game_reader_get_space_id_at(Game *game, int position);
  */
 void game_print(Game *game);
 
+/**
+ * @brief adds an object to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param object the object to be added.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_add_object(Game *game, Object *object);
+
 #endif

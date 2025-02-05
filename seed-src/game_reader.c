@@ -86,22 +86,6 @@ Status game_reader_load_spaces(Game *game, char *filename)
     return status;
 }
 
-Status game_reader_add_object(Game *game, Object *object)
-{
-    /*Checks the arguments.*/
-    if (!game || !object || game->n_objects > MAX_OBJECTS)
-    {
-        return ERROR;
-    }
-
-    /*Adds the object.*/
-    game->objects[game->n_objects] = object;
-    game->n_objects++;
-
-    /*Clean exit.*/
-    return OK;
-}
-
 Status game_reader_load_objects(Game *game, char *filename)
 {
     FILE *file = NULL;
@@ -147,7 +131,7 @@ Status game_reader_load_objects(Game *game, char *filename)
             }
             object_set_name(object, name);
             object_set_space_id_at(object, id_space);
-            game_reader_add_object(game, object);
+            game_add_object(game, object);
 
             /*Adds the object to its location*/
             if (id_space != NO_ID) {
