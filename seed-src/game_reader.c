@@ -92,7 +92,6 @@ Status game_reader_load_objects(Game *game, char *filename)
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     Id id = NO_ID;
-    Id id_space = NO_ID;
     Object *object = NULL;
     char *toks = NULL;
 
@@ -119,8 +118,6 @@ Status game_reader_load_objects(Game *game, char *filename)
             id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
-            toks = strtok(NULL, "|");
-            id_space = atol(toks);
 
             /*Creates an object and saves the data.*/
             object = object_create(id);
@@ -130,13 +127,7 @@ Status game_reader_load_objects(Game *game, char *filename)
                 return ERROR;
             }
             object_set_name(object, name);
-            object_set_space_id_at(object, id_space);
             game_add_object(game, object);
-
-            /*Adds the object to its location*/
-            if (id_space != NO_ID) {
-                game_set_object_location(game,id_space);
-            }
         }
     }
     /*Close the file.*/
