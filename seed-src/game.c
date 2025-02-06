@@ -36,8 +36,8 @@ Status game_create(Game *game)
     /*initializes all members of the game structure*/
     game->n_spaces = 0;
     game->n_objects = 0;
-    game->player_location = NO_ID;
-    game->object_location = NO_ID;
+    game->player = NULL;
+    game->object = NULL;
     game->last_cmd = command_create();
     game->finished = FALSE;
 
@@ -116,8 +116,6 @@ Status game_create_from_file(Game *game, char *filename)
         return ERROR;
     }
 
-
-
     /* The player and the object are located in the first space */
     game_set_player_location(game, game_get_space_id_at(game, 0));
     game_set_object_location(game, game_get_space_id_at(game, 0));
@@ -159,43 +157,61 @@ Id game_get_player_location(Game *game)
         return NO_ID;
     }
 
-    return game->player_location;
+    return player_get_player_location(game->player);
 }
 
-Status game_set_player_location(Game *game, Id id)
+Status game_set_player(Game *game, Player *player)
 {
     /*Error management*/
-    if (id == NO_ID || game == NULL)
+    if (!player || game == NULL)
     {
         return ERROR;
     }
 
-    game->player_location = id;
+    game->player = player;
 
     return OK;
 }
 
 Id game_get_object_location(Game *game)
 {
+    int i = 0;
     /*Error management*/
     if (game == NULL)
     {
         return NO_ID;
     }
-
-    return game->object_location;
+    for (i = 0; i < game->n_spaces; i++)
+    {
+        if (space_get_object(game->spaces[i]) != NO_ID)
+        {
+            return space_get_id(game->spaces[i]);
+        }
+    }
+    return NO_ID;
 }
 
-Status game_set_object_location(Game *game, Id id)
+Object *game_get_object(Game *game)
 {
     /*Error management*/
-    if (id == NO_ID)
+    if (!game == NO_ID)
+    {
+        return NO_ID;
+    }
+
+    return game->object;
+    return OK;
+}
+
+Status game_set_object(Game *game, Object *object)
+{
+    /*Error management*/
+    if (!game || !object)
     {
         return ERROR;
     }
 
-    game->object_location = id;
-    space_set_object(game_get_space(game, id), TRUE);
+    game->object = object;
     return OK;
 }
 
@@ -249,8 +265,8 @@ void game_print(Game *game)
         space_print(game->spaces[i]);
     }
 
-    printf("=> Object location: %d\n", (int)game->object_location);
-    printf("=> Player location: %d\n", (int)game->player_location);
+    printf("=> Object id: %d\n", (int)object_get_id(game->object));
+    printf("=> Player id: %d\n", (int)player_get_player_id(game->player));
 }
 
 Status game_add_object(Game *game, Object *object)

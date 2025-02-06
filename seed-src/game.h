@@ -15,6 +15,8 @@
 #include "space.h"
 #include "types.h"
 #include "object.h"
+#include "player.h"
+#include "object.h"
 
 #define MAX_SPACES 100
 #define MAX_OBJECTS 100
@@ -26,17 +28,17 @@
  */
 typedef struct _Game
 {
-    Id player_location;             /*!< Id of the space where the player is at */
-    Id object_location;             /*!< Id of the space where the object is at */
-    Space *spaces[MAX_SPACES];      /*!< An array with the information of every space */
-    Object *objects[MAX_OBJECTS];   /*!< An array with the information of every objects*/
-    int n_spaces;                   /*!< Number of spaces*/
-    int n_objects;                  /*!< Number of objects*/
-    Command *last_cmd;              /*!< A pointer to the last command entered by the user */
-    Bool finished;                  /*!< Whether the game has finished or not*/
+    Player *player;               /*!< Pointer to the player */
+    Object *object;               /*!< Pointer to the object */
+    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space */
+    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects*/
+    int n_spaces;                 /*!< Number of spaces*/
+    int n_objects;                /*!< Number of objects*/
+    Command *last_cmd;            /*!< A pointer to the last command entered by the user */
+    Bool finished;                /*!< Whether the game has finished or not*/
 } Game;
 
-/** 
+/**
  * @brief adds a space to the game structure.
  * @author Saúl López Romero
  *
@@ -56,7 +58,7 @@ Status game_add_space(Game *game, Space *space);
 Status game_create(Game *game);
 
 /**
- * @brief It loads all spaces data from the file and sets all the other values to zero 
+ * @brief It loads all spaces data from the file and sets all the other values to zero
  * @author Profesores PPROG
  *
  * @param game the pointer to the game you want to create
@@ -84,11 +86,11 @@ Status game_destroy(Game *game);
  */
 Space *game_get_space(Game *game, Id id);
 
-/** 
+/**
  * @brief returns the id of the space at that position
  * @author Profesores PPROG
- * 
- * @param game the pointer to the game 
+ *
+ * @param game the pointer to the game
  * @param position the position of the space you are looking for
  * @return The id of the space at that position
  */
@@ -104,20 +106,29 @@ Id game_get_space_id_at(Game *game, int position);
 Id game_get_player_location(Game *game);
 
 /**
- * @brief It sets the id of the player location space to what you want
+ * @brief Links a player to the game structure.
  * @author Profesores PPROG
  *
  * @param game the pointer to the game
- * @param id id of the space you want the location of the player to be at
+ * @param player pointer to the player
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status game_set_player_location(Game *game, Id id);
+Status game_set_player_location(Game *game, Player *player);
+
+/**
+ * @brief It returns a pointer to the object.
+ * @author Saul Lopez Romero.
+ *
+ * @param game the pointer to the game.
+ * @return The pointer to the object.
+ */
+Object *game_get_object(Game *game);
 
 /**
  * @brief It returns the id of the space where the object is at
  * @author Profesores PPROG
  *
- * @param game the pointer to the game 
+ * @param game the pointer to the game
  * @return The id of the location of the object
  */
 Id game_get_object_location(Game *game);
@@ -133,7 +144,7 @@ Id game_get_object_location(Game *game);
 Status game_set_object_location(Game *game, Id id);
 
 /**
- * @brief It returns a pointer to the last command 
+ * @brief It returns a pointer to the last command
  * @author Profesores PPROG
  *
  * @param game the pointer to the game
@@ -181,10 +192,10 @@ Status game_set_finished(Game *game, Bool finished);
 Id game_reader_get_space_id_at(Game *game, int position);
 
 /**
- * @brief it prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object 
+ * @brief it prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object
  * @author Profesores PPROG
- * 
- * @param game the poitner to the game 
+ *
+ * @param game the poitner to the game
  * @return nothing
  */
 void game_print(Game *game);
@@ -199,4 +210,13 @@ void game_print(Game *game);
  */
 Status game_add_object(Game *game, Object *object);
 
+/**
+ * @brief links an object to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game game structure, where all the information related to game is included.
+ * @param object the object to be added.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_object(Game *game, Object *object);
 #endif
