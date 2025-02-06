@@ -13,6 +13,7 @@
 #define PLAYER_NAME_SIZE 30
 
 #include "types.h"
+#include "game.h"
 
 typedef struct _Player Player;
 
@@ -55,14 +56,14 @@ Status player_set_player_name(Player* player, char name[PLAYER_NAME_SIZE]);
 Status player_set_player_location(Player* player, Id id);
 
 /**
- * @brief It sets the condition of the object to what you want
+ * @brief It sets the object of the player to the one you want
  * @author Fernando Mijangos Varas
  * 
  * @param player the pointer to the player 
- * @param value TRUE/FALSE depending on if the player has the object or not
+ * @param object the pointer to the object you want the player to have
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status player_set_object(Player* player, Bool value);
+Status player_set_object(Player* player, Object* object);
 
 /**
  * @brief It gets the player id
@@ -92,13 +93,13 @@ char *player_get_player_name(Player* player);
 Id player_get_player_location(Player* player);
 
 /**
- * @brief It gets the value of the object condition
+ * @brief It gets the pointer to the object the player has
  * @author Fernando Mijangos Varas
  * 
  * @param player the pointer to the player 
- * @return TRUE if the player has the object or FALSE if not
+ * @return A pointer to the object the player has
  */
-Bool player_get_object(Player* player);
+Object *player_get_object(Player* player);
 
 /**
  * @brief It prints all the information about the player
