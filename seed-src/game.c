@@ -118,7 +118,7 @@ Status game_create_from_file(Game *game, char *filename)
 
     /* The player and the object are located in the first space */
     player_set_player_location(game->player,game_get_space_id_at(game, 0));
-    game_set_object_location(game, game_get_space_id_at(game, 0));
+    player_set_player_location(game->player,game_get_space_id_at(game, 0));
 
     return OK;
 }

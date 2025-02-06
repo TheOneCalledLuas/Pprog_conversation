@@ -13,7 +13,7 @@
 #define PLAYER_NAME_SIZE 30
 
 #include "types.h"
-#include "game.h"
+#include "object.h"
 
 typedef struct _Player Player; 
 
