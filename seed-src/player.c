@@ -9,6 +9,7 @@
  */
 
 #include "player.h"
+#include "object.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,7 +20,7 @@ struct _Player
     Id player_id;                           /*!< Id of the player*/
     char player_name[PLAYER_NAME_SIZE];     /*!< Name of the player*/
     Id player_location;                     /*!< id of the space where the player is at*/
-    Bool object;                            /*!< id of the object the player has*/
+    Object *object;                         /*!< The object the player has*/
 };
 
 Player *player_create(Id id)
@@ -37,7 +38,7 @@ Player *player_create(Id id)
     player->player_id = id;
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
-    player->object = FALSE;
+    player->object=object_create(NO_ID);
 
     return player;
 }
@@ -51,6 +52,7 @@ Status player_destroy(Player* player)
     }
 
     /*Free the memory*/
+    object_destroy(player->object);
     free(player);
     return OK;
 }
@@ -85,7 +87,7 @@ Status player_set_player_location(Player* player, Id id)
     return OK;
 }
 
-Status player_set_object(Player* player, Bool value)
+Status player_set_object(Player* player, Object *object)
 {
     /*Error management*/
     if(player==NULL)
@@ -94,7 +96,7 @@ Status player_set_object(Player* player, Bool value)
     }
 
     /*Copy of the values*/
-    player->object=value;
+    player->object=object;
     return OK;
 }
 
@@ -131,12 +133,12 @@ Id player_get_player_location(Player* player)
     return player->player_location;
 }
 
-Bool player_get_object(Player* player)
+Object* player_get_object(Player* player)
 {
     /*Error management*/
     if(player==NULL)
     {
-        return NO_ID;
+        return NULL;
     }
 
     return player->object;
