@@ -23,7 +23,6 @@ struct _Object
 {
     Id id;                    /* Id of the object, it must be unique. */
     char name[WORD_SIZE + 1]; /* Object name. */
-    Id space_id;              /* Id of the room where the object is.*/
 };
 
 Object *object_create(Id id)
@@ -46,7 +45,6 @@ Object *object_create(Id id)
     /*Sets the vaues to default ones and establishes the id.*/
     object->id = id;
     object->name[0] = '\0';
-    object->space_id = NO_ID;
 
     /*Clean exit.*/
     return object;
@@ -123,31 +121,4 @@ Status object_print_info(Object *object)
 
     /*Clean exit.*/
     return OK;
-}
-
-Id object_get_space_id_at(Object *object)
-{
-    /*Checks the arguments.*/
-    if (!object)
-    {
-        return NO_ID;
-    }
-    /*Returns the id of the room where the object is.*/
-    return object->space_id;
-}
-
-Status object_set_space_id_at(Object *object, Id id)
-{
-    /*Checks the arguments.*/
-    if (!object)
-    {
-        return ERROR;
-    }
-
-    /*Sets the value.*/
-    object->space_id = id;
-
-    /*Clean exit.*/
-    return OK;
-    
 }
