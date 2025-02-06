@@ -15,7 +15,7 @@
 #include "types.h"
 #include "game.h"
 
-typedef struct _Player Player;
+typedef struct _Player Player; 
 
 /**
  * @brief It creates a new player, allocating memory and initializing its variables

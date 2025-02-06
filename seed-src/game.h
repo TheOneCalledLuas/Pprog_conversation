@@ -104,7 +104,7 @@ Id game_get_space_id_at(Game *game, int position);
  * @return The id of the location of the player
  */
 Id game_get_player_location(Game *game);
-
+ 
 /**
  * @brief Links a player to the game structure.
  * @author Profesores PPROG
