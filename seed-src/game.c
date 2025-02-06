@@ -36,8 +36,8 @@ Status game_create(Game *game)
     /*initializes all members of the game structure*/
     game->n_spaces = 0;
     game->n_objects = 0;
-    game->player = NULL;
-    game->object = NULL;
+    game->player = player_create(5);
+    game->object = object_create(5);
     game->last_cmd = command_create();
     game->finished = FALSE;
 
