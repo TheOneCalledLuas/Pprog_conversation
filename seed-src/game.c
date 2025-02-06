@@ -116,11 +116,6 @@ Status game_create_from_file(Game *game, char *filename)
         return ERROR;
     }
 
-    if (game_reader_load_objects(game, filename) == ERROR)
-    {
-        return ERROR;
-    }
-
 
 
     /* The player and the object are located in the first space */
