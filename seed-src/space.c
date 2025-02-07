@@ -9,6 +9,7 @@
  */
 
 #include "space.h"
+#include "object.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +28,7 @@ struct _Space
     Id south;                 /*!< Id of the space at the south */
     Id east;                  /*!< Id of the space at the east */
     Id west;                  /*!< Id of the space at the west */
-    Bool object;              /*!< Whether the space has an object or not */
+    Object *object;              /*!< The id of the object the space has */
 };
 
 /** space_create allocates memory for a new space
@@ -54,7 +55,7 @@ Space *space_create(Id id)
     newSpace->south = NO_ID;
     newSpace->east = NO_ID;
     newSpace->west = NO_ID;
-    newSpace->object = FALSE;
+    newSpace->object = object_create(NO_ID);
 
     return newSpace;
 }
@@ -67,6 +68,7 @@ Status space_destroy(Space *space)
     }
 
     free(space);
+    free(space->object);
     return OK;
 }
 
@@ -178,17 +180,17 @@ Id space_get_west(Space *space)
     return space->west;
 }
 
-Status space_set_object(Space *space, Bool value)
+Object *space_set_object(Space *space, Object *object)
 {
-    if (!space)
+    if (space==NULL|| object==NULL)
     {
         return ERROR;
     }
-    space->object = value;
+    space->object = object;
     return OK;
 }
 
-Bool space_get_object(Space *space)
+Object *space_get_object(Space *space)
 {
     if (!space)
     {
@@ -249,9 +251,10 @@ Status space_print(Space *space)
     }
 
     /* 3. Print if there is an object in the space or not */
-    if (space_get_object(space))
+    idaux=object_get_id(space->object);
+    if (idaux)
     {
-        fprintf(stdout, "---> Object in the space.\n");
+        fprintf(stdout, "---> Object with id %d in the space.\n", idaux);
     }
     else
     {
