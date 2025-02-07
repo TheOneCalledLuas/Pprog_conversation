@@ -193,7 +193,7 @@ Id game_get_object_location(Game *game)
     }
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_get_object(game->spaces[i]) != NO_ID)
+        if (object_get_id(space_get_object(game->spaces[i])) != NO_ID)
         {
             return space_get_id(game->spaces[i]);
         }
