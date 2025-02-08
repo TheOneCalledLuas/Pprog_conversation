@@ -16,7 +16,6 @@
 struct _Object_set
 {
     int num_elements; /* <! Number of elements in the set.*/
-    size_t size;      /* <! Size in bits of each element.*/
     Object **content; /* <! Set content.*/
 };
 
@@ -81,8 +80,8 @@ Status types_object_set_add_element(Object_set *set, Object *element)
     /*Decides wether to add the object or not.*/
     if (is_unique)
     {
-        set->size++;
-        set->content = (Object *)realloc(set->content, (set->size) * sizeof(Object *));
+        set->num_elements++;
+        set->content = (Object *)realloc(set->content, (set->num_elements) * sizeof(Object *));
 
         /*Error handling.*/
         if (!(set->content))
@@ -98,4 +97,103 @@ Status types_object_set_add_element(Object_set *set, Object *element)
         /*The element isn't added as it's a repeated object.*/
         return ERROR;
     }
+}
+
+Status types_object_set_take_object(Object_set *set, Id id)
+{
+    int i = 0;
+    Bool found = FALSE, break_condition = FALSE;
+    /*Checks the parameters.*/
+    if (!set || id == NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Searchs for the object with such id.*/
+    for (i = 0; i < set->num_elements; i++)
+    {
+        if (break_condition)
+        {
+            break;
+        }
+        switch (found)
+        {
+        case FALSE:
+            if (id == object_get_id(set->content[i]))
+            {
+                found = TRUE;
+                if (i != set->num_elements - 1)
+                { /*Si este no es el ultimo.*/
+                    set->content[i] = set->content[i + 1];
+                    continue;
+                }
+            }
+            break;
+        case TRUE:
+            if (i == set->num_elements - 1)
+            {
+                set->content[i] = NULL;
+                break_condition = TRUE;
+                break;
+            }
+            else
+            {
+                set->content[i] = set->content[i + 1];
+                break;
+            }
+
+        default:
+            break;
+        }
+    }
+
+    /*If the object wasn't found.*/
+    if (found == FALSE)
+    {
+        return ERROR;
+    }
+
+    /*Reallocates the memory.*/
+    set->num_elements--;
+    set->content = (Object **)realloc(set->content, (set->num_elements) * sizeof(Object *));
+    if (!(set->content))
+    {
+        return ERROR;
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int types_object_set_get_len(Object_set *set)
+{
+    /*Checks the parameters.*/
+    if (!set)
+    {
+        return -1;
+    }
+
+    return set->num_elements;
+}
+
+Object *types_get_object_from_set(Object_set *set, Id id)
+{
+    int i = 0;
+    /*Checks the parameters.*/
+    if (!set || id < 0)
+    {
+        return NULL;
+    }
+
+    /*Searches for the object.*/
+    for (i = 0; i < set->num_elements; i++)
+    {
+        if (object_get_id(set->content[i]) == id)
+        {
+            return set->content[i];
+        }
+    }
+
+    /*The object wasn't found.*/
+    return NULL;
 }
