@@ -78,6 +78,7 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
     screen_destroy();
     free(ge);
+    ge=NULL;
 }
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
@@ -166,7 +167,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     next or n, back or b, exit or e");
+    sprintf(str, "     next or n, back or b, exit or e, take or t, drop or d");
     screen_area_puts(ge->help, str);
 
     /* Paint in the feedback area */

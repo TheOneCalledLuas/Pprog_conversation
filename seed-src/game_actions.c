@@ -29,6 +29,8 @@ void game_actions_next(Game *game);
 
 void game_actions_back(Game *game);
 
+void game_actions_take(Game *game);
+
 /**
    Game actions implementation
 */
@@ -118,4 +120,14 @@ void game_actions_back(Game *game)
     }
 
     return;
+}
+
+void game_actions_take(Game *game)
+{
+    if(game_get_object_location(game)==player_get_player_location(game_get_player(game)))
+    {
+        object_destroy(player_get_object(game_get_player(game)));
+        player_set_object(game_get_player(game),game_get_object(game));
+        space_set_object(game_get_space(game, game_get_object_location(game)),object_create(NO_ID));
+    }
 }

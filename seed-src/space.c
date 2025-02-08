@@ -69,6 +69,7 @@ Status space_destroy(Space *space)
 
     free(space->object);
     free(space);
+    space=NULL;
     return OK;
 }
 

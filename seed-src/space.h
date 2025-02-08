@@ -140,11 +140,11 @@ Status space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 /**
- * @brief It sets whether the space has an object or not
+ * @brief It sets the object of the space to what you want
  * @author Profesores PPROG
  *
  * @param space a pointer to the space
- * @param value a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
+ * @param object the object you want to put into the space
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status space_set_object(Space* space, Object* object);
