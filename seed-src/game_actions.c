@@ -66,7 +66,9 @@ Status game_actions_update(Game *game, Command *command)
     case BACK:
         game_actions_back(game);
         break;
-
+    case TAKE:
+        game_actions_take(game);
+        break;
     default:
         break;
     }
@@ -124,10 +126,23 @@ void game_actions_back(Game *game)
 
 void game_actions_take(Game *game)
 {
-    if(game_get_object_location(game)==player_get_player_location(game_get_player(game)))
+    Object *object = game_get_object(game);
+    Player *player = game_get_player(game);
+    Space *space = game_get_space(game, player_get_player_location(player));
+    Id player_location = player_get_player_location(player);
+    Id object_location = game_get_object_location(game);
+    Object *player_object = player_get_object(player);
+
+    if (player_location == object_location)
     {
-        object_destroy(player_get_object(game_get_player(game)));
-        player_set_object(game_get_player(game),game_get_object(game));
-        space_set_object(game_get_space(game, game_get_object_location(game)),object_create(NO_ID));
+        if (player_object != NULL)
+        {
+            space_set_object(space, player_object);
+        }
+
+        player_set_object(player, object);
+        game_set_object_location(game, NO_ID);
+        space_set_object(space, NULL);
     }
+    return;
 }

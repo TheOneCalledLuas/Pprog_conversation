@@ -175,15 +175,19 @@ Id game_get_object_location(Game *game)
 Status game_set_object_location(Game *game, Id space_id)
 {
     Id idaux;
-    if (game == NULL || space_id == NO_ID)
+    Object *object=game_get_object(game);
+    /*Error management*/
+    if (game == NULL)
     {
         return ERROR;
     }
+
     idaux = game_get_object_location(game);
-    object_destroy(space_get_object(game_get_space(game, idaux)));
-    space_set_object(game_get_space(game, idaux), object_create(NO_ID));
-    object_destroy(space_get_object(game_get_space(game, space_id)));
-    space_set_object(game_get_space(game, space_id), game_get_object(game));
+    space_set_object(game_get_space(game, idaux), NULL);
+    if(space_id!=NO_ID) 
+    {
+        space_set_object(game_get_space(game, space_id), object);
+    }
     return OK;
 }
 
@@ -201,7 +205,7 @@ Object *game_get_object(Game *game)
 Status game_set_object(Game *game, Object *object)
 {
     /*Error management*/
-    if (!game || !object)
+    if (!game)
     {
         return ERROR;
     }

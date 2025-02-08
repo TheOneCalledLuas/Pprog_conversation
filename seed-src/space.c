@@ -28,7 +28,7 @@ struct _Space
     Id south;                 /*!< Id of the space at the south */
     Id east;                  /*!< Id of the space at the east */
     Id west;                  /*!< Id of the space at the west */
-    Object *object;              /*!< The id of the object the space has */
+    Object *object;           /*!< The pointer of the object the space has */
 };
 
 /** space_create allocates memory for a new space
@@ -55,7 +55,7 @@ Space *space_create(Id id)
     newSpace->south = NO_ID;
     newSpace->east = NO_ID;
     newSpace->west = NO_ID;
-    newSpace->object = object_create(NO_ID);
+    newSpace->object = NULL;
 
     return newSpace;
 }
@@ -183,7 +183,7 @@ Id space_get_west(Space *space)
 
 Status space_set_object(Space *space, Object* object)
 {
-    if (space==NULL|| object==NULL)
+    if (space==NULL)
     {
         return ERROR;
     }
