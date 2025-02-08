@@ -31,6 +31,8 @@ void game_actions_back(Game *game);
 
 void game_actions_take(Game *game);
 
+void game_actions_drop(Game *game);
+
 /**
    Game actions implementation
 */
@@ -68,6 +70,9 @@ Status game_actions_update(Game *game, Command *command)
         break;
     case TAKE:
         game_actions_take(game);
+        break;
+    case DROP:
+        game_actions_drop(game);
         break;
     default:
         break;
@@ -126,6 +131,7 @@ void game_actions_back(Game *game)
 
 void game_actions_take(Game *game)
 {
+    /*I take all the information i'll need*/
     Object *object = game_get_object(game);
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
@@ -137,12 +143,26 @@ void game_actions_take(Game *game)
     {
         if (player_object != NULL)
         {
-            space_set_object(space, player_object);
+            space_set_object(space, player_object);/*if the player has an object it drops it*/
         }
 
+        /*The player gets the object, the space loses it and the location of the object is set to no_id*/
         player_set_object(player, object);
         game_set_object_location(game, NO_ID);
         space_set_object(space, NULL);
     }
+    return;
+}
+
+void game_actions_drop(Game *game)
+{
+    Object *object = player_get_object(game_get_player(game));
+    Player *player= game_get_player(game);
+    Id player_location = player_get_player_location(game_get_player(game));
+    Space *space = game_get_space(game, player_location);
+    Object *aux = space_get_object(space);
+
+    player_set_object(player, aux);
+    space_set_object(space, object);
     return;
 }
