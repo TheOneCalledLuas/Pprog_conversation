@@ -97,23 +97,23 @@ Space *game_get_space(Game *game, Id id);
 Id game_get_space_id_at(Game *game, int position);
 
 /**
- * @brief It returns the id of the space where the player is at
+ * @brief It returns a pointer to the player the game has
  * @author Profesores PPROG
  *
  * @param game the pointer to the game
- * @return The id of the location of the player
+ * @return The pointer to the player
  */
-Id game_get_player_location(Game *game);
+Player* game_get_player(Game *game);
  
 /**
- * @brief Links a player to the game structure.
+ * @brief Returns the id of the space where the plater is at.
  * @author Profesores PPROG
  *
  * @param game the pointer to the game
  * @param player pointer to the player
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status game_set_player_location(Game *game, Player *player);
+Status game_set_player(Game *game, Player *player);
 
 /**
  * @brief It returns a pointer to the object.

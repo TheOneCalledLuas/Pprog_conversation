@@ -117,8 +117,8 @@ Status game_create_from_file(Game *game, char *filename)
     }
 
     /* The player and the object are located in the first space */
-    player_set_player_location(game->player, game_get_space_id_at(game, 0));
-    player_set_player_location(game->player, game_get_space_id_at(game, 0));
+    player_set_player_location(game_get_player(game), game_get_space_id_at(game, 0));
+    player_set_player_location(game_get_player(game), game_get_space_id_at(game, 0));
 
     return OK;
 }
@@ -159,17 +159,6 @@ Status game_destroy(Game *game)
     return OK;
 }
 
-Id game_get_player_location(Game *game)
-{
-    /*Error management*/
-    if (game == NULL)
-    {
-        return NO_ID;
-    }
-
-    return player_get_player_location(game->player);
-}
-
 Status game_set_player(Game *game, Player *player)
 {
     /*Error management*/
@@ -181,6 +170,15 @@ Status game_set_player(Game *game, Player *player)
     game->player = player;
 
     return OK;
+}
+
+Player *game_get_player(Game *game)
+{
+    if(game==NULL)
+    {
+        return NULL;
+    }
+    return game->player;
 }
 
 Id game_get_object_location(Game *game)
