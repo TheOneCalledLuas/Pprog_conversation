@@ -54,6 +54,7 @@ Status player_destroy(Player* player)
     /*Free the memory*/
     object_destroy(player->object);
     free(player);
+    player=NULL;
     return OK;
 }
 

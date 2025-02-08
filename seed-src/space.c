@@ -28,7 +28,7 @@ struct _Space
     Id south;                 /*!< Id of the space at the south */
     Id east;                  /*!< Id of the space at the east */
     Id west;                  /*!< Id of the space at the west */
-    Object *object;              /*!< The id of the object the space has */
+    Object *object;           /*!< The pointer of the object the space has */
 };
 
 /** space_create allocates memory for a new space
@@ -55,7 +55,7 @@ Space *space_create(Id id)
     newSpace->south = NO_ID;
     newSpace->east = NO_ID;
     newSpace->west = NO_ID;
-    newSpace->object = object_create(NO_ID);
+    newSpace->object = NULL;
 
     return newSpace;
 }
@@ -67,8 +67,9 @@ Status space_destroy(Space *space)
         return ERROR;
     }
 
-    free(space);
     free(space->object);
+    free(space);
+    space=NULL;
     return OK;
 }
 
@@ -180,9 +181,9 @@ Id space_get_west(Space *space)
     return space->west;
 }
 
-Object *space_set_object(Space *space, Object *object)
+Status space_set_object(Space *space, Object* object)
 {
-    if (space==NULL|| object==NULL)
+    if (space==NULL)
     {
         return ERROR;
     }
@@ -190,7 +191,7 @@ Object *space_set_object(Space *space, Object *object)
     return OK;
 }
 
-Object *space_get_object(Space *space)
+Object* space_get_object(Space* space)
 {
     if (!space)
     {
@@ -254,7 +255,7 @@ Status space_print(Space *space)
     idaux=object_get_id(space->object);
     if (idaux)
     {
-        fprintf(stdout, "---> Object with id %d in the space.\n", idaux);
+        fprintf(stdout, "---> Object with id %ld in the space.\n", idaux);
     }
     else
     {
