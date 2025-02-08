@@ -120,17 +120,15 @@ Status game_destroy(Game *game)
 
     if (game->object)
     {
-        object_destroy(game->object);
+        /*Destroys the objects.*/
+        for (i = 0; i < game->n_objects; i++)
+        {
+            object_destroy(game->objects[i]);
+        }
     }
-
-    /*Destroys the objects.*/
-    for (i = 0; i < game->n_objects; i++)
-    {
-        object_destroy(game->objects[i]);
-    }
-
+    
     command_destroy(game->last_cmd);
-    game=NULL;
+    game = NULL;
     return OK;
 }
 
@@ -149,7 +147,7 @@ Status game_set_player(Game *game, Player *player)
 
 Player *game_get_player(Game *game)
 {
-    if(game==NULL)
+    if (game == NULL)
     {
         return NULL;
     }
@@ -177,13 +175,13 @@ Id game_get_object_location(Game *game)
 Status game_set_object_location(Game *game, Id space_id)
 {
     Id idaux;
-    if(game==NULL|| space_id==NO_ID)
+    if (game == NULL || space_id == NO_ID)
     {
         return ERROR;
     }
-    idaux=game_get_object_location(game);
-    object_destroy(space_get_object(game_get_space(game,idaux)));
-    space_set_object(game_get_space(game,idaux), object_create(NO_ID));
+    idaux = game_get_object_location(game);
+    object_destroy(space_get_object(game_get_space(game, idaux)));
+    space_set_object(game_get_space(game, idaux), object_create(NO_ID));
     object_destroy(space_get_object(game_get_space(game, space_id)));
     space_set_object(game_get_space(game, space_id), game_get_object(game));
     return OK;
