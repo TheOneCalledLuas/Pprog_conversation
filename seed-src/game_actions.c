@@ -156,12 +156,15 @@ void game_actions_take(Game *game)
 
 void game_actions_drop(Game *game)
 {
+    /*i get all the information i need*/
     Object *object = player_get_object(game_get_player(game));
     Player *player= game_get_player(game);
     Id player_location = player_get_player_location(game_get_player(game));
     Space *space = game_get_space(game, player_location);
     Object *aux = space_get_object(space);
 
+    /*i swaps the object in the space for the one the player has*/
+    /*this makes that if the player drops on a place that has the object, he swaps the object he has*/
     player_set_object(player, aux);
     space_set_object(space, object);
     return;
