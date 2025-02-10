@@ -123,7 +123,7 @@ Status types_object_set_take_object(Object_set *set, Id id)
             {
                 found = TRUE;
                 if (i != set->num_elements - 1)
-                { /*Si este no es el ultimo.*/
+                { /*If this one isnt the last one.*/
                     set->content[i] = set->content[i + 1];
                     continue;
                 }
