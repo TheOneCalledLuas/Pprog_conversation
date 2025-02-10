@@ -17,10 +17,21 @@
 #include "game_reader.h"
 #include "graphic_engine.h"
 
+/**
+ * @brief Initialises the game.
+ *
+ * @return 1 if it goes wrong, 0 otherwise.
+ */
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
 
+/**
+ * @brief Main game loop, where all the actions take place.
+ */
 void game_loop_run(Game game, Graphic_engine *gengine);
 
+/**
+ * @brief Frees the memory and closes the game.
+ */
 void game_loop_cleanup(Game game, Graphic_engine *gengine);
 
 int main(int argc, char *argv[])
@@ -28,29 +39,33 @@ int main(int argc, char *argv[])
     Game game;
     Graphic_engine *gengine;
 
+    /*Checks if a parameter was given.*/
     if (argc < 2)
     {
         fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
         return 1;
     }
 
+    /*Game loop is initated and terminated when its supposed to.*/
     if (!game_loop_init(&game, &gengine, argv[1]))
     {
         game_loop_run(game, gengine);
         game_loop_cleanup(game, gengine);
     }
 
+    /*Clean exit.*/
     return 0;
 }
 
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
 {
+    /*Takes all the information related to the game from a file.*/
     if (game_create_from_file(game, file_name) == ERROR)
     {
         fprintf(stderr, "Error while initializing game.\n");
         return 1;
     }
-
+    /*Starts the graphic engine.*/
     if ((*gengine = graphic_engine_create()) == NULL)
     {
         fprintf(stderr, "Error while initializing graphic engine.\n");
@@ -58,6 +73,7 @@ int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
         return 1;
     }
 
+    /*Clean exit.*/
     return 0;
 }
 
@@ -65,13 +81,15 @@ void game_loop_run(Game game, Graphic_engine *gengine)
 {
     Command *last_cmd;
 
+    /*Checks the parameters.*/
     if (!gengine)
     {
         return;
     }
-
+    /*Gets the last command.*/
     last_cmd = game_get_last_command(&game);
 
+    /*It runs the game while you dont want to exit or the game is terminated.*/
     while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(&game) == FALSE))
     {
         graphic_engine_paint_game(gengine, &game);
@@ -82,6 +100,7 @@ void game_loop_run(Game game, Graphic_engine *gengine)
 
 void game_loop_cleanup(Game game, Graphic_engine *gengine)
 {
+    /*Frees all the memory.*/
     game_destroy(&game);
     graphic_engine_destroy(gengine);
 }
