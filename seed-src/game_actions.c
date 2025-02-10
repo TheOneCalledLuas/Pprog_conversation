@@ -163,8 +163,11 @@ void game_actions_drop(Game *game)
     Space *space = game_get_space(game, player_location);
     Object *aux = space_get_object(space);
 
-    /*i swaps the object in the space for the one the player has*/
-    /*this makes that if the player drops on a place that has the object, he swaps the object he has*/
+    /*checks if the player ha an object, and if he has it he drop sit*/
+    if(object==NULL)
+    {
+        return;
+    }
     player_set_object(player, aux);
     space_set_object(space, object);
     return;
