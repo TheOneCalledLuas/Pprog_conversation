@@ -147,10 +147,13 @@ Status game_set_player(Game *game, Player *player)
 
 Player *game_get_player(Game *game)
 {
+    /*Error management*/
     if (game == NULL)
     {
         return NULL;
     }
+
+    /*Returns a pointer to the player*/
     return game->player;
 }
 
@@ -162,9 +165,11 @@ Id game_get_object_location(Game *game)
     {
         return NO_ID;
     }
+
+    /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (object_get_id(space_get_object(game->spaces[i])) != NO_ID)
+        if (object_get_id(space_get_object(game->spaces[i])) != NO_ID || space_get_object(game->spaces[i]) != NULL)
         {
             return space_get_id(game->spaces[i]);
         }
@@ -182,8 +187,11 @@ Status game_set_object_location(Game *game, Id space_id)
         return ERROR;
     }
 
+    /*It first sets the pointer of the object of the space where the object was to NULL */
     idaux = game_get_object_location(game);
     space_set_object(game_get_space(game, idaux), NULL);
+
+    /*And then it changes the pointer of the object of the new space where the object will be to the real object*/
     if(space_id!=NO_ID) 
     {
         space_set_object(game_get_space(game, space_id), object);
@@ -199,6 +207,7 @@ Object *game_get_object(Game *game)
         return NULL;
     }
 
+    /*It returns the object*/
     return game->object;
 }
 
@@ -210,6 +219,7 @@ Status game_set_object(Game *game, Object *object)
         return ERROR;
     }
 
+    /*It sets the object to a different one*/
     game->object = object;
     return OK;
 }
@@ -222,6 +232,7 @@ Command *game_get_last_command(Game *game)
         return NULL;
     }
 
+    /*It gets the last command used*/
     return game->last_cmd;
 }
 
@@ -233,6 +244,7 @@ Status game_set_last_command(Game *game, Command *command)
         return ERROR;
     }
 
+    /*It sets the last command to what you want*/
     game->last_cmd = command;
 
     return OK;
@@ -247,8 +259,9 @@ Status game_set_finished(Game *game, Bool finished)
     {
         return ERROR;
     }
-    game->finished = finished;
 
+    /*It sets the state (finished or not) of the game to what you want*/
+    game->finished = finished;
     return OK;
 }
 
@@ -256,6 +269,7 @@ void game_print(Game *game)
 {
     int i = 0;
 
+    /*It prints all the information about the game*/
     printf("\n\n-------------\n\n");
 
     printf("=> Spaces: \n");
@@ -266,6 +280,7 @@ void game_print(Game *game)
 
     printf("=> Object id: %d\n", (int)object_get_id(game->object));
     printf("=> Player id: %d\n", (int)player_get_player_id(game->player));
+    return;
 }
 
 Status game_add_object(Game *game, Object *object)

@@ -48,9 +48,11 @@ Status game_actions_update(Game *game, Command *command)
     }
 
     game_set_last_command(game, command);
-
+    
+    /*It gets the code given*/
     cmd = command_get_code(command);
 
+    /*It executes the function that corresponds to the code given*/
     switch (cmd)
     {
     case UNKNOWN:
@@ -93,13 +95,14 @@ void game_actions_next(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
-
+    /*It gets the player location*/
     space_id = player_get_player_location(game_get_player(game));
     if (space_id == NO_ID)
     {
         return;
     }
 
+    /*And sets the player location to the id space south of him*/
     current_id = space_get_south(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
@@ -113,13 +116,14 @@ void game_actions_back(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
-
+    /*It gets the player location*/
     space_id = player_get_player_location(game_get_player(game));
     if (NO_ID == space_id)
     {
         return;
     }
 
+    /*And sets the player location it to the id space north of him*/
     current_id = space_get_north(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
@@ -164,7 +168,7 @@ void game_actions_drop(Game *game)
     Space *space = game_get_space(game, player_location);
     Object *aux = space_get_object(space);
 
-    /*checks if the player ha an object, and if he has it he drop sit*/
+    /*checks if the player has an object, and if he has one, he drop sit*/
     if(object==NULL)
     {
         return;
