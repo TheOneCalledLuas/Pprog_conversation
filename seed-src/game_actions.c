@@ -145,11 +145,12 @@ void game_actions_take(Game *game)
         {
             space_set_object(space, player_object);/*if the player has an object it drops it*/
         }
+        {
+            space_set_object(space, NULL);/*if he doesnt have an object, the space gets a NULL as objcet pointer*/
+        }
 
-        /*The player gets the object, the space loses it and the location of the object is set to no_id*/
+        /*The player gets the object*/
         player_set_object(player, object);
-        game_set_object_location(game, NO_ID);
-        space_set_object(space, NULL);
     }
     return;
 }
