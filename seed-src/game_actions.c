@@ -131,7 +131,7 @@ void game_actions_back(Game *game)
 
 void game_actions_take(Game *game)
 {
-    /*I take all the information i'll need*/
+    /*I take all the information I'll need*/
     Object *object = game_get_object(game);
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
@@ -145,11 +145,12 @@ void game_actions_take(Game *game)
         {
             space_set_object(space, player_object);/*if the player has an object it drops it*/
         }
+        {
+            space_set_object(space, NULL);/*if he doesnt have an object, the space gets a NULL as objcet pointer*/
+        }
 
-        /*The player gets the object, the space loses it and the location of the object is set to no_id*/
+        /*The player gets the object*/
         player_set_object(player, object);
-        game_set_object_location(game, NO_ID);
-        space_set_object(space, NULL);
     }
     return;
 }
