@@ -103,7 +103,7 @@ void game_actions_next(Game *game)
     current_id = space_get_south(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game->player,current_id);
+        player_set_player_location(game_get_player(game),current_id);
     }
 
     return;
@@ -123,7 +123,7 @@ void game_actions_back(Game *game)
     current_id = space_get_north(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game->player, current_id);
+        player_set_player_location(game_get_player(game), current_id);
     }
 
     return;
