@@ -131,7 +131,7 @@ void game_actions_back(Game *game)
 
 void game_actions_take(Game *game)
 {
-    /*I take all the information i'll need*/
+    /*I take all the information I'll need*/
     Object *object = game_get_object(game);
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
@@ -156,7 +156,7 @@ void game_actions_take(Game *game)
 
 void game_actions_drop(Game *game)
 {
-    /*i get all the information i need*/
+    /*I get all the information i need*/
     Object *object = player_get_object(game_get_player(game));
     Player *player= game_get_player(game);
     Id player_location = player_get_player_location(game_get_player(game));
@@ -168,6 +168,7 @@ void game_actions_drop(Game *game)
     {
         return;
     }
+    /*I give the object to the space and I take it out from the player.*/
     player_set_object(player, aux);
     space_set_object(space, object);
     return;
