@@ -2,7 +2,7 @@
  * @brief It implements the game update through user actions
  *
  * @file game.c
- * @author Profesores PPROG
+ * @author Profesores PPROG, Fernando Mijangos Varas.
  * @version 0
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -21,16 +21,48 @@
    Private functions
 */
 
+/**
+ * @brief action to be executed when an unknown command is given.
+ * 
+ * @param game Pointer to the game structure.
+ */
 void game_actions_unknown(Game *game);
 
+/**
+ * @brief action to be executed when exit is given.
+ * 
+ * @param game Pointer to the game structure.
+ */
 void game_actions_exit(Game *game);
 
+/**
+ * @brief action to be executed when next command is given.
+ * 
+ * @param game Pointer to the game structure.
+ */
 void game_actions_next(Game *game);
 
+/**
+ * @brief action to be executed when back command is given.
+ * 
+ * @param game Pointer to the game structure.
+ */
 void game_actions_back(Game *game);
 
+/**
+ * @brief action to be executed when take command is given.
+ * 
+ * @author Fernando Mijangos Varas.
+ * 
+ * @param game Pointer to the game structure.
+ */
 void game_actions_take(Game *game);
 
+/**
+ * @brief action to be executed when take command is given.
+ * 
+ * @author Fernando Mijangos Varas.
+ */
 void game_actions_drop(Game *game);
 
 /**
