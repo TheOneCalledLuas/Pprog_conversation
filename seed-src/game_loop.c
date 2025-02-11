@@ -1,5 +1,5 @@
 /**
- * @brief It defines the game loop
+ * @brief It defines the game loop.
  *
  * @file game_loop.c
  * @author Profesores PPROG
@@ -21,9 +21,9 @@
  * @brief Initialises the game.
  *
  * @author Profesores PPROG
- * @param game the pointer to the game
- * @param gengine the graphic_engine you are going to be using
- * @param file_name the name of the file where the information about the spaces is
+ * @param game Pointer to the game.
+ * @param gengine The graphic_engine you are going to be using.
+ * @param file_name Name of the file where the information about the spaces is.
  * 
  * @return 1 if it goes wrong, 0 otherwise.
  */
@@ -33,8 +33,8 @@ int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
  * @brief Main game loop, where all the actions take place.
  * 
  * @author Profesores PPROG
- * @param game the game you are running
- * @param gengine a pointer to the graphic engine
+ * @param game Pointer to the game.
+ * @param gengine Pointer to the graphic engine.
  */
 void game_loop_run(Game *game, Graphic_engine *gengine);
 
@@ -42,8 +42,8 @@ void game_loop_run(Game *game, Graphic_engine *gengine);
  * @brief Frees the memory and closes the game.
  * 
  * @author Profesores PPROG
- * @param game the game you are running
- * @param gengine the graphic engine you are using
+ * @param game Pointer to the game.
+ * @param gengine The graphic engine you are using.
  */
 void game_loop_cleanup(Game *game, Graphic_engine *gengine);
 

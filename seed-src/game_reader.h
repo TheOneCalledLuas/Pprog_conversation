@@ -15,21 +15,21 @@
 #include "game.h"
 
 /**
- * @brief loads all the spaces from the data file.
+ * @brief Loads all the spaces from the data file.
  * @author Saúl López Romero
  *
- * @param game game structure, where all the information related to game is included.
- * @param filename name of the data file where the map is stored.
+ * @param game Pointer to the game structure, where all the information related to game is included.
+ * @param filename Name of the data file where the map is stored.
  * @return OK for a clean exit, otherwise ERROR.
  */
 Status game_reader_load_spaces(Game *game, char *filename);
 
 /**
- * @brief loads all the objects from the data file.
+ * @brief Loads all the objects from the data file.
  * @author Saúl López Romero
  *
- * @param game game structure, where all the information related to game is included.
- * @param filename name of the data file where the map is stored.
+ * @param game Pointer to the game structure, where all the information related to game is included.
+ * @param filename Name of the data file where the map is stored.
  * @return OK for a clean exit, otherwise ERROR.
  */
 Status game_reader_load_objects(Game *game, char *filename);
