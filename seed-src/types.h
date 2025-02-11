@@ -16,10 +16,25 @@
 
 typedef long Id;
 
+/**
+ * @brief Bool 
+ * 
+ * It sets the values FALSE (0) and TRUE (1)
+ */
 typedef enum { FALSE, TRUE } Bool;
 
+/**
+ * @brief Status
+ * 
+ * It sets the value of ERROR(0) and OK(1)
+ */
 typedef enum { ERROR, OK } Status;
 
+/**
+ * @brief Directions
+ * 
+ * It stores the value each cardinal direction has N(0) S(1) E(2) S(3)
+ */
 typedef enum { N, S, E, W } Direction;
 
 #endif

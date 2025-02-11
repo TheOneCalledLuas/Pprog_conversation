@@ -3,7 +3,7 @@
  *
  * @file game_loop.c
  * @author Profesores PPROG
- * @version 0
+ * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -20,19 +20,31 @@
 /**
  * @brief Initialises the game.
  *
+ * @author Profesores PPROG
+ * @param game the pointer to the game
+ * @param gengine the graphic_engine you are going to be using
+ * @param file_name the name of the file where the information about the spaces is
  * @return 1 if it goes wrong, 0 otherwise.
  */
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
 
 /**
  * @brief Main game loop, where all the actions take place.
+ * 
+ * @author Profesores PPROG
+ * @param game the game you are running
+ * @param gengine a pointer to the graphic engine
  */
-void game_loop_run(Game game, Graphic_engine *gengine);
+void game_loop_run(Game *game, Graphic_engine *gengine);
 
 /**
  * @brief Frees the memory and closes the game.
+ * 
+ * @author Profesores PPROG
+ * @param game the game you are running
+ * @param gengine the graphic engine you are using
  */
-void game_loop_cleanup(Game game, Graphic_engine *gengine);
+void game_loop_cleanup(Game *game, Graphic_engine *gengine);
 
 int main(int argc, char *argv[])
 {
@@ -49,8 +61,8 @@ int main(int argc, char *argv[])
     /*Game loop is initated and terminated when its supposed to.*/
     if (!game_loop_init(&game, &gengine, argv[1]))
     {
-        game_loop_run(game, gengine);
-        game_loop_cleanup(game, gengine);
+        game_loop_run(&game, gengine);
+        game_loop_cleanup(&game, gengine);
     }
 
     /*Clean exit.*/
@@ -77,7 +89,7 @@ int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
     return 0;
 }
 
-void game_loop_run(Game game, Graphic_engine *gengine)
+void game_loop_run(Game *game, Graphic_engine *gengine)
 {
     Command *last_cmd;
 
@@ -87,20 +99,20 @@ void game_loop_run(Game game, Graphic_engine *gengine)
         return;
     }
     /*Gets the last command.*/
-    last_cmd = game_get_last_command(&game);
+    last_cmd = game_get_last_command(game);
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
-    while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(&game) == FALSE))
+    while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(game) == FALSE))
     {
-        graphic_engine_paint_game(gengine, &game);
+        graphic_engine_paint_game(gengine, game);
         command_get_user_input(last_cmd);
-        game_actions_update(&game, last_cmd);
+        game_actions_update(game, last_cmd);
     }
 }
 
-void game_loop_cleanup(Game game, Graphic_engine *gengine)
+void game_loop_cleanup(Game *game, Graphic_engine *gengine)
 {
     /*Frees all the memory.*/
-    game_destroy(&game);
+    game_destroy(game);
     graphic_engine_destroy(gengine);
 }

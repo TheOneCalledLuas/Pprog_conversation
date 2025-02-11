@@ -3,7 +3,7 @@
  *
  * @file game.c
  * @author Profesores PPROG
- * @version 0
+ * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -154,7 +154,7 @@ void game_actions_take(Game *game)
         }
         {
             /*If he doesnt have an object,
-            the space gets a NULL as objcet pointer*/
+            the space gets a NULL as object pointer*/
             space_set_object(space, NULL);
         }
 
@@ -173,11 +173,12 @@ void game_actions_drop(Game *game)
     Space *space = game_get_space(game, player_location);
     Object *aux = space_get_object(space);
 
-    /*Checks if the player has an object, and if he has one, he drop sit*/
+    /*Checks if the player has an object, and if he has one, he drops it*/
     if (object == NULL)
     {
         return;
     }
+
     /*I give the object to the space and I take it out from the player.*/
     player_set_object(player, aux);
     space_set_object(space, object);

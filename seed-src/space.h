@@ -3,7 +3,7 @@
  *
  * @file space.h
  * @author Profesores PPROG
- * @version 0
+ * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
  */

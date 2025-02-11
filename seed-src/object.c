@@ -3,7 +3,7 @@
  *
  * @file object.c
  * @author Saúl López Romero
- * @version 0
+ * @version 2
  * @date 01-02-2025
  * @copyright GNU Public License
  */
