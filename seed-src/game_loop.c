@@ -24,6 +24,7 @@
  * @param game the pointer to the game
  * @param gengine the graphic_engine you are going to be using
  * @param file_name the name of the file where the information about the spaces is
+ * 
  * @return 1 if it goes wrong, 0 otherwise.
  */
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
