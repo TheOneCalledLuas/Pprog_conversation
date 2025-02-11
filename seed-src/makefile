@@ -1,7 +1,7 @@
 EXE = anthill
 CFLAGS = -g -Wall -c -ansi -pedantic
 
-all: anthill
+all: anthill clear
 
 anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o player.o
 	gcc -o $(EXE) $^ -L. -lscreen
@@ -35,6 +35,9 @@ player.o: player.c player.h
 	
 clean:
 	rm -f *.o anthill
+
+clear: 
+	rm -f *.o
 
 redo:
 	clear;make clean;make
