@@ -3,7 +3,7 @@
  *
  * @file command.c
  * @author Profesores PPROG
- * @version 0
+ * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -108,6 +108,7 @@ Status command_get_user_input(Command *command)
         }
 
         cmd = UNKNOWN;
+            /*2.2 Identifies the code of the command entered*/
         while (cmd == UNKNOWN && i < N_CMD)
         {
             if (!strcasecmp(token, cmd_to_str[i][CMDS]) || !strcasecmp(token, cmd_to_str[i][CMDL]))
@@ -119,9 +120,9 @@ Status command_get_user_input(Command *command)
                 i++;
             }
         }
-        /*2.2. Return the code that has been identified.*/
+        /*2.3. Return the code that has been identified.*/
         return command_set_code(command, cmd);
     }
-    else /*2.3. If it cant read the input from the user, return exit.*/
+    else /*2.4 If it cant read the input from the user, return exit.*/
         return command_set_code(command, EXIT);
 }

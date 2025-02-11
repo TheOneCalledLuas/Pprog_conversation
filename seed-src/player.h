@@ -3,7 +3,7 @@
  *
  * @file player.h
  * @author Fernando Mijangos Varas
- * @version 1
+ * @version 2
  * @date 04-02-2025
  * @copyright GNU Public License
  */

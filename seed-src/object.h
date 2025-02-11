@@ -3,7 +3,7 @@
  *
  * @file object.h
  * @author Saúl López Romero
- * @version 0
+ * @version 2
  * @date 2-02-2025
  * @copyright GNU Public License
  */

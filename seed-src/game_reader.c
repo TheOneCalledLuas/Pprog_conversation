@@ -3,7 +3,7 @@
  *
  * @file game_reader.c
  * @author Saúl López Romero
- * @version 1
+ * @version 3
  * @date 30-01-2025
  * @copyright GNU Public License
  */
