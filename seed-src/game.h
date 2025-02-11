@@ -16,7 +16,6 @@
 #include "types.h"
 #include "object.h"
 #include "player.h"
-#include "object.h"
 
 #define MAX_SPACES 100
 #define MAX_OBJECTS 100
