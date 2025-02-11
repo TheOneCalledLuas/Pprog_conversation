@@ -90,7 +90,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
 
-    /* Paint the in the map area */
+    /* Paint the information in the map area */
     screen_area_clear(ge->map);
     if ((id_act = player_get_player_location(game_get_player(game))) != NO_ID)
     {
