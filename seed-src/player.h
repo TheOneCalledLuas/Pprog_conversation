@@ -21,7 +21,7 @@ typedef struct _Player Player;
  * @brief It creates a new player, allocating memory and initializing its variables
  * @author Fernando Mijangos Varas
  * 
- * @param id the id for the new player
+ * @param id Id for the new player
  * @return a pointer the a new player, initialized
  */
 Player *player_create(Id id);
@@ -50,7 +50,7 @@ Status player_set_player_name(Player* player, char name[PLAYER_NAME_SIZE]);
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
- * @param id the id of the space you want the player to be at
+ * @param id Id of the space you want the player to be at
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status player_set_player_location(Player* player, Id id);
@@ -70,7 +70,7 @@ Status player_set_object(Player* player, Object* object);
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
- * @return the id of the player
+ * @return Id of the player
  */
 Id player_get_player_id(Player* player);
 
@@ -88,7 +88,7 @@ char *player_get_player_name(Player* player);
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
- * @return the id of the space the player is at
+ * @return Id of the space the player is at
  */
 Id player_get_player_location(Player* player);
 
