@@ -15,6 +15,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief Player
+ * 
+ * It stores all the information related to a player.
+ */
 struct _Player
 {
     Id player_id;                           /*!< Id of the player*/
