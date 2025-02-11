@@ -1,5 +1,5 @@
 /**
- * @brief It defines the game update interface
+ * @brief It defines the game update interface.
  *
  * @file game.h
  * @author Profesores PPROG
@@ -17,12 +17,12 @@
 #include "types.h"
 
 /**
- * @brief It changes the player location space, or other things depending on the command entered
+ * @brief It changes the player location space, or other things depending on the command entered.
  * @author Profesores PPROG
  *
- * @param game the pointer to the game you are running
- * @param cmd the pointer to the command you want to enter
- * @return OK if everything went correct or ERROR it it didn't
+ * @param game Pointer to the game you are running.
+ * @param cmd Pointer to the command you want to enter.
+ * @return OK if everything went correct or ERROR it it didn't.
  */
 Status game_actions_update(Game *game, Command *cmd);
 
