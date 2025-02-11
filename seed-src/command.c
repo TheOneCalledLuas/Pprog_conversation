@@ -15,8 +15,12 @@
 #include <string.h>
 #include <strings.h>
 
+/*Max lenght for a command.*/
 #define CMD_LENGHT 30
 
+/**
+ * @brief structure with all the possible commands and the key words to triger them.
+ */
 char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"t", "Take"}, {"d", "Drop"}};
 
 /**
@@ -53,7 +57,7 @@ Status command_destroy(Command *command)
     {
         return ERROR;
     }
-    
+
     /*Free the memory*/
     free(command);
     command = NULL;
