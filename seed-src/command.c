@@ -15,8 +15,12 @@
 #include <string.h>
 #include <strings.h>
 
+/*Max lenght for a command.*/
 #define CMD_LENGHT 30
 
+/**
+ * @brief structure with all the possible commands and the key words to triger them.
+ */
 char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"t", "Take"}, {"d", "Drop"}};
 
 /**
@@ -53,8 +57,8 @@ Status command_destroy(Command *command)
     {
         return ERROR;
     }
-    
-    /*Free the memory*/
+
+    /*Free the memory.*/
     free(command);
     command = NULL;
     return OK;
@@ -88,6 +92,7 @@ Status command_get_user_input(Command *command)
     char input[CMD_LENGHT] = "", *token = NULL;
     int i = UNKNOWN - NO_CMD + 1;
     CommandCode cmd;
+
     /* Error control.*/
     if (!command)
     {
@@ -104,7 +109,7 @@ Status command_get_user_input(Command *command)
         }
 
         cmd = UNKNOWN;
-            /*2.2 Identifies the code of the command entered*/
+            /*2.2 Identifies the code of the command entered.*/
         while (cmd == UNKNOWN && i < N_CMD)
         {
             if (!strcasecmp(token, cmd_to_str[i][CMDS]) || !strcasecmp(token, cmd_to_str[i][CMDL]))

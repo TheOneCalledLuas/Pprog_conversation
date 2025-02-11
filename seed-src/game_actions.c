@@ -23,6 +23,7 @@
 
 /**
  * @brief action to be executed when an unknown command is given.
+ * @author Profesores PProg.
  * 
  * @param game Pointer to the game structure.
  */

@@ -1,6 +1,8 @@
 EXE = anthill
 CFLAGS = -g -Wall -c -ansi -pedantic
 
+.PHONY = all clean clear check
+
 all: anthill clear
 
 anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o player.o
@@ -43,4 +45,4 @@ redo:
 	clear;make clean;make
 
 check:
-	valgrind --leak-check=full --show-leak-kinds=all ./anthill anthill.dat
+	valgrind --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat
