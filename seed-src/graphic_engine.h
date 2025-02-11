@@ -36,7 +36,7 @@ void graphic_engine_destroy(Graphic_engine *ge);
  * @brief It prints on the terminal an image of the game
  * @author Profesores PPROG
  *
- * @param game the pointer to the game you are running
+ * @param game Pointer to the game you are running
  * @param gw a pointer to the graphic engine structure
  */
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game);
