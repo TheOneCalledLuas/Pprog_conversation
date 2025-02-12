@@ -150,21 +150,21 @@ Id space_get_west(Space* space);
 Status space_set_object(Space* space, Id object);
 
 /**
- * @brief It gets the id of the object in the space
+ * @brief It gets the id of the object in the space.
  * @author Profesores PPROG
  *
- * @param space Pointer to the space
- * @return Id to the obeject the space has
+ * @param space Pointer to the space.
+ * @return Id to the obeject the space has.
  */
 Id space_get_object(Space* space);
 
 /**
- * @brief It prints the space information(id, name, object id, north id, east id....)
+ * @brief It prints the space information(id, name, object id, north id, east id....).
  * @author Profesores PPROG
  *
  * 
- * @param space Pointer to the space
- * @return OK, if everything goes well or ERROR if there was some mistake
+ * @param space Pointer to the space.
+ * @return OK, if everything goes well or ERROR if there was some mistake.
  */
 Status space_print(Space* space);
 

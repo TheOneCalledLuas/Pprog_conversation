@@ -117,7 +117,7 @@ Id player_get_player_id(Player* player)
 
 char *player_get_player_name(Player* player)
 {
-    /*Error management*/
+    /*Error management.*/
     if(player==NULL)
     {
         return NULL;
@@ -128,7 +128,7 @@ char *player_get_player_name(Player* player)
 
 Id player_get_player_location(Player* player)
 {
-    /*Error management*/
+    /*Error management.*/
     if(player==NULL)
     {
         return NO_ID;
@@ -139,7 +139,7 @@ Id player_get_player_location(Player* player)
 
 Id player_get_object(Player* player)
 {
-    /*Error management*/
+    /*Error management.*/
     if(player==NULL)
     {
         return NO_ID;
@@ -150,19 +150,19 @@ Id player_get_object(Player* player)
 
 Status player_print(Player *player)
 {
-    /* Error Management */
+    /* Error Management.*/
     if (!player)
     {
         return ERROR;
     }
 
-    /* 1. Print the id and the name of the player */
+    /* 1. Print the id and the name of the player.*/
     fprintf(stdout, "--> Player (Id: %ld; Name: %s)\n", player->player_id, player->player_name);
     
-    /* 2. Print the id of the place the player is at */
+    /* 2. Print the id of the place the player is at.*/
     fprintf(stdout, "--> Player in the space with id number %ld \n", player->player_location);
     
-    /* 3. Print the information about the object */
+    /* 3. Print the information about the object.*/
     if(player->object)
     {
         fprintf(stdout, "--> Player has the object with id %ld", player->object);

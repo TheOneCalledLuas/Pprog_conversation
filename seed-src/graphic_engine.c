@@ -92,16 +92,18 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
 
-    /* Paints the information in the map area */
+    /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
     if ((id_act = player_get_player_location(game_get_player(game))) != NO_ID)
     {
+        /*Gets the sapces located to the different points of the space.*/
         space_act = game_get_space(game, id_act);
         id_back = space_get_north(space_act);
         id_next = space_get_south(space_act);
         id_left = space_get_west(space_act);
         id_right = space_get_east(space_act);
 
+        /*The following 50 lines print the rooms.*/
         if (game_get_object_location(game) == id_back)
             obj = '*';
         else

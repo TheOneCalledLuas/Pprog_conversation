@@ -58,7 +58,7 @@ Command *command_create();
  * @brief It destroys an existing command, freeing the allocated memory.
  * @author Profesores PPROG
  *
- * @param command a pointer to the space that needs to be destroyed.
+ * @param command Pointer to the space that needs to be destroyed.
  * @return OK if everything goes well or ERROR if there was some mistake.
  */
 Status command_destroy(Command *command);

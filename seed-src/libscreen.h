@@ -19,13 +19,13 @@ typedef struct _Area Area;
  *
  * This function should be called at the beginning of the program,
  *  so the complete screen is allocated before starting defining areas.
- * @param rows the number of rows that will have the full screen
- * @param columns the number of columns that will have the full screen
+ * @param rows The number of rows that will have the full screen.
+ * @param columns The number of columns that will have the full screen.
  */
 void screen_init(int rows, int columns);
 
 /**
- * @brief It destroys a new screen area
+ * @brief It destroys a new screen area.
  * @author Profesores PPROG
  *
  * As it frees the screen, it must be called at the end of the program,
@@ -48,11 +48,11 @@ void screen_paint();
  *
  * screen_area_init allocates memory for a new area
  *  and initializes its members.
- * @param x the x-coordinate of the up-left corner of the area
- * @param y the x-coordinate of the up-left corner of the area
- * @param width the width of the area
- * @param height the height of the area
- * @return a new area, initialized
+ * @param x The x-coordinate of the up-left corner of the area
+ * @param y The x-coordinate of the up-left corner of the area
+ * @param width The width of the area.
+ * @param height The height of the area.
+ * @return A new area, initialized.
  */
 Area* screen_area_init(int x, int y, int width, int height);
 
@@ -62,17 +62,17 @@ Area* screen_area_init(int x, int y, int width, int height);
  *
  * This function should be called once the area is not needed anymore,
  *  before ending the programme.
- * @param area the area to be freed
+ * @param area The area to be freed.
  */
 void screen_area_destroy(Area* area);
 
 /**
- * @brief It clears an area, erasing all its content
+ * @brief It clears an area, erasing all its content.
  * @author Profesores PPROG
  *
  * This function should be called for earaising all the information in an area,
  *  before introducing a new state of it.
- * @param area the area to be cleared
+ * @param area The area to be cleared.
  */
 void screen_area_clear(Area* area);
 
@@ -81,7 +81,7 @@ void screen_area_clear(Area* area);
  * @author Profesores PPROG
  *
  * This function reset the cursor to the up-left corner of the area.
- * @param area the involved area
+ * @param area The involved area.
  */
 void screen_area_reset_cursor(Area* area);
 
@@ -91,8 +91,8 @@ void screen_area_reset_cursor(Area* area);
  *
  * This function sets the string that will be shown in an area.
  *  Each string introduced will be a line in the specified area.
- * @param area the area to be modified
- * @param str a string that contains the information to be included in a particular area
+ * @param area The area to be modified.
+ * @param str String that contains the information to be included in a particular area.
  */
 void screen_area_puts(Area* area, char* str);
 

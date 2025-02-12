@@ -20,7 +20,7 @@ typedef struct _Graphic_engine Graphic_engine;
  * @brief It creates a new Graphic engine structure with all its variables initialized
  * @author Profesores PPROG
  *
- * @return a pointer to the initialized graphic engine
+ * @return Pointer to the initialized graphic engine.
  */
 Graphic_engine *graphic_engine_create();
 
@@ -28,7 +28,7 @@ Graphic_engine *graphic_engine_create();
  * @brief It destroys a graphic engine structure
  * @author Profesores PPROG
  *
- * @param ge the graphic engine structure you want to destroy
+ * @param ge The graphic engine structure you want to destroy.
  */
 void graphic_engine_destroy(Graphic_engine *ge);
 
@@ -36,8 +36,8 @@ void graphic_engine_destroy(Graphic_engine *ge);
  * @brief It prints on the terminal an image of the game
  * @author Profesores PPROG
  *
- * @param game Pointer to the game you are running
- * @param gw a pointer to the graphic engine structure
+ * @param game Pointer to the game you are running.
+ * @param gw Pointer to the graphic engine structure.
  */
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game);
 

@@ -73,7 +73,7 @@ char *object_get_name(Object *object)
         return ERROR;
     }
 
-    /*returns a pointer to the object's name.*/
+    /*Returns a pointer to the object's name.*/
     return object->name;
 }
 

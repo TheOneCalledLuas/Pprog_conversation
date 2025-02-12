@@ -85,10 +85,10 @@ Status game_actions_update(Game *game, Command *command)
 
     game_set_last_command(game, command);
 
-    /*It gets the code given*/
+    /*It gets the code given.*/
     cmd = command_get_code(command);
 
-    /*It executes the function that corresponds to the code given*/
+    /*It executes the function that corresponds to the code given.*/
     switch (cmd)
     {
     case UNKNOWN:
@@ -120,7 +120,7 @@ Status game_actions_update(Game *game, Command *command)
 }
 
 /*
-    Calls implementation for each action
+    Calls implementation for each action.
 */
 
 void game_actions_unknown(Game *game) {}
