@@ -80,6 +80,7 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
     screen_destroy();
     free(ge);
+    return;
 }
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)

@@ -61,7 +61,6 @@ Status object_destroy(Object *object)
 
     /*Frees the memory.*/
     free(object);
-    object=NULL;
     /*Clean exit.*/
     return OK;
 }

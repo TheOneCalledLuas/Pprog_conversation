@@ -174,16 +174,16 @@ void game_actions_back(Game *game)
 void game_actions_take(Game *game)
 {
     /*Takes all the information I'll need.*/
-    Object *object = game_get_object(game);
+    Id object = object_get_id(game_get_object(game));
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
     Id player_location = player_get_player_location(player);
     Id object_location = game_get_object_location(game);
-    Object *player_object = player_get_object(player);
+    Id player_object = player_get_object(game_get_player(game));
 
     if (player_location == object_location)
     {
-        if (player_object != NULL)
+        if (player_object != NO_ID)
         {
             /*If the player has an object it drops it.*/
             space_set_object(space, player_object);
@@ -191,7 +191,7 @@ void game_actions_take(Game *game)
         {
             /*If he doesnt have an object,
             the space gets a NULL as object pointer.*/
-            space_set_object(space, NULL);
+            space_set_object(space, NO_ID);
         }
 
         /*The player gets the object.*/
@@ -203,20 +203,20 @@ void game_actions_take(Game *game)
 void game_actions_drop(Game *game)
 {
     /*Gets all the information it need.*/
-    Object *object = player_get_object(game_get_player(game));
+    Id player_object = player_get_object(game_get_player(game));
     Player *player = game_get_player(game);
     Id player_location = player_get_player_location(game_get_player(game));
     Space *space = game_get_space(game, player_location);
-    Object *aux = space_get_object(space);
+    Id object = space_get_object(space);
 
     /*Checks if the player has an object, and if he has one, he drops it.*/
-    if (object == NULL)
+    if (player_object == NO_ID)
     {
         return;
     }
 
     /*Gives the object to the space and I take it out from the player.*/
-    player_set_object(player, aux);
-    space_set_object(space, object);
+    player_set_object(player, object);
+    space_set_object(space, player_object);
     return;
 }

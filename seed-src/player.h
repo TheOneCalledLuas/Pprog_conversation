@@ -93,13 +93,13 @@ char *player_get_player_name(Player* player);
 Id player_get_player_location(Player* player);
 
 /**
- * @brief It gets the pointer to the object the player has
+ * @brief It gets the id of the object the player has
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
  * @return Id of the object the player has
  */
-Id *player_get_object(Player* player);
+Id player_get_object(Player* player);
 
 /**
  * @brief It prints all the information about the player

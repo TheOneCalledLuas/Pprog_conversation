@@ -68,7 +68,6 @@ Status space_destroy(Space *space)
     }
 
     free(space);
-    space=NULL;
     return OK;
 }
 
@@ -194,7 +193,7 @@ Id space_get_object(Space* space)
 {
     if (!space)
     {
-        return FALSE;
+        return NO_ID;
     }
     return space->object;
 }
@@ -251,7 +250,7 @@ Status space_print(Space *space)
     }
 
     /* 3. Print if there is an object in the space or not */
-    idaux=object_get_id(space->object);
+    idaux=space->object;
     if (idaux)
     {
         fprintf(stdout, "---> Object with id %ld in the space.\n", idaux);

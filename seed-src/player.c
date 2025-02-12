@@ -58,7 +58,6 @@ Status player_destroy(Player* player)
 
     /*Free the memory*/
     free(player);
-    player=NULL;
     return OK;
 }
 
@@ -143,7 +142,7 @@ Id player_get_object(Player* player)
     /*Error management*/
     if(player==NULL)
     {
-        return NULL;
+        return NO_ID;
     }
 
     return player->object;
@@ -166,7 +165,7 @@ Status player_print(Player *player)
     /* 3. Print the information about the object */
     if(player->object)
     {
-        fprintf(stdout, "--> Player has the object with id %d", player->object);
+        fprintf(stdout, "--> Player has the object with id %ld", player->object);
     }
     else
     {

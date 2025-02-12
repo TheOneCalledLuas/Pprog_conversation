@@ -120,15 +120,11 @@ Status game_destroy(Game *game)
 
     if (game->object)
     {
-        /*Destroys the objects.*/
-        for (i = 0; i < game->n_objects; i++)
-        {
-            object_destroy(game->objects[i]);
-        }
+        /*Destroys the object*/
+        object_destroy(game->object);
     }
     
     command_destroy(game->last_cmd);
-    game = NULL;
     return OK;
 }
 
@@ -169,7 +165,7 @@ Id game_get_object_location(Game *game)
     /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (object_get_id(space_get_object(game->spaces[i])) != NO_ID || space_get_object(game->spaces[i]) != NULL)
+        if (space_get_object(game->spaces[i]) != NO_ID || space_get_object(game->spaces[i]) != NO_ID)
         {
             return space_get_id(game->spaces[i]);
         }
@@ -189,12 +185,12 @@ Status game_set_object_location(Game *game, Id space_id)
 
     /*It first sets the pointer of the object of the space where the object was to NULL */
     idaux = game_get_object_location(game);
-    space_set_object(game_get_space(game, idaux), NULL);
+    space_set_object(game_get_space(game, idaux), NO_ID);
 
     /*And then it changes the pointer of the object of the new space where the object will be to the real object*/
     if(space_id!=NO_ID) 
     {
-        space_set_object(game_get_space(game, space_id), object);
+        space_set_object(game_get_space(game, space_id), object_get_id(object));
     }
     return OK;
 }
