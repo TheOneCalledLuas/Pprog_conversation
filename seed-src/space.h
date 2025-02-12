@@ -144,19 +144,19 @@ Id space_get_west(Space* space);
  * @author Profesores PPROG
  *
  * @param space Pointer to the space
- * @param object the object you want to put into the space
+ * @param object Id to the object the space has
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status space_set_object(Space* space, Object* object);
+Status space_set_object(Space* space, Id object);
 
 /**
  * @brief It gets whether the space has an object or not
  * @author Profesores PPROG
  *
  * @param space Pointer to the space
- * @return Pointer to the object
+ * @return Id to the obeject the space has
  */
-Object* space_get_object(Space* space);
+Id space_get_object(Space* space);
 
 /**
  * @brief It prints the space information

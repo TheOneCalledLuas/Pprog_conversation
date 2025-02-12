@@ -25,7 +25,7 @@ struct _Player
     Id player_id;                           /*!< Id of the player*/
     char player_name[PLAYER_NAME_SIZE];     /*!< Name of the player*/
     Id player_location;                     /*!< id of the space where the player is at*/
-    Object *object;                         /*!< The object the player has*/
+    Id object;                              /*!< The id of the object the player has*/
 };
 
 Player *player_create(Id id)
@@ -43,7 +43,7 @@ Player *player_create(Id id)
     player->player_id = id;
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
-    player->object=object_create(NO_ID);
+    player->object=NO_ID;
 
     return player;
 }
@@ -57,7 +57,6 @@ Status player_destroy(Player* player)
     }
 
     /*Free the memory*/
-    object_destroy(player->object);
     free(player);
     player=NULL;
     return OK;
@@ -93,7 +92,7 @@ Status player_set_player_location(Player* player, Id id)
     return OK;
 }
 
-Status player_set_object(Player* player, Object *object)
+Status player_set_object(Player* player, Id object)
 {
     /*Error management*/
     if(player==NULL)
@@ -139,7 +138,7 @@ Id player_get_player_location(Player* player)
     return player->player_location;
 }
 
-Object* player_get_object(Player* player)
+Id player_get_object(Player* player)
 {
     /*Error management*/
     if(player==NULL)
@@ -167,7 +166,7 @@ Status player_print(Player *player)
     /* 3. Print the information about the object */
     if(player->object)
     {
-        fprintf(stdout, "--> Player has the object");
+        fprintf(stdout, "--> Player has the object with id %d", player->object);
     }
     else
     {

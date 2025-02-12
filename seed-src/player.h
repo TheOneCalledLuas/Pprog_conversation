@@ -60,10 +60,10 @@ Status player_set_player_location(Player* player, Id id);
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
- * @param object Pointer to the object you want the player to have
+ * @param object Id of the object you want the player to have
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status player_set_object(Player* player, Object* object);
+Status player_set_object(Player* player, Id object);
 
 /**
  * @brief It gets the player id
@@ -97,9 +97,9 @@ Id player_get_player_location(Player* player);
  * @author Fernando Mijangos Varas
  * 
  * @param player Pointer to the player 
- * @return A pointer to the object the player has
+ * @return Id of the object the player has
  */
-Object *player_get_object(Player* player);
+Id *player_get_object(Player* player);
 
 /**
  * @brief It prints all the information about the player
