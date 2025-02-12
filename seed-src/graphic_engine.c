@@ -30,11 +30,11 @@
 /**
  * @brief _Graphic_engine
  *
- * This struct stores all the information of the dimmensions needed for the graphic engine
+ * This struct stores all the information of the dimmensions needed for the graphic engine.
  */
 struct _Graphic_engine
 {
-    Area *map, *descript, *banner, *help, *feedback; /*!< Dimensions of each parameter needed*/
+    Area *map, *descript, *banner, *help, *feedback; /*!< Dimensions of each parameter needed.*/
 };
 
 Graphic_engine *graphic_engine_create()
@@ -48,14 +48,14 @@ Graphic_engine *graphic_engine_create()
 
     screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4, WIDTH_MAP + WIDTH_DES + 3);
 
-    /*allocation of space and error management*/
+    /*Allocation of space and error management.*/
     ge = (Graphic_engine *)malloc(sizeof(Graphic_engine));
     if (ge == NULL)
     {
         return NULL;
     }
 
-    /*it gives the value needed for each variable*/
+    /*It gives the value needed for each variable.*/
     ge->map = screen_area_init(1, 1, WIDTH_MAP, HEIGHT_MAP);
     ge->descript = screen_area_init(WIDTH_MAP + 2, 1, WIDTH_DES, HEIGHT_MAP);
     ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 - WIDTH_BAN) / 2), HEIGHT_MAP + 2, WIDTH_BAN, HEIGHT_BAN);
@@ -67,9 +67,11 @@ Graphic_engine *graphic_engine_create()
 
 void graphic_engine_destroy(Graphic_engine *ge)
 {
+    /*Error management.*/
     if (!ge)
         return;
 
+    /*Destroys everything.*/
     screen_area_destroy(ge->map);
     screen_area_destroy(ge->descript);
     screen_area_destroy(ge->banner);
@@ -78,19 +80,18 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
     screen_destroy();
     free(ge);
-    ge=NULL;
 }
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID, id_left=NO_ID, id_right=NO_ID;
+    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID, id_left = NO_ID, id_right = NO_ID;
     Space *space_act = NULL;
     char obj = '\0';
     char str[255];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
 
-    /* Paint the information in the map area */
+    /* Paints the information in the map area */
     screen_area_clear(ge->map);
     if ((id_act = player_get_player_location(game_get_player(game))) != NO_ID)
     {
@@ -122,7 +123,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         else
             obj = ' ';
 
-        if (id_act != NO_ID && id_left==NO_ID && id_right==NO_ID)
+        if (id_act != NO_ID && id_left == NO_ID && id_right == NO_ID)
         {
             sprintf(str, "  +-----------+");
             screen_area_puts(ge->map, str);
