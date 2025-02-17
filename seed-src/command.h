@@ -12,7 +12,7 @@
 #define COMMAND_H
 
 #include "types.h"
-
+/*Ways of refering to the same command.*/
 #define N_CMDT 2
 /*Number of commands.*/
 #define N_CMD 7

@@ -19,6 +19,7 @@
 #include "types.h"
 #include "game.h"
 
+/*Map measures.*/
 #define WIDTH_MAP 48
 #define WIDTH_DES 29
 #define WIDTH_BAN 23

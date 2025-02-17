@@ -11,7 +11,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+/*Maximun lenght for each word.*/
 #define WORD_SIZE 1000
+
+/*Error code.*/
 #define NO_ID -1
 
 typedef long Id;
