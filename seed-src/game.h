@@ -134,7 +134,7 @@ Id game_get_object_location(Game *game);
 
 /**
  * @brief It sets the id of the object location space to what you want
- * @author Saúl López Romero
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  * @param id Id of the space you want the location of the object to be at.

@@ -2,7 +2,7 @@
  * @brief It defines the command interpreter interface
  *
  * @file command.h
- * @author Profesores PPROG
+ * @author Profesores PPROG && Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License

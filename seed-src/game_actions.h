@@ -2,7 +2,7 @@
  * @brief It defines the game update interface.
  *
  * @file game.h
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -18,7 +18,7 @@
 
 /**
  * @brief It changes the player location space, or other things depending on the command entered.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game you are running.
  * @param cmd Pointer to the command you want to enter.
