@@ -37,7 +37,7 @@ Status game_create(Game *game)
     game->n_spaces = 0;
     game->n_objects = 0;
     game->player = player_create(5);
-    game->object = object_create(5);
+    game->object = object_create(13);
     game->last_cmd = command_create();
     game->finished = FALSE;
 
@@ -115,6 +115,7 @@ Status game_destroy(Game *game)
 
     if (game->player)
     {
+        /*Destroys the player structure.*/
         player_destroy(game->player);
     }
 

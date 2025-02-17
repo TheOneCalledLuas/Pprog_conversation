@@ -49,7 +49,7 @@ Status game_add_space(Game *game, Space *space);
 
 /**
  * @brief It sets the number of spaces to zero, the ids to NO_ID, the last command is set to NO_CMD and the game is set to not finished
- * @author Profesores PPROG
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the gama you want to reset.
  * @return OK, if everything goes well or ERROR if there was some mistake.
@@ -58,7 +58,7 @@ Status game_create(Game *game);
 
 /**
  * @brief It loads all spaces data from the file and sets all the other values to zero.
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  *
  * @param game Pointer to the game you want to create.
  * @param filename Name of the file with all the data.
@@ -68,7 +68,7 @@ Status game_create_from_file(Game *game, char *filename);
 
 /**
  * @brief It destroys all the information about the spaces, and the last command.
- * @author Profesores PPROG
+ * @author S
  *
  * @param game Pointer to the game you want to destroy.
  * @return OK, if everything goes well or ERROR if there was some mistake.
@@ -106,7 +106,7 @@ Player* game_get_player(Game *game);
  
 /**
  * @brief Returns the id of the space where the plater is at.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  * @param player Pointer to the player.
@@ -116,7 +116,7 @@ Status game_set_player(Game *game, Player *player);
 
 /**
  * @brief It returns a pointer to the object.
- * @author Saul Lopez Romero.
+ * @author Saul Lopez Romero
  *
  * @param game Pointer to the game.
  * @return Pointer to the object.
@@ -125,7 +125,7 @@ Object *game_get_object(Game *game);
 
 /**
  * @brief It returns the id of the space where the object is at
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  *
  * @param game Pointer to the game.
  * @return Id of the location of the object.
@@ -134,7 +134,7 @@ Id game_get_object_location(Game *game);
 
 /**
  * @brief It sets the id of the object location space to what you want
- * @author Profesores PPROG
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @param id Id of the space you want the location of the object to be at.
