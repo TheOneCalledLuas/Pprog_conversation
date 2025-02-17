@@ -279,22 +279,6 @@ void game_print(Game *game)
     return;
 }
 
-Status game_add_object(Game *game, Object *object)
-{
-    /*Checks the arguments.*/
-    if (!game || !object || game->n_objects > MAX_OBJECTS)
-    {
-        return ERROR;
-    }
-
-    /*Adds the object.*/
-    game->objects[game->n_objects] = object;
-    game->n_objects++;
-
-    /*Clean exit.*/
-    return OK;
-}
-
 Status game_create_from_file(Game *game, char *filename)
 {
     /*Error management.*/
