@@ -2,7 +2,7 @@
  * @brief It defines the space module interface
  *
  * @file space.h
- * @author Profesores PPROG
+ * @author Fernando Mijangos && Saul Lopez
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -18,7 +18,7 @@ typedef struct _Space Space;
 
 /**
  * @brief It creates a new space, allocating memory and initializing its variables
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param id Identification number for the new space
  * @return a pointer to a new space, initialized
@@ -27,7 +27,7 @@ Space* space_create(Id id);
 
 /**
  * @brief It destroys a space, freeing the allocated memory
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space that must be destroyed
  * @return OK, if everything goes well or ERROR if there was some mistake
@@ -141,7 +141,7 @@ Id space_get_west(Space* space);
 
 /**
  * @brief Sets the id of the object of the space to what you want
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space
  * @param object Id to the object the space has
@@ -151,7 +151,7 @@ Status space_set_object(Space* space, Id object);
 
 /**
  * @brief It gets the id of the object in the space.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space.
  * @return Id to the obeject the space has.
@@ -160,7 +160,7 @@ Id space_get_object(Space* space);
 
 /**
  * @brief It prints the space information(id, name, object id, north id, east id....).
- * @author Profesores PPROG
+ * @author Fernando Mijangos.
  *
  * 
  * @param space Pointer to the space.
