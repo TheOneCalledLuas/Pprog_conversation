@@ -97,7 +97,7 @@ Id game_get_space_id_at(Game *game, int position);
 
 /**
  * @brief It returns a pointer to the player the game has.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  * @return The pointer to the player.
