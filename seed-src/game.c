@@ -2,7 +2,7 @@
  * @brief It implements the game structure
  *
  * @file game.c
- * @author Profesores PPROG
+ * @author Saul Lopez Romero, Fernando Mijangos Varas
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License

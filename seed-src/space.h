@@ -162,7 +162,6 @@ Id space_get_object(Space* space);
  * @brief It prints the space information(id, name, object id, north id, east id....).
  * @author Fernando Mijangos.
  *
- * 
  * @param space Pointer to the space.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */

@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  *
  * @file game.h
- * @author Profesores PPROG
+ * @authorSaul Lopez Romero, Fernando Mijangos Varas
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
