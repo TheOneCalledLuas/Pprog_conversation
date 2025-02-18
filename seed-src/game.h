@@ -69,7 +69,7 @@ Status game_create_from_file(Game *game, char *filename);
 
 /**
  * @brief It destroys all the information about the spaces, and the last command.
- * @author S
+ * @author Saul Lopez Romero
  *
  * @param game Pointer to the game you want to destroy.
  * @return OK, if everything goes well or ERROR if there was some mistake.
