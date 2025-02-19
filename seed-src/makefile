@@ -34,7 +34,10 @@ object.o: object.c object.h types.h
 
 player.o: player.c player.h types.h object.h
 	gcc $(CFLAGS) player.c
-	
+
+set.o: set.c types.h set.h
+	gcc $(CFLAGS) set.c
+
 clean:
 	rm -f *.o anthill
 
@@ -44,5 +47,18 @@ clear:
 redo:
 	clear;make clean;make
 
+################################################
+#                 Test_check                   #
+################################################
 check:
 	valgrind --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat
+
+set_check:
+	./set_test
+
+set_test: set_test.o set.o 
+	gcc -o set_test $^
+
+set_test.o: set_test.c set_test.h set.h types.h test.h
+	gcc $(CFLAGS) set_test.c
+

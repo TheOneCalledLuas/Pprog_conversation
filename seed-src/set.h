@@ -11,6 +11,9 @@
 #ifndef SET_H
 #define SET_H
 
+#include "set.h"
+#include "types.h"
+
 /**
  * @brief Set TAD.
  * @author Saul Lopez Romero
@@ -41,7 +44,7 @@ void set_destroy(Set *set);
  * @param id Id to be searched.
  * @return position of the id in the set if found, -1 otherwise.
  */
-Id set_find(Set *set, Id id);
+int set_find(Set *set, Id id);
 
 /**
  * @brief Adds an element to the set.
@@ -59,7 +62,7 @@ Status set_add(Set *set, Id element);
  *
  * @param set Pointer to the set.
  * @param id Id to be taken out.
- * @return Id taken out, -1 if it wasnt found or an error took place.
+ * @return Id taken out, -2 if it wasnt found or an error took place.
  */
 Id set_take(Set *set, Id id);
 

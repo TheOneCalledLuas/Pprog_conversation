@@ -13,7 +13,14 @@
 #include "types.h"
 #include "set.h"
 
+/**
+ * Maximun number of elements per set.
+ */
 #define MAX_SET 50
+/**
+ * Error code for functions in this module (as -1 is an id (NO_ID)).
+ */
+#define ID_ERROR -2
 
 struct _Set
 {
@@ -57,7 +64,7 @@ void set_destroy(Set *set)
     free(set);
 }
 
-Id set_find(Set *set, Id id)
+int set_find(Set *set, Id id)
 {
     int i = 0;
     /*Error management.*/
@@ -77,7 +84,7 @@ Id set_find(Set *set, Id id)
 Status set_add(Set *set, Id element)
 {
     /*Checks the parameters.*/
-    if (!set)
+    if (!set || element <-1)
     {
         return ERROR;
     }
@@ -108,12 +115,12 @@ Id set_take(Set *set, Id id)
     Id id_aux = 0;
     /*Error management.*/
     if (!set)
-        return NO_ID;
+        return ID_ERROR;
 
     /*Searches for the element.*/
-    if (pos = set_find(set, id) == -1)
+    if ((pos = set_find(set, id)) == -1)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     /*Reordenates the set and returns the value.*/
