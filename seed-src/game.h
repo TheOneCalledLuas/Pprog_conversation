@@ -26,17 +26,7 @@
  *
  * This struct stores all the information related to a game.
  */
-typedef struct _Game
-{
-    Player *player;               /*!< Pointer to the player. */
-    Object *object;               /*!< Pointer to the object. */
-    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects.*/
-    int n_spaces;                 /*!< Number of spaces.*/
-    int n_objects;                /*!< Number of objects.*/
-    Command *last_cmd;            /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                /*!< Whether the game has finished or not.*/
-} Game;
+typedef struct _Game Game;
 
 /**
  * @brief Adds a space to the game structure.
@@ -55,7 +45,7 @@ Status game_add_space(Game *game, Space *space);
  * @param game Pointer to the gama you want to reset.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status game_create(Game *game);
+Status game_create(Game **game);
 
 /**
  * @brief It loads all spaces data from the file and sets all the other values to zero.
@@ -65,7 +55,7 @@ Status game_create(Game *game);
  * @param filename Name of the file with all the data.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status game_create_from_file(Game *game, char *filename);
+Status game_create_from_file(Game **game, char *filename);
 
 /**
  * @brief It destroys all the information about the spaces, and the last command.
@@ -74,7 +64,7 @@ Status game_create_from_file(Game *game, char *filename);
  * @param game Pointer to the game you want to destroy.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status game_destroy(Game *game);
+Status game_destroy(Game **game);
 
 /**
  * @brief Locates an space by its id.

@@ -18,8 +18,19 @@
 /**
    Game interface implementation.
 */
+struct _Game
+{
+    Player *player;               /*!< Pointer to the player. */
+    Object *object;               /*!< Pointer to the object. */
+    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects.*/
+    int n_spaces;                 /*!< Number of spaces.*/
+    int n_objects;                /*!< Number of objects.*/
+    Command *last_cmd;            /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                /*!< Whether the game has finished or not.*/
+};
 
-Status game_create(Game *game)
+Status game_create(Game **game)
 {
     int i;
 
@@ -28,18 +39,20 @@ Status game_create(Game *game)
     {
         return ERROR;
     }
+    /*memory allocation*/
+    (*game) = (Game *)malloc(sizeof(Game));
 
     for (i = 0; i < MAX_SPACES; i++)
     {
-        game->spaces[i] = NULL;
+        (*game)->spaces[i] = NULL;
     }
     /*Initializes all members of the game structure.*/
-    game->n_spaces = 0;
-    game->n_objects = 0;
-    game->player = player_create(5);
-    game->object = object_create(13);
-    game->last_cmd = command_create();
-    game->finished = FALSE;
+    (*game)->n_spaces = 0;
+    (*game)->n_objects = 0;
+    (*game)->player = player_create(5);
+    (*game)->object = object_create(13);
+    (*game)->last_cmd = command_create();
+    (*game)->finished = FALSE;
 
     return OK;
 }
@@ -98,7 +111,7 @@ Id game_get_space_id_at(Game *game, int position)
     return space_get_id(game->spaces[position]);
 }
 
-Status game_destroy(Game *game)
+Status game_destroy(Game **game)
 {
     int i = 0;
 
@@ -108,24 +121,25 @@ Status game_destroy(Game *game)
         return ERROR;
     }
     /*Destroys the spaces.*/
-    for (i = 0; i < game->n_spaces; i++)
+    for (i = 0; i < (*game)->n_spaces; i++)
     {
-        space_destroy(game->spaces[i]);
+        space_destroy((*game)->spaces[i]);
     }
 
-    if (game->player)
+    if ((*game)->player)
     {
         /*Destroys the player structure.*/
-        player_destroy(game->player);
+        player_destroy((*game)->player);
     }
 
-    if (game->object)
+    if ((*game)->object)
     {
         /*Destroys the object.*/
-        object_destroy(game->object);
+        object_destroy((*game)->object);
     }
-    
-    command_destroy(game->last_cmd);
+
+    command_destroy((*game)->last_cmd);
+    free(*game);
     return OK;
 }
 
@@ -280,7 +294,7 @@ void game_print(Game *game)
     return;
 }
 
-Status game_create_from_file(Game *game, char *filename)
+Status game_create_from_file(Game **game, char *filename)
 {
     /*Error management.*/
     if (game == NULL || filename == NULL)
@@ -293,14 +307,14 @@ Status game_create_from_file(Game *game, char *filename)
         return ERROR;
     }
 
-    if (game_reader_load_spaces(game, filename) == ERROR)
+    if (game_reader_load_spaces(*game, filename) == ERROR)
     {
         return ERROR;
     }
 
     /*The player and the object are located in the first space.*/
-    player_set_player_location(game_get_player(game), game_get_space_id_at(game, 0));
-    game_set_object_location(game, game_get_space_id_at(game, 0));
+    player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
+    game_set_object_location(*game, game_get_space_id_at(*game, 0));
 
     return OK;
 }
