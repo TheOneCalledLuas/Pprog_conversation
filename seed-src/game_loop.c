@@ -27,7 +27,7 @@
  * 
  * @return 1 if it goes wrong, 0 otherwise.
  */
-int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
+int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name);
 
 /**
  * @brief Main game loop, where all the actions take place.
@@ -45,11 +45,11 @@ void game_loop_run(Game *game, Graphic_engine *gengine);
  * @param game Pointer to the game.
  * @param gengine The graphic engine you are using.
  */
-void game_loop_cleanup(Game *game, Graphic_engine *gengine);
+void game_loop_cleanup(Game **game, Graphic_engine *gengine);
 
 int main(int argc, char *argv[])
 {
-    Game game;
+    Game *game=NULL;
     Graphic_engine *gengine;
 
     /*Checks if a parameter was given.*/
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     /*Game loop is initated and terminated when its supposed to.*/
     if (!game_loop_init(&game, &gengine, argv[1]))
     {
-        game_loop_run(&game, gengine);
+        game_loop_run(game, gengine);
         game_loop_cleanup(&game, gengine);
     }
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
+int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
 {
     /*Takes all the information related to the game from a file.*/
     if (game_create_from_file(game, file_name) == ERROR)
@@ -111,7 +111,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine)
     }
 }
 
-void game_loop_cleanup(Game *game, Graphic_engine *gengine)
+void game_loop_cleanup(Game **game, Graphic_engine *gengine)
 {
     /*Frees all the memory.*/
     game_destroy(game);
