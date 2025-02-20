@@ -9,6 +9,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "types.h"
 #include "set.h"
@@ -80,7 +81,7 @@ int set_find(Set *set, Id id)
 Status set_add(Set *set, Id element)
 {
     /*Checks the parameters.*/
-    if (!set || element <-1)
+    if (!set || element < -1)
     {
         return ERROR;
     }
@@ -138,4 +139,22 @@ int set_len(Set *set)
 
     /*Returns the value.*/
     return set->n_ids;
+}
+
+Status set_print(Set *s)
+{
+    int i = 0, len = 0;
+    /*Error management.*/
+    if (!s)
+    {
+        return ERROR;
+    }
+    len = set_len(s);
+    printf("Set formed by %d elements: ", len);
+    for (i = 0; i < len; i++)
+    {
+        printf("%ld ", s->content[i]);
+    }
+    printf("\n");
+    return OK;
 }

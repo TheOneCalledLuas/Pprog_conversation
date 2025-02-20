@@ -2,8 +2,8 @@
  * @brief It implements the player module
  *
  * @file player.c
- * @author Fernando Mijangos Varas
- * @version 2
+ * @author Fernando Mijangos Varas, Saúl López Romero.
+ * @version 3
  * @date 04-02-2025
  * @copyright GNU Public License
  */
@@ -17,15 +17,16 @@
 
 /**
  * @brief Player
- * 
+ *
  * It stores all the information related to a player.
  */
 struct _Player
 {
-    Id player_id;                           /*!< Id of the player*/
-    char player_name[PLAYER_NAME_SIZE];     /*!< Name of the player*/
-    Id player_location;                     /*!< id of the space where the player is at*/
-    Id object;                              /*!< The id of the object the player has*/
+    Id player_id;                       /*!< Id of the player.*/
+    char player_name[PLAYER_NAME_SIZE]; /*!< Name of the player.*/
+    Id player_location;                 /*!< id of the space where the player is at.*/
+    Id object;                          /*!<Id of the object the player has.*/
+    int health;                         /*!< health points the player has.*/
 };
 
 Player *player_create(Id id)
@@ -33,8 +34,8 @@ Player *player_create(Id id)
     Player *player;
 
     /*Allocation of memory for player and error management*/
-    player = (Player*)malloc(sizeof(Player));
-    if(player==NULL)
+    player = (Player *)malloc(sizeof(Player));
+    if (player == NULL)
     {
         return NULL;
     }
@@ -43,15 +44,16 @@ Player *player_create(Id id)
     player->player_id = id;
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
-    player->object=NO_ID;
+    player->object = NO_ID;
+    player->health = 20;
 
     return player;
 }
 
-Status player_destroy(Player* player)
+Status player_destroy(Player *player)
 {
     /*Error management*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return ERROR;
     }
@@ -61,16 +63,16 @@ Status player_destroy(Player* player)
     return OK;
 }
 
-Status player_set_player_name(Player* player, char name[PLAYER_NAME_SIZE])
+Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE])
 {
     /*Error management*/
-    if(player==NULL || name == NULL)
+    if (player == NULL || name == NULL)
     {
         return ERROR;
     }
 
     /*Copy of the values*/
-    if (!strcpy(player->player_name ,name))
+    if (!strcpy(player->player_name, name))
     {
         return ERROR;
     }
@@ -78,10 +80,10 @@ Status player_set_player_name(Player* player, char name[PLAYER_NAME_SIZE])
     return OK;
 }
 
-Status player_set_player_location(Player* player, Id id)
+Status player_set_player_location(Player *player, Id id)
 {
     /*Error management*/
-    if(player==NULL||id==NO_ID)
+    if (player == NULL || id == NO_ID)
     {
         return ERROR;
     }
@@ -91,23 +93,23 @@ Status player_set_player_location(Player* player, Id id)
     return OK;
 }
 
-Status player_set_object(Player* player, Id object)
+Status player_set_object(Player *player, Id object)
 {
     /*Error management*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return ERROR;
     }
 
     /*Copy of the values*/
-    player->object=object;
+    player->object = object;
     return OK;
 }
 
-Id player_get_player_id(Player* player)
+Id player_get_player_id(Player *player)
 {
     /*Error management*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return NO_ID;
     }
@@ -115,10 +117,10 @@ Id player_get_player_id(Player* player)
     return player->player_id;
 }
 
-char *player_get_player_name(Player* player)
+char *player_get_player_name(Player *player)
 {
     /*Error management.*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return NULL;
     }
@@ -126,10 +128,10 @@ char *player_get_player_name(Player* player)
     return player->player_name;
 }
 
-Id player_get_player_location(Player* player)
+Id player_get_player_location(Player *player)
 {
     /*Error management.*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return NO_ID;
     }
@@ -137,15 +139,38 @@ Id player_get_player_location(Player* player)
     return player->player_location;
 }
 
-Id player_get_object(Player* player)
+Id player_get_object(Player *player)
 {
     /*Error management.*/
-    if(player==NULL)
+    if (player == NULL)
     {
         return NO_ID;
     }
 
     return player->object;
+}
+
+int player_get_health(Player *player)
+{
+    /*Error management.*/
+    if (!player)
+        return -1;
+
+    /*Returns the health data.*/
+    return player->health;
+}
+
+Status player_set_health(Player *player, int health)
+{
+    /*Error management.*/
+    if (!player)
+        return ERROR;
+
+    /*Sets the value.*/
+    player->health = health;
+
+    /*Clean exit.*/
+    return OK;
 }
 
 Status player_print(Player *player)
@@ -158,12 +183,12 @@ Status player_print(Player *player)
 
     /* 1. Print the id and the name of the player.*/
     fprintf(stdout, "--> Player (Id: %ld; Name: %s)\n", player->player_id, player->player_name);
-    
+
     /* 2. Print the id of the place the player is at.*/
     fprintf(stdout, "--> Player in the space with id number %ld \n", player->player_location);
-    
+
     /* 3. Print the information about the object.*/
-    if(player->object)
+    if (player->object)
     {
         fprintf(stdout, "--> Player has the object with id %ld", player->object);
     }

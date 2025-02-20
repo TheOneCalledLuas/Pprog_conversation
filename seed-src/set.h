@@ -80,4 +80,13 @@ Id set_take(Set *set, Id id);
  */
 int set_len(Set * set);
 
+/**
+ * @brief Prints set information.
+ * @author Saul Lopez Romero.
+ * 
+ * @param set Pointer to the set.
+ * @return OK if everything goes as it should, ERROR otherwise.
+ */
+Status set_print(Set *s);
+
 #endif
