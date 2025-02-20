@@ -72,6 +72,26 @@ int main(int argc, char **argv)
         test2_set_len();
     if (all || test == 10)
         test3_set_len();
+    if (all || test == 11)
+        test1_set_find();
+    if (all || test == 12)
+        test2_set_find();
+    if (all || test == 13)
+        test3_set_find();
+    if (all || test == 14)
+        test4_set_find();
+    if (all || test == 15)
+        test5_set_find();
+    if (all || test == 16)
+        test1_set_take();
+    if (all || test == 17)
+        test2_set_take();
+    if (all || test == 18)
+        test3_set_take();
+    if (all || test == 19)
+        test4_set_take();
+    if (all || test == 20)
+        test5_set_take();
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -120,7 +140,7 @@ void test3_set_len()
     Id id = 1;
     s = set_create();
     set_add(s, id);
-    set_take(s,id);
+    set_take(s, id);
     /*Checks creation.*/
     PRINT_TEST_RESULT(set_len(s) == 0);
     /*Frees memory.*/
@@ -218,4 +238,156 @@ void test5_set_add()
 
 void test1_set_find()
 {
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, id);
+    PRINT_TEST_RESULT(set_find(s, id) != -1);
+
+    /*Frees memory.*/
+    set_destroy(s);
+}
+void test2_set_find()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1, no_id = 2;
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, id);
+    PRINT_TEST_RESULT(set_find(s, no_id) == -1);
+
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test3_set_find()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+    s = set_create();
+
+    /*Searches for an id.*/
+    PRINT_TEST_RESULT(set_find(s, id) == -1);
+
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test4_set_find()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1, id_2 = 2, id_3 = 3;
+    s = set_create();
+
+    set_add(s, id);
+    set_add(s, id_2);
+    set_add(s, id_3);
+    /*Adds an id.*/
+    PRINT_TEST_RESULT(set_find(s, id_2) == 1);
+
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test5_set_find()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+
+    /*Adds an id.*/
+    PRINT_TEST_RESULT(set_find(s, id) == -1);
+}
+
+void test1_set_take()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1,id_res =0;
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, id);
+    id_res = set_take(s,id);
+    PRINT_TEST_RESULT(id_res == id);
+
+    /*Frees the memory.*/
+    set_destroy(s);
+}
+
+void test2_set_take()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+
+    PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
+
+    /*Frees the memory.*/
+    set_destroy(s);
+}
+
+void test3_set_take()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1, s_id = 2;
+
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, s_id);
+    PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
+
+    /*Frees the memory.*/
+    set_destroy(s);
+}
+
+void test4_set_take()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1, id_2 = 2;
+
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, id);
+    set_add(s, id_2);
+    set_take(s, id);
+    PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
+
+    /*Frees the memory.*/
+    set_destroy(s);
+}
+
+void test5_set_take()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1, id_2 = 2, id_3 = 3, id_taken_1 = 0, id_taken_2 = 0, id_taken_3 = 0, id_taken_4 = 0;
+
+    s = set_create();
+
+    /*Adds an id.*/
+    set_add(s, id);
+    set_add(s, id_2);
+    set_add(s, id_3);
+    id_taken_1 = set_take(s, id_2);
+    id_taken_2 = set_take(s, id_2);
+    set_add(s, id_2);
+    id_taken_3 = set_take(s, id);
+    id_taken_4 = set_take(s, id_3);
+    
+    PRINT_TEST_RESULT(id_taken_1 == id_2 && id_taken_2 == ID_ERROR && id_taken_3 == id && id_taken_4 == id_3 && set_len(s) == 1);
+
+    /*Frees the memory.*/
+    set_destroy(s);
 }

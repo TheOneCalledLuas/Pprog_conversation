@@ -17,10 +17,6 @@
  * Maximun number of elements per set.
  */
 #define MAX_SET 50
-/**
- * Error code for functions in this module (as -1 is an id (NO_ID)).
- */
-#define ID_ERROR -2
 
 struct _Set
 {

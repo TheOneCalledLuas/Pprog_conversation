@@ -83,9 +83,72 @@ void test5_set_add();
 /**
  * @test Test Set search of an id.
  * @pre Existent Id in set.
- * @post Id wanted.
+ * @post int returned different from -1.
  */
 void test1_set_find();
+
+/**
+ * @test Test Set search of an id.
+ * @pre Non Existent Id in set.
+ * @post -1 returned.
+ */
+void test2_set_find();
+
+/**
+ * @test Test Set search of an id.
+ * @pre Empty set.
+ * @post -1 returned.
+ */
+void test3_set_find();
+
+/**
+ * @test Test Set search of an id.
+ * @pre set with more than one element.
+ * @post position of the second id.
+ */
+void test4_set_find();
+
+/**
+ * @test Test Set search of an id.
+ * @pre NULL set.
+ * @post -1 returned.
+ */
+void test5_set_find();
+
+/**
+ * @test Test Set take an id from the set.
+ * @pre Pointer to the set whith an id.
+ * @post id taken out.
+ */
+void test1_set_take();
+
+/**
+ * @test Test Set take an id from the set.
+ * @pre NULL set.
+ * @post ID_ERROR returned.
+ */
+void test2_set_take();
+
+/**
+ * @test Test Set take an id from the set.
+ * @pre Pointer to set whithout id 1.
+ * @post ID_ERROR returned.
+ */
+void test3_set_take();
+
+/**
+ * @test Test Set take an id from the set.
+ * @pre Pointer to set where an id was taken out.
+ * @post ID_ERROR returned.
+ */
+void test4_set_take();
+
+/**
+ * @test Test Set take an id from the set.
+ * @pre Pointer to set where multiple elements are taken out.
+ * @post all ids were taken out correctly.
+ */
+void test5_set_take();
 
 
 #endif
