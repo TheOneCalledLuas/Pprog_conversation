@@ -18,6 +18,27 @@
 void test1_set_create();
 
 /**
+ * @test Test Set lenght.
+ * @pre pointer to empty set.
+ * @post set len == 0.
+ */
+void test1_set_len();
+
+/**
+ * @test Test Set lenght.
+ * @pre pointer to non empty set.
+ * @post set len == 1.
+ */
+void test2_set_len();
+
+/**
+ * @test Test Set lenght.
+ * @pre sSet that has been emptied.
+ * @post set len == 0.
+ */
+void test3_set_len();
+
+/**
  * @test Test Set count number of elements.
  * @pre Full 
  * @post Error when adding.

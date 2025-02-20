@@ -66,7 +66,12 @@ int main(int argc, char **argv)
         test5_set_add();
     if (all || test == 7)
         test1_set_increment();
-
+    if (all || test == 8)
+        test1_set_len();
+    if (all || test == 9)
+        test2_set_len();
+    if (all || test == 10)
+        test3_set_len();
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -84,19 +89,58 @@ void test1_set_create()
     set_destroy(s);
 }
 
-void test1_set_increment() {
+void test1_set_len()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    s = set_create();
+    /*Checks creation.*/
+    PRINT_TEST_RESULT(set_len(s) == 0);
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test2_set_len()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+    s = set_create();
+    set_add(s, id);
+    /*Checks creation.*/
+    PRINT_TEST_RESULT(set_len(s) == 1);
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test3_set_len()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    Id id = 1;
+    s = set_create();
+    set_add(s, id);
+    set_take(s,id);
+    /*Checks creation.*/
+    PRINT_TEST_RESULT(set_len(s) == 0);
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test1_set_increment()
+{
     /*Creates a set.*/
     Set *s = NULL;
     Id id1 = 1, id2 = 2;
-    int len1 =0,len2=0;
+    int len1 = 0, len2 = 0;
     s = set_create();
 
     /*Teest management.*/
     set_add(s, id1);
-    len1 =  set_len(s);
-    set_add(s,id2);
+    len1 = set_len(s);
+    set_add(s, id2);
     len2 = set_len(s);
-    PRINT_TEST_RESULT(len1 +1 == len2);
+    PRINT_TEST_RESULT(len1 + 1 == len2);
 
     /*Frees memory.*/
     set_destroy(s);
@@ -166,7 +210,7 @@ void test5_set_add()
     Set *s = NULL;
     s = set_create();
 
-    PRINT_TEST_RESULT(set_add(s,-2) == ERROR);
+    PRINT_TEST_RESULT(set_add(s, -2) == ERROR);
 
     /*Frees memory.*/
     set_destroy(s);
