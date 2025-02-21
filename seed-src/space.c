@@ -28,7 +28,7 @@ struct _Space
     Id south;                 /*!< Id of the space at the south. */
     Id east;                  /*!< Id of the space at the east. */
     Id west;                  /*!< Id of the space at the west. */
-    Id object;                /*!< The pointer of the object the space has. */
+    Id object;                /*!< Id of the object the space has. */
 };
 
 /** space_create allocates memory for a new space

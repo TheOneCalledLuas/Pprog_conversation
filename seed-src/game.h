@@ -2,8 +2,8 @@
  * @brief It defines the game interface
  *
  * @file game.h
- * @authorSaul Lopez Romero, Fernando Mijangos Varas
- * @version 2
+ * @author Saul Lopez Romero, Fernando Mijangos Varas
+ * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -106,13 +106,14 @@ Player* game_get_player(Game *game);
 Status game_set_player(Game *game, Player *player);
 
 /**
- * @brief It returns a pointer to the object.
+ * @brief It returns a pointer to the object with the specified id.
  * @author Saul Lopez Romero
  *
  * @param game Pointer to the game.
- * @return Pointer to the object.
+ * @param id Id of the object to be added.
+ * @return Pointer to the object, NULL if it wasn't found.
  */
-Object *game_get_object(Game *game);
+Object *game_get_object(Game *game, Id id);
 
 /**
  * @brief It returns the id of the space where the object is at
@@ -122,16 +123,6 @@ Object *game_get_object(Game *game);
  * @return Id of the location of the object.
  */
 Id game_get_object_location(Game *game);
-
-/**
- * @brief It sets the id of the object location space to what you want
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game.
- * @param id Id of the space you want the location of the object to be at.
- * @return OK, if everything goes well or ERROR if there was some mistake.
- */
-Status game_set_object_location(Game *game, Id id);
 
 /**
  * @brief It returns a pointer to the last command.
@@ -190,6 +181,16 @@ Id game_reader_get_space_id_at(Game *game, int position);
 void game_print(Game *game);
 
 /**
+ * @brief Takes an object out of the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param object Pointer to the object to be taken out.
+ * @return OK for a clean exit, otherwise ERROR (not found or other error.).
+ */
+Status game_take_object(Game *game, Object *object);
+
+/**
  * @brief Links an object to the game structure.
  * @author Saúl López Romero
  *
@@ -197,5 +198,34 @@ void game_print(Game *game);
  * @param object Pointer to the object to be added.
  * @return OK for a clean exit, otherwise ERROR.
  */
-Status game_set_object(Game *game, Object *object);
+Status game_add_object(Game *game, Object *object);
+
+/**
+ * @brief Checks if an object is in the game.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param id Object's id.
+ * @return -1 if an error takes place of the object wasn't found, the position of the object in the array otherwise.
+ */
+int game_has_object(Game * game, Id id);
+
+/**
+ * @brief Gets the number ob objects in the game.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return Number ob objects, -1 for an error.
+ */
+int game_get_n_objects(Game * game);
+
+/**
+ * @brief Sets the number of objects in the structure.
+ * @author Saúl López Romero.
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param n_objects Object number to be set.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_n_objects(Game * game, int n_objects);
 #endif

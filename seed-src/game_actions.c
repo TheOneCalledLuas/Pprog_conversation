@@ -174,10 +174,10 @@ void game_actions_back(Game *game)
 void game_actions_take(Game *game)
 {
     /*Takes all the information I'll need.*/
-    Id object = object_get_id(game_get_object(game));
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
     Id player_location = player_get_player_location(player);
+    Id object = space_get_object(space);
     Id object_location = game_get_object_location(game);
     Id player_object = player_get_object(game_get_player(game));
 

@@ -3,7 +3,7 @@
  *
  * @file game.c
  * @author Saul Lopez Romero, Fernando Mijangos Varas
- * @version 2
+ * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -20,14 +20,13 @@
 */
 struct _Game
 {
-    Player *player;               /*!< Pointer to the player. */
-    Object *object;               /*!< Pointer to the object. */
-    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects.*/
-    int n_spaces;                 /*!< Number of spaces.*/
-    int n_objects;                /*!< Number of objects.*/
-    Command *last_cmd;            /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                /*!< Whether the game has finished or not.*/
+    Player *player; /*!< Pointer to the player. */ /*!< Pointer to the object. */
+    Space *spaces[MAX_SPACES];                     /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS];                  /*!< An array with the information of every objects.*/
+    int n_spaces;                                  /*!< Number of spaces.*/
+    int n_objects;                                 /*!< Number of objects.*/
+    Command *last_cmd;                             /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                                 /*!< Whether the game has finished or not.*/
 };
 
 Status game_create(Game **game)
@@ -50,7 +49,6 @@ Status game_create(Game **game)
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
     (*game)->player = player_create(5);
-    (*game)->object = object_create(13);
     (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
 
@@ -132,10 +130,9 @@ Status game_destroy(Game **game)
         player_destroy((*game)->player);
     }
 
-    if ((*game)->object)
+    for (i = 0; i < (*game)->n_objects; i++)
     {
-        /*Destroys the object.*/
-        object_destroy((*game)->object);
+        object_destroy((*game)->objects[i]);
     }
 
     command_destroy((*game)->last_cmd);
@@ -188,50 +185,84 @@ Id game_get_object_location(Game *game)
     return NO_ID;
 }
 
-Status game_set_object_location(Game *game, Id space_id)
+int game_has_object(Game *game, Id id)
 {
-    Id idaux;
-    Object *object=game_get_object(game);
+    int i = 0, len = 0;
     /*Error management.*/
-    if (game == NULL)
+    if (!game || id == NO_ID)
+        return -1;
+    len = game_get_n_objects(game);
+
+    /*Searches for the object.*/
+    for (i = 0; i < len; i++)
     {
+        if (object_get_id(game->objects[i]) == id)
+        {
+            return i;
+        }
+    }
+
+    /*The object wasn't found.*/
+    return -1;
+}
+
+int game_get_n_objects(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return -1;
+
+    /*Returns the value.*/
+    return game->n_objects;
+}
+
+Status game_set_n_objects(Game *game, int n_objects)
+{
+    /*Error management.*/
+    if (!game || n_objects < 0)
         return ERROR;
-    }
 
-    /*It first sets the pointer of the object of the space where the object was to NULL.*/
-    idaux = game_get_object_location(game);
-    space_set_object(game_get_space(game, idaux), NO_ID);
+    /*Sets the value.*/
+    game->n_objects = n_objects;
 
-    /*Changes the pointer of the object of the new space where the object will be to the real object.*/
-    if(space_id!=NO_ID) 
-    {
-        space_set_object(game_get_space(game, space_id), object_get_id(object));
-    }
+    /*Clean exit.*/
     return OK;
 }
 
-Object *game_get_object(Game *game)
+Status game_take_object(Game *game, Object *object)
 {
-    /*Error management.*/
-    if (!game)
-    {
-        return NULL;
-    }
+    Id id = 0;
+    int position = 0;
+    /*Error handling.*/
+    if (!game || !object)
+        return ERROR;
 
-    /*It returns the object.*/
-    return game->object;
+    /*Takes the id.*/
+    id = object_get_id(object);
+
+    /*Searches for the object.*/
+    if ((position = game_has_object(game, id)) == -1)
+        return ERROR;
+
+    /*Takes the object out.*/
+    game->objects[position] = NULL;
+    game_set_n_objects(game, game_get_n_objects(game) - 1);
+
+    /*Clean exit.*/
+    return OK;
 }
 
-Status game_set_object(Game *game, Object *object)
+Status game_add_object(Game *game, Object *object)
 {
-    /*Error management.*/
-    if (!game)
-    {
+    /*Error handling.*/
+    if (!game || !object || game_get_n_objects(game) >= MAX_OBJECTS)
         return ERROR;
-    }
 
-    /*It sets the object to a different one.*/
-    game->object = object;
+    /*Adds the object.*/
+    game->objects[game_get_n_objects(game)] = object;
+    game_set_n_objects(game, game_get_n_objects(game) + 1);
+
+    /*Clean exit.*/
     return OK;
 }
 
@@ -289,7 +320,12 @@ void game_print(Game *game)
         space_print(game->spaces[i]);
     }
 
-    printf("=> Object id: %d\n", (int)object_get_id(game->object));
+    printf("=> Number of objects: %d\n", game_get_n_objects(game));
+    printf("    Their info is: ");
+    for (i = 0; i < game_get_n_objects(game); i++)
+    {
+        object_print_info(game->objects[i]);
+    }
     printf("=> Player id: %d\n", (int)player_get_player_id(game->player));
     return;
 }
@@ -314,7 +350,6 @@ Status game_create_from_file(Game **game, char *filename)
 
     /*The player and the object are located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
-    game_set_object_location(*game, game_get_space_id_at(*game, 0));
 
     return OK;
 }
