@@ -116,13 +116,14 @@ Status game_set_player(Game *game, Player *player);
 Object *game_get_object(Game *game, Id id);
 
 /**
- * @brief It returns the id of the space where the object is at
+ * @brief It returns the id of the space where an object is located.
  * @author Saul Lopez Romero
  *
  * @param game Pointer to the game.
+ * @param id Object's id.
  * @return Id of the location of the object.
  */
-Id game_get_object_location(Game *game);
+Id game_get_object_location(Game *game, Id id);
 
 /**
  * @brief It returns a pointer to the last command.

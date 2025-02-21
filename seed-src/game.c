@@ -165,7 +165,7 @@ Player *game_get_player(Game *game)
     return game->player;
 }
 
-Id game_get_object_location(Game *game)
+Id game_get_object_location(Game *game, Id id)
 {
     int i = 0;
     /*Error management*/
@@ -177,7 +177,7 @@ Id game_get_object_location(Game *game)
     /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID.*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_get_object(game->spaces[i]) != NO_ID || space_get_object(game->spaces[i]) != NO_ID)
+        if (space_get_object(game->spaces[i]) == id)
         {
             return space_get_id(game->spaces[i]);
         }

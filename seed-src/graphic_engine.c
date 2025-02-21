@@ -86,7 +86,7 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID;
+    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, id_space = 0;
     Space *space_act = NULL;
     char obj = '\0';
     char str[255];
@@ -167,8 +167,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         id_list = game_get_objects(game);
         for (i = 0; i < game_get_n_objects(game); i++)
         {
-            sprintf(str,"%s : %ld", object_get_name(game_get_object(game, id_list[i])), object_get_id(game_get_object(game, id_list[i])));
-            screen_area_puts(ge->descript, str);
+            if ((id_space = game_get_object_location(game, id_list[i])) != -1)
+            {
+                sprintf(str, "%s : %ld", object_get_name(game_get_object(game, id_list[i])), id_space);
+                screen_area_puts(ge->descript, str);
+            }
         }
         free(id_list);
     }
