@@ -3,7 +3,7 @@
  *
  * @file player.h
  * @author Fernando Mijangos Varas, saúl López Romero
- * @version 2
+ * @version 3
  * @date 04-02-2025
  * @copyright GNU Public License
  */
