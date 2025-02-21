@@ -85,3 +85,62 @@ Status game_reader_load_spaces(Game *game, char *filename)
     /*Clean exit.*/
     return status;
 }
+
+Status game_reader_load_objects(Game *game, char *filename)
+{
+    FILE *file = NULL;
+    char line[WORD_SIZE] = "";
+    char name[WORD_SIZE] = "";
+    Id id = NO_ID, space_id = NO_ID;
+    Object *object = NULL;
+    char *toks = NULL;
+
+    /*Checks the arguments.*/
+    if (!game || !filename)
+    {
+        return ERROR;
+    }
+
+    /*Opens the file.*/
+    if (!(file = fopen(filename, "r")))
+    {
+        return ERROR;
+    }
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, file))
+    {
+        /*Checks that the line contains an object.*/
+        if (strncmp("#o:", line, 3) == 0)
+        {
+            /*Takes the information data by data.*/
+            toks = strtok(line + 3, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            space_id = atol(toks);
+
+            /*Creates an object and saves the data.*/
+            object = object_create(id);
+            /*Checks that the memory allocacion took place.*/
+            if (!object)
+            {
+                return ERROR;
+            }
+            object_set_name(object, name);
+            game_add_object(game, object);
+
+            /*Places the object in its initial place.*/
+            if (space_id != -1)
+            {
+                space_set_object(game_get_space(game, space_id), id);
+            }
+        }
+    }
+    /*Close the file.*/
+    fclose(file);
+
+    /*Clean exit.*/
+    return OK;
+}

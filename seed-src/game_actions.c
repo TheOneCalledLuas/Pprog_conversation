@@ -176,18 +176,17 @@ void game_actions_take(Game *game)
     /*Takes all the information I'll need.*/
     Player *player = game_get_player(game);
     Space *space = game_get_space(game, player_get_player_location(player));
-    Id player_location = player_get_player_location(player);
     Id object = space_get_object(space);
-    Id object_location = game_get_object_location(game);
     Id player_object = player_get_object(game_get_player(game));
 
-    if (player_location == object_location)
+    if (object != -1)
     {
         if (player_object != NO_ID)
         {
             /*If the player has an object it drops it.*/
             space_set_object(space, player_object);
         }
+        else
         {
             /*If he doesnt have an object,
             the space gets a NULL as object pointer.*/

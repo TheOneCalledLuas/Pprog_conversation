@@ -116,7 +116,7 @@ Status object_print_info(Object *object)
     }
 
     /*Prints the info.*/
-    fprintf(stdout, "Object with id [%ld] and name [%s]", object->id, object->name);
+    fprintf(stdout, "%s : %ld", object->name, object->id);
 
     /*Clean exit.*/
     return OK;

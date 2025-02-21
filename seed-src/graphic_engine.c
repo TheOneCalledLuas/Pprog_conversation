@@ -2,8 +2,8 @@
  * @brief It implements a textual graphic engine
  *
  * @file graphic_engine.c
- * @author Profesores PPROG
- * @version 0
+ * @author Saul Lopez Romero
+ * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -13,11 +13,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "game.h"
 #include "command.h"
 #include "libscreen.h"
 #include "space.h"
 #include "types.h"
-#include "game.h"
 
 /*Map measures.*/
 #define WIDTH_MAP 48
@@ -86,10 +86,12 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID;
+    Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID;
     Space *space_act = NULL;
     char obj = '\0';
     char str[255];
+    int i = 0;
+    Id *id_list = NULL;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
 
@@ -103,7 +105,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         id_next = space_get_south(space_act);
 
         /*The following 50 lines print the rooms.*/
-        if (game_get_object_location(game) == id_back)
+        if (space_get_object(game_get_space(game, id_back)) != -1)
             obj = '*';
         else
             obj = ' ';
@@ -120,7 +122,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             screen_area_puts(ge->map, str);
         }
 
-        if (game_get_object_location(game) == id_act)
+        if (space_get_object(game_get_space(game, id_act)) != -1)
             obj = '*';
         else
             obj = ' ';
@@ -137,7 +139,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             screen_area_puts(ge->map, str);
         }
 
-        if (game_get_object_location(game) == id_next)
+        if (space_get_object(game_get_space(game, id_next)) != -1)
             obj = '*';
         else
             obj = ' ';
@@ -157,10 +159,18 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Paint in the description area */
     screen_area_clear(ge->descript);
-    if ((obj_loc = game_get_object_location(game)) != NO_ID)
+    sprintf(str, "  Objects:");
+    screen_area_puts(ge->descript, str);
+    if (game_get_n_objects(game) >= 1)
     {
-        sprintf(str, "  Object location:%d", (int)obj_loc);
-        screen_area_puts(ge->descript, str);
+        /*Prints the objects.*/
+        id_list = game_get_objects(game);
+        for (i = 0; i < game_get_n_objects(game); i++)
+        {
+            sprintf(str,"%s : %ld", object_get_name(game_get_object(game, id_list[i])), object_get_id(game_get_object(game, id_list[i])));
+            screen_area_puts(ge->descript, str);
+        }
+        free(id_list);
     }
 
     /* Paint in the banner area */

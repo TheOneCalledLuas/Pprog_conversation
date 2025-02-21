@@ -185,6 +185,31 @@ Id game_get_object_location(Game *game)
     return NO_ID;
 }
 
+Id *game_get_objects(Game *game)
+{
+    Id *res = NULL;
+    int i = 0, len = 0;
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    len = game_get_n_objects(game);
+    if (len == 0)
+        return NULL;
+
+    /*Allocates memory.*/
+    if (!(res = (Id *)calloc(game_get_n_objects(game), sizeof(Id))))
+        return NULL;
+
+    for (i = 0; i < len; i++)
+    {
+        res[i] = object_get_id(game->objects[i]);
+    }
+
+    /*Clean exit.*/
+    return res;
+}
+
 int game_has_object(Game *game, Id id)
 {
     int i = 0, len = 0;
@@ -264,6 +289,27 @@ Status game_add_object(Game *game, Object *object)
 
     /*Clean exit.*/
     return OK;
+}
+Object *game_get_object(Game *game, Id id)
+{
+    int i = 0, len = 0;
+    /*Error handling.*/
+    if (!game || id == NO_ID)
+        return NULL;
+
+    len = game_get_n_objects(game);
+
+    /*Searches for the object.*/
+    for (i = 0; i < len; i++)
+    {
+        if (object_get_id(game->objects[i]) == id)
+        {
+            return game->objects[i];
+        }
+    }
+
+    /*The object wasn't found.*/
+    return NULL;
 }
 
 Command *game_get_last_command(Game *game)
@@ -348,7 +394,12 @@ Status game_create_from_file(Game **game, char *filename)
         return ERROR;
     }
 
-    /*The player and the object are located in the first space.*/
+    if (game_reader_load_objects(*game, filename) == ERROR)
+    {
+        return ERROR;
+    } 
+
+    /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
 
     return OK;

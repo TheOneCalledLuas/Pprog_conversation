@@ -93,8 +93,8 @@ Id game_get_space_id_at(Game *game, int position);
  * @param game Pointer to the game.
  * @return The pointer to the player.
  */
-Player* game_get_player(Game *game);
- 
+Player *game_get_player(Game *game);
+
 /**
  * @brief Returns the id of the space where the plater is at.
  * @author Fernando Mijangos
@@ -163,16 +163,6 @@ Bool game_get_finished(Game *game);
 Status game_set_finished(Game *game, Bool finished);
 
 /**
- * @brief Finds the id of the space where the player is.
- * @author Saúl López Romero
- *
- * @param game Pointer to the game.
- * @param position Number of the room where the player is.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Id game_reader_get_space_id_at(Game *game, int position);
-
-/**
  * @brief Prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object
  * @author Profesores PPROG
  *
@@ -201,6 +191,17 @@ Status game_take_object(Game *game, Object *object);
 Status game_add_object(Game *game, Object *object);
 
 /**
+ * @brief Gets an array with all the object's id from game.
+ * Take into consideration that such array has to be freed by the
+ * user, not by this function.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return array with the ids, NULL if an exception occurs.
+ */
+Id *game_get_objects(Game *game);
+
+/**
  * @brief Checks if an object is in the game.
  * @author Saúl López Romero
  *
@@ -208,7 +209,7 @@ Status game_add_object(Game *game, Object *object);
  * @param id Object's id.
  * @return -1 if an error takes place of the object wasn't found, the position of the object in the array otherwise.
  */
-int game_has_object(Game * game, Id id);
+int game_has_object(Game *game, Id id);
 
 /**
  * @brief Gets the number ob objects in the game.
@@ -217,7 +218,7 @@ int game_has_object(Game * game, Id id);
  * @param game Game structure, where all the information related to game is included.
  * @return Number ob objects, -1 for an error.
  */
-int game_get_n_objects(Game * game);
+int game_get_n_objects(Game *game);
 
 /**
  * @brief Sets the number of objects in the structure.
@@ -227,5 +228,5 @@ int game_get_n_objects(Game * game);
  * @param n_objects Object number to be set.
  * @return OK for a clean exit, otherwise ERROR.
  */
-Status game_set_n_objects(Game * game, int n_objects);
+Status game_set_n_objects(Game *game, int n_objects);
 #endif
