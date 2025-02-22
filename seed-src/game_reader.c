@@ -16,8 +16,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#define DEBUG
-
 Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
@@ -92,6 +90,14 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 {
                     space_set_gdesc_line(space, i, desc[i]);
                 }
+#ifdef DEBUG
+            for (i = 0; i < 5; i++)
+            {
+                printf("%s|", space_get_gdesc_line(space, i));
+            }
+            printf("\n");
+            sleep(1);
+#endif
             }
             else
             {
