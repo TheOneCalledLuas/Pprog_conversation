@@ -17,22 +17,42 @@
 typedef struct _Space Space;
 
 /**
- * @brief It creates a new space, allocating memory and initializing its variables
+ * @brief It creates a new space, allocating memory and initializing its variables.
  * @author Fernando Mijangos
  *
- * @param id Identification number for the new space
- * @return a pointer to a new space, initialized
+ * @param id Identification number for the new space.
+ * @return a pointer to a new space, initialized.
  */
 Space* space_create(Id id);
 
 /**
- * @brief It destroys a space, freeing the allocated memory
+ * @brief It destroys a space, freeing the allocated memory.
  * @author Fernando Mijangos
  *
- * @param space Pointer to the space that must be destroyed
- * @return OK, if everything goes well or ERROR if there was some mistake
+ * @param space Pointer to the space that must be destroyed.
  */
-Status space_destroy(Space* space);
+void space_destroy(Space* space);
+
+/**
+ * @brief Gets a determined line of the graphic description.
+ * @author Saúl López Romero.
+ *
+ * @param space Pointer to the space.
+ * @param line line to be given.
+ * @return NULL if an error takes place, the line otherwise.
+ */
+char * space_get_gdesc_line(Space * space, int line);
+
+/**
+ * @brief Sets a line of the graphic description. 
+ * @author Saúl López Romero.
+ *
+ * @param space Pointer to the space.
+ * @param line line to be modified.
+ * @param string to be set.
+ * @return OK if all goes as planned, ERROR otherwise.
+ */
+Status space_set_gdesc_line(Space * space, int line, char * str);
 
 /**
  * @brief It gets the id of a space

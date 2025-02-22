@@ -14,13 +14,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
+#define DEBUG
 
 Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
+    int i = 0;
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     char *toks = NULL;
+    char desc[5][10];
     Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID;
     Space *space = NULL;
     Status status = OK;
@@ -57,9 +62,21 @@ Status game_reader_load_spaces(Game *game, char *filename)
             south = atol(toks);
             toks = strtok(NULL, "|");
             west = atol(toks);
+            /*Takes the graphic description.*/
+            for (i = 0; i < 5; i++)
+            {
+                toks = strtok(NULL, "|");
+                strcpy(desc[i], toks);
+            }
 /*If DEBUG mode is active (defined) prints what it has read.*/
 #ifdef DEBUG
             printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
+            for (i = 0; i < 5; i++)
+            {
+                printf("%s|", desc[i]);
+            }
+            printf("\n");
+            sleep(1);
 #endif
             /*Creates a new space and fills it with the information gathered.*/
             space = space_create(id);
@@ -71,6 +88,14 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 space_set_south(space, south);
                 space_set_west(space, west);
                 game_add_space(game, space);
+                for (i = 0; i < 5; i++)
+                {
+                    space_set_gdesc_line(space, i, desc[i]);
+                }
+            }
+            else
+            {
+                return ERROR;
             }
         }
     }

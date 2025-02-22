@@ -29,6 +29,8 @@ struct _Space
     Id east;                  /*!< Id of the space at the east. */
     Id west;                  /*!< Id of the space at the west. */
     Id object;                /*!< Id of the object the space has. */
+    char *gdesc[5];           /*!< Strings which create the space's graphic description. */
+    char *__gdesc_data;       /*!< Actual matrix with the gdesc.*/
 };
 
 /** space_create allocates memory for a new space
@@ -37,6 +39,7 @@ struct _Space
 Space *space_create(Id id)
 {
     Space *newSpace = NULL;
+    int i = 0;
 
     /* Error control.*/
     if (id == NO_ID)
@@ -57,18 +60,55 @@ Space *space_create(Id id)
     newSpace->west = NO_ID;
     newSpace->object = NO_ID;
 
+    /*Initialisation of gdesc. I chose to do it this way because if
+      we manage to get a decent amount of spaces, storing them in the
+      stack will definitely be a potencial problem.*/
+    if (!(newSpace->__gdesc_data = (char *)calloc(50, sizeof(char))))
+    {
+        free(newSpace);
+        return NULL;
+    }
+    /*Sets the array so that it's more accesible.*/
+    for (i = 0; i < 5; i++)
+    {
+        newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * 10]);
+    }
+
     return newSpace;
 }
 
-Status space_destroy(Space *space)
+void space_destroy(Space *space)
 {
-    /*Error handling.*/
-    if (!space)
+
+    /*Frees the memory.*/
+    if (space)
     {
-        return ERROR;
+        if (space->__gdesc_data)
+            free(space->__gdesc_data);
+        free(space);
     }
-    /*FFrees the memory.*/
-    free(space);
+}
+
+char *space_get_gdesc_line(Space *space, int line)
+{
+    /*Error handling*/
+    if (!space || line < 0 || line > 4)
+        return NULL;
+
+    /*Returns the line.*/
+    return space->gdesc[line];
+}
+
+Status space_set_gdesc_line(Space *space, int line, char *str)
+{
+    /*Error handling*/
+    if (!space || line < 0 || line > 4 || !str || strlen(str) != 9)
+        return ERROR;
+
+    /*Sets the line.*/
+    strcpy(space->gdesc[line], str);
+
+    /*Clean Exit.*/
     return OK;
 }
 
@@ -225,6 +265,7 @@ Id space_get_object(Space *space)
 Status space_print(Space *space)
 {
     Id idaux = NO_ID;
+    int i = 0;
 
     /* Error Control */
     if (!space)
@@ -282,6 +323,13 @@ Status space_print(Space *space)
     else
     {
         fprintf(stdout, "---> No object in the space.\n");
+    }
+
+    /* 4. Print the graphic description of the space.*/
+    fprintf(stdout, "Graphic description: \n");
+    for (i = 0; i < 5; i++)
+    {
+        fprintf(stdout, "%s\n", space->gdesc[i]);
     }
 
     return OK;
