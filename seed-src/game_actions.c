@@ -173,11 +173,16 @@ void game_actions_back(Game *game)
 
 void game_actions_take(Game *game)
 {
+    Player *player = NULL;
+    Space *space = NULL;
+    Id object = NULL;
+    Id player_object = NULL;
+
     /*Takes all the information I'll need.*/
-    Player *player = game_get_player(game);
-    Space *space = game_get_space(game, player_get_player_location(player));
-    Id object = space_get_object(space);
-    Id player_object = player_get_object(game_get_player(game));
+    player = game_get_player(game);
+    space = game_get_space(game, player_get_player_location(player));
+    object = space_get_object(space);
+    player_object = player_get_object(game_get_player(game));
 
     if (object != -1)
     {
@@ -202,11 +207,18 @@ void game_actions_take(Game *game)
 void game_actions_drop(Game *game)
 {
     /*Gets all the information it need.*/
-    Id player_object = player_get_object(game_get_player(game));
-    Player *player = game_get_player(game);
-    Id player_location = player_get_player_location(game_get_player(game));
-    Space *space = game_get_space(game, player_location);
-    Id object = space_get_object(space);
+    Id player_object = NULL;
+    Player *player = NULL;
+    Id player_location = NULL;
+    Space *space = NULL;
+    Id object = NULL;
+
+    /*Gets all the information it need.*/
+    player_object = player_get_object(game_get_player(game));
+    player = game_get_player(game);
+    player_location = player_get_player_location(game_get_player(game));
+    space = game_get_space(game, player_location);
+    object = space_get_object(space);
 
     /*Checks if the player has an object, and if he has one, he drops it.*/
     if (player_object == NO_ID)
