@@ -85,10 +85,29 @@ Status command_set_code(Command *command, CommandCode code);
 CommandCode command_get_code(Command *command);
 
 /**
+ * @brief Returns the word stored in the command
+ * @author Fernando Mijangos
+ * 
+ * @param command Pointer to the command
+ * @return String the the word contains or NULL if something went wrong
+ */
+char *command_get_word(Command *command);
+
+/**
+ * @brief Sets the word of the command the the defined one
+ * @author Fernando Mijangos
+ * 
+ * @param command Pointer to the command structure
+ * @param word string that will be copied
+ * @return OK, if everything went well, ERROR if it didnt't
+ */
+Status command_set_word(Command *command, char *word);
+
+/**
  * @brief Reads an input from the user, and assigns a code to command depending on the input.
  * @author Profesores PPROG
  *
- * @param command Pointer to the command.
+ * @param command Pointer to the command where you will store the information.
  * @return OK if everything goes well or ERROR if there was some mistake.
  */
 Status command_get_user_input(Command *command);

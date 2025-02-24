@@ -17,6 +17,7 @@
 #include "command.h"
 #include "libscreen.h"
 #include "space.h"
+#include "set.h"
 #include "types.h"
 
 /*Map measures.*/
@@ -110,7 +111,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         id_next = space_get_south(space_act);
 
         /*The following 50 lines print the rooms.*/
-        if (space_get_object(game_get_space(game, id_back)) != -1)
+        if (set_get_n_ids(space_get_objects(game_get_space(game, id_back))) != 0)
             obj = '*';
         else
             obj = ' ';
@@ -127,7 +128,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             screen_area_puts(ge->map, str);
         }
 
-        if (space_get_object(game_get_space(game, id_act)) != -1)
+        if (set_get_n_ids(space_get_objects(game_get_space(game, id_act))) != 0)
             obj = '*';
         else
             obj = ' ';
@@ -144,7 +145,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             screen_area_puts(ge->map, str);
         }
 
-        if (space_get_object(game_get_space(game, id_next)) != -1)
+        if (set_get_n_ids(space_get_objects(game_get_space(game, id_next))) != 0)
             obj = '*';
         else
             obj = ' ';

@@ -10,6 +10,7 @@
 
 #include "player.h"
 #include "object.h"
+#include "set.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +26,7 @@ struct _Player
     Id player_id;                       /*!< Id of the player.*/
     char player_name[PLAYER_NAME_SIZE]; /*!< Name of the player.*/
     Id player_location;                 /*!< id of the space where the player is at.*/
-    Id object;                          /*!<Id of the object the player has.*/
+    Set *objects;                       /*!< A set with the ids of the objects the player has*/
     int health;                         /*!< health points the player has.*/
 };
 
@@ -44,7 +45,7 @@ Player *player_create(Id id)
     player->player_id = id;
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
-    player->object = NO_ID;
+    player->objects = set_create();
     player->health = 20;
 
     return player;
@@ -57,8 +58,9 @@ Status player_destroy(Player *player)
     {
         return ERROR;
     }
-
+    
     /*Free the memory*/
+    set_destroy(player->objects);
     free(player);
     return OK;
 }
@@ -93,18 +95,6 @@ Status player_set_player_location(Player *player, Id id)
     return OK;
 }
 
-Status player_set_object(Player *player, Id object)
-{
-    /*Error management*/
-    if (player == NULL)
-    {
-        return ERROR;
-    }
-
-    /*Copy of the values*/
-    player->object = object;
-    return OK;
-}
 
 Id player_get_player_id(Player *player)
 {
@@ -139,15 +129,15 @@ Id player_get_player_location(Player *player)
     return player->player_location;
 }
 
-Id player_get_object(Player *player)
+Set *player_get_objects(Player *player)
 {
     /*Error management.*/
     if (player == NULL)
     {
-        return NO_ID;
+        return NULL;
     }
 
-    return player->object;
+    return player->objects;
 }
 
 int player_get_health(Player *player)
@@ -158,6 +148,42 @@ int player_get_health(Player *player)
 
     /*Returns the health data.*/
     return player->health;
+}
+
+Status player_add_object(Player *player, Id object)
+{
+    /*Error management*/
+    if(!player||object==NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Returns OK if it adds the object correctly, ERROR otherwise*/
+    return((set_add(player->objects, object))?OK :ERROR);
+}
+
+int player_find_object(Player* player, Id object)
+{
+    /*Error management*/
+    if(!player||object==NO_ID)
+    {
+        return 0;
+    }
+
+    /*Returns the result of set_find*/
+    return set_find(player->objects, object);
+}
+
+Id player_take_object(Player* player, Id object)
+{
+    /*Error management*/
+    if(!player||object==NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Returns the result of set_take*/
+    return set_take(player->objects, object);
 }
 
 Status player_set_health(Player *player, int health)
@@ -188,9 +214,9 @@ Status player_print(Player *player)
     fprintf(stdout, "--> Player in the space with id number %ld \n", player->player_location);
 
     /* 3. Print the information about the object.*/
-    if (player->object)
+    if (player->objects)
     {
-        fprintf(stdout, "--> Player has the object with id %ld", player->object);
+        set_print(player->objects);
     }
     else
     {

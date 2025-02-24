@@ -158,3 +158,13 @@ Status set_print(Set *s)
     printf("\n");
     return OK;
 }
+
+int set_get_n_ids(Set *set)
+{
+    /*Error management.*/
+    if (!set)
+    {
+        return -1;
+    }
+    return set->n_ids;
+}

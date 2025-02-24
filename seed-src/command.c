@@ -30,7 +30,8 @@ char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "E
  */
 struct _Command
 {
-    CommandCode code; /*!< Name of the command */
+    CommandCode code;             /*!< Name of the command */
+    char word[CMD_LENGHT];       /*!< Extra information the player might give*/
 };
 
 Command *command_create()
@@ -46,6 +47,7 @@ Command *command_create()
 
     /* Initialization of an empty command.*/
     newCommand->code = NO_CMD;
+    newCommand->word[0] = '\0';
 
     return newCommand;
 }
@@ -87,6 +89,29 @@ CommandCode command_get_code(Command *command)
     return command->code;
 }
 
+char *command_get_word(Command *command)
+{
+    if(!command)
+    {
+        return NULL;
+    }
+    return command->word;
+}
+
+Status command_set_word(Command *command, char *word)
+{
+    if(!command || !word)
+    {
+        return ERROR;
+    }
+
+    /*It copies all the letters it can before overflowing to the destionation and the las character is set to \0 */
+    strncpy(command->word, word, CMD_LENGHT-1);
+    command->word[CMD_LENGHT-1]='\0';
+
+    return OK;
+}
+
 Status command_get_user_input(Command *command)
 {
     char input[CMD_LENGHT] = "", *token = NULL;
@@ -122,8 +147,19 @@ Status command_get_user_input(Command *command)
             }
         }
         /*2.3. Return the code that has been identified.*/
-        return command_set_code(command, cmd);
+        if(!command_set_code(command, cmd))
+        {
+            return ERROR;
+        }
+
+        /*2.4 Assigns the extra word the user might have inputed  */
+        token = strtok(NULL," \n");
+        if(!command_set_word(command, token))
+        {
+            return ERROR;
+        }
+        return OK;
     }
-    else /*2.4 If it cant read the input from the user, return exit.*/
+    else /*2.5 If it cant read the input from the user, return exit.*/
         return command_set_code(command, EXIT);
 }

@@ -16,6 +16,7 @@
 
 #include "game.h"
 #include "player.h"
+#include "set.h"
 
 /**
    Private functions
@@ -58,16 +59,18 @@ void game_actions_back(Game *game);
  * @author Fernando Mijangos Varas.
  *
  * @param game Pointer to the game structure.
+ * @param word Name of the object to be taken
  */
-void game_actions_take(Game *game);
+void game_actions_take(Game *game, char *word);
 
 /**
  * @brief Action to be executed when take command is given.
  * @author Fernando Mijangos Varas.
  *
  * @param game Pointer to the game structure.
+ * @param word Name of the object that will be drop
  */
-void game_actions_drop(Game *game);
+void game_actions_drop(Game *game, char *word);
 
 /**
    Game actions implementation
@@ -107,10 +110,10 @@ Status game_actions_update(Game *game, Command *command)
         game_actions_back(game);
         break;
     case TAKE:
-        game_actions_take(game);
+        game_actions_take(game, command_get_word(command));
         break;
     case DROP:
-        game_actions_drop(game);
+        game_actions_drop(game, command_get_word(command));
         break;
     default:
         break;
@@ -171,63 +174,76 @@ void game_actions_back(Game *game)
     return;
 }
 
-void game_actions_take(Game *game)
+void game_actions_take(Game *game, char *word)
 {
     Player *player = NULL;
     Space *space = NULL;
     Id object = NO_ID;
-    Id player_object = NO_ID;
 
-    /*Takes all the information I'll need.*/
-    player = game_get_player(game);
-    space = game_get_space(game, player_get_player_location(player));
-    object = space_get_object(space);
-    player_object = player_get_object(game_get_player(game));
-
-    if (object != -1)
+    /*1-Gets all the different that it needs and error management.*/
+    object=game_get_object_by_name(game, word);
+    if(object==NO_ID)
     {
-        if (player_object != NO_ID)
-        {
-            /*If the player has an object it drops it.*/
-            space_set_object(space, player_object);
-        }
-        else
-        {
-            /*If he doesnt have an object,
-            the space gets a NULL as object pointer.*/
-            space_set_object(space, NO_ID);
-        }
-
-        /*The player gets the object.*/
-        player_set_object(player, object);
+        return;
     }
-    return;
-}
+    space = game_get_space(game, player_get_player_location(game_get_player(game)));
+    if(space_find_object(space, object)==-1)
+    {
+        return;
+    }
+    player=game_get_player(game);
 
-void game_actions_drop(Game *game)
-{
-    /*Gets all the information it need.*/
-    Id player_object = NO_ID;
-    Player *player = NULL;
-    Id player_location = NO_ID;
-    Space *space = NULL;
-    Id object = NO_ID;
-
-    /*Gets all the information it need.*/
-    player_object = player_get_object(game_get_player(game));
-    player = game_get_player(game);
-    player_location = player_get_player_location(game_get_player(game));
-    space = game_get_space(game, player_location);
-    object = space_get_object(space);
-
-    /*Checks if the player has an object, and if he has one, he drops it.*/
-    if (player_object == NO_ID)
+    /*2-Checks if the player already has the object. */
+    if(player_find_object(player, object)!=-1)
     {
         return;
     }
 
-    /*Gives the object to the space and I take it out from the player.*/
-    player_set_object(player, object);
-    space_set_object(space, player_object);
+    /*3-Player takes the object and error management.*/
+    if(!player_add_object(player, object))
+    {
+        return;
+    }
+    if(!space_take_object(space, object))
+    {
+        return;
+    }
+    return;
+}
+
+void game_actions_drop(Game *game, char *word)
+{
+    Player *player=NULL;
+    Space *space = NULL;
+    Id object = NO_ID;
+
+    /*1-Gets all the information it needs and error management.*/
+    object=game_get_object_by_name(game, word);
+    if(object==NO_ID)
+    {
+        return;
+    }
+    space = game_get_space(game, player_get_player_location(game_get_player(game)));
+    if(space_find_object(space, object)!=-1)
+    {
+        return;
+    }
+    player=game_get_player(game);
+
+    /*2-Checks if the player has the object.*/
+    if(player_find_object(player, object)==-1)
+    {
+        return;
+    }
+
+    /*3-The player drops his object.*/
+    if(!player_take_object(player, object))
+    {
+        return;
+    }
+    if(!space_add_object(space, object))
+    {
+        return;
+    }
     return;
 }

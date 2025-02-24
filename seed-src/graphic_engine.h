@@ -13,6 +13,8 @@
 
 #include "game.h"
 #include "game_reader.h"
+#include "space.h"
+#include "set.h"
 
 typedef struct _Graphic_engine Graphic_engine;
 

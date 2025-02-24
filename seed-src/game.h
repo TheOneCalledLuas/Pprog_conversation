@@ -222,6 +222,16 @@ int game_has_object(Game *game, Id id);
 int game_get_n_objects(Game *game);
 
 /**
+ * @brief Gets an object with a specfic tag inside the game
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param word Tag of the object
+ * @return Id of the object or NO_ID in any other case
+ */
+Id game_get_object_by_name(Game *game, char *word);
+
+/**
  * @brief Sets the number of objects in the structure.
  * @author Saúl López Romero.
  *

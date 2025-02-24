@@ -20,13 +20,13 @@
 */
 struct _Game
 {
-    Player *player;               /*!< Pointer to the player. */
-    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects.*/
-    int n_spaces;                 /*!< Number of spaces.*/
-    int n_objects;                /*!< Number of objects.*/
-    Command *last_cmd;            /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                /*!< Whether the game has finished or not.*/
+    Player *player;                                /*!< Pointer to the player. */ 
+    Space *spaces[MAX_SPACES];                     /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS];                  /*!< An array with the information of every objects.*/
+    int n_spaces;                                  /*!< Number of spaces.*/
+    int n_objects;                                 /*!< Number of objects.*/
+    Command *last_cmd;                             /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                                 /*!< Whether the game has finished or not.*/
 };
 
 Status game_create(Game **game)
@@ -177,7 +177,7 @@ Id game_get_object_location(Game *game, Id id)
     /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID.*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_get_object(game->spaces[i]) == id)
+        if (space_find_object(game->spaces[i], id) != -1)
         {
             return space_get_id(game->spaces[i]);
         }
@@ -239,6 +239,23 @@ int game_get_n_objects(Game *game)
 
     /*Returns the value.*/
     return game->n_objects;
+}
+
+Id game_get_object_by_name(Game *game, char *word)
+{
+    int i;
+    if(!game || !word)
+    {
+        return NO_ID;
+    }
+    for(i=0; i<game->n_objects;i++)
+    {
+        if(!(strcmp(word,object_get_name(game->objects[i]))))
+        {
+            return (object_get_id(game->objects[i]));
+        }
+    }
+    return NO_ID;
 }
 
 Status game_set_n_objects(Game *game, int n_objects)
@@ -397,7 +414,7 @@ Status game_create_from_file(Game **game, char *filename)
     if (game_reader_load_objects(*game, filename) == ERROR)
     {
         return ERROR;
-    }
+    } 
 
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));

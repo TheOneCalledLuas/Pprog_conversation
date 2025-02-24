@@ -13,6 +13,7 @@
 
 #include "types.h"
 #include "object.h"
+#include "set.h"
 
 typedef struct _Space Space;
 
@@ -160,24 +161,43 @@ Status space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
 
 /**
- * @brief Sets the id of the object of the space to what you want
- * @author Fernando Mijangos
- *
- * @param space Pointer to the space
- * @param object Id to the object the space has
- * @return OK, if everything goes well or ERROR if there was some mistake
- */
-Status space_set_object(Space* space, Id object);
-
-/**
- * @brief It gets the id of the object in the space.
+ * @brief It gets the set of the objects in the space.
  * @author Fernando Mijangos
  *
  * @param space Pointer to the space.
- * @return Id to the obeject the space has.
+ * @return Set of the objects of the space.
  */
-Id space_get_object(Space* space);
+Set *space_get_objects(Space* space);
 
+/**
+ * @brief It adds a new object to the set
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param object id of the object you want to add
+ * @return OK if the element was added or already in the set, ERROR otherwise
+ */
+Status space_add_object(Space* space, Id object);
+
+/**
+ * @brief It searches for an object in the set od the space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param object Id of the object you are searching
+ * @return Possition of the id in the set if found, -1 otherwise
+ */
+int space_find_object(Space *space, Id object);
+
+/**
+ * @brief It removes an object from the set of the space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param object Id of the object you want to take
+ * @return Id of the object you are taking
+ */
+Id space_take_object(Space* space, Id object);
 /**
  * @brief It prints the space information(id, name, object id, north id, east id....).
  * @author Fernando Mijangos.

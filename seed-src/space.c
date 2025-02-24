@@ -10,6 +10,7 @@
 
 #include "space.h"
 #include "object.h"
+#include "set.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +29,7 @@ struct _Space
     Id south;                 /*!< Id of the space at the south. */
     Id east;                  /*!< Id of the space at the east. */
     Id west;                  /*!< Id of the space at the west. */
-    Id object;                /*!< Id of the object the space has. */
+    Set *objects;              /*!< A set with the objects the space has */
     char *gdesc[5];           /*!< Strings which create the space's graphic description. */
     char *__gdesc_data;       /*!< Actual matrix with the gdesc.*/
 };
@@ -58,7 +59,7 @@ Space *space_create(Id id)
     newSpace->south = NO_ID;
     newSpace->east = NO_ID;
     newSpace->west = NO_ID;
-    newSpace->object = NO_ID;
+    newSpace->objects = set_create();
 
     /*Initialisation of gdesc. I chose to do it this way because if
       we manage to get a decent amount of spaces, storing them in the
@@ -85,6 +86,10 @@ void space_destroy(Space *space)
     {
         if (space->__gdesc_data)
             free(space->__gdesc_data);
+        if(space->objects)
+        {
+            set_destroy(space->objects);
+        }
         free(space);
     }
 }
@@ -241,30 +246,48 @@ Id space_get_west(Space *space)
     return space->west;
 }
 
-Status space_set_object(Space *space, Id object)
-{
-    /*Error handling.*/
-    if (space == NULL)
-    {
-        return ERROR;
-    }
-    space->object = object;
-    return OK;
-}
 
-Id space_get_object(Space *space)
+Set *space_get_objects(Space *space)
 {
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return NULL;
     }
-    return space->object;
+    return space->objects;
+}
+
+Status space_add_object(Space* space, Id object)
+{
+    if(!space||object==NO_ID)
+    {
+        return ERROR;
+    }
+    return((set_add(space->objects, object))?OK :ERROR);
+}
+
+int space_find_object(Space* space, Id object)
+{
+    if(!space||object==NO_ID)
+    {
+        return 0;
+    }
+    return set_find(space->objects, object);
+}
+
+Id space_take_object(Space* space, Id object)
+{
+    if(!space||object==NO_ID)
+    {
+        return ERROR;
+    }
+    return set_take(space->objects, object);
 }
 
 Status space_print(Space *space)
 {
     Id idaux = NO_ID;
+    Set *set_aux= NULL;
     int i = 0;
 
     /* Error Control */
@@ -314,11 +337,11 @@ Status space_print(Space *space)
         fprintf(stdout, "---> No west link.\n");
     }
 
-    /* 3. Print if there is an object in the space or not */
-    idaux = space->object;
-    if (idaux)
+    /* 3. Prints the set of objects the space has*/
+    set_aux = space->objects;
+    if (set_aux)
     {
-        fprintf(stdout, "---> Object with id %ld in the space.\n", idaux);
+        set_print(set_aux);
     }
     else
     {

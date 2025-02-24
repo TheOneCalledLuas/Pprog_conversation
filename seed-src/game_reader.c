@@ -165,7 +165,7 @@ Status game_reader_load_objects(Game *game, char *filename)
             /*Places the object in its initial place.*/
             if (space_id != -1)
             {
-                space_set_object(game_get_space(game, space_id), id);
+                space_add_object(game_get_space(game, space_id), id);
             }
         }
     }

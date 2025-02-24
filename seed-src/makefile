@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -c -ansi -pedantic
 
 all: anthill
 
-anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o player.o
+anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o
 	gcc -o $(EXE) $^ -L. -lscreen
 	
 command.o: command.c command.h types.h
@@ -23,19 +23,22 @@ game.o: game.c game.h command.h types.h space.h object.h player.h game_reader.h
 game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h player.h
 	gcc $(CFLAGS) $<
 
-graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h player.h game_reader.h libscreen.h
+graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h player.h set.h game_reader.h libscreen.h
 	gcc $(CFLAGS) $<
 
-space.o: space.c space.h types.h object.h
+space.o: space.c space.c space.h types.h object.h set.h
 	gcc $(CFLAGS) $<
 
 object.o: object.c object.h types.h
 	gcc $(CFLAGS) $<
 
-player.o: player.c player.h types.h object.h
+player.o: player.c player.h types.h object.h set.h
 	gcc $(CFLAGS) $<
 
 set.o: set.c types.h set.h
+	gcc $(CFLAGS) $<
+
+character.o: character.c character.h types.h
 	gcc $(CFLAGS) $<
 
 clean:
