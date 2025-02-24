@@ -9,34 +9,34 @@ anthill: command.o game_actions.o game_loop.o game.o game_reader.o graphic_engin
 	gcc -o $(EXE) $^ -L. -lscreen
 	
 command.o: command.c command.h types.h
-	gcc $(CFLAGS) command.c
+	gcc $(CFLAGS) $<
 
 game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h player.h game_reader.h
-	gcc $(CFLAGS) game_actions.c
+	gcc $(CFLAGS) $<
 
 game_loop.o: game_loop.c command.h types.h game.h space.h object.h player.h game_actions.h game_reader.h graphic_engine.h
-	gcc $(CFLAGS) game_loop.c
+	gcc $(CFLAGS) $<
 
 game.o: game.c game.h command.h types.h space.h object.h player.h game_reader.h
-	gcc $(CFLAGS) game.c
+	gcc $(CFLAGS) $<
 	
 game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h player.h
-	gcc $(CFLAGS) game_reader.c
+	gcc $(CFLAGS) $<
 
 graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h player.h game_reader.h libscreen.h
-	gcc $(CFLAGS) graphic_engine.c
+	gcc $(CFLAGS) $<
 
 space.o: space.c space.h types.h object.h
-	gcc $(CFLAGS) space.c
+	gcc $(CFLAGS) $<
 
 object.o: object.c object.h types.h
-	gcc $(CFLAGS) object.c
+	gcc $(CFLAGS) $<
 
 player.o: player.c player.h types.h object.h
-	gcc $(CFLAGS) player.c
+	gcc $(CFLAGS) $<
 
 set.o: set.c types.h set.h
-	gcc $(CFLAGS) set.c
+	gcc $(CFLAGS) $<
 
 clean:
 	rm -f *.o anthill
@@ -60,12 +60,12 @@ set_test: set_test.o set.o
 	gcc -o set_test $^
 
 set_test.o: set_test.c set_test.h set.h types.h test.h
-	gcc $(CFLAGS) set_test.c
+	gcc $(CFLAGS) $<
 
 space_test: space_test.o space.o
 	gcc -o space_test $^
 
 space_test.o: space_test.c space_test.h space.h types.h object.h test.h
-	gcc $(CFLAGS) space_test.c
+	gcc $(CFLAGS) $<
 
 

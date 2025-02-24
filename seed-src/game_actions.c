@@ -175,8 +175,8 @@ void game_actions_take(Game *game)
 {
     Player *player = NULL;
     Space *space = NULL;
-    Id object = NULL;
-    Id player_object = NULL;
+    Id object = NO_ID;
+    Id player_object = NO_ID;
 
     /*Takes all the information I'll need.*/
     player = game_get_player(game);
@@ -207,11 +207,11 @@ void game_actions_take(Game *game)
 void game_actions_drop(Game *game)
 {
     /*Gets all the information it need.*/
-    Id player_object = NULL;
+    Id player_object = NO_ID;
     Player *player = NULL;
-    Id player_location = NULL;
+    Id player_location = NO_ID;
     Space *space = NULL;
-    Id object = NULL;
+    Id object = NO_ID;
 
     /*Gets all the information it need.*/
     player_object = player_get_object(game_get_player(game));
