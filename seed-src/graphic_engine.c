@@ -27,6 +27,7 @@
 #define HEIGHT_BAN 1
 #define HEIGHT_HLP 2
 #define HEIGHT_FDB 3
+#define MAX_STRING_GE 255
 
 /**
  * @brief _Graphic_engine
@@ -35,7 +36,11 @@
  */
 struct _Graphic_engine
 {
-    Area *map, *descript, *banner, *help, *feedback; /*!< Dimensions of each parameter needed.*/
+    Area *map;      /*!< Map area dimensions.*/
+    Area *descript; /*!< Description area dimensions.*/
+    Area *banner;   /*!< Banner area dimensions.*/
+    Area *help;     /*!< Help area dimensions.*/
+    Area *feedback; /*!< Dimensions of each parameter needed.*/
 };
 
 Graphic_engine *graphic_engine_create()
@@ -89,7 +94,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, id_space = 0;
     Space *space_act = NULL;
     char obj = '\0';
-    char str[255];
+    char str[MAX_STRING_GE];
     int i = 0;
     Id *id_list = NULL;
     CommandCode last_cmd = UNKNOWN;

@@ -2,8 +2,8 @@
  * @brief It defines the textual graphic engine interface
  *
  * @file graphic_engine.h
- * @author Profesores PPROG
- * @version 1
+ * @author Saul Lopez Romero
+ * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -34,7 +34,7 @@ void graphic_engine_destroy(Graphic_engine *ge);
 
 /**
  * @brief It prints on the terminal an image of the game
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  *
  * @param game Pointer to the game you are running.
  * @param gw Pointer to the graphic engine structure.

@@ -18,14 +18,14 @@ typedef long Id;
 
 typedef enum
 {
-    FALSE,
-    TRUE
+    FALSE,  /*!< False value.*/
+    TRUE    /*!< True value.*/
 } Bool;
 
 typedef enum
 {
-    ERROR,
-    OK
+    ERROR,  /*!< Error value.*/
+    OK      /*!< Good functioning value.*/
 } Status;
 
 /**
@@ -33,10 +33,10 @@ typedef enum
  */
 typedef enum
 {
-    N,
-    S,
-    E,
-    W
+    N,  /*!< North.*/
+    S,  /*!< South.*/
+    E,  /*!< East.*/
+    W   /*!< West.*/
 } Direction;
 
 #endif

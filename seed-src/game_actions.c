@@ -1,9 +1,9 @@
 /**
- * @brief It implements the game update through user actions
+ * @brief It implements the game update through user actions.
  *
- * @file game.c
- * @author Profesores PPROG, Fernando Mijangos Varas.
- * @version 2
+ * @file game_actions.c
+ * @author Fernando Mijangos Varas, Saúl López Romero.
+ * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
  */

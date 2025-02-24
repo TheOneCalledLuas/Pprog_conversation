@@ -20,13 +20,13 @@
 */
 struct _Game
 {
-    Player *player; /*!< Pointer to the player. */ /*!< Pointer to the object. */
-    Space *spaces[MAX_SPACES];                     /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS];                  /*!< An array with the information of every objects.*/
-    int n_spaces;                                  /*!< Number of spaces.*/
-    int n_objects;                                 /*!< Number of objects.*/
-    Command *last_cmd;                             /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                                 /*!< Whether the game has finished or not.*/
+    Player *player;               /*!< Pointer to the player. */
+    Space *spaces[MAX_SPACES];    /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS]; /*!< An array with the information of every objects.*/
+    int n_spaces;                 /*!< Number of spaces.*/
+    int n_objects;                /*!< Number of objects.*/
+    Command *last_cmd;            /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                /*!< Whether the game has finished or not.*/
 };
 
 Status game_create(Game **game)
@@ -397,7 +397,7 @@ Status game_create_from_file(Game **game, char *filename)
     if (game_reader_load_objects(*game, filename) == ERROR)
     {
         return ERROR;
-    } 
+    }
 
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));

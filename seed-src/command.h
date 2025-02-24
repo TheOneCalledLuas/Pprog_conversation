@@ -1,8 +1,8 @@
 /**
- * @brief It defines the command interpreter interface
+ * @brief It defines the command interpreter interface.
  *
  * @file command.h
- * @author Profesores PPROG && Fernando Mijangos
+ * @author Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -23,8 +23,8 @@
  */
 typedef enum
 {
-    CMDS,
-    CMDL
+    CMDS,       /*!< Command to be accessed.*/
+    CMDL        /*!< Short or long command name.*/
 } CommandType;
 
 /**
@@ -32,13 +32,15 @@ typedef enum
  */
 typedef enum
 {
-    NO_CMD = -1,
-    UNKNOWN,
-    EXIT,
-    NEXT,
-    BACK,
-    TAKE,
-    DROP
+    NO_CMD = -1,    /*!< No Coomand code.*/
+    UNKNOWN,        /*!< Unknown command.*/
+    EXIT,           /*!< Exit command.*/
+    NEXT,           /*!< Next command.*/
+    BACK,           /*!< Back command.*/
+    TAKE,           /*!< Take command.*/
+    DROP,           /*!< Drop command.*/
+    ATTACK,         /*!< Attack command.*/
+    CHAT            /*!< Chat command.*/
 } CommandCode;
 /**
  * @brief Command
