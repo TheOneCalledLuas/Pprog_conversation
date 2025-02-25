@@ -198,6 +198,11 @@ int space_find_object(Space *space, Id object);
  * @return Id of the object you are taking
  */
 Id space_take_object(Space* space, Id object);
+
+Id space_get_character(Space *space);
+
+Status space_set_character(Space *space, Id id);
+
 /**
  * @brief It prints the space information(id, name, object id, north id, east id....).
  * @author Fernando Mijangos.
