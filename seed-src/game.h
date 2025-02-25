@@ -20,6 +20,7 @@
 /*Maximun number of objects and spaces per game.*/
 #define MAX_SPACES 100
 #define MAX_OBJECTS 100
+#define MAX_CHARACTERS 100
 
 /**
  * @brief Command
@@ -27,6 +28,35 @@
  * This struct stores all the information related to a game.
  */
 typedef struct _Game Game;
+
+/**
+ * @brief Searches for a character to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param id id of the character to be searched.
+ * @return Pointer to the character, NULL if an error takes place or the character wasn't found.
+ */
+Character *game_get_character(Game *game, Id id);
+
+/**
+ * @brief Adds a character to the game structure.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param character Pointer to the character.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_add_character(Game *game, Character *character);
+
+/**
+ * @brief Gets the number of characters.
+ * @author Saúl Lopez Romero
+ *
+ * @param game Pointer to the game.
+ * @return Object number or -1 if an error takes place.
+ */
+int game_get_num_characters(Game * game);
 
 /**
  * @brief Adds a space to the game structure.

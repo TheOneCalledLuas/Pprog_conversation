@@ -9,6 +9,7 @@
  */
 
 #include "game.h"
+#include "character.h"
 #include "game_reader.h"
 
 #include <stdio.h>
@@ -20,13 +21,15 @@
 */
 struct _Game
 {
-    Player *player;                                /*!< Pointer to the player. */ 
-    Space *spaces[MAX_SPACES];                     /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS];                  /*!< An array with the information of every objects.*/
-    int n_spaces;                                  /*!< Number of spaces.*/
-    int n_objects;                                 /*!< Number of objects.*/
-    Command *last_cmd;                             /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                                 /*!< Whether the game has finished or not.*/
+    Player *player;                        /*!< Pointer to the player. */
+    Space *spaces[MAX_SPACES];             /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS];          /*!< An array with the information of every objects.*/
+    Character *characters[MAX_CHARACTERS]; /*!< Array with all the character of the game.*/
+    int n_spaces;                          /*!< Number of spaces.*/
+    int n_objects;                         /*!< Number of objects.*/
+    int n_characters;                      /*< Number of characters.*/
+    Command *last_cmd;                     /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                         /*!< Whether the game has finished or not.*/
 };
 
 Status game_create(Game **game)
@@ -48,11 +51,55 @@ Status game_create(Game **game)
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
+    (*game)->n_characters = 0;
     (*game)->player = player_create(5);
     (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
 
     return OK;
+}
+
+Character *game_get_character(Game *game, Id id)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    /*Searches for the id.*/
+    for (i = 0; i < game->n_objects; i++)
+    {
+        if (character_get_id(game->characters[i]) == id)
+            return game->characters[i];
+    }
+
+    /*The id wasn't found.*/
+    return NULL;
+}
+
+Status game_add_character(Game *game, Character *character)
+{
+    /*Error handling.*/
+    if (!game || !character || game->n_characters == MAX_CHARACTERS)
+    {
+        return ERROR;
+    }
+
+    /*Adds tthe character.*/
+    game->characters[game->n_characters++] = character;
+
+    /*CLeean exit.*/
+    return OK;
+}
+
+int game_get_num_characters(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return -1;
+    
+    /*Returns the value.*/
+    return game->n_characters;
 }
 
 Space *game_get_space(Game *game, Id id)
@@ -244,13 +291,13 @@ int game_get_n_objects(Game *game)
 Id game_get_object_by_name(Game *game, char *word)
 {
     int i;
-    if(!game || !word)
+    if (!game || !word)
     {
         return NO_ID;
     }
-    for(i=0; i<game->n_objects;i++)
+    for (i = 0; i < game->n_objects; i++)
     {
-        if(!(strcmp(word,object_get_name(game->objects[i]))))
+        if (!(strcmp(word, object_get_name(game->objects[i]))))
         {
             return (object_get_id(game->objects[i]));
         }
@@ -414,7 +461,7 @@ Status game_create_from_file(Game **game, char *filename)
     if (game_reader_load_objects(*game, filename) == ERROR)
     {
         return ERROR;
-    } 
+    }
 
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
