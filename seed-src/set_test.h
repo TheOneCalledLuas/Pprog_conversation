@@ -19,7 +19,7 @@ void test1_set_create();
 
 /**
  * @test Test Set lenght.
- * @pre pointer to empty set.
+ * @pre pointer to empty set (initialised).
  * @post set len == 0.
  */
 void test1_set_len();
