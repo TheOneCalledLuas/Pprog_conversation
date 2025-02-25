@@ -79,8 +79,8 @@ Status character_set_name(Character *character, char* name)
     {
         return ERROR;
     }
-    strncpy(character->name, name, MAX_NAME-1);
-    character->name[MAX_NAME-1]='\0';
+    strncpy(character->name, name, MAX_NAME);
+    character->name[MAX_NAME]='\0';
     return OK;
 }
 
@@ -96,8 +96,8 @@ Status character_set_description(Character *character, char* description)
     {
         return ERROR;
     }
-    strncpy(character->description, description, MAX_DESC-1);
-    character->description[MAX_DESC-1]='\0';
+    strncpy(character->description, description, MAX_DESC);
+    character->description[MAX_DESC]='\0';
     return OK;
 }
 
@@ -145,8 +145,8 @@ Status character_set_message(Character *character, char* message)
     {
         return ERROR;
     }
-    strncpy(character->message, message, MAX_MESSAGE-1);
-    character->message[MAX_MESSAGE-1]='\0';
+    strncpy(character->message, message, MAX_MESSAGE);
+    character->message[MAX_MESSAGE]='\0';
     return OK;
 }
 

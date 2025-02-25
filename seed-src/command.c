@@ -106,8 +106,8 @@ Status command_set_word(Command *command, char *word)
     }
 
     /*It copies all the letters it can before overflowing to the destionation and the las character is set to \0 */
-    strncpy(command->word, word, CMD_LENGHT-1);
-    command->word[CMD_LENGHT-1]='\0';
+    strncpy(command->word, word, CMD_LENGHT);
+    command->word[CMD_LENGHT]='\0';
 
     return OK;
 }

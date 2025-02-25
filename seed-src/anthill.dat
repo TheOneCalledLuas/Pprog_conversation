@@ -7,7 +7,7 @@
 #s:125|Corridor_5|-1|126|-1|122|         |         |         |         |         |
 #s:126|Corridor_6|-1|127|-1|126|         |         |         |         |         |
 #s:14|Hole|-1|-1|-1|127|         |         |         |         |         |
-#o:21|Grain|121
-#o:22|Seed|11
-#o:23|Water_Drop|123
-#o:24|Soil|125
+#o:21|grain|121
+#o:22|seed|11
+#o:23|water_drop|123
+#o:24|soil|125
