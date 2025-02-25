@@ -16,6 +16,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define G_DESC_LINES 5
+
 /**
  * @brief Space
  *
@@ -23,15 +25,16 @@
  */
 struct _Space
 {
-    Id id;                    /*!< Id number of the space, it must be unique. */
-    char name[WORD_SIZE + 1]; /*!< Name of the space. */
-    Id north;                 /*!< Id of the space at the north. */
-    Id south;                 /*!< Id of the space at the south. */
-    Id east;                  /*!< Id of the space at the east. */
-    Id west;                  /*!< Id of the space at the west. */
+    Id id;                     /*!< Id number of the space, it must be unique. */
+    char name[WORD_SIZE + 1];  /*!< Name of the space. */
+    Id north;                  /*!< Id of the space at the north. */
+    Id south;                  /*!< Id of the space at the south. */
+    Id east;                   /*!< Id of the space at the east. */
+    Id west;                   /*!< Id of the space at the west. */
     Set *objects;              /*!< A set with the objects the space has */
-    char *gdesc[5];           /*!< Strings which create the space's graphic description. */
-    char *__gdesc_data;       /*!< Actual matrix with the gdesc.*/
+    char *gdesc[G_DESC_LINES]; /*!< Strings which create the space's graphic description. */
+    char *__gdesc_data;        /*!< Actual matrix with the gdesc.*/
+    Id character;              /*!< Character id.*/
 };
 
 /** space_create allocates memory for a new space
@@ -60,6 +63,7 @@ Space *space_create(Id id)
     newSpace->east = NO_ID;
     newSpace->west = NO_ID;
     newSpace->objects = set_create();
+    newSpace->character = NO_ID;
 
     /*Initialisation of gdesc. I chose to do it this way because if
       we manage to get a decent amount of spaces, storing them in the
@@ -86,7 +90,7 @@ void space_destroy(Space *space)
     {
         if (space->__gdesc_data)
             free(space->__gdesc_data);
-        if(space->objects)
+        if (space->objects)
         {
             set_destroy(space->objects);
         }
@@ -246,7 +250,6 @@ Id space_get_west(Space *space)
     return space->west;
 }
 
-
 Set *space_get_objects(Space *space)
 {
     /*Error handling.*/
@@ -257,37 +260,62 @@ Set *space_get_objects(Space *space)
     return space->objects;
 }
 
-Status space_add_object(Space* space, Id object)
+Status space_add_object(Space *space, Id object)
 {
-    if(!space||object==NO_ID)
+    if (!space || object == NO_ID)
     {
         return ERROR;
     }
-    return((set_add(space->objects, object))?OK :ERROR);
+    return ((set_add(space->objects, object)) ? OK : ERROR);
 }
 
-int space_find_object(Space* space, Id object)
+int space_find_object(Space *space, Id object)
 {
-    if(!space||object==NO_ID)
+    if (!space || object == NO_ID)
     {
         return 0;
     }
     return set_find(space->objects, object);
 }
 
-Id space_take_object(Space* space, Id object)
+Id space_take_object(Space *space, Id object)
 {
-    if(!space||object==NO_ID)
+    if (!space || object == NO_ID)
     {
         return ERROR;
     }
     return set_take(space->objects, object);
 }
 
+Id space_get_character(Space *space)
+{
+    /*Error handling.*/
+    if (!space)
+        return ID_ERROR;
+
+    /*Returns the value.*/
+    return space->character;
+}
+
+Status space_set_character(Space *space, Id id)
+{
+    /*Error handling.*/
+    if (!space || id == ID_ERROR)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value.*/
+    space->character = id;
+
+    /*Clean exit.*/
+    return OK;
+}
+
 Status space_print(Space *space)
 {
     Id idaux = NO_ID;
-    Set *set_aux= NULL;
+    Set *set_aux = NULL;
     int i = 0;
 
     /* Error Control */
