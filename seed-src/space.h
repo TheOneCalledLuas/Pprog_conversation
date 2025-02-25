@@ -24,7 +24,7 @@ typedef struct _Space Space;
  * @param id Identification number for the new space.
  * @return a pointer to a new space, initialized.
  */
-Space* space_create(Id id);
+Space *space_create(Id id);
 
 /**
  * @brief It destroys a space, freeing the allocated memory.
@@ -32,7 +32,7 @@ Space* space_create(Id id);
  *
  * @param space Pointer to the space that must be destroyed.
  */
-void space_destroy(Space* space);
+void space_destroy(Space *space);
 
 /**
  * @brief Gets a determined line of the graphic description.
@@ -42,10 +42,10 @@ void space_destroy(Space* space);
  * @param line line to be given.
  * @return NULL if an error takes place, the line otherwise.
  */
-char * space_get_gdesc_line(Space * space, int line);
+char *space_get_gdesc_line(Space *space, int line);
 
 /**
- * @brief Sets a line of the graphic description. 
+ * @brief Sets a line of the graphic description.
  * @author Saúl López Romero.
  *
  * @param space Pointer to the space.
@@ -53,7 +53,7 @@ char * space_get_gdesc_line(Space * space, int line);
  * @param string to be set.
  * @return OK if all goes as planned, ERROR otherwise.
  */
-Status space_set_gdesc_line(Space * space, int line, char * str);
+Status space_set_gdesc_line(Space *space, int line, char *str);
 
 /**
  * @brief It gets the id of a space
@@ -62,7 +62,7 @@ Status space_set_gdesc_line(Space * space, int line, char * str);
  * @param space Pointer to the space
  * @return Id of space
  */
-Id space_get_id(Space* space);
+Id space_get_id(Space *space);
 
 /**
  * @brief It sets the name of a space
@@ -72,7 +72,7 @@ Id space_get_id(Space* space);
  * @param name a string with the name to store
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status space_set_name(Space* space, char* name);
+Status space_set_name(Space *space, char *name);
 
 /**
  * @brief It gets the name of a space
@@ -81,7 +81,7 @@ Status space_set_name(Space* space, char* name);
  * @param space Pointer to the space
  * @return  a string with the name of the space
  */
-const char* space_get_name(Space* space);
+const char *space_get_name(Space *space);
 
 /**
  * @brief It sets the id of the space located at the north
@@ -92,7 +92,7 @@ const char* space_get_name(Space* space);
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
 
-Status space_set_north(Space* space, Id id);
+Status space_set_north(Space *space, Id id);
 
 /**
  * @brief It gets the id of the space located at the north
@@ -101,7 +101,7 @@ Status space_set_north(Space* space, Id id);
  * @param space Pointer to the space
  * @return Id number of the space located at the north
  */
-Id space_get_north(Space* space);
+Id space_get_north(Space *space);
 
 /**
  * @brief It sets the id of the space located at the south
@@ -111,7 +111,7 @@ Id space_get_north(Space* space);
  * @param id Id number of the space located at the south
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status space_set_south(Space* space, Id id);
+Status space_set_south(Space *space, Id id);
 
 /**
  * @brief It gets the id of the space located at the south
@@ -120,7 +120,7 @@ Status space_set_south(Space* space, Id id);
  * @param space Pointer to the space
  * @return Id number of the space located at the south
  */
-Id space_get_south(Space* space);
+Id space_get_south(Space *space);
 
 /**
  * @brief It sets the id of the space located at the east
@@ -130,7 +130,7 @@ Id space_get_south(Space* space);
  * @param id Id number of the space located at the east
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status space_set_east(Space* space, Id id);
+Status space_set_east(Space *space, Id id);
 
 /**
  * @brief It gets the id of the space located at the east
@@ -139,7 +139,7 @@ Status space_set_east(Space* space, Id id);
  * @param space Pointer to the space
  * @return Id number of the space located at the east
  */
-Id space_get_east(Space* space);
+Id space_get_east(Space *space);
 
 /**
  * @brief It sets the id of the space located at the west
@@ -149,7 +149,7 @@ Id space_get_east(Space* space);
  * @param id Id number of the space located at the west
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-Status space_set_west(Space* space, Id id);
+Status space_set_west(Space *space, Id id);
 
 /**
  * @brief It gets the id of the space located at the west
@@ -158,7 +158,7 @@ Status space_set_west(Space* space, Id id);
  * @param space Pointer to the space
  * @return Id number of the space located at the west
  */
-Id space_get_west(Space* space);
+Id space_get_west(Space *space);
 
 /**
  * @brief It gets the set of the objects in the space.
@@ -167,22 +167,22 @@ Id space_get_west(Space* space);
  * @param space Pointer to the space.
  * @return Set of the objects of the space.
  */
-Set *space_get_objects(Space* space);
+Set *space_get_objects(Space *space);
 
 /**
  * @brief It adds a new object to the set
  * @author Fernando Mijangos
- * 
+ *
  * @param space Pointer to the space
  * @param object id of the object you want to add
  * @return OK if the element was added or already in the set, ERROR otherwise
  */
-Status space_add_object(Space* space, Id object);
+Status space_add_object(Space *space, Id object);
 
 /**
  * @brief It searches for an object in the set od the space
  * @author Fernando Mijangos
- * 
+ *
  * @param space Pointer to the space
  * @param object Id of the object you are searching
  * @return Possition of the id in the set if found, -1 otherwise
@@ -190,17 +190,32 @@ Status space_add_object(Space* space, Id object);
 int space_find_object(Space *space, Id object);
 
 /**
- * @brief It removes an object from the set of the space
+ * @brief It removes an object from the set of the space.
  * @author Fernando Mijangos
- * 
- * @param space Pointer to the space
- * @param object Id of the object you want to take
- * @return Id of the object you are taking
+ *
+ * @param space Pointer to the space.
+ * @param object Id of the object you want to take.
+ * @return Id of the object you are taking.
  */
-Id space_take_object(Space* space, Id object);
+Id space_take_object(Space *space, Id object);
 
+/**
+ * @brief Returns the character id.
+ * @author Saul Lopez Romero
+ *
+ * @param space Pointer to the space.
+ * @return Id of the character you are taking.
+ */
 Id space_get_character(Space *space);
 
+/**
+ * @brief Sets the space's character.
+ * @author Saul Lopez Romero
+ *
+ * @param space Pointer to the space.
+ * @param id Id of the character to be set up.
+ * @return OK if it goes as planned, ERROR otherwise.
+ */
 Status space_set_character(Space *space, Id id);
 
 /**
@@ -210,6 +225,6 @@ Status space_set_character(Space *space, Id id);
  * @param space Pointer to the space.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status space_print(Space* space);
+Status space_print(Space *space);
 
 #endif
