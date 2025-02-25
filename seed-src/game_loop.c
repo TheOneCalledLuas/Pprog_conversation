@@ -50,7 +50,7 @@ void game_loop_cleanup(Game **game, Graphic_engine *gengine);
 int main(int argc, char *argv[])
 {
     Game *game=NULL;
-    Graphic_engine *gengine;
+    Graphic_engine *gengine = NULL;
 
     /*Checks if a parameter was given.*/
     if (argc < 2)
