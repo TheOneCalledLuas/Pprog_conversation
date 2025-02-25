@@ -59,18 +59,16 @@ void game_actions_back(Game *game);
  * @author Fernando Mijangos Varas.
  *
  * @param game Pointer to the game structure.
- * @param word Name of the object to be taken
  */
-void game_actions_take(Game *game, char *word);
+void game_actions_take(Game *game);
 
 /**
  * @brief Action to be executed when take command is given.
  * @author Fernando Mijangos Varas.
  *
  * @param game Pointer to the game structure.
- * @param word Name of the object that will be drop
  */
-void game_actions_drop(Game *game, char *word);
+void game_actions_drop(Game *game);
 
 /**
    Game actions implementation
@@ -110,10 +108,10 @@ Status game_actions_update(Game *game, Command *command)
         game_actions_back(game);
         break;
     case TAKE:
-        game_actions_take(game, command_get_word(command));
+        game_actions_take(game);
         break;
     case DROP:
-        game_actions_drop(game, command_get_word(command));
+        game_actions_drop(game);
         break;
     default:
         break;
@@ -174,20 +172,20 @@ void game_actions_back(Game *game)
     return;
 }
 
-void game_actions_take(Game *game, char *word)
+void game_actions_take(Game *game)
 {
     Player *player = NULL;
     Space *space = NULL;
     Id object = NO_ID;
 
     /*Error management*/
-    if (!game || !word)
+    if (!game)
     {
         return;
     }
 
     /*1-Gets all the different that it needs and error management.*/
-    object = game_get_object_by_name(game, word);
+    object = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
     if (object == NO_ID)
     {
         return;
@@ -200,13 +198,13 @@ void game_actions_take(Game *game, char *word)
     player = game_get_player(game);
 
     /*2-Checks if the player already has the object. */
-    if (player_find_object(player, object) != -1)
+    if (player_get_object(player) != -1)
     {
         return;
     }
 
     /*3-Player takes the object and error management.*/
-    if (!player_add_object(player, object))
+    if (!player_set_object(player, object))
     {
         return;
     }
@@ -215,25 +213,25 @@ void game_actions_take(Game *game, char *word)
         return;
     }
 
-    /*Sets the word to that so that it doesn mess with things*/
-    word[0]='\0';
+    /*Sets the argument to '\0' so it doesnt mess with thigns when inputing other commands*/
+    command_set_word(game_get_last_command(game), "\0");
     return;
 }
 
-void game_actions_drop(Game *game, char *word)
+void game_actions_drop(Game *game)
 {
     Player *player = NULL;
     Space *space = NULL;
     Id object = NO_ID;
 
     /*Error management*/
-    if (!game || !word)
+    if (!game)
     {
         return;
     }
 
     /*1-Gets all the information it needs and error management.*/
-    object = game_get_object_by_name(game, word);
+    object = player_get_object(game_get_player(game));
     if (object == NO_ID)
     {
         return;
@@ -245,14 +243,14 @@ void game_actions_drop(Game *game, char *word)
     }
     player = game_get_player(game);
 
-    /*2-Checks if the player has the object.*/
-    if (player_find_object(player, object) == -1)
+    /*2-Checks if the player has an object.*/
+    if (player_get_object(player) == -1)
     {
         return;
     }
 
     /*3-The player drops his object.*/
-    if (!player_take_object(player, object))
+    if (!player_set_object(player, NO_ID))
     {
         return;
     }
@@ -262,6 +260,5 @@ void game_actions_drop(Game *game, char *word)
     }
     
     /*Sets the word to that so that it doesn mess with things*/
-    word[0]='\0';
     return;
 }
