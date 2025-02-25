@@ -89,13 +89,5 @@ int set_len(Set * set);
  */
 Status set_print(Set *s);
 
-/**
- * @brief Gets the number of ids in the set.
- * @author Fernando Mijangos
- * 
- * @param set Pointer to the set.
- * @return number of Ids in the set, -1 otherwise.
- */
-int set_get_n_ids(Set *set);
 
 #endif

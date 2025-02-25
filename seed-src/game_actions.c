@@ -180,70 +180,88 @@ void game_actions_take(Game *game, char *word)
     Space *space = NULL;
     Id object = NO_ID;
 
+    /*Error management*/
+    if (!game || !word)
+    {
+        return;
+    }
+
     /*1-Gets all the different that it needs and error management.*/
-    object=game_get_object_by_name(game, word);
-    if(object==NO_ID)
+    object = game_get_object_by_name(game, word);
+    if (object == NO_ID)
     {
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if(space_find_object(space, object)==-1)
+    if (space_find_object(space, object) == -1)
     {
         return;
     }
-    player=game_get_player(game);
+    player = game_get_player(game);
 
     /*2-Checks if the player already has the object. */
-    if(player_find_object(player, object)!=-1)
+    if (player_find_object(player, object) != -1)
     {
         return;
     }
 
     /*3-Player takes the object and error management.*/
-    if(!player_add_object(player, object))
+    if (!player_add_object(player, object))
     {
         return;
     }
-    if(!space_take_object(space, object))
+    if (!space_take_object(space, object))
     {
         return;
     }
+
+    /*Sets the word to that so that it doesn mess with things*/
+    word[0]='\0';
     return;
 }
 
 void game_actions_drop(Game *game, char *word)
 {
-    Player *player=NULL;
+    Player *player = NULL;
     Space *space = NULL;
     Id object = NO_ID;
 
+    /*Error management*/
+    if (!game || !word)
+    {
+        return;
+    }
+
     /*1-Gets all the information it needs and error management.*/
-    object=game_get_object_by_name(game, word);
-    if(object==NO_ID)
+    object = game_get_object_by_name(game, word);
+    if (object == NO_ID)
     {
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if(space_find_object(space, object)!=-1)
+    if (space_find_object(space, object) != -1)
     {
         return;
     }
-    player=game_get_player(game);
+    player = game_get_player(game);
 
     /*2-Checks if the player has the object.*/
-    if(player_find_object(player, object)==-1)
+    if (player_find_object(player, object) == -1)
     {
         return;
     }
 
     /*3-The player drops his object.*/
-    if(!player_take_object(player, object))
+    if (!player_take_object(player, object))
     {
         return;
     }
-    if(!space_add_object(space, object))
+    if (!space_add_object(space, object))
     {
         return;
     }
+    
+    /*Sets the word to that so that it doesn mess with things*/
+    word[0]='\0';
     return;
 }
