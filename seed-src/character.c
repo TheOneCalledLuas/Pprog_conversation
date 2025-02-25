@@ -21,6 +21,7 @@ struct _Character
     char description[MAX_DESC]; /*!< Description of the character.*/
     Bool friendly;              /*!< Whether the character is friendly or not.*/
     char message[MAX_MESSAGE];  /*!< Message of the character.*/
+    int health;                 /*!< Amount of health of the character*/
 };
 
 Character *character_create(Id id)
@@ -33,7 +34,7 @@ Character *character_create(Id id)
     /*Memory allocation.*/
     if (!(character = (Character *)malloc(sizeof(Character))))
     {
-        return ERROR;
+        return NULL;
     }
 
     /*Establishes the values to default ones.*/
@@ -43,7 +44,7 @@ Character *character_create(Id id)
     character->friendly = FALSE;
     character->message[0] = '\0';
     /*Clean exit.*/
-    return OK;
+    return character;
 }
 
 void character_destroy(Character *character)
@@ -137,6 +138,21 @@ Status character_set_message(Character *character, char *message)
 char *character_get_message(Character *character)
 {
     return (character ? character->message : NULL);
+}
+
+Status character_set_health(Character *character, int health)
+{
+    if(!character)
+    {
+        return ERROR;
+    }
+    character->health=health;
+    return OK;
+}
+
+int character_get_health(Character *character)
+{
+    return(character?character->health:-1);
 }
 
 Status character_print(Character *character)
