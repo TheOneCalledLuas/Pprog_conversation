@@ -16,6 +16,7 @@
 #include "types.h"
 #include "object.h"
 #include "player.h"
+#include "character.h"
 
 /*Maximun number of objects and spaces per game.*/
 #define MAX_SPACES 100
