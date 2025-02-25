@@ -16,6 +16,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define CHARACTER_ID_1 3
+#define CHARACTER_HEALTH_1 5
+#define CHARACTER_NAME_1 "Litle Ant"
+#define CHARACTER_MSG_1 "I'm a litle ant."
+#define CHARACTER_DESCR_1 "mº'"
+#define SPACE_C1 121
+#define CHARACTER_ID_2 4
+#define CHARACTER_HEALTH_2 5
+#define CHARACTER_NAME_2 "Spider"
+#define CHARACTER_MSG_2 "\0"
+#define CHARACTER_DESCR_2 "/\\oo/\\"
+#define SPACE_C2 123
+
 /**
    Game interface implementation.
 */
@@ -41,7 +54,7 @@ Status game_create(Game **game)
     {
         return ERROR;
     }
-    /*memory allocation*/
+    /*Memory allocation.*/
     (*game) = (Game *)malloc(sizeof(Game));
 
     for (i = 0; i < MAX_SPACES; i++)
@@ -97,7 +110,7 @@ int game_get_num_characters(Game *game)
     /*Error handling.*/
     if (!game)
         return -1;
-    
+
     /*Returns the value.*/
     return game->n_characters;
 }
@@ -156,6 +169,23 @@ Id game_get_space_id_at(Game *game, int position)
     return space_get_id(game->spaces[position]);
 }
 
+Id game_get_character_location(Game *game, Id id)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!game || id == -2)
+        return ID_ERROR;
+
+    /*Searches for the object.*/
+    for (i = 0; i < game->n_spaces; i++)
+    {
+        if (space_get_character(game->spaces[i]) == id)
+            return space_get_id(game->spaces[i]);
+    }
+    /*The character wasn't found in any space.*/
+    return NO_ID;
+}
+
 Status game_destroy(Game **game)
 {
     int i = 0;
@@ -165,6 +195,11 @@ Status game_destroy(Game **game)
     {
         return ERROR;
     }
+
+    /*Destroys the characters.*/
+    character_destroy(game_get_character((*game),CHARACTER_ID_1));
+    character_destroy(game_get_character((*game),CHARACTER_ID_2));
+
     /*Destroys the spaces.*/
     for (i = 0; i < (*game)->n_spaces; i++)
     {
@@ -442,6 +477,7 @@ void game_print(Game *game)
 
 Status game_create_from_file(Game **game, char *filename)
 {
+    Character *c1 = NULL, *c2 = NULL;
     /*Error management.*/
     if (game == NULL || filename == NULL)
     {
@@ -465,6 +501,24 @@ Status game_create_from_file(Game **game, char *filename)
 
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
+
+    /*Loads the characters wheere they are supposed to be.*/
+    c1 = character_create(CHARACTER_ID_1);
+    character_set_description(c1, CHARACTER_DESCR_1);
+    character_set_friendly(c1, TRUE);
+    character_set_health(c1, CHARACTER_HEALTH_1);
+    character_set_message(c1, CHARACTER_MSG_1);
+    character_set_name(c1, CHARACTER_NAME_1);
+    game_add_character((*game), c1);
+    space_set_character(game_get_space((*game), SPACE_C1), CHARACTER_ID_1);
+    c2 = character_create(CHARACTER_ID_2);
+    character_set_description(c2, CHARACTER_DESCR_2);
+    character_set_friendly(c2, FALSE);
+    character_set_health(c2, CHARACTER_HEALTH_2);
+    character_set_message(c2, CHARACTER_MSG_2);
+    character_set_name(c2, CHARACTER_NAME_2);
+    game_add_character((*game), c2);
+    space_set_character(game_get_space((*game), SPACE_C2), CHARACTER_ID_2);
 
     return OK;
 }

@@ -54,7 +54,7 @@ redo:
 #                 Test_check                   #
 ################################################
 check:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat
+	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat
 
 set_check:
 	./set_test

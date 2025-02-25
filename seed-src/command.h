@@ -15,7 +15,7 @@
 /*Ways of refering to the same command.*/
 #define N_CMDT 2
 /*Number of commands.*/
-#define N_CMD 7
+#define N_CMD 9
 
 /**
  * @brief Ways of calling a command (extended or short way.)

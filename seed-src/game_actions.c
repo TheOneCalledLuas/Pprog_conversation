@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "game.h"
 #include "player.h"
@@ -71,6 +72,32 @@ void game_actions_take(Game *game);
 void game_actions_drop(Game *game);
 
 /**
+ * @brief Action to be executed when chat command is given.
+ * @author Saul Lopez Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_chat(Game *game);
+
+/**
+ * @brief Action to be executed when attack command is given.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_attack(Game *game);
+
+/**
+ * @brief Returns a random number in a range.
+ * @author Saul López Romero
+ *
+ * @param start First number of the range.
+ * @param end Last number in the range.
+ * @return Random int number in the range.
+ */
+int random_int(int start, int end);
+
+/**
    Game actions implementation
 */
 
@@ -112,6 +139,12 @@ Status game_actions_update(Game *game, Command *command)
         break;
     case DROP:
         game_actions_drop(game);
+        break;
+    case CHAT:
+        game_actions_chat(game);
+        break;
+    case ATTACK:
+        game_actions_attack(game);
         break;
     default:
         break;
@@ -258,7 +291,58 @@ void game_actions_drop(Game *game)
     {
         return;
     }
-    
+
     /*Sets the word to that so that it doesn mess with things*/
     return;
+}
+
+void game_actions_chat(Game *game) {}
+
+void game_actions_attack(Game *game)
+{
+    int rand_num = 0;
+    Id player_location = NO_ID;
+    Player *player = NULL;
+    Bool has_character = FALSE;
+    Character *character = NULL;
+
+    /*Error handling.*/
+    if (!game)
+        return;
+
+    /*Checks that the player meets the requirements to attack.*/
+    player = game_get_player(game);
+    player_location = player_get_player_location(player);
+    has_character = space_get_character(game_get_space(game, player_location)) != -1;
+    character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
+
+    if (has_character || character_get_friendly(character) == FALSE || character_get_health(character) > 0 || player_get_health(player) > 0)
+    {
+        /*Makes a fight between the entities.*/
+        rand_num = random_int(0, 9);
+        if (rand_num <= 4)
+        {
+            /*Hits player.*/
+            player_set_health(player, player_get_health(player) - 1);
+        }
+        else
+        {
+            /*Hits character.*/
+            character_set_health(character, character_get_health(character) - 1);
+        }
+        /*Checks if the player died.*/
+        if (player_get_health(player) <= 0)
+        {
+            game_set_finished(game, TRUE);
+        }
+    }
+}
+
+int random_int(int start, int end)
+{
+    /*Makes the number random.*/
+    srand(time(NULL));
+
+    /*returns the number.*/
+    return (start + rand() % (start - end + 1));
 }

@@ -41,6 +41,16 @@ typedef struct _Game Game;
 Character *game_get_character(Game *game, Id id);
 
 /**
+ * @brief Searches for a character and returns the id of the space where its located.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param id id of the character to be searched for.
+ * @return Id of the space with the character, -1 if it wasn't found or -2 if an error takes place.
+ */
+Id game_get_character_location(Game *game, Id id);
+
+/**
  * @brief Adds a character to the game structure.
  * @author Saúl López Romero
  *
