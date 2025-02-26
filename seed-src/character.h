@@ -13,7 +13,7 @@
 
 #include "types.h"
 #define MAX_NAME 20
-#define MAX_DESC 6
+#define MAX_DESC 7
 #define MAX_MESSAGE 100
 
 typedef struct _Character Character;
