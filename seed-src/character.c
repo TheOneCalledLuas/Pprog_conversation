@@ -51,12 +51,20 @@ void character_destroy(Character *character)
 {
     /*Error management.*/
     if (character)
+    {
         free(character);
+    }
 }
 
 Id character_get_id(Character *character)
 {
-    return (character ? character->id : NO_ID);
+    /*Error handling.*/
+    if (!character)
+    {
+        return NO_ID;
+    }
+    /*Returns the value.*/
+    return character->id;
 }
 
 Status character_set_name(Character *character, char *name)
@@ -67,7 +75,7 @@ Status character_set_name(Character *character, char *name)
         return ERROR;
     }
     strncpy(character->name, name, MAX_NAME);
-    character->name[MAX_NAME]='\0';
+    character->name[MAX_NAME] = '\0';
     /*Sets the name.*/
     strncpy(character->name, name, MAX_NAME - 1);
     character->name[MAX_NAME - 1] = '\0';
@@ -87,7 +95,7 @@ Status character_set_description(Character *character, char *description)
         return ERROR;
     }
     strncpy(character->description, description, MAX_DESC);
-    character->description[MAX_DESC]='\0';
+    character->description[MAX_DESC] = '\0';
     /*Sets the description.*/
     strncpy(character->description, description, MAX_DESC - 1);
     character->description[MAX_DESC - 1] = '\0';
@@ -106,7 +114,7 @@ Status character_set_friendly(Character *character, Bool value)
     {
         return ERROR;
     }
-    
+
     /*Sets the value.*/
     character->friendly = value;
 
@@ -127,7 +135,7 @@ Status character_set_message(Character *character, char *message)
         return ERROR;
     }
     strncpy(character->message, message, MAX_MESSAGE);
-    character->message[MAX_MESSAGE]='\0';
+    character->message[MAX_MESSAGE] = '\0';
 
     /*Sets the message.*/
     strncpy(character->message, message, MAX_MESSAGE - 1);
@@ -142,17 +150,17 @@ char *character_get_message(Character *character)
 
 Status character_set_health(Character *character, int health)
 {
-    if(!character)
+    if (!character)
     {
         return ERROR;
     }
-    character->health=health;
+    character->health = health;
     return OK;
 }
 
 int character_get_health(Character *character)
 {
-    return(character?character->health:-1);
+    return (character ? character->health : -1);
 }
 
 Status character_print(Character *character)

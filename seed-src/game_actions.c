@@ -296,7 +296,7 @@ void game_actions_drop(Game *game)
     return;
 }
 
-void game_actions_chat(Game *game) {}
+void game_actions_chat(Game *game) { return; }
 
 void game_actions_attack(Game *game)
 {
@@ -313,10 +313,14 @@ void game_actions_attack(Game *game)
     /*Checks that the player meets the requirements to attack.*/
     player = game_get_player(game);
     player_location = player_get_player_location(player);
-    has_character = space_get_character(game_get_space(game, player_location)) != -1;
+    has_character = space_get_character(game_get_space(game, player_location)) != NO_ID;
+    if (!has_character)
+    {
+        return;
+    }
     character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
 
-    if (has_character || character_get_friendly(character) == FALSE || character_get_health(character) > 0 || player_get_health(player) > 0)
+    if (character_get_friendly(character) == FALSE && character_get_health(character) > 0 && player_get_health(player) > 0)
     {
         /*Makes a fight between the entities.*/
         rand_num = random_int(0, 9);
