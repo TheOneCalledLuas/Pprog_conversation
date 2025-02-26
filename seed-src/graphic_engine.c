@@ -181,6 +181,16 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         }
         free(id_list);
     }
+    /* Prints the Message.*/
+    if (command_get_code(game_get_last_command(game)) == CHAT)
+    {
+        /*Checks that there's a friendly NPC to talk with.*/
+        if (space_get_character(game_get_space(game,id_act)) != NO_ID && character_get_friendly(game_get_character(game, space_get_character(game_get_space(game,id_act)))) == TRUE)
+        {
+            sprintf(str, "  Message: %s", character_get_message(game_get_character(game, space_get_character(game_get_space(game,id_act)))));
+            screen_area_puts(ge->descript, str);
+        }
+    }
 
     /* Paint in the banner area */
     screen_area_puts(ge->banner, "    The anthill game ");
