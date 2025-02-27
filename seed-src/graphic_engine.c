@@ -199,8 +199,5 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Dump to the terminal */
     screen_paint();
-    character_print(game_get_character(game,3));
-    character_print(game_get_character(game,4));
-    player_print(game_get_player(game));
     printf("prompt:> ");
 }

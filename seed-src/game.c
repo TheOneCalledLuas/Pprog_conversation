@@ -83,7 +83,10 @@ Character *game_get_character(Game *game, Id id)
     for (i = 0; i < game->n_objects; i++)
     {
         if (character_get_id(game->characters[i]) == id)
+        {
+            character_print(game->characters[i]);
             return game->characters[i];
+        }
     }
 
     /*The id wasn't found.*/
@@ -197,8 +200,10 @@ Status game_destroy(Game **game)
     }
 
     /*Destroys the characters.*/
-    character_destroy(game_get_character((*game),CHARACTER_ID_1));
-    character_destroy(game_get_character((*game),CHARACTER_ID_2));
+    for (i = 0; i < (*game)->n_characters; i++)
+    {
+        character_destroy((*game)->characters[i]);
+    }
 
     /*Destroys the spaces.*/
     for (i = 0; i < (*game)->n_spaces; i++)
@@ -504,7 +509,7 @@ Status game_create_from_file(Game **game, char *filename)
 
     /*Loads the characters wheere they are supposed to be.*/
     c1 = character_create(CHARACTER_ID_1);
-    character_set_description(c1, CHARACTER_DESCR_1);
+    character_set_description(c1, "mº'");
     character_set_friendly(c1, TRUE);
     character_set_health(c1, CHARACTER_HEALTH_1);
     character_set_message(c1, CHARACTER_MSG_1);
@@ -512,12 +517,12 @@ Status game_create_from_file(Game **game, char *filename)
     game_add_character((*game), c1);
     space_set_character(game_get_space((*game), SPACE_C1), CHARACTER_ID_1);
     c2 = character_create(CHARACTER_ID_2);
-    character_set_description(c2, CHARACTER_DESCR_2);
+    game_add_character((*game), c2);
+    character_set_description(c2, "/\\oo/\\");
     character_set_friendly(c2, FALSE);
     character_set_health(c2, CHARACTER_HEALTH_2);
     character_set_message(c2, CHARACTER_MSG_2);
     character_set_name(c2, CHARACTER_NAME_2);
-    game_add_character((*game), c2);
     space_set_character(game_get_space((*game), SPACE_C2), CHARACTER_ID_2);
 
     return OK;
