@@ -191,11 +191,11 @@ Status player_print(Player *player)
     /* 3. Print the information about the object.*/
     if (player->object)
     {
-        fprintf(stdout, "--> Player has the object with id %ld", player->object);
+        fprintf(stdout, "--> Player has the object with id %ld \n", player->object);
     }
     else
     {
-        fprintf(stdout, "--> Player does't have the object");
+        fprintf(stdout, "--> Player does't have the object\n");
     }
     return OK;
 }

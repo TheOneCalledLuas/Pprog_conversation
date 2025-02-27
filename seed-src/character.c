@@ -171,7 +171,7 @@ Status character_print(Character *character)
     fprintf(stdout, "--> Character message (\"%s\")\n", character->message);
 
     /*3-Printf the extra information of the character*/
-    fprintf(stdout, "-->Character state(0=enemy, 1=friendly): %d \n", character->friendly);
+    fprintf(stdout, "--> Character state(0=enemy, 1=friendly): %d \n", character->friendly);
 
     return OK;
 }
