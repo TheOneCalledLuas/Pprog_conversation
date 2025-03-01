@@ -61,7 +61,7 @@ Id character_get_id(Character *character)
     /*Error handling.*/
     if (!character)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the value.*/
     return character->id;

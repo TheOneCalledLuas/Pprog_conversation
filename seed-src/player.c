@@ -85,7 +85,7 @@ Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE])
 Status player_set_player_location(Player *player, Id id)
 {
     /*Error management*/
-    if (player == NULL || id == NO_ID)
+    if (player == NULL || id == NO_ID ||id == ID_ERROR)
     {
         return ERROR;
     }
@@ -113,7 +113,7 @@ Id player_get_player_id(Player *player)
     /*Error management*/
     if (player == NULL)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     return player->player_id;
@@ -135,7 +135,7 @@ Id player_get_player_location(Player *player)
     /*Error management.*/
     if (player == NULL)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     return player->player_location;
@@ -145,7 +145,7 @@ Id player_get_object(Player *player)
     /*Error management.*/
     if (player == NULL)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     return player->object;

@@ -46,7 +46,7 @@ Space *space_create(Id id)
     int i = 0;
 
     /* Error control.*/
-    if (id == NO_ID)
+    if (id == NO_ID ||id == ID_ERROR)
         return NULL;
     /*Allocates memory for the space.*/
     newSpace = (Space *)malloc(sizeof(Space));
@@ -126,7 +126,7 @@ Id space_get_id(Space *space)
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the value.*/
     return space->id;
@@ -162,7 +162,7 @@ const char *space_get_name(Space *space)
 Status space_set_north(Space *space, Id id)
 {
     /*Error handling.*/
-    if (!space || id == NO_ID)
+    if (!space || id == ID_ERROR)
     {
         return ERROR;
     }
@@ -176,7 +176,7 @@ Id space_get_north(Space *space)
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the value.*/
     return space->north;
@@ -185,7 +185,7 @@ Id space_get_north(Space *space)
 Status space_set_south(Space *space, Id id)
 {
     /*Error handling.*/
-    if (!space || id == NO_ID)
+    if (!space ||id == ID_ERROR)
     {
         return ERROR;
     }
@@ -199,7 +199,7 @@ Id space_get_south(Space *space)
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the value.*/
     return space->south;
@@ -208,7 +208,7 @@ Id space_get_south(Space *space)
 Status space_set_east(Space *space, Id id)
 {
     /*Error handling.*/
-    if (!space || id == NO_ID)
+    if (!space||id == ID_ERROR)
     {
         return ERROR;
     }
@@ -222,7 +222,7 @@ Id space_get_east(Space *space)
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the value.*/
     return space->east;
@@ -231,7 +231,7 @@ Id space_get_east(Space *space)
 Status space_set_west(Space *space, Id id)
 {
     /*Error handling.*/
-    if (!space || id == NO_ID)
+    if (!space ||id == ID_ERROR)
     {
         return ERROR;
     }
@@ -245,7 +245,7 @@ Id space_get_west(Space *space)
     /*Error handling.*/
     if (!space)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     return space->west;
 }
@@ -262,7 +262,7 @@ Set *space_get_objects(Space *space)
 
 Status space_add_object(Space *space, Id object)
 {
-    if (!space || object == NO_ID)
+    if (!space || object == NO_ID || object == ID_ERROR)
     {
         return ERROR;
     }
@@ -271,18 +271,18 @@ Status space_add_object(Space *space, Id object)
 
 int space_find_object(Space *space, Id object)
 {
-    if (!space || object == NO_ID)
+    if (!space || object == NO_ID || object == ID_ERROR)
     {
-        return 0;
+        return -1;
     }
     return set_find(space->objects, object);
 }
 
 Id space_take_object(Space *space, Id object)
 {
-    if (!space || object == NO_ID)
+    if (!space || object == NO_ID || object == ID_ERROR)
     {
-        return ERROR;
+        return ID_ERROR;
     }
     return set_take(space->objects, object);
 }

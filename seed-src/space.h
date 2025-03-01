@@ -91,7 +91,6 @@ const char *space_get_name(Space *space);
  * @param id Id number of the space located at the north
  * @return OK, if everything goes well or ERROR if there was some mistake
  */
-
 Status space_set_north(Space *space, Id id);
 
 /**

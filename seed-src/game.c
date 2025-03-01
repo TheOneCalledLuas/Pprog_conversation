@@ -129,7 +129,7 @@ Space *game_get_space(Game *game, Id id)
     }
 
     /*Validates the id.*/
-    if (id == NO_ID)
+    if (id == NO_ID ||id == ID_ERROR)
     {
         return NULL;
     }
@@ -166,7 +166,7 @@ Id game_get_space_id_at(Game *game, int position)
     /*Checks the arguments and possible errors.*/
     if (position < 0 || position >= game->n_spaces || (!game))
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     /*Returns the id of the space with that position.*/
     return space_get_id(game->spaces[position]);
@@ -258,7 +258,7 @@ Id game_get_object_location(Game *game, Id id)
     /*Error management*/
     if (game == NULL)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID.*/
@@ -301,7 +301,7 @@ int game_has_object(Game *game, Id id)
 {
     int i = 0, len = 0;
     /*Error management.*/
-    if (!game || id == NO_ID)
+    if (!game || id == NO_ID ||id == ID_ERROR)
         return -1;
     len = game_get_n_objects(game);
 
@@ -333,7 +333,7 @@ Id game_get_object_by_name(Game *game, char *word)
     int i;
     if (!game || !word)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
     for (i = 0; i < game->n_objects; i++)
     {
@@ -398,7 +398,7 @@ Object *game_get_object(Game *game, Id id)
 {
     int i = 0, len = 0;
     /*Error handling.*/
-    if (!game || id == NO_ID)
+    if (!game || id == NO_ID ||id == ID_ERROR)
         return NULL;
 
     len = game_get_n_objects(game);

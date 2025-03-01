@@ -14,10 +14,6 @@
 #include "set.h"
 #include "types.h"
 
-/**
- * Error code for functions in this module (as -1 is an id (NO_ID)).
- */
-#define ID_ERROR -2
 
 /**
  * @brief Set TAD.

@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["anthill.dat"],
+            "args": ["/home/fernandpo/cosa_uni/proyecto_program/seed-src/anthill.dat"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
