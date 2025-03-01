@@ -56,6 +56,22 @@ void game_actions_next(Game *game);
 void game_actions_back(Game *game);
 
 /**
+ * @brief Action to be executed when left command is given.
+ * @author Fernando Mijangos Varas.
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_left(Game *game);
+
+/**
+ * @brief Action to be executed when right command is given.
+ * @author Fernando Mijangos Varas.
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_right(Game *game);
+
+/**
  * @brief Action to be executed when take command is given.
  * @author Fernando Mijangos Varas.
  *
@@ -64,7 +80,7 @@ void game_actions_back(Game *game);
 void game_actions_take(Game *game);
 
 /**
- * @brief Action to be executed when take command is given.
+ * @brief Action to be executed when drop command is given.
  * @author Fernando Mijangos Varas.
  *
  * @param game Pointer to the game structure.
@@ -134,6 +150,12 @@ Status game_actions_update(Game *game, Command *command)
     case BACK:
         game_actions_back(game);
         break;
+    case LEFT:
+        game_actions_left(game);
+        break;
+    case RIGTH:
+        game_actions_right(game);
+        break;
     case TAKE:
         game_actions_take(game);
         break;
@@ -168,7 +190,7 @@ void game_actions_next(Game *game)
 
     /*It gets the player location.*/
     space_id = player_get_player_location(game_get_player(game));
-    if (space_id == NO_ID ||space_id == ID_ERROR)
+    if (space_id == NO_ID || space_id == ID_ERROR)
     {
         return;
     }
@@ -190,13 +212,57 @@ void game_actions_back(Game *game)
 
     /*Gets the player location.*/
     space_id = player_get_player_location(game_get_player(game));
-    if (NO_ID == space_id ||ID_ERROR == space_id)
+    if (NO_ID == space_id || ID_ERROR == space_id)
     {
         return;
     }
 
     /*Sets the player location it to the id space north of him.*/
     current_id = space_get_north(game_get_space(game, space_id));
+    if (current_id != NO_ID)
+    {
+        player_set_player_location(game_get_player(game), current_id);
+    }
+
+    return;
+}
+
+void game_actions_left(Game *game)
+{
+    Id current_id = NO_ID;
+    Id space_id = NO_ID;
+
+    /*Gets the player location.*/
+    space_id = player_get_player_location(game_get_player(game));
+    if (NO_ID == space_id || ID_ERROR == space_id)
+    {
+        return;
+    }
+
+    /*Sets the player location it to the id space north of him.*/
+    current_id = space_get_west(game_get_space(game, space_id));
+    if (current_id != NO_ID)
+    {
+        player_set_player_location(game_get_player(game), current_id);
+    }
+
+    return;
+}
+
+void game_actions_right(Game *game)
+{
+    Id current_id = NO_ID;
+    Id space_id = NO_ID;
+
+    /*Gets the player location.*/
+    space_id = player_get_player_location(game_get_player(game));
+    if (NO_ID == space_id || ID_ERROR == space_id)
+    {
+        return;
+    }
+
+    /*Sets the player location it to the id space north of him.*/
+    current_id = space_get_east(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_player(game), current_id);

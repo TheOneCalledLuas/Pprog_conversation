@@ -21,7 +21,7 @@
 /**
  * @brief structure with all the possible commands and the key words to triger them.
  */
-char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"t", "Take"}, {"d", "Drop"}, {"a", "Attack"},{"c","Chat"}};
+char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"l","Left"},{"r","Right"},{"t", "Take"}, {"d", "Drop"}, {"a", "Attack"},{"c","Chat"}};
 
 /**
  * @brief Command
