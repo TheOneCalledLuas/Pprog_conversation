@@ -180,7 +180,7 @@ Set *space_get_objects(Space *space);
 Status space_add_object(Space *space, Id object);
 
 /**
- * @brief It searches for an object in the set od the space
+ * @brief It searches for an object in the set of the space
  * @author Fernando Mijangos
  *
  * @param space Pointer to the space
