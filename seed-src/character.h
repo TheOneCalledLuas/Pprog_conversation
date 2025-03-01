@@ -141,7 +141,7 @@ Status character_set_health(Character *character, int health);
 int character_get_health(Character *character);
 
 /**
- * @brief GPrints the information of the character.
+ * @brief Prints the information of the character.
  * @author Fernando Mijangos.
  * 
  * @param character Pointer to the character.

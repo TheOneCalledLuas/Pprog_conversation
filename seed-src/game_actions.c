@@ -168,7 +168,7 @@ void game_actions_next(Game *game)
 
     /*It gets the player location.*/
     space_id = player_get_player_location(game_get_player(game));
-    if (space_id == NO_ID)
+    if (space_id == NO_ID ||space_id == ID_ERROR)
     {
         return;
     }
@@ -190,7 +190,7 @@ void game_actions_back(Game *game)
 
     /*Gets the player location.*/
     space_id = player_get_player_location(game_get_player(game));
-    if (NO_ID == space_id)
+    if (NO_ID == space_id ||ID_ERROR == space_id)
     {
         return;
     }
@@ -219,7 +219,7 @@ void game_actions_take(Game *game)
 
     /*1-Gets all the different that it needs and error management.*/
     object = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
-    if (object == NO_ID)
+    if (object == NO_ID || object == ID_ERROR)
     {
         return;
     }
@@ -265,7 +265,7 @@ void game_actions_drop(Game *game)
 
     /*1-Gets all the information it needs and error management.*/
     object = player_get_object(game_get_player(game));
-    if (object == NO_ID)
+    if (object == NO_ID || object == ID_ERROR)
     {
         return;
     }

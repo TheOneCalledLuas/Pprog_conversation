@@ -13,6 +13,7 @@
 
 #define WORD_SIZE 1000
 #define NO_ID -1
+#define ID_ERROR -2
 
 typedef long Id;
 

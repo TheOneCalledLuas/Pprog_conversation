@@ -26,7 +26,7 @@ game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h obje
 graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h player.h set.h game_reader.h libscreen.h
 	gcc $(CFLAGS) $<
 
-space.o: space.c space.c space.h types.h object.h set.h
+space.o: space.c space.h types.h object.h set.h
 	gcc $(CFLAGS) $<
 
 object.o: object.c object.h types.h
@@ -42,7 +42,7 @@ character.o: character.c character.h types.h
 	gcc $(CFLAGS) $<
 
 clean:
-	rm -f *.o anthill
+	rm -f *.o anthill set_test space_test
 
 clear: 
 	rm -f *.o
@@ -65,10 +65,10 @@ set_test: set_test.o set.o
 set_test.o: set_test.c set_test.h set.h types.h test.h
 	gcc $(CFLAGS) $<
 
-space_test: space_test.o space.o
+space_test: space_test.o space.o set.o object.o
 	gcc -o space_test $^
 
-space_test.o: space_test.c space_test.h space.h types.h object.h test.h
+space_test.o: space_test.c space.h types.h object.h set.h space_test.h test.h
 	gcc $(CFLAGS) $<
 
 

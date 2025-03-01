@@ -100,7 +100,7 @@ Id object_get_id(Object *object)
     /*Checks the arguments.*/
     if (!object)
     {
-        return NO_ID;
+        return ID_ERROR;
     }
 
     /*Returns the id.*/
