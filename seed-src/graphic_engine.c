@@ -117,6 +117,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     Id id_space = 0;
     Space *space_act = NULL;
+    Character **characters;
     char str[MAX_STRING_GE];
     /*char spaces[] = {"                 "};*/
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
@@ -211,7 +212,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Paint in the description area */
     screen_area_clear(ge->descript);
-    sprintf(str, "  Objects:");
+    sprintf(str, "  OBJECTS:");
     screen_area_puts(ge->descript, str);
     if (game_get_n_objects(game) >= 1)
     {
@@ -221,19 +222,41 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         {
             if ((id_space = game_get_object_location(game, id_list[i])) != -1)
             {
-                sprintf(str, "%s : %ld", object_get_name(game_get_object(game, id_list[i])), id_space);
+                sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_space);
                 screen_area_puts(ge->descript, str);
             }
         }
         free(id_list);
     }
+    screen_area_puts(ge->descript, " ");
+    screen_area_puts(ge->descript, "  CHARACTERS");
+    characters = game_get_array_characters(game);
+    for(i=0; i<game_get_num_characters(game);i++)
+    {
+        sprintf(str, "   %-6s: %ld (%d)", character_get_description(characters[i]), game_get_character_location(game, character_get_id(characters[i])),character_get_health(characters[i]));
+        screen_area_puts(ge->descript, str);
+    }
+    screen_area_puts(ge->descript, " ");
+    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(game_get_player(game)),player_get_health(game_get_player(game)));
+    screen_area_puts(ge->descript, str);
+    if(player_get_object(game_get_player(game)))
+    {
+        sprintf(str, "   Player_object: %ld",player_get_object(game_get_player(game)));
+        screen_area_puts(ge->descript, str);
+    }else
+    {
+        sprintf(str, "   Player has no objects");
+        screen_area_puts(ge->descript, str);
+    }
+
     /* Prints the Message.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
         /*Checks that there's a friendly NPC to talk with.*/
         if (space_get_character(game_get_space(game, actual_id[4])) != NO_ID && character_get_friendly(game_get_character(game, space_get_character(game_get_space(game, actual_id[4])))) == TRUE)
         {
-            sprintf(str, "  Message: %s", character_get_message(game_get_character(game, space_get_character(game_get_space(game, actual_id[4])))));
+            screen_area_puts(ge->descript, " ");
+            sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, space_get_character(game_get_space(game, actual_id[4])))));
             screen_area_puts(ge->descript, str);
         }
     }
@@ -250,7 +273,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Paint in the feedback area */
     last_cmd = command_get_code(game_get_last_command(game));
-    sprintf(str, " %s (%s)", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS]);
+    i=command_get_status(game_get_last_command(game));
+    sprintf(str, " -%-10s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS],(i==OK?"OK":"ERROR"));
     screen_area_puts(ge->feedback, str);
 
     /* Dump to the terminal */
@@ -260,7 +284,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE])
 {
-    char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 3], *aux_3 = NULL, aux_4[WIDTH_SPACE - 3];
+    char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 3];
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
@@ -312,11 +336,11 @@ Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH
         if (aux_2[0] != '\0')
         {
             strcpy(aux_4, aux_2);
-            snprintf(aux_2, sizeof(aux_2), "%s%c%s", aux_4, ',', aux_3);
+            sprintf(aux_2, "%s%c%s", aux_4, ',', aux_3);
         }
         else
         {
-            snprintf(aux_2, sizeof(aux_2), "%s", (aux_3 && n_objs_space ? aux_3 : " "));
+            sprintf(aux_2, "%s", (aux_3 && n_objs_space ? aux_3 : " "));
         }
     }
     sprintf(destination[7], "|%-14s |", aux_2);

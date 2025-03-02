@@ -41,6 +41,15 @@ typedef struct _Game Game;
 Character *game_get_character(Game *game, Id id);
 
 /**
+ * @brief It returns the array of characters
+ * @author Fernando Mijangos 
+ * 
+ * @param game Game structure, where all the information related to game is included.
+ * @return The array of characters
+ */
+Character **game_get_array_characters(Game *game);
+
+/**
  * @brief Searches for a character and returns the id of the space where its located.
  * @author Saúl López Romero
  *

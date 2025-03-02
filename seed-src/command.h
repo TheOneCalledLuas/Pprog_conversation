@@ -87,6 +87,25 @@ Status command_set_code(Command *command, CommandCode code);
 CommandCode command_get_code(Command *command);
 
 /**
+ * @brief It sets the status of the command 
+ * @author Fernando Mijangos
+ * 
+ * @param command Pointer to the command
+ * @param status New status
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status command_set_status(Command *command, Status status);
+
+/**
+ * @brief It gets the status stored in a command
+ * @author Fernando Mijangos
+ *
+ * @param command Pointer to the command
+ * @return Status of the command
+ */
+Status command_get_status(Command *command);
+
+/**
  * @brief Returns the word stored in the command
  * @author Fernando Mijangos
  * 

@@ -31,7 +31,8 @@ char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "E
 struct _Command
 {
     CommandCode code;             /*!< Name of the command */
-    char word[CMD_LENGHT];       /*!< Extra information the player might give*/
+    char word[CMD_LENGHT];        /*!< Extra information the player might give*/
+    Status status;                /*!< If the las command had any effect or not*/
 };
 
 Command *command_create()
@@ -48,6 +49,7 @@ Command *command_create()
     /* Initialization of an empty command.*/
     newCommand->code = NO_CMD;
     newCommand->word[0] = '\0';
+    newCommand->status= OK;
 
     return newCommand;
 }
@@ -112,6 +114,23 @@ Status command_set_word(Command *command, char *word)
     return OK;
 }
 
+Status command_set_status(Command *command, Status status)
+{
+    if(!command)
+    {
+        return ERROR;
+    }
+
+    /*It copies the value given*/
+    command->status=status;
+    return OK;
+}
+
+Status command_get_status(Command *command)
+{
+    return(command? command->status:ERROR);
+}
+
 Status command_get_user_input(Command *command)
 {
     char input[CMD_LENGHT] = "", *token = NULL;
@@ -123,6 +142,7 @@ Status command_get_user_input(Command *command)
     {
         return ERROR;
     }
+    command->word[0]='\0';
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {

@@ -72,6 +72,11 @@ Status game_create(Game **game)
     return OK;
 }
 
+Character **game_get_array_characters(Game *game)
+{
+    return (game ? game->characters : NULL);
+}
+
 Character *game_get_character(Game *game, Id id)
 {
     int i = 0;
@@ -128,7 +133,7 @@ Space *game_get_space(Game *game, Id id)
     }
 
     /*Validates the id.*/
-    if (id == NO_ID ||id == ID_ERROR)
+    if (id == NO_ID || id == ID_ERROR)
     {
         return NULL;
     }
@@ -300,7 +305,7 @@ int game_has_object(Game *game, Id id)
 {
     int i = 0, len = 0;
     /*Error management.*/
-    if (!game || id == NO_ID ||id == ID_ERROR)
+    if (!game || id == NO_ID || id == ID_ERROR)
         return -1;
     len = game_get_n_objects(game);
 
@@ -397,7 +402,7 @@ Object *game_get_object(Game *game, Id id)
 {
     int i = 0, len = 0;
     /*Error handling.*/
-    if (!game || id == NO_ID ||id == ID_ERROR)
+    if (!game || id == NO_ID || id == ID_ERROR)
         return NULL;
 
     len = game_get_n_objects(game);
@@ -508,7 +513,7 @@ Status game_create_from_file(Game **game, char *filename)
 
     /*Loads the characters wheere they are supposed to be.*/
     c1 = character_create(CHARACTER_ID_1);
-    character_set_description(c1, "mº'");
+    character_set_description(c1, CHARACTER_DESCR_1);
     character_set_friendly(c1, TRUE);
     character_set_health(c1, CHARACTER_HEALTH_1);
     character_set_message(c1, CHARACTER_MSG_1);
@@ -517,7 +522,7 @@ Status game_create_from_file(Game **game, char *filename)
     space_set_character(game_get_space((*game), SPACE_C1), CHARACTER_ID_1);
     c2 = character_create(CHARACTER_ID_2);
     game_add_character((*game), c2);
-    character_set_description(c2, "/\\oo/\\");
+    character_set_description(c2, CHARACTER_DESCR_2);
     character_set_friendly(c2, FALSE);
     character_set_health(c2, CHARACTER_HEALTH_2);
     character_set_message(c2, CHARACTER_MSG_2);

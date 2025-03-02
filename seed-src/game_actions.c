@@ -136,10 +136,12 @@ Status game_actions_update(Game *game, Command *command)
     switch (cmd)
     {
     case UNKNOWN:
+        command_set_status(game_get_last_command(game), OK);
         game_actions_unknown(game);
         break;
 
     case EXIT:
+        command_set_status(game_get_last_command(game), OK);
         game_actions_exit(game);
         break;
 
@@ -192,6 +194,7 @@ void game_actions_next(Game *game)
     space_id = player_get_player_location(game_get_player(game));
     if (space_id == NO_ID || space_id == ID_ERROR)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -201,7 +204,12 @@ void game_actions_next(Game *game)
     {
         player_set_player_location(game_get_player(game), current_id);
     }
-
+    else
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -214,6 +222,7 @@ void game_actions_back(Game *game)
     space_id = player_get_player_location(game_get_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -223,7 +232,13 @@ void game_actions_back(Game *game)
     {
         player_set_player_location(game_get_player(game), current_id);
     }
+    else
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
 
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -236,6 +251,7 @@ void game_actions_left(Game *game)
     space_id = player_get_player_location(game_get_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -245,7 +261,12 @@ void game_actions_left(Game *game)
     {
         player_set_player_location(game_get_player(game), current_id);
     }
-
+    else
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -258,6 +279,7 @@ void game_actions_right(Game *game)
     space_id = player_get_player_location(game_get_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -267,7 +289,12 @@ void game_actions_right(Game *game)
     {
         player_set_player_location(game_get_player(game), current_id);
     }
-
+    else
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -280,6 +307,7 @@ void game_actions_take(Game *game)
     /*Error management*/
     if (!game)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -287,33 +315,39 @@ void game_actions_take(Game *game)
     object = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
     if (object == NO_ID || object == ID_ERROR)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
     if (space_find_object(space, object) == -1)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     player = game_get_player(game);
 
-    /*2-Checks if the player already has the object. */
+    /*2-Checks if the player already has an object. */
     if (player_get_object(player) != -1)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*3-Player takes the object and error management.*/
     if (!player_set_object(player, object))
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     if (!space_take_object(space, object))
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*Sets the argument to '\0' so it doesnt mess with thigns when inputing other commands*/
     command_set_word(game_get_last_command(game), "\0");
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -326,6 +360,7 @@ void game_actions_drop(Game *game)
     /*Error management*/
     if (!game)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
@@ -333,11 +368,13 @@ void game_actions_drop(Game *game)
     object = player_get_object(game_get_player(game));
     if (object == NO_ID || object == ID_ERROR)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
     if (space_find_object(space, object) != -1)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     player = game_get_player(game);
@@ -345,24 +382,32 @@ void game_actions_drop(Game *game)
     /*2-Checks if the player has an object.*/
     if (player_get_object(player) == -1)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*3-The player drops his object.*/
     if (!player_set_object(player, NO_ID))
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     if (!space_add_object(space, object))
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*Sets the word to that so that it doesn mess with things*/
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
-void game_actions_chat(Game *game) { return; }
+void game_actions_chat(Game *game)
+{
+    command_set_status(game_get_last_command(game), ERROR);
+    return;
+}
 
 void game_actions_attack(Game *game)
 {
@@ -374,14 +419,17 @@ void game_actions_attack(Game *game)
 
     /*Error handling.*/
     if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
-
+    }
     /*Checks that the player meets the requirements to attack.*/
     player = game_get_player(game);
     player_location = player_get_player_location(player);
     has_character = space_get_character(game_get_space(game, player_location)) != NO_ID;
     if (!has_character)
     {
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
@@ -406,6 +454,7 @@ void game_actions_attack(Game *game)
             game_set_finished(game, TRUE);
         }
     }
+    command_set_status(game_get_last_command(game), OK);
 }
 
 int random_int(int start, int end)
