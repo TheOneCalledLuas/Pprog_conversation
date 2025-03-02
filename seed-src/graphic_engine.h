@@ -11,6 +11,8 @@
 #ifndef GRAPHIC_ENGINE_H
 #define GRAPHIC_ENGINE_H
 
+#include <stdio.h>
+
 #include "game.h"
 #include "game_reader.h"
 #include "space.h"

@@ -76,7 +76,7 @@ Character *game_get_character(Game *game, Id id)
 {
     int i = 0;
     /*Error handling.*/
-    if (!game)
+    if (!game || id == -1)
         return NULL;
 
     /*Searches for the id.*/

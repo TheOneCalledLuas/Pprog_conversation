@@ -17,9 +17,9 @@
 #include "set.h"
 #include "types.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 /*Map measures.*/
 #define WIDTH_MAP 58
@@ -265,16 +265,22 @@ Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH
     int i, j, n_objs_space, cond = 0;
     Id *set;
     memset(aux_2, '\0', sizeof(aux_2));
+
+    /*Error handling.*/
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
         return ERROR;
+    /*Checks if the player is in the room.*/
     if (space_id == player_get_player_location(game_get_player(game)))
     {
         strcpy(aux, "m0\"");
     }
+
+    /*Gets thhe actual space.*/
     space = game_get_space(game, space_id);
     if (!space)
         return ERROR;
-
+    
+    /*Starts printing the space.*/
     sprintf(destination[0], "+---------------+");
     sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : "     "), space_id);
     for (i = 0; i < 5; i++)
@@ -282,6 +288,7 @@ Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH
         sprintf(destination[i + 2], "|%6s      |", space_get_gdesc_line(space, i));
         destination[i + 2][19] = '\0';
     }
+    /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = set_len(space_get_objects(space));
     set = set_get_content(space_get_objects(space));
 
