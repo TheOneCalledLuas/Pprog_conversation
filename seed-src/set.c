@@ -46,6 +46,11 @@ Set *set_create()
     return set;
 }
 
+Id *set_get_content(Set *set)
+{
+    return(set? set->content:NULL);
+}
+
 void set_destroy(Set *set)
 {
     /*Checks the parameters.*/

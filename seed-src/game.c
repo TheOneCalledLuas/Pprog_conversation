@@ -20,7 +20,7 @@
 #define CHARACTER_HEALTH_1 5
 #define CHARACTER_NAME_1 "Litle Ant"
 #define CHARACTER_MSG_1 "I'm a litle ant."
-#define CHARACTER_DESCR_1 "mº'"
+#define CHARACTER_DESCR_1 "mO^"
 #define SPACE_C1 121
 #define CHARACTER_ID_2 4
 #define CHARACTER_HEALTH_2 5
@@ -84,7 +84,6 @@ Character *game_get_character(Game *game, Id id)
     {
         if (character_get_id(game->characters[i]) == id)
         {
-            character_print(game->characters[i]);
             return game->characters[i];
         }
     }
