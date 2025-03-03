@@ -335,17 +335,21 @@ int game_get_n_objects(Game *game)
 Id game_get_object_by_name(Game *game, char *word)
 {
     int i;
+    /*Error handling.*/
     if (!game || !word)
     {
         return ID_ERROR;
     }
+    /*Searches the object by its name.*/
     for (i = 0; i < game->n_objects; i++)
     {
         if (!(strcmp(word, object_get_name(game->objects[i]))))
         {
+            /*Returns the object id.*/
             return (object_get_id(game->objects[i]));
         }
     }
+    /*The object wasn't found.*/
     return NO_ID;
 }
 
@@ -468,18 +472,22 @@ void game_print(Game *game)
     /*It prints all the information about the game.*/
     printf("\n\n-------------\n\n");
 
+    /*1.-Spaces.*/
     printf("=> Spaces: \n");
     for (i = 0; i < game->n_spaces; i++)
     {
         space_print(game->spaces[i]);
     }
 
+    /*2.-Objects.*/
     printf("=> Number of objects: %d\n", game_get_n_objects(game));
     printf("    Their info is: ");
     for (i = 0; i < game_get_n_objects(game); i++)
     {
         object_print_info(game->objects[i]);
     }
+
+    /*3.-Player.*/
     printf("=> Player id: %d\n", (int)player_get_player_id(game->player));
     return;
 }
@@ -511,7 +519,7 @@ Status game_create_from_file(Game **game, char *filename)
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
 
-    /*Loads the characters wheere they are supposed to be.*/
+    /*Loads the characters where they are supposed to be.*/
     c1 = character_create(CHARACTER_ID_1);
     character_set_description(c1, CHARACTER_DESCR_1);
     character_set_friendly(c1, TRUE);
@@ -529,5 +537,6 @@ Status game_create_from_file(Game **game, char *filename)
     character_set_name(c2, CHARACTER_NAME_2);
     space_set_character(game_get_space((*game), SPACE_C2), CHARACTER_ID_2);
 
+    /*Clean exit.*/
     return OK;
 }

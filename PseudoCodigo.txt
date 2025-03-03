@@ -1,0 +1,33 @@
+Set_add:
+
+Comprueba los argumentos
+    Si son invalidos: return ERROR;
+
+Comprueba si el elemento ya está en el set
+    Si está: fin de ejecución de la función (OK).
+
+Comprueba si el set está lleno
+    Si está lleno: return ERROR;
+
+Añade el elemento al contenido del set.
+Aumenta en numero de elementos del set.
+
+Return OK;
+
+------------------------------------------
+
+Set_del:
+
+Comprueba los argumentos
+    Si son invalidos: return ERROR;
+
+Busca el elemento en el set
+    Si no está en el set o está vacío: return ID_ERROR
+
+Guarda el valor del set encontrado a parte.
+
+Con un bucle mueve todos los elementos del set un espacio
+para quitar el espacio en blanco.
+
+Resta uno al numero de elementos.
+Devuelve el id encontrado.
