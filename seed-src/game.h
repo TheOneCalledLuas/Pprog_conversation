@@ -41,13 +41,15 @@ typedef struct _Game Game;
 Character *game_get_character(Game *game, Id id);
 
 /**
- * @brief It returns the array of characters
+ * @brief It returns an array with the ids of the characters, 
+ *        IMPORTANT it returns something that has been allocated, you have to free it
  * @author Fernando Mijangos 
  * 
  * @param game Game structure, where all the information related to game is included.
- * @return The array of characters
+ * @return The array of ids of the character
+ *          IMPORTANT you have to free it afrter using it
  */
-Character **game_get_array_characters(Game *game);
+Id *game_get_characters(Game *game);
 
 /**
  * @brief Searches for a character and returns the id of the space where its located.

@@ -46,11 +46,6 @@ Set *set_create()
     return set;
 }
 
-Id *set_get_content(Set *set)
-{
-    return(set? set->content:NULL);
-}
-
 void set_destroy(Set *set)
 {
     /*Checks the parameters.*/
@@ -144,6 +139,25 @@ int set_len(Set *set)
 
     /*Returns the value.*/
     return set->n_ids;
+}
+
+Id *set_get_content(Set *set)
+{
+    Id *elements;
+    int i;
+    if(!set || set->n_ids<=0)
+    {
+        return NULL;
+    }
+    if(!(elements=(Id*)calloc(set->n_ids, sizeof(Id))))
+    {
+        return NULL;
+    }
+    for(i=0;i<set->n_ids;i++)
+    {
+        elements[i]=set->content[i];
+    }
+    return elements;
 }
 
 Status set_print(Set *s)

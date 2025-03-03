@@ -33,6 +33,22 @@
 #define WIDTH_SPACE 18
 #define HEIGHT_SPACE 9
 
+/*Space positions in array*/
+/*This is like this so that later when printing its easier with a for*/
+    /* [0] [1] [2] */
+    /* [3] [4] [5] */
+    /* [6] [7] [8] */
+
+#define NORTH 1
+#define SOUTH 7
+#define EAST 5
+#define WEST 3
+#define NORTH_EAST 2
+#define NORTH_WEST 0
+#define SOUTH_EAST 8
+#define SOUTH_WEST 6
+#define ACTUAL_POSITION 4
+
 /**
  * @brief _Graphic_engine
  *
@@ -110,14 +126,10 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    /*the actual_id is to organize the spaces in this way*/
-    /* ictual_id[0]  actual_id[1] actual_id[2] */
-    /* ictual_id[3]  actual_id[4] actual_id[5] */
-    /* ictual_id[6]  actual_id[7] actual_id[8] */
-
-    Id id_space = 0;
+    Id id_aux = 0, *id_aux_2=NULL;
+    Character *character;
+    Player *player;
     Space *space_act = NULL;
-    Character **characters;
     char str[MAX_STRING_GE];
     /*char spaces[] = {"                 "};*/
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
@@ -125,38 +137,38 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Id *id_list = NULL, actual_id[9];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
-
+    player=game_get_player(game);
     /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
-    if ((actual_id[4] = player_get_player_location(game_get_player(game))) != NO_ID)
+    if ((actual_id[4] = player_get_player_location(player)) != NO_ID)
     {
         /*Gets the spaces located to the different points of the space.*/
-        space_act = game_get_space(game, actual_id[4]);
-        actual_id[1] = space_get_north(space_act);
-        actual_id[7] = space_get_south(space_act);
-        actual_id[3] = space_get_west(space_act);
-        actual_id[5] = space_get_east(space_act);
+        space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
+        actual_id[NORTH] = space_get_north(space_act);
+        actual_id[SOUTH] = space_get_south(space_act);
+        actual_id[WEST] = space_get_west(space_act);
+        actual_id[EAST] = space_get_east(space_act);
 
         /*Gets the spaces situated on the corners*/
-        if ((actual_id[0] = space_get_north(game_get_space(game, actual_id[3]))) == ID_ERROR)
+        if ((actual_id[NORTH_WEST] = space_get_north(game_get_space(game, actual_id[WEST]))) == ID_ERROR)
         {
-            if ((actual_id[0] = space_get_west(game_get_space(game, actual_id[1]))) == ID_ERROR)
-                actual_id[0] = NO_ID;
+            if ((actual_id[NORTH_WEST] = space_get_west(game_get_space(game, actual_id[NORTH]))) == ID_ERROR)
+                actual_id[NORTH_WEST] = NO_ID;
         }
-        if ((actual_id[6] = space_get_south(game_get_space(game, actual_id[3]))) == ID_ERROR)
+        if ((actual_id[SOUTH_WEST] = space_get_south(game_get_space(game, actual_id[WEST]))) == ID_ERROR)
         {
-            if ((actual_id[6] = space_get_west(game_get_space(game, actual_id[7]))) == ID_ERROR)
-                actual_id[6] = NO_ID;
+            if ((actual_id[SOUTH_WEST] = space_get_west(game_get_space(game, actual_id[SOUTH]))) == ID_ERROR)
+                actual_id[SOUTH_WEST] = NO_ID;
         }
-        if ((actual_id[2] = space_get_north(game_get_space(game, actual_id[5]))) == ID_ERROR)
+        if ((actual_id[NORTH_EAST] = space_get_north(game_get_space(game, actual_id[EAST]))) == ID_ERROR)
         {
-            if ((actual_id[2] = space_get_east(game_get_space(game, actual_id[1]))) == ID_ERROR)
-                actual_id[2] = NO_ID;
+            if ((actual_id[NORTH_EAST] = space_get_east(game_get_space(game, actual_id[NORTH]))) == ID_ERROR)
+                actual_id[NORTH_EAST] = NO_ID;
         }
-        if ((actual_id[8] = space_get_south(game_get_space(game, actual_id[5]))) == ID_ERROR)
+        if ((actual_id[SOUTH_EAST] = space_get_south(game_get_space(game, actual_id[EAST]))) == ID_ERROR)
         {
-            if ((actual_id[8] = space_get_east(game_get_space(game, actual_id[7]))) == ID_ERROR)
-                actual_id[8] = NO_ID;
+            if ((actual_id[SOUTH_EAST] = space_get_east(game_get_space(game, actual_id[SOUTH]))) == ID_ERROR)
+                actual_id[SOUTH_EAST] = NO_ID;
         }
 
         /*CLEANS THE MAP*/
@@ -189,13 +201,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         }
 
         /*PUTS THE ARROWS*/
-        if (actual_id[1] != NO_ID)
+        if (actual_id[NORTH] != NO_ID)
             map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = '^';
-        if (actual_id[3] != NO_ID)
+        if (actual_id[WEST] != NO_ID)
             map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE + 1] = '<';
-        if (actual_id[5] != NO_ID)
+        if (actual_id[EAST] != NO_ID)
             map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 1] = '>';
-        if (actual_id[7] != NO_ID)
+        if (actual_id[SOUTH] != NO_ID)
             map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = 'v';
         /*PUTS \0 IN CASE THEY WEREN'T PLACED*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -220,30 +232,38 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         id_list = game_get_objects(game);
         for (i = 0; i < game_get_n_objects(game); i++)
         {
-            if ((id_space = game_get_object_location(game, id_list[i])) != -1)
+            if ((id_aux = game_get_object_location(game, id_list[i])) != -1)
             {
-                sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_space);
+                sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_aux);
                 screen_area_puts(ge->descript, str);
             }
         }
         free(id_list);
     }
+
+    /*Prints the characters information*/
     screen_area_puts(ge->descript, " ");
     screen_area_puts(ge->descript, "  CHARACTERS");
-    characters = game_get_array_characters(game);
-    for(i=0; i<game_get_num_characters(game);i++)
+    id_aux_2 = game_get_characters(game);
+    for (i = 0; i < game_get_num_characters(game); i++)
     {
-        sprintf(str, "   %-6s: %ld (%d)", character_get_description(characters[i]), game_get_character_location(game, character_get_id(characters[i])),character_get_health(characters[i]));
+        character = game_get_character(game, id_aux_2[i]);
+        sprintf(str, "   %-6s: %ld (%d)", character_get_description(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
         screen_area_puts(ge->descript, str);
     }
     screen_area_puts(ge->descript, " ");
-    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(game_get_player(game)),player_get_health(game_get_player(game)));
+    free(id_aux_2);
+
+    /*Prints the player information*/
+    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
-    if(player_get_object(game_get_player(game)))
+    if (player_get_object(player))
     {
-        sprintf(str, "   Player_object: %ld",player_get_object(game_get_player(game)));
+        id_aux = player_get_object(player);
+        sprintf(str, " Player_object: %s(%ld)", (id_aux == NO_ID || id_aux == ID_ERROR ? "NO OBJECT" : object_get_name(game_get_object(game, id_aux))), id_aux);
         screen_area_puts(ge->descript, str);
-    }else
+    }
+    else
     {
         sprintf(str, "   Player has no objects");
         screen_area_puts(ge->descript, str);
@@ -252,11 +272,12 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /* Prints the Message.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
+        id_aux=space_get_character(space_act);
         /*Checks that there's a friendly NPC to talk with.*/
-        if (space_get_character(game_get_space(game, actual_id[4])) != NO_ID && character_get_friendly(game_get_character(game, space_get_character(game_get_space(game, actual_id[4])))) == TRUE)
+        if (id_aux != NO_ID && (character_get_friendly(game_get_character(game, id_aux)) == TRUE))
         {
             screen_area_puts(ge->descript, " ");
-            sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, space_get_character(game_get_space(game, actual_id[4])))));
+            sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
             screen_area_puts(ge->descript, str);
         }
     }
@@ -273,8 +294,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Paint in the feedback area */
     last_cmd = command_get_code(game_get_last_command(game));
-    i=command_get_status(game_get_last_command(game));
-    sprintf(str, " -%-10s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS],(i==OK?"OK":"ERROR"));
+    i = command_get_status(game_get_last_command(game));
+    sprintf(str, " -%-10s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
     screen_area_puts(ge->feedback, str);
 
     /* Dump to the terminal */
@@ -303,7 +324,7 @@ Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH
     space = game_get_space(game, space_id);
     if (!space)
         return ERROR;
-    
+
     /*Starts printing the space.*/
     sprintf(destination[0], "+---------------+");
     sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : "     "), space_id);
@@ -313,36 +334,41 @@ Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH
         destination[i + 2][19] = '\0';
     }
     /*Once the space is printed, shows the objects on screen.*/
-    n_objs_space = set_len(space_get_objects(space));
-    set = set_get_content(space_get_objects(space));
-
-    /*Looks how many strings it can print inside the 15 letters in the space given
-    (18 -2 for the barriers, -1 for the extra space i'm placing)*/
-    for (i = n_objs_space; cond == 0 && i != 0; i--)
+    n_objs_space = space_get_n_objects(space);
+    set = (space_get_objects(space));
+    if (set)
     {
-        for (j = 0; j < i; j++)
+        /*Looks how many strings it can print inside the 15 letters in the space given
+        (18 -2 for the barriers, -1 for the extra space i'm placing)*/
+        for (i = n_objs_space; cond == 0 && i != 0; i--)
         {
-            cond = cond + 1 + strlen(object_get_name(game_get_object(game, set[j])));
-        }
+            for (j = 0; j < i; j++)
+            {
+                cond = cond + 1 + strlen(object_get_name(game_get_object(game, set[j])));
+            }
 
-        if (cond > WIDTH_SPACE - 3)
-        {
-            cond = 0;
+            if (cond > WIDTH_SPACE - 3)
+            {
+                cond = 0;
+            }
         }
-    }
-    for (j = 0; j <= i; j++)
-    {
-        aux_3 = object_get_name(game_get_object(game, set[j]));
-        if (aux_2[0] != '\0')
+        for (j = 0; j <= i; j++)
         {
-            strcpy(aux_4, aux_2);
-            sprintf(aux_2, "%s%c%s", aux_4, ',', aux_3);
+            aux_3 = object_get_name(game_get_object(game, set[j]));
+            if (aux_2[0] != '\0')
+            {
+                strcpy(aux_4, aux_2);
+                sprintf(aux_2, "%s%c%s", aux_4, ',', aux_3);
+            }
+            else
+            {
+                sprintf(aux_2, "%s", (aux_3? aux_3 : " "));
+            }
         }
-        else
-        {
-            sprintf(aux_2, "%s", (aux_3 && n_objs_space ? aux_3 : " "));
-        }
-    }
+        free(set);  
+    }else{aux_2[0]='\0';}
+
+
     sprintf(destination[7], "|%-14s |", aux_2);
     destination[7][19] = '\0';
     sprintf(destination[8], "+---------------+");
