@@ -61,6 +61,14 @@ Status game_create(Game **game)
     {
         (*game)->spaces[i] = NULL;
     }
+        for (i = 0; i < MAX_CHARACTERS; i++)
+    {
+        (*game)->characters[i] = NULL;
+    }
+    for (i = 0; i < MAX_OBJECTS; i++)
+    {
+        (*game)->objects[i] = NULL;
+    }
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
@@ -72,9 +80,24 @@ Status game_create(Game **game)
     return OK;
 }
 
-Character **game_get_array_characters(Game *game)
+Id *game_get_characters(Game *game)
 {
-    return (game ? game->characters : NULL);
+    Id *characters=NULL;
+    int n_elements,i;
+    if(!game)
+    {
+        return NULL;
+    }
+    n_elements=MAX_CHARACTERS;
+    if(!(characters=(Id*)calloc(n_elements, sizeof(Id))))
+    {
+        return NULL;
+    }
+    for(i=0;i<n_elements;i++)
+    {
+        characters[i]=character_get_id(game->characters[i]);
+    }
+    return characters;
 }
 
 Character *game_get_character(Game *game, Id id)
@@ -398,6 +421,7 @@ Status game_add_object(Game *game, Object *object)
     /*Clean exit.*/
     return OK;
 }
+
 Object *game_get_object(Game *game, Id id)
 {
     int i = 0, len = 0;

@@ -26,6 +26,14 @@
  *       is executed
  *
  */
+
+
+                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
+                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
+                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
+                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
+
+
 int main(int argc, char **argv)
 {
 

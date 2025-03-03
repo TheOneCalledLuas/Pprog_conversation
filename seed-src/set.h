@@ -38,15 +38,6 @@ Set *set_create();
 void set_destroy(Set *set);
 
 /**
- * @brief Returns the array of ids in the set.
- * @author Fernando Mijangos
- * 
- * @param set Pointer to the set.
- * @return Array of ids of the set.
- */
-Id *set_get_content(Set *set);
-
-/**
  * @brief Searches for an id in a set.
  * @author Saul Lopez Romero
  *
@@ -81,9 +72,19 @@ Id set_take(Set *set, Id id);
  * @author Saul Lopez Romero.
  * 
  * @param set Pointer to the set.
- * @return number of Ids in the set, -1 otherwise.
+ * @return Number of Ids in the set, -1 otherwise.
  */
 int set_len(Set * set);
+
+/**
+ * @brief It returns an array of ids with the content of the set
+ *          IMPORTANT free the array after using it
+ * @author Fernando Mijangos 
+ * 
+ * @param set Pointer to the set
+ * @return Array of ids with the content of the set
+ */
+Id *set_get_content(Set *set);
 
 /**
  * @brief Prints set information.

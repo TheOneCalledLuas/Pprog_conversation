@@ -250,14 +250,15 @@ Id space_get_west(Space *space)
     return space->west;
 }
 
-Set *space_get_objects(Space *space)
+Id *space_get_objects(Space *space)
 {
+    Id *set_objects;
     /*Error handling.*/
-    if (!space)
+    if(!(set_objects=set_get_content(space->objects)))
     {
         return NULL;
     }
-    return space->objects;
+    return set_objects;
 }
 
 Status space_add_object(Space *space, Id object)
@@ -295,6 +296,11 @@ Id space_get_character(Space *space)
 
     /*Returns the value.*/
     return space->character;
+}
+
+int space_get_n_objects(Space *space)
+{
+    return(!space?-1:set_len(space->objects));
 }
 
 Status space_set_character(Space *space, Id id)

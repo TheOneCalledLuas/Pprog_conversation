@@ -140,6 +140,7 @@ Id player_get_player_location(Player *player)
 
     return player->player_location;
 }
+
 Id player_get_object(Player *player)
 {
     /*Error management.*/

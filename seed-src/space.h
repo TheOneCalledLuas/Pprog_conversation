@@ -160,13 +160,15 @@ Status space_set_west(Space *space, Id id);
 Id space_get_west(Space *space);
 
 /**
- * @brief It gets the set of the objects in the space.
+ * @brief It returns an array with the ids of the objects in the space
+ *          IMPORTANT you have to free the array after using it
  * @author Fernando Mijangos
  *
  * @param space Pointer to the space.
- * @return Set of the objects of the space.
+ * @return Array with the ids of the objects
+ *          IMPORTANT you have to free the array after using it.
  */
-Set *space_get_objects(Space *space);
+Id *space_get_objects(Space *space);
 
 /**
  * @brief It adds a new object to the set
@@ -197,6 +199,15 @@ int space_find_object(Space *space, Id object);
  * @return Id of the object you are taking.
  */
 Id space_take_object(Space *space, Id object);
+
+/**
+ * @brief It gets the n_elements in the set of objects.
+ * @author Fernando Mijangos
+ * 
+ * @param Space Pointer to the space.
+ * @return n_elements of the set of object.
+ */
+int space_get_n_objects(Space *space);
 
 /**
  * @brief Returns the character id.
