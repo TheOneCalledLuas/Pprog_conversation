@@ -28,6 +28,7 @@
 #define CHARACTER_MSG_2 "\0"
 #define CHARACTER_DESCR_2 "/\\oo/\\"
 #define SPACE_C2 123
+#define ID_PLAYER 5
 
 /**
    Game interface implementation.
@@ -73,7 +74,7 @@ Status game_create(Game **game)
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
     (*game)->n_characters = 0;
-    (*game)->player = player_create(5);
+    (*game)->player = player_create(ID_PLAYER);
     (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
 

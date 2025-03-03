@@ -117,6 +117,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     Id id_aux = 0, *id_aux_2=NULL;
     Character *character;
+    Player *player;
     Space *space_act = NULL;
     char str[MAX_STRING_GE];
     /*char spaces[] = {"                 "};*/
@@ -125,10 +126,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Id *id_list = NULL, actual_id[9];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
-
+    player=game_get_player(game);
     /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
-    if ((actual_id[4] = player_get_player_location(game_get_player(game))) != NO_ID)
+    if ((actual_id[4] = player_get_player_location(player)) != NO_ID)
     {
         /*Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[4]);
@@ -243,11 +244,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     free(id_aux_2);
 
     /*Prints the player information*/
-    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(game_get_player(game)), player_get_health(game_get_player(game)));
+    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
-    if (player_get_object(game_get_player(game)))
+    if (player_get_object(player))
     {
-        id_aux = player_get_object(game_get_player(game));
+        id_aux = player_get_object(player);
         sprintf(str, " Player_object: %s(%ld)", (id_aux == NO_ID || id_aux == ID_ERROR ? "NO OBJECT" : object_get_name(game_get_object(game, id_aux))), id_aux);
         screen_area_puts(ge->descript, str);
     }
