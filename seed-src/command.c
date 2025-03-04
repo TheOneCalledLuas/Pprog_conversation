@@ -3,7 +3,7 @@
  *
  * @file command.c
  * @author Fernando Mijangos
- * @version 1
+ * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
  */
@@ -30,9 +30,9 @@ char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "E
  */
 struct _Command
 {
-    CommandCode code;             /*!< Name of the command */
-    char word[CMD_LENGHT];        /*!< Extra information the player might give*/
-    Status status;                /*!< If the las command had any effect or not*/
+    CommandCode code;             /*!< Name of the command. */
+    char word[CMD_LENGHT];        /*!< Extra information the player might give.*/
+    Status status;                /*!< If the las command had any effect or not.*/
 };
 
 Command *command_create()
@@ -75,7 +75,8 @@ Status command_set_code(Command *command, CommandCode code)
     {
         return ERROR;
     }
-
+    
+    /*Sets the value.*/
     command->code = code;
 
     return OK;
@@ -88,6 +89,8 @@ CommandCode command_get_code(Command *command)
     {
         return NO_CMD;
     }
+
+    /*Gets the value.*/
     return command->code;
 }
 
@@ -97,17 +100,19 @@ char *command_get_word(Command *command)
     {
         return NULL;
     }
+    /*Gets the value.*/
     return command->word;
 }
 
 Status command_set_word(Command *command, char *word)
 {
+    /*Error handling.*/
     if(!command || !word)
     {
         return ERROR;
     }
 
-    /*It copies all the letters it can before overflowing to the destionation and the las character is set to \0 */
+    /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0 */
     strncpy(command->word, word, CMD_LENGHT);
     command->word[CMD_LENGHT-1]='\0';
 
@@ -116,6 +121,7 @@ Status command_set_word(Command *command, char *word)
 
 Status command_set_status(Command *command, Status status)
 {
+    /*Error handling.*/
     if(!command)
     {
         return ERROR;
