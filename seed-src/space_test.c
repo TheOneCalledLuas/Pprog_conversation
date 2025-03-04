@@ -26,14 +26,6 @@
  *       is executed
  *
  */
-
-
-                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
-                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
-                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
-                /*IMPORTANTE, HAY QUE ACTUALIZAR ESTO, space_get_objects no existe de esa manera ahora, y ahora existe space_get_n_objects*/
-
-
 int main(int argc, char **argv)
 {
 
@@ -180,6 +172,15 @@ int main(int argc, char **argv)
         test3_space_set_west();
     if (all || test == 58)
         test4_space_set_west();
+    if (all || test == 59)
+        test1_space_get_n_objects();
+    if (all || test == 59)
+        test2_space_get_n_objects();
+    if (all || test == 60)
+        test3_space_get_n_objects();
+    if (all || test == 61)
+        test4_space_get_n_objects();
+
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -387,17 +388,21 @@ void test1_space_get_objects()
 {
     /*Creates the space.*/
     Space *s = NULL;
+    Id *ids;
     s = space_create(5);
-    PRINT_TEST_RESULT(space_get_objects(s) != NULL);
+    PRINT_TEST_RESULT((ids=space_get_objects(s)) != NULL);
     /*Frees the memory.*/
+    free(ids);
     space_destroy(s);
 }
 
 void test2_space_get_objects()
 {
     Space *s = NULL;
-    PRINT_TEST_RESULT(space_get_objects(s) == NULL);
+    Id *ids;
+    PRINT_TEST_RESULT((ids=space_get_objects(s))  == NULL);
 }
+
 
 void test1_space_get_name()
 {
@@ -758,3 +763,14 @@ void test4_space_set_character()
     /*Frees the memory.*/
     space_destroy(s);
 }
+void test1_space_get_n_objects()
+{
+    /*Creates the space.*/
+    Space *s = NULL;
+    s=space_create(5);
+    PRINT_TEST_RESULT(space_get_n_objects(s) != -1);
+    /*Frees the memory*/
+}
+void test2_space_get_n_objects();
+void test3_space_get_n_objects();
+void test4_space_get_n_objects();

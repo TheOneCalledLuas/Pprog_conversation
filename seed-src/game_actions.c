@@ -433,8 +433,12 @@ void game_actions_attack(Game *game)
         return;
     }
     character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
-
-    if (character_get_friendly(character) == FALSE && character_get_health(character) > 0 && player_get_health(player) > 0)
+    if(character_get_health(character) <= 0 || character_get_friendly(character) == TRUE)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    if (player_get_health(player) > 0)
     {
         /*Makes a fight between the entities.*/
         rand_num = random_int(0, 9);
@@ -453,11 +457,6 @@ void game_actions_attack(Game *game)
         {
             game_set_finished(game, TRUE);
         }
-    }
-    /*Checks if the played died.*/
-    if (player_get_health(player) < 1)
-    {
-        game_set_finished(game, TRUE);
     }
     command_set_status(game_get_last_command(game), OK);
 }

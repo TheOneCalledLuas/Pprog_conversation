@@ -32,7 +32,6 @@
 #define MAX_STRING_GE 255
 #define WIDTH_SPACE 18
 #define HEIGHT_SPACE 9
-#define MAX_COORDS 9
 
 /*Space positions in array*/
 /*This is like this so that later when printing its easier with a for*/
@@ -134,7 +133,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     char str[MAX_STRING_GE];
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
     int i = 0, j = 0, t = 0, v = 0;
-    Id *id_list = NULL, actual_id[MAX_COORDS];
+    Id *id_list = NULL, actual_id[9];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player=game_get_player(game);
@@ -257,10 +256,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*Prints the player information*/
     sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
-    if (player_get_object(player))
+    if (player_get_object(player)!=NO_ID)
     {
         id_aux = player_get_object(player);
-        sprintf(str, " Player_object: %s(%ld)", (id_aux == NO_ID || id_aux == ID_ERROR ? "NO OBJECT" : object_get_name(game_get_object(game, id_aux))), id_aux);
+        sprintf(str, " Player_object: %s(%ld)",object_get_name(game_get_object(game, id_aux)), id_aux);
         screen_area_puts(ge->descript, str);
     }
     else
@@ -330,8 +329,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : "     "), space_id);
     for (i = 0; i < 5; i++)
     {
-        sprintf(destination[i + 2], "|%6s      |", space_get_gdesc_line(space, i));
-        destination[i + 2][19] = '\0';
+        sprintf(destination[i + 2], "|%s      |", space_get_gdesc_line(space, i));
     }
     /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = space_get_n_objects(space);

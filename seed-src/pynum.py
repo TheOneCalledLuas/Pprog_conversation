@@ -5,7 +5,7 @@ new_line = ""
 filename = input("ingresa el nombre del archivo: ")
 
 #Fixes the file.
-with open("tester.txt","r",encoding="UTF-8") as file:
+with open(filename,"r",encoding="UTF-8") as file:
     for line in file:
         found = line.find("==")
         if found != -1:
