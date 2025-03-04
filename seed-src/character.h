@@ -12,9 +12,6 @@
 #define CHARACTER_H
 
 #include "types.h"
-#define MAX_NAME 20
-#define MAX_DESC 7
-#define MAX_MESSAGE 100
 
 typedef struct _Character Character;
 
@@ -59,7 +56,7 @@ Status character_set_name(Character *character, char* name);
  * @author Fernando Mijangos
  * 
  * @param character Pointer to the character.
- * @return Name od the character, NULL if error.
+ * @return Character's name, NULL if error.
  */
 char *character_get_name(Character *character);
 
@@ -70,7 +67,7 @@ char *character_get_name(Character *character);
  * 
  * @param chracter Pointer to the character.
  * @param description New description of the character.
- * @return OK, if everything went well, ERROR if it didn't.
+ * @return OK, if everything went as it should, ERROR if it didn't.
  */
 Status character_set_description(Character *character, char* description);
 
@@ -79,7 +76,7 @@ Status character_set_description(Character *character, char* description);
  * @author Fernando Mijangos
  * 
  * @param chracter Pointer to the character.
- * @return Description of the character, NULL if error.
+ * @return Character's description, NULL if error.
  */
 char *character_get_description(Character *character);
 
@@ -98,7 +95,7 @@ Status character_set_friendly(Character *character, Bool value);
  * @author Fernando Mijangos
  * 
  * @param character Pointer to the character.
- * @return Value of the friendly paramaeter, 0 if error.
+ * @return Value of the friendly parameter, 0 if error.
  */
 Bool character_get_friendly(Character *character);
 

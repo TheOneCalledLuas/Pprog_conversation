@@ -46,7 +46,7 @@ typedef enum
 } CommandCode;
 /**
  * @brief Command
- * command structure.
+ * Command structure.
  */
 typedef struct _Command Command;
 
@@ -87,40 +87,40 @@ Status command_set_code(Command *command, CommandCode code);
 CommandCode command_get_code(Command *command);
 
 /**
- * @brief It sets the status of the command 
+ * @brief It sets the status of the command.
  * @author Fernando Mijangos
  * 
- * @param command Pointer to the command
- * @param status New status
- * @return OK if everything went well, ERROR otherwise
+ * @param command Pointer to the command.
+ * @param status New status.
+ * @return OK if everything went well, ERROR otherwise.
  */
 Status command_set_status(Command *command, Status status);
 
 /**
- * @brief It gets the status stored in a command
+ * @brief It gets the status stored in a command.
  * @author Fernando Mijangos
  *
- * @param command Pointer to the command
- * @return Status of the command
+ * @param command Pointer to the command.
+ * @return Status of the command.
  */
 Status command_get_status(Command *command);
 
 /**
- * @brief Returns the word stored in the command
+ * @brief Returns the word stored in the command.
  * @author Fernando Mijangos
  * 
- * @param command Pointer to the command
- * @return String the the word contains or NULL if something went wrong
+ * @param command Pointer to the command.
+ * @return String the the word contains or NULL if something went wrong.
  */
 char *command_get_word(Command *command);
 
 /**
- * @brief Sets the word of the command the the defined one
+ * @brief Sets the word of the command the the defined one.
  * @author Fernando Mijangos
  * 
- * @param command Pointer to the command structure
- * @param word string that will be copied
- * @return OK, if everything went well, ERROR if it didnt't
+ * @param command Pointer to the command structure.
+ * @param word string that will be copied.
+ * @return OK, if everything went well, ERROR if it didnt't.
  */
 Status command_set_word(Command *command, char *word);
 

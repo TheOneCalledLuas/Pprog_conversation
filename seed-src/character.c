@@ -1,5 +1,5 @@
 /**
- * @brief It implements the character module
+ * @brief It implements the character module.
  *
  * @file character.c
  * @author Fernando Mijangos
@@ -12,7 +12,11 @@
 #include "types.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h>.
+
+#define MAX_NAME 20
+#define MAX_DESC 7
+#define MAX_MESSAGE 100
 
 struct _Character
 {
@@ -21,7 +25,7 @@ struct _Character
     char description[MAX_DESC]; /*!< Description of the character.*/
     Bool friendly;              /*!< Whether the character is friendly or not.*/
     char message[MAX_MESSAGE];  /*!< Message of the character.*/
-    int health;                 /*!< Amount of health of the character*/
+    int health;                 /*!< Amount of health of the character.*/
 };
 
 Character *character_create(Id id)
@@ -74,6 +78,7 @@ Status character_set_name(Character *character, char *name)
     {
         return ERROR;
     }
+    /*Sets the value.*/
     strncpy(character->name, name, MAX_NAME);
     character->name[MAX_NAME-1]='\0';
     return OK;
@@ -91,6 +96,8 @@ Status character_set_description(Character *character, char *description)
     {
         return ERROR;
     }
+    
+    /*Sets the value.*/
     strncpy(character->description, description, MAX_DESC);
     character->description[MAX_DESC-1]='\0';
 
@@ -129,6 +136,8 @@ Status character_set_message(Character *character, char *message)
     {
         return ERROR;
     }
+
+    /*Sets the value.*/
     strncpy(character->message, message, MAX_MESSAGE);
     character->message[MAX_MESSAGE-1]='\0';
 
@@ -142,10 +151,13 @@ char *character_get_message(Character *character)
 
 Status character_set_health(Character *character, int health)
 {
+    /*Error handling.*/
     if (!character)
     {
         return ERROR;
     }
+
+    /*Sets the value.*/
     character->health = health;
     return OK;
 }
