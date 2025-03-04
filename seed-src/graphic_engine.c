@@ -74,7 +74,7 @@ struct _Graphic_engine
  * @param destination the array where you are storing the information
  * @return OK if everything went well, ERROR otherwise
  */
-Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE]);
+Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE]);
 
 /* END OF PRIVATE FUNCTIONS*/
 
@@ -131,7 +131,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Player *player;
     Space *space_act = NULL;
     char str[MAX_STRING_GE];
-    /*char spaces[] = {"                 "};*/
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
     int i = 0, j = 0, t = 0, v = 0;
     Id *id_list = NULL, actual_id[9];
@@ -186,7 +185,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         {
             for (j = 0; j < 3; j++)
             {
-                if (!(print_space(game, actual_id[i * 3 + j], aux_map)))
+                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map)))
                 {
                     continue;
                 }
@@ -303,7 +302,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     printf("prompt:> ");
 }
 
-Status print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE])
+Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE])
 {
     char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 3];
     Space *space;

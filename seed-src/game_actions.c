@@ -454,6 +454,11 @@ void game_actions_attack(Game *game)
             game_set_finished(game, TRUE);
         }
     }
+    /*Checks if the played died.*/
+    if (player_get_health(player) < 1)
+    {
+        game_set_finished(game, TRUE);
+    }
     command_set_status(game_get_last_command(game), OK);
 }
 
