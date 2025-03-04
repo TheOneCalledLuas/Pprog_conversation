@@ -32,6 +32,7 @@
 #define MAX_STRING_GE 255
 #define WIDTH_SPACE 18
 #define HEIGHT_SPACE 9
+#define MAX_COORDS 9
 
 /*Space positions in array*/
 /*This is like this so that later when printing its easier with a for*/
@@ -133,7 +134,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     char str[MAX_STRING_GE];
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
     int i = 0, j = 0, t = 0, v = 0;
-    Id *id_list = NULL, actual_id[9];
+    Id *id_list = NULL, actual_id[MAX_COORDS];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player=game_get_player(game);

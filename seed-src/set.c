@@ -145,18 +145,26 @@ Id *set_get_content(Set *set)
 {
     Id *elements;
     int i;
+
+    /*Error management.*/
     if(!set || set->n_ids<=0)
     {
         return NULL;
     }
+
+    /*Allcates mmory*/
     if(!(elements=(Id*)calloc(set->n_ids, sizeof(Id))))
     {
         return NULL;
     }
+
+    /*Fills the array.*/
     for(i=0;i<set->n_ids;i++)
     {
         elements[i]=set->content[i];
     }
+
+    /*And returns it.*/
     return elements;
 }
 
