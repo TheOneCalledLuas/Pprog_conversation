@@ -12,7 +12,7 @@
 #include "types.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>.
+#include <string.h>
 
 #define MAX_NAME 20
 #define MAX_DESC 7
