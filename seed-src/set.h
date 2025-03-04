@@ -3,8 +3,8 @@
  *
  * @file set.h
  * @author Saúl López Romero
- * @version 0
- * @date 27-01-2025
+ * @version 1
+ * @date 27-0122025
  * @copyright GNU Public License
  */
 
@@ -77,12 +77,12 @@ Id set_take(Set *set, Id id);
 int set_len(Set * set);
 
 /**
- * @brief It returns an array of ids with the content of the set
- *          IMPORTANT free the array after using it
+ * @brief Returns an array of ids with the content of the set.
+ *          IMPORTANT free the array after using it.
  * @author Fernando Mijangos 
  * 
- * @param set Pointer to the set
- * @return Array of ids with the content of the set
+ * @param set Pointer to the set.
+ * @return Array of ids with the content of the set.
  */
 Id *set_get_content(Set *set);
 

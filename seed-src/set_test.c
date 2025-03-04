@@ -92,6 +92,14 @@ int main(int argc, char **argv)
         test4_set_take();
     if (all || test == 20)
         test5_set_take();
+    if (all || test == 21)
+        test1_set_get_content();
+    if (all || test == 22)
+        test2_set_get_content();
+    if (all || test == 23)
+        test3_set_get_content();
+    if (all || test == 24)
+        test2_set_create();
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -105,6 +113,17 @@ void test1_set_create()
     s = set_create();
     /*Checks creation.*/
     PRINT_TEST_RESULT(s != NULL);
+    /*Frees memory.*/
+    set_destroy(s);
+}
+
+void test2_set_create()
+{
+    /*Creates a set.*/
+    Set *s = NULL;
+    s = set_create();
+    /*Checks values are default.*/
+    PRINT_TEST_RESULT(set_len(s)==0);
     /*Frees memory.*/
     set_destroy(s);
 }
@@ -310,12 +329,12 @@ void test1_set_take()
 {
     /*Creates a set.*/
     Set *s = NULL;
-    Id id = 1,id_res =0;
+    Id id = 1, id_res = 0;
     s = set_create();
 
     /*Adds an id.*/
     set_add(s, id);
-    id_res = set_take(s,id);
+    id_res = set_take(s, id);
     PRINT_TEST_RESULT(id_res == id);
 
     /*Frees the memory.*/
@@ -385,9 +404,54 @@ void test5_set_take()
     set_add(s, id_2);
     id_taken_3 = set_take(s, id);
     id_taken_4 = set_take(s, id_3);
-    
+
     PRINT_TEST_RESULT(id_taken_1 == id_2 && id_taken_2 == ID_ERROR && id_taken_3 == id && id_taken_4 == id_3 && set_len(s) == 1);
 
     /*Frees the memory.*/
+    set_destroy(s);
+}
+
+void test1_set_get_content()
+{
+    Set *s = NULL;
+    Id id = 1, id_2 = 2, *id_list = NULL;
+
+    /*Creates a set.*/
+    s = set_create();
+
+    /*Adds elements.*/
+    set_add(s, id);
+    set_add(s, id_2);
+
+    PRINT_TEST_RESULT((id_list = set_get_content(s)) != NULL);
+
+    /*Memory cleanup.*/
+    set_destroy(s);
+    free(id_list);
+}
+
+void test2_set_get_content()
+{
+    Set *s = NULL;
+    Id id = 1, id_2 = 2, *id_list = NULL;
+
+    /*Adds elements (It can't).*/
+    set_add(s, id);
+    set_add(s, id_2);
+
+    PRINT_TEST_RESULT((id_list = set_get_content(s)) == NULL);
+}
+
+void test3_set_get_content()
+{
+    Set *s = NULL;
+    Id *id_list = NULL;
+
+    /*Creates a set.*/
+    s = set_create();
+
+    PRINT_TEST_RESULT((id_list = set_get_content(s)) == NULL);
+
+    /*Memory cleanup.*/
     set_destroy(s);
 }

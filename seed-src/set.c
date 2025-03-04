@@ -147,21 +147,21 @@ Id *set_get_content(Set *set)
     int i;
 
     /*Error management.*/
-    if(!set || set->n_ids<=0)
+    if (!set || set->n_ids < 1)
     {
         return NULL;
     }
 
     /*Allcates mmory*/
-    if(!(elements=(Id*)calloc(set->n_ids, sizeof(Id))))
+    if (!(elements = (Id *)calloc(set->n_ids, sizeof(Id))))
     {
         return NULL;
     }
 
-    /*Fills the array.*/
-    for(i=0;i<set->n_ids;i++)
+    /*Fills the array in.*/
+    for (i = 0; i < set->n_ids; i++)
     {
-        elements[i]=set->content[i];
+        elements[i] = set->content[i];
     }
 
     /*And returns it.*/
@@ -177,6 +177,8 @@ Status set_print(Set *s)
         return ERROR;
     }
     len = set_len(s);
+
+    /*Prints the info.*/
     printf("Set formed by %d elements: ", len);
     for (i = 0; i < len; i++)
     {
@@ -185,4 +187,3 @@ Status set_print(Set *s)
     printf("\n");
     return OK;
 }
-

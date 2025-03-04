@@ -464,9 +464,8 @@ void game_actions_attack(Game *game)
 
 int random_int(int start, int end)
 {
-    /*Makes the number random.*/
-    srand(time(NULL));
-
+    /*srand was called beforehand.*/
+    
     /*returns the number.*/
     return (start + rand() % (start - end + 1));
 }

@@ -13,9 +13,17 @@
 
 /**
  * @test Test Set creation.
+ * @pre Pointer to Null.
  * @post Non NULL pointer to set.
  */
 void test1_set_create();
+
+/**
+ * @test Test Set creation.
+ * @pre Pointer to NULL of Set type.
+ * @post the set was initialised empty.
+ */
+void test2_set_create();
 
 /**
  * @test Test Set lenght.
@@ -149,6 +157,28 @@ void test4_set_take();
  * @post all ids were taken out correctly.
  */
 void test5_set_take();
+
+/**
+ * @test Test Set return of the ids it has.
+ * @pre Pointer to set where multiple elements are placed.
+ * @post Clean exit of the function.
+ */
+void test1_set_get_content();
+
+/**
+ * @test Test Set return of the ids it has.
+ * @pre Invalid set.
+ * @post NULL response.
+ */
+void test2_set_get_content();
+
+/**
+ * @test Test Set return of the ids it has.
+ * @pre Set with 0 elements.
+ * @post NULL response.
+ */
+void test3_set_get_content();
+
 
 
 #endif
