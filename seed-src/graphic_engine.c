@@ -139,7 +139,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     player=game_get_player(game);
     /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
-    if ((actual_id[4] = player_get_player_location(player)) != NO_ID)
+    if ((actual_id[ACTUAL_POSITION] = player_get_player_location(player)) != NO_ID)
     {
         /*Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
@@ -147,28 +147,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         actual_id[SOUTH] = space_get_south(space_act);
         actual_id[WEST] = space_get_west(space_act);
         actual_id[EAST] = space_get_east(space_act);
-
-        /*Gets the spaces situated on the corners*/
-        if ((actual_id[NORTH_WEST] = space_get_north(game_get_space(game, actual_id[WEST]))) == ID_ERROR)
-        {
-            if ((actual_id[NORTH_WEST] = space_get_west(game_get_space(game, actual_id[NORTH]))) == ID_ERROR)
-                actual_id[NORTH_WEST] = NO_ID;
-        }
-        if ((actual_id[SOUTH_WEST] = space_get_south(game_get_space(game, actual_id[WEST]))) == ID_ERROR)
-        {
-            if ((actual_id[SOUTH_WEST] = space_get_west(game_get_space(game, actual_id[SOUTH]))) == ID_ERROR)
-                actual_id[SOUTH_WEST] = NO_ID;
-        }
-        if ((actual_id[NORTH_EAST] = space_get_north(game_get_space(game, actual_id[EAST]))) == ID_ERROR)
-        {
-            if ((actual_id[NORTH_EAST] = space_get_east(game_get_space(game, actual_id[NORTH]))) == ID_ERROR)
-                actual_id[NORTH_EAST] = NO_ID;
-        }
-        if ((actual_id[SOUTH_EAST] = space_get_south(game_get_space(game, actual_id[EAST]))) == ID_ERROR)
-        {
-            if ((actual_id[SOUTH_EAST] = space_get_east(game_get_space(game, actual_id[SOUTH]))) == ID_ERROR)
-                actual_id[SOUTH_EAST] = NO_ID;
-        }
+        actual_id[NORTH_EAST]= NO_ID;
+        actual_id[NORTH_WEST]=NO_ID;
+        actual_id[SOUTH_EAST]=NO_ID;
+        actual_id[SOUTH_WEST]=NO_ID;
 
         /*CLEANS THE MAP*/
         for (i = 0; i < HEIGHT_MAP; i++)
