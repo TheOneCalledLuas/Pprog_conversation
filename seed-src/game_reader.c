@@ -16,6 +16,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#define DESC_SIZE 9
+
 Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
@@ -64,7 +66,14 @@ Status game_reader_load_spaces(Game *game, char *filename)
             for (i = 0; i < 5; i++)
             {
                 toks = strtok(NULL, "|");
-                strcpy(desc[i], toks);
+
+                /*Error handling.*/
+                if (!toks || strlen(toks) != DESC_SIZE) 
+                {
+                    strcpy(desc[i], "         "); /*9 spaces.*/
+                }
+                else 
+                    strcpy(desc[i], toks);
             }
 /*If DEBUG mode is active (defined) prints what it has read.*/
 #ifdef DEBUG
@@ -91,12 +100,12 @@ Status game_reader_load_spaces(Game *game, char *filename)
                     space_set_gdesc_line(space, i, desc[i]);
                 }
 #ifdef DEBUG
-            for (i = 0; i < 5; i++)
-            {
-                printf("%s|", space_get_gdesc_line(space, i));
-            }
-            printf("\n");
-            sleep(1);
+                for (i = 0; i < 5; i++)
+                {
+                    printf("%s|", space_get_gdesc_line(space, i));
+                }
+                printf("\n");
+                sleep(1);
 #endif
             }
             else
