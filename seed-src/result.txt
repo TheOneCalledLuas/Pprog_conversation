@@ -1,0 +1,48 @@
+    if (all || test == 1)
+        test1_set_create();
+    if (all || test == 2)
+        test1_set_add();
+    if (all || test == 3)
+        test2_set_add();
+    if (all || test == 4)
+        test3_set_add();
+    if (all || test == 5)
+        test4_set_add();
+    if (all || test == 6)
+        test5_set_add();
+    if (all || test == 7)
+        test1_set_increment();
+    if (all || test == 8)
+        test1_set_len();
+    if (all || test == 9)
+        test2_set_len();
+    if (all || test == 10)
+        test3_set_len();
+    if (all || test == 11)
+        test1_set_find();
+    if (all || test == 12)
+        test2_set_find();
+    if (all || test == 13)
+        test3_set_find();
+    if (all || test == 14)
+        test4_set_find();
+    if (all || test == 15)
+        test5_set_find();
+    if (all || test == 16)
+        test1_set_take();
+    if (all || test == 17)
+        test2_set_take();
+    if (all || test == 18)
+        test3_set_take();
+    if (all || test == 19)
+        test4_set_take();
+    if (all || test == 20)
+        test5_set_take();
+    if (all || test == 21)
+        test1_set_get_content();
+    if (all || test == 22)
+        test2_set_get_content();
+    if (all || test == 23)
+        test3_set_get_content();
+    if (all || test == 24)
+        test2_set_create();
