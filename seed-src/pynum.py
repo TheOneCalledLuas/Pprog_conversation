@@ -25,4 +25,3 @@ with open("result.txt","w",encoding="UTF-8") as file:
     file.write(content)
 
 print(content)
-

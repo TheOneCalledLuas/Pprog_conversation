@@ -65,6 +65,9 @@ set_test: set_test.o set.o
 set_test.o: set_test.c set_test.h set.h types.h test.h
 	gcc $(CFLAGS) $<
 
+space_check:
+	./set_test
+
 space_test: space_test.o space.o set.o object.o
 	gcc -o space_test $^
 
