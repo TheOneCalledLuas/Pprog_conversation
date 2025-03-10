@@ -73,3 +73,11 @@ space_test: space_test.o space.o set.o object.o
 
 space_test.o: space_test.c space.h types.h object.h set.h space_test.h test.h
 	gcc $(CFLAGS) $<
+
+character_test: character_test.o character.o
+	gcc -o character_test $^
+
+character_test.o: character_test.c character.h types.h test.h character_test.h
+	gcc $(CFLAGS) $<
+
+

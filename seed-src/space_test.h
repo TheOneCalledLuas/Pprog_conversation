@@ -444,4 +444,33 @@ void test3_space_set_character();
  * @post Output = ERROR
  */
 void test4_space_set_character();
+
+/**
+ * @test Test function for the set of objects
+ * @pre Pointer to the space = NON NULL; no objects
+ * @post Output = 0
+ */
+void test1_space_get_n_objects();
+
+/**
+ * @test Test function for the set of objects
+ * @pre Pointer to the space =NULL
+ * @post Output = -1
+ */
+void test2_space_get_n_objects();
+
+/**
+ * @test Test function for the set of objects
+ * @pre Pointer to the space = NON NULL; one object
+ * @post Output = 1
+ */
+void test3_space_get_n_objects();
+
+/**
+ * @test Test function for the set of objects
+ * @pre Pointer to the space = NON NULL; no objects
+ * @post Output = 0
+ */
+void test4_space_get_n_objects();
+
 #endif

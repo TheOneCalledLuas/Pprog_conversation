@@ -253,6 +253,10 @@ Id space_get_west(Space *space)
 Id *space_get_objects(Space *space)
 {
     Id *set_objects;
+    if(!space)
+    {
+        return NULL;
+    }
     /*Error handling.*/
     if(!(set_objects=set_get_content(space->objects)))
     {

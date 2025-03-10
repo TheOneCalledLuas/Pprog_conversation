@@ -203,9 +203,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         if (actual_id[NORTH] != NO_ID)
             map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = '^';
         if (actual_id[WEST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE + 1] = '<';
+            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = '<';
         if (actual_id[EAST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 1] = '>';
+            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = '>';
         if (actual_id[SOUTH] != NO_ID)
             map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = 'v';
         /*PUTS \0 IN CASE THEY WEREN'T PLACED*/
@@ -259,7 +259,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     if (player_get_object(player)!=NO_ID)
     {
         id_aux = player_get_object(player);
-        sprintf(str, " Player_object: %s(%ld)",object_get_name(game_get_object(game, id_aux)), id_aux);
+        sprintf(str, "   Player_object: %s",object_get_name(game_get_object(game, id_aux)));
         screen_area_puts(ge->descript, str);
     }
     else
@@ -326,7 +326,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
 
     /*Starts printing the space.*/
     sprintf(destination[0], "+---------------+");
-    sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : "     "), space_id);
+    sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
     for (i = 0; i < 5; i++)
     {
         sprintf(destination[i + 2], "|%s      |", space_get_gdesc_line(space, i));
@@ -337,7 +337,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     if (set)
     {
         /*Looks how many strings it can print inside the 15 letters in the space given
-        (18 -2 for the barriers, -1 for the extra space i'm placing)*/
+        (Width_space -2 for the barriers, -1 for the extra space i'm placing)*/
         for (i = n_objs_space; cond == 0 && i != 0; i--)
         {
             for (j = 0; j < i; j++)
@@ -366,10 +366,8 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
         free(set);  
     }else{aux_2[0]='\0';}
 
-
+    /*Finishes printing the spaces.*/
     sprintf(destination[7], "|%-14s |", aux_2);
-    destination[7][19] = '\0';
     sprintf(destination[8], "+---------------+");
-    destination[8][19] = '\0';
     return OK;
 }
