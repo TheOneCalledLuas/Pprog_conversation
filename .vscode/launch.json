@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
+            "args": ["/home/fernandpo/cosa_uni/proyecto_program/seed-src/castle.dat"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
