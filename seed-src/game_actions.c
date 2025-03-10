@@ -319,7 +319,7 @@ void game_actions_take(Game *game)
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if (space_find_object(space, object) == -1)
+    if (space_find_object(space, object) == NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -327,7 +327,7 @@ void game_actions_take(Game *game)
     player = game_get_player(game);
 
     /*2-Checks if the player already has an object. */
-    if (player_get_object(player) != -1)
+    if (player_get_object(player) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -372,7 +372,7 @@ void game_actions_drop(Game *game)
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if (space_find_object(space, object) != -1)
+    if (space_find_object(space, object) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -380,7 +380,7 @@ void game_actions_drop(Game *game)
     player = game_get_player(game);
 
     /*2-Checks if the player has an object.*/
-    if (player_get_object(player) == -1)
+    if (player_get_object(player) == NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -453,13 +453,10 @@ void game_actions_attack(Game *game)
         {
             game_set_finished(game, TRUE);
         }
+        command_set_status(game_get_last_command(game), OK);
+        return;
     }
-    /*Checks if the played died.*/
-    if (player_get_health(player) < 1)
-    {
-        game_set_finished(game, TRUE);
-    }
-    command_set_status(game_get_last_command(game), OK);
+    command_set_status(game_get_last_command(game), ERROR);
 }
 
 int random_int(int start, int end)
