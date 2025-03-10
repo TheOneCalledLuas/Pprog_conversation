@@ -308,7 +308,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
-    memset(aux_2, '\0', sizeof(aux_2));
+
 
     /*Error handling.*/
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
@@ -319,7 +319,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
         strcpy(aux, "m0\"");
     }
 
-    /*Gets thhe actual space.*/
+    /*Gets the actual space.*/
     space = game_get_space(game, space_id);
     if (!space)
         return ERROR;
@@ -350,6 +350,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
                 cond = 0;
             }
         }
+        aux_2[0]='\0';
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));
