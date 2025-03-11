@@ -35,20 +35,22 @@
 
 /*Space positions in array*/
 /*This is like this so that later when printing its easier with a for*/
-    /* [0] [1] [2] */
-    /* [3] [4] [5] */
-    /* [6] [7] [8] */
-
-#define NORTH 1
-#define SOUTH 7
-#define EAST 5
-#define WEST 3
-#define NORTH_EAST 2
-#define NORTH_WEST 0
-#define SOUTH_EAST 8
-#define SOUTH_WEST 6
-#define ACTUAL_POSITION 4
-
+/* [0] [1] [2] */
+/* [3] [4] [5] */
+/* [6] [7] [8] */
+typedef enum
+{
+    NORTH_WEST,
+    NORTH,
+    NORTH_EAST,
+    WEST,
+    ACTUAL_POSITION,
+    EAST,
+    SOUTH_WEST,
+    SOUTH,
+    SOUTH_EAST,
+    NUM_IDS
+}Positions;
 /**
  * @brief _Graphic_engine
  *
@@ -126,17 +128,17 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_aux = 0, *id_aux_2=NULL;
+    Id id_aux = 0, *id_aux_2 = NULL;
     Character *character;
     Player *player;
     Space *space_act = NULL;
     char str[MAX_STRING_GE];
     char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
     int i = 0, j = 0, t = 0, v = 0;
-    Id *id_list = NULL, actual_id[9];
+    Id *id_list = NULL, actual_id[NUM_IDS];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
-    player=game_get_player(game);
+    player = game_get_player(game);
     /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
     if ((actual_id[ACTUAL_POSITION] = player_get_player_location(player)) != NO_ID)
@@ -147,10 +149,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         actual_id[SOUTH] = space_get_south(space_act);
         actual_id[WEST] = space_get_west(space_act);
         actual_id[EAST] = space_get_east(space_act);
-        actual_id[NORTH_EAST]= NO_ID;
-        actual_id[NORTH_WEST]=NO_ID;
-        actual_id[SOUTH_EAST]=NO_ID;
-        actual_id[SOUTH_WEST]=NO_ID;
+        actual_id[NORTH_EAST] = NO_ID;
+        actual_id[NORTH_WEST] = NO_ID;
+        actual_id[SOUTH_EAST] = NO_ID;
+        actual_id[SOUTH_WEST] = NO_ID;
 
         /*CLEANS THE MAP*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -238,10 +240,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*Prints the player information*/
     sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
-    if (player_get_object(player)!=NO_ID)
+    if (player_get_object(player) != NO_ID)
     {
         id_aux = player_get_object(player);
-        sprintf(str, "   Player_object: %s",object_get_name(game_get_object(game, id_aux)));
+        sprintf(str, "   Player_object: %s", object_get_name(game_get_object(game, id_aux)));
         screen_area_puts(ge->descript, str);
     }
     else
@@ -253,7 +255,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /* Prints the Message.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
-        id_aux=space_get_character(space_act);
+        id_aux = space_get_character(space_act);
         /*Checks that there's a friendly NPC to talk with.*/
         if (id_aux != NO_ID && (character_get_friendly(game_get_character(game, id_aux)) == TRUE))
         {
@@ -290,7 +292,6 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
-
 
     /*Error handling.*/
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
@@ -332,7 +333,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
                 cond = 0;
             }
         }
-        aux_2[0]='\0';
+        aux_2[0] = '\0';
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));
@@ -343,11 +344,15 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
             }
             else
             {
-                sprintf(aux_2, "%s", (aux_3? aux_3 : " "));
+                sprintf(aux_2, "%s", (aux_3 ? aux_3 : " "));
             }
         }
-        free(set);  
-    }else{aux_2[0]='\0';}
+        free(set);
+    }
+    else
+    {
+        aux_2[0] = '\0';
+    }
 
     /*Finishes printing the spaces.*/
     sprintf(destination[7], "|%-14s |", aux_2);
