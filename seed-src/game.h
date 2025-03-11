@@ -42,12 +42,12 @@ Character *game_get_character(Game *game, Id id);
 
 /**
  * @brief It returns an array with the ids of the characters, 
- *        IMPORTANT it returns something that has been allocated, you have to free it
+ *        IMPORTANT it returns something that has been allocated, you have to free it.
  * @author Fernando Mijangos 
  * 
  * @param game Game structure, where all the information related to game is included.
- * @return The array of ids of the character
- *          IMPORTANT you have to free it afrter using it
+ * @return The array of ids of the character.
+ *          IMPORTANT you have to free it afrter using it.
  */
 Id *game_get_characters(Game *game);
 
@@ -91,7 +91,8 @@ int game_get_num_characters(Game * game);
 Status game_add_space(Game *game, Space *space);
 
 /**
- * @brief It sets the number of spaces to zero, the ids to NO_ID, the last command is set to NO_CMD and the game is set to not finished
+ * @brief It sets the number of spaces to zero, the ids to NO_ID, 
+ * the last command is set to NO_CMD and the game is set to not finished
  * @author Saúl Lopez Romero
  *
  * @param game Pointer to the gama you want to reset.
@@ -190,7 +191,7 @@ Command *game_get_last_command(Game *game);
  * @brief It sets the last command to the command you want
  * @author Profesores PPROG
  *
- * @param game Pointer to the game
+ * @param game Pointer to the game.
  * @param command The command you want to set.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
@@ -277,9 +278,9 @@ int game_get_n_objects(Game *game);
  * @brief Gets an object with a specfic tag inside the game
  * @author Fernando Mijangos
  * 
- * @param game Pointer to the game
- * @param word Tag of the object
- * @return Id of the object or NO_ID in any other case
+ * @param game Pointer to the game.
+ * @param word Tag of the object.
+ * @return Id of the object or NO_ID in any other case.
  */
 Id game_get_object_by_name(Game *game, char *word);
 

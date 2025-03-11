@@ -26,7 +26,7 @@ Status game_reader_load_spaces(Game *game, char *filename);
 
 /**
  * @brief Loads all the objects from the data file.
- * Should be called once all the spaces have been loaded  in.
+ * Should be called once all the spaces have been loaded in.
  * @author Saúl López Romero
  *
  * @param game Pointer to the game structure, where all the information related to game is included.

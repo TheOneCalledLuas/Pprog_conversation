@@ -1,5 +1,5 @@
 /**
- * @brief It implements a textual graphic engine
+ * @brief It implements a textual graphic engine.
  *
  * @file graphic_engine.c
  * @author Saul Lopez Romero && Fernando Mijangos
