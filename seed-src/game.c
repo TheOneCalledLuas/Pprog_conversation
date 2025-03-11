@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*Temporal character data. (This will be eventually changed).*/
 #define CHARACTER_ID_1 3
 #define CHARACTER_HEALTH_1 5
 #define CHARACTER_NAME_1 "Litle Ant"
@@ -62,7 +63,7 @@ Status game_create(Game **game)
     {
         (*game)->spaces[i] = NULL;
     }
-        for (i = 0; i < MAX_CHARACTERS; i++)
+    for (i = 0; i < MAX_CHARACTERS; i++)
     {
         (*game)->characters[i] = NULL;
     }
@@ -83,21 +84,29 @@ Status game_create(Game **game)
 
 Id *game_get_characters(Game *game)
 {
-    Id *characters=NULL;
-    int n_elements,i;
-    if(!game)
+    Id *characters = NULL;
+    int n_elements, i;
+
+    /*Error handling.*/
+    if (!game)
     {
         return NULL;
     }
-    n_elements=MAX_CHARACTERS;
-    if(!(characters=(Id*)calloc(n_elements, sizeof(Id))))
+    n_elements = MAX_CHARACTERS;
+
+    /*Memory allocation.*/
+    if (!(characters = (Id *)calloc(n_elements, sizeof(Id))))
     {
         return NULL;
     }
-    for(i=0;i<n_elements;i++)
+
+    /*Gets thhe character's id.*/
+    for (i = 0; i < n_elements; i++)
     {
-        characters[i]=character_get_id(game->characters[i]);
+        characters[i] = character_get_id(game->characters[i]);
     }
+
+    /*Clean exit.*/
     return characters;
 }
 
@@ -204,7 +213,7 @@ Id game_get_character_location(Game *game, Id id)
 {
     int i = 0;
     /*Error handling.*/
-    if (!game || id == -2)
+    if (!game || id == ID_ERROR)
         return ID_ERROR;
 
     /*Searches for the object.*/
@@ -292,7 +301,7 @@ Id game_get_object_location(Game *game, Id id)
     /*Searches for the id where the object is and returns it, if it doesnt find it, it returns NO_ID.*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_find_object(game->spaces[i], id) != -1)
+        if (space_find_object(game->spaces[i], id) != NO_ID)
         {
             return space_get_id(game->spaces[i]);
         }
@@ -343,14 +352,14 @@ int game_has_object(Game *game, Id id)
     }
 
     /*The object wasn't found.*/
-    return -1;
+    return NO_ID;
 }
 
 int game_get_n_objects(Game *game)
 {
     /*Error handling.*/
     if (!game)
-        return -1;
+        return NO_ID;
 
     /*Returns the value.*/
     return game->n_objects;
@@ -402,7 +411,7 @@ Status game_take_object(Game *game, Object *object)
     id = object_get_id(object);
 
     /*Searches for the object.*/
-    if ((position = game_has_object(game, id)) == -1)
+    if ((position = game_has_object(game, id)) == NO_ID)
         return ERROR;
 
     /*Takes the object out.*/
@@ -544,7 +553,7 @@ Status game_create_from_file(Game **game, char *filename)
     /*The player is located in the first space.*/
     player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
 
-    /*Loads the characters where they are supposed to be.*/
+    /*Loads the characters where they are supposed to be (TEMPORAL).*/
     c1 = character_create(CHARACTER_ID_1);
     character_set_description(c1, CHARACTER_DESCR_1);
     character_set_friendly(c1, TRUE);
