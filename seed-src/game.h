@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  *
  * @file game.h
- * @author Saul Lopez Romero, Fernando Mijangos Varas
+ * @author Saul Lopez Romero, Fernando Mijangos
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License

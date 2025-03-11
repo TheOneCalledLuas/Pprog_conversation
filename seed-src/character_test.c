@@ -2,7 +2,7 @@
  * @brief It tests the character module
  *
  * @file space_test.c
- * @author Fernando Mijangos Varas
+ * @author Fernando Mijangos
  * @version 1
  * @date 23-02-2025
  * @copyright GNU Public License
@@ -22,10 +22,10 @@
 /**
  * @brief Main function for CHRACTER unit tests.
  *
- * You may execute ALL or a SINGLE test
- *   1.- No parameter -> ALL test are executed
+ * You may execute ALL or a SINGLE test:
+ *   1.- No parameter -> ALL test are executed.
  *   2.- A number means a particular test (the one identified by that number)
- *       is executed
+ *       is executed.
  *
  */
 int main(int argc, char **argv)
@@ -113,17 +113,17 @@ int main(int argc, char **argv)
 
 void test1_character_create()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character!=NULL);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_create()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(-1);
     PRINT_TEST_RESULT(character == NULL);
@@ -131,182 +131,182 @@ void test2_character_create()
 
 void test1_character_get_id()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_get_id(character) == 5);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_get_id()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_get_id(character) == ID_ERROR);
 }
 
 void test1_character_set_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_name(character, "SI") == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_set_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_name(character, NULL) == ERROR);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test3_character_set_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_set_name(character, "SI") == ERROR);
 }
 
 void test4_character_set_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_set_name(character, NULL) == ERROR);
 }
 
 void test1_character_get_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     character_set_name(character, "SI");
     PRINT_TEST_RESULT(strcmp(character_get_name(character), "SI") == 0);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_get_name()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     character_set_name(character, "SI");
     PRINT_TEST_RESULT(strcmp(character_get_name(character), "NO") != 0);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test1_character_set_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_description(character, "SI") == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_set_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_set_description(character, "SI") == ERROR);
 }
 
 void test3_character_set_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_description(character, NULL) == ERROR);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test4_character_set_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_set_description(character, NULL) == ERROR);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test1_character_get_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     character_set_description(character, "SI");
     PRINT_TEST_RESULT(strcmp(character_get_description(character), "SI") == 0);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_get_description()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_get_description(character) == NULL);
 }
 
 void test1_character_set_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_friendly(character, TRUE) == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_set_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     PRINT_TEST_RESULT(character_set_friendly(character, TRUE) == ERROR);
 }
 
 void test3_character_set_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_friendly(character, FALSE) == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test4_character_set_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_friendly(character, FALSE) == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test1_character_get_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     character_set_friendly(character, TRUE);
     PRINT_TEST_RESULT(character_get_friendly(character) == TRUE);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_get_friendly()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character_set_friendly(character, TRUE);
     PRINT_TEST_RESULT(character_get_friendly(character) ==FALSE);
@@ -314,21 +314,21 @@ void test2_character_get_friendly()
 
 void test1_character_set_message()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_message(character, "SI") == OK);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
 void test2_character_set_message()
 {
-    /*Initializes the variables*/
+    /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
     PRINT_TEST_RESULT(character_set_message(character, NULL) == ERROR);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
@@ -342,7 +342,7 @@ void test4_character_set_message()
 {
     Character *character=NULL;
     PRINT_TEST_RESULT(character_set_message(character, NULL)==ERROR);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 
@@ -352,7 +352,7 @@ void test1_character_get_message()
     character=character_create(5);
     character_set_message(character, "SI");
     PRINT_TEST_RESULT(strcmp(character_get_message(character), "SI")==0);
-    /*Frees the character*/
+    /*Frees the character.*/
     character_destroy(character);;
 }
 

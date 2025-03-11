@@ -175,14 +175,14 @@ Status character_print(Character *character)
         return ERROR;
     }
 
-    /* 1-Print the id and name of the character*/
+    /* 1-Print the id and name of the character.*/
     fprintf(stdout, "--> Character (Id: %ld; Name: %s)\n", character->id, character->name);
 
-    /*2-Print the description of the character and its message*/
+    /*2-Print the description of the character and its message.*/
     fprintf(stdout, "--> Character description (\"%s\")\n", character->description);
     fprintf(stdout, "--> Character message (\"%s\")\n", character->message);
 
-    /*3-Printf the extra information of the character*/
+    /*3-Printf the extra information of the character.*/
     fprintf(stdout, "--> Character state(0=enemy, 1=friendly): %d \n", character->friendly);
 
     return OK;

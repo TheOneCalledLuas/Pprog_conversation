@@ -46,7 +46,7 @@ Command *command_create()
         return NULL;
     }
 
-    /* Initialization of an empty command.*/
+    /*Initialization of an empty command.*/
     newCommand->code = NO_CMD;
     newCommand->word[0] = '\0';
     newCommand->status= OK;
@@ -70,7 +70,7 @@ Status command_destroy(Command *command)
 
 Status command_set_code(Command *command, CommandCode code)
 {
-    /* Error control.*/
+    /*Error control.*/
     if (!command)
     {
         return ERROR;
@@ -112,7 +112,7 @@ Status command_set_word(Command *command, char *word)
         return ERROR;
     }
 
-    /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0 */
+    /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0.*/
     strncpy(command->word, word, CMD_LENGHT);
     command->word[CMD_LENGHT-1]='\0';
 
@@ -127,7 +127,7 @@ Status command_set_status(Command *command, Status status)
         return ERROR;
     }
 
-    /*It copies the value given*/
+    /*It copies the value given.*/
     command->status=status;
     return OK;
 }
@@ -178,7 +178,7 @@ Status command_get_user_input(Command *command)
             return ERROR;
         }
 
-        /*2.4 Assigns the extra word the user might have inputed  */
+        /*2.4 Assigns the extra word the user might have inputed.*/
         token = strtok(NULL," \n");
         if(!command_set_word(command, token))
         {

@@ -2,7 +2,7 @@
  * @brief It implements the game update through user actions.
  *
  * @file game_actions.c
- * @author Fernando Mijangos Varas, Saúl López Romero.
+ * @author Fernando Mijangos, Saúl López Romero.
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -57,7 +57,7 @@ void game_actions_back(Game *game);
 
 /**
  * @brief Action to be executed when left command is given.
- * @author Fernando Mijangos Varas.
+ * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
  */
@@ -65,7 +65,7 @@ void game_actions_left(Game *game);
 
 /**
  * @brief Action to be executed when right command is given.
- * @author Fernando Mijangos Varas.
+ * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
  */
@@ -73,7 +73,7 @@ void game_actions_right(Game *game);
 
 /**
  * @brief Action to be executed when take command is given.
- * @author Fernando Mijangos Varas.
+ * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
  */
@@ -81,7 +81,7 @@ void game_actions_take(Game *game);
 
 /**
  * @brief Action to be executed when drop command is given.
- * @author Fernando Mijangos Varas.
+ * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
  */
@@ -304,14 +304,14 @@ void game_actions_take(Game *game)
     Space *space = NULL;
     Id object = NO_ID;
 
-    /*Error management*/
+    /*Error management.*/
     if (!game)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
-    /*1-Gets all the different that it needs and error management.*/
+    /*1-Gets all the different things it needs and error management.*/
     object = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
     if (object == NO_ID || object == ID_ERROR)
     {
@@ -319,15 +319,15 @@ void game_actions_take(Game *game)
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if (space_find_object(space, object) == -1)
+    if (space_find_object(space, object) == NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
     player = game_get_player(game);
 
-    /*2-Checks if the player already has an object. */
-    if (player_get_object(player) != -1)
+    /*2-Checks if the player already has an object.*/
+    if (player_get_object(player) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -345,7 +345,7 @@ void game_actions_take(Game *game)
         return;
     }
 
-    /*Sets the argument to '\0' so it doesnt mess with thigns when inputing other commands*/
+    /*4-Sets the argument to its default state so that it doesnt mess with things when inputing other commands.*/
     command_set_word(game_get_last_command(game), "\0");
     command_set_status(game_get_last_command(game), OK);
     return;
@@ -357,7 +357,7 @@ void game_actions_drop(Game *game)
     Space *space = NULL;
     Id object = NO_ID;
 
-    /*Error management*/
+    /*Error management.*/
     if (!game)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -372,7 +372,7 @@ void game_actions_drop(Game *game)
         return;
     }
     space = game_get_space(game, player_get_player_location(game_get_player(game)));
-    if (space_find_object(space, object) != -1)
+    if (space_find_object(space, object) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -380,7 +380,7 @@ void game_actions_drop(Game *game)
     player = game_get_player(game);
 
     /*2-Checks if the player has an object.*/
-    if (player_get_object(player) == -1)
+    if (player_get_object(player) == NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -398,13 +398,15 @@ void game_actions_drop(Game *game)
         return;
     }
 
-    /*Sets the word to that so that it doesn mess with things*/
+    /*4-Clean exit.*/
     command_set_status(game_get_last_command(game), OK);
     return;
 }
 
 void game_actions_chat(Game *game)
 {
+    /*The chat action is managed by graphic engine; it starts as an error and 
+    if it goes as it should the error code is set to OK. */
     command_set_status(game_get_last_command(game), ERROR);
     return;
 }
@@ -436,7 +438,7 @@ void game_actions_attack(Game *game)
 
     if (character_get_friendly(character) == FALSE && character_get_health(character) > 0 && player_get_health(player) > 0)
     {
-        /*Makes a fight between the entities.*/
+        /*Starts a fight between the entities.*/
         rand_num = random_int(0, 9);
         if (rand_num <= 4)
         {
@@ -453,19 +455,16 @@ void game_actions_attack(Game *game)
         {
             game_set_finished(game, TRUE);
         }
+        command_set_status(game_get_last_command(game), OK);
+        return;
     }
-    /*Checks if the played died.*/
-    if (player_get_health(player) < 1)
-    {
-        game_set_finished(game, TRUE);
-    }
-    command_set_status(game_get_last_command(game), OK);
+    command_set_status(game_get_last_command(game), ERROR);
 }
 
 int random_int(int start, int end)
 {
-    /*srand was called beforehand.*/
+    /*Srand was called beforehand.*/
     
-    /*returns the number.*/
+    /*Returns the number.*/
     return (start + rand() % (start - end + 1));
 }

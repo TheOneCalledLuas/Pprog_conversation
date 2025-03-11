@@ -2,7 +2,7 @@
  * @brief It tests space module
  *
  * @file space_test.c
- * @author Fernando Mijangos Varas
+ * @author Fernando Mijangos
  * @version 1
  * @date 23-02-2025
  * @copyright GNU Public License
@@ -389,7 +389,7 @@ void test1_space_get_objects()
     Space *s = NULL;
     Id *ids;
     s = space_create(5);
-    space_add_object(s,5);
+    space_add_object(s, 5);
     PRINT_TEST_RESULT((ids = space_get_objects(s)) != NULL);
     /*Frees the memory.*/
     free(ids);
@@ -671,7 +671,7 @@ void test4_space_set_gdesc()
 {
     /*Creates the space.*/
     Space *s = space_create(5);
-    /*Sets an invalid string*/
+    /*Sets an invalid string.*/
     PRINT_TEST_RESULT(space_set_gdesc_line(s, 0, NULL) == ERROR);
 
     /*Frees the memory.*/
