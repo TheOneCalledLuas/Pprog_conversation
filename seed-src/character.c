@@ -112,7 +112,7 @@ char *character_get_description(Character *character)
 Status character_set_friendly(Character *character, Bool value)
 {
     /*Error management.*/
-    if (!character)
+    if (!character || (value !=TRUE && value != FALSE))
     {
         return ERROR;
     }

@@ -289,7 +289,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE])
 {
-    char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 3];
+    char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 5];
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
@@ -318,10 +318,13 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = space_get_n_objects(space);
     set = (space_get_objects(space));
+
     if (set)
     {
-        /*Looks how many strings it can print inside the 15 letters in the space given
-        (Width_space -2 for the barriers, -1 for the extra space i'm placing)*/
+        /*Looks how many strings it can print inside the 12 letters in the space given and stores the final string 
+        in aux_2 (WDITH_SPACE -2 for the barriers, -3 for the extra things i'm placing)*/
+
+        /*1-Looks how many objects it can fit inside the space given, 'i' will have the amount of objects that can be printed*/
         for (i = n_objs_space; cond == 0 && i != 0; i--)
         {
             for (j = 0; j < i; j++)
@@ -329,12 +332,18 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
                 cond = cond + 1 + strlen(object_get_name(game_get_object(game, set[j])));
             }
 
-            if (cond > WIDTH_SPACE - 3)
+            if (cond > WIDTH_SPACE - 5)
             {
                 cond = 0;
             }
         }
+
+        /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing*/
+        if(i<n_objs_space-1)
+            cond=1;
         aux_2[0] = '\0';
+
+        /*3-Fills the string with the tags of the object that fit*/
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));
@@ -348,6 +357,14 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
                 sprintf(aux_2, "%s", (aux_3 ? aux_3 : " "));
             }
         }
+
+        /*4-If the previous condition is equal to 1, it adds "..." so that the player 
+        knows there are more objects that are't being represented*/
+        if(cond==1)
+        {
+            strcpy(aux_4, aux_2);
+            sprintf(aux_2, "%s%s", aux_4, "...");
+        }
         free(set);
     }
     else
@@ -356,7 +373,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     }
 
     /*Finishes printing the spaces.*/
-    sprintf(destination[7], "|%-14s |", aux_2);
+    sprintf(destination[7], "|%-15s|", aux_2);
     sprintf(destination[8], "+---------------+");
     return OK;
 }
