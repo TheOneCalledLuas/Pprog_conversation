@@ -19,6 +19,9 @@
 #include "player.h"
 #include "set.h"
 
+#define ATTACK_PROB 9  /*Chances to attack.*/
+#define SUCCESS_PROB 2 /*Chances to strike (the smaller the better).*/
+
 /**
    Private functions
 */
@@ -405,7 +408,7 @@ void game_actions_drop(Game *game)
 
 void game_actions_chat(Game *game)
 {
-    /*The chat action is managed by graphic engine; it starts as an error and 
+    /*The chat action is managed by graphic engine; it starts as an error and
     if it goes as it should the error code is set to OK. */
     command_set_status(game_get_last_command(game), ERROR);
     return;
@@ -439,8 +442,8 @@ void game_actions_attack(Game *game)
     if (character_get_friendly(character) == FALSE && character_get_health(character) > 0 && player_get_health(player) > 0)
     {
         /*Starts a fight between the entities.*/
-        rand_num = random_int(0, 9);
-        if (rand_num <= 4)
+        rand_num = random_int(0, ATTACK_PROB);
+        if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
         {
             /*Hits player.*/
             player_set_health(player, player_get_health(player) - 1);
@@ -464,7 +467,7 @@ void game_actions_attack(Game *game)
 int random_int(int start, int end)
 {
     /*Srand was called beforehand.*/
-    
+
     /*Returns the number.*/
     return (start + rand() % (start - end + 1));
 }
