@@ -2,7 +2,7 @@
  * @brief It implements a textual graphic engine
  *
  * @file graphic_engine.c
- * @author Saul Lopez Romero && Fernando Mijangos Varas
+ * @author Saul Lopez Romero && Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -262,6 +262,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             screen_area_puts(ge->descript, " ");
             sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
             screen_area_puts(ge->descript, str);
+            command_set_status(game_get_last_command(game), OK);
         }
     }
 

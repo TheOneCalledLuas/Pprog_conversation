@@ -7,7 +7,7 @@
  * @brief It implements the player module
  *
  * @file player.c
- * @author Fernando Mijangos Varas, Saúl López Romero.
+ * @author Fernando Mijangos, Saúl López Romero.
  * @version 3
  * @date 04-02-2025
  * @copyright GNU Public License
@@ -240,7 +240,7 @@ Status player_print(Player *player)
  * @brief It implements a textual graphic engine
  *
  * @file graphic_engine.c
- * @author Saul Lopez Romero && Fernando Mijangos Varas
+ * @author Saul Lopez Romero && Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License

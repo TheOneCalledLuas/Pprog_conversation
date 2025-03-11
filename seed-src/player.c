@@ -2,7 +2,7 @@
  * @brief It implements the player module
  *
  * @file player.c
- * @author Fernando Mijangos Varas, Saúl López Romero.
+ * @author Fernando Mijangos, Saúl López Romero.
  * @version 3
  * @date 04-02-2025
  * @copyright GNU Public License

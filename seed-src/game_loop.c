@@ -2,7 +2,7 @@
  * @brief It defines the game loop.
  *
  * @file game_loop.c
- * @author Fernando Mijangos Varas
+ * @author Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -21,7 +21,7 @@
 /**
  * @brief Initialises the game.
  *
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  * @param game Pointer to the game.
  * @param gengine The graphic_engine you are going to be using.
  * @param file_name Name of the file where the information about the spaces is.
@@ -42,7 +42,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine);
 /**
  * @brief Frees the memory and closes the game.
  *
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  * @param game Pointer to the game.
  * @param gengine The graphic engine you are using.
  */
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     }
 
     /*Clean exit.*/
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
@@ -80,14 +80,14 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
     if (game_create_from_file(game, file_name) == ERROR)
     {
         fprintf(stderr, "Error while initializing game.\n");
-        return 1;
+        return EXIT_FAILURE;
     }
     /*Starts the graphic engine.*/
     if ((*gengine = graphic_engine_create()) == NULL)
     {
         fprintf(stderr, "Error while initializing graphic engine.\n");
         game_destroy(game);
-        return 1;
+        return EXIT_FAILURE;
     }
 
     /*Clean exit.*/
