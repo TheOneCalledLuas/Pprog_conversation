@@ -1,5 +1,8 @@
 *.o
-anthill 
+anthill
+set_test
+space_test
+character_test 
 ~$*
 .vscode\
 .vscode/launch.json
