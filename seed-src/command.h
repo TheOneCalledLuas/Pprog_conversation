@@ -126,7 +126,7 @@ Status command_set_word(Command *command, char *word);
 
 /**
  * @brief Reads an input from the user, and assigns a code to command depending on the input.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param command Pointer to the command where you will store the information.
  * @return OK if everything goes well or ERROR if there was some mistake.
