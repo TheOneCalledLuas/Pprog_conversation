@@ -149,8 +149,8 @@ void test3_character_set_friendly();
 
 /**
  * @test Test character_set_friendly.
- * @pre Pointer to the character = Non NULL; New value= FALSE.
- * @post Returns OK.
+ * @pre Pointer to the character = Non NULL; New value= -1.
+ * @post Returns ERROR.
  */
 void test4_character_set_friendly();
 

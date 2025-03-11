@@ -288,7 +288,7 @@ void test4_character_set_friendly()
     /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
-    PRINT_TEST_RESULT(character_set_friendly(character, FALSE) == OK);
+    PRINT_TEST_RESULT(character_set_friendly(character, -1) == ERROR);
     /*Frees the character.*/
     character_destroy(character);;
 }
