@@ -34,6 +34,8 @@
 #define HEIGHT_SPACE 9    /*Space height.*/
 #define STARING_POINT 1   /*Start of the gap when placed.*/
 
+#define NON_WRITTABLE_ELEMS 5 /*Elements that cannot be written per room.*/
+
 /*Space positions in array*/
 /*This is like this so that later when printing its easier with a for*/
 /* [0] [1] [2]
@@ -360,7 +362,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
                 cond = cond + 1 + strlen(object_get_name(game_get_object(game, set[j])));
             }
 
-            if (cond > WIDTH_SPACE - 5)
+            if (cond > WIDTH_SPACE - NON_WRITTABLE_ELEMS)
             {
                 cond = 0;
             }
@@ -368,7 +370,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
 
         /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing*/
         if (i < n_objs_space - 1)
-            cond = 1;
+            cond = TRUE;
         aux_2[0] = '\0';
 
         /*3-Fills the string with the tags of the object that fit*/
@@ -388,7 +390,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
 
         /*4-If the previous condition is equal to 1, it adds "..." so that the player
         knows there are more objects that are't being represented*/
-        if (cond == 1)
+        if (cond == TRUE)
         {
             strcpy(aux_4, aux_2);
             sprintf(aux_2, "%s%s", aux_4, "...");
