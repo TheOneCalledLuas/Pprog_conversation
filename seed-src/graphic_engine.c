@@ -3,8 +3,8 @@
  *
  * @file graphic_engine.c
  * @author Saul Lopez Romero && Fernando Mijangos
- * @version 1
- * @date 27-01-2025
+ * @version 7
+ * @date 2-03-2025
  * @copyright GNU Public License
  */
 
@@ -21,23 +21,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*Map measures.*/
-#define WIDTH_MAP 58
-#define WIDTH_DES 30
-#define WIDTH_BAN 23
-#define HEIGHT_MAP 29
-#define HEIGHT_BAN 1
-#define HEIGHT_HLP 3
-#define HEIGHT_FDB 3
-#define MAX_STRING_GE 255
-#define WIDTH_SPACE 18
-#define HEIGHT_SPACE 9
+/*Gap measures.*/
+#define WIDTH_MAP 58      /*Map width.*/
+#define WIDTH_DES 30      /*Description width.*/
+#define WIDTH_BAN 23      /*Banner width.*/
+#define HEIGHT_MAP 29     /*Map height.*/
+#define HEIGHT_BAN 1      /*Banner height.*/
+#define HEIGHT_HLP 3      /*Help height.*/
+#define HEIGHT_FDB 3      /*FDB height.*/
+#define MAX_STRING_GE 255 /*Max string lenght.*/
+#define WIDTH_SPACE 18    /*Space width.*/
+#define HEIGHT_SPACE 9    /*Space height.*/
+#define STARING_POINT 1   /*Start of the gap when placed.*/
 
 /*Space positions in array*/
 /*This is like this so that later when printing its easier with a for*/
-/* [0] [1] [2] */
-/* [3] [4] [5] */
-/* [6] [7] [8] */
+/* [0] [1] [2]
+   [3] [4] [5]
+   [6] [7] [8] */
 typedef enum
 {
     NORTH_WEST,
@@ -50,7 +51,7 @@ typedef enum
     SOUTH,
     SOUTH_EAST,
     NUM_IDS
-}Positions;
+} Positions;
 /**
  * @brief _Graphic_engine
  *
@@ -65,33 +66,38 @@ struct _Graphic_engine
     Area *feedback; /*!< Dimensions of each parameter needed.*/
 };
 
-/* PRIVATE FUNCTIONS*/
+/* PRIVATE FUNCTIONS.*/
 
 /**
  * @brief prints the information of a space in a given array
  * @author Fernando Mijangos
  *
- * @param game Pointer to the game
- * @param space_id Id of the space you are searching information from
- * @param destination the array where you are storing the information
- * @return OK if everything went well, ERROR otherwise
+ * @param game Pointer to the game.
+ * @param space_id Id of the space you are searching information from.
+ * @param destination the array where you are storing the information.
+ * @return OK if everything went well, ERROR otherwise.
  */
 Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE]);
 
-/* END OF PRIVATE FUNCTIONS*/
+/**
+ * @brief Initalises all the data to be printed in an array structure.
+ * @author Fernando Mijangos
+ *
+ * @param game Pointer to the game.
+ * @param map Map to be initialised.
+ */
+Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP]);
+
+/* END OF PRIVATE FUNCTIONS.*/
 
 Graphic_engine *graphic_engine_create()
 {
     static Graphic_engine *ge = NULL;
 
-    if (ge)
-    {
-        return ge;
-    }
-
+    /*Screen initialisation.*/
     screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4, WIDTH_MAP + WIDTH_DES + 3);
 
-    /*Allocation of space and error management.*/
+    /*Space allocation and error management.*/
     ge = (Graphic_engine *)malloc(sizeof(Graphic_engine));
     if (ge == NULL)
     {
@@ -99,12 +105,13 @@ Graphic_engine *graphic_engine_create()
     }
 
     /*It gives the value needed for each variable.*/
-    ge->map = screen_area_init(1, 1, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript = screen_area_init(WIDTH_MAP + 2, 1, WIDTH_DES, HEIGHT_MAP);
+    ge->map = screen_area_init(STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_MAP);
+    ge->descript = screen_area_init(WIDTH_MAP + 2, STARING_POINT, WIDTH_DES, HEIGHT_MAP);
     ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 - WIDTH_BAN) / 2), HEIGHT_MAP + 2, WIDTH_BAN, HEIGHT_BAN);
     ge->help = screen_area_init(1, HEIGHT_MAP + HEIGHT_BAN + 2, WIDTH_MAP + WIDTH_DES + 1, HEIGHT_HLP);
     ge->feedback = screen_area_init(1, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 3, WIDTH_MAP + WIDTH_DES + 1, HEIGHT_FDB);
 
+    /*Clean exit.*/
     return ge;
 }
 
@@ -123,25 +130,22 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
     screen_destroy();
     free(ge);
+    /*Clean exit.*/
     return;
 }
 
-void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
+Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP])
 {
-    Id id_aux = 0, *id_aux_2 = NULL;
-    Character *character;
-    Player *player;
     Space *space_act = NULL;
-    char str[MAX_STRING_GE];
-    char map[HEIGHT_MAP][WIDTH_MAP], aux_map[HEIGHT_SPACE][WIDTH_SPACE];
     int i = 0, j = 0, t = 0, v = 0;
-    Id *id_list = NULL, actual_id[NUM_IDS];
-    CommandCode last_cmd = UNKNOWN;
-    extern char *cmd_to_str[N_CMD][N_CMDT];
-    player = game_get_player(game);
-    /* Paints the information in the map area.*/
-    screen_area_clear(ge->map);
-    if ((actual_id[ACTUAL_POSITION] = player_get_player_location(player)) != NO_ID)
+    char aux_map[HEIGHT_SPACE][WIDTH_SPACE];
+    Id actual_id[NUM_IDS];
+
+    /*Error control.*/
+    if (!game || !map)
+        return ERROR;
+
+    if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_player(game))) != NO_ID)
     {
         /*Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
@@ -154,7 +158,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         actual_id[SOUTH_EAST] = NO_ID;
         actual_id[SOUTH_WEST] = NO_ID;
 
-        /*CLEANS THE MAP*/
+        /*Cleans the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
             for (j = 0; j < WIDTH_MAP; j++)
@@ -164,7 +168,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             map[i][WIDTH_MAP] = '\0';
         }
 
-        /*FILLS THE MAP*/
+        /*Fills the map.*/
         for (i = 0; i < 3; i++)
         {
             for (j = 0; j < 3; j++)
@@ -183,7 +187,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             }
         }
 
-        /*PUTS THE ARROWS*/
+        /*PUTS THE ARROWS.*/
         if (actual_id[NORTH] != NO_ID)
             map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = '^';
         if (actual_id[WEST] != NO_ID)
@@ -197,12 +201,36 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         {
             map[i][WIDTH_MAP - 1] = '\0';
         }
+    }
+    /*Clean exit.*/
+    return OK;
+}
 
-        /*PRINTS THE MAP*/
-        for (i = 0; i < HEIGHT_MAP; i++)
-        {
-            screen_area_puts(ge->map, map[i]);
-        }
+void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
+{
+    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL;
+    Character *character;
+    Player *player;
+    Space *space_act = NULL;
+    char str[MAX_STRING_GE], map[HEIGHT_MAP][WIDTH_MAP];
+    int i = 0;
+    CommandCode last_cmd = UNKNOWN;
+    extern char *cmd_to_str[N_CMD][N_CMDT];
+    player = game_get_player(game);
+
+    if (!ge || !game)
+        return;
+
+    /* Paints the information in the map area.*/
+    screen_area_clear(ge->map);
+
+    if (map_init(game, map) == ERROR)
+        return;
+
+    /*PRINTS THE MAP*/
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        screen_area_puts(ge->map, map[i]);
     }
 
     /* Paint in the description area */
@@ -273,7 +301,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     next or s, back or w,left or a, right or d, exit or e, take or t, drop or d, chat or c, attack or f");
+    sprintf(str, "     next or n, back or b,left or l, right or r, exit or e, take or t, drop or d, chat or c, attack or a");
     screen_area_puts(ge->help, str);
 
     /* Paint in the feedback area */
@@ -321,7 +349,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
 
     if (set)
     {
-        /*Looks how many strings it can print inside the 12 letters in the space given and stores the final string 
+        /*Looks how many strings it can print inside the 12 letters in the space given and stores the final string
         in aux_2 (WDITH_SPACE -2 for the barriers, -3 for the extra things i'm placing)*/
 
         /*1-Looks how many objects it can fit inside the space given, 'i' will have the amount of objects that can be printed*/
@@ -339,8 +367,8 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
         }
 
         /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing*/
-        if(i<n_objs_space-1)
-            cond=1;
+        if (i < n_objs_space - 1)
+            cond = 1;
         aux_2[0] = '\0';
 
         /*3-Fills the string with the tags of the object that fit*/
@@ -358,9 +386,9 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
             }
         }
 
-        /*4-If the previous condition is equal to 1, it adds "..." so that the player 
+        /*4-If the previous condition is equal to 1, it adds "..." so that the player
         knows there are more objects that are't being represented*/
-        if(cond==1)
+        if (cond == 1)
         {
             strcpy(aux_4, aux_2);
             sprintf(aux_2, "%s%s", aux_4, "...");
