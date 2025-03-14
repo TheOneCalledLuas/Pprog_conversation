@@ -79,7 +79,7 @@ struct _Graphic_engine
  * @param destination the array where you are storing the information.
  * @return OK if everything went well, ERROR otherwise.
  */
-Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE]);
+Status graphic_engine_print_space(Game *game, Id space_id, char **destination);
 
 /**
  * @brief Initalises all the data to be printed in an array structure.
@@ -88,7 +88,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
  * @param game Pointer to the game.
  * @param map Map to be initialised.
  */
-Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP]);
+Status map_init(Game *game, char **map);
 
 /* END OF PRIVATE FUNCTIONS.*/
 
@@ -136,20 +136,41 @@ void graphic_engine_destroy(Graphic_engine *ge)
     return;
 }
 
-Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP])
+Status map_init(Game *game, char **map)
 {
     Space *space_act = NULL;
     int i = 0, j = 0, t = 0, v = 0;
-    char aux_map[HEIGHT_SPACE][WIDTH_SPACE];
+    char **aux_map;
     Id actual_id[NUM_IDS];
 
     /*Error control.*/
     if (!game || !map)
         return ERROR;
 
+    /*Allocates memory for the aux_map.*/
+    if (!(aux_map = (char **)calloc(HEIGHT_SPACE, sizeof(char *))))
+    {
+        return ERROR;
+    }
+    for (i = 0; i < HEIGHT_SPACE; i++)
+    {
+        if (!(aux_map[i] = (char *)calloc(WIDTH_SPACE, sizeof(char))))
+        {
+            for (i = 0; i < HEIGHT_SPACE; i++)
+            {
+                if (aux_map[i] != NULL)
+                {
+                    free(aux_map[i]);
+                }
+            }
+            free(aux_map);
+            return ERROR;
+        }
+    }
+
     if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_player(game))) != NO_ID)
     {
-        /*Gets the spaces located to the different points of the space.*/
+        /*1-Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
         actual_id[NORTH] = space_get_north(space_act);
         actual_id[SOUTH] = space_get_south(space_act);
@@ -160,17 +181,16 @@ Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP])
         actual_id[SOUTH_EAST] = NO_ID;
         actual_id[SOUTH_WEST] = NO_ID;
 
-        /*Cleans the map.*/
+        /*2-Cleans the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
             for (j = 0; j < WIDTH_MAP; j++)
             {
                 map[i][j] = ' ';
             }
-            map[i][WIDTH_MAP] = '\0';
         }
 
-        /*Fills the map.*/
+        /*3-Fills the map.*/
         for (i = 0; i < 3; i++)
         {
             for (j = 0; j < 3; j++)
@@ -189,7 +209,7 @@ Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP])
             }
         }
 
-        /*PUTS THE ARROWS.*/
+        /*4-Puts the arrows.*/
         if (actual_id[NORTH] != NO_ID)
             map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = '^';
         if (actual_id[WEST] != NO_ID)
@@ -198,12 +218,21 @@ Status map_init(Game *game, char map[HEIGHT_MAP][WIDTH_MAP])
             map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = '>';
         if (actual_id[SOUTH] != NO_ID)
             map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = 'v';
-        /*PUTS \0 IN CASE THEY WEREN'T PLACED*/
+        /*5-puts \0*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
             map[i][WIDTH_MAP - 1] = '\0';
         }
     }
+
+    /*Frees the memroy.*/
+    for (i = 0; i < HEIGHT_SPACE; i++)
+    {
+        if (aux_map[i])
+            free(aux_map[i]);
+    }
+    free(aux_map);
+
     /*Clean exit.*/
     return OK;
 }
@@ -214,29 +243,66 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Character *character;
     Player *player;
     Space *space_act = NULL;
-    char str[MAX_STRING_GE], map[HEIGHT_MAP][WIDTH_MAP];
+    char str[MAX_STRING_GE], **map;
     int i = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_player(game);
 
+    /*Error management.*/
     if (!ge || !game)
         return;
 
-    /* Paints the information in the map area.*/
+    /*MAP SECTION.*/
+    /*1-Allocates memory needed.*/
+    if (!(map = (char **)calloc(HEIGHT_MAP, sizeof(char *))))
+    {
+        return;
+    }
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
+        {
+            for (i = 0; i < HEIGHT_MAP; i++)
+            {
+                if (map[i])
+                    free(map[i]);
+            }
+            free(map);
+            return;
+        }
+    }
+    /*2-Clears the map.*/
     screen_area_clear(ge->map);
 
+    /*3-Fills the map that we modify and later print.*/
     if (map_init(game, map) == ERROR)
+    {
+        for (i = 0; i < HEIGHT_MAP; i++)
+        {
+            if (map[i])
+                free(map[i]);
+        }
         return;
+    }
 
-    /*PRINTS THE MAP*/
+    /*4-Prints the map.*/
     for (i = 0; i < HEIGHT_MAP; i++)
     {
         screen_area_puts(ge->map, map[i]);
     }
+    /*5-Frees the allocated memory.*/
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        if (map[i])
+            free(map[i]);
+    }
+    free(map);
 
-    /* Paint in the description area */
+    /*DESCRIPTION SECTION.*/
+    /*1-Clears the area.*/
     screen_area_clear(ge->descript);
+    /*2-Prints the information about the objects.*/
     sprintf(str, "  OBJECTS:");
     screen_area_puts(ge->descript, str);
     if (game_get_n_objects(game) >= 1)
@@ -254,7 +320,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         free(id_list);
     }
 
-    /*Prints the characters information*/
+    /*3-Prints the information about the characters.*/
     screen_area_puts(ge->descript, " ");
     screen_area_puts(ge->descript, "  CHARACTERS");
     id_aux_2 = game_get_characters(game);
@@ -267,7 +333,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_puts(ge->descript, " ");
     free(id_aux_2);
 
-    /*Prints the player information*/
+    /*4-Prints the player information.*/
     sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
     if (player_get_object(player) != NO_ID)
@@ -282,7 +348,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         screen_area_puts(ge->descript, str);
     }
 
-    /* Prints the Message.*/
+    /*5-Prints the message if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
         id_aux = space_get_character(space_act);
@@ -296,28 +362,28 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         }
     }
 
-    /* Paint in the banner area */
+    /*BANNER AREA.*/
     screen_area_puts(ge->banner, "    The anthill game ");
 
-    /* Paint in the help area */
+    /*HELP AREA.*/
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
     sprintf(str, "     next or n, back or b,left or l, right or r, exit or e, take or t, drop or d, chat or c, attack or a");
     screen_area_puts(ge->help, str);
 
-    /* Paint in the feedback area */
+    /*FEEDBACK AREA.*/
     last_cmd = command_get_code(game_get_last_command(game));
     i = command_get_status(game_get_last_command(game));
     sprintf(str, " -%-10s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
     screen_area_puts(ge->feedback, str);
 
-    /* Dump to the terminal */
+    /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
     screen_paint();
     printf("prompt:> ");
 }
 
-Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIGHT_SPACE][WIDTH_SPACE])
+Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {
     char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 5];
     Space *space;

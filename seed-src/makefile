@@ -80,4 +80,6 @@ character_test: character_test.o character.o
 character_test.o: character_test.c character.h types.h test.h character_test.h
 	gcc $(CFLAGS) $<
 
+run:
+	./anthill anthill.dat
 

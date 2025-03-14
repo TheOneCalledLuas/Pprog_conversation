@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["/home/saul/Pprog_conversation/seed-src/castle.dat"],
+            "args": ["/home/fernandpo/cosa_uni/proyecto_program/seed-src/anthill.dat"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],
