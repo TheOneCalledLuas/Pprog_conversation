@@ -33,6 +33,7 @@
 #define WIDTH_SPACE 18    /*Space width.*/
 #define HEIGHT_SPACE 9    /*Space height.*/
 #define STARING_POINT 1   /*Start of the gap when placed.*/
+#define PLAYER_LENGTH 4   /*The amount of charactes the icon for tha player occupies.*/
 
 #define NON_WRITTABLE_ELEMS 5 /*Elements that cannot be written per room.*/
 
@@ -385,7 +386,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {
-    char aux[4] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 5];
+    char aux[PLAYER_LENGTH] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 5];
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
