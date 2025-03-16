@@ -440,7 +440,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
             cond = TRUE;
         aux_2[0] = '\0';
 
-        /*3-Fills the string with the tags of the object that fit*/
+        /*3-Fills the string with the tags of the objects that fit*/
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));

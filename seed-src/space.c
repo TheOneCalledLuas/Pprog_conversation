@@ -37,9 +37,7 @@ struct _Space
     Id character;              /*!< Character id.*/
 };
 
-/** space_create allocates memory for a new space
- *  and initializes its members.
- */
+
 Space *space_create(Id id)
 {
     Space *newSpace = NULL;
