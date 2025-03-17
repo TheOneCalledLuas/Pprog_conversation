@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 
     if (argc < 2)
     {
-        printf("Running all test for module Space:\n");
+        printf("Running all test for module Character:\n");
     }
     else
     {
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
 
     PRINT_PASSED_PERCENTAGE;
 
-    return 1;
+    return 0;
 }
 
 void test1_character_create()

@@ -2,7 +2,7 @@
  * @brief It defines the command interpreter interface.
  *
  * @file command.h
- * @author Fernando Mijangos
+ * @author Fernando Mijangos Saul Lopez Romero
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -52,7 +52,7 @@ typedef struct _Command Command;
 
 /**
  * @brief It creates a new command, allocating memory and initializing its members.
- * @author Profesores PPROG
+ * @author Saúl lopez
  *
  * @return Pointer to a new command, initialized.
  */
@@ -60,7 +60,7 @@ Command *command_create();
 
 /**
  * @brief It destroys an existing command, freeing the allocated memory.
- * @author Profesores PPROG
+ * @author Saúl lopez
  *
  * @param command Pointer to the space that needs to be destroyed.
  * @return OK if everything goes well or ERROR if there was some mistake.
@@ -69,7 +69,7 @@ Status command_destroy(Command *command);
 
 /**
  * @brief It sets the code that will be stored in command.
- * @author Profesores PPROG
+ * @author Saúl lopez
  *
  * @param command Pointer to the command that will recive the code.
  * @param code  Code that will be stored.
@@ -79,7 +79,7 @@ Status command_set_code(Command *command, CommandCode code);
 
 /**
  * @brief It gets the code that is stored in a command.
- * @author Profesores PPROG
+ * @author Saúl lopez
  *
  * @param command Pointer to the command.
  * @return Code stored in the command.

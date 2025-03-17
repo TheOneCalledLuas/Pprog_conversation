@@ -2,7 +2,7 @@
  * @brief It defines the game update interface.
  *
  * @file game.h
- * @author Fernando Mijangos, Saúl López Romero.
+ * @author Fernando Mijangos.
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License

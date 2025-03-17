@@ -2,7 +2,7 @@
  * @brief It implements the game update through user actions.
  *
  * @file game_actions.c
- * @author Fernando Mijangos, Saúl López Romero.
+ * @author Fernando Mijangos, Saúl López Romero
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License

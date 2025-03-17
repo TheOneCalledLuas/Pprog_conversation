@@ -2,9 +2,9 @@
  * @brief It implements the command interpreter
  *
  * @file command.c
- * @author Fernando Mijangos
+ * @author Fernando Mijangos Saul Lopez Romero
  * @version 3
- * @date 27-01-2025
+ * @date 29-02-2025
  * @copyright GNU Public License
  */
 

@@ -2,7 +2,7 @@
  * @brief It defines the game loop.
  *
  * @file game_loop.c
- * @author Fernando Mijangos
+ * @author Fernando Mijangos, Saul Lopez Romero
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -33,7 +33,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name);
 /**
  * @brief Main game loop, where all the actions take place.
  *
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  * @param game Pointer to the game.
  * @param gengine Pointer to the graphic engine.
  */

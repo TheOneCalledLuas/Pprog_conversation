@@ -2,7 +2,7 @@
  * @brief It defines the textual graphic engine interface
  *
  * @file graphic_engine.h
- * @author Fernando Mijangos
+ * @author Fernando Mijangos, Saul Lopez Romero
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -22,7 +22,7 @@ typedef struct _Graphic_engine Graphic_engine;
 
 /**
  * @brief It creates a new Graphic engine structure with all its variables initialized
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  *
  * @return Pointer to the initialized graphic engine.
  */
@@ -30,7 +30,7 @@ Graphic_engine *graphic_engine_create();
 
 /**
  * @brief It destroys a graphic engine structure
- * @author Profesores PPROG
+ * @author Saul Lopez Romero
  *
  * @param ge The graphic engine structure you want to destroy.
  */
