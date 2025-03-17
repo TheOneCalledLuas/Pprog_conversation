@@ -202,6 +202,7 @@ Status map_init(Game *game, char **map)
                 }
                 for (t = 0; t < HEIGHT_SPACE; t++)
                 {
+                    /*The -1 after width_space in the loop is so that it doesnt copy the '\0'*/
                     for (v = 0; v < WIDTH_SPACE - 1; v++)
                     {
                         map[i * (HEIGHT_SPACE + 1) + t][j * (WIDTH_SPACE + 2) + v] = aux_map[t][v];
@@ -376,7 +377,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*FEEDBACK AREA.*/
     last_cmd = command_get_code(game_get_last_command(game));
     i = command_get_status(game_get_last_command(game));
-    sprintf(str, " -%-10s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
+    sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
     screen_area_puts(ge->feedback, str);
 
     /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
@@ -426,7 +427,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         {
             for (j = 0; j < i; j++)
             {
-                cond = cond + 1 + strlen(object_get_name(game_get_object(game, set[j])));
+                cond += 1 + strlen(object_get_name(game_get_object(game, set[j])));
             }
 
             if (cond > WIDTH_SPACE - NON_WRITTABLE_ELEMS)
