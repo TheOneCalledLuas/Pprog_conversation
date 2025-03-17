@@ -58,6 +58,10 @@ Status game_create(Game **game)
     }
     /*Memory allocation.*/
     (*game) = (Game *)malloc(sizeof(Game));
+    if ((*game) == NULL)
+    {
+        return ERROR;
+    }
 
     for (i = 0; i < MAX_SPACES; i++)
     {
