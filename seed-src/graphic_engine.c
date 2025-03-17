@@ -250,6 +250,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_player(game);
+    space_act = game_get_space(game,player_get_player_location(player));
 
     /*Error management.*/
     if (!ge || !game)
