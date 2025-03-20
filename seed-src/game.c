@@ -31,12 +31,14 @@
 #define SPACE_C2 123
 #define ID_PLAYER 5
 
+#define MAX_PLAYERS 10
+
 /**
    Game interface implementation.
 */
 struct _Game
 {
-    Player *player;                        /*!< Pointer to the player. */
+    Player *players[MAX_PLAYERS];          /*!< Array with all the players. */
     Space *spaces[MAX_SPACES];             /*!< An array with the information of every space. */
     Object *objects[MAX_OBJECTS];          /*!< An array with the information of every objects.*/
     Character *characters[MAX_CHARACTERS]; /*!< Array with all the character of the game.*/
@@ -45,6 +47,8 @@ struct _Game
     int n_characters;                      /*< Number of characters.*/
     Command *last_cmd;                     /*!< A pointer to the last command entered by the user.*/
     Bool finished;                         /*!< Whether the game has finished or not.*/
+    int turn;                              /*!< Actual turn.*/
+    int n_players;                         /*!< Number of players,*/
 };
 
 Status game_create(Game **game)
@@ -75,11 +79,17 @@ Status game_create(Game **game)
     {
         (*game)->objects[i] = NULL;
     }
+    for (i = 0; i < MAX_PLAYERS; i++)
+    {
+        (*game)->players[i] = NULL;
+    }
+
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
     (*game)->n_characters = 0;
-    (*game)->player = player_create(ID_PLAYER);
+    (*game)->n_players = 0;
+    (*game)->turn = 0;
     (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
 
@@ -252,12 +262,13 @@ Status game_destroy(Game **game)
         space_destroy((*game)->spaces[i]);
     }
 
-    if ((*game)->player)
+    /*Destroys the players.*/
+    for (i = 0; i < (*game)->n_players; i++)
     {
-        /*Destroys the player structure.*/
-        player_destroy((*game)->player);
+        player_destroy((*game)->players[i]);
     }
 
+    /*Destroys the objects.*/
     for (i = 0; i < (*game)->n_objects; i++)
     {
         object_destroy((*game)->objects[i]);
@@ -268,7 +279,35 @@ Status game_destroy(Game **game)
     return OK;
 }
 
-Status game_set_player(Game *game, Player *player)
+int game_get_n_players(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return -1;
+    /*Returns the value.*/
+    return game->n_players;
+}
+
+Status game_next_turn(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return ERROR;
+    /*Goes to the next turn.*/
+    game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
+    return OK;
+}
+
+int game_get_next_turn(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return -1;
+    /*Returns the next turn.*/
+    return ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
+}
+
+Status game_add_player(Game *game, Player *player)
 {
     /*Error management.*/
     if (!player || game == NULL)
@@ -276,12 +315,12 @@ Status game_set_player(Game *game, Player *player)
         return ERROR;
     }
 
-    game->player = player;
+    game->players[(game->n_players)++] = player;
 
     return OK;
 }
 
-Player *game_get_player(Game *game)
+Player *game_get_actual_player(Game *game)
 {
     /*Error management.*/
     if (game == NULL)
@@ -290,7 +329,7 @@ Player *game_get_player(Game *game)
     }
 
     /*Returns a pointer to the player.*/
-    return game->player;
+    return game->players[(game->n_players) - 1];
 }
 
 Id game_get_object_location(Game *game, Id id)
@@ -525,8 +564,13 @@ void game_print(Game *game)
         object_print_info(game->objects[i]);
     }
 
-    /*3.-Player.*/
-    printf("=> Player id: %d\n", (int)player_get_player_id(game->player));
+    /*3.-Players.*/
+    printf("=> Players:\n");
+    for (i = 0; i < game->n_players; i++)
+    {
+        player_print(game->players[i]);
+        printf("\n");
+    }
     return;
 }
 
@@ -554,8 +598,10 @@ Status game_create_from_file(Game **game, char *filename)
         return ERROR;
     }
 
-    /*The player is located in the first space.*/
-    player_set_player_location(game_get_player(*game), game_get_space_id_at(*game, 0));
+    if (game_reader_load_players(*game, filename) == ERROR)
+    {
+        return ERROR;
+    }
 
     /*Loads the characters where they are supposed to be (TEMPORAL).*/
     c1 = character_create(CHARACTER_ID_1);

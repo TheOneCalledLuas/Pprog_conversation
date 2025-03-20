@@ -374,7 +374,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     Id *id_list = NULL, actual_id[9];
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
-    player=game_get_player(game);
+    player=game_get_actual_player(game);
     /* Paints the information in the map area.*/
     screen_area_clear(ge->map);
     if ((actual_id[4] = player_get_player_location(player)) != NO_ID)
@@ -552,7 +552,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char destination[HEIG
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
         return ERROR;
     /*Checks if the player is in the room.*/
-    if (space_id == player_get_player_location(game_get_player(game)))
+    if (space_id == player_get_player_location(game_get_actual_player(game)))
     {
         strcpy(aux, "m0\"");
     }

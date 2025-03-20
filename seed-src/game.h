@@ -140,23 +140,61 @@ Space *game_get_space(Game *game, Id id);
 Id game_get_space_id_at(Game *game, int position);
 
 /**
- * @brief It returns a pointer to the player the game has.
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game.
- * @return The pointer to the player.
+ * @brief Returns the number of players.
+ * @author Saúl López Romero
+ * 
+ * @param game pointer to the game.
+ * @return number of players or -1 if an error takees place.
  */
-Player *game_get_player(Game *game);
+int game_get_n_players (Game * game);
 
 /**
- * @brief Returns the id of the space where the plater is at.
- * @author Fernando Mijangos
+ * @brief Returns the game turn.
+ * @author Saúl López Romero
+ * 
+ * @param game pointer to the game.
+ * @return actual game turn or -1 if an error takes place.
+ */
+int game_get_turn(Game * game);
+
+/**
+ * @brief Advances to the next turn.
+ * @author Saúl López Romero
+ * 
+ * @param game pointer to the game.
+ * @return OK or ERROR.
+ */
+Status game_next_turn(Game * game);
+
+/**
+ * @brief Returns the next turn.
+ * @author Saúl López Romero
+ * 
+ * @param game pointer to the game.
+ * @return next turn or -1 if an error takes place.
+ */
+int game_get_next_turn(Game *game);
+
+
+/**
+ * @brief Gets the actual player.
+ * @author Saúl López Romero.
+ * 
+ * @param game pointer to the game.
+ * @return Pointer to the player.
+ */
+Player * game_get_actual_player(Game * game);
+
+/**
+ * @brief Adds a player to the game.
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @param player Pointer to the player.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status game_set_player(Game *game, Player *player);
+
+Status game_add_player(Game *game, Player *player);
 
 /**
  * @brief It returns a pointer to the object with the specified id.

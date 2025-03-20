@@ -169,7 +169,7 @@ Status map_init(Game *game, char **map)
         }
     }
 
-    if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_player(game))) != NO_ID)
+    if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_actual_player(game))) != NO_ID)
     {
         /*1-Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
@@ -243,13 +243,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
     Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL;
     Character *character;
-    Player *player;
+    Player *player = NULL;
     Space *space_act = NULL;
     char str[MAX_STRING_GE], **map;
     int i = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
-    player = game_get_player(game);
+    player = game_get_actual_player(game);
     space_act = game_get_space(game,player_get_player_location(player));
 
     /*Error management.*/
@@ -397,7 +397,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
         return ERROR;
     /*Checks if the player is in the room.*/
-    if (space_id == player_get_player_location(game_get_player(game)))
+    if (space_id == player_get_player_location(game_get_actual_player(game)))
     {
         strcpy(aux, "m0\"");
     }

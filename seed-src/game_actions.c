@@ -194,7 +194,7 @@ void game_actions_next(Game *game)
     Id space_id = NO_ID;
 
     /*It gets the player location.*/
-    space_id = player_get_player_location(game_get_player(game));
+    space_id = player_get_player_location(game_get_actual_player(game));
     if (space_id == NO_ID || space_id == ID_ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -205,7 +205,7 @@ void game_actions_next(Game *game)
     current_id = space_get_south(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game_get_player(game), current_id);
+        player_set_player_location(game_get_actual_player(game), current_id);
     }
     else
     {
@@ -222,7 +222,7 @@ void game_actions_back(Game *game)
     Id space_id = NO_ID;
 
     /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_player(game));
+    space_id = player_get_player_location(game_get_actual_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -233,7 +233,7 @@ void game_actions_back(Game *game)
     current_id = space_get_north(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game_get_player(game), current_id);
+        player_set_player_location(game_get_actual_player(game), current_id);
     }
     else
     {
@@ -251,7 +251,7 @@ void game_actions_left(Game *game)
     Id space_id = NO_ID;
 
     /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_player(game));
+    space_id = player_get_player_location(game_get_actual_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -262,7 +262,7 @@ void game_actions_left(Game *game)
     current_id = space_get_west(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game_get_player(game), current_id);
+        player_set_player_location(game_get_actual_player(game), current_id);
     }
     else
     {
@@ -279,7 +279,7 @@ void game_actions_right(Game *game)
     Id space_id = NO_ID;
 
     /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_player(game));
+    space_id = player_get_player_location(game_get_actual_player(game));
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -290,7 +290,7 @@ void game_actions_right(Game *game)
     current_id = space_get_east(game_get_space(game, space_id));
     if (current_id != NO_ID)
     {
-        player_set_player_location(game_get_player(game), current_id);
+        player_set_player_location(game_get_actual_player(game), current_id);
     }
     else
     {
@@ -321,13 +321,13 @@ void game_actions_take(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    space = game_get_space(game, player_get_player_location(game_get_player(game)));
+    space = game_get_space(game, player_get_player_location(game_get_actual_player(game)));
     if (space_find_object(space, object) == NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    player = game_get_player(game);
+    player = game_get_actual_player(game);
 
     /*2-Checks if the player already has an object.*/
     if (player_get_object(player) != NO_ID)
@@ -368,19 +368,19 @@ void game_actions_drop(Game *game)
     }
 
     /*1-Gets all the information it needs and error management.*/
-    object = player_get_object(game_get_player(game));
+    object = player_get_object(game_get_actual_player(game));
     if (object == NO_ID || object == ID_ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    space = game_get_space(game, player_get_player_location(game_get_player(game)));
+    space = game_get_space(game, player_get_player_location(game_get_actual_player(game)));
     if (space_find_object(space, object) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    player = game_get_player(game);
+    player = game_get_actual_player(game);
 
     /*2-Checks if the player has an object.*/
     if (player_get_object(player) == NO_ID)
@@ -429,7 +429,7 @@ void game_actions_attack(Game *game)
         return;
     }
     /*Checks that the player meets the requirements to attack.*/
-    player = game_get_player(game);
+    player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
     has_character = space_get_character(game_get_space(game, player_location)) != NO_ID;
     if (!has_character)

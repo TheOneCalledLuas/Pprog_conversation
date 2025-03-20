@@ -68,11 +68,11 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 toks = strtok(NULL, "|");
 
                 /*Error handling.*/
-                if (!toks || strlen(toks) != DESC_SIZE) 
+                if (!toks || strlen(toks) != DESC_SIZE)
                 {
                     strcpy(desc[i], "         "); /*9 spaces.*/
                 }
-                else 
+                else
                     strcpy(desc[i], toks);
             }
 /*If DEBUG mode is active (defined) prints what it has read.*/
@@ -180,6 +180,61 @@ Status game_reader_load_objects(Game *game, char *filename)
     }
     /*Close the file.*/
     fclose(file);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_reader_load_players(Game *game, char *filename)
+{
+    FILE *f = NULL;
+    Player *player = NULL;
+    char name[WORD_SIZE];
+    char gdesc[WORD_SIZE];
+    char line[WORD_SIZE];
+    int player_count = 0;
+    Id player_id = 0, space_id = 0;
+    char *toks = NULL;
+
+    /*Error handling.*/
+    if (!game || !filename)
+        return ERROR;
+
+    /*Opens the file.*/
+    if (!(f = fopen(filename, "r")))
+        return ERROR;
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, f))
+    {
+        /*Checks that the line contains a player.*/
+        if (strncmp("#p:", line, 3) == 0)
+        {
+            /*Takes the information data by data.*/
+            toks = strtok(line + 3, "|");
+            player_id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            strcpy(gdesc, toks);
+            toks = strtok(NULL, "|");
+            space_id = atol(toks);
+
+            /*Creates an object and saves the data.*/
+            player = player_create(player_id);
+            /*Checks that the memory allocacion took place.*/
+            if (!player)
+            {
+                return ERROR;
+            }
+            player_set_player_name(player, name);
+            player_set_player_location(player, space_id);
+            /*Adds the player to the space.*/
+            game_add_player(game, player);
+        }
+    }
+    /*Close the file.*/
+    fclose(f);
 
     /*Clean exit.*/
     return OK;
