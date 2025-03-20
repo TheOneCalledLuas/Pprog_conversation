@@ -192,9 +192,9 @@ Status game_reader_load_players(Game *game, char *filename)
     char name[WORD_SIZE];
     char gdesc[WORD_SIZE];
     char line[WORD_SIZE];
-    int player_count = 0;
     Id player_id = 0, space_id = 0;
     char *toks = NULL;
+    int player_inventory = 0, player_health = 0; /*Gives a warning untill someone programs the inventory...*/
 
     /*Error handling.*/
     if (!game || !filename)
@@ -219,6 +219,10 @@ Status game_reader_load_players(Game *game, char *filename)
             strcpy(gdesc, toks);
             toks = strtok(NULL, "|");
             space_id = atol(toks);
+            toks = strtok(NULL, "|");
+            player_health = atol(toks);
+            toks = strtok(NULL, "|");
+            player_inventory = atol(toks);
 
             /*Creates an object and saves the data.*/
             player = player_create(player_id);
@@ -229,6 +233,8 @@ Status game_reader_load_players(Game *game, char *filename)
             }
             player_set_player_name(player, name);
             player_set_player_location(player, space_id);
+            player_set_gdesc(player, gdesc);
+            player_set_health(player, player_health);
             /*Adds the player to the space.*/
             game_add_player(game, player);
         }

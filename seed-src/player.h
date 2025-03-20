@@ -76,6 +76,25 @@ Status player_set_object(Player *player, Id object);
 Id player_get_player_id(Player *player);
 
 /**
+ * @brief It sets the player id.
+ * @author Saúl López Romero
+ *
+ * @param player Pointer to the player.
+ * @param gdesc Graphic description.
+ * @return OK or ERROR if somenthing goes wrong.
+ */
+Status player_set_gdesc(Player *player, char *gdesc);
+
+/**
+ * @brief It gets the player graphic description.
+ * @author Saúl López Romero
+ *
+ * @param player Pointer to the player.
+ * @return string with the description or NULL if it goes wrong.
+ */
+char *player_get_gdesc(Player *player);
+
+/**
  * @brief It gets the player name
  * @author Fernando Mijangos
  *

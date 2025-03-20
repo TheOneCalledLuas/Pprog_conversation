@@ -112,6 +112,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine)
         graphic_engine_paint_game(gengine, game);
         command_get_user_input(last_cmd);
         game_actions_update(game, last_cmd);
+        game_next_turn(game);
     }
 }
 

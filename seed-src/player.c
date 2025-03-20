@@ -16,18 +16,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_GDESC 10
+
 /**
-* @brief Player
-*
-* It stores all the information related to a player.
-*/
+ * @brief Player
+ *
+ * It stores all the information related to a player.
+ */
 struct _Player
 {
     Id player_id;                       /*!< Id of the player.*/
     char player_name[PLAYER_NAME_SIZE]; /*!< Name of the player.*/
     Id player_location;                 /*!< id of the space where the player is at.*/
-    Id object;                          /*!<Id of the object the player has.*/
-    int health;                         /*!< health points the player has.*/
+    Id object;                          /*!< Id of the object the player has.*/
+    int health;                         /*!< Health points the player has.*/
+    char gdesc[MAX_GDESC];              /*!< Graphic description for the player.*/
 };
 
 Player *player_create(Id id)
@@ -85,7 +88,7 @@ Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE])
 Status player_set_player_location(Player *player, Id id)
 {
     /*Error management*/
-    if (player == NULL || id == NO_ID ||id == ID_ERROR)
+    if (player == NULL || id == NO_ID || id == ID_ERROR)
     {
         return ERROR;
     }
@@ -105,6 +108,25 @@ Status player_set_object(Player *player, Id object)
 
     /*Copy of the values*/
     player->object = object;
+    return OK;
+}
+
+char *player_get_gdesc(Player *player)
+{
+    /*Error handling.*/
+    if (!player)
+        return NULL;
+    /*Returns the string.*/
+    return player->gdesc;
+}
+
+Status player_set_gdesc(Player *player, char *gdesc)
+{
+    /*Error handling.*/
+    if (!player || !gdesc || strlen(gdesc) >= MAX_GDESC)
+        return ERROR;
+    /*Sets the value.*/
+    strcpy(player->gdesc,gdesc);
     return OK;
 }
 

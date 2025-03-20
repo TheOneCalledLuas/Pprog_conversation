@@ -329,7 +329,7 @@ Player *game_get_actual_player(Game *game)
     }
 
     /*Returns a pointer to the player.*/
-    return game->players[(game->n_players) - 1];
+    return game->players[game->turn];
 }
 
 Id game_get_object_location(Game *game, Id id)
