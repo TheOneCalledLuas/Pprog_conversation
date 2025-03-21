@@ -348,8 +348,6 @@ void game_actions_take(Game *game)
         return;
     }
 
-    /*4-Sets the argument to its default state so that it doesnt mess with things when inputing other commands.*/
-    command_set_word(game_get_last_command(game), "\0");
     command_set_status(game_get_last_command(game), OK);
     return;
 }

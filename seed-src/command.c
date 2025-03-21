@@ -21,7 +21,7 @@
 /**
  * @brief structure with all the possible commands and the key words to triger them.
  */
-char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"l","Left"},{"r","Right"},{"t", "Take"}, {"d", "Drop"}, {"a", "Attack"},{"c","Chat"}};
+char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}, {"l", "Left"}, {"r", "Right"}, {"t", "Take"}, {"d", "Drop"}, {"a", "Attack"}, {"c", "Chat"}};
 
 /**
  * @brief Command
@@ -30,9 +30,9 @@ char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "E
  */
 struct _Command
 {
-    CommandCode code;             /*!< Name of the command. */
-    char word[CMD_LENGHT];        /*!< Extra information the player might give.*/
-    Status status;                /*!< If the las command had any effect or not.*/
+    CommandCode code;      /*!< Name of the command. */
+    char word[CMD_LENGHT]; /*!< Extra information the player might give.*/
+    Status status;         /*!< If the las command had any effect or not.*/
 };
 
 Command *command_create()
@@ -49,7 +49,7 @@ Command *command_create()
     /*Initialization of an empty command.*/
     newCommand->code = NO_CMD;
     newCommand->word[0] = '\0';
-    newCommand->status= OK;
+    newCommand->status = OK;
 
     return newCommand;
 }
@@ -75,7 +75,7 @@ Status command_set_code(Command *command, CommandCode code)
     {
         return ERROR;
     }
-    
+
     /*Sets the value.*/
     command->code = code;
 
@@ -96,7 +96,7 @@ CommandCode command_get_code(Command *command)
 
 char *command_get_word(Command *command)
 {
-    if(!command)
+    if (!command)
     {
         return NULL;
     }
@@ -107,14 +107,14 @@ char *command_get_word(Command *command)
 Status command_set_word(Command *command, char *word)
 {
     /*Error handling.*/
-    if(!command || !word)
+    if (!command || !word)
     {
         return ERROR;
     }
 
     /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0.*/
     strncpy(command->word, word, CMD_LENGHT);
-    command->word[CMD_LENGHT-1]='\0';
+    command->word[CMD_LENGHT - 1] = '\0';
 
     return OK;
 }
@@ -122,19 +122,19 @@ Status command_set_word(Command *command, char *word)
 Status command_set_status(Command *command, Status status)
 {
     /*Error handling.*/
-    if(!command)
+    if (!command)
     {
         return ERROR;
     }
 
     /*It copies the value given.*/
-    command->status=status;
+    command->status = status;
     return OK;
 }
 
 Status command_get_status(Command *command)
 {
-    return(command? command->status:ERROR);
+    return (command ? command->status : ERROR);
 }
 
 Status command_get_user_input(Command *command)
@@ -148,7 +148,7 @@ Status command_get_user_input(Command *command)
     {
         return ERROR;
     }
-    command->word[0]='\0';
+    command->word[0] = '\0';
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
@@ -160,7 +160,7 @@ Status command_get_user_input(Command *command)
         }
 
         cmd = UNKNOWN;
-            /*2.2 Identifies the code of the command entered.*/
+        /*2.2 Identifies the code of the command entered.*/
         while (cmd == UNKNOWN && i < N_CMD)
         {
             if (!strcasecmp(token, cmd_to_str[i][CMDS]) || !strcasecmp(token, cmd_to_str[i][CMDL]))
@@ -173,14 +173,14 @@ Status command_get_user_input(Command *command)
             }
         }
         /*2.3. Return the code that has been identified.*/
-        if(!command_set_code(command, cmd))
+        if (!command_set_code(command, cmd))
         {
             return ERROR;
         }
 
         /*2.4 Assigns the extra word the user might have inputed.*/
-        token = strtok(NULL," \n");
-        if(!command_set_word(command, token))
+        token = strtok(NULL, " \n");
+        if (!command_set_word(command, token))
         {
             return ERROR;
         }
@@ -188,4 +188,24 @@ Status command_get_user_input(Command *command)
     }
     else /*2.5 If it cant read the input from the user, return exit.*/
         return command_set_code(command, EXIT);
+}
+
+Status command_print(Command *com, FILE *place)
+{
+    /*Error handling.*/
+    if (!com || !place)
+    {
+        return ERROR;
+    }
+    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[com->code][1], com->word);
+
+    if (com->status == OK)
+    {
+        fprintf(place, "OK");
+    }
+    else
+    {
+        fprintf(place, "ERROR");
+    }
+    return OK;
 }

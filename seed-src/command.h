@@ -11,6 +11,8 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include <stdio.h>
+
 #include "types.h"
 /*Ways of refering to the same command.*/
 #define N_CMDT 2
@@ -132,5 +134,15 @@ Status command_set_word(Command *command, char *word);
  * @return OK if everything goes well or ERROR if there was some mistake.
  */
 Status command_get_user_input(Command *command);
+
+/**
+ * @brief Prints the command information.
+ * @author Saúl López Romero
+ *
+ * @param command Pointer to the command where you will store the information.
+ * @param place place to write the outcome (stdout or file intended).
+ * @return OK if everything goes well or ERROR if there was some mistake. 
+ */
+Status command_print(Command *com, FILE *place);
 
 #endif
