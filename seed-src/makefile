@@ -60,7 +60,7 @@ run_all_test: test_all
 	make set_check; make space_check; make character_check
 
 check:
-	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat -l logfile.txt
+	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat -l ./log/logfile.txt
 
 set_check:
 	./set_test
@@ -90,5 +90,5 @@ character_test.o: character_test.c character.h types.h test.h character_test.h
 	$(CC) $(CFLAGS) $<
 
 run:
-	./anthill anthill.dat
+	./anthill anthill.dat -l ./log/logfile.txt
 
