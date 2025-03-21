@@ -37,7 +37,8 @@ typedef enum
     N,  /*!< North.*/
     S,  /*!< South.*/
     E,  /*!< East.*/
-    W   /*!< West.*/
+    W,   /*!< West.*/
+    UNK_DIRECTION /*!< Unknown direction*/
 } Direction;
 
 #endif
