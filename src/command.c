@@ -197,7 +197,7 @@ Status command_print(Command *com, FILE *place)
     {
         return ERROR;
     }
-    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[com->code][1], com->word);
+    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[(int)(com->code + 1)][1], com->word);
 
     if (com->status == OK)
     {

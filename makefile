@@ -1,14 +1,15 @@
 EXE = anthill
-CFLAGS = -g -Wall -c -ansi -pedantic
+CFLAGS = -g -Wall -c -ansi -pedantic -Iinclude
+DO_OBJ = -o $@
 CC = gcc
 
 #Directories where the files are located.
-HEADERDIR = lib
-SRCDIR = src
-OBJDIR = obj
-LIBDIR = lib
-LOGDIR = log
-TESTDIR = test
+HEADERDIR = ./include
+SRCDIR = ./src
+OBJDIR = ./obj
+LIBDIR = ./lib
+LOGDIR = ./log
+TESTDIR = ./test
 
 
 .PHONY = all clean clear check
@@ -16,46 +17,46 @@ TESTDIR = test
 all: anthill
 
 anthill: $(OBJDIR)/command.o $(OBJDIR)/game_actions.o $(OBJDIR)/game_loop.o $(OBJDIR)/game.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/space.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/set.o $(OBJDIR)/character.o
-	$(CC) -o $(EXE) $^ -L. -lscreen
+	$(CC) -o $(EXE) $^ -L./$(LIBDIR)/ -lscreen
+
+$(OBJDIR)/command.o: $(SRCDIR)/command.c $(HEADERDIR)/command.h $(HEADERDIR)/types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+$(OBJDIR)/game_actions.o: $(SRCDIR)/game_actions.c $(HEADERDIR)/game_actions.h $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/game.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_reader.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+$(OBJDIR)/game_loop.o: $(SRCDIR)/game_loop.c $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/game.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_actions.h $(HEADERDIR)/game_reader.h $(HEADERDIR)/graphic_engine.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+$(OBJDIR)/game.o: $(SRCDIR)/game.c $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_reader.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 	
-$(OBJDIR)/command.o: $(SRCDIR)/command.c command.h types.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/game_reader.o: $(SRCDIR)/game_reader.c $(HEADERDIR)/game_reader.h $(HEADERDIR)/types.h $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/game_actions.o: $(SRCDIR)/game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_reader.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/graphic_engine.o: $(SRCDIR)/graphic_engine.c $(HEADERDIR)/graphic_engine.h $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_reader.h $(HEADERDIR)/libscreen.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/game_loop.o: $(SRCDIR)/game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_reader.h graphic_engine.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/space.o: $(SRCDIR)/space.c $(HEADERDIR)/space.h $(HEADERDIR)/types.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/game.o: $(SRCDIR)/game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h
-	$(CC) $(CFLAGS) $<
-	
-$(OBJDIR)/game_reader.o: $(SRCDIR)/game_reader.c game_reader.h types.h game.h command.h space.h object.h set.h player.h character.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/object.o: $(SRCDIR)/object.c $(HEADERDIR)/object.h $(HEADERDIR)/types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/graphic_engine.o: $(SRCDIR)/graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h libscreen.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/player.o: $(SRCDIR)/player.c $(HEADERDIR)/player.h $(HEADERDIR)/types.h $(HEADERDIR)/object.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/space.o: $(SRCDIR)/space.c space.h types.h object.h set.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/set.o: $(SRCDIR)/set.c $(HEADERDIR)/types.h $(HEADERDIR)/set.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-$(OBJDIR)/object.o: $(SRCDIR)/object.c object.h types.h
-	$(CC) $(CFLAGS) $<
-
-$(OBJDIR)/player.o: $(SRCDIR)/player.c player.h types.h object.h
-	$(CC) $(CFLAGS) $<
-
-$(OBJDIR)/set.o: $(SRCDIR)/set.c types.h set.h
-	$(CC) $(CFLAGS) $<
-
-$(OBJDIR)/character.o: $(SRCDIR)/character.c character.h types.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/character.o: $(SRCDIR)/character.c $(HEADERDIR)/character.h $(HEADERDIR)/types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 clean:
-	rm -f *.o anthill set_test space_test character_test
+	rm -f $(OBJDIR)/*.o anthill set_test space_test character_test
 
 clear: 
-	rm -f *.o
+	rm -f $(OBJDIR)/*.o
 
 redo:
 	clear;make clean;make
@@ -69,7 +70,7 @@ run_all_test: test_all
 	make set_check; make space_check; make character_check
 
 check:
-	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) anthill.dat -l ./log/logfile.txt
+	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
 
 set_check:
 	./set_test
@@ -99,5 +100,5 @@ character_test.o: $(SRCDIR)/character_test.c character.h types.h test.h characte
 	$(CC) $(CFLAGS) $<
 
 run:
-	./anthill anthill.dat -l ./log/logfile.txt
+	./anthill data/anthill.dat -l ./log/logfile.txt
 
