@@ -181,9 +181,18 @@ int game_get_next_turn(Game *game);
  * @author Saúl López Romero.
  * 
  * @param game pointer to the game.
- * @return Pointer to the player.
+ * @return Pointer to the player or NULL in case of ERROR.
  */
 Player * game_get_actual_player(Game * game);
+
+/**
+ * @brief Gets the last player.
+ * @author Saúl López Romero.
+ * 
+ * @param game pointer to the game.
+ * @return Pointer to the player or NULL in case of ERROR.
+ */
+Player *game_get_last_player(Game *game);
 
 /**
  * @brief Adds a player to the game.

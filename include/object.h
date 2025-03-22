@@ -2,7 +2,7 @@
  * @brief It handles object related tasks.
  *
  * @file object.h
- * @author Saúl López Romero
+ * @author Saúl López Romero, Irene García
  * @version 2
  * @date 2-02-2025
  * @copyright GNU Public License
@@ -41,6 +41,27 @@ Status object_destroy(Object *object);
  * @return Pointer to the object name.
  */
 char *object_get_name(Object *object);
+
+Status object_set_name(Object * object, char * desc);
+
+/**
+ * @brief Gets the object's description.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @return Pointer to the object description.
+ */
+char *object_get_description(Object *object);
+
+/**
+ * @brief Gets the object's description.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @param desc Pointer to the descprition.
+ * @return OK if it works as intended, ERROR otherwise.
+ */
+Status object_set_description(Object * object, char * desc);
 
 /**
  * @brief Sets the object's name.

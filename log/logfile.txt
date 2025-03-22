@@ -1,3 +1,2 @@
-Player 1 executed Command Next with arguments "1" and exit code OK
-Player 3 executed Command Back with arguments "1" and exit code OK
-Player 1 executed Command Exit with arguments "4" and exit code OK
+Player 1 executed Command Inspect with arguments "grain" and exit code ERROR
+Player 3 executed Command Exit with arguments "" and exit code OK

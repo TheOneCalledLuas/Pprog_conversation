@@ -241,16 +241,17 @@ Status map_init(Game *game, char **map)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL;
+    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0;
     Character *character;
-    Player *player = NULL;
-    Space *space_act = NULL;
+    Player *player = NULL, *last_player = NULL;
+    Space *space_act = NULL, *last_space = NULL;
+    Object *object = NULL;
     char str[MAX_STRING_GE], **map;
     int i = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_actual_player(game);
-    space_act = game_get_space(game,player_get_player_location(player));
+    space_act = game_get_space(game, player_get_player_location(player));
 
     /*Error management.*/
     if (!ge || !game)
@@ -337,7 +338,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     free(id_aux_2);
 
     /*4-Prints the player information.*/
-    sprintf(str, "   %-9s: %ld (%d)", "Player", player_get_player_location(player), player_get_health(player));
+    sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
     if (player_get_object(player) != NO_ID)
     {
@@ -360,6 +361,30 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         {
             screen_area_puts(ge->descript, " ");
             sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
+            screen_area_puts(ge->descript, str);
+            command_set_status(game_get_last_command(game), OK);
+        }
+    }
+    /*6.Prints the object information.*/
+
+    /*****************************************************************************************************/
+    /*Para el futuro Fernando: chat y inspect van a dejar de funcionar bien cuando
+      se jueguen 2 jugadores, porque estos juegan con last command, que en este caso va a ser
+      el del otro jugador, si no se te ocurre como hacerlo, tengo alguna idea. Borra el comentario luego.*/
+    /*****************************************************************************************************/
+    if (command_get_code(game_get_last_command(game)) == INSPECT)
+    {
+        last_player = game_get_last_player(game);
+        last_space = game_get_space(game, player_get_player_location(last_player));
+        /*Searches for the object.*/
+        desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
+        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_get_object(last_player) == desc_id))
+        { /*If the object was found anywhere accesible by the player.*/
+            object = game_get_object(game, desc_id);
+            screen_area_puts(ge->descript, " ");
+            sprintf(str, "  OBJECT DESCRIPTION:");
+            screen_area_puts(ge->descript, str);
+            sprintf(str, "  %s", object_get_description(object));
             screen_area_puts(ge->descript, str);
             command_set_status(game_get_last_command(game), OK);
         }

@@ -332,6 +332,18 @@ Player *game_get_actual_player(Game *game)
     return game->players[game->turn];
 }
 
+Player *game_get_last_player(Game *game)
+{
+    /*Error management.*/
+    if (game == NULL)
+    {
+        return NULL;
+    }
+
+    /*Returns a pointer to the player.*/
+    return (game->turn == 0 ? game->players[game->n_players - 1] : game->players[game->turn - 1]);
+}
+
 Id game_get_object_location(Game *game, Id id)
 {
     int i = 0;

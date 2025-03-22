@@ -107,6 +107,14 @@ void game_actions_chat(Game *game);
 void game_actions_attack(Game *game);
 
 /**
+ * @brief Action to be executed when inspect command is given.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_inspect(Game * game);
+
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -115,6 +123,7 @@ void game_actions_attack(Game *game);
  * @return Random int number in the range.
  */
 int random_int(int start, int end);
+
 
 /**
    Game actions implementation.
@@ -172,6 +181,9 @@ Status game_actions_update(Game *game, Command *command)
         break;
     case ATTACK:
         game_actions_attack(game);
+        break;
+    case INSPECT:
+        game_actions_inspect(game);
         break;
     default:
         break;
@@ -460,6 +472,14 @@ void game_actions_attack(Game *game)
         return;
     }
     command_set_status(game_get_last_command(game), ERROR);
+}
+
+void game_actions_inspect(Game *game)
+{
+    /*The inspect action is managed by graphic engine; it starts as an error and
+    if it goes as it should the error code is set to OK, similar to chat. */
+    command_set_status(game_get_last_command(game), ERROR);
+    return;
 }
 
 int random_int(int start, int end)
