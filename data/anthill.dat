@@ -7,9 +7,11 @@
 #s:125|Corridor_5|-1|126|-1|122|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|
 #s:126|Corridor_6|-1|127|-1|125|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
 #s:127|Hole|-1|-1|-1|126|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
-#o:21|grain|11|grain desc|
-#o:22|seed|121|seed desc|
-#o:23|water_drop|123|water desc|
-#o:24|soil|125|soil desc|
-#p:1|ant|mO^|11|5|3|
-#p:3|worm|-^-^-0|123|5|3
+#c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
+#c:4|Spider|/\oo/\|123|5|0|I wont't talk to you!|
+#o:21|Grain|11|grain desc|
+#o:22|Seed|121|seed desc|
+#o:23|Water_drop|123|water desc|
+#o:24|Soil|125|soil desc|
+#p:1|Ant|mO^|11|5|3|
+#p:3|Worm|-^-^-0|123|5|3
