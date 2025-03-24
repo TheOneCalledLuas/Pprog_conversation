@@ -1,0 +1,384 @@
+\doxysection{include/link.h File Reference}
+\hypertarget{link_8h}{}\label{link_8h}\index{include/link.h@{include/link.h}}
+
+
+It defines the link module.  
+
+
+{\ttfamily \#include "{}types.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for link.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{link_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{link_8h_ad472d47c6ca442491eb8dddd5423f37d}\label{link_8h_ad472d47c6ca442491eb8dddd5423f37d} 
+\#define {\bfseries LINK\+\_\+H}
+\item 
+\Hypertarget{link_8h_ac7c0207aa5a0e10d378be03b68041350}\label{link_8h_ac7c0207aa5a0e10d378be03b68041350} 
+\#define {\bfseries MAX\+\_\+\+NAME}~100
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{link_8h_ae3b299941e67be6971bfd64a25505eff}\label{link_8h_ae3b299941e67be6971bfd64a25505eff} 
+typedef struct \mbox{\hyperlink{struct__Link}{\+\_\+\+Link}} {\bfseries Link}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{link_8h_a1e662c55d1ea0191b66372f0fa57ac1c}{link\+\_\+create}} (Id id)
+\begin{DoxyCompactList}\small\item\em Allocates and returns a link. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_a9db25e3b95dbce3ccd993329e103ef0f}{link\+\_\+destroy}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Destroys an existing link. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{link_8h_a2bbd320f995a72b2ea7ea639b1c81892}{link\+\_\+get\+\_\+id}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the id of the link. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{link_8h_a83e4213e55c22889d0aa441d1d2c24aa}{link\+\_\+get\+\_\+name}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the name of the link. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{link_8h_a07dbaa47c78e51d9d70e42611725eaae}{link\+\_\+get\+\_\+origin}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the id of the origin space. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{link_8h_a4a010cecfbeb45a964a4a10bac0e1904}{link\+\_\+get\+\_\+destination}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the id of the space of destiantion. \end{DoxyCompactList}\item 
+Direction \mbox{\hyperlink{link_8h_a45c192f1efaa9863a150e51d1a0f2756}{link\+\_\+get\+\_\+direction}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the direction the link is pointing to. \end{DoxyCompactList}\item 
+Bool \mbox{\hyperlink{link_8h_aac5698f3cec0838e54f4dbe86753faae}{link\+\_\+get\+\_\+state}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Gets the state of the link. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_ab56e0464805b4bb827b9e35219853fa9}{link\+\_\+set\+\_\+name}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Sets the name of the link. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_a8f3228cb8881f397d4bb77dc1bc8a75b}{link\+\_\+set\+\_\+origin}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link, Id origin)
+\begin{DoxyCompactList}\small\item\em Sets the id of the origin space. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_ab10582ff2392fae7138a6be5deac27ce}{link\+\_\+set\+\_\+destination}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link, Id destination)
+\begin{DoxyCompactList}\small\item\em Sets the id of the destination space. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_ae8acb2f221c7484c5ffcc8e32cd08b81}{link\+\_\+set\+\_\+direction}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link, Direction direction)
+\begin{DoxyCompactList}\small\item\em Sets the direction the link is pointing to. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{link_8h_afdebf41f787ea3cc585cad875b1b356a}{link\+\_\+set\+\_\+state}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link, Bool State)
+\begin{DoxyCompactList}\small\item\em Sets the state of the link(TRUE=OPEN)(FALSE=CLOSED). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{link_8h_a57d563220e5d7168e1fd2b806ecc0909}{link\+\_\+print}} (\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}link)
+\begin{DoxyCompactList}\small\item\em Prints the link information on the terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It defines the link module. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21-\/03-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{link_8h_a1e662c55d1ea0191b66372f0fa57ac1c}\label{link_8h_a1e662c55d1ea0191b66372f0fa57ac1c} 
+\index{link.h@{link.h}!link\_create@{link\_create}}
+\index{link\_create@{link\_create}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_create()}{link\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*} link\+\_\+create (\begin{DoxyParamCaption}\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Allocates and returns a link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the new link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new link intialised or NULL if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a9db25e3b95dbce3ccd993329e103ef0f}\label{link_8h_a9db25e3b95dbce3ccd993329e103ef0f} 
+\index{link.h@{link.h}!link\_destroy@{link\_destroy}}
+\index{link\_destroy@{link\_destroy}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_destroy()}{link\_destroy()}}
+{\footnotesize\ttfamily Status link\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Destroys an existing link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link that will be destroyed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a4a010cecfbeb45a964a4a10bac0e1904}\label{link_8h_a4a010cecfbeb45a964a4a10bac0e1904} 
+\index{link.h@{link.h}!link\_get\_destination@{link\_get\_destination}}
+\index{link\_get\_destination@{link\_get\_destination}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_destination()}{link\_get\_destination()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+\_\+destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the id of the space of destiantion. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & ointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the space of destination, ID\+\_\+\+ERROR if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a45c192f1efaa9863a150e51d1a0f2756}\label{link_8h_a45c192f1efaa9863a150e51d1a0f2756} 
+\index{link.h@{link.h}!link\_get\_direction@{link\_get\_direction}}
+\index{link\_get\_direction@{link\_get\_direction}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_direction()}{link\_get\_direction()}}
+{\footnotesize\ttfamily Direction link\+\_\+get\+\_\+direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the direction the link is pointing to. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Direction to where the link points, UNK\+\_\+\+DIRECTION if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a2bbd320f995a72b2ea7ea639b1c81892}\label{link_8h_a2bbd320f995a72b2ea7ea639b1c81892} 
+\index{link.h@{link.h}!link\_get\_id@{link\_get\_id}}
+\index{link\_get\_id@{link\_get\_id}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_id()}{link\_get\_id()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the id of the link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the link or ID\+\_\+\+ERROR if error 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a83e4213e55c22889d0aa441d1d2c24aa}\label{link_8h_a83e4213e55c22889d0aa441d1d2c24aa} 
+\index{link.h@{link.h}!link\_get\_name@{link\_get\_name}}
+\index{link\_get\_name@{link\_get\_name}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_name()}{link\_get\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} link\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the name, NULL if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a07dbaa47c78e51d9d70e42611725eaae}\label{link_8h_a07dbaa47c78e51d9d70e42611725eaae} 
+\index{link.h@{link.h}!link\_get\_origin@{link\_get\_origin}}
+\index{link\_get\_origin@{link\_get\_origin}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_origin()}{link\_get\_origin()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+\_\+origin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the id of the origin space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the space of origin, ID\+\_\+error if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_aac5698f3cec0838e54f4dbe86753faae}\label{link_8h_aac5698f3cec0838e54f4dbe86753faae} 
+\index{link.h@{link.h}!link\_get\_state@{link\_get\_state}}
+\index{link\_get\_state@{link\_get\_state}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_get\_state()}{link\_get\_state()}}
+{\footnotesize\ttfamily Bool link\+\_\+get\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Gets the state of the link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TRUE if the link is opened, FALSE if it isn\textquotesingle{}t, FALSE if error. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a57d563220e5d7168e1fd2b806ecc0909}\label{link_8h_a57d563220e5d7168e1fd2b806ecc0909} 
+\index{link.h@{link.h}!link\_print@{link\_print}}
+\index{link\_print@{link\_print}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_print()}{link\_print()}}
+{\footnotesize\ttfamily void link\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link }\end{DoxyParamCaption})}
+
+
+
+Prints the link information on the terminal. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{link_8h_ab10582ff2392fae7138a6be5deac27ce}\label{link_8h_ab10582ff2392fae7138a6be5deac27ce} 
+\index{link.h@{link.h}!link\_set\_destination@{link\_set\_destination}}
+\index{link\_set\_destination@{link\_set\_destination}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_set\_destination()}{link\_set\_destination()}}
+{\footnotesize\ttfamily Status link\+\_\+set\+\_\+destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link,  }\item[{Id}]{destination }\end{DoxyParamCaption})}
+
+
+
+Sets the id of the destination space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Ponter to the link \\
+\hline
+{\em destiantion} & New id of the destination space \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_ae8acb2f221c7484c5ffcc8e32cd08b81}\label{link_8h_ae8acb2f221c7484c5ffcc8e32cd08b81} 
+\index{link.h@{link.h}!link\_set\_direction@{link\_set\_direction}}
+\index{link\_set\_direction@{link\_set\_direction}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_set\_direction()}{link\_set\_direction()}}
+{\footnotesize\ttfamily Status link\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link,  }\item[{Direction}]{direction }\end{DoxyParamCaption})}
+
+
+
+Sets the direction the link is pointing to. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+{\em direction} & New direction of the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_ab56e0464805b4bb827b9e35219853fa9}\label{link_8h_ab56e0464805b4bb827b9e35219853fa9} 
+\index{link.h@{link.h}!link\_set\_name@{link\_set\_name}}
+\index{link\_set\_name@{link\_set\_name}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_set\_name()}{link\_set\_name()}}
+{\footnotesize\ttfamily Status link\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the name of the link. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+{\em name} & Pointer to the new name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_a8f3228cb8881f397d4bb77dc1bc8a75b}\label{link_8h_a8f3228cb8881f397d4bb77dc1bc8a75b} 
+\index{link.h@{link.h}!link\_set\_origin@{link\_set\_origin}}
+\index{link\_set\_origin@{link\_set\_origin}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_set\_origin()}{link\_set\_origin()}}
+{\footnotesize\ttfamily Status link\+\_\+set\+\_\+origin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link,  }\item[{Id}]{origin }\end{DoxyParamCaption})}
+
+
+
+Sets the id of the origin space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+{\em origin} & New id of the origin space. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{link_8h_afdebf41f787ea3cc585cad875b1b356a}\label{link_8h_afdebf41f787ea3cc585cad875b1b356a} 
+\index{link.h@{link.h}!link\_set\_state@{link\_set\_state}}
+\index{link\_set\_state@{link\_set\_state}!link.h@{link.h}}
+\doxysubsubsection{\texorpdfstring{link\_set\_state()}{link\_set\_state()}}
+{\footnotesize\ttfamily Status link\+\_\+set\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} \texorpdfstring{$\ast$}{*}}]{link,  }\item[{Bool}]{State }\end{DoxyParamCaption})}
+
+
+
+Sets the state of the link(TRUE=OPEN)(FALSE=CLOSED). 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em link} & Pointer to the link. \\
+\hline
+{\em State} & New state of the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR otherwise. 
+\end{DoxyReturn}

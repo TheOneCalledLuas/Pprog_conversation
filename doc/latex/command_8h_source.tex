@@ -1,0 +1,62 @@
+\doxysection{command.\+h}
+\hypertarget{command_8h_source}{}\label{command_8h_source}\index{include/command.h@{include/command.h}}
+\mbox{\hyperlink{command_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ COMMAND\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ COMMAND\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{comment}{/*Ways\ of\ refering\ to\ the\ same\ command.*/}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ N\_CMDT\ 2}}
+\DoxyCodeLine{00019\ \textcolor{comment}{/*Number\ of\ commands.*/}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ N\_CMD\ 12}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352a7de95771d46ecb64bd2344ef74bbec41}{CMDS}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352a65653f75f2b3c4edc251be55e26b3ca3}{CMDL}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0}{NO\_CMD}}\ =\ -\/1,\ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a6ce26a62afab55d7606ad4e92428b30c}{UNKNOWN}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd}{NEXT}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2ac921ff2cfc571c1d19b0485d7f6926ee}{BACK}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2adb45120aafd37a973140edee24708065}{LEFT}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2ac2cd8d8289760e9d504f8e44fdf48e95}{RIGTH}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a7405647410e343caba1bf383e83d4f5f}{TAKE}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a8b0b0025af76a3d8f0b7b1d4758e51a6}{DROP}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2a831c130f9c83adc963152d232a9d61c7}{ATTACK}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2aa24d371d8d14298a1bf5a98d3f321bef}{CHAT}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2aab933f64fcaa285df294e1420f6f1b07}{INSPECT}}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \}\ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{CommandCode}};}
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Command}{\_Command}}\ \mbox{\hyperlink{struct__Command}{Command}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \mbox{\hyperlink{struct__Command}{Command}}\ *\mbox{\hyperlink{command_8h_aa3d3d6bdeb73c7bbaff6ee913569f456}{command\_create}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00071\ Status\ \mbox{\hyperlink{command_8h_abfb6dbf1977dc1a9a6136baefd91b451}{command\_destroy}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00081\ Status\ \mbox{\hyperlink{command_8h_a0abb96f9b182d0018ec4b5e15d5307e4}{command\_set\_code}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command,\ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{CommandCode}}\ \mbox{\hyperlink{struct__Command_ab03a4794ef52c72db2d95de1257f82cc}{code}});}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00090\ \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{CommandCode}}\ \mbox{\hyperlink{command_8h_a2206702025ffe5340d172decb4ceea52}{command\_get\_code}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00100\ Status\ \mbox{\hyperlink{command_8h_ae952c0ab6f2d01276bec693ae32ccdbf}{command\_set\_status}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command,\ Status\ \mbox{\hyperlink{struct__Command_a3147f64415fcfc61ca5ad10a402ff46d}{status}});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ Status\ \mbox{\hyperlink{command_8h_ad169918de25f368b833304d0481e7869}{command\_get\_status}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{command_8h_a7c21f279884058e7d4ef7c64f064b5ca}{command\_get\_word}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00128\ Status\ \mbox{\hyperlink{command_8h_a53d380ce9c5f6042cc25206aee163aaf}{command\_set\_word}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Command_a874af8793afd2a51522d565b8f222b77}{word}});}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00137\ Status\ \mbox{\hyperlink{command_8h_adf15cb97a09577adb8475a3c6c99e7c5}{command\_get\_user\_input}}(\mbox{\hyperlink{struct__Command}{Command}}\ *command);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00147\ Status\ \mbox{\hyperlink{command_8h_ac7c3b4963821fcb46b58f206fa1df8f7}{command\_print}}(\mbox{\hyperlink{struct__Command}{Command}}\ *com,\ FILE\ *place);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

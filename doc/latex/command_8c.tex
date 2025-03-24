@@ -1,0 +1,293 @@
+\doxysection{src/command.c File Reference}
+\hypertarget{command_8c}{}\label{command_8c}\index{src/command.c@{src/command.c}}
+
+
+It implements the command interpreter.  
+
+
+{\ttfamily \#include "{}command.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+Include dependency graph for command.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{command_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Command}{\+\_\+\+Command}}
+\begin{DoxyCompactList}\small\item\em Command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}\label{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b} 
+\#define {\bfseries CMD\+\_\+\+LENGHT}~30
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456}{command\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em It creates a new command, allocating memory and initializing its members. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_abfb6dbf1977dc1a9a6136baefd91b451}{command\+\_\+destroy}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em It destroys an existing command, freeing the allocated memory. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_a0abb96f9b182d0018ec4b5e15d5307e4}{command\+\_\+set\+\_\+code}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command, \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{Command\+Code}} code)
+\begin{DoxyCompactList}\small\item\em It sets the code that will be stored in command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{Command\+Code}} \mbox{\hyperlink{command_8c_a2206702025ffe5340d172decb4ceea52}{command\+\_\+get\+\_\+code}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em It gets the code that is stored in a command. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{command_8c_a7c21f279884058e7d4ef7c64f064b5ca}{command\+\_\+get\+\_\+word}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em Returns the word stored in the command. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_a53d380ce9c5f6042cc25206aee163aaf}{command\+\_\+set\+\_\+word}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command, char \texorpdfstring{$\ast$}{*}word)
+\begin{DoxyCompactList}\small\item\em Sets the word of the command the the defined one. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_ae952c0ab6f2d01276bec693ae32ccdbf}{command\+\_\+set\+\_\+status}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command, Status status)
+\begin{DoxyCompactList}\small\item\em It sets the status of the command. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_ad169918de25f368b833304d0481e7869}{command\+\_\+get\+\_\+status}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em It gets the status stored in a command. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_adf15cb97a09577adb8475a3c6c99e7c5}{command\+\_\+get\+\_\+user\+\_\+input}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em Reads an input from the user, and assigns a code to command depending on the input. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{command_8c_ac7c3b4963821fcb46b58f206fa1df8f7}{command\+\_\+print}} (\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}com, FILE \texorpdfstring{$\ast$}{*}place)
+\begin{DoxyCompactList}\small\item\em Prints the command information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{command_8c_a3574ce85761f52cf9b70d061831533ee}\label{command_8c_a3574ce85761f52cf9b70d061831533ee} 
+char \texorpdfstring{$\ast$}{*} {\bfseries cmd\+\_\+to\+\_\+str} \mbox{[}N\+\_\+\+CMD\mbox{]}\mbox{[}N\+\_\+\+CMDT\mbox{]} = \{\{"{}"{}, "{}No command"{}\}, \{"{}"{}, "{}Unknown"{}\}, \{"{}e"{}, "{}Exit"{}\}, \{"{}n"{}, "{}Next"{}\}, \{"{}b"{}, "{}Back"{}\}, \{"{}l"{}, "{}Left"{}\}, \{"{}r"{}, "{}Right"{}\}, \{"{}t"{}, "{}Take"{}\}, \{"{}d"{}, "{}Drop"{}\}, \{"{}a"{}, "{}Attack"{}\}, \{"{}c"{}, "{}Chat"{}\}, \{"{}i"{},"{}Inspect"{}\}\}
+\begin{DoxyCompactList}\small\item\em structure with all the possible commands and the key words to triger them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements the command interpreter. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos Saul Lopez Romero 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+29-\/02-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456}\label{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456} 
+\index{command.c@{command.c}!command\_create@{command\_create}}
+\index{command\_create@{command\_create}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_create()}{command\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} command\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+It creates a new command, allocating memory and initializing its members. 
+
+\begin{DoxyAuthor}{Author}
+Saúl lopez
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Pointer to a new command, initialized. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_abfb6dbf1977dc1a9a6136baefd91b451}\label{command_8c_abfb6dbf1977dc1a9a6136baefd91b451} 
+\index{command.c@{command.c}!command\_destroy@{command\_destroy}}
+\index{command\_destroy@{command\_destroy}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_destroy()}{command\_destroy()}}
+{\footnotesize\ttfamily Status command\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+It destroys an existing command, freeing the allocated memory. 
+
+\begin{DoxyAuthor}{Author}
+Saúl lopez
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the space that needs to be destroyed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well or ERROR if there was some mistake. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_a2206702025ffe5340d172decb4ceea52}\label{command_8c_a2206702025ffe5340d172decb4ceea52} 
+\index{command.c@{command.c}!command\_get\_code@{command\_get\_code}}
+\index{command\_get\_code@{command\_get\_code}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_get\_code()}{command\_get\_code()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{Command\+Code}} command\+\_\+get\+\_\+code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+It gets the code that is stored in a command. 
+
+\begin{DoxyAuthor}{Author}
+Saúl lopez
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Code stored in the command. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_ad169918de25f368b833304d0481e7869}\label{command_8c_ad169918de25f368b833304d0481e7869} 
+\index{command.c@{command.c}!command\_get\_status@{command\_get\_status}}
+\index{command\_get\_status@{command\_get\_status}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_get\_status()}{command\_get\_status()}}
+{\footnotesize\ttfamily Status command\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+It gets the status stored in a command. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of the command. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_adf15cb97a09577adb8475a3c6c99e7c5}\label{command_8c_adf15cb97a09577adb8475a3c6c99e7c5} 
+\index{command.c@{command.c}!command\_get\_user\_input@{command\_get\_user\_input}}
+\index{command\_get\_user\_input@{command\_get\_user\_input}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_get\_user\_input()}{command\_get\_user\_input()}}
+{\footnotesize\ttfamily Status command\+\_\+get\+\_\+user\+\_\+input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+Reads an input from the user, and assigns a code to command depending on the input. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command where you will store the information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well or ERROR if there was some mistake. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_a7c21f279884058e7d4ef7c64f064b5ca}\label{command_8c_a7c21f279884058e7d4ef7c64f064b5ca} 
+\index{command.c@{command.c}!command\_get\_word@{command\_get\_word}}
+\index{command\_get\_word@{command\_get\_word}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_get\_word()}{command\_get\_word()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} command\+\_\+get\+\_\+word (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+Returns the word stored in the command. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String the the word contains or NULL if something went wrong. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_ac7c3b4963821fcb46b58f206fa1df8f7}\label{command_8c_ac7c3b4963821fcb46b58f206fa1df8f7} 
+\index{command.c@{command.c}!command\_print@{command\_print}}
+\index{command\_print@{command\_print}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_print()}{command\_print()}}
+{\footnotesize\ttfamily Status command\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{com,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{place }\end{DoxyParamCaption})}
+
+
+
+Prints the command information. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command where you will store the information. \\
+\hline
+{\em place} & place to write the outcome (stdout or file intended). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well or ERROR if there was some mistake. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_a0abb96f9b182d0018ec4b5e15d5307e4}\label{command_8c_a0abb96f9b182d0018ec4b5e15d5307e4} 
+\index{command.c@{command.c}!command\_set\_code@{command\_set\_code}}
+\index{command\_set\_code@{command\_set\_code}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_set\_code()}{command\_set\_code()}}
+{\footnotesize\ttfamily Status command\+\_\+set\+\_\+code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command,  }\item[{\mbox{\hyperlink{command_8h_a805cf38fd2b6d5604bf1f1036b80fde2}{Command\+Code}}}]{code }\end{DoxyParamCaption})}
+
+
+
+It sets the code that will be stored in command. 
+
+\begin{DoxyAuthor}{Author}
+Saúl lopez
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command that will recive the code. \\
+\hline
+{\em code} & Code that will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well or ERROR if there was some mistake. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_ae952c0ab6f2d01276bec693ae32ccdbf}\label{command_8c_ae952c0ab6f2d01276bec693ae32ccdbf} 
+\index{command.c@{command.c}!command\_set\_status@{command\_set\_status}}
+\index{command\_set\_status@{command\_set\_status}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_set\_status()}{command\_set\_status()}}
+{\footnotesize\ttfamily Status command\+\_\+set\+\_\+status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command,  }\item[{Status}]{status }\end{DoxyParamCaption})}
+
+
+
+It sets the status of the command. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command. \\
+\hline
+{\em status} & New status. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{command_8c_a53d380ce9c5f6042cc25206aee163aaf}\label{command_8c_a53d380ce9c5f6042cc25206aee163aaf} 
+\index{command.c@{command.c}!command\_set\_word@{command\_set\_word}}
+\index{command\_set\_word@{command\_set\_word}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{command\_set\_word()}{command\_set\_word()}}
+{\footnotesize\ttfamily Status command\+\_\+set\+\_\+word (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command,  }\item[{char \texorpdfstring{$\ast$}{*}}]{word }\end{DoxyParamCaption})}
+
+
+
+Sets the word of the command the the defined one. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to the command structure. \\
+\hline
+{\em word} & string that will be copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything went well, ERROR if it didnt\textquotesingle{}t. 
+\end{DoxyReturn}

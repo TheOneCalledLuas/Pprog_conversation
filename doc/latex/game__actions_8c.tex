@@ -1,0 +1,312 @@
+\doxysection{src/game\+\_\+actions.c File Reference}
+\hypertarget{game__actions_8c}{}\label{game__actions_8c}\index{src/game\_actions.c@{src/game\_actions.c}}
+
+
+It implements the game update through user actions.  
+
+
+{\ttfamily \#include "{}game\+\_\+actions.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}set.\+h"{}}\newline
+Include dependency graph for game\+\_\+actions.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__actions_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8}\label{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8} 
+\#define {\bfseries ATTACK\+\_\+\+PROB}~9  /\texorpdfstring{$\ast$}{*}Chances to attack.\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}\label{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449} 
+\#define {\bfseries SUCCESS\+\_\+\+PROB}~2 /\texorpdfstring{$\ast$}{*}Chances to strike (the smaller the better).\texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__actions_8c_a6f4777fc8b60f74ffb82fb3df7e20e07}{game\+\_\+actions\+\_\+unknown}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when an unknown command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_afc2847a7b83e67020a117fa8e1a79c5d}{game\+\_\+actions\+\_\+exit}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when exit is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c}{game\+\_\+actions\+\_\+next}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when next command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_a2498a234bdd058d092c1acb816e07194}{game\+\_\+actions\+\_\+back}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when back command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b}{game\+\_\+actions\+\_\+left}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when left command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1}{game\+\_\+actions\+\_\+right}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when right command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387}{game\+\_\+actions\+\_\+take}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when take command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_a269baddb92b4a469576ff8c3c1ed3440}{game\+\_\+actions\+\_\+drop}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when drop command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_af712cf743e59ba4c75c95c1bae96a6c9}{game\+\_\+actions\+\_\+chat}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when chat command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_a68d58c80a2e0f552557788459d60926f}{game\+\_\+actions\+\_\+attack}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when attack command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_aba91c42bed50e457b994452bfd717e5d}{game\+\_\+actions\+\_\+inspect}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Action to be executed when inspect command is given. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}{random\+\_\+int}} (int start, int end)
+\begin{DoxyCompactList}\small\item\em Returns a random number in a range. \end{DoxyCompactList}\item 
+Status \mbox{\hyperlink{game__actions_8c_a0693694a3e70b4a4129e2da4ddb1f1a7}{game\+\_\+actions\+\_\+update}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em It changes the player location space, or other things depending on the command entered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements the game update through user actions. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos, Saúl López Romero 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27-\/01-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__actions_8c_a68d58c80a2e0f552557788459d60926f}\label{game__actions_8c_a68d58c80a2e0f552557788459d60926f} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_attack@{game\_actions\_attack}}
+\index{game\_actions\_attack@{game\_actions\_attack}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_attack()}{game\_actions\_attack()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when attack command is given. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_a2498a234bdd058d092c1acb816e07194}\label{game__actions_8c_a2498a234bdd058d092c1acb816e07194} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_back@{game\_actions\_back}}
+\index{game\_actions\_back@{game\_actions\_back}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_back()}{game\_actions\_back()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when back command is given. 
+
+\begin{DoxyAuthor}{Author}
+Profesores PProg.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_af712cf743e59ba4c75c95c1bae96a6c9}\label{game__actions_8c_af712cf743e59ba4c75c95c1bae96a6c9} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_chat@{game\_actions\_chat}}
+\index{game\_actions\_chat@{game\_actions\_chat}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_chat()}{game\_actions\_chat()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+chat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when chat command is given. 
+
+\begin{DoxyAuthor}{Author}
+Saul Lopez Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_a269baddb92b4a469576ff8c3c1ed3440}\label{game__actions_8c_a269baddb92b4a469576ff8c3c1ed3440} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_drop@{game\_actions\_drop}}
+\index{game\_actions\_drop@{game\_actions\_drop}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_drop()}{game\_actions\_drop()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+drop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when drop command is given. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_afc2847a7b83e67020a117fa8e1a79c5d}\label{game__actions_8c_afc2847a7b83e67020a117fa8e1a79c5d} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_exit@{game\_actions\_exit}}
+\index{game\_actions\_exit@{game\_actions\_exit}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_exit()}{game\_actions\_exit()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when exit is given. 
+
+\begin{DoxyAuthor}{Author}
+Profesores PProg.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_aba91c42bed50e457b994452bfd717e5d}\label{game__actions_8c_aba91c42bed50e457b994452bfd717e5d} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_inspect@{game\_actions\_inspect}}
+\index{game\_actions\_inspect@{game\_actions\_inspect}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_inspect()}{game\_actions\_inspect()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+inspect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when inspect command is given. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b}\label{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_left@{game\_actions\_left}}
+\index{game\_actions\_left@{game\_actions\_left}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_left()}{game\_actions\_left()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when left command is given. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c}\label{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_next@{game\_actions\_next}}
+\index{game\_actions\_next@{game\_actions\_next}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_next()}{game\_actions\_next()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when next command is given. 
+
+\begin{DoxyAuthor}{Author}
+Profesores PProg.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1}\label{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_right@{game\_actions\_right}}
+\index{game\_actions\_right@{game\_actions\_right}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_right()}{game\_actions\_right()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when right command is given. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387}\label{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_take@{game\_actions\_take}}
+\index{game\_actions\_take@{game\_actions\_take}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_take()}{game\_actions\_take()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+take (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when take command is given. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_a6f4777fc8b60f74ffb82fb3df7e20e07}\label{game__actions_8c_a6f4777fc8b60f74ffb82fb3df7e20e07} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_unknown@{game\_actions\_unknown}}
+\index{game\_actions\_unknown@{game\_actions\_unknown}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_unknown()}{game\_actions\_unknown()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+unknown (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Action to be executed when an unknown command is given. 
+
+Private functions \begin{DoxyAuthor}{Author}
+Profesores PProg.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_a0693694a3e70b4a4129e2da4ddb1f1a7}\label{game__actions_8c_a0693694a3e70b4a4129e2da4ddb1f1a7} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_update@{game\_actions\_update}}
+\index{game\_actions\_update@{game\_actions\_update}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_update()}{game\_actions\_update()}}
+{\footnotesize\ttfamily Status game\+\_\+actions\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+
+
+
+It changes the player location space, or other things depending on the command entered. 
+
+Game actions implementation. \Hypertarget{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}\label{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab} 
+\index{game\_actions.c@{game\_actions.c}!random\_int@{random\_int}}
+\index{random\_int@{random\_int}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{random\_int()}{random\_int()}}
+{\footnotesize\ttfamily int random\+\_\+int (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Returns a random number in a range. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & First number of the range. \\
+\hline
+{\em end} & Last number in the range. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random int number in the range. 
+\end{DoxyReturn}

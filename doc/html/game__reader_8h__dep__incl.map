@@ -1,0 +1,19 @@
+<map id="include/game_reader.h" name="include/game_reader.h">
+<area shape="rect" id="Node000001" title="It loads all the game data into the program." alt="" coords="284,5,455,31"/>
+<area shape="rect" id="Node000002" href="$game__actions_8h_source.html" title=" " alt="" coords="27,79,203,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="316,37,157,81,155,76,314,32"/>
+<area shape="rect" id="Node000004" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="176,152,304,177"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="325,39,294,56,267,80,257,98,250,117,243,152,238,151,245,116,252,96,263,77,291,52,322,34"/>
+<area shape="rect" id="Node000005" href="$graphic__engine_8h.html" title="It defines the textual graphic engine interface." alt="" coords="277,79,461,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="372,44,372,79,367,79,367,44"/>
+<area shape="rect" id="Node000007" href="$game_8c.html" title="It implements the game structure." alt="" coords="485,79,579,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="409,34,506,76,504,81,407,39"/>
+<area shape="rect" id="Node000008" href="$game__reader_8c.html" title="It loads and makes all the actions related to space management." alt="" coords="603,79,744,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="432,31,625,76,624,81,431,36"/>
+<area shape="rect" id="Node000003" href="$game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="5,152,152,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,117,87,153,82,151,100,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="148,108,221,149,218,154,145,113"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="338,113,262,154,260,149,335,108"/>
+<area shape="rect" id="Node000006" href="$graphic__engine_8c.html" title="It implements a textual graphic engine." alt="" coords="328,152,483,177"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="384,115,402,151,397,153,379,117"/>
+</map>

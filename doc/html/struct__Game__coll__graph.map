@@ -1,0 +1,15 @@
+<map id="_Game" name="_Game">
+<area shape="rect" id="Node000001" title=" " alt="" coords="193,181,261,207"/>
+<area shape="rect" id="Node000002" href="$struct__Player.html" title="Player." alt="" coords="5,93,76,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,126,102,155,149,174,194,185,192,190,147,179,99,160,60,130"/>
+<area shape="rect" id="Node000003" href="$struct__Space.html" title="Space." alt="" coords="100,93,168,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,129,174,155,207,179,204,183,171,159,147,132"/>
+<area shape="rect" id="Node000004" href="$struct__Set.html" title=" " alt="" coords="109,5,159,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,45,137,93,131,93,131,45"/>
+<area shape="rect" id="Node000005" href="$struct__Object.html" title="Object." alt="" coords="192,93,263,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="230,133,230,181,225,181,225,133"/>
+<area shape="rect" id="Node000006" href="$struct__Character.html" title=" " alt="" coords="287,93,379,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="316,131,286,159,250,183,247,179,283,155,312,127"/>
+<area shape="rect" id="Node000007" href="$struct__Command.html" title="Command." alt="" coords="403,93,499,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="428,130,379,160,318,180,262,191,261,186,316,175,377,155,425,125"/>
+</map>

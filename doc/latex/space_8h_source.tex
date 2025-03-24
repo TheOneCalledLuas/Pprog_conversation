@@ -1,0 +1,63 @@
+\doxysection{space.\+h}
+\hypertarget{space_8h_source}{}\label{space_8h_source}\index{include/space.h@{include/space.h}}
+\mbox{\hyperlink{space_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ SPACE\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SPACE\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{object_8h}{object.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{set_8h}{set.h}}"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Space}{\_Space}}\ \mbox{\hyperlink{struct__Space}{Space}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{struct__Space}{Space}}\ *\mbox{\hyperlink{space_8h_ad3a5834be733066e8a7d8586be0ac610}{space\_create}}(Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{space_8h_ae5afcc72e11b1033b7ff46d224195938}{space\_destroy}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{space_8h_a866cf3d8133720dc44299eaa7b062305}{space\_get\_gdesc\_line}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00056\ Status\ \mbox{\hyperlink{space_8h_a6235610be91845ed56ddefadaa79ce12}{space\_set\_gdesc\_line}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00065\ Id\ \mbox{\hyperlink{space_8h_ac8ddfd0d8692fd852ee49698c446cb50}{space\_get\_id}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00075\ Status\ \mbox{\hyperlink{space_8h_a03ae5d9d7a842346d89e56409c3cb3e1}{space\_set\_name}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Space_aa1c9c994c2d16ecf3ef46138685fdfdc}{name}});}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{space_8h_ae2006c76eb167f71c7fd7614e0edd37a}{space\_get\_name}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00094\ Status\ \mbox{\hyperlink{space_8h_a2050ee6abf28cf78cd6708dea121e048}{space\_set\_north}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00103\ Id\ \mbox{\hyperlink{space_8h_ad331fba774897900f615d9d2e8d81a90}{space\_get\_north}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00113\ Status\ \mbox{\hyperlink{space_8h_a294b0f8ff311f18f399fcd66da99f53a}{space\_set\_south}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00122\ Id\ \mbox{\hyperlink{space_8h_a9b86e1335c423eaad832e50d4c12cf1f}{space\_get\_south}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00132\ Status\ \mbox{\hyperlink{space_8h_a188b2408fb4f545f8a2c7851763474a4}{space\_set\_east}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00141\ Id\ \mbox{\hyperlink{space_8h_a978a22b77f74bb2dab68a00571abbe0b}{space\_get\_east}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00151\ Status\ \mbox{\hyperlink{space_8h_ac3a7afb75347d31e1034a27cabc18244}{space\_set\_west}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00160\ Id\ \mbox{\hyperlink{space_8h_af495ebfd5d13eba1a48cebd10992a17f}{space\_get\_west}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00171\ Id\ *\mbox{\hyperlink{space_8h_aeb737fd994ea5a0bb2c61efbd3fdd521}{space\_get\_objects}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00181\ Status\ \mbox{\hyperlink{space_8h_aa347c99b1fa4ee60ec40e865496477ae}{space\_add\_object}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00191\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{space_8h_a3979d7cdd6e4da84007cf2b6a252df66}{space\_find\_object}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00201\ Id\ \mbox{\hyperlink{space_8h_a5b832bddeb2b3b92b49f1574ef74ea7c}{space\_take\_object}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00210\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{space_8h_a6f263efc24ce0f0ef5ba1ce58d1a0ff1}{space\_get\_n\_objects}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00219\ Id\ \mbox{\hyperlink{space_8h_a2b1d65484b8f7241c56cb2ca9bb1fdcd}{space\_get\_character}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00229\ Status\ \mbox{\hyperlink{space_8h_aa4dce872dc290841edb6806d3d86abb8}{space\_set\_character}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space,\ Id\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00238\ Status\ \mbox{\hyperlink{space_8h_a013d3166ac751f717612c5b0d6510c2c}{space\_print}}(\mbox{\hyperlink{struct__Space}{Space}}\ *space);}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

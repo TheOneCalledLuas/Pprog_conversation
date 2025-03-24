@@ -1,0 +1,47 @@
+<map id="include/set.h" name="include/set.h">
+<area shape="rect" id="Node000001" title="It defines sets for the whole project." alt="" coords="649,6,754,31"/>
+<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="751,3,771,6,778,11,781,19,776,28,766,33,737,34,737,29,765,28,773,24,775,19,774,15,769,11,750,8"/>
+<area shape="rect" id="Node000002" href="$graphic__engine_8h.html" title="It defines the textual graphic engine interface." alt="" coords="145,299,329,325"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="635,29,532,47,475,62,420,82,365,109,325,137,295,174,265,227,250,267,242,300,237,299,245,265,260,225,290,171,322,133,362,104,418,77,473,57,530,42,634,24"/>
+<area shape="rect" id="Node000004" href="$graphic__engine_8c.html" title="It implements a textual graphic engine." alt="" coords="5,373,160,398"/>
+<area shape="poly" id="edge27_Node000001_Node000004" title=" " alt="" coords="635,23,464,28,360,35,256,47,160,65,81,90,51,106,28,123,14,143,9,164,9,240,16,280,33,317,55,348,73,371,69,374,50,351,29,320,11,282,4,240,4,164,9,140,25,120,48,101,79,86,159,60,255,42,360,30,464,22,635,17"/>
+<area shape="rect" id="Node000005" href="$space_8h.html" title="It defines the space module interface." alt="" coords="431,79,553,105"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="655,38,527,82,525,77,654,33"/>
+<area shape="rect" id="Node000008" href="$game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="877,373,1024,398"/>
+<area shape="poly" id="edge26_Node000001_Node000008" title=" " alt="" coords="768,21,842,32,881,42,919,56,952,74,979,98,997,128,1004,164,1004,240,999,280,987,318,960,374,955,372,982,316,994,279,999,240,999,164,992,130,975,102,949,79,917,61,880,47,841,37,768,26"/>
+<area shape="rect" id="Node000012" href="$space_8c.html" title="It implements the space module." alt="" coords="654,153,749,178"/>
+<area shape="poly" id="edge30_Node000001_Node000012" title=" " alt="" coords="704,46,704,153,699,153,699,46"/>
+<area shape="rect" id="Node000014" href="$set_8c.html" title="It defines common types for the whole project." alt="" coords="1039,79,1115,105"/>
+<area shape="poly" id="edge28_Node000001_Node000014" title=" " alt="" coords="768,30,1020,77,1040,81,1039,86,1020,82,767,35"/>
+<area shape="rect" id="Node000015" href="$set__test_8c.html" title="It tests space module." alt="" coords="1139,79,1247,105"/>
+<area shape="poly" id="edge29_Node000001_Node000015" title=" " alt="" coords="768,26,1128,77,1140,79,1139,84,1128,82,767,31"/>
+<area shape="rect" id="Node000003" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="387,373,515,398"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="285,327,417,370,415,375,284,332"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="201,333,109,375,107,370,199,328"/>
+<area shape="poly" id="edge22_Node000005_Node000002" title=" " alt="" coords="432,111,388,129,346,155,310,191,280,233,245,300,240,298,276,230,306,188,342,151,385,124,430,106"/>
+<area shape="poly" id="edge23_Node000005_Node000004" title=" " alt="" coords="434,111,376,130,316,155,250,187,200,213,156,247,110,301,100,319,93,339,86,373,81,372,88,337,95,317,106,298,152,243,197,209,248,182,314,150,374,125,432,106"/>
+<area shape="rect" id="Node000006" href="$game_8h.html" title="It defines the game interface." alt="" coords="356,153,479,178"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="472,116,431,155,428,151,468,112"/>
+<area shape="poly" id="edge24_Node000005_Node000012" title=" " alt="" coords="540,107,668,150,667,155,538,112"/>
+<area shape="rect" id="Node000013" href="$space__test_8c.html" title="It tests the character module." alt="" coords="503,153,630,178"/>
+<area shape="poly" id="edge25_Node000005_Node000013" title=" " alt="" coords="516,112,556,151,553,155,512,116"/>
+<area shape="poly" id="edge16_Node000006_Node000002" title=" " alt="" coords="394,189,253,301,250,297,390,185"/>
+<area shape="poly" id="edge19_Node000006_Node000003" title=" " alt="" coords="408,192,398,220,389,253,387,289,394,324,413,351,435,371,432,375,409,354,390,326,382,290,384,252,393,218,403,190"/>
+<area shape="poly" id="edge21_Node000006_Node000004" title=" " alt="" coords="362,185,310,202,251,228,190,261,135,301,119,319,107,338,90,373,85,371,102,336,115,316,132,298,187,256,248,223,308,198,361,180"/>
+<area shape="rect" id="Node000007" href="$game__actions_8h_source.html" title=" " alt="" coords="572,299,748,325"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="493,176,579,196,615,209,639,224,652,242,659,263,663,299,658,300,654,264,647,245,635,228,613,214,577,201,492,181"/>
+<area shape="poly" id="edge18_Node000006_Node000008" title=" " alt="" coords="493,177,597,197,711,224,776,236,829,243,853,249,877,259,902,274,927,298,940,316,947,336,953,372,948,373,942,338,935,318,923,301,898,279,875,263,852,254,828,248,775,241,710,229,596,202,492,182"/>
+<area shape="rect" id="Node000009" href="$game__reader_8h.html" title="It loads all the game data into the program." alt="" coords="455,226,625,251"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="450,183,521,224,519,228,447,187"/>
+<area shape="rect" id="Node000010" href="$game_8c.html" title="It implements the game structure." alt="" coords="404,299,497,325"/>
+<area shape="poly" id="edge17_Node000006_Node000010" title=" " alt="" coords="426,191,451,299,445,300,421,192"/>
+<area shape="rect" id="Node000011" href="$game__reader_8c.html" title="It loads and makes all the actions related to space management." alt="" coords="772,299,913,325"/>
+<area shape="poly" id="edge20_Node000006_Node000011" title=" " alt="" coords="493,178,576,197,664,224,753,261,823,297,820,302,751,266,662,229,574,203,492,183"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="614,332,485,375,484,370,612,327"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="721,325,904,370,903,375,719,331"/>
+<area shape="poly" id="edge12_Node000009_Node000002" title=" " alt="" coords="479,257,287,302,286,297,478,252"/>
+<area shape="poly" id="edge14_Node000009_Node000003" title=" " alt="" coords="537,266,527,296,512,326,490,354,467,375,463,371,486,350,507,323,522,293,532,264"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="573,256,642,297,639,302,570,261"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="517,262,467,301,464,297,513,258"/>
+<area shape="poly" id="edge15_Node000009_Node000011" title=" " alt="" coords="602,252,794,297,793,302,601,257"/>
+</map>

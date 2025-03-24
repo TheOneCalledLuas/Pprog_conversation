@@ -1,0 +1,31 @@
+<map id="include/game_reader.h" name="include/game_reader.h">
+<area shape="rect" id="Node000001" title="It loads all the game data into the program." alt="" coords="5,5,176,31"/>
+<area shape="rect" id="Node000002" href="$types_8h_source.html" title=" " alt="" coords="190,299,261,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,32,64,72,41,129,35,161,33,192,39,222,53,249,78,273,110,289,144,300,177,305,176,310,143,305,108,294,75,277,49,252,34,224,28,192,29,160,36,128,59,70,81,30"/>
+<area shape="rect" id="Node000003" href="$game_8h.html" title="It defines the game interface." alt="" coords="210,79,281,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,28,209,70,207,75,114,33"/>
+<area shape="poly" id="edge13_Node000003_Node000002" title=" " alt="" coords="210,95,174,99,133,108,94,126,77,138,64,153,56,170,53,195,57,222,70,249,92,270,120,286,149,296,177,303,176,308,147,301,117,291,89,275,66,252,52,224,47,195,51,169,59,151,74,134,91,121,131,103,173,94,210,90"/>
+<area shape="rect" id="Node000004" href="$command_8h.html" title="It defines the command interpreter interface." alt="" coords="73,152,172,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="227,106,156,147,153,143,224,102"/>
+<area shape="rect" id="Node000006" href="$space_8h.html" title="It defines the space module interface." alt="" coords="209,152,281,177"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="248,104,248,138,243,138,243,104"/>
+<area shape="rect" id="Node000007" href="$object_8h.html" title="It handles object related tasks." alt="" coords="335,225,409,251"/>
+<area shape="poly" id="edge14_Node000003_Node000007" title=" " alt="" coords="258,103,355,213,351,217,254,106"/>
+<area shape="rect" id="Node000009" href="$player_8h.html" title="It defines the player module." alt="" coords="356,152,431,177"/>
+<area shape="poly" id="edge15_Node000003_Node000009" title=" " alt="" coords="270,102,358,144,356,148,268,106"/>
+<area shape="rect" id="Node000010" href="$character_8h.html" title="It implements the character module." alt="" coords="485,225,579,251"/>
+<area shape="poly" id="edge18_Node000003_Node000010" title=" " alt="" coords="281,96,358,114,402,129,444,150,484,180,516,212,512,216,481,184,441,154,400,134,357,119,280,101"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="110,179,95,194,82,212,75,231,80,249,99,270,123,285,150,295,177,302,176,307,149,300,121,290,96,274,75,252,70,231,77,210,91,191,107,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="89,225,156,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="125,178,125,212,120,212,120,178"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="241,179,230,200,221,226,219,256,222,285,217,285,214,256,216,225,225,198,236,177"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="267,175,341,216,338,221,264,180"/>
+<area shape="rect" id="Node000008" href="$set_8h.html" title="It defines sets for the whole project." alt="" coords="231,225,286,251"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="250,177,257,211,251,212,245,178"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="350,253,263,295,260,290,347,248"/>
+<area shape="poly" id="edge12_Node000008_Node000002" title=" " alt="" coords="256,252,239,287,234,285,251,250"/>
+<area shape="poly" id="edge11_Node000008_Node000008" title=" " alt="" coords="283,223,303,224,310,229,313,238,308,249,298,253,295,249,304,245,307,238,306,233,301,229,283,228"/>
+<area shape="poly" id="edge16_Node000009_Node000002" title=" " alt="" coords="406,176,426,211,430,232,424,252,392,281,354,299,313,309,275,313,274,308,312,304,352,294,389,276,419,249,425,232,421,213,401,179"/>
+<area shape="poly" id="edge17_Node000009_Node000007" title=" " alt="" coords="392,178,382,213,377,211,387,177"/>
+<area shape="poly" id="edge19_Node000010_Node000002" title=" " alt="" coords="485,253,275,301,274,296,484,248"/>
+</map>

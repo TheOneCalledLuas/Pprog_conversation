@@ -1,0 +1,109 @@
+\doxysection{\+\_\+\+Game Struct Reference}
+\hypertarget{struct__Game}{}\label{struct__Game}\index{\_Game@{\_Game}}
+
+
+Collaboration diagram for \+\_\+\+Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct__Game__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a1376a128e019ecadf837c32c40d05c9b}{players}} \mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}
+\item 
+\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77}{spaces}} \mbox{[}MAX\+\_\+\+SPACES\mbox{]}
+\item 
+\mbox{\hyperlink{struct__Object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{objects}} \mbox{[}MAX\+\_\+\+OBJECTS\mbox{]}
+\item 
+\mbox{\hyperlink{struct__Character}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ab1ecd8eb67b41eb3c38547f371215b8d}{characters}} \mbox{[}MAX\+\_\+\+CHARACTERS\mbox{]}
+\item 
+int \mbox{\hyperlink{struct__Game_af091df2bb12ae5c6ec3f63bfc8d7877d}{n\+\_\+spaces}}
+\item 
+int \mbox{\hyperlink{struct__Game_afb42dc6613851a59029787af6ca28aa6}{n\+\_\+objects}}
+\item 
+\Hypertarget{struct__Game_a2980ef5670fb746630cbcfd7e65a4098}\label{struct__Game_a2980ef5670fb746630cbcfd7e65a4098} 
+int {\bfseries n\+\_\+characters}
+\item 
+\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a47afef4b632256566d81da0f50e7a380}{last\+\_\+cmd}}
+\item 
+Bool \mbox{\hyperlink{struct__Game_a2718393f54af772d89a41047d8d26682}{finished}}
+\item 
+int \mbox{\hyperlink{struct__Game_a2a01590499ec911a85a61cd2eb945a99}{turn}}
+\item 
+int \mbox{\hyperlink{struct__Game_ada91dbe872248188499a2cfb14542f9f}{n\+\_\+players}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Game interface implementation. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{struct__Game_ab1ecd8eb67b41eb3c38547f371215b8d}\label{struct__Game_ab1ecd8eb67b41eb3c38547f371215b8d} 
+\index{\_Game@{\_Game}!characters@{characters}}
+\index{characters@{characters}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{characters}{characters}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Character}{Character}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::characters\mbox{[}MAX\+\_\+\+CHARACTERS\mbox{]}}
+
+Array with all the character of the game. \Hypertarget{struct__Game_a2718393f54af772d89a41047d8d26682}\label{struct__Game_a2718393f54af772d89a41047d8d26682} 
+\index{\_Game@{\_Game}!finished@{finished}}
+\index{finished@{finished}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{finished}{finished}}
+{\footnotesize\ttfamily Bool \+\_\+\+Game\+::finished}
+
+Whether the game has finished or not. \Hypertarget{struct__Game_a47afef4b632256566d81da0f50e7a380}\label{struct__Game_a47afef4b632256566d81da0f50e7a380} 
+\index{\_Game@{\_Game}!last\_cmd@{last\_cmd}}
+\index{last\_cmd@{last\_cmd}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{last\_cmd}{last\_cmd}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::last\+\_\+cmd}
+
+A pointer to the last command entered by the user. \Hypertarget{struct__Game_afb42dc6613851a59029787af6ca28aa6}\label{struct__Game_afb42dc6613851a59029787af6ca28aa6} 
+\index{\_Game@{\_Game}!n\_objects@{n\_objects}}
+\index{n\_objects@{n\_objects}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{n\_objects}{n\_objects}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::n\+\_\+objects}
+
+Number of objects. \Hypertarget{struct__Game_ada91dbe872248188499a2cfb14542f9f}\label{struct__Game_ada91dbe872248188499a2cfb14542f9f} 
+\index{\_Game@{\_Game}!n\_players@{n\_players}}
+\index{n\_players@{n\_players}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{n\_players}{n\_players}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::n\+\_\+players}
+
+Number of players, \Hypertarget{struct__Game_af091df2bb12ae5c6ec3f63bfc8d7877d}\label{struct__Game_af091df2bb12ae5c6ec3f63bfc8d7877d} 
+\index{\_Game@{\_Game}!n\_spaces@{n\_spaces}}
+\index{n\_spaces@{n\_spaces}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{n\_spaces}{n\_spaces}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::n\+\_\+spaces}
+
+Number of spaces. \Hypertarget{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}\label{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81} 
+\index{\_Game@{\_Game}!objects@{objects}}
+\index{objects@{objects}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Object}{Object}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::objects\mbox{[}MAX\+\_\+\+OBJECTS\mbox{]}}
+
+An array with the information of every objects. \Hypertarget{struct__Game_a1376a128e019ecadf837c32c40d05c9b}\label{struct__Game_a1376a128e019ecadf837c32c40d05c9b} 
+\index{\_Game@{\_Game}!players@{players}}
+\index{players@{players}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{players}{players}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Player}{Player}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::players\mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}}
+
+Array with all the players. \Hypertarget{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77}\label{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77} 
+\index{\_Game@{\_Game}!spaces@{spaces}}
+\index{spaces@{spaces}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{spaces}{spaces}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Space}{Space}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::spaces\mbox{[}MAX\+\_\+\+SPACES\mbox{]}}
+
+An array with the information of every space. \Hypertarget{struct__Game_a2a01590499ec911a85a61cd2eb945a99}\label{struct__Game_a2a01590499ec911a85a61cd2eb945a99} 
+\index{\_Game@{\_Game}!turn@{turn}}
+\index{turn@{turn}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{turn}{turn}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::turn}
+
+Actual turn. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{game_8c}{game.\+c}}\end{DoxyCompactItemize}

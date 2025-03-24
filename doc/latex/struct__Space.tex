@@ -1,0 +1,113 @@
+\doxysection{\+\_\+\+Space Struct Reference}
+\hypertarget{struct__Space}{}\label{struct__Space}\index{\_Space@{\_Space}}
+
+
+Space.  
+
+
+
+
+Collaboration diagram for \+\_\+\+Space\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{struct__Space__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+Id \mbox{\hyperlink{struct__Space_a70cb461deb9ac073e401b607339b567f}{id}}
+\item 
+char \mbox{\hyperlink{struct__Space_aa1c9c994c2d16ecf3ef46138685fdfdc}{name}} \mbox{[}WORD\+\_\+\+SIZE+1\mbox{]}
+\item 
+Id \mbox{\hyperlink{struct__Space_ae5ebe53ce79514d7d2d93911e0159252}{north}}
+\item 
+Id \mbox{\hyperlink{struct__Space_a646b68c22a0bbf1685033c96109d31d1}{south}}
+\item 
+Id \mbox{\hyperlink{struct__Space_a41ce2bf33cf0c157b358221f094ee05b}{east}}
+\item 
+Id \mbox{\hyperlink{struct__Space_a20c1d259e93b44e24ba82982e142eb9b}{west}}
+\item 
+\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a661ed8b0fc8085b6db70188aa5085625}{objects}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a24d9bdd59aced18823b8726e1ff49b1a}{gdesc}} \mbox{[}G\+\_\+\+DESC\+\_\+\+LINES\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a9ccbaa9c8dbbcb865600b2ebf5093540}{\+\_\+\+\_\+gdesc\+\_\+data}}
+\item 
+Id \mbox{\hyperlink{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0}{character}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Space. 
+
+This struct stores all the information of a space. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{struct__Space_a9ccbaa9c8dbbcb865600b2ebf5093540}\label{struct__Space_a9ccbaa9c8dbbcb865600b2ebf5093540} 
+\index{\_Space@{\_Space}!\_\_gdesc\_data@{\_\_gdesc\_data}}
+\index{\_\_gdesc\_data@{\_\_gdesc\_data}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{\_\_gdesc\_data}{\_\_gdesc\_data}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::\+\_\+\+\_\+gdesc\+\_\+data}
+
+Actual matrix with the gdesc. \Hypertarget{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0}\label{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0} 
+\index{\_Space@{\_Space}!character@{character}}
+\index{character@{character}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{character}{character}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::character}
+
+Character id. \Hypertarget{struct__Space_a41ce2bf33cf0c157b358221f094ee05b}\label{struct__Space_a41ce2bf33cf0c157b358221f094ee05b} 
+\index{\_Space@{\_Space}!east@{east}}
+\index{east@{east}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{east}{east}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::east}
+
+Id of the space at the east. \Hypertarget{struct__Space_a24d9bdd59aced18823b8726e1ff49b1a}\label{struct__Space_a24d9bdd59aced18823b8726e1ff49b1a} 
+\index{\_Space@{\_Space}!gdesc@{gdesc}}
+\index{gdesc@{gdesc}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{gdesc}{gdesc}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::gdesc\mbox{[}G\+\_\+\+DESC\+\_\+\+LINES\mbox{]}}
+
+Strings which create the space\textquotesingle{}s graphic description. \Hypertarget{struct__Space_a70cb461deb9ac073e401b607339b567f}\label{struct__Space_a70cb461deb9ac073e401b607339b567f} 
+\index{\_Space@{\_Space}!id@{id}}
+\index{id@{id}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::id}
+
+Id number of the space, it must be unique. \Hypertarget{struct__Space_aa1c9c994c2d16ecf3ef46138685fdfdc}\label{struct__Space_aa1c9c994c2d16ecf3ef46138685fdfdc} 
+\index{\_Space@{\_Space}!name@{name}}
+\index{name@{name}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily char \+\_\+\+Space\+::name\mbox{[}WORD\+\_\+\+SIZE+1\mbox{]}}
+
+Name of the space. \Hypertarget{struct__Space_ae5ebe53ce79514d7d2d93911e0159252}\label{struct__Space_ae5ebe53ce79514d7d2d93911e0159252} 
+\index{\_Space@{\_Space}!north@{north}}
+\index{north@{north}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{north}{north}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::north}
+
+Id of the space at the north. \Hypertarget{struct__Space_a661ed8b0fc8085b6db70188aa5085625}\label{struct__Space_a661ed8b0fc8085b6db70188aa5085625} 
+\index{\_Space@{\_Space}!objects@{objects}}
+\index{objects@{objects}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily \mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}}\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::objects}
+
+A set with the objects the space has \Hypertarget{struct__Space_a646b68c22a0bbf1685033c96109d31d1}\label{struct__Space_a646b68c22a0bbf1685033c96109d31d1} 
+\index{\_Space@{\_Space}!south@{south}}
+\index{south@{south}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{south}{south}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::south}
+
+Id of the space at the south. \Hypertarget{struct__Space_a20c1d259e93b44e24ba82982e142eb9b}\label{struct__Space_a20c1d259e93b44e24ba82982e142eb9b} 
+\index{\_Space@{\_Space}!west@{west}}
+\index{west@{west}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{west}{west}}
+{\footnotesize\ttfamily Id \+\_\+\+Space\+::west}
+
+Id of the space at the west. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{space_8c}{space.\+c}}\end{DoxyCompactItemize}

@@ -1,0 +1,16 @@
+<map id="src/command.c" name="src/command.c">
+<area shape="rect" id="Node000001" title="It implements the command interpreter." alt="" coords="174,5,295,31"/>
+<area shape="rect" id="Node000002" href="$command_8h.html" title="It defines the command interpreter interface." alt="" coords="76,79,175,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,33,156,73,153,69,216,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,72,177"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="175,29,117,47,90,61,66,80,50,109,43,139,38,138,45,107,62,77,87,57,115,42,173,24"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="199,79,270,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="237,31,237,65,232,65,232,31"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="294,79,365,104"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="251,29,304,68,301,72,248,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="389,79,467,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="267,28,385,71,383,76,265,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,106,65,145,62,141,110,102"/>
+<area shape="rect" id="Node000004" href="$types_8h_source.html" title=" " alt="" coords="97,152,167,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="129,104,132,138,127,139,124,105"/>
+</map>

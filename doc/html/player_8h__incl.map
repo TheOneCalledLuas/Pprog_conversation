@@ -1,0 +1,8 @@
+<map id="include/player.h" name="include/player.h">
+<area shape="rect" id="Node000001" title="It defines the player module." alt="" coords="5,5,131,31"/>
+<area shape="rect" id="Node000002" href="$types_8h_source.html" title=" " alt="" coords="33,152,103,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,32,59,79,59,110,64,138,59,139,54,110,53,78,62,31"/>
+<area shape="rect" id="Node000003" href="$object_8h.html" title="It handles object related tasks." alt="" coords="68,79,143,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="77,30,95,65,91,68,72,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="102,106,83,141,78,139,97,103"/>
+</map>
