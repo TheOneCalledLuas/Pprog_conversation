@@ -14,11 +14,6 @@
 #include "types.h"
 #include "set.h"
 
-/**
- * Maximun number of elements per set.
- */
-#define MAX_SET 50
-
 struct _Set
 {
     int n_ids;   /* <! Number of ids in the set.*/
@@ -53,7 +48,7 @@ void set_destroy(Set *set)
     {
         return;
     }
-    /*FFrees the memory.*/
+    /*Frees the memory.*/
     if (set->content)
     {
         free(set->content);
