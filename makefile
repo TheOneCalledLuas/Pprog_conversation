@@ -64,41 +64,38 @@ redo:
 ################################################
 #                 Test_check                   #
 ################################################
-test_all: space_test character_test set_test
-
-run_all_test: test_all 
+run_all_test:
 	make set_check; make space_check; make character_check
 
 check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
 
 set_check:
-	./set_test
+	make set_test;./set_test
 
-set_test: set_test.o set.o 
-	$(CC) -o set_test $^
+set_test: $(OBJDIR)/set_test.o $(OBJDIR)/set.o 
+	$(CC) -o $@ $^
 
-set_test.o: $(SRCDIR)/set_test.c set_test.h set.h types.h test.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/set_test.o: $(SRCDIR)/set_test.c $(HEADERDIR)/set_test.h $(HEADERDIR)/set.h $(HEADERDIR)/types.h $(HEADERDIR)/test.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 space_check:
-	./space_test
+	make space_test; ./space_test
 
-space_test: $(SRCDIR)/space_test.o space.o set.o object.o
+space_test: $(OBJDIR)/space_test.o $(OBJDIR)/space.o $(OBJDIR)/set.o $(OBJDIR)/object.o
 	$(CC) -o space_test $^
 
-space_test.o: $(SRCDIR)/space_test.c space.h types.h object.h set.h space_test.h test.h 
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/space_test.o: $(SRCDIR)/space_test.c $(HEADERDIR)/space.h $(HEADERDIR)/types.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/space_test.h $(HEADERDIR)/test.h 
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 character_check:
-	./character_test
+	make character_test;./character_test
 
-character_test: character_test.o character.o
+character_test: $(OBJDIR)/character_test.o $(OBJDIR)/character.o
 	$(CC) -o character_test $^
 
-character_test.o: $(SRCDIR)/character_test.c character.h types.h test.h character_test.h
-	$(CC) $(CFLAGS) $<
+$(OBJDIR)/character_test.o: $(SRCDIR)/character_test.c $(HEADERDIR)/character.h $(HEADERDIR)/types.h $(HEADERDIR)/test.h $(HEADERDIR)/character_test.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 run:
 	./anthill data/anthill.dat -l ./log/logfile.txt
-
