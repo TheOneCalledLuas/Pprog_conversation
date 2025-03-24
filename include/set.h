@@ -14,10 +14,14 @@
 #include "set.h"
 #include "types.h"
 
+/**
+ * Maximun number of elements per set.
+ */
+ #define MAX_SET 50
 
 /**
  * @brief Set TAD.
- * @author Saul Lopez Romero
+ * @author Saul Lopez Romero.
  */
 typedef struct _Set Set;
 
@@ -31,7 +35,7 @@ Set *set_create();
 
 /**
  * @brief Frees the memory.
- * @author Saul Lopez Romero
+ * @author Saul Lopez Romero.
  *
  * @param set Pointer to the set.
  */
@@ -39,7 +43,7 @@ void set_destroy(Set *set);
 
 /**
  * @brief Searches for an id in a set.
- * @author Saul Lopez Romero
+ * @author Saul Lopez Romero.
  *
  * @param set Pointer to the set.
  * @param id Id to be searched.
@@ -79,7 +83,7 @@ int set_len(Set * set);
 /**
  * @brief Returns an array of ids with the content of the set.
  *          IMPORTANT free the array after using it.
- * @author Fernando Mijangos 
+ * @author Fernando Mijangos.
  * 
  * @param set Pointer to the set.
  * @return Array of ids with the content of the set.
