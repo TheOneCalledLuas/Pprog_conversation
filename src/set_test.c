@@ -1,5 +1,5 @@
 /**
- * @brief It tests space module
+ * @brief It tests set module
  *
  * @file set_test.c
  * @author Saul Lopez Romero
