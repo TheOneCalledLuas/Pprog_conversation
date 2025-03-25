@@ -1,6 +1,6 @@
 <map id="include/game_reader.h" name="include/game_reader.h">
 <area shape="rect" id="Node000001" title="It loads all the game data into the program." alt="" coords="284,5,455,31"/>
-<area shape="rect" id="Node000002" href="$game__actions_8h_source.html" title=" " alt="" coords="27,79,203,104"/>
+<area shape="rect" id="Node000002" href="$game__actions_8h.html" title="It defines the game update interface." alt="" coords="27,79,203,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="316,37,157,81,155,76,314,32"/>
 <area shape="rect" id="Node000004" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="176,152,304,177"/>
 <area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="325,39,294,56,267,80,257,98,250,117,243,152,238,151,245,116,252,96,263,77,291,52,322,34"/>

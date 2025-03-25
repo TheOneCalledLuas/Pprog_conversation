@@ -12,5 +12,7 @@ var searchData=
   ['object_5fset_5fdescription_9',['object_set_description',['../object_8h.html#a38991fcce27ce36021a2bb1a12232bba',1,'object_set_description(Object *object, char *desc):&#160;object.c'],['../object_8c.html#a38991fcce27ce36021a2bb1a12232bba',1,'object_set_description(Object *object, char *desc):&#160;object.c']]],
   ['object_5fset_5fname_10',['object_set_name',['../object_8h.html#a14bf659f3055f0243d1af4b246d062b4',1,'object_set_name(Object *object, char *name):&#160;object.c'],['../object_8c.html#a14bf659f3055f0243d1af4b246d062b4',1,'object_set_name(Object *object, char *name):&#160;object.c']]],
   ['objects_11',['objects',['../struct__Space.html#a661ed8b0fc8085b6db70188aa5085625',1,'_Space::objects'],['../struct__Game.html#ad45bf5645a26e546d0060a2e61f9cf81',1,'_Game::objects']]],
-  ['origin_12',['origin',['../struct__Link.html#af039079d7500b5ab11ae21ef672cbf5f',1,'_Link']]]
+  ['objs_12',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
+  ['ok_13',['OK',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59',1,'types.h']]],
+  ['origin_14',['origin',['../struct__Link.html#af039079d7500b5ab11ae21ef672cbf5f',1,'_Link']]]
 ];

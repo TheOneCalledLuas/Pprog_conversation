@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['commandcode_0',['CommandCode',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2',1,'command.h']]],
-  ['commandtype_1',['CommandType',['../command_8h.html#a21e038f5b8958e203d28bc4f18472352',1,'command.h']]]
+  ['bool_0',['Bool',['../types_8h.html#a39db6982619d623273fad8a383489309',1,'types.h']]]
 ];

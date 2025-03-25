@@ -8,22 +8,25 @@
  * @copyright GNU Public License
  */
 
- #include "inventory.h"
+#include "inventory.h"
 
- #include <stdio.h>
- #include <stdlib.h>
- #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
- struct _Inventory{
-    Set *objs;         /*!< Set with the objects in the inventory. */
-    long max_objs;     /*!< Maximum number of objects a player can carry in the inventory. */
- };
+struct _Inventory
+{
+    Set *objs;     /*!< Set with the objects in the inventory. */
+    long max_objs; /*!< Maximum number of objects a player can carry in the inventory. */
+};
 
- Inventory *inventory_create(){
+Inventory *inventory_create()
+{
     Inventory *newInv = NULL;
 
     /* Memory allocation and error control. */
-    if(!(newInv = (Inventory*)malloc(sizeof(Inventory)))){
+    if (!(newInv = (Inventory *)malloc(sizeof(Inventory))))
+    {
         return NULL;
     }
 
@@ -32,43 +35,51 @@
     newInv->max_objs = 0;
 
     return newInv;
- }
+}
 
- void inventory_destroy(Inventory *inventory){
+void inventory_destroy(Inventory *inventory)
+{
     /* Error control for parameters. */
-    if(!inventory){
+    if (!inventory)
+    {
         return;
     }
 
     /* Memory free. */
     set_destroy(inventory->objs);
     free(inventory);
- }
+}
 
- Status inventory_set_max_objs(Inventory *inventory, long max_objs){
+Status inventory_set_max_objs(Inventory *inventory, long max_objs)
+{
     /* Error control for parameters. */
-    if(!inventory || max_objs < 0 || max_objs < set_len(inventory->objs) || max_objs > MAX_SET){
+    if (!inventory || max_objs < 0 || max_objs < set_len(inventory->objs) || max_objs > MAX_SET)
+    {
         return ERROR;
     }
 
     /* Asination of the value. */
     inventory->max_objs = max_objs;
     return OK;
- }
+}
 
- long inventory_get_max_objs(Invenotry *inventory){
+long inventory_get_max_objs(Inventory *inventory)
+{
     /* Error control for parameters. */
-    if(!inventory){
+    if (!inventory)
+    {
         return -1;
     }
 
     /* Return of the value using the set_len function. */
     return set_len(inventory->objs);
- }
+}
 
-Status inventory_add(Inventory *inventory, Id id){
+Status inventory_add(Inventory *inventory, Id id)
+{
     /* Error control for parameters and set size. */
-    if(!inventory || set_len(inventory->objs) == max_objs){
+    if (!inventory || set_len(inventory->objs) == inventory->max_objs)
+    {
         return ERROR;
     }
 
@@ -76,9 +87,11 @@ Status inventory_add(Inventory *inventory, Id id){
     return set_add(inventory->objs, id);
 }
 
-Id inventory_take(Inventory *inventory, Id id){
+Id inventory_take(Inventory *inventory, Id id)
+{
     /* Error control for parameters. */
-    if(!inventory){
+    if (!inventory)
+    {
         return ID_ERROR;
     }
 
@@ -86,24 +99,30 @@ Id inventory_take(Inventory *inventory, Id id){
     return set_take(inventory->objs, id);
 }
 
-int inventory_len(Inventory *inventory){
-    if(!inventory){
+int inventory_len(Inventory *inventory)
+{
+    if (!inventory)
+    {
         return -1;
     }
 
     return set_len(inventory->objs);
 }
 
-Id *inventory_get_content(Inventory *inventory){
-    if(!inventory){
+Id *inventory_get_content(Inventory *inventory)
+{
+    if (!inventory)
+    {
         return NULL;
     }
 
     return set_get_content(inventory->objs);
 }
 
-Status inventory_print(Inventory *inventory){
-    if(!inventory){
+Status inventory_print(Inventory *inventory)
+{
+    if (!inventory)
+    {
         return ERROR;
     }
 

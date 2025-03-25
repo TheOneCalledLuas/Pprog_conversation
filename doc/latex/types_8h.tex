@@ -1,0 +1,137 @@
+\doxysection{include/types.h File Reference}
+\hypertarget{types_8h}{}\label{types_8h}\index{include/types.h@{include/types.h}}
+
+
+It defines common types for the whole project.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{types_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89}\label{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89} 
+\#define {\bfseries WORD\+\_\+\+SIZE}~1000
+\item 
+\Hypertarget{types_8h_a642e16f35aa1e585c25e405ede76e115}\label{types_8h_a642e16f35aa1e585c25e405ede76e115} 
+\#define {\bfseries NO\+\_\+\+ID}~-\/1
+\item 
+\Hypertarget{types_8h_a8bc834dfab3a08dfe243dfe3865300f5}\label{types_8h_a8bc834dfab3a08dfe243dfe3865300f5} 
+\#define {\bfseries ID\+\_\+\+ERROR}~-\/2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{types_8h_a845e604fb28f7e3d97549da3448149d3}\label{types_8h_a845e604fb28f7e3d97549da3448149d3} 
+typedef long {\bfseries Id}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \{ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839}{TRUE}}
+ \}
+\item 
+enum \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \{ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2fd6f336d08340583bd620a7f5694c90}{ERROR}}
+, \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59}{OK}}
+ \}
+\item 
+enum \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ \newline
+\mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa2c63acbe79d9f41ba6bb7766e9c37702}{N}}
+, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaaf1ce01387d2348f8b858721a7db81670}{S}}
+, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab199e021998d49b1f09338d8b9b18ecb}{E}}
+, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7}{W}}
+, \newline
+\mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60}{UNK\+\_\+\+DIRECTION}}
+ \}
+\begin{DoxyCompactList}\small\item\em Cardinal points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It defines common types for the whole project. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27-\/01-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{types_8h_a39db6982619d623273fad8a383489309}\label{types_8h_a39db6982619d623273fad8a383489309} 
+\index{types.h@{types.h}!Bool@{Bool}}
+\index{Bool@{Bool}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{Bool}{Bool}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!types.h@{types.h}}\index{types.h@{types.h}!FALSE@{FALSE}}}\Hypertarget{types_8h_a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a}\label{types_8h_a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a} 
+FALSE&False value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!types.h@{types.h}}\index{types.h@{types.h}!TRUE@{TRUE}}}\Hypertarget{types_8h_a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839}\label{types_8h_a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839} 
+TRUE&True value. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+\index{types.h@{types.h}!Direction@{Direction}}
+\index{Direction@{Direction}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Cardinal points. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N@{N}!types.h@{types.h}}\index{types.h@{types.h}!N@{N}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa2c63acbe79d9f41ba6bb7766e9c37702}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa2c63acbe79d9f41ba6bb7766e9c37702} 
+N&North. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S@{S}!types.h@{types.h}}\index{types.h@{types.h}!S@{S}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaaf1ce01387d2348f8b858721a7db81670}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaaf1ce01387d2348f8b858721a7db81670} 
+S&South. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E@{E}!types.h@{types.h}}\index{types.h@{types.h}!E@{E}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab199e021998d49b1f09338d8b9b18ecb}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab199e021998d49b1f09338d8b9b18ecb} 
+E&East. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W@{W}!types.h@{types.h}}\index{types.h@{types.h}!W@{W}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7} 
+W&West. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNK\_DIRECTION@{UNK\_DIRECTION}!types.h@{types.h}}\index{types.h@{types.h}!UNK\_DIRECTION@{UNK\_DIRECTION}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60} 
+UNK\+\_\+\+DIRECTION&Unknown direction \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}\label{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b} 
+\index{types.h@{types.h}!Status@{Status}}
+\index{Status@{Status}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{Status}{Status}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!types.h@{types.h}}\index{types.h@{types.h}!ERROR@{ERROR}}}\Hypertarget{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2fd6f336d08340583bd620a7f5694c90}\label{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2fd6f336d08340583bd620a7f5694c90} 
+ERROR&Error value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OK@{OK}!types.h@{types.h}}\index{types.h@{types.h}!OK@{OK}}}\Hypertarget{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59}\label{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59} 
+OK&Good functioning value. \\
+\hline
+
+\end{DoxyEnumFields}
