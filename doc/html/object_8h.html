@@ -83,14 +83,14 @@ $(function() {
 
 <p>It handles object related tasks.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;types.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for object.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="object_8h__incl.png" border="0" usemap="#ainclude_2object_8h" alt=""/></div>
 <map name="ainclude_2object_8h" id="ainclude_2object_8h">
 <area shape="rect" title="It handles object related tasks." alt="" coords="5,5,131,31"/>
-<area shape="rect" href="types_8h_source.html" title=" " alt="" coords="33,79,103,104"/>
+<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="33,79,103,104"/>
 <area shape="poly" title=" " alt="" coords="71,31,71,65,65,65,65,31"/>
 </map>
 </div>
@@ -110,9 +110,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="808,37,856,76,852,80,805,41"/>
 <area shape="rect" href="space_8c.html" title="It implements the space module." alt="" coords="1121,152,1215,177"/>
 <area shape="poly" title=" " alt="" coords="830,33,942,76,993,102,1065,129,1130,149,1129,155,1064,134,991,106,940,81,828,38"/>
-<area shape="rect" href="object_8c.html" title="It implements the object functionality." alt="" coords="1004,79,1100,104"/>
+<area shape="rect" href="object_8c.html" title="It implements the inventory functionality." alt="" coords="1004,79,1100,104"/>
 <area shape="poly" title=" " alt="" coords="840,32,1009,76,1008,81,838,37"/>
-<area shape="rect" href="game__actions_8h_source.html" title=" " alt="" coords="277,299,453,324"/>
+<area shape="rect" href="game__actions_8h.html" title="It defines the game update interface." alt="" coords="277,299,453,324"/>
 <area shape="poly" title=" " alt="" coords="575,186,500,228,384,301,381,296,497,223,573,181"/>
 <area shape="rect" href="game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="116,372,263,397"/>
 <area shape="poly" title=" " alt="" coords="533,169,481,174,423,184,364,201,309,228,269,262,236,303,212,343,197,373,192,371,207,340,231,300,265,258,307,223,362,196,421,179,480,168,533,164"/>
@@ -162,25 +162,25 @@ Functions</h2></td></tr>
 <tr class="memitem:a8957c5ad32a83df414b44361d2833c1d" id="r_a8957c5ad32a83df414b44361d2833c1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__Object.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a8957c5ad32a83df414b44361d2833c1d">object_create</a> (Id id)</td></tr>
 <tr class="memdesc:a8957c5ad32a83df414b44361d2833c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">It handles all the object creation proccess.  <br /></td></tr>
 <tr class="separator:a8957c5ad32a83df414b44361d2833c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab2d9fe61ae9c48522635d006dd50396" id="r_aab2d9fe61ae9c48522635d006dd50396"><td class="memItemLeft" align="right" valign="top">Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#aab2d9fe61ae9c48522635d006dd50396">object_destroy</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
+<tr class="memitem:aab2d9fe61ae9c48522635d006dd50396" id="r_aab2d9fe61ae9c48522635d006dd50396"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#aab2d9fe61ae9c48522635d006dd50396">object_destroy</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
 <tr class="memdesc:aab2d9fe61ae9c48522635d006dd50396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the object structure propperly.  <br /></td></tr>
 <tr class="separator:aab2d9fe61ae9c48522635d006dd50396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23a705e99313a55db679de3683d2185b" id="r_a23a705e99313a55db679de3683d2185b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a23a705e99313a55db679de3683d2185b">object_get_name</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
 <tr class="memdesc:a23a705e99313a55db679de3683d2185b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the object's name.  <br /></td></tr>
 <tr class="separator:a23a705e99313a55db679de3683d2185b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14bf659f3055f0243d1af4b246d062b4" id="r_a14bf659f3055f0243d1af4b246d062b4"><td class="memItemLeft" align="right" valign="top">Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a14bf659f3055f0243d1af4b246d062b4">object_set_name</a> (<a class="el" href="struct__Object.html">Object</a> *object, char *name)</td></tr>
+<tr class="memitem:a14bf659f3055f0243d1af4b246d062b4" id="r_a14bf659f3055f0243d1af4b246d062b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a14bf659f3055f0243d1af4b246d062b4">object_set_name</a> (<a class="el" href="struct__Object.html">Object</a> *object, char *name)</td></tr>
 <tr class="memdesc:a14bf659f3055f0243d1af4b246d062b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the object's name.  <br /></td></tr>
 <tr class="separator:a14bf659f3055f0243d1af4b246d062b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a757d40431826a2cb60b8816a42f72f6d" id="r_a757d40431826a2cb60b8816a42f72f6d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a757d40431826a2cb60b8816a42f72f6d">object_get_description</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
 <tr class="memdesc:a757d40431826a2cb60b8816a42f72f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the object's description.  <br /></td></tr>
 <tr class="separator:a757d40431826a2cb60b8816a42f72f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38991fcce27ce36021a2bb1a12232bba" id="r_a38991fcce27ce36021a2bb1a12232bba"><td class="memItemLeft" align="right" valign="top">Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a38991fcce27ce36021a2bb1a12232bba">object_set_description</a> (<a class="el" href="struct__Object.html">Object</a> *object, char *desc)</td></tr>
+<tr class="memitem:a38991fcce27ce36021a2bb1a12232bba" id="r_a38991fcce27ce36021a2bb1a12232bba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a38991fcce27ce36021a2bb1a12232bba">object_set_description</a> (<a class="el" href="struct__Object.html">Object</a> *object, char *desc)</td></tr>
 <tr class="memdesc:a38991fcce27ce36021a2bb1a12232bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the object's description.  <br /></td></tr>
 <tr class="separator:a38991fcce27ce36021a2bb1a12232bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5af152381a21853c6a28cc120e8e7fe" id="r_ac5af152381a21853c6a28cc120e8e7fe"><td class="memItemLeft" align="right" valign="top">Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#ac5af152381a21853c6a28cc120e8e7fe">object_get_id</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
 <tr class="memdesc:ac5af152381a21853c6a28cc120e8e7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the object's name.  <br /></td></tr>
 <tr class="separator:ac5af152381a21853c6a28cc120e8e7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03653b29058fcde7ce5ee2e3187f84e7" id="r_a03653b29058fcde7ce5ee2e3187f84e7"><td class="memItemLeft" align="right" valign="top">Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a03653b29058fcde7ce5ee2e3187f84e7">object_print_info</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
+<tr class="memitem:a03653b29058fcde7ce5ee2e3187f84e7" id="r_a03653b29058fcde7ce5ee2e3187f84e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a03653b29058fcde7ce5ee2e3187f84e7">object_print_info</a> (<a class="el" href="struct__Object.html">Object</a> *object)</td></tr>
 <tr class="memdesc:a03653b29058fcde7ce5ee2e3187f84e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the object info (debug intended).  <br /></td></tr>
 <tr class="separator:a03653b29058fcde7ce5ee2e3187f84e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -226,7 +226,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Status object_destroy </td>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> object_destroy </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Object.html">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
@@ -338,7 +338,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Status object_print_info </td>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> object_print_info </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Object.html">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
@@ -366,7 +366,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Status object_set_description </td>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> object_set_description </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Object.html">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -405,7 +405,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Status object_set_name </td>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> object_set_name </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Object.html">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>

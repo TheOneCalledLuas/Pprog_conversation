@@ -10,7 +10,7 @@
 <area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="938,37,985,76,982,80,934,41"/>
 <area shape="rect" id="Node000012" href="$space__test_8c.html" title="It tests the character module." alt="" coords="1069,79,1195,104"/>
 <area shape="poly" id="edge22_Node000001_Node000012" title=" " alt="" coords="961,32,1097,76,1096,81,960,37"/>
-<area shape="rect" id="Node000003" href="$game__actions_8h_source.html" title=" " alt="" coords="31,225,207,251"/>
+<area shape="rect" id="Node000003" href="$game__actions_8h.html" title="It defines the game update interface." alt="" coords="31,225,207,251"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,110,288,128,227,154,172,192,132,227,128,223,169,187,224,150,287,123,348,105"/>
 <area shape="rect" id="Node000004" href="$game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="5,299,152,324"/>
 <area shape="poly" id="edge15_Node000002_Node000004" title=" " alt="" coords="343,95,262,102,217,110,172,123,128,140,87,162,50,191,21,227,17,236,17,245,26,264,43,282,62,296,58,301,40,286,22,267,12,246,12,235,16,224,47,187,84,158,125,135,170,118,216,105,261,97,342,89"/>

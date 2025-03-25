@@ -11,7 +11,6 @@
 #ifndef SET_H
 #define SET_H
 
-#include "set.h"
 #include "types.h"
 
 /**

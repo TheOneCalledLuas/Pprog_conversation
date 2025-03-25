@@ -10,9 +10,9 @@
 <area shape="poly" id="edge23_Node000001_Node000013" title=" " alt="" coords="808,37,856,76,852,80,805,41"/>
 <area shape="rect" id="Node000014" href="$space_8c.html" title="It implements the space module." alt="" coords="1121,152,1215,177"/>
 <area shape="poly" id="edge31_Node000001_Node000014" title=" " alt="" coords="830,33,942,76,993,102,1065,129,1130,149,1129,155,1064,134,991,106,940,81,828,38"/>
-<area shape="rect" id="Node000016" href="$object_8c.html" title="It implements the object functionality." alt="" coords="1004,79,1100,104"/>
+<area shape="rect" id="Node000016" href="$object_8c.html" title="It implements the inventory functionality." alt="" coords="1004,79,1100,104"/>
 <area shape="poly" id="edge29_Node000001_Node000016" title=" " alt="" coords="840,32,1009,76,1008,81,838,37"/>
-<area shape="rect" id="Node000003" href="$game__actions_8h_source.html" title=" " alt="" coords="277,299,453,324"/>
+<area shape="rect" id="Node000003" href="$game__actions_8h.html" title="It defines the game update interface." alt="" coords="277,299,453,324"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="575,186,500,228,384,301,381,296,497,223,573,181"/>
 <area shape="rect" id="Node000004" href="$game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="116,372,263,397"/>
 <area shape="poly" id="edge15_Node000002_Node000004" title=" " alt="" coords="533,169,481,174,423,184,364,201,309,228,269,262,236,303,212,343,197,373,192,371,207,340,231,300,265,258,307,223,362,196,421,179,480,168,533,164"/>
