@@ -281,6 +281,11 @@ Status game_destroy(Game **game)
     {
         object_destroy((*game)->objects[i]);
     }
+    /*Destroys the links.*/
+    for (i = 0; i < (*game)->n_links; i++)
+    {
+        link_destroy((*game)->links[i]);
+    }
 
     command_destroy((*game)->last_cmd);
     free(*game);
@@ -623,6 +628,11 @@ Status game_create_from_file(Game **game, char *filename)
         return ERROR;
     }
 
+    if (game_reader_load_links(*game, filename) == ERROR)
+    {
+        return ERROR;
+    }
+
     /*Loads the characters where they are supposed to be (TEMPORAL).*/
     c1 = character_create(CHARACTER_ID_1);
     character_set_description(c1, CHARACTER_DESCR_1);
@@ -648,16 +658,16 @@ Status game_create_from_file(Game **game, char *filename)
 Status game_add_link(Game *game, Link *link)
 {
     /*Error management.*/
-    if(!game ||!link)
+    if (!game || !link)
         return ERROR;
 
-    if(game->n_links==MAX_LINKS)
+    if (game->n_links == MAX_LINKS)
         return ERROR;
 
     /*Puts the new link and increases the number of links.*/
-    game->links[game->n_links]=link;
+    game->links[game->n_links] = link;
     game->n_links++;
-    
+
     /*Return OK.*/
     return OK;
 }
@@ -665,7 +675,7 @@ Status game_add_link(Game *game, Link *link)
 Status game_delete_link(Game *game, int position)
 {
     /*Error management*/
-    if(!(game)|| position<0)
+    if (!(game) || position < 0)
         return ERROR;
 
     /*Destroys the link.*/
@@ -676,13 +686,13 @@ Link *game_find_link(Game *game, Id link_id)
 {
     int i;
     /*Error management*/
-    if(!(game)||link_id==NO_ID ||link_id==ID_ERROR)
+    if (!(game) || link_id == NO_ID || link_id == ID_ERROR)
         return NULL;
 
     /*Finds the link and returns it.*/
-    for(i=0;i<game->n_links;i++)
+    for (i = 0; i < game->n_links; i++)
     {
-        if(link_get_id(game->links[i])==link_id)
+        if (link_get_id(game->links[i]) == link_id)
             return game->links[i];
     }
 
@@ -690,17 +700,17 @@ Link *game_find_link(Game *game, Id link_id)
     return NULL;
 }
 
-Id game_get_north_from_space(Game*game, Id space)
+Id game_get_north_from_space(Game *game, Id space)
 {
     int i;
     /*Error managment.*/
-    if(!(game)||space==NO_ID||space==ID_ERROR)
+    if (!(game) || space == NO_ID || space == ID_ERROR)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for(i=0;i<game->n_links;i++)
+    for (i = 0; i < game->n_links; i++)
     {
-        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==N)
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == N)
             return link_get_destination(game->links[i]);
     }
 
@@ -708,17 +718,17 @@ Id game_get_north_from_space(Game*game, Id space)
     return NO_ID;
 }
 
-Id game_get_east_from_space(Game*game, Id space)
+Id game_get_east_from_space(Game *game, Id space)
 {
     int i;
     /*Error managment.*/
-    if(!(game)||space==NO_ID||space==ID_ERROR)
+    if (!(game) || space == NO_ID || space == ID_ERROR)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for(i=0;i<game->n_links;i++)
+    for (i = 0; i < game->n_links; i++)
     {
-        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==E)
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == E)
             return link_get_destination(game->links[i]);
     }
 
@@ -726,17 +736,17 @@ Id game_get_east_from_space(Game*game, Id space)
     return NO_ID;
 }
 
-Id game_get_south_from_space(Game*game, Id space)
+Id game_get_south_from_space(Game *game, Id space)
 {
     int i;
     /*Error managment.*/
-    if(!(game)||space==NO_ID||space==ID_ERROR)
+    if (!(game) || space == NO_ID || space == ID_ERROR)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for(i=0;i<game->n_links;i++)
+    for (i = 0; i < game->n_links; i++)
     {
-        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==S)
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == S)
             return link_get_destination(game->links[i]);
     }
 
@@ -744,17 +754,17 @@ Id game_get_south_from_space(Game*game, Id space)
     return NO_ID;
 }
 
-Id game_get_west_from_space(Game*game, Id space)
+Id game_get_west_from_space(Game *game, Id space)
 {
     int i;
     /*Error managment.*/
-    if(!(game)||space==NO_ID||space==ID_ERROR)
+    if (!(game) || space == NO_ID || space == ID_ERROR)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for(i=0;i<game->n_links;i++)
+    for (i = 0; i < game->n_links; i++)
     {
-        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==W)
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == W)
             return link_get_destination(game->links[i]);
     }
 

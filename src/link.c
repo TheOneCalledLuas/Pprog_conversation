@@ -25,14 +25,14 @@ struct _link
 
 Link *link_create(Id id)
 {
-    Link *link;
+    Link *link=NULL;
 
     /*Error management.*/
     if (id == NO_ID || id == ID_ERROR)
         return NULL;
 
     /*Memory allocation.*/
-    if (!(link = (Link *)malloc(sizeof(link))))
+    if (!(link = (Link *)malloc(sizeof(Link))))
         return NULL;
 
     /*Initializes the variables.*/
