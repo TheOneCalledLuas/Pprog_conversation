@@ -352,4 +352,64 @@ Status game_set_n_objects(Game *game, int n_objects);
  */
 Status game_add_link(Game* game, Link*link);
 
+/**
+ * @brief Deletes a link from the link array (used to delete all the information of the links in game_reader).
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param position Position of the link in the array.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_delete_link(Game* game, int position);
+
+/**
+ * @brief Takes a link from the link array.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param link_id Id of the link.
+ * @return Pointer to the link with that id, or NULL if error.
+ */
+Link *game_find_link(Game *game, Id link_id);
+
+/**
+ * @brief Gets the id of the space situated north form a space.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param space Id of the space from where you search.
+ * @return Id of the space on the north, NO_ID if it did't found it, ID_ERROR if error.
+ */
+Id game_get_north_from_space(Game*game, Id space);
+
+/**
+ * @brief Gets the id of the space situated east form a space.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param space Id of the space from where you search.
+ * @return Id of the space on the east, NO_ID if it did't found it, ID_ERROR if error.
+ */
+Id game_get_east_from_space(Game*game, Id space);
+
+/**
+ * @brief Gets the id of the space situated south form a space.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param space Id of the space from where you search.
+ * @return Id of the space on the south, NO_ID if it did't found it, ID_ERROR if error.
+ */
+Id game_get_south_from_space(Game*game, Id space);
+
+/**
+ * @brief Gets the id of the space situated west form a space.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param space Id of the space from where you search.
+ * @return Id of the space on the west, NO_ID if it did't found it, ID_ERROR if error.
+ */
+Id game_get_west_from_space(Game*game, Id space);
+
 #endif

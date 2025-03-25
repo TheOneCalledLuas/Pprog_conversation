@@ -14,12 +14,12 @@
 
 struct _Link
 {
-    Id id;               /*!<Id of the link.*/
-    char name[MAX_NAME]; /*!<Name of the link.*/
-    Id origin;           /*!<Id of the space of origin.*/
-    Id destination;      /*!<Id of the space of destination.*/
-    Direction direction; /*!<Direction to where the link points.*/
-    Bool state           /*!<TRUE if the link is open FALSE if not.*/
+    Id id;               /*!< Id of the link.*/
+    char name[MAX_NAME]; /*!< Name of the link.*/
+    Id origin;           /*!< Id of the space of origin.*/
+    Id destination;      /*!< Id of the space of destination.*/
+    Direction direction; /*!< Direction to where the link points.*/
+    Bool state           /*!< TRUE if the link is open FALSE if not.*/
 };
 
 Link *link_Create(Id id)

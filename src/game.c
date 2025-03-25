@@ -47,10 +47,11 @@ struct _Game
     int n_spaces;                          /*!< Number of spaces.*/
     int n_objects;                         /*!< Number of objects.*/
     int n_characters;                      /*< Number of characters.*/
-    Command *last_cmd;                     /*!< A pointer to the last command entered by the user.*/
-    Bool finished;                         /*!< Whether the game has finished or not.*/
-    int turn;                              /*!< Actual turn.*/
-    int n_players;                         /*!< Number of players,*/
+    int n_links;
+    Command *last_cmd; /*!< A pointer to the last command entered by the user.*/
+    Bool finished;     /*!< Whether the game has finished or not.*/
+    int turn;          /*!< Actual turn.*/
+    int n_players;     /*!< Number of players,*/
 };
 
 Status game_create(Game **game)
@@ -85,12 +86,17 @@ Status game_create(Game **game)
     {
         (*game)->players[i] = NULL;
     }
+    for (i = 0; i < MAX_LINKS; i++)
+    {
+        (*game)->links[i] = NULL;
+    }
 
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
     (*game)->n_objects = 0;
     (*game)->n_characters = 0;
     (*game)->n_players = 0;
+    (*game)->n_links = 0;
     (*game)->turn = 0;
     (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
@@ -638,3 +644,39 @@ Status game_create_from_file(Game **game, char *filename)
     /*Clean exit.*/
     return OK;
 }
+
+Status game_add_link(Game *game, Link *link)
+{
+    /*Error management.*/
+    if(!game ||!link)
+        return ERROR;
+
+    if(game->n_links==MAX_LINKS)
+        return ERROR;
+
+    /*Puts the new link and increases the number of links.*/
+    game->links[game->n_links]=link;
+    game->n_links++;
+    
+    /*Return OK.*/
+    return OK;
+}
+
+Link *game_find_link(Game *game, Id link_id)
+{
+    int i;
+    /*Error management*/
+    if(!(game)||link_id==NO_ID ||link_id==ID_ERROR)
+        return NULL;
+
+    /*Finds the link and returns it.*/
+    for(i=0;i<game->n_links;i++)
+    {
+        if(link_get_id(game->links[i])==link_id)
+            return game->links[i];
+    }
+
+    /*If it doesn't find it, returns NULL.*/
+    return NULL;
+}
+
