@@ -1,3 +1,13 @@
+/**
+ * @brief Test tool fundamentals.
+ *
+ * @file test.h
+ * @author Saúl López Romero
+ * @version 1
+ * @date 26-02-2025
+ * @copyright GNU Public License
+ */
+
 #ifndef _TEST_H
 #define _TEST_H
 

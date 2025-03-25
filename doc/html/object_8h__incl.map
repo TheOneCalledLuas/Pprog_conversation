@@ -1,5 +1,5 @@
 <map id="include/object.h" name="include/object.h">
 <area shape="rect" id="Node000001" title="It handles object related tasks." alt="" coords="5,5,131,31"/>
-<area shape="rect" id="Node000002" href="$types_8h_source.html" title=" " alt="" coords="33,79,103,104"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="33,79,103,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,31,71,65,65,65,65,31"/>
 </map>

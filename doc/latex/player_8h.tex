@@ -7,16 +7,14 @@ It defines the player module.
 
 {\ttfamily \#include "{}types.\+h"{}}\newline
 {\ttfamily \#include "{}object.\+h"{}}\newline
-Include dependency graph for player.\+h\+:
-\nopagebreak
+Include dependency graph for player.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=183pt]{player_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -40,17 +38,17 @@ typedef struct \mbox{\hyperlink{struct__Player}{\+\_\+\+Player}} {\bfseries Play
 \item 
 \mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_ab8d706037259061de90808be9a6c2b32}{player\+\_\+create}} (Id id)
 \begin{DoxyCompactList}\small\item\em It creates a new player, allocating memory and initializing its variables. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_a2c5f78378722793bb82da46e5c0e7b82}{player\+\_\+destroy}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a2c5f78378722793bb82da46e5c0e7b82}{player\+\_\+destroy}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It destroys a player, freeing the allocated memory. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_abc72232b795a1b5063cb377f065f3ffd}{player\+\_\+set\+\_\+player\+\_\+name}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char name\mbox{[}PLAYER\+\_\+\+NAME\+\_\+\+SIZE\mbox{]})
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_abc72232b795a1b5063cb377f065f3ffd}{player\+\_\+set\+\_\+player\+\_\+name}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char name\mbox{[}PLAYER\+\_\+\+NAME\+\_\+\+SIZE\mbox{]})
 \begin{DoxyCompactList}\small\item\em It sets the player name to a specified name. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_a890a99cf83704f8146b91dd11af8df98}{player\+\_\+set\+\_\+player\+\_\+location}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id id)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a890a99cf83704f8146b91dd11af8df98}{player\+\_\+set\+\_\+player\+\_\+location}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id id)
 \begin{DoxyCompactList}\small\item\em It sets the player location to an specified id. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_a5f8653e3c985859d75d4827cb236bc31}{player\+\_\+set\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a5f8653e3c985859d75d4827cb236bc31}{player\+\_\+set\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
 \begin{DoxyCompactList}\small\item\em It sets the object of the player to the one you want. \end{DoxyCompactList}\item 
 Id \mbox{\hyperlink{player_8h_af6e377aa4946ebc31fb4977a3997a13f}{player\+\_\+get\+\_\+player\+\_\+id}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the player id. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_a2702feb7f3534028a9816fbb8129a543}{player\+\_\+set\+\_\+gdesc}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char \texorpdfstring{$\ast$}{*}gdesc)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a2702feb7f3534028a9816fbb8129a543}{player\+\_\+set\+\_\+gdesc}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char \texorpdfstring{$\ast$}{*}gdesc)
 \begin{DoxyCompactList}\small\item\em It sets the player id. \end{DoxyCompactList}\item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_a40ae204eaaa5803bcfb72c9308b9bed1}{player\+\_\+get\+\_\+gdesc}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the player graphic description. \end{DoxyCompactList}\item 
@@ -62,9 +60,9 @@ Id \mbox{\hyperlink{player_8h_a96e37051cdc1540e0dde770f6b713f39}{player\+\_\+get
 \begin{DoxyCompactList}\small\item\em It gets the id of the object the player has. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{player_8h_adc37044dd10f828fd54b27c8e088f4e7}{player\+\_\+get\+\_\+health}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em Gets the amount of health the player has. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_a4b6f2c3f6fc189d16c6882c59be4ae19}{player\+\_\+set\+\_\+health}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, int health)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a4b6f2c3f6fc189d16c6882c59be4ae19}{player\+\_\+set\+\_\+health}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, int health)
 \begin{DoxyCompactList}\small\item\em Sets the player health to a value. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{player_8h_ab8230694c1f8ab1a420f5a289b923ee7}{player\+\_\+print}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_ab8230694c1f8ab1a420f5a289b923ee7}{player\+\_\+print}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It prints all the information about the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -111,7 +109,7 @@ Pointer the a new player, initialized.
 \index{player.h@{player.h}!player\_destroy@{player\_destroy}}
 \index{player\_destroy@{player\_destroy}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_destroy()}{player\_destroy()}}
-{\footnotesize\ttfamily Status player\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -258,7 +256,7 @@ the name of the player.
 \index{player.h@{player.h}!player\_print@{player\_print}}
 \index{player\_print@{player\_print}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_print()}{player\_print()}}
-{\footnotesize\ttfamily Status player\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -279,7 +277,7 @@ OK, if everything goes well or ERROR if there was some mistake.
 \index{player.h@{player.h}!player\_set\_gdesc@{player\_set\_gdesc}}
 \index{player\_set\_gdesc@{player\_set\_gdesc}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_set\_gdesc()}{player\_set\_gdesc()}}
-{\footnotesize\ttfamily Status player\+\_\+set\+\_\+gdesc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{char \texorpdfstring{$\ast$}{*}}]{gdesc }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+gdesc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{char \texorpdfstring{$\ast$}{*}}]{gdesc }\end{DoxyParamCaption})}
 
 
 
@@ -302,7 +300,7 @@ OK or ERROR if somenthing goes wrong.
 \index{player.h@{player.h}!player\_set\_health@{player\_set\_health}}
 \index{player\_set\_health@{player\_set\_health}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_set\_health()}{player\_set\_health()}}
-{\footnotesize\ttfamily Status player\+\_\+set\+\_\+health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{int}]{health }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{int}]{health }\end{DoxyParamCaption})}
 
 
 
@@ -325,7 +323,7 @@ OK if everythign goes as planned, ERROR otherwise.
 \index{player.h@{player.h}!player\_set\_object@{player\_set\_object}}
 \index{player\_set\_object@{player\_set\_object}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_set\_object()}{player\_set\_object()}}
-{\footnotesize\ttfamily Status player\+\_\+set\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
 
 
 
@@ -348,7 +346,7 @@ OK, if everything goes well or ERROR if there was some mistake.
 \index{player.h@{player.h}!player\_set\_player\_location@{player\_set\_player\_location}}
 \index{player\_set\_player\_location@{player\_set\_player\_location}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_set\_player\_location()}{player\_set\_player\_location()}}
-{\footnotesize\ttfamily Status player\+\_\+set\+\_\+player\+\_\+location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+player\+\_\+location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{id }\end{DoxyParamCaption})}
 
 
 
@@ -371,7 +369,7 @@ OK, if everything goes well or ERROR if there was some mistake.
 \index{player.h@{player.h}!player\_set\_player\_name@{player\_set\_player\_name}}
 \index{player\_set\_player\_name@{player\_set\_player\_name}!player.h@{player.h}}
 \doxysubsubsection{\texorpdfstring{player\_set\_player\_name()}{player\_set\_player\_name()}}
-{\footnotesize\ttfamily Status player\+\_\+set\+\_\+player\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{char}]{name\mbox{[}\+PLAYER\+\_\+\+NAME\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+player\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{char}]{name\mbox{[}\+PLAYER\+\_\+\+NAME\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
 
 
 

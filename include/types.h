@@ -1,7 +1,7 @@
 /**
  * @brief It defines common types for the whole project
  *
- * @file set.h
+ * @file types.h
  * @author Saúl López Romero
  * @version 0
  * @date 27-01-2025

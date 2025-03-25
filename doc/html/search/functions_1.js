@@ -11,7 +11,7 @@ var searchData=
   ['game_5factions_5fright_8',['game_actions_right',['../game__actions_8c.html#abcf33bd732458eb69207d1744e50ffa1',1,'game_actions.c']]],
   ['game_5factions_5ftake_9',['game_actions_take',['../game__actions_8c.html#ade93d5e908cecd1e78eeaaa19e9d5387',1,'game_actions.c']]],
   ['game_5factions_5funknown_10',['game_actions_unknown',['../game__actions_8c.html#a6f4777fc8b60f74ffb82fb3df7e20e07',1,'game_actions.c']]],
-  ['game_5factions_5fupdate_11',['game_actions_update',['../game__actions_8c.html#a0693694a3e70b4a4129e2da4ddb1f1a7',1,'game_actions.c']]],
+  ['game_5factions_5fupdate_11',['game_actions_update',['../game__actions_8h.html#a6d17438d8156e3671bd4c90a14860a3a',1,'game_actions_update(Game *game, Command *cmd):&#160;game_actions.c'],['../game__actions_8c.html#a0693694a3e70b4a4129e2da4ddb1f1a7',1,'game_actions_update(Game *game, Command *command):&#160;game_actions.c']]],
   ['game_5fadd_5fcharacter_12',['game_add_character',['../game_8c.html#a1e3126615586a6a66e304aae00d6fe35',1,'game_add_character(Game *game, Character *character):&#160;game.c'],['../game_8h.html#a1e3126615586a6a66e304aae00d6fe35',1,'game_add_character(Game *game, Character *character):&#160;game.c']]],
   ['game_5fadd_5fobject_13',['game_add_object',['../game_8h.html#a612a5e67878efd67e34e1447464a2a3c',1,'game_add_object(Game *game, Object *object):&#160;game.c'],['../game_8c.html#a612a5e67878efd67e34e1447464a2a3c',1,'game_add_object(Game *game, Object *object):&#160;game.c']]],
   ['game_5fadd_5fplayer_14',['game_add_player',['../game_8h.html#a8460d4135806f650eed4545be196776a',1,'game_add_player(Game *game, Player *player):&#160;game.c'],['../game_8c.html#a8460d4135806f650eed4545be196776a',1,'game_add_player(Game *game, Player *player):&#160;game.c']]],

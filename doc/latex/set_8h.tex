@@ -5,14 +5,13 @@
 It defines sets for the whole project.  
 
 
-{\ttfamily \#include "{}set.\+h"{}}\newline
 {\ttfamily \#include "{}types.\+h"{}}\newline
 Include dependency graph for set.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=177pt]{set_8h__incl}
+\includegraphics[width=159pt]{set_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -23,6 +22,11 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=350pt]{set_8h__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{set_8h_abc21882f4958e6b56aaf2f3c18f80d43}{MAX\+\_\+\+SET}}~50
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,7 +41,7 @@ void \mbox{\hyperlink{set_8h_a9d762a027f1c3bcdd22f70ee9093a7dd}{set\+\_\+destroy
 \begin{DoxyCompactList}\small\item\em Frees the memory. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{set_8h_a8c40fb2ff915483073928952125d1b54}{set\+\_\+find}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}set, Id id)
 \begin{DoxyCompactList}\small\item\em Searches for an id in a set. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{set_8h_a6e08e66c1b2c11722b322fad7c057897}{set\+\_\+add}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}set, Id element)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{set_8h_a6e08e66c1b2c11722b322fad7c057897}{set\+\_\+add}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}set, Id element)
 \begin{DoxyCompactList}\small\item\em Adds an element to the set. \end{DoxyCompactList}\item 
 Id \mbox{\hyperlink{set_8h_a72705637ce125b9acd83aa89b336a3cf}{set\+\_\+take}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}set, Id id)
 \begin{DoxyCompactList}\small\item\em Takes an element out of the set. \end{DoxyCompactList}\item 
@@ -45,14 +49,12 @@ int \mbox{\hyperlink{set_8h_aa2a37893ecfa0419146293d2ab2dee9b}{set\+\_\+len}} (\
 \begin{DoxyCompactList}\small\item\em Gets the number of ids in the set. \end{DoxyCompactList}\item 
 Id \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{set_8h_afaa54eda89837892ae60173d3cf6e9d7}{set\+\_\+get\+\_\+content}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}set)
 \begin{DoxyCompactList}\small\item\em Returns an array of ids with the content of the set. IMPORTANT free the array after using it. \end{DoxyCompactList}\item 
-Status \mbox{\hyperlink{set_8h_a20c0e9136239b031c47c9b15b0b9c41f}{set\+\_\+print}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}s)
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{set_8h_a20c0e9136239b031c47c9b15b0b9c41f}{set\+\_\+print}} (\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}s)
 \begin{DoxyCompactList}\small\item\em Prints set information. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 It defines sets for the whole project. 
-
-It defines common types for the whole project.
 
 \begin{DoxyAuthor}{Author}
 Saúl López Romero 
@@ -64,21 +66,18 @@ Saúl López Romero
 27-\/0122025 
 \end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
-GNU Public License
-\end{DoxyCopyright}
-\begin{DoxyAuthor}{Author}
-Saúl López Romero 
-\end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
-0 
-\end{DoxyVersion}
-\begin{DoxyDate}{Date}
-27-\/01-\/2025 
-\end{DoxyDate}
-\begin{DoxyCopyright}{Copyright}
 GNU Public License 
 \end{DoxyCopyright}
 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{set_8h_abc21882f4958e6b56aaf2f3c18f80d43}\label{set_8h_abc21882f4958e6b56aaf2f3c18f80d43} 
+\index{set.h@{set.h}!MAX\_SET@{MAX\_SET}}
+\index{MAX\_SET@{MAX\_SET}!set.h@{set.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_SET}{MAX\_SET}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+SET~50}
+
+Maximun number of elements per set. 
 
 \doxysubsection{Typedef Documentation}
 \Hypertarget{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}\label{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161} 
@@ -92,7 +91,7 @@ GNU Public License
 Set TAD. 
 
 \begin{DoxyAuthor}{Author}
-Saul Lopez Romero 
+Saul Lopez Romero. 
 \end{DoxyAuthor}
 
 
@@ -101,7 +100,7 @@ Saul Lopez Romero
 \index{set.h@{set.h}!set\_add@{set\_add}}
 \index{set\_add@{set\_add}!set.h@{set.h}}
 \doxysubsubsection{\texorpdfstring{set\_add()}{set\_add()}}
-{\footnotesize\ttfamily Status set\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}}]{set,  }\item[{Id}]{element }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} set\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}}]{set,  }\item[{Id}]{element }\end{DoxyParamCaption})}
 
 
 
@@ -147,7 +146,7 @@ Pointer to the new set, NULL if an error takes place.
 Frees the memory. 
 
 \begin{DoxyAuthor}{Author}
-Saul Lopez Romero
+Saul Lopez Romero.
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -165,7 +164,7 @@ Saul Lopez Romero
 Searches for an id in a set. 
 
 \begin{DoxyAuthor}{Author}
-Saul Lopez Romero
+Saul Lopez Romero.
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -188,7 +187,7 @@ position of the id in the set if found, -\/1 otherwise.
 Returns an array of ids with the content of the set. IMPORTANT free the array after using it. 
 
 \begin{DoxyAuthor}{Author}
-Fernando Mijangos
+Fernando Mijangos.
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -223,7 +222,7 @@ Number of Ids in the set, -\/1 otherwise.
 \index{set.h@{set.h}!set\_print@{set\_print}}
 \index{set\_print@{set\_print}!set.h@{set.h}}
 \doxysubsubsection{\texorpdfstring{set\_print()}{set\_print()}}
-{\footnotesize\ttfamily Status set\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}}]{s }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} set\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*}}]{s }\end{DoxyParamCaption})}
 
 
 
