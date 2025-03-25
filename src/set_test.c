@@ -214,7 +214,7 @@ void test3_set_add()
     s = set_create();
 
     /*Makes the set full.*/
-    for (i = 0; i < 50; i++)
+    for (i = 0; i < MAX_SET; i++)
     {
         set_add(s, id);
         id++;

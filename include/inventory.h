@@ -55,6 +55,16 @@ Status inventory_set_max_objs(Inventory *inventory, long max_objs);
 long inventory_get_max_objs(Inventory *inventory);
 
 /**
+ * @brief Searches for an object in an inventory.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @param id Id of the object to be searched.
+ * @return Position of the id in the inventory; -1 if not found or anything went wrong.
+ */
+int inventory_find(Inventory *inventory, Id id);
+
+/**
  * @brief Adds an object to the inventory.
  * @author Raquel Anguita Martínez de Velasco.
  *
@@ -84,7 +94,7 @@ Id inventory_take(Inventory *inventory, Id id);
 int inventory_len(Inventory *inventory);
 
 /**
- * @brief Returns an array of ids with the objects in the inventory. (IMPORTANT: the set has to be freed after using it.)
+ * @brief Returns an array of ids with the objects in the inventory. (IMPORTANT: the array has to be freed after using it.)
  * @author Raquel Anguita Martínez de Velasco.
  *
  * @param inventory Pointer to the inventory to change.

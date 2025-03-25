@@ -75,6 +75,15 @@ long inventory_get_max_objs(Inventory *inventory)
     return set_len(inventory->objs);
 }
 
+int inventory_find(Inventory *inventory, Id id)
+{
+    /* Error control for parameters. */
+    if (!inventory)
+    {
+        return -1;
+    }
+}
+
 Status inventory_add(Inventory *inventory, Id id)
 {
     /* Error control for parameters and set size. */
@@ -101,31 +110,37 @@ Id inventory_take(Inventory *inventory, Id id)
 
 int inventory_len(Inventory *inventory)
 {
+    /* Error control for parameters. */
     if (!inventory)
     {
         return -1;
     }
 
+    /* Return of the length using the set_len function. */
     return set_len(inventory->objs);
 }
 
 Id *inventory_get_content(Inventory *inventory)
 {
+    /* Error control for parameters. */
     if (!inventory)
     {
         return NULL;
     }
 
+    /* Return of the array using the set_get_content function. */
     return set_get_content(inventory->objs);
 }
 
 Status inventory_print(Inventory *inventory)
 {
+    /* Error control for parameters. */
     if (!inventory)
     {
         return ERROR;
     }
 
+    /* Prints the information. */
     prinf("Inventory formed by a maximum number of elements and a set.\n");
     printf("Maximum number of elements: %ld\n", inventory->max_objs);
     return set_print(inventory->objs);
