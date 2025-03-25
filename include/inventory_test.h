@@ -1,21 +1,21 @@
-/** 
- * @brief It declares the tests for the space module
- * 
- * @file set_test.h
- * @author Saul Lopez Romero
- * @version 0.0 
- * @date 19-02-2025
+/**
+ * @brief It declares the tests for the inventory module
+ *
+ * @file inventory_test.h
+ * @author Raquel Anguita Martínez de Velasco
+ * @version 1
+ * @date 20-03-2025
  * @copyright GNU Public License
  */
 
- #ifndef SET_TEST_H
- #define SET_TEST_H
- 
- /**
-  * @test Test Set creation.
-  * @pre Pointer to Null.
-  * @post Non NULL pointer to set.
-  */
- void test1_set_create();
+#ifndef INVENTORY_TEST_H
+#define INVENTORY_TEST_H
 
- #endif
+/**
+ * @test Test Inventory creation.
+ * @pre Pointer to Null.
+ * @post Non NULL pointer to set.
+ */
+void test1_inventory_create();
+
+#endif

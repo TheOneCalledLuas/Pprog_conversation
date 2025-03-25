@@ -75,9 +75,11 @@ long inventory_get_max_objs(Inventory *inventory)
     return set_len(inventory->objs);
 }
 
-int inventory_find(Inventory *inventory, Id id){
+int inventory_find(Inventory *inventory, Id id)
+{
     /* Error control for parameters. */
-    if(!inventory){
+    if (!inventory)
+    {
         return -1;
     }
 }
