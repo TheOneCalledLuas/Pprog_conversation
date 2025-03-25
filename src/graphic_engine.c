@@ -173,10 +173,10 @@ Status map_init(Game *game, char **map)
     {
         /*1-Gets the spaces located to the different points of the space.*/
         space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
-        actual_id[NORTH] = space_get_north(space_act);
-        actual_id[SOUTH] = space_get_south(space_act);
-        actual_id[WEST] = space_get_west(space_act);
-        actual_id[EAST] = space_get_east(space_act);
+        actual_id[NORTH] = game_get_north_from_space(game, actual_id[ACTUAL_POSITION]);
+        actual_id[SOUTH] = game_get_south_from_space(game, actual_id[ACTUAL_POSITION]);
+        actual_id[WEST] = game_get_west_from_space(game, actual_id[ACTUAL_POSITION]);
+        actual_id[EAST] = game_get_east_from_space(game, actual_id[ACTUAL_POSITION]);
         actual_id[NORTH_EAST] = NO_ID;
         actual_id[NORTH_WEST] = NO_ID;
         actual_id[SOUTH_EAST] = NO_ID;

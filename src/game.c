@@ -708,3 +708,56 @@ Id game_get_north_from_space(Game*game, Id space)
     return NO_ID;
 }
 
+Id game_get_east_from_space(Game*game, Id space)
+{
+    int i;
+    /*Error managment.*/
+    if(!(game)||space==NO_ID||space==ID_ERROR)
+        return ID_ERROR;
+
+    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
+    for(i=0;i<game->n_links;i++)
+    {
+        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==E)
+            return link_get_destination(game->links[i]);
+    }
+
+    /*If it doesn't find a north connection, returns NO_ID.*/
+    return NO_ID;
+}
+
+Id game_get_south_from_space(Game*game, Id space)
+{
+    int i;
+    /*Error managment.*/
+    if(!(game)||space==NO_ID||space==ID_ERROR)
+        return ID_ERROR;
+
+    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
+    for(i=0;i<game->n_links;i++)
+    {
+        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==S)
+            return link_get_destination(game->links[i]);
+    }
+
+    /*If it doesn't find a north connection, returns NO_ID.*/
+    return NO_ID;
+}
+
+Id game_get_west_from_space(Game*game, Id space)
+{
+    int i;
+    /*Error managment.*/
+    if(!(game)||space==NO_ID||space==ID_ERROR)
+        return ID_ERROR;
+
+    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
+    for(i=0;i<game->n_links;i++)
+    {
+        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==W)
+            return link_get_destination(game->links[i]);
+    }
+
+    /*If it doesn't find a north connection, returns NO_ID.*/
+    return NO_ID;
+}
