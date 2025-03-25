@@ -9,7 +9,6 @@
  */
 
  #include "inventory.h"
- #include "set.h"
 
  #include <stdio.h>
  #include <stdlib.h>
