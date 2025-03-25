@@ -9,6 +9,7 @@
  */
 
 #include "link.h"
+#include "types.h"
 
 
 struct _Link

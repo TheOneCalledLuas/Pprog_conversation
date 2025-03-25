@@ -11,6 +11,7 @@
 #include "game.h"
 #include "character.h"
 #include "game_reader.h"
+#include "link.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,6 +43,7 @@ struct _Game
     Space *spaces[MAX_SPACES];             /*!< An array with the information of every space. */
     Object *objects[MAX_OBJECTS];          /*!< An array with the information of every objects.*/
     Character *characters[MAX_CHARACTERS]; /*!< Array with all the character of the game.*/
+    Link *links[MAX_LINKS];                /*!< Array with all the links information.*/
     int n_spaces;                          /*!< Number of spaces.*/
     int n_objects;                         /*!< Number of objects.*/
     int n_characters;                      /*< Number of characters.*/

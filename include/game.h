@@ -22,6 +22,7 @@
 #define MAX_SPACES 100
 #define MAX_OBJECTS 100
 #define MAX_CHARACTERS 100
+#define MAX_LINKS 400
 
 /**
  * @brief Command
