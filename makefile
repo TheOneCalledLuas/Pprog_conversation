@@ -11,7 +11,6 @@ LIBDIR = ./lib
 LOGDIR = ./log
 TESTDIR = ./test
 
-
 .PHONY = all clean clear check
 
 all: anthill

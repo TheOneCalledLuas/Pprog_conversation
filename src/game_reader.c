@@ -10,6 +10,7 @@
 
 #include "game_reader.h"
 #include "game.h"
+#include "link.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +27,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
     char name[WORD_SIZE] = "";
     char *toks = NULL;
     char desc[5][10];
-    Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID;
+    Id id = NO_ID;
     Space *space = NULL;
     Status status = OK;
 
@@ -54,14 +55,6 @@ Status game_reader_load_spaces(Game *game, char *filename)
             id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
-            toks = strtok(NULL, "|");
-            north = atol(toks);
-            toks = strtok(NULL, "|");
-            east = atol(toks);
-            toks = strtok(NULL, "|");
-            south = atol(toks);
-            toks = strtok(NULL, "|");
-            west = atol(toks);
             /*Takes the graphic description.*/
             for (i = 0; i < 5; i++)
             {
@@ -77,7 +70,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
             }
 /*If DEBUG mode is active (defined) prints what it has read.*/
 #ifdef DEBUG
-            printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
+            printf("Leido: %ld|%s|\n", id, name);
             for (i = 0; i < 5; i++)
             {
                 printf("%s|", desc[i]);
@@ -90,10 +83,6 @@ Status game_reader_load_spaces(Game *game, char *filename)
             if (space != NULL)
             {
                 space_set_name(space, name);
-                space_set_north(space, north);
-                space_set_east(space, east);
-                space_set_south(space, south);
-                space_set_west(space, west);
                 game_add_space(game, space);
                 for (i = 0; i < 5; i++)
                 {
@@ -162,7 +151,7 @@ Status game_reader_load_objects(Game *game, char *filename)
             toks = strtok(NULL, "|");
             space_id = atol(toks);
             toks = strtok(NULL, "|");
-            strcpy(desc,toks);
+            strcpy(desc, toks);
 
             /*Creates an object and saves the data.*/
             object = object_create(id);
@@ -172,7 +161,7 @@ Status game_reader_load_objects(Game *game, char *filename)
                 return ERROR;
             }
             object_set_name(object, name);
-            object_set_description(object,desc);
+            object_set_description(object, desc);
             game_add_object(game, object);
 
             /*Places the object in its initial place.*/
@@ -241,6 +230,68 @@ Status game_reader_load_players(Game *game, char *filename)
             player_set_health(player, player_health);
             /*Adds the player to the space.*/
             game_add_player(game, player);
+        }
+    }
+    /*Close the file.*/
+    fclose(f);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_reader_load_links(Game *game, char *filename)
+{
+    FILE *f = NULL;
+    Link * link = NULL;
+    char name[WORD_SIZE];
+    char line[WORD_SIZE];
+    Id dest_id = 0, origin_id = 0,id=0;
+    char *toks = NULL;
+    Direction direction;
+    Bool state;
+
+    /*Error handling.*/
+    if (!game || !filename)
+        return ERROR;
+
+    /*Opens the file.*/
+    if (!(f = fopen(filename, "r")))
+        return ERROR;
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, f))
+    {
+        /*Checks that the line contains a player.*/
+        if (strncmp("#l:", line, 3) == 0)
+        {
+            /*Takes the information data by data.*/
+            toks = strtok(line + 3, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            origin_id = atol(toks);
+            toks = strtok(NULL, "|");
+            dest_id = atol(toks);
+            toks = strtok(NULL, "|");
+            direction = atol(toks);
+            toks = strtok(NULL, "|");
+            state = atol(toks);
+
+            /*Creates an object and saves the data.*/
+            link = link_create(id);
+            /*Checks that the memory allocacion took place.*/
+            if (!link)
+            {
+                return ERROR;
+            }
+            link_set_name(link,name);
+            link_set_origin(link,origin_id);
+            link_set_destination(link,dest_id);
+            link_set_direction(link, direction);
+            link_set_state(link,state);
+            /*Adds the player to the space.*/
+            game_add_link(game, link);
         }
     }
     /*Close the file.*/
