@@ -662,6 +662,16 @@ Status game_add_link(Game *game, Link *link)
     return OK;
 }
 
+Status game_delete_link(Game *game, int position)
+{
+    /*Error management*/
+    if(!(game)|| position<0)
+        return ERROR;
+
+    /*Destroys the link.*/
+    return link_destroy(game->links[position]);
+}
+
 Link *game_find_link(Game *game, Id link_id)
 {
     int i;
@@ -678,5 +688,23 @@ Link *game_find_link(Game *game, Id link_id)
 
     /*If it doesn't find it, returns NULL.*/
     return NULL;
+}
+
+Id game_get_north_from_space(Game*game, Id space)
+{
+    int i;
+    /*Error managment.*/
+    if(!(game)||space==NO_ID||space==ID_ERROR)
+        return ID_ERROR;
+
+    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
+    for(i=0;i<game->n_links;i++)
+    {
+        if(link_get_origin(game->links[i])==space &&link_get_direction(game->links[i])==N)
+            return link_get_destination(game->links[i]);
+    }
+
+    /*If it doesn't find a north connection, returns NO_ID.*/
+    return NO_ID;
 }
 
