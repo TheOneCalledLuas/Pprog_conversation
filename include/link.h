@@ -8,14 +8,14 @@
  * @copyright GNU Public License
  */
 
-#ifndef LINK_h
+#ifndef LINK_H
 #define LINK_H
 
 #include "types.h"
 #include <string.h>
 #define MAX_NAME 100
 
-typedef struct _Link Link;
+typedef struct _link Link;
 
 /**
  * @brief Allocates and returns a link.

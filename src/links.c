@@ -12,7 +12,7 @@
 #include "types.h"
 
 
-struct _Link
+struct _link
 {
     Id id;               /*!< Id of the link.*/
     char name[MAX_NAME]; /*!< Name of the link.*/
