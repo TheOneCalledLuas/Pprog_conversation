@@ -112,7 +112,7 @@ void game_actions_attack(Game *game);
  *
  * @param game Pointer to the game structure.
  */
-void game_actions_inspect(Game * game);
+void game_actions_inspect(Game *game);
 
 /**
  * @brief Returns a random number in a range.
@@ -123,7 +123,6 @@ void game_actions_inspect(Game * game);
  * @return Random int number in the range.
  */
 int random_int(int start, int end);
-
 
 /**
    Game actions implementation.
@@ -214,7 +213,7 @@ void game_actions_next(Game *game)
     }
 
     /*Sets the player location to the id space south of him.*/
-    current_id = space_get_south(game_get_space(game, space_id));
+    current_id = game_get_south_from_space(game, space_id);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -242,7 +241,7 @@ void game_actions_back(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = space_get_north(game_get_space(game, space_id));
+    current_id = game_get_north_from_space(game, space_id);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -271,7 +270,7 @@ void game_actions_left(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = space_get_west(game_get_space(game, space_id));
+    current_id = game_get_west_from_space(game, space_id);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -299,7 +298,7 @@ void game_actions_right(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = space_get_east(game_get_space(game, space_id));
+    current_id = game_get_east_from_space(game, space_id);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);

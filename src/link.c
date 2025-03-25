@@ -13,7 +13,6 @@
 #include "link.h"
 #include "types.h"
 
-
 struct _link
 {
     Id id;               /*!< Id of the link.*/
@@ -21,10 +20,10 @@ struct _link
     Id origin;           /*!< Id of the space of origin.*/
     Id destination;      /*!< Id of the space of destination.*/
     Direction direction; /*!< Direction to where the link points.*/
-    Bool state           /*!< TRUE if the link is open FALSE if not.*/
+    Bool state;          /*!< TRUE if the link is open FALSE if not.*/
 };
 
-Link *link_Create(Id id)
+Link *link_create(Id id)
 {
     Link *link;
 
@@ -101,11 +100,11 @@ Bool link_get_state(Link *link)
 Status link_set_origin(Link *link, Id origin)
 {
     /*Error management.*/
-    if(!link||origin==ID_ERROR)
+    if (!link || origin == ID_ERROR)
         return ERROR;
-    
+
     /*Sets the value.*/
-    link->origin=origin;
+    link->origin = origin;
 
     /*Returns OK.*/
     return OK;
@@ -114,11 +113,11 @@ Status link_set_origin(Link *link, Id origin)
 Status link_set_destination(Link *link, Id destination)
 {
     /*Error management.*/
-    if(!link||destination==ID_ERROR)
+    if (!link || destination == ID_ERROR)
         return ERROR;
-    
+
     /*Sets the value.*/
-    link->destination=destination;
+    link->destination = destination;
 
     /*Returns OK.*/
     return OK;
@@ -127,9 +126,9 @@ Status link_set_destination(Link *link, Id destination)
 Status link_set_name(Link *link, char *name)
 {
     /*Error management.*/
-    if(!link||!name)
+    if (!link || !name)
         return ERROR;
-    
+
     /*Sets the value.*/
     strcpy(link->name, name);
 
@@ -140,11 +139,11 @@ Status link_set_name(Link *link, char *name)
 Status link_set_direction(Link *link, Direction direction)
 {
     /*Error management.*/
-    if(!(link))
+    if (!(link))
         return ERROR;
 
     /*Sets the value.*/
-    link->direction=direction;
+    link->direction = direction;
 
     /*Returns OK.*/
     return OK;
@@ -153,25 +152,25 @@ Status link_set_direction(Link *link, Direction direction)
 Status link_set_state(Link *link, Bool state)
 {
     /*Error management.*/
-    if(!(link))
+    if (!(link))
         return ERROR;
 
     /*Sets the value.*/
-    link->state=state;
+    link->state = state;
 
     /*Returns OK.*/
     return OK;
 }
 
-void link_print(Link* link)
+void link_print(Link *link)
 {
     /*Error management.*/
-    if(!(link))
+    if (!(link))
         return;
-    
+
     /*Prints the information.*/
     printf("Link with id \"%ld\" and name \"%s\" has the following information:\n", link->id, link->name);
     printf("Origin_id: %ld   Destination_id: %ld\n", link->origin, link->destination);
-    printf("State: %s", (link->state==TRUE?"TRUE":"FALSE"));
-    printf("Direction: %s", (link->direction==N?"NORTH": (link->direction==S?"SOUTH":(link->direction==E?"EAST":(link->direction==W?"WEST":"UNK_DIRECTION")))));
+    printf("State: %s", (link->state == TRUE ? "TRUE" : "FALSE"));
+    printf("Direction: %s", (link->direction == N ? "NORTH" : (link->direction == S ? "SOUTH" : (link->direction == E ? "EAST" : (link->direction == W ? "WEST" : "UNK_DIRECTION")))));
 }

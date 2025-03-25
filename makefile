@@ -30,7 +30,7 @@ $(OBJDIR)/game_loop.o: $(SRCDIR)/game_loop.c $(HEADERDIR)/command.h $(HEADERDIR)
 $(OBJDIR)/game.o: $(SRCDIR)/game.c $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_reader.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 	
-$(OBJDIR)/game_reader.o: $(SRCDIR)/game_reader.c $(HEADERDIR)/game_reader.h $(HEADERDIR)/types.h $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h
+$(OBJDIR)/game_reader.o: $(SRCDIR)/game_reader.c $(HEADERDIR)/game_reader.h $(HEADERDIR)/types.h $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/link.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 $(OBJDIR)/graphic_engine.o: $(SRCDIR)/graphic_engine.c $(HEADERDIR)/graphic_engine.h $(HEADERDIR)/game.h $(HEADERDIR)/command.h $(HEADERDIR)/types.h $(HEADERDIR)/space.h $(HEADERDIR)/object.h $(HEADERDIR)/set.h $(HEADERDIR)/player.h $(HEADERDIR)/character.h $(HEADERDIR)/game_reader.h $(HEADERDIR)/libscreen.h
