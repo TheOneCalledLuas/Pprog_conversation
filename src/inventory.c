@@ -9,7 +9,6 @@
  */
 
  #include "inventory.h"
- #include "set.h"
 
  #include <stdio.h>
  #include <stdlib.h>
@@ -68,8 +67,8 @@
  }
 
 Status inventory_add(Inventory *inventory, Id id){
-    /* Error control for parameters. */
-    if(!inventory){
+    /* Error control for parameters and set size. */
+    if(!inventory || set_len(inventory->objs) == max_objs){
         return ERROR;
     }
 
@@ -85,4 +84,30 @@ Id inventory_take(Inventory *inventory, Id id){
 
     /* Return of the id using the set_take function. */
     return set_take(inventory->objs, id);
+}
+
+int inventory_len(Inventory *inventory){
+    if(!inventory){
+        return -1;
+    }
+
+    return set_len(inventory->objs);
+}
+
+Id *inventory_get_content(Inventory *inventory){
+    if(!inventory){
+        return NULL;
+    }
+
+    return set_get_content(inventory->objs);
+}
+
+Status inventory_print(Inventory *inventory){
+    if(!inventory){
+        return ERROR;
+    }
+
+    prinf("Inventory formed by a maximum number of elements and a set.\n");
+    printf("Maximum number of elements: %ld\n", inventory->max_objs);
+    return set_print(inventory->objs);
 }
