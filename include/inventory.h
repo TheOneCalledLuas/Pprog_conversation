@@ -13,23 +13,92 @@
 
 #include "types.h"
 #include "set.h"
-
+/**
+ * @brief Inventory TAD.
+ * @author Raquel Anguita Martínez de Velasco.
+ */
 typedef struct _Inventory Inventory;
 
+/**
+ * @brief Creates a new inventory structure.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @return Pointer to the new inventory; NULL in case of error.
+ */
 Inventory *inventory_create();
 
- void inventory_destroy(Inventory *inventory);
+/**
+ * @brief Destroys the inventory structure and frees the memory.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ */
+void inventory_destroy(Inventory *inventory);
 
- Status inventory_set_max_objs(Inventory *inventory, long max_objs);
+/**
+ * @brief Sets the inventory's maximum number of objects.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @param max_objs Number to set the inventory's maximum number of objects.
+ * @return OK if the value could be correctly set; ERROR otherewise.
+ */
+Status inventory_set_max_objs(Inventory *inventory, long max_objs);
 
- long inventory_get_max_objs(Invenotry *inventory);
+/**
+ * @brief Gets the inventory's maximum number of objects.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @return The inventory's maximum number of objects; -1 if something went wrong.
+ */
+long inventory_get_max_objs(Inventory *inventory);
 
+/**
+ * @brief Adds an object to the inventory.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @param id Id of the object to be added.
+ * @return OK if the value could be correctly set; ERROR otherewise.
+ */
 Status inventory_add(Inventory *inventory, Id id);
 
+/**
+ * @brief Takes an object out of the inventory.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @param id Id of the object to be taken out.
+ * @return Id taken out; -2 if anything went wrong.
+ */
 Id inventory_take(Inventory *inventory, Id id);
 
+/**
+ * @brief Gets the number of objects in the inventory.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @return Number of objects in the inventory; -1 if there were any errors.
+ */
 int inventory_len(Inventory *inventory);
 
+/**
+ * @brief Returns an array of ids with the objects in the inventory. (IMPORTANT: the set has to be freed after using it.)
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @return Array of ids with the content of the inventory.
+ */
 Id *inventory_get_content(Inventory *inventory);
 
+/**
+ * @brief Prints the inventory's information.
+ * @author Raquel Anguita Martínez de Velasco.
+ *
+ * @param inventory Pointer to the inventory to change.
+ * @return OK if the value could be correctly set; ERROR otherewise.
+ */
 Status inventory_print(Inventory *inventory);
+
+#endif
