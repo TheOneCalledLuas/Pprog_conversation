@@ -7,6 +7,8 @@
  * @date 21-03-2025
  * @copyright GNU Public License
  */
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "link.h"
 #include "types.h"
