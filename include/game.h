@@ -341,4 +341,15 @@ Id game_get_object_by_name(Game *game, char *word);
  * @return OK for a clean exit, otherwise ERROR.
  */
 Status game_set_n_objects(Game *game, int n_objects);
+
+/**
+ * @brief Adds a link to the link array.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @param link Pointer to the new link.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_add_link(Game* game, Link*link);
+
 #endif
