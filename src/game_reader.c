@@ -187,7 +187,7 @@ Status game_reader_load_players(Game *game, char *filename)
     char line[WORD_SIZE];
     Id player_id = 0, space_id = 0;
     char *toks = NULL;
-    int player_inventory = 0, player_health = 0; /*"Gives a warning untill someone programs the inventory..."Saul, "When will the inventory be programmed :( "Fernando */
+    int player_inventory = 0, player_health = 0; 
 
     /*Error handling.*/
     if (!game || !filename)
