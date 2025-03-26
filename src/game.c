@@ -292,6 +292,14 @@ Status game_destroy(Game **game)
     return OK;
 }
 
+int game_get_turn(Game * game) {
+    /*Error handling.*/
+    if (!game) return -1;
+
+    /*Returns the game.*/
+    return game->turn;
+}
+
 int game_get_n_players(Game *game)
 {
     /*Error handling.*/

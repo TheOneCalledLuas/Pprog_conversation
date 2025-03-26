@@ -139,7 +139,6 @@ void graphic_engine_destroy(Graphic_engine *ge)
 
 Status map_init(Game *game, char **map)
 {
-    Space *space_act = NULL;
     int i = 0, j = 0, t = 0, v = 0;
     char **aux_map;
     Id actual_id[NUM_IDS];
@@ -172,7 +171,6 @@ Status map_init(Game *game, char **map)
     if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_actual_player(game))) != NO_ID)
     {
         /*1-Gets the spaces located to the different points of the space.*/
-        space_act = game_get_space(game, actual_id[ACTUAL_POSITION]);
         actual_id[NORTH] = game_get_north_from_space(game, actual_id[ACTUAL_POSITION]);
         actual_id[SOUTH] = game_get_south_from_space(game, actual_id[ACTUAL_POSITION]);
         actual_id[WEST] = game_get_west_from_space(game, actual_id[ACTUAL_POSITION]);
@@ -407,7 +405,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_puts(ge->feedback, str);
 
     /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
-    screen_paint();
+    screen_paint(game_get_turn(game));
     printf("prompt:> ");
 }
 

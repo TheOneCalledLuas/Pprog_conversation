@@ -227,7 +227,6 @@ Status space_set_character(Space *space, Id id)
 
 Status space_print(Space *space)
 {
-    Id idaux = NO_ID;
     Set *set_aux = NULL;
     int i = 0;
 
