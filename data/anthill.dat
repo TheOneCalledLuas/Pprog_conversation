@@ -6,7 +6,8 @@
 #s:13|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
 #s:125|Corridor_5|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|
 #s:126|Corridor_6|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
-#s:127|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:127|Corridor_7|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
+#s:14|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
 
 #c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
 #c:4|Spider|/\oo/\|123|5|0|I wont't talk to you!|
@@ -28,7 +29,7 @@
 #l:37|P4-P3|124|123|0|1|
 #l:38|P4-Despensa|124|13|1|1|
 #l:39|Despensa-P4|13|124|0|1|
-#l:40|Agujero-Despensa|14|13|2|1|
+#l:40|Agujero-Despensa|14|13|1|1|
 #l:41|P7-Agujero|127|14|2|1|
 #l:42|Agujero-P7|14|127|3|1|
 #l:43|P6-P7|126|127|2|1|
