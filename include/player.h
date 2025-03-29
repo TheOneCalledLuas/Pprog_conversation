@@ -57,14 +57,14 @@ Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE]);
 Status player_set_player_location(Player *player, Id id);
 
 /**
- * @brief It sets the object of the player to the one you want.
- * @author Fernando Mijangos
+ * @brief Adds an object to the inventory.
+ * @author Saúl López Romero.
  *
  * @param player Pointer to the player.
  * @param object Id of the object you want the player to have.
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
-Status player_set_object(Player *player, Id object);
+Status player_add_object(Player *player, Id object);
 
 /**
  * @brief It gets the player id.
@@ -119,7 +119,7 @@ Id player_get_player_location(Player *player);
  * @param player Pointer to the player.
  * @return Id of the object the player has.
  */
-Id player_get_object(Player *player);
+Id * player_get_inventory(Player *player);
 
 /**
  * @brief Gets the amount of health the player has.
@@ -129,6 +129,17 @@ Id player_get_object(Player *player);
  * @return amount of health, -1 if an error takes place.
  */
 int player_get_health(Player *player);
+
+/**
+ * @brief Searches for an object in a player's inventory.
+ * @author Saúl López Romero.
+ * 
+ * @param player Pointer to the player.
+ * @param object Id of the object to be searched for.
+ * @return -1 if the object wasn't found or 
+ */
+Bool player_has_object(Player * player, Id object);
+
 
 /**
  * @brief Sets the player health to a value.

@@ -11,6 +11,7 @@
 #include "player.h"
 #include "object.h"
 #include "types.h"
+#include "inventory.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +29,7 @@ struct _Player
     Id player_id;                       /*!< Id of the player.*/
     char player_name[PLAYER_NAME_SIZE]; /*!< Name of the player.*/
     Id player_location;                 /*!< id of the space where the player is at.*/
-    Id object;                          /*!< Id of the object the player has.*/
+    Inventory *inventory;               /*!< Player inventory.*/
     int health;                         /*!< Health points the player has.*/
     char gdesc[MAX_GDESC];              /*!< Graphic description for the player.*/
 };
@@ -48,7 +49,7 @@ Player *player_create(Id id)
     player->player_id = id;
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
-    player->object = NO_ID;
+    player->inventory = inventory_create();
     player->health = 20;
 
     return player;
@@ -62,8 +63,8 @@ Status player_destroy(Player *player)
         return ERROR;
     }
 
-    /*Free the memory*/
-
+    /*Frees the memory*/
+    inventory_destroy(player->inventory);
     free(player);
     return OK;
 }
@@ -98,17 +99,15 @@ Status player_set_player_location(Player *player, Id id)
     return OK;
 }
 
-Status player_set_object(Player *player, Id object)
+Status player_add_object(Player *player, Id object)
 {
     /*Error management*/
-    if (player == NULL)
+    if (player == NULL || object <= -1)
     {
         return ERROR;
     }
 
-    /*Copy of the values*/
-    player->object = object;
-    return OK;
+    return inventory_add(player->inventory, object);
 }
 
 char *player_get_gdesc(Player *player)
@@ -126,7 +125,7 @@ Status player_set_gdesc(Player *player, char *gdesc)
     if (!player || !gdesc || strlen(gdesc) >= MAX_GDESC)
         return ERROR;
     /*Sets the value.*/
-    strcpy(player->gdesc,gdesc);
+    strcpy(player->gdesc, gdesc);
     return OK;
 }
 
@@ -163,15 +162,15 @@ Id player_get_player_location(Player *player)
     return player->player_location;
 }
 
-Id player_get_object(Player *player)
+Id *player_get_inventory(Player *player)
 {
     /*Error management.*/
     if (player == NULL)
     {
-        return ID_ERROR;
+        return NULL;
     }
 
-    return player->object;
+    return inventory_get_content(player->inventory);
 }
 
 int player_get_health(Player *player)
@@ -182,6 +181,18 @@ int player_get_health(Player *player)
 
     /*Returns the health data.*/
     return player->health;
+}
+
+Bool player_has_object(Player *player, Id object)
+{
+    /*Error handling.*/
+    if (!player || object <= -1)
+    {
+        return FALSE;
+    }
+
+    /*Searches for the object.*/
+    return (inventory_find(player->inventory, object) == -1 ? FALSE : TRUE);
 }
 
 Status player_set_health(Player *player, int health)
@@ -212,13 +223,10 @@ Status player_print(Player *player)
     fprintf(stdout, "--> Player in the space with id number %ld \n", player->player_location);
 
     /* 3. Print the information about the object.*/
-    if (player->object)
+    if (player->inventory)
     {
-        fprintf(stdout, "--> Player has the object with id %ld \n", player->object);
-    }
-    else
-    {
-        fprintf(stdout, "--> Player does't have the object\n");
+        fprintf(stdout, "Player inventory: \n");
+        inventory_print(player->inventory);
     }
     return OK;
 }
