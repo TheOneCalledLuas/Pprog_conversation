@@ -1,3 +1,3 @@
-Player 1 executed Command Next with arguments "" and exit code OK
-Player 3 executed Command Next with arguments "" and exit code ERROR
+Player 1 executed Command Take with arguments "Grain" and exit code OK
+Player 3 executed Command Chat with arguments "" and exit code ERROR
 Player 1 executed Command Exit with arguments "" and exit code OK

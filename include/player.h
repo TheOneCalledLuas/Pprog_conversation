@@ -58,6 +58,15 @@ Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE]);
 Status player_del_object(Player *player, Id object);
 
 /**
+ * @brief Gets the number of objects the playes has.
+ * @author Saúl López Romero.
+ * 
+ * @param player Pinter to the player.
+ * @return Number of objects the player has, or -1 if an error takes place.
+ */
+int player_get_n_objects(Player *player);
+
+/**
  * @brief Sets the maximun object number for the player.
  * @author Saúl López Romero
  * 

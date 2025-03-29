@@ -239,13 +239,13 @@ Status map_init(Game *game, char **map)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
-    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0;
+    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
     Character *character;
     Player *player = NULL, *last_player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE], **map;
-    int i = 0;
+    char str[MAX_STRING_GE], **map, *obj_name = NULL;
+    int i = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_actual_player(game);
@@ -338,6 +338,26 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*4-Prints the player information.*/
     sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
+
+    if ((n_objects = player_get_n_objects(player)) <= 0)
+    {
+        sprintf(str, "   Player has no objects");
+        screen_area_puts(ge->descript, str);
+    }
+    else
+    {
+        sprintf(str, "   Objects:");
+        screen_area_puts(ge->descript, str);
+        objects = player_get_inventory(player);
+        for (i = 0; i < n_objects; i++)
+        {
+            obj_name = object_get_name(game_get_object(game, objects[i]));
+            sprintf(str, "   %s", obj_name);
+            screen_area_puts(ge->descript, str);
+        }
+        free(objects);
+        objects = NULL;
+    }
 
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)

@@ -110,6 +110,16 @@ Status player_add_object(Player *player, Id object)
     return inventory_add(player->inventory, object);
 }
 
+int player_get_n_objects(Player *player)
+{
+    /*Error handling.*/
+    if (!player)
+        return -1;
+
+    /*Returns the value.*/
+    return inventory_len(player->inventory);
+}
+
 char *player_get_gdesc(Player *player)
 {
     /*Error handling.*/
