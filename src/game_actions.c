@@ -340,19 +340,13 @@ void game_actions_take(Game *game)
     }
     player = game_get_actual_player(game);
 
-    /*2-Checks if the player already has an object.*/
-    if (player_get_object(player) != NO_ID)
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-
     /*3-Player takes the object and error management.*/
-    if (!player_set_object(player, object))
+    if (!player_add_object(player, object))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+    /*4-The object is taken out of the space.*/
     if (!space_take_object(space, object))
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -377,7 +371,7 @@ void game_actions_drop(Game *game)
     }
 
     /*1-Gets all the information it needs and error management.*/
-    object = player_get_object(game_get_actual_player(game));
+    object = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
     if (object == NO_ID || object == ID_ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -391,15 +385,15 @@ void game_actions_drop(Game *game)
     }
     player = game_get_actual_player(game);
 
-    /*2-Checks if the player has an object.*/
-    if (player_get_object(player) == NO_ID)
+    /*2-Checks if the player hasn't got an object.*/
+    if (player_has_object(player, object) == FALSE)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*3-The player drops his object.*/
-    if (!player_set_object(player, NO_ID))
+    if (player_del_object(player, object) == ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;

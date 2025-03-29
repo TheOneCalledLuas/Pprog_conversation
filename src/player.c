@@ -8,10 +8,10 @@
  * @copyright GNU Public License
  */
 
-#include "player.h"
+#include "inventory.h"
 #include "object.h"
 #include "types.h"
-#include "inventory.h"
+#include "player.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -193,6 +193,32 @@ Bool player_has_object(Player *player, Id object)
 
     /*Searches for the object.*/
     return (inventory_find(player->inventory, object) == -1 ? FALSE : TRUE);
+}
+
+Status player_set_inventory_capacity(Player *player, long capacity)
+{
+    /*Error handling.*/
+    if (!player)
+        return ERROR;
+    /*Sets the value.*/
+    return inventory_set_max_objs(player->inventory, capacity);
+}
+
+long player_get_inventory_capacity(Player *player)
+{
+    /*Error handling.*/
+    if (!player)
+        return ERROR;
+    /*Returns the value.*/
+    return inventory_get_max_objs(player->inventory);
+}
+
+Status player_del_object(Player *player, Id object)
+{
+    /*Error handling.*/
+    if (!player || object <= -1)
+        return ERROR;
+    return (inventory_take(player->inventory, object) == object ? OK : ERROR);
 }
 
 Status player_set_health(Player *player, int health)

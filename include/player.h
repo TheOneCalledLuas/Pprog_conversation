@@ -14,6 +14,7 @@
 
 #include "types.h"
 #include "object.h"
+#include "inventory.h"
 
 
 typedef struct _Player Player;
@@ -45,6 +46,35 @@ Status player_destroy(Player *player);
  * @return OK, if everything goes well or ERROR if there was some mistake.
  */
 Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE]);
+
+/**
+ * @brief Takes an object out of the player inventory.
+ * @author Saúl López Romero
+ * 
+ * @param player Pointer to the player.
+ * @param object Id of the object to be taken.
+ * @return OK, if everything goes well or ERROR if there was some mistake.
+ */
+Status player_del_object(Player *player, Id object);
+
+/**
+ * @brief Sets the maximun object number for the player.
+ * @author Saúl López Romero
+ * 
+ * @param player Pointer to the player.
+ * @param capacity Number of objects.
+ * @return OK, if everything goes well or ERROR if there was some mistake.
+ */
+Status player_set_inventory_capacity(Player *player, long capacity);
+
+/**
+ * @brief Gets the maximun object number for the player.
+ * @author Saúl López Romero
+ * 
+ * @param player Pointer to the player.
+ * @return Number of objects or -1 if an error takes place.
+ */
+long player_get_inventory_capacity(Player *player);
 
 /**
  * @brief It sets the player location to an specified id.

@@ -338,17 +338,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*4-Prints the player information.*/
     sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
     screen_area_puts(ge->descript, str);
-    if (player_get_object(player) != NO_ID)
-    {
-        id_aux = player_get_object(player);
-        sprintf(str, "   Player_object: %s", object_get_name(game_get_object(game, id_aux)));
-        screen_area_puts(ge->descript, str);
-    }
-    else
-    {
-        sprintf(str, "   Player has no objects");
-        screen_area_puts(ge->descript, str);
-    }
 
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == CHAT)
@@ -376,7 +365,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         last_space = game_get_space(game, player_get_player_location(last_player));
         /*Searches for the object.*/
         desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
-        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_get_object(last_player) == desc_id))
+        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(last_player, desc_id)))
         { /*If the object was found anywhere accesible by the player.*/
             object = game_get_object(game, desc_id);
             screen_area_puts(ge->descript, " ");

@@ -187,7 +187,7 @@ Status game_reader_load_players(Game *game, char *filename)
     char line[WORD_SIZE];
     Id player_id = 0, space_id = 0;
     char *toks = NULL;
-    int player_inventory = 0, player_health = 0; 
+    int player_inventory = 0, player_health = 0;
 
     /*Error handling.*/
     if (!game || !filename)
@@ -228,6 +228,7 @@ Status game_reader_load_players(Game *game, char *filename)
             player_set_player_location(player, space_id);
             player_set_gdesc(player, gdesc);
             player_set_health(player, player_health);
+            player_set_inventory_capacity(player, player_inventory);
             /*Adds the player to the space.*/
             game_add_player(game, player);
         }
@@ -242,10 +243,10 @@ Status game_reader_load_players(Game *game, char *filename)
 Status game_reader_load_links(Game *game, char *filename)
 {
     FILE *f = NULL;
-    Link * link = NULL;
+    Link *link = NULL;
     char name[WORD_SIZE];
     char line[WORD_SIZE];
-    Id dest_id = 0, origin_id = 0,id=0;
+    Id dest_id = 0, origin_id = 0, id = 0;
     char *toks = NULL;
     Direction direction;
     Bool state;
@@ -285,11 +286,11 @@ Status game_reader_load_links(Game *game, char *filename)
             {
                 return ERROR;
             }
-            link_set_name(link,name);
-            link_set_origin(link,origin_id);
-            link_set_destination(link,dest_id);
+            link_set_name(link, name);
+            link_set_origin(link, origin_id);
+            link_set_destination(link, dest_id);
             link_set_direction(link, direction);
-            link_set_state(link,state);
+            link_set_state(link, state);
             /*Adds the player to the space.*/
             game_add_link(game, link);
         }

@@ -15,7 +15,7 @@ TESTDIR = ./test
 
 all: anthill
 
-anthill: $(OBJDIR)/command.o $(OBJDIR)/game_actions.o $(OBJDIR)/game_loop.o $(OBJDIR)/game.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/space.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/set.o $(OBJDIR)/character.o $(OBJDIR)/link.o
+anthill: $(OBJDIR)/command.o $(OBJDIR)/game_actions.o $(OBJDIR)/game_loop.o $(OBJDIR)/game.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/space.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/set.o $(OBJDIR)/character.o $(OBJDIR)/link.o $(OBJDIR)/inventory.o
 	$(CC) -o $(EXE) $^ -L./$(LIBDIR)/ -lscreen
 
 $(OBJDIR)/command.o: $(SRCDIR)/command.c $(HEADERDIR)/command.h $(HEADERDIR)/types.h
@@ -52,6 +52,9 @@ $(OBJDIR)/character.o: $(SRCDIR)/character.c $(HEADERDIR)/character.h $(HEADERDI
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 $(OBJDIR)/link.o: $(SRCDIR)/link.c $(HEADERDIR)/link.h $(HEADERDIR)/types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+$(OBJDIR)/inventory.o: $(SRCDIR)/inventory.c $(HEADERDIR)/set.h $(HEADERDIR)/inventory.h $(HEADERDIR)/types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 clean:

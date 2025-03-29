@@ -9,6 +9,7 @@
  */
 
 #include "inventory.h"
+#include "set.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -82,6 +83,7 @@ int inventory_find(Inventory *inventory, Id id)
     {
         return -1;
     }
+    return set_find(inventory->objs, id);
 }
 
 Status inventory_add(Inventory *inventory, Id id)
@@ -141,7 +143,7 @@ Status inventory_print(Inventory *inventory)
     }
 
     /* Prints the information. */
-    prinf("Inventory formed by a maximum number of elements and a set.\n");
+    printf("Inventory formed by a maximum number of elements and a set.\n");
     printf("Maximum number of elements: %ld\n", inventory->max_objs);
     return set_print(inventory->objs);
 }
