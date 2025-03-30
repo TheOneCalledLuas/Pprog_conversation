@@ -190,6 +190,75 @@ void test3_inventory_get_max_objs()
     PRINT_TEST_RESULT(inventory_get_max_objs(in) == -1);
 }
 
+void test1_inventory_find()
+{
+    /* Creates an inventory. */
+    Inventory *in;
+    in = inventory_create();
+
+    /* Adds an id. */
+    inventory_add(in, 1);
+    PRINT_TEST_RESULT(inventory_find(in, 1) != -1);
+
+    /* Frees memory. */
+    inventory_destroy(in);
+}
+void test2_inventory_find()
+{
+    /* Creates an inventory. */
+    Inventory *in;
+    in = inventory_create();
+
+    /* Adds an id. */
+    inventory_add(in, 1);
+
+    /* Checks for a different id than added. */
+    PRINT_TEST_RESULT(inventory_find(in, 2) == -1);
+
+    /* Frees memory. */
+    inventory_destroy(in);
+}
+
+void test3_inventory_find()
+{
+    /* Creates an inventory. */
+    Inventory *in;
+    in = inventory_create();
+
+    /*Searches for an id that hasn't been added.*/
+    PRINT_TEST_RESULT(inventory_find(in, 1) == -1);
+
+    /* Frees memory. */
+    inventory_destroy(in);
+}
+
+void test4_inventory_find()
+{
+    /* Creates an inventory. */
+    Inventory *in;
+    in = inventory_create();
+
+    /* Adds many ids. */
+    inventory_add(in, 1);
+    inventory_add(in, 2);
+    inventory_add(in, 3);
+
+    /* Checks if the position returned is the correct one. */
+    PRINT_TEST_RESULT(inventory_find(in, 2) == 1);
+
+    /* Frees memory. */
+    inventory_destroy(in);
+}
+
+void test5_inventory_find()
+{
+    /* Creates a null inventory. */
+    Inventory *in = NULL;
+
+    /* Checks if a null inventory causes error. */
+    PRINT_TEST_RESULT(inventory_find(in, 1) == -1);
+}
+
 void test1_inventory_add()
 {
     /* Creates an inventory. */
