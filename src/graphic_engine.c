@@ -396,7 +396,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         /*Searches for the object.*/
         desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
         if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(player, desc_id)))
-        { 
+        {
             /*If the object was found anywhere accesible by the player.*/
             object = game_get_object(game, desc_id);
             screen_area_puts(ge->descript, " ");
@@ -419,10 +419,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
-    last_cmd = command_get_code(game_get_last_command(game));
-    i = command_get_status(game_get_last_command(game));
-    sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
-    screen_area_puts(ge->feedback, str);
+    if (refresh == FALSE)
+    {
+        last_cmd = command_get_code(game_get_last_command(game));
+        i = command_get_status(game_get_last_command(game));
+        sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (i == OK ? "OK" : "ERROR"));
+        screen_area_puts(ge->feedback, str);
+    }
 
     /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
     screen_paint(game_get_turn(game));
