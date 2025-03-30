@@ -17,21 +17,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*Temporal character data. (This will be eventually changed).*/
-#define CHARACTER_ID_1 3
-#define CHARACTER_HEALTH_1 5
-#define CHARACTER_NAME_1 "Litle Ant"
-#define CHARACTER_MSG_1 "I'm a litle ant."
-#define CHARACTER_DESCR_1 "mO^"
-#define SPACE_C1 121
-#define CHARACTER_ID_2 4
-#define CHARACTER_HEALTH_2 5
-#define CHARACTER_NAME_2 "Spider"
-#define CHARACTER_MSG_2 "\0"
-#define CHARACTER_DESCR_2 "/\\oo/\\"
-#define SPACE_C2 123
-#define ID_PLAYER 5
-
 #define MAX_PLAYERS 10
 
 /**
@@ -617,34 +602,41 @@ Status game_create_from_file(Game **game, char *filename)
         return ERROR;
     }
 
+    /*Creates the game.*/
     if (game_create(game) == ERROR)
     {
         return ERROR;
     }
 
+    /*Loads the spaces.*/
     if (game_reader_load_spaces(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
+    /*Loads the objects in.*/
     if (game_reader_load_objects(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
+    /*Loads the players.*/
     if (game_reader_load_players(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
+    /*Loads the links.*/
     if (game_reader_load_links(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
+
+    /*Loads the characters.*/
     if (game_reader_load_characters(*game, filename) == ERROR)
     {
         game_destroy(game);
