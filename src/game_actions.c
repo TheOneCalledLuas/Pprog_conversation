@@ -213,7 +213,7 @@ void game_actions_next(Game *game)
     }
 
     /*Sets the player location to the id space south of him.*/
-    current_id = game_get_south_from_space(game, space_id);
+    current_id = game_get_space_at(game, space_id, S);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -241,7 +241,7 @@ void game_actions_back(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = game_get_north_from_space(game, space_id);
+    current_id = game_get_space_at(game, space_id, N);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -270,7 +270,7 @@ void game_actions_left(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = game_get_west_from_space(game, space_id);
+    current_id =  game_get_space_at(game, space_id, W);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -298,7 +298,7 @@ void game_actions_right(Game *game)
     }
 
     /*Sets the player location it to the id space north of him.*/
-    current_id = game_get_east_from_space(game, space_id);
+    current_id =  game_get_space_at(game, space_id, E);
     if (current_id != NO_ID)
     {
         player_set_player_location(game_get_actual_player(game), current_id);

@@ -374,43 +374,15 @@ Status game_delete_link(Game* game, int position);
 Link *game_find_link(Game *game, Id link_id);
 
 /**
- * @brief Gets the id of the space situated north form a space.
+ * @brief Looks for the space situated at a given direction from a space.
  * @author Fernando Mijangos.
  * 
  * @param game Pointer to the game.
- * @param space Id of the space from where you search.
- * @return Id of the space on the north, NO_ID if it did't found it, ID_ERROR if error.
+ * @param space Id of the space from where the new space is searched.
+ * @param direction Direction in which you search.
+ * @return If it finds a space in that direction, it returns the id of that space, otherwise it returns
+ *          NO_ID, returns ID_ERROR if any error.
  */
-Id game_get_north_from_space(Game*game, Id space);
-
-/**
- * @brief Gets the id of the space situated east form a space.
- * @author Fernando Mijangos.
- * 
- * @param game Pointer to the game.
- * @param space Id of the space from where you search.
- * @return Id of the space on the east, NO_ID if it did't found it, ID_ERROR if error.
- */
-Id game_get_east_from_space(Game*game, Id space);
-
-/**
- * @brief Gets the id of the space situated south form a space.
- * @author Fernando Mijangos.
- * 
- * @param game Pointer to the game.
- * @param space Id of the space from where you search.
- * @return Id of the space on the south, NO_ID if it did't found it, ID_ERROR if error.
- */
-Id game_get_south_from_space(Game*game, Id space);
-
-/**
- * @brief Gets the id of the space situated west form a space.
- * @author Fernando Mijangos.
- * 
- * @param game Pointer to the game.
- * @param space Id of the space from where you search.
- * @return Id of the space on the west, NO_ID if it did't found it, ID_ERROR if error.
- */
-Id game_get_west_from_space(Game*game, Id space);
+Id game_get_space_at(Game *game, Id space, Direction direction);
 
 #endif

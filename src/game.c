@@ -46,12 +46,12 @@ struct _Game
     Link *links[MAX_LINKS];                /*!< Array with all the links information.*/
     int n_spaces;                          /*!< Number of spaces.*/
     int n_objects;                         /*!< Number of objects.*/
-    int n_characters;                      /*< Number of characters.*/
-    int n_links;
-    Command *last_cmd; /*!< A pointer to the last command entered by the user.*/
-    Bool finished;     /*!< Whether the game has finished or not.*/
-    int turn;          /*!< Actual turn.*/
-    int n_players;     /*!< Number of players,*/
+    int n_characters;                      /*!< Number of characters.*/
+    int n_links;                           /*!< Number of links.*/
+    Command *last_cmd;                     /*!< A pointer to the last command entered by the user.*/
+    Bool finished;                         /*!< Whether the game has finished or not.*/
+    int turn;                              /*!< Actual turn.*/
+    int n_players;                         /*!< Number of players.*/
 };
 
 Status game_create(Game **game)
@@ -708,71 +708,17 @@ Link *game_find_link(Game *game, Id link_id)
     return NULL;
 }
 
-Id game_get_north_from_space(Game *game, Id space)
+Id game_get_space_at(Game *game, Id space, Direction direction)
 {
     int i;
     /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR)
+    if (!(game) || space == NO_ID || space == ID_ERROR || direction<0||direction>3)
         return ID_ERROR;
 
-    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
+    /*Finds the links with origin the space given, and if they are facing that direction, returns the destination.*/
     for (i = 0; i < game->n_links; i++)
     {
-        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == N)
-            return link_get_destination(game->links[i]);
-    }
-
-    /*If it doesn't find a north connection, returns NO_ID.*/
-    return NO_ID;
-}
-
-Id game_get_east_from_space(Game *game, Id space)
-{
-    int i;
-    /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR)
-        return ID_ERROR;
-
-    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for (i = 0; i < game->n_links; i++)
-    {
-        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == E)
-            return link_get_destination(game->links[i]);
-    }
-
-    /*If it doesn't find a north connection, returns NO_ID.*/
-    return NO_ID;
-}
-
-Id game_get_south_from_space(Game *game, Id space)
-{
-    int i;
-    /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR)
-        return ID_ERROR;
-
-    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for (i = 0; i < game->n_links; i++)
-    {
-        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == S)
-            return link_get_destination(game->links[i]);
-    }
-
-    /*If it doesn't find a north connection, returns NO_ID.*/
-    return NO_ID;
-}
-
-Id game_get_west_from_space(Game *game, Id space)
-{
-    int i;
-    /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR)
-        return ID_ERROR;
-
-    /*Finds the links with origin the space given, and if they are facing north, returns the destination.*/
-    for (i = 0; i < game->n_links; i++)
-    {
-        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == W)
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == direction)
             return link_get_destination(game->links[i]);
     }
 

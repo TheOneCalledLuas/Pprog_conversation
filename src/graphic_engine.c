@@ -22,7 +22,7 @@
 #include <string.h>
 
 /*Gap measures.*/
-#define WIDTH_MAP 58      /*Map width.*/
+#define WIDTH_MAP 67      /*Map width.*/
 #define WIDTH_DES 30      /*Description width.*/
 #define WIDTH_BAN 23      /*Banner width.*/
 #define HEIGHT_MAP 29     /*Map height.*/
@@ -30,7 +30,7 @@
 #define HEIGHT_HLP 3      /*Help height.*/
 #define HEIGHT_FDB 3      /*FDB height.*/
 #define MAX_STRING_GE 255 /*Max string lenght.*/
-#define WIDTH_SPACE 18    /*Space width.*/
+#define WIDTH_SPACE 21    /*Space width.*/
 #define HEIGHT_SPACE 9    /*Space height.*/
 #define STARING_POINT 1   /*Start of the gap when placed.*/
 #define PLAYER_LENGTH 4   /*The amount of charactes the icon for tha player occupies.*/
@@ -171,10 +171,10 @@ Status map_init(Game *game, char **map)
     if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_actual_player(game))) != NO_ID)
     {
         /*1-Gets the spaces located to the different points of the space.*/
-        actual_id[NORTH] = game_get_north_from_space(game, actual_id[ACTUAL_POSITION]);
-        actual_id[SOUTH] = game_get_south_from_space(game, actual_id[ACTUAL_POSITION]);
-        actual_id[WEST] = game_get_west_from_space(game, actual_id[ACTUAL_POSITION]);
-        actual_id[EAST] = game_get_east_from_space(game, actual_id[ACTUAL_POSITION]);
+        actual_id[NORTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], N);
+        actual_id[SOUTH] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], S);
+        actual_id[WEST] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], W);
+        actual_id[EAST] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
         actual_id[NORTH_EAST] = NO_ID;
         actual_id[NORTH_WEST] = NO_ID;
         actual_id[SOUTH_EAST] = NO_ID;
@@ -440,11 +440,11 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         return ERROR;
 
     /*Starts printing the space.*/
-    sprintf(destination[0], "+---------------+");
-    sprintf(destination[1], "|%3s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
+    sprintf(destination[0], "+------------------+");
+    sprintf(destination[1], "|%6s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
     for (i = 0; i < 5; i++)
     {
-        sprintf(destination[i + 2], "|%s      |", space_get_gdesc_line(space, i));
+        sprintf(destination[i + 2], "|%-18s|", space_get_gdesc_line(space, i));
     }
     /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = space_get_n_objects(space);
@@ -504,7 +504,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
 
     /*Finishes printing the spaces.*/
-    sprintf(destination[7], "|%-15s|", aux_2);
-    sprintf(destination[8], "+---------------+");
+    sprintf(destination[7], "|%-18s|", aux_2);
+    sprintf(destination[8], "+------------------+");
     return OK;
 }

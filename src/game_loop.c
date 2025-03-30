@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "command.h"
 #include "game.h"
@@ -146,7 +147,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
             command_print(last_cmd, f);
             fprintf(f, "\n");
         }
-
+        /*sleep(1);*/
         game_next_turn(game);
     }
 }
