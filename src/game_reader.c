@@ -178,6 +178,63 @@ Status game_reader_load_objects(Game *game, char *filename)
     return OK;
 }
 
+Status game_reader_load_characters(Game *game, char *name_file)
+{
+    FILE *file = NULL;
+    Character *character;
+    Id id = NO_ID, id_sp = NO_ID;
+    Bool friendly = FALSE;
+    int health = 0;
+    char name[WORD_SIZE] = "", data[WORD_SIZE] = "", gdesc[WORD_SIZE] = "", message[WORD_SIZE];
+    char *toks = NULL;
+
+    if (!name_file || !(file = fopen(name_file, "r")) || !game)
+    {
+        return ERROR;
+    }
+
+    while (fgets(data, WORD_SIZE, file))
+    {
+        if (strncmp("#c:", data, 3) == 0)
+        {
+            toks = strtok(data + 3, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            id_sp = atol(toks);
+            toks = strtok(NULL, "|");
+            health = atoi(toks);
+            toks = strtok(NULL, "|");
+            friendly = atoi(toks);
+            toks = strtok(NULL, "|");
+            strcpy(message, toks);
+            toks = strtok(NULL, "|");
+            strcpy(gdesc, toks);
+
+            character = character_create(id);
+            if (!character)
+            {
+                return ERROR;
+            }
+            character_set_name(character, name);
+            game_add_character(game, character);
+
+            if (id_sp != NO_ID)
+            {
+                space_set_character(game_get_space(game, id_sp), id);
+            }
+
+            character_set_health(character, health);
+            character_set_friendly(character, friendly);
+            character_set_message(character, message);
+            character_set_gdesc(character, gdesc);
+        }
+    }
+    fclose(file);
+    return OK;
+}
+
 Status game_reader_load_players(Game *game, char *filename)
 {
     FILE *f = NULL;
