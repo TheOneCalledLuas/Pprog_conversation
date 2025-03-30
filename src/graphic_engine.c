@@ -392,8 +392,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     /*6.Prints the object information if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == INSPECT && refresh == FALSE)
     {
-        last_player = game_get_last_player(game);
-        last_space = game_get_space(game, player_get_player_location(last_player));
+        last_space = game_get_space(game, player_get_player_location(player));
         /*Searches for the object.*/
         desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
         if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(last_player, desc_id)))
