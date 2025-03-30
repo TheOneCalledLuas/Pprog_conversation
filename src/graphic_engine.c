@@ -241,7 +241,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
     Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
     Character *character;
-    Player *player = NULL, *last_player = NULL;
+    Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
     char str[MAX_STRING_GE], **map, *obj_name = NULL;
@@ -395,8 +395,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         last_space = game_get_space(game, player_get_player_location(player));
         /*Searches for the object.*/
         desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
-        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(last_player, desc_id)))
-        { /*If the object was found anywhere accesible by the player.*/
+        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(player, desc_id)))
+        { 
+            /*If the object was found anywhere accesible by the player.*/
             object = game_get_object(game, desc_id);
             screen_area_puts(ge->descript, " ");
             sprintf(str, "  OBJECT DESCRIPTION:");
