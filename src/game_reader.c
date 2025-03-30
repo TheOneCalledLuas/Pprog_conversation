@@ -158,6 +158,7 @@ Status game_reader_load_objects(Game *game, char *filename)
             /*Checks that the memory allocacion took place.*/
             if (!object)
             {
+                fclose(file);
                 return ERROR;
             }
             object_set_name(object, name);
@@ -185,9 +186,10 @@ Status game_reader_load_characters(Game *game, char *name_file)
     Id id = NO_ID, id_sp = NO_ID;
     Bool friendly = FALSE;
     int health = 0;
-    char name[WORD_SIZE] = "", data[WORD_SIZE] = "", gdesc[WORD_SIZE] = "", message[WORD_SIZE];
+    char data[WORD_SIZE] = "";
     char *toks = NULL;
 
+    /*Opens the file.*/
     if (!name_file || !(file = fopen(name_file, "r")) || !game)
     {
         return ERROR;
@@ -197,38 +199,53 @@ Status game_reader_load_characters(Game *game, char *name_file)
     {
         if (strncmp("#c:", data, 3) == 0)
         {
+            /*Gets the id of the character and creates it.*/
             toks = strtok(data + 3, "|");
             id = atol(toks);
+            if (!(character = character_create(id)))
+{                return ERROR;
+                fclose(file);}
             toks = strtok(NULL, "|");
-            strcpy(name, toks);
+
+            /*Gets the name of the character and sets it.*/
+            if ((character_set_name(character, toks)) == ERROR)
+            {                return ERROR;
+                fclose(file);}
+
+            /*Gets the description of the character and sets it.*/
+            toks = strtok(NULL, "|");
+            if ((character_set_description(character, toks)) == ERROR)
+            {                return ERROR;
+                fclose(file);}
+
+            /*Gets the space where the character is at and sets it there.*/
             toks = strtok(NULL, "|");
             id_sp = atol(toks);
+            if ((space_set_character(game_get_space(game, id_sp), id)) == ERROR)
+            {                return ERROR;
+                fclose(file);}
+
+            /*Gets the amount of health of the character and sets it.*/
             toks = strtok(NULL, "|");
             health = atoi(toks);
+            if((character_set_health(character, health))==ERROR)
+            {                return ERROR;
+                fclose(file);}
+            
+            /*Gets the status of friendly for that character and sets it.*/
+            toks =strtok(NULL, "|");
+            friendly=atoi(toks);
+            if((character_set_friendly(character, friendly))==ERROR)
+            {                return ERROR;
+                fclose(file);}
+            
+            /*Gets the message of the player and sets it.*/
             toks = strtok(NULL, "|");
-            friendly = atoi(toks);
-            toks = strtok(NULL, "|");
-            strcpy(message, toks);
-            toks = strtok(NULL, "|");
-            strcpy(gdesc, toks);
+            if((character_set_message(character, toks))==ERROR)
+            {                return ERROR;
+                fclose(file);}
 
-            character = character_create(id);
-            if (!character)
-            {
-                return ERROR;
-            }
-            character_set_name(character, name);
             game_add_character(game, character);
-
-            if (id_sp != NO_ID)
-            {
-                space_set_character(game_get_space(game, id_sp), id);
-            }
-
-            character_set_health(character, health);
-            character_set_friendly(character, friendly);
-            character_set_message(character, message);
-            character_set_gdesc(character, gdesc);
         }
     }
     fclose(file);

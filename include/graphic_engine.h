@@ -42,7 +42,9 @@ void graphic_engine_destroy(Graphic_engine *ge);
  *
  * @param game Pointer to the game you are running.
  * @param gw Pointer to the graphic engine structure.
+ * @param refresh FALSE if you want to refresh the screen so that the player can see the consequence of his actions.
+ *                TRUE if you just want to go to the next "frame".
  */
-void graphic_engine_paint_game(Graphic_engine *ge, Game *game);
+void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh);
 
 #endif

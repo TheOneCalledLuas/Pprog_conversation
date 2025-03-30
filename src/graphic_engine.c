@@ -33,7 +33,7 @@
 #define WIDTH_SPACE 21    /*Space width.*/
 #define HEIGHT_SPACE 9    /*Space height.*/
 #define STARING_POINT 1   /*Start of the gap when placed.*/
-#define PLAYER_LENGTH 4   /*The amount of charactes the icon for tha player occupies.*/
+#define PLAYER_LENGTH 7   /*The amount of charactes the icon for tha player occupies.*/
 
 #define NON_WRITTABLE_ELEMS 5 /*Elements that cannot be written per room.*/
 
@@ -172,9 +172,9 @@ Status map_init(Game *game, char **map)
     {
         /*1-Gets the spaces located to the different points of the space.*/
         actual_id[NORTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], N);
-        actual_id[SOUTH] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], S);
-        actual_id[WEST] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], W);
-        actual_id[EAST] =  game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
+        actual_id[SOUTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], S);
+        actual_id[WEST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], W);
+        actual_id[EAST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
         actual_id[NORTH_EAST] = NO_ID;
         actual_id[NORTH_WEST] = NO_ID;
         actual_id[SOUTH_EAST] = NO_ID;
@@ -237,7 +237,7 @@ Status map_init(Game *game, char **map)
     return OK;
 }
 
-void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
+void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
     Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
     Character *character;
@@ -277,6 +277,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*2-Clears the map.*/
     screen_area_clear(ge->map);
 
+    /*4-Sets the space where the player is at to discovered.*/
+    if (space_set_discovered(space_act, TRUE) == ERROR)
+        return;
+
     /*3-Fills the map that we modify and later print.*/
     if (map_init(game, map) == ERROR)
     {
@@ -304,7 +308,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     /*DESCRIPTION SECTION.*/
     /*1-Clears the area.*/
     screen_area_clear(ge->descript);
-    /*2-Prints the information about the objects.*/
+    /*2-Prints the information about the objects inside space the player has discovered.*/
     sprintf(str, "  OBJECTS:");
     screen_area_puts(ge->descript, str);
     if (game_get_n_objects(game) >= 1)
@@ -315,28 +319,41 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
         {
             if ((id_aux = game_get_object_location(game, id_list[i])) != -1)
             {
-                sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_aux);
-                screen_area_puts(ge->descript, str);
+                /*If the object is inside a discovered space it prints it.*/
+                if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
+                {
+                    sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_aux);
+                    screen_area_puts(ge->descript, str);
+                }
             }
         }
         free(id_list);
     }
 
-    /*3-Prints the information about the characters.*/
+    /*3-Prints the information about the characters that have been discovered.*/
     screen_area_puts(ge->descript, " ");
     screen_area_puts(ge->descript, "  CHARACTERS");
     id_aux_2 = game_get_characters(game);
     for (i = 0; i < game_get_num_characters(game); i++)
     {
-        character = game_get_character(game, id_aux_2[i]);
-        sprintf(str, "   %-6s: %ld (%d)", character_get_description(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
-        screen_area_puts(ge->descript, str);
+        id_aux = game_get_character_location(game, id_aux_2[i]);
+        /*If the character is in a discovered space it prints its information.*/
+        if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
+        {
+            character = game_get_character(game, id_aux_2[i]);
+            sprintf(str, "   %-6s: %ld (%d)", character_get_description(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
+            screen_area_puts(ge->descript, str);
+        }
     }
     screen_area_puts(ge->descript, " ");
     free(id_aux_2);
 
     /*4-Prints the player information.*/
+    sprintf(str, "  PLAYER INFORMATION");
+    screen_area_puts(ge->descript, str);
     sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
+    screen_area_puts(ge->descript, str);
+    sprintf(str, "   Player description: %s", player_get_gdesc(player));
     screen_area_puts(ge->descript, str);
 
     if ((n_objects = player_get_n_objects(player)) <= 0)
@@ -346,7 +363,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     }
     else
     {
-        sprintf(str, "   Objects:");
+        sprintf(str, "   Player inventory:");
         screen_area_puts(ge->descript, str);
         objects = player_get_inventory(player);
         for (i = 0; i < n_objects; i++)
@@ -360,7 +377,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     }
 
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
-    if (command_get_code(game_get_last_command(game)) == CHAT)
+    if (command_get_code(game_get_last_command(game)) == CHAT && refresh == FALSE)
     {
         id_aux = space_get_character(space_act);
         /*Checks that there's a friendly NPC to talk with.*/
@@ -372,14 +389,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
             command_set_status(game_get_last_command(game), OK);
         }
     }
-    /*6.Prints the object information.*/
-
-    /*****************************************************************************************************/
-    /*Para el futuro Fernando: chat y inspect van a dejar de funcionar bien cuando
-      se jueguen 2 jugadores, porque estos juegan con last command, que en este caso va a ser
-      el del otro jugador, si no se te ocurre como hacerlo, tengo alguna idea. Borra el comentario luego.*/
-    /*****************************************************************************************************/
-    if (command_get_code(game_get_last_command(game)) == INSPECT)
+    /*6.Prints the object information if the conditions for it appearing are satisfied.*/
+    if (command_get_code(game_get_last_command(game)) == INSPECT && refresh == FALSE)
     {
         last_player = game_get_last_player(game);
         last_space = game_get_space(game, player_get_player_location(last_player));
@@ -404,7 +415,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     next or n, back or b,left or l, right or r, exit or e, take or t, drop or d, chat or c, attack or a");
+    sprintf(str, "     next or n, back or b,left or l, right or r, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i");
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
@@ -431,7 +442,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     /*Checks if the player is in the room.*/
     if (space_id == player_get_player_location(game_get_actual_player(game)))
     {
-        strcpy(aux, "m0\"");
+        sprintf(aux, "%s", player_get_gdesc(game_get_actual_player(game)));
     }
 
     /*Gets the actual space.*/
@@ -439,9 +450,18 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     if (!space)
         return ERROR;
 
+    /*If the space hasn't been discovered, it prints a blank space.*/
+    if (space_is_discovered(space) == FALSE)
+    {
+        sprintf(destination[0], "+------------------+");
+        for (i = 1; i < HEIGHT_SPACE - 1; i++)
+            sprintf(destination[i], "|                  |");
+        sprintf(destination[8], "+------------------+");
+        return OK;
+    }
     /*Starts printing the space.*/
     sprintf(destination[0], "+------------------+");
-    sprintf(destination[1], "|%6s %6s  %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
+    sprintf(destination[1], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
     for (i = 0; i < 5; i++)
     {
         sprintf(destination[i + 2], "|%-18s|", space_get_gdesc_line(space, i));

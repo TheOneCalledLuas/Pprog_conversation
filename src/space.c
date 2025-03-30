@@ -27,14 +27,11 @@ struct _Space
 {
     Id id;                     /*!< Id number of the space, it must be unique. */
     char name[WORD_SIZE + 1];  /*!< Name of the space. */
-    Id north;                  /*!< Id of the space at the north. */
-    Id south;                  /*!< Id of the space at the south. */
-    Id east;                   /*!< Id of the space at the east. */
-    Id west;                   /*!< Id of the space at the west. */
     Set *objects;              /*!< A set with the objects the space has */
     char *gdesc[G_DESC_LINES]; /*!< Strings which create the space's graphic description. */
     char *__gdesc_data;        /*!< Actual matrix with the gdesc.*/
     Id character;              /*!< Character id.*/
+    Bool discovered;            /*!< True if visited, False if never visited.*/
 };
 
 
@@ -58,6 +55,7 @@ Space *space_create(Id id)
     newSpace->name[0] = '\0';
     newSpace->objects = set_create();
     newSpace->character = NO_ID;
+    newSpace->discovered = FALSE;
 
     /*Initialisation of gdesc. I chose to do it this way because if
       we manage to get a decent amount of spaces, storing them in the
@@ -225,6 +223,23 @@ Status space_set_character(Space *space, Id id)
     return OK;
 }
 
+Bool space_is_discovered(Space *space)
+{
+    /*Error management and returns the condition.*/
+    return (space?space->discovered:FALSE);
+}
+
+Status space_set_discovered(Space *space, Bool value)
+{
+    /*Error managment*/
+    if(!space)
+        return ERROR;
+    
+    /*Sets the value*/
+    space->discovered=value;
+    return OK;
+}
+
 Status space_print(Space *space)
 {
     Set *set_aux = NULL;
@@ -256,6 +271,9 @@ Status space_print(Space *space)
     {
         fprintf(stdout, "%s\n", space->gdesc[i]);
     }
+
+    /*5. Prints whether the space has been visited or not*/
+    fprintf(stdout, "Space discovered: %s \n", (space->discovered==TRUE?"TRUE":"FALSE"));
 
     return OK;
 }

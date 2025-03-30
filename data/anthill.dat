@@ -10,15 +10,15 @@
 #s:14|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
 
 #c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
-#c:4|Spider|/\oo/\|123|5|0|I wont't talk to you!|
+#c:4|Spider|/\OO/\|123|5|0|I wont't talk to you!|
 
-#o:21|Grain|11|grain desc|
-#o:22|Seed|121|seed desc|
-#o:23|Water_drop|123|water desc|
-#o:24|Soil|125|soil desc|
+#o:21|grain|11|grain desc|
+#o:22|seed|121|seed desc|
+#o:23|water_drop|123|water desc|
+#o:24|soil|125|soil desc|
 
 #p:1|Ant|mO^|11|5|3|
-#p:3|Worm|-^-^-0|123|5|3|
+#p:3|Worm|-^-^-|123|5|3|
 
 #l:31|Entry-P1|11|121|1|1|
 #l:32|P1-Entry|121|11|0|1|

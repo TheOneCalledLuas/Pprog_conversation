@@ -57,5 +57,15 @@ Status game_reader_load_players(Game *game, char *filename);
  */
 Status game_reader_load_links(Game *game, char *filename);
 
+/**
+ * @brief Loads all the characters from the data file.
+ * @author Raquel Anguita.
+ * 
+ * @param game Pointer to the game.
+ * @param filename NAme of the data file where the characters are stored.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_reader_load_characters(Game *game, char *filename);
+
 
 #endif

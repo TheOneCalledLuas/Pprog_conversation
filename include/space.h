@@ -153,6 +153,25 @@ Id space_get_character(Space *space);
 Status space_set_character(Space *space, Id id);
 
 /**
+ * @brief Gets the information about if the space hs been discovered or not.
+ * @author Fernando Mijangos.
+ * 
+ * @param space Pointer to the space.
+ * @return TRUE if discovered, FALSE if it hasn't or FALSE if error.
+ */
+Bool space_is_discovered(Space *space);
+
+/**
+ * @brief Sets the discovered variable of a space to what you want.
+ * @author Fernando Mijangos.
+ * 
+ * @param space Pointer to the space.
+ * @param value New value, TRUE(discovered) or FALSE(not discovered).
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status space_set_discovered(Space *space, Bool value);
+
+/**
  * @brief It prints the space information(id, name, object id, north id, east id....).
  * @author Fernando Mijangos.
  *

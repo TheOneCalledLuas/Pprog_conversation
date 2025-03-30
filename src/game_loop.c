@@ -134,7 +134,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
     /*It runs the game while you dont want to exit or the game is terminated.*/
     while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(game) == FALSE))
     {
-        graphic_engine_paint_game(gengine, game);
+        graphic_engine_paint_game(gengine, game, TRUE);
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
         last_cmd = game_get_last_command(game);
@@ -147,7 +147,12 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
             command_print(last_cmd, f);
             fprintf(f, "\n");
         }
-        /*sleep(1);*/
+        /*Refreshes the screen so that the player can see what he did.*/
+        graphic_engine_paint_game(gengine, game, FALSE);
+        if (command_get_code(last_cmd) != EXIT)
+            sleep(3);
+
+        /*Goes to the next turn.*/
         game_next_turn(game);
     }
 }

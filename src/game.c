@@ -292,9 +292,11 @@ Status game_destroy(Game **game)
     return OK;
 }
 
-int game_get_turn(Game * game) {
+int game_get_turn(Game *game)
+{
     /*Error handling.*/
-    if (!game) return -1;
+    if (!game)
+        return -1;
 
     /*Returns the game.*/
     return game->turn;
@@ -609,7 +611,6 @@ void game_print(Game *game)
 
 Status game_create_from_file(Game **game, char *filename)
 {
-    Character *c1 = NULL, *c2 = NULL;
     /*Error management.*/
     if (game == NULL || filename == NULL)
     {
@@ -623,41 +624,32 @@ Status game_create_from_file(Game **game, char *filename)
 
     if (game_reader_load_spaces(*game, filename) == ERROR)
     {
+        game_destroy(game);
         return ERROR;
     }
 
     if (game_reader_load_objects(*game, filename) == ERROR)
     {
+        game_destroy(game);
         return ERROR;
     }
 
     if (game_reader_load_players(*game, filename) == ERROR)
     {
+        game_destroy(game);
         return ERROR;
     }
 
     if (game_reader_load_links(*game, filename) == ERROR)
     {
+        game_destroy(game);
         return ERROR;
     }
-
-    /*Loads the characters where they are supposed to be (TEMPORAL).*/
-    c1 = character_create(CHARACTER_ID_1);
-    character_set_description(c1, CHARACTER_DESCR_1);
-    character_set_friendly(c1, TRUE);
-    character_set_health(c1, CHARACTER_HEALTH_1);
-    character_set_message(c1, CHARACTER_MSG_1);
-    character_set_name(c1, CHARACTER_NAME_1);
-    game_add_character((*game), c1);
-    space_set_character(game_get_space((*game), SPACE_C1), CHARACTER_ID_1);
-    c2 = character_create(CHARACTER_ID_2);
-    game_add_character((*game), c2);
-    character_set_description(c2, CHARACTER_DESCR_2);
-    character_set_friendly(c2, FALSE);
-    character_set_health(c2, CHARACTER_HEALTH_2);
-    character_set_message(c2, CHARACTER_MSG_2);
-    character_set_name(c2, CHARACTER_NAME_2);
-    space_set_character(game_get_space((*game), SPACE_C2), CHARACTER_ID_2);
+    if (game_reader_load_characters(*game, filename) == ERROR)
+    {
+        game_destroy(game);
+        return ERROR;
+    }
 
     /*Clean exit.*/
     return OK;
@@ -712,7 +704,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 {
     int i;
     /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR || direction<0||direction>3)
+    if (!(game) || space == NO_ID || space == ID_ERROR || direction < 0 || direction > 3)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing that direction, returns the destination.*/
