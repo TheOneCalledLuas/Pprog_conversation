@@ -17,8 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PLAYERS 8    /*Max number of players.*/
-
+#define MAX_PLAYERS 8 /*Max number of players.*/
 
 /**
    Game interface implementation.
@@ -286,6 +285,7 @@ Status game_destroy(Game **game)
         for (j = 0; j < COMMANDS_SAVED; j++)
         {
             command_destroy((*game)->last_cmd[i][j]);
+            (*game)->last_cmd[i][j] = NULL;
         }
     }
     free(*game);
@@ -565,11 +565,22 @@ Status game_set_last_command(Game *game, Command *command)
     {
         return ERROR;
     }
-    /*Actualises the last tcommand.*/
+    /*Actualises the last command.*/
     game->command_num[game->turn] = (game->command_num[game->turn] - 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
 
     /*It sets the last command to what you want.*/
     game->last_cmd[game->turn][game->command_num[game->turn]] = command;
+
+    return OK;
+}
+
+Status game_next_command(Game *game)
+{
+    if (!game)
+        return ERROR;
+    
+    /*Actualises the last command.*/
+    game->command_num[game->turn] = (game->command_num[game->turn] - 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
 
     return OK;
 }

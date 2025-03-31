@@ -6,9 +6,9 @@ var indexSectionsWithContent =
   3: "cgilmoprst",
   4: "_bcdfghilmnopstw",
   5: "cgis",
-  6: "bcds",
+  6: "bcdps",
   7: "acdefimnostuw",
-  8: "m",
+  8: "gm",
   9: "lpt"
 };
 

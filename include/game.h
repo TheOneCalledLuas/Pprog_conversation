@@ -54,9 +54,18 @@ Character *game_get_character(Game *game, Id id);
  *
  * @param game Pointer to the game.
  * @param command_num Command to be returned (use FIRST_LAST_COMMAND, SECOND_LAST_COMMAND or THIRD_LAST_COMMAND)
- * @return Pointer to the command or NULL;
+ * @return Pointer to the command or NULL
  */
 Command *game_get_previous_command(Game *game, int command_num);
+
+/**
+ * @brief Goes to the next command.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @return OK or ERROR
+ */
+Status game_next_command(Game *game);
 
 /**
  * @brief It returns an array with the ids of the characters,

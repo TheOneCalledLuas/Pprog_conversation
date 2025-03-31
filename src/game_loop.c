@@ -128,12 +128,12 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
     {
         do_log = TRUE;
     }
-    /*Gets the last command.*/
-    last_cmd = game_get_last_command(game);
+
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
     while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(game) == FALSE))
     {
+        last_cmd = game_get_last_command(game);
         graphic_engine_paint_game(gengine, game, TRUE);
         command_get_user_input(last_cmd);
         /*Gets the last command.*/

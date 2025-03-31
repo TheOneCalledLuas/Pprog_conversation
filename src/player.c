@@ -16,8 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_GDESC 10 /*Maximun lenght of a description string for a player.*/
+/**
+ * Maximun lenght of a description string for a player.*/
+#define MAX_GDESC 10 
 
 /**
  * @brief Player

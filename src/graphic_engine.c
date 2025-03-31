@@ -22,38 +22,65 @@
 #include <string.h>
 
 /*Gap measures.*/
-#define WIDTH_MAP 67      /*Map width.*/
-#define WIDTH_DES 30      /*Description width.*/
-#define WIDTH_BAN 23      /*Banner width.*/
-#define HEIGHT_MAP 29     /*Map height.*/
-#define HEIGHT_BAN 1      /*Banner height.*/
-#define HEIGHT_HLP 3      /*Help height.*/
-#define HEIGHT_FDB 3      /*FDB height.*/
-#define MAX_STRING_GE 255 /*Max string lenght.*/
-#define WIDTH_SPACE 21    /*Space width.*/
-#define HEIGHT_SPACE 9    /*Space height.*/
-#define STARING_POINT 1   /*Start of the gap when placed.*/
-#define PLAYER_LENGTH 7   /*The amount of charactes the icon for tha player occupies.*/
 
-#define NON_WRITTABLE_ELEMS 5 /*Elements that cannot be written per room.*/
+/**
+ * Map width.*/
+#define WIDTH_MAP 67
+/**
+ * Description width.*/
+#define WIDTH_DES 30
+/**
+ * Banner width.*/
+#define WIDTH_BAN 23
+/**
+ * Map height.*/
+#define HEIGHT_MAP 29
+/**
+ * Banner height.*/
+#define HEIGHT_BAN 1
+/**
+ * Help height.*/
+#define HEIGHT_HLP 3
+/**
+ * FDB height.*/
+#define HEIGHT_FDB 3
+/**
+ * Max string lenght.*/
+#define MAX_STRING_GE 255
+/**
+ * Space width.*/
+#define WIDTH_SPACE 21
+/**
+ * Space height.*/
+#define HEIGHT_SPACE 9
+/**
+ * Start of the gap when placed.*/
+#define STARING_POINT 1
+/**
+ * The amount of charactes the icon for tha player occupies.*/
+#define PLAYER_LENGTH 7
+/**
+ * Elements that cannot be written per room.*/
+#define NON_WRITTABLE_ELEMS 5
 
-/*Space positions in array*/
-/*This is like this so that later when printing its easier with a for*/
-/* [0] [1] [2]
-   [3] [4] [5]
-   [6] [7] [8] */
+/**
+ * Space positions in array
+ * This is like this so that later when printing its easier with a for
+ *    [0] [1] [2]
+ *    [3] [4] [5]
+ *    [6] [7] [8] */
 typedef enum
 {
-    NORTH_WEST, /*!<North west direction.*/
-    NORTH,      /*!<*/
-    NORTH_EAST,
-    WEST,
-    ACTUAL_POSITION,
-    EAST,
-    SOUTH_WEST,
-    SOUTH,
-    SOUTH_EAST,
-    NUM_IDS
+    NORTH_WEST,      /*!<North west direction.*/
+    NORTH,           /*!<North direction.*/
+    NORTH_EAST,      /*!<North east direction.*/
+    WEST,            /*!<West direction.*/
+    ACTUAL_POSITION, /*!<Actual direction.*/
+    EAST,            /*!<East direction.*/
+    SOUTH_WEST,      /*!<South west direction.*/
+    SOUTH,           /*!<South direction.*/
+    SOUTH_EAST,      /*!<South east direction.*/
+    NUM_IDS          /*!<Number of ids.*/
 } Positions;
 /**
  * @brief _Graphic_engine

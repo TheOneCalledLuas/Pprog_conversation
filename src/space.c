@@ -15,8 +15,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define G_DESC_LINES 5 /*Number of graphic description lines.*/
+/**
+ * Number of graphic description lines.
+*/
+#define G_DESC_LINES 5
 
 /**
  * @brief Space
@@ -31,9 +33,8 @@ struct _Space
     char *gdesc[G_DESC_LINES]; /*!< Strings which create the space's graphic description. */
     char *__gdesc_data;        /*!< Actual matrix with the gdesc.*/
     Id character;              /*!< Character id.*/
-    Bool discovered;            /*!< True if visited, False if never visited.*/
+    Bool discovered;           /*!< True if visited, False if never visited.*/
 };
-
 
 Space *space_create(Id id)
 {
@@ -41,7 +42,7 @@ Space *space_create(Id id)
     int i = 0;
 
     /* Error control.*/
-    if (id == NO_ID ||id == ID_ERROR)
+    if (id == NO_ID || id == ID_ERROR)
         return NULL;
     /*Allocates memory for the space.*/
     newSpace = (Space *)malloc(sizeof(Space));
@@ -154,12 +155,12 @@ const char *space_get_name(Space *space)
 Id *space_get_objects(Space *space)
 {
     Id *set_objects;
-    if(!space)
+    if (!space)
     {
         return NULL;
     }
     /*Error handling.*/
-    if(!(set_objects=set_get_content(space->objects)))
+    if (!(set_objects = set_get_content(space->objects)))
     {
         return NULL;
     }
@@ -205,7 +206,7 @@ Id space_get_character(Space *space)
 
 int space_get_n_objects(Space *space)
 {
-    return(!space?-1:set_len(space->objects));
+    return (!space ? -1 : set_len(space->objects));
 }
 
 Status space_set_character(Space *space, Id id)
@@ -226,17 +227,17 @@ Status space_set_character(Space *space, Id id)
 Bool space_is_discovered(Space *space)
 {
     /*Error management and returns the condition.*/
-    return (space?space->discovered:FALSE);
+    return (space ? space->discovered : FALSE);
 }
 
 Status space_set_discovered(Space *space, Bool value)
 {
     /*Error managment*/
-    if(!space)
+    if (!space)
         return ERROR;
-    
+
     /*Sets the value*/
-    space->discovered=value;
+    space->discovered = value;
     return OK;
 }
 
@@ -273,7 +274,7 @@ Status space_print(Space *space)
     }
 
     /*5. Prints whether the space has been visited or not*/
-    fprintf(stdout, "Space discovered: %s \n", (space->discovered==TRUE?"TRUE":"FALSE"));
+    fprintf(stdout, "Space discovered: %s \n", (space->discovered == TRUE ? "TRUE" : "FALSE"));
 
     return OK;
 }
