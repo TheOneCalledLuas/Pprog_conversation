@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <time.h>
 
 #include "game.h"
@@ -21,6 +22,8 @@
 
 #define ATTACK_PROB 9  /*Chances to attack.*/
 #define SUCCESS_PROB 2 /*Chances to strike (the smaller the better).*/
+#define N_DIRECTIONS 4 /*Number of directions.*/
+#define N_VARIATIONS 2 /*Number of possible ways to call each direction.*/
 
 /**
    Private functions
@@ -41,38 +44,14 @@ void game_actions_unknown(Game *game);
  * @param game Pointer to the game structure.
  */
 void game_actions_exit(Game *game);
-
 /**
- * @brief Action to be executed when next command is given.
- * @author Profesores PProg.
- *
- * @param game Pointer to the game structure.
- */
-void game_actions_next(Game *game);
-
-/**
- * @brief Action to be executed when back command is given.
- * @author Profesores PProg.
- *
- * @param game Pointer to the game structure.
- */
-void game_actions_back(Game *game);
-
-/**
- * @brief Action to be executed when left command is given.
+ * @brief Moves the active player in that direction.
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
+ * @param direction Direction in which the player moves.
  */
-void game_actions_left(Game *game);
-
-/**
- * @brief Action to be executed when right command is given.
- * @author Fernando Mijangos.
- *
- * @param game Pointer to the game structure.
- */
-void game_actions_right(Game *game);
+void game_actions_move(Game *game);
 
 /**
  * @brief Action to be executed when take command is given.
@@ -156,19 +135,10 @@ Status game_actions_update(Game *game, Command *command)
         game_actions_exit(game);
         break;
 
-    case NEXT:
-        game_actions_next(game);
+    case MOVE:
+        game_actions_move(game);
         break;
 
-    case BACK:
-        game_actions_back(game);
-        break;
-    case LEFT:
-        game_actions_left(game);
-        break;
-    case RIGTH:
-        game_actions_right(game);
-        break;
     case TAKE:
         game_actions_take(game);
         break;
@@ -199,38 +169,15 @@ void game_actions_unknown(Game *game) {}
 
 void game_actions_exit(Game *game) {}
 
-void game_actions_next(Game *game)
+void game_actions_move(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
+    Direction direction = UNK_DIRECTION;
+    int i = 0;
 
-    /*It gets the player location.*/
-    space_id = player_get_player_location(game_get_actual_player(game));
-    if (space_id == NO_ID || space_id == ID_ERROR)
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-
-    /*Sets the player location to the id space south of him.*/
-    current_id = game_get_space_at(game, space_id, S);
-    if (current_id != NO_ID)
-    {
-        player_set_player_location(game_get_actual_player(game), current_id);
-    }
-    else
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-    command_set_status(game_get_last_command(game), OK);
-    return;
-}
-
-void game_actions_back(Game *game)
-{
-    Id current_id = NO_ID;
-    Id space_id = NO_ID;
+    /*List with all the possible directions the player can move towards.*/
+    char *dir_from_string[N_DIRECTIONS][N_VARIATIONS] = {{"n", "north"}, {"s", "south"}, {"e", "east"}, {"w", "west"}};
 
     /*Gets the player location.*/
     space_id = player_get_player_location(game_get_actual_player(game));
@@ -240,66 +187,27 @@ void game_actions_back(Game *game)
         return;
     }
 
-    /*Sets the player location it to the id space north of him.*/
-    current_id = game_get_space_at(game, space_id, N);
-    if (current_id != NO_ID)
+    /*Gets the direction in which the player will move*/
+    while (direction == UNK_DIRECTION && i < N_DIRECTIONS)
     {
-        player_set_player_location(game_get_actual_player(game), current_id);
+        if (!strcasecmp(command_get_word(game_get_last_command(game)), dir_from_string[i][CMDS]) || !strcasecmp(command_get_word(game_get_last_command(game)), dir_from_string[i][CMDL]))
+        {
+            direction = i;
+        }
+        else
+        {
+            i++;
+        }
     }
-    else
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-
-    command_set_status(game_get_last_command(game), OK);
-    return;
-}
-
-void game_actions_left(Game *game)
-{
-    Id current_id = NO_ID;
-    Id space_id = NO_ID;
-
-    /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_actual_player(game));
-    if (NO_ID == space_id || ID_ERROR == space_id)
+    if (direction == UNK_DIRECTION)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
-    /*Sets the player location it to the id space north of him.*/
-    current_id =  game_get_space_at(game, space_id, W);
-    if (current_id != NO_ID)
-    {
-        player_set_player_location(game_get_actual_player(game), current_id);
-    }
-    else
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-    command_set_status(game_get_last_command(game), OK);
-    return;
-}
-
-void game_actions_right(Game *game)
-{
-    Id current_id = NO_ID;
-    Id space_id = NO_ID;
-
-    /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_actual_player(game));
-    if (NO_ID == space_id || ID_ERROR == space_id)
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-
-    /*Sets the player location it to the id space north of him.*/
-    current_id =  game_get_space_at(game, space_id, E);
-    if (current_id != NO_ID)
+    /*Sets the player location it to the id space in that direction of him.*/
+    current_id = game_get_space_at(game, space_id, direction);
+    if (current_id != NO_ID && current_id != ID_ERROR)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
     }
