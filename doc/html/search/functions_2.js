@@ -1,17 +1,13 @@
 var searchData=
 [
-  ['link_5fcreate_0',['link_create',['../link_8h.html#a1e662c55d1ea0191b66372f0fa57ac1c',1,'link.h']]],
-  ['link_5fdestroy_1',['link_destroy',['../link_8h.html#a9db25e3b95dbce3ccd993329e103ef0f',1,'links.c']]],
-  ['link_5fget_5fdestination_2',['link_get_destination',['../link_8h.html#a4a010cecfbeb45a964a4a10bac0e1904',1,'links.c']]],
-  ['link_5fget_5fdirection_3',['link_get_direction',['../link_8h.html#a45c192f1efaa9863a150e51d1a0f2756',1,'links.c']]],
-  ['link_5fget_5fid_4',['link_get_id',['../link_8h.html#a2bbd320f995a72b2ea7ea639b1c81892',1,'links.c']]],
-  ['link_5fget_5fname_5',['link_get_name',['../link_8h.html#a83e4213e55c22889d0aa441d1d2c24aa',1,'links.c']]],
-  ['link_5fget_5forigin_6',['link_get_origin',['../link_8h.html#a07dbaa47c78e51d9d70e42611725eaae',1,'links.c']]],
-  ['link_5fget_5fstate_7',['link_get_state',['../link_8h.html#aac5698f3cec0838e54f4dbe86753faae',1,'links.c']]],
-  ['link_5fprint_8',['link_print',['../link_8h.html#a57d563220e5d7168e1fd2b806ecc0909',1,'links.c']]],
-  ['link_5fset_5fdestination_9',['link_set_destination',['../link_8h.html#ab10582ff2392fae7138a6be5deac27ce',1,'links.c']]],
-  ['link_5fset_5fdirection_10',['link_set_direction',['../link_8h.html#ae8acb2f221c7484c5ffcc8e32cd08b81',1,'links.c']]],
-  ['link_5fset_5fname_11',['link_set_name',['../link_8h.html#ab56e0464805b4bb827b9e35219853fa9',1,'links.c']]],
-  ['link_5fset_5forigin_12',['link_set_origin',['../link_8h.html#a8f3228cb8881f397d4bb77dc1bc8a75b',1,'links.c']]],
-  ['link_5fset_5fstate_13',['link_set_state',['../link_8h.html#afdebf41f787ea3cc585cad875b1b356a',1,'links.c']]]
+  ['inventory_5fadd_0',['inventory_add',['../inventory_8h.html#a72721f8975a6d9863b1c94f8960d4fd3',1,'inventory.c']]],
+  ['inventory_5fcreate_1',['inventory_create',['../inventory_8h.html#a21084df415242116205e60d348c148fb',1,'inventory.c']]],
+  ['inventory_5fdestroy_2',['inventory_destroy',['../inventory_8h.html#a7d916b13cab6b3d01a2537c07ce94eca',1,'inventory.c']]],
+  ['inventory_5ffind_3',['inventory_find',['../inventory_8h.html#ac31d687f0651aa93608f93f572c9802b',1,'inventory.c']]],
+  ['inventory_5fget_5fcontent_4',['inventory_get_content',['../inventory_8h.html#a617b9415db717ffdd6f58e18494c8e2e',1,'inventory.c']]],
+  ['inventory_5fget_5fmax_5fobjs_5',['inventory_get_max_objs',['../inventory_8h.html#a499cd1977e9673232a4ad7ac25b167fd',1,'inventory.c']]],
+  ['inventory_5flen_6',['inventory_len',['../inventory_8h.html#aeed3e2a5e09729ce90a694f69fb8c9d1',1,'inventory.c']]],
+  ['inventory_5fprint_7',['inventory_print',['../inventory_8h.html#a18eb07c76bbe3f6e6e1b69621b566bf7',1,'inventory.c']]],
+  ['inventory_5fset_5fmax_5fobjs_8',['inventory_set_max_objs',['../inventory_8h.html#adacd17b5e009041a57d9d144b4e85c80',1,'inventory.c']]],
+  ['inventory_5ftake_9',['inventory_take',['../inventory_8h.html#a328564cd8321a61a84d145a55675c3a8',1,'inventory.c']]]
 ];

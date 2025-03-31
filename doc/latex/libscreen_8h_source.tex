@@ -7,23 +7,34 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ LIBSCREEN\_H}}
 \DoxyCodeLine{00013\ }
 \DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_Area\ Area;}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a3c7e0099996732d34b143dde1a40f02c}{screen\_init}}(\textcolor{keywordtype}{int}\ rows,\ \textcolor{keywordtype}{int}\ columns);}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ BLUE,}
+\DoxyCodeLine{00018\ \ \ \ \ GREEN,}
+\DoxyCodeLine{00019\ \ \ \ \ BLACK,}
+\DoxyCodeLine{00020\ \ \ \ \ RED,}
+\DoxyCodeLine{00021\ \ \ \ \ YELLOW,}
+\DoxyCodeLine{00022\ \ \ \ \ PURPLE,}
+\DoxyCodeLine{00023\ \ \ \ \ CYAN,}
+\DoxyCodeLine{00024\ \ \ \ \ WHITE}
+\DoxyCodeLine{00025\ \}\ Frame\_color;}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}{screen\_destroy}}();}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a3eaa0547a956d39b6c55c9593524e0d1}{screen\_paint}}();}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00057\ Area*\ \mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\_area\_init}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\_area\_destroy}}(Area*\ area);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\_area\_clear}}(Area*\ area);}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\_area\_reset\_cursor}}(Area*\ area);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\_area\_puts}}(Area*\ area,\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a3c7e0099996732d34b143dde1a40f02c}{screen\_init}}(\textcolor{keywordtype}{int}\ rows,\ \textcolor{keywordtype}{int}\ columns);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}{screen\_destroy}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\_paint}}(Frame\_color\ color);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00068\ Area\ *\mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\_area\_init}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\_area\_destroy}}(Area\ *area);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\_area\_clear}}(Area\ *area);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\_area\_reset\_cursor}}(Area\ *area);}
 \DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\_area\_puts}}(Area\ *area,\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

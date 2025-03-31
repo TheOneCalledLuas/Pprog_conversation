@@ -1,0 +1,14 @@
+<map id="src/link.c" name="src/link.c">
+<area shape="rect" id="Node000001" title="It implements the link module." alt="" coords="129,5,209,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,76,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,33,75,74,73,69,147,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,79,167,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,32,148,67,143,65,161,30"/>
+<area shape="rect" id="Node000004" href="$link_8h.html" title="It defines the link module." alt="" coords="242,79,301,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="187,28,245,68,242,73,184,33"/>
+<area shape="rect" id="Node000005" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="169,152,240,177"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="174,30,201,138,196,139,169,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="262,106,227,144,223,140,258,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="264,152,335,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="278,103,292,138,287,140,273,105"/>
+</map>

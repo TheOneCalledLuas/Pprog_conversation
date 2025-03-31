@@ -7,11 +7,13 @@ It defines the player module.
 
 {\ttfamily \#include "{}types.\+h"{}}\newline
 {\ttfamily \#include "{}object.\+h"{}}\newline
-Include dependency graph for player.\+h\+:\nopagebreak
+{\ttfamily \#include "{}inventory.\+h"{}}\newline
+Include dependency graph for player.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=183pt]{player_8h__incl}
+\includegraphics[width=257pt]{player_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
@@ -42,10 +44,18 @@ typedef struct \mbox{\hyperlink{struct__Player}{\+\_\+\+Player}} {\bfseries Play
 \begin{DoxyCompactList}\small\item\em It destroys a player, freeing the allocated memory. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_abc72232b795a1b5063cb377f065f3ffd}{player\+\_\+set\+\_\+player\+\_\+name}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char name\mbox{[}PLAYER\+\_\+\+NAME\+\_\+\+SIZE\mbox{]})
 \begin{DoxyCompactList}\small\item\em It sets the player name to a specified name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a93e7944ed0a4d968bd58d3f3bf843b6e}{player\+\_\+del\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
+\begin{DoxyCompactList}\small\item\em Takes an object out of the player inventory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_a7b9278cc6659776cb91ac5fd6a4dc820}{player\+\_\+get\+\_\+n\+\_\+objects}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Gets the number of objects the playes has. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a3d486a0a75399d0a5f912ef7997abf63}{player\+\_\+set\+\_\+inventory\+\_\+capacity}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, long capacity)
+\begin{DoxyCompactList}\small\item\em Sets the maximun object number for the player. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{player_8h_a3a699c541dc8924c72d31593764e4772}{player\+\_\+get\+\_\+inventory\+\_\+capacity}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Gets the maximun object number for the player. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a890a99cf83704f8146b91dd11af8df98}{player\+\_\+set\+\_\+player\+\_\+location}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id id)
 \begin{DoxyCompactList}\small\item\em It sets the player location to an specified id. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a5f8653e3c985859d75d4827cb236bc31}{player\+\_\+set\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
-\begin{DoxyCompactList}\small\item\em It sets the object of the player to the one you want. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_ac6d0f94c91712e14c1c86c488ca67b56}{player\+\_\+add\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
+\begin{DoxyCompactList}\small\item\em Adds an object to the inventory. \end{DoxyCompactList}\item 
 Id \mbox{\hyperlink{player_8h_af6e377aa4946ebc31fb4977a3997a13f}{player\+\_\+get\+\_\+player\+\_\+id}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the player id. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a2702feb7f3534028a9816fbb8129a543}{player\+\_\+set\+\_\+gdesc}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, char \texorpdfstring{$\ast$}{*}gdesc)
@@ -56,10 +66,12 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_a00cd7a095538830ae4f0
 \begin{DoxyCompactList}\small\item\em It gets the player name. \end{DoxyCompactList}\item 
 Id \mbox{\hyperlink{player_8h_a2bc150d1066f143612fc0ab7654911ba}{player\+\_\+get\+\_\+player\+\_\+location}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the player location id. \end{DoxyCompactList}\item 
-Id \mbox{\hyperlink{player_8h_a96e37051cdc1540e0dde770f6b713f39}{player\+\_\+get\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
+Id \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_add3847b806a897ecb0069b267a23397d}{player\+\_\+get\+\_\+inventory}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the id of the object the player has. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{player_8h_adc37044dd10f828fd54b27c8e088f4e7}{player\+\_\+get\+\_\+health}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em Gets the amount of health the player has. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{player_8h_a6cebe2ad51da9f7a3af1b4c4e4a13668}{player\+\_\+has\+\_\+object}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, Id object)
+\begin{DoxyCompactList}\small\item\em Searches for an object in a player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_a4b6f2c3f6fc189d16c6882c59be4ae19}{player\+\_\+set\+\_\+health}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player, int health)
 \begin{DoxyCompactList}\small\item\em Sets the player health to a value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{player_8h_ab8230694c1f8ab1a420f5a289b923ee7}{player\+\_\+print}} (\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}player)
@@ -84,6 +96,29 @@ GNU Public License
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{player_8h_ac6d0f94c91712e14c1c86c488ca67b56}\label{player_8h_ac6d0f94c91712e14c1c86c488ca67b56} 
+\index{player.h@{player.h}!player\_add\_object@{player\_add\_object}}
+\index{player\_add\_object@{player\_add\_object}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_add\_object()}{player\_add\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+add\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
+
+
+
+Adds an object to the inventory. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player. \\
+\hline
+{\em object} & Id of the object you want the player to have. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything goes well or ERROR if there was some mistake. 
+\end{DoxyReturn}
 \Hypertarget{player_8h_ab8d706037259061de90808be9a6c2b32}\label{player_8h_ab8d706037259061de90808be9a6c2b32} 
 \index{player.h@{player.h}!player\_create@{player\_create}}
 \index{player\_create@{player\_create}!player.h@{player.h}}
@@ -104,6 +139,29 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Pointer the a new player, initialized. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a93e7944ed0a4d968bd58d3f3bf843b6e}\label{player_8h_a93e7944ed0a4d968bd58d3f3bf843b6e} 
+\index{player.h@{player.h}!player\_del\_object@{player\_del\_object}}
+\index{player\_del\_object@{player\_del\_object}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_del\_object()}{player\_del\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+del\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
+
+
+
+Takes an object out of the player inventory. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player. \\
+\hline
+{\em object} & Id of the object to be taken. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK, if everything goes well or ERROR if there was some mistake. 
 \end{DoxyReturn}
 \Hypertarget{player_8h_a2c5f78378722793bb82da46e5c0e7b82}\label{player_8h_a2c5f78378722793bb82da46e5c0e7b82} 
 \index{player.h@{player.h}!player\_destroy@{player\_destroy}}
@@ -168,11 +226,11 @@ Saul Lopez Romero.
 \begin{DoxyReturn}{Returns}
 amount of health, -\/1 if an error takes place. 
 \end{DoxyReturn}
-\Hypertarget{player_8h_a96e37051cdc1540e0dde770f6b713f39}\label{player_8h_a96e37051cdc1540e0dde770f6b713f39} 
-\index{player.h@{player.h}!player\_get\_object@{player\_get\_object}}
-\index{player\_get\_object@{player\_get\_object}!player.h@{player.h}}
-\doxysubsubsection{\texorpdfstring{player\_get\_object()}{player\_get\_object()}}
-{\footnotesize\ttfamily Id player\+\_\+get\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+\Hypertarget{player_8h_add3847b806a897ecb0069b267a23397d}\label{player_8h_add3847b806a897ecb0069b267a23397d} 
+\index{player.h@{player.h}!player\_get\_inventory@{player\_get\_inventory}}
+\index{player\_get\_inventory@{player\_get\_inventory}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_get\_inventory()}{player\_get\_inventory()}}
+{\footnotesize\ttfamily Id \texorpdfstring{$\ast$}{*} player\+\_\+get\+\_\+inventory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -188,6 +246,48 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Id of the object the player has. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a3a699c541dc8924c72d31593764e4772}\label{player_8h_a3a699c541dc8924c72d31593764e4772} 
+\index{player.h@{player.h}!player\_get\_inventory\_capacity@{player\_get\_inventory\_capacity}}
+\index{player\_get\_inventory\_capacity@{player\_get\_inventory\_capacity}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_get\_inventory\_capacity()}{player\_get\_inventory\_capacity()}}
+{\footnotesize\ttfamily long player\+\_\+get\+\_\+inventory\+\_\+capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Gets the maximun object number for the player. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of objects or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a7b9278cc6659776cb91ac5fd6a4dc820}\label{player_8h_a7b9278cc6659776cb91ac5fd6a4dc820} 
+\index{player.h@{player.h}!player\_get\_n\_objects@{player\_get\_n\_objects}}
+\index{player\_get\_n\_objects@{player\_get\_n\_objects}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_get\_n\_objects()}{player\_get\_n\_objects()}}
+{\footnotesize\ttfamily int player\+\_\+get\+\_\+n\+\_\+objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Gets the number of objects the playes has. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pinter to the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of objects the player has, or -\/1 if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{player_8h_af6e377aa4946ebc31fb4977a3997a13f}\label{player_8h_af6e377aa4946ebc31fb4977a3997a13f} 
 \index{player.h@{player.h}!player\_get\_player\_id@{player\_get\_player\_id}}
@@ -251,6 +351,29 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 the name of the player. 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a6cebe2ad51da9f7a3af1b4c4e4a13668}\label{player_8h_a6cebe2ad51da9f7a3af1b4c4e4a13668} 
+\index{player.h@{player.h}!player\_has\_object@{player\_has\_object}}
+\index{player\_has\_object@{player\_has\_object}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_has\_object()}{player\_has\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} player\+\_\+has\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
+
+
+
+Searches for an object in a player\textquotesingle{}s inventory. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Pointer to the player. \\
+\hline
+{\em object} & Id of the object to be searched for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 if the object wasn\textquotesingle{}t found or 
 \end{DoxyReturn}
 \Hypertarget{player_8h_ab8230694c1f8ab1a420f5a289b923ee7}\label{player_8h_ab8230694c1f8ab1a420f5a289b923ee7} 
 \index{player.h@{player.h}!player\_print@{player\_print}}
@@ -319,24 +442,24 @@ Saul López Romero.
 \begin{DoxyReturn}{Returns}
 OK if everythign goes as planned, ERROR otherwise. 
 \end{DoxyReturn}
-\Hypertarget{player_8h_a5f8653e3c985859d75d4827cb236bc31}\label{player_8h_a5f8653e3c985859d75d4827cb236bc31} 
-\index{player.h@{player.h}!player\_set\_object@{player\_set\_object}}
-\index{player\_set\_object@{player\_set\_object}!player.h@{player.h}}
-\doxysubsubsection{\texorpdfstring{player\_set\_object()}{player\_set\_object()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{Id}]{object }\end{DoxyParamCaption})}
+\Hypertarget{player_8h_a3d486a0a75399d0a5f912ef7997abf63}\label{player_8h_a3d486a0a75399d0a5f912ef7997abf63} 
+\index{player.h@{player.h}!player\_set\_inventory\_capacity@{player\_set\_inventory\_capacity}}
+\index{player\_set\_inventory\_capacity@{player\_set\_inventory\_capacity}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_set\_inventory\_capacity()}{player\_set\_inventory\_capacity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} player\+\_\+set\+\_\+inventory\+\_\+capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*}}]{player,  }\item[{long}]{capacity }\end{DoxyParamCaption})}
 
 
 
-It sets the object of the player to the one you want. 
+Sets the maximun object number for the player. 
 
 \begin{DoxyAuthor}{Author}
-Fernando Mijangos
+Saúl López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em player} & Pointer to the player. \\
 \hline
-{\em object} & Id of the object you want the player to have. \\
+{\em capacity} & Number of objects. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

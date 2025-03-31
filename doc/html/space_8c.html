@@ -173,6 +173,12 @@ Functions</h2></td></tr>
 <tr class="memitem:aa4dce872dc290841edb6806d3d86abb8" id="r_aa4dce872dc290841edb6806d3d86abb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#aa4dce872dc290841edb6806d3d86abb8">space_set_character</a> (<a class="el" href="struct__Space.html">Space</a> *space, Id id)</td></tr>
 <tr class="memdesc:aa4dce872dc290841edb6806d3d86abb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the space's character.  <br /></td></tr>
 <tr class="separator:aa4dce872dc290841edb6806d3d86abb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11ef2558d58f17e45585463657374f34" id="r_a11ef2558d58f17e45585463657374f34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#a11ef2558d58f17e45585463657374f34">space_is_discovered</a> (<a class="el" href="struct__Space.html">Space</a> *space)</td></tr>
+<tr class="memdesc:a11ef2558d58f17e45585463657374f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the information about if the space hs been discovered or not.  <br /></td></tr>
+<tr class="separator:a11ef2558d58f17e45585463657374f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323cce5d84b29f2fb9f382b20f685821" id="r_a323cce5d84b29f2fb9f382b20f685821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#a323cce5d84b29f2fb9f382b20f685821">space_set_discovered</a> (<a class="el" href="struct__Space.html">Space</a> *space, <a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a> value)</td></tr>
+<tr class="memdesc:a323cce5d84b29f2fb9f382b20f685821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the discovered variable of a space to what you want.  <br /></td></tr>
+<tr class="separator:a323cce5d84b29f2fb9f382b20f685821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a013d3166ac751f717612c5b0d6510c2c" id="r_a013d3166ac751f717612c5b0d6510c2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#a013d3166ac751f717612c5b0d6510c2c">space_print</a> (<a class="el" href="struct__Space.html">Space</a> *space)</td></tr>
 <tr class="memdesc:a013d3166ac751f717612c5b0d6510c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">It prints the space information(id, name, object id, north id, east id....).  <br /></td></tr>
 <tr class="separator:a013d3166ac751f717612c5b0d6510c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -496,6 +502,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a11ef2558d58f17e45585463657374f34" name="a11ef2558d58f17e45585463657374f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11ef2558d58f17e45585463657374f34">&#9670;&#160;</a></span>space_is_discovered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a> space_is_discovered </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Space.html">Space</a> *&#160;</td>
+          <td class="paramname"><em>space</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the information about if the space hs been discovered or not. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">space</td><td>Pointer to the space. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if discovered, FALSE if it hasn't or FALSE if error. </dd></dl>
+
+</div>
+</div>
 <a id="a013d3166ac751f717612c5b0d6510c2c" name="a013d3166ac751f717612c5b0d6510c2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a013d3166ac751f717612c5b0d6510c2c">&#9670;&#160;</a></span>space_print()</h2>
 
@@ -560,6 +594,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>OK if it goes as planned, ERROR otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a323cce5d84b29f2fb9f382b20f685821" name="a323cce5d84b29f2fb9f382b20f685821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323cce5d84b29f2fb9f382b20f685821">&#9670;&#160;</a></span>space_set_discovered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> space_set_discovered </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Space.html">Space</a> *&#160;</td>
+          <td class="paramname"><em>space</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the discovered variable of a space to what you want. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">space</td><td>Pointer to the space. </td></tr>
+    <tr><td class="paramname">value</td><td>New value, <a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839">TRUE(discovered)</a> or <a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a">FALSE(not discovered)</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if everything went well, ERROR otherwise. </dd></dl>
 
 </div>
 </div>

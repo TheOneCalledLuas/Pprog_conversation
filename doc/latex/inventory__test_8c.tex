@@ -1,0 +1,146 @@
+\doxysection{src/inventory\+\_\+test.c File Reference}
+\hypertarget{inventory__test_8c}{}\label{inventory__test_8c}\index{src/inventory\_test.c@{src/inventory\_test.c}}
+
+
+It tests inventory module.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}inventory.\+h"{}}\newline
+{\ttfamily \#include "{}types.\+h"{}}\newline
+{\ttfamily \#include "{}inventory\+\_\+test.\+h"{}}\newline
+{\ttfamily \#include "{}test.\+h"{}}\newline
+Include dependency graph for inventory\+\_\+test.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inventory__test_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{inventory__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}{MAX\+\_\+\+TESTS}}~20
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{inventory__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Main function which manages the tests. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventory__test_8c_a33638f1a88ae16ab8d6bee00145b82b8}{test1\+\_\+inventory\+\_\+create}} ()
+\item 
+\Hypertarget{inventory__test_8c_ace30873f717c8e9e5ffe5e8017474d77}\label{inventory__test_8c_ace30873f717c8e9e5ffe5e8017474d77} 
+void {\bfseries test1\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a64fb028724693b382de7a1d9d61604e1}\label{inventory__test_8c_a64fb028724693b382de7a1d9d61604e1} 
+void {\bfseries test2\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a34f6b816f58d7d1903dee652d3b83e99}\label{inventory__test_8c_a34f6b816f58d7d1903dee652d3b83e99} 
+void {\bfseries test3\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a309d12b3cd92937f4eb15f092adb09f8}\label{inventory__test_8c_a309d12b3cd92937f4eb15f092adb09f8} 
+void {\bfseries test4\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a42b51a5b53baf38bddce941a7703d18a}\label{inventory__test_8c_a42b51a5b53baf38bddce941a7703d18a} 
+void {\bfseries test1\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_ab8a07623d86b3f0d414e4b648fcea9ca}\label{inventory__test_8c_ab8a07623d86b3f0d414e4b648fcea9ca} 
+void {\bfseries test2\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a2f84a56b01ad51431c4db33b16078ae6}\label{inventory__test_8c_a2f84a56b01ad51431c4db33b16078ae6} 
+void {\bfseries test3\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
+\item 
+\Hypertarget{inventory__test_8c_a23c0eb24fb90991d2a9f12a00fd30fc8}\label{inventory__test_8c_a23c0eb24fb90991d2a9f12a00fd30fc8} 
+void {\bfseries test1\+\_\+inventory\+\_\+find} ()
+\item 
+\Hypertarget{inventory__test_8c_ac1b1c0d834b7e67701693b1ddb1fe53c}\label{inventory__test_8c_ac1b1c0d834b7e67701693b1ddb1fe53c} 
+void {\bfseries test2\+\_\+inventory\+\_\+find} ()
+\item 
+\Hypertarget{inventory__test_8c_a8cd7be27f595b5dc44156872e8f26afa}\label{inventory__test_8c_a8cd7be27f595b5dc44156872e8f26afa} 
+void {\bfseries test3\+\_\+inventory\+\_\+find} ()
+\item 
+\Hypertarget{inventory__test_8c_a79b930d95d5da68607b0ff908b1cf6f7}\label{inventory__test_8c_a79b930d95d5da68607b0ff908b1cf6f7} 
+void {\bfseries test4\+\_\+inventory\+\_\+find} ()
+\item 
+\Hypertarget{inventory__test_8c_af08506b94c93f871902facb5430b43fa}\label{inventory__test_8c_af08506b94c93f871902facb5430b43fa} 
+void {\bfseries test5\+\_\+inventory\+\_\+find} ()
+\item 
+\Hypertarget{inventory__test_8c_ae81ec4669af03331ca8a228567736474}\label{inventory__test_8c_ae81ec4669af03331ca8a228567736474} 
+void {\bfseries test1\+\_\+inventory\+\_\+add} ()
+\item 
+\Hypertarget{inventory__test_8c_a48019cb45cb5918233d5d42334d2be17}\label{inventory__test_8c_a48019cb45cb5918233d5d42334d2be17} 
+void {\bfseries test2\+\_\+inventory\+\_\+add} ()
+\item 
+\Hypertarget{inventory__test_8c_ada5ad194dfe9af537c6b2805bf38910d}\label{inventory__test_8c_ada5ad194dfe9af537c6b2805bf38910d} 
+void {\bfseries test3\+\_\+inventory\+\_\+add} ()
+\item 
+\Hypertarget{inventory__test_8c_afe091fc610e1df3c1d0982754ea1ae7f}\label{inventory__test_8c_afe091fc610e1df3c1d0982754ea1ae7f} 
+void {\bfseries test4\+\_\+inventory\+\_\+add} ()
+\item 
+\Hypertarget{inventory__test_8c_af73546db509dd2ee35e947d717a3bd18}\label{inventory__test_8c_af73546db509dd2ee35e947d717a3bd18} 
+void {\bfseries test5\+\_\+inventory\+\_\+add} ()
+\item 
+\Hypertarget{inventory__test_8c_ae73487562602000f7f576af37f7de423}\label{inventory__test_8c_ae73487562602000f7f576af37f7de423} 
+void {\bfseries test6\+\_\+inventory\+\_\+add} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It tests inventory module. 
+
+\begin{DoxyAuthor}{Author}
+Raquel Anguita Martínez de Velasco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20-\/03-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{inventory__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}\label{inventory__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709} 
+\index{inventory\_test.c@{inventory\_test.c}!MAX\_TESTS@{MAX\_TESTS}}
+\index{MAX\_TESTS@{MAX\_TESTS}!inventory\_test.c@{inventory\_test.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_TESTS}{MAX\_TESTS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+TESTS~20}
+
+Total test number. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{inventory__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{inventory__test_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+\index{inventory\_test.c@{inventory\_test.c}!main@{main}}
+\index{main@{main}!inventory\_test.c@{inventory\_test.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function which manages the tests. 
+
+You can decide which test you want to run or run all the tests.
+
+\begin{DoxyAuthor}{Author}
+Raquel Anguita Martínez de Velasco 
+\end{DoxyAuthor}
+\Hypertarget{inventory__test_8c_a33638f1a88ae16ab8d6bee00145b82b8}\label{inventory__test_8c_a33638f1a88ae16ab8d6bee00145b82b8} 
+\index{inventory\_test.c@{inventory\_test.c}!test1\_inventory\_create@{test1\_inventory\_create}}
+\index{test1\_inventory\_create@{test1\_inventory\_create}!inventory\_test.c@{inventory\_test.c}}
+\doxysubsubsection{\texorpdfstring{test1\_inventory\_create()}{test1\_inventory\_create()}}
+{\footnotesize\ttfamily void test1\+\_\+inventory\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000029}{Test}}]Test Inventory creation. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to Null. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Non NULL pointer to set. 
+\end{DoxyPostcond}

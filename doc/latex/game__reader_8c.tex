@@ -7,6 +7,7 @@ It loads and makes all the actions related to space management.
 
 {\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
 {\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}link.\+h"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
@@ -32,8 +33,12 @@ Include dependency graph for game\+\_\+reader.\+c\+:
 \begin{DoxyCompactList}\small\item\em Loads all the spaces from the data file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a64489ad2551f477b9a2496697bc36fa9}{game\+\_\+reader\+\_\+load\+\_\+objects}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
 \begin{DoxyCompactList}\small\item\em Loads all the objects from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_abb9c617888c6718713ab0ff35992de98}{game\+\_\+reader\+\_\+load\+\_\+characters}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}name\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Loads all the characters from the data file. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a5060525810704f10a6a1772981b207a5}{game\+\_\+reader\+\_\+load\+\_\+players}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
-\begin{DoxyCompactList}\small\item\em Loads all the players from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Loads all the players from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a00cc7cb1731d6ea69ac880d654ba66e5}{game\+\_\+reader\+\_\+load\+\_\+links}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the links from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -54,6 +59,52 @@ GNU Public License
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{game__reader_8c_abb9c617888c6718713ab0ff35992de98}\label{game__reader_8c_abb9c617888c6718713ab0ff35992de98} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_characters@{game\_reader\_load\_characters}}
+\index{game\_reader\_load\_characters@{game\_reader\_load\_characters}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_characters()}{game\_reader\_load\_characters()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+characters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the characters from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Raquel Anguita.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & NAme of the data file where the characters are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__reader_8c_a00cc7cb1731d6ea69ac880d654ba66e5}\label{game__reader_8c_a00cc7cb1731d6ea69ac880d654ba66e5} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_links@{game\_reader\_load\_links}}
+\index{game\_reader\_load\_links@{game\_reader\_load\_links}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_links()}{game\_reader\_load\_links()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+links (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the links from the data file. Should be called once all the spaces have been loaded in. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the map is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
 \Hypertarget{game__reader_8c_a64489ad2551f477b9a2496697bc36fa9}\label{game__reader_8c_a64489ad2551f477b9a2496697bc36fa9} 
 \index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_objects@{game\_reader\_load\_objects}}
 \index{game\_reader\_load\_objects@{game\_reader\_load\_objects}!game\_reader.c@{game\_reader.c}}

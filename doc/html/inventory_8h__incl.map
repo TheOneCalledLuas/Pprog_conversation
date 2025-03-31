@@ -1,0 +1,8 @@
+<map id="include/inventory.h" name="include/inventory.h">
+<area shape="rect" id="Node000001" title="It handles inventory related tasks." alt="" coords="5,5,151,31"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="43,152,113,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,31,74,79,77,138,72,138,69,79,74,30"/>
+<area shape="rect" id="Node000003" href="$set_8h.html" title="It defines sets for the whole project." alt="" coords="84,79,139,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="86,30,103,65,98,67,81,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="108,105,92,141,87,139,103,103"/>
+</map>

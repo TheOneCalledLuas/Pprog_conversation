@@ -1,7 +1,9 @@
 <map id="include/test.h" name="include/test.h">
-<area shape="rect" id="Node000001" title="Test tool fundamentals." alt="" coords="75,5,185,31"/>
-<area shape="rect" id="Node000002" href="$set__test_8c.html" title="It tests space module." alt="" coords="5,79,113,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,43,73,80,69,77,107,39"/>
-<area shape="rect" id="Node000003" href="$space__test_8c.html" title="It tests the character module." alt="" coords="137,79,264,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,39,191,77,187,80,149,43"/>
+<area shape="rect" id="Node000001" title="Test tool fundamentals." alt="" coords="179,5,289,31"/>
+<area shape="rect" id="Node000002" href="$inventory__test_8c.html" title="It tests inventory module." alt="" coords="5,79,156,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,39,107,81,105,76,196,34"/>
+<area shape="rect" id="Node000003" href="$set__test_8c.html" title="It tests space module." alt="" coords="180,79,288,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,44,237,79,231,79,231,44"/>
+<area shape="rect" id="Node000004" href="$space__test_8c.html" title="It tests the character module." alt="" coords="312,79,439,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="270,34,353,76,351,81,267,39"/>
 </map>

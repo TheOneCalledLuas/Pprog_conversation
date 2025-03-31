@@ -14,7 +14,6 @@ TESTDIR = ./test
 #List with all the object names
 MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o
 
-
 .PHONY = all clean clear check
 
 #Path rules

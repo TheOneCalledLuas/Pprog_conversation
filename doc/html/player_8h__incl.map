@@ -1,8 +1,14 @@
 <map id="include/player.h" name="include/player.h">
 <area shape="rect" id="Node000001" title="It defines the player module." alt="" coords="5,5,131,31"/>
-<area shape="rect" id="Node000002" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="33,152,103,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,32,59,79,59,110,64,138,59,139,54,110,53,78,62,31"/>
-<area shape="rect" id="Node000003" href="$object_8h.html" title="It handles object related tasks." alt="" coords="68,79,143,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="77,30,95,65,91,68,72,32"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="102,106,83,141,78,139,97,103"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="75,225,146,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,33,44,60,27,96,18,137,20,157,26,176,45,199,70,217,67,221,42,203,22,179,14,158,13,137,22,95,39,57,57,30"/>
+<area shape="rect" id="Node000003" href="$object_8h.html" title="It handles object related tasks." alt="" coords="36,152,111,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="71,31,75,138,70,138,66,31"/>
+<area shape="rect" id="Node000004" href="$inventory_8h.html" title="It handles inventory related tasks." alt="" coords="106,79,201,104"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="83,29,131,68,127,72,80,33"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="82,176,101,212,96,215,77,179"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="152,105,121,213,115,211,147,104"/>
+<area shape="rect" id="Node000005" href="$set_8h.html" title="It defines sets for the whole project." alt="" coords="186,152,241,177"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="165,103,197,140,193,143,161,106"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="198,180,140,219,137,215,195,175"/>
 </map>

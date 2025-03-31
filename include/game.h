@@ -25,6 +25,11 @@
 #define MAX_CHARACTERS 100
 #define MAX_LINKS 400
 
+/*Keywords to obtain last commands.*/
+#define FIRST_LAST_COMMAND 0
+#define SECOND_LAST_COMMAND 1
+#define THIRD_LAST_COMMAND 2
+
 /**
  * @brief Command
  *
@@ -43,10 +48,20 @@ typedef struct _Game Game;
 Character *game_get_character(Game *game, Id id);
 
 /**
- * @brief It returns an array with the ids of the characters, 
+ * @brief Gets one of the previously executed commands by the player.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param command_num Command to be returned (use FIRST_LAST_COMMAND, SECOND_LAST_COMMAND or THIRD_LAST_COMMAND)
+ * @return Pointer to the command or NULL;
+ */
+Command *game_get_previous_command(Game *game, int command_num);
+
+/**
+ * @brief It returns an array with the ids of the characters,
  *        IMPORTANT it returns something that has been allocated, you have to free it.
- * @author Fernando Mijangos 
- * 
+ * @author Fernando Mijangos
+ *
  * @param game Game structure, where all the information related to game is included.
  * @return The array of ids of the character.
  *          IMPORTANT you have to free it afrter using it.
@@ -80,7 +95,7 @@ Status game_add_character(Game *game, Character *character);
  * @param game Pointer to the game.
  * @return Object number or -1 if an error takes place.
  */
-int game_get_num_characters(Game * game);
+int game_get_num_characters(Game *game);
 
 /**
  * @brief Adds a space to the game structure.
@@ -93,7 +108,7 @@ int game_get_num_characters(Game * game);
 Status game_add_space(Game *game, Space *space);
 
 /**
- * @brief It sets the number of spaces to zero, the ids to NO_ID, 
+ * @brief It sets the number of spaces to zero, the ids to NO_ID,
  * the last command is set to NO_CMD and the game is set to not finished
  * @author Saúl Lopez Romero
  *
@@ -144,25 +159,25 @@ Id game_get_space_id_at(Game *game, int position);
 /**
  * @brief Returns the number of players.
  * @author Saúl López Romero
- * 
+ *
  * @param game pointer to the game.
  * @return number of players or -1 if an error takees place.
  */
-int game_get_n_players (Game * game);
+int game_get_n_players(Game *game);
 
 /**
  * @brief Returns the game turn.
  * @author Saúl López Romero
- * 
+ *
  * @param game pointer to the game.
  * @return actual game turn or -1 if an error takes place.
  */
-int game_get_turn(Game * game);
+int game_get_turn(Game *game);
 
 /**
  * @brief Returns a player by its turn number.
  * @author Saul Lopez Romero
- * 
+ *
  * @param game Pointer to the game.
  * @param player_number Turn number.
  */
@@ -171,35 +186,34 @@ Player *game_get_player(Game *game, int player_number);
 /**
  * @brief Advances to the next turn.
  * @author Saúl López Romero
- * 
+ *
  * @param game pointer to the game.
  * @return OK or ERROR.
  */
-Status game_next_turn(Game * game);
+Status game_next_turn(Game *game);
 
 /**
  * @brief Returns the next turn.
  * @author Saúl López Romero
- * 
+ *
  * @param game pointer to the game.
  * @return next turn or -1 if an error takes place.
  */
 int game_get_next_turn(Game *game);
 
-
 /**
  * @brief Gets the actual player.
  * @author Saúl López Romero.
- * 
+ *
  * @param game pointer to the game.
  * @return Pointer to the player or NULL in case of ERROR.
  */
-Player * game_get_actual_player(Game * game);
+Player *game_get_actual_player(Game *game);
 
 /**
  * @brief Gets the last player.
  * @author Saúl López Romero.
- * 
+ *
  * @param game pointer to the game.
  * @return Pointer to the player or NULL in case of ERROR.
  */
@@ -335,7 +349,7 @@ int game_get_n_objects(Game *game);
 /**
  * @brief Gets an object with a specfic tag inside the game
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game.
  * @param word Tag of the object.
  * @return Id of the object or NO_ID in any other case.
@@ -355,27 +369,27 @@ Status game_set_n_objects(Game *game, int n_objects);
 /**
  * @brief Adds a link to the link array.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @param link Pointer to the new link.
  * @return OK if everything went well, ERROR otherwise.
  */
-Status game_add_link(Game* game, Link*link);
+Status game_add_link(Game *game, Link *link);
 
 /**
  * @brief Deletes a link from the link array (used to delete all the information of the links in game_reader).
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @param position Position of the link in the array.
  * @return OK if everything went well, ERROR otherwise.
  */
-Status game_delete_link(Game* game, int position);
+Status game_delete_link(Game *game, int position);
 
 /**
  * @brief Takes a link from the link array.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @param link_id Id of the link.
  * @return Pointer to the link with that id, or NULL if error.
@@ -385,7 +399,7 @@ Link *game_find_link(Game *game, Id link_id);
 /**
  * @brief Looks for the space situated at a given direction from a space.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @param space Id of the space from where the new space is searched.
  * @param direction Direction in which you search.

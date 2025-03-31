@@ -1,0 +1,7 @@
+<map id="_Player" name="_Player">
+<area shape="rect" id="Node000001" title="Player." alt="" coords="15,181,86,207"/>
+<area shape="rect" id="Node000002" href="$struct__Inventory.html" title=" " alt="" coords="5,93,96,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,133,53,181,48,181,48,133"/>
+<area shape="rect" id="Node000003" href="$struct__Set.html" title=" " alt="" coords="25,5,76,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="53,45,53,93,48,93,48,45"/>
+</map>

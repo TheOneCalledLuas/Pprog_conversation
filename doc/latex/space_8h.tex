@@ -8,8 +8,7 @@ It defines the space module interface.
 {\ttfamily \#include "{}types.\+h"{}}\newline
 {\ttfamily \#include "{}object.\+h"{}}\newline
 {\ttfamily \#include "{}set.\+h"{}}\newline
-Include dependency graph for space.\+h\+:
-\nopagebreak
+Include dependency graph for space.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -60,6 +59,10 @@ Id \mbox{\hyperlink{space_8h_a2b1d65484b8f7241c56cb2ca9bb1fdcd}{space\+\_\+get\+
 \begin{DoxyCompactList}\small\item\em Returns the character id. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_aa4dce872dc290841edb6806d3d86abb8}{space\+\_\+set\+\_\+character}} (\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}space, Id id)
 \begin{DoxyCompactList}\small\item\em Sets the space\textquotesingle{}s character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{space_8h_a11ef2558d58f17e45585463657374f34}{space\+\_\+is\+\_\+discovered}} (\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}space)
+\begin{DoxyCompactList}\small\item\em Gets the information about if the space hs been discovered or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a323cce5d84b29f2fb9f382b20f685821}{space\+\_\+set\+\_\+discovered}} (\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} value)
+\begin{DoxyCompactList}\small\item\em Sets the discovered variable of a space to what you want. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a013d3166ac751f717612c5b0d6510c2c}{space\+\_\+print}} (\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}space)
 \begin{DoxyCompactList}\small\item\em It prints the space information(id, name, object id, north id, east id....). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -295,6 +298,27 @@ Fernando Mijangos
 \begin{DoxyReturn}{Returns}
 Array with the ids of the objects IMPORTANT you have to free the array after using it. 
 \end{DoxyReturn}
+\Hypertarget{space_8h_a11ef2558d58f17e45585463657374f34}\label{space_8h_a11ef2558d58f17e45585463657374f34} 
+\index{space.h@{space.h}!space\_is\_discovered@{space\_is\_discovered}}
+\index{space\_is\_discovered@{space\_is\_discovered}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_is\_discovered()}{space\_is\_discovered()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} space\+\_\+is\+\_\+discovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}}]{space }\end{DoxyParamCaption})}
+
+
+
+Gets the information about if the space hs been discovered or not. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TRUE if discovered, FALSE if it hasn\textquotesingle{}t or FALSE if error. 
+\end{DoxyReturn}
 \Hypertarget{space_8h_a013d3166ac751f717612c5b0d6510c2c}\label{space_8h_a013d3166ac751f717612c5b0d6510c2c} 
 \index{space.h@{space.h}!space\_print@{space\_print}}
 \index{space\_print@{space\_print}!space.h@{space.h}}
@@ -338,6 +362,29 @@ Saul Lopez Romero
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK if it goes as planned, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{space_8h_a323cce5d84b29f2fb9f382b20f685821}\label{space_8h_a323cce5d84b29f2fb9f382b20f685821} 
+\index{space.h@{space.h}!space\_set\_discovered@{space\_set\_discovered}}
+\index{space\_set\_discovered@{space\_set\_discovered}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_set\_discovered()}{space\_set\_discovered()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} space\+\_\+set\+\_\+discovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the discovered variable of a space to what you want. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space. \\
+\hline
+{\em value} & New value, \doxylink{types_8h_a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839}{TRUE(discovered)} or \doxylink{types_8h_a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE(not discovered)}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
 \end{DoxyReturn}
 \Hypertarget{space_8h_a6235610be91845ed56ddefadaa79ce12}\label{space_8h_a6235610be91845ed56ddefadaa79ce12} 
 \index{space.h@{space.h}!space\_set\_gdesc\_line@{space\_set\_gdesc\_line}}

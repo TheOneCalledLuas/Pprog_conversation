@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PLAYERS 10   /*Max number of players.*/
+#define MAX_PLAYERS 8    /*Max number of players.*/
 #define COMMANDS_SAVED 3 /*Number of commands saved.*/
 
 /**
@@ -25,24 +25,25 @@
 */
 struct _Game
 {
-    Player *players[MAX_PLAYERS];          /*!< Array with all the players. */
-    Space *spaces[MAX_SPACES];             /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS];          /*!< An array with the information of every objects.*/
-    Character *characters[MAX_CHARACTERS]; /*!< Array with all the character of the game.*/
-    Link *links[MAX_LINKS];                /*!< Array with all the links information.*/
-    int n_spaces;                          /*!< Number of spaces.*/
-    int n_objects;                         /*!< Number of objects.*/
-    int n_characters;                      /*!< Number of characters.*/
-    int n_links;                           /*!< Number of links.*/
-    Command *last_cmd;                     /*!< Array with the last commands executed by the players.*/
-    Bool finished;                         /*!< Whether the game has finished or not.*/
-    int turn;                              /*!< Actual turn.*/
-    int n_players;                         /*!< Number of players.*/
+    Player *players[MAX_PLAYERS];                   /*!< Array with all the players. */
+    Space *spaces[MAX_SPACES];                      /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS];                   /*!< An array with the information of every objects.*/
+    Character *characters[MAX_CHARACTERS];          /*!< Array with all the character of the game.*/
+    Link *links[MAX_LINKS];                         /*!< Array with all the links information.*/
+    int n_spaces;                                   /*!< Number of spaces.*/
+    int n_objects;                                  /*!< Number of objects.*/
+    int n_characters;                               /*!< Number of characters.*/
+    int n_links;                                    /*!< Number of links.*/
+    Command *last_cmd[MAX_PLAYERS][COMMANDS_SAVED]; /*!< Array with the last commands executed by the players.*/
+    int command_num[MAX_PLAYERS];                   /*!< Array which determines the last command.*/
+    Bool finished;                                  /*!< Whether the game has finished or not.*/
+    int turn;                                       /*!< Actual turn.*/
+    int n_players;                                  /*!< Number of players.*/
 };
 
 Status game_create(Game **game)
 {
-    int i;
+    int i = 0, j = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -76,6 +77,14 @@ Status game_create(Game **game)
     {
         (*game)->links[i] = NULL;
     }
+    for (i = 0; i < MAX_PLAYERS; i++)
+    {
+        (*game)->command_num[i] = FIRST_LAST_COMMAND;
+        for (j = 0; j < COMMANDS_SAVED; j++)
+        {
+            (*game)->last_cmd[i][j] = command_create();
+        }
+    }
 
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
@@ -84,7 +93,6 @@ Status game_create(Game **game)
     (*game)->n_players = 0;
     (*game)->n_links = 0;
     (*game)->turn = 0;
-    (*game)->last_cmd = command_create();
     (*game)->finished = FALSE;
 
     return OK;
@@ -236,7 +244,7 @@ Id game_get_character_location(Game *game, Id id)
 
 Status game_destroy(Game **game)
 {
-    int i = 0;
+    int i = 0, j = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -272,8 +280,14 @@ Status game_destroy(Game **game)
     {
         link_destroy((*game)->links[i]);
     }
-
-    command_destroy((*game)->last_cmd);
+    /*Destroys the command.*/
+    for (i = 0; i < MAX_PLAYERS; i++)
+    {
+        for (j = 0; j < COMMANDS_SAVED; j++)
+        {
+            command_destroy((*game)->last_cmd[i][j]);
+        }
+    }
     free(*game);
     return OK;
 }
@@ -541,7 +555,7 @@ Command *game_get_last_command(Game *game)
     }
 
     /*It gets the last command used.*/
-    return game->last_cmd;
+    return game->last_cmd[game->turn][game->command_num[game->turn]];
 }
 
 Status game_set_last_command(Game *game, Command *command)
@@ -551,11 +565,25 @@ Status game_set_last_command(Game *game, Command *command)
     {
         return ERROR;
     }
+    /*Actualises the last tcommand.*/
+    game->command_num[game->turn] = (game->command_num[game->turn] - 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
 
     /*It sets the last command to what you want.*/
-    game->last_cmd = command;
+    game->last_cmd[game->turn][game->command_num[game->turn]] = command;
 
     return OK;
+}
+
+Command *game_get_previous_command(Game *game, int command_num)
+{
+    int aux = 0;
+    /*Error management.*/
+    if (!game || command_num < 0 || command_num >= COMMANDS_SAVED)
+        return NULL;
+
+    aux = (game->command_num[game->turn] + command_num) % COMMANDS_SAVED;
+
+    return game->last_cmd[game->turn][aux];
 }
 
 Bool game_get_finished(Game *game) { return game->finished; }

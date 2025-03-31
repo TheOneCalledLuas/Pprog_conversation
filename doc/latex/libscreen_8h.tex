@@ -18,6 +18,22 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \Hypertarget{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}\label{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127} 
 typedef struct \+\_\+\+Area {\bfseries Area}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}\label{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7} 
+enum {\bfseries Frame\+\_\+color} \{ \newline
+{\bfseries BLUE}
+, {\bfseries GREEN}
+, {\bfseries BLACK}
+, {\bfseries RED}
+, \newline
+{\bfseries YELLOW}
+, {\bfseries PURPLE}
+, {\bfseries CYAN}
+, {\bfseries WHITE}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,14 +41,14 @@ void \mbox{\hyperlink{libscreen_8h_a3c7e0099996732d34b143dde1a40f02c}{screen\+\_
 \begin{DoxyCompactList}\small\item\em It creates a new screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}{screen\+\_\+destroy}} ()
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_a3eaa0547a956d39b6c55c9593524e0d1}{screen\+\_\+paint}} ()
+void \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\+\_\+paint}} (Frame\+\_\+color color)
 \begin{DoxyCompactList}\small\item\em It paints in the terminal the actual screen composition. \end{DoxyCompactList}\item 
 Area \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\+\_\+area\+\_\+init}} (int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em It creates a new area inside a screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\+\_\+area\+\_\+destroy}} (Area \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\+\_\+area\+\_\+clear}} (Area \texorpdfstring{$\ast$}{*}area)
-\begin{DoxyCompactList}\small\item\em It clears an area, erasing all its content. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It cleares an area, eraising all its content. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\+\_\+area\+\_\+reset\+\_\+cursor}} (Area \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It resets the cursor of an area. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\+\_\+area\+\_\+puts}} (Area \texorpdfstring{$\ast$}{*}area, char \texorpdfstring{$\ast$}{*}str)
@@ -65,14 +81,14 @@ GNU Public License
 
 
 
-It clears an area, erasing all its content. 
+It cleares an area, eraising all its content. 
 
 \begin{DoxyAuthor}{Author}
 Profesores PPROG
 \end{DoxyAuthor}
 This function should be called for earaising all the information in an area, before introducing a new state of it. 
 \begin{DoxyParams}{Parameters}
-{\em area} & The area to be cleared. \\
+{\em area} & the area to be cleared \\
 \hline
 \end{DoxyParams}
 \Hypertarget{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}\label{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f} 
@@ -90,7 +106,7 @@ Profesores PPROG
 \end{DoxyAuthor}
 This function should be called once the area is not needed anymore, before ending the programme. 
 \begin{DoxyParams}{Parameters}
-{\em area} & The area to be freed. \\
+{\em area} & the area to be freed \\
 \hline
 \end{DoxyParams}
 \Hypertarget{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}\label{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88} 
@@ -108,17 +124,17 @@ Profesores PPROG
 \end{DoxyAuthor}
 screen\+\_\+area\+\_\+init allocates memory for a new area and initializes its members. 
 \begin{DoxyParams}{Parameters}
-{\em x} & The x-\/coordinate of the up-\/left corner of the area \\
+{\em x} & the x-\/coordinate of the up-\/left corner of the area \\
 \hline
-{\em y} & The x-\/coordinate of the up-\/left corner of the area \\
+{\em y} & the x-\/coordinate of the up-\/left corner of the area \\
 \hline
-{\em width} & The width of the area. \\
+{\em width} & the width of the area \\
 \hline
-{\em height} & The height of the area. \\
+{\em height} & the height of the area \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A new area, initialized. 
+a new area, initialized 
 \end{DoxyReturn}
 \Hypertarget{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}\label{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814} 
 \index{libscreen.h@{libscreen.h}!screen\_area\_puts@{screen\_area\_puts}}
@@ -135,9 +151,9 @@ Profesores PPROG
 \end{DoxyAuthor}
 This function sets the string that will be shown in an area. Each string introduced will be a line in the specified area. 
 \begin{DoxyParams}{Parameters}
-{\em area} & The area to be modified. \\
+{\em area} & the area to be modified \\
 \hline
-{\em str} & String that contains the information to be included in a particular area. \\
+{\em str} & a string that contains the information to be included in a particular area \\
 \hline
 \end{DoxyParams}
 \Hypertarget{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}\label{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2} 
@@ -155,7 +171,7 @@ Profesores PPROG
 \end{DoxyAuthor}
 This function reset the cursor to the up-\/left corner of the area. 
 \begin{DoxyParams}{Parameters}
-{\em area} & The involved area. \\
+{\em area} & the involved area \\
 \hline
 \end{DoxyParams}
 \Hypertarget{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}\label{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef} 
@@ -186,16 +202,16 @@ Profesores PPROG
 \end{DoxyAuthor}
 This function should be called at the beginning of the program, so the complete screen is allocated before starting defining areas. 
 \begin{DoxyParams}{Parameters}
-{\em rows} & The number of rows that will have the full screen. \\
+{\em rows} & the number of rows that will have the full screen \\
 \hline
-{\em columns} & The number of columns that will have the full screen. \\
+{\em columns} & the number of columns that will have the full screen \\
 \hline
 \end{DoxyParams}
-\Hypertarget{libscreen_8h_a3eaa0547a956d39b6c55c9593524e0d1}\label{libscreen_8h_a3eaa0547a956d39b6c55c9593524e0d1} 
+\Hypertarget{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}\label{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c} 
 \index{libscreen.h@{libscreen.h}!screen\_paint@{screen\_paint}}
 \index{screen\_paint@{screen\_paint}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_paint()}{screen\_paint()}}
-{\footnotesize\ttfamily void screen\+\_\+paint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+paint (\begin{DoxyParamCaption}\item[{Frame\+\_\+color}]{color }\end{DoxyParamCaption})}
 
 
 

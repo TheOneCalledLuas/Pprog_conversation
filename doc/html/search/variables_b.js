@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['n_5fobjects_0',['n_objects',['../struct__Game.html#afb42dc6613851a59029787af6ca28aa6',1,'_Game']]],
-  ['n_5fplayers_1',['n_players',['../struct__Game.html#ada91dbe872248188499a2cfb14542f9f',1,'_Game']]],
-  ['n_5fspaces_2',['n_spaces',['../struct__Game.html#af091df2bb12ae5c6ec3f63bfc8d7877d',1,'_Game']]],
-  ['name_3',['name',['../struct__Character.html#aee69f12fd056869d3f3ea877bdf6f279',1,'_Character::name'],['../struct__Link.html#a4af790a3cc583bdc48eca59559f7b71c',1,'_Link::name'],['../struct__Object.html#a03fb9b8d91f071e8e30d669be79cc040',1,'_Object::name'],['../struct__Space.html#aa1c9c994c2d16ecf3ef46138685fdfdc',1,'_Space::name']]],
-  ['north_4',['north',['../struct__Space.html#ae5ebe53ce79514d7d2d93911e0159252',1,'_Space']]]
+  ['objects_0',['objects',['../struct__Game.html#ad45bf5645a26e546d0060a2e61f9cf81',1,'_Game::objects'],['../struct__Space.html#a661ed8b0fc8085b6db70188aa5085625',1,'_Space::objects']]],
+  ['objs_1',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
+  ['origin_2',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
 ];

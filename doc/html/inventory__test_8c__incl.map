@@ -1,0 +1,21 @@
+<map id="src/inventory_test.c" name="src/inventory_test.c">
+<area shape="rect" id="Node000001" title="It tests inventory module." alt="" coords="258,5,409,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,33,86,81,85,76,284,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,79,167,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="302,33,178,77,177,71,300,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="191,79,262,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,33,257,73,254,69,315,28"/>
+<area shape="rect" id="Node000005" href="$inventory_8h.html" title="It handles inventory related tasks." alt="" coords="286,79,381,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="336,31,336,65,331,65,331,31"/>
+<area shape="rect" id="Node000006" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="318,225,389,251"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="352,29,375,49,394,77,403,105,406,128,395,178,386,198,375,216,370,213,381,196,389,177,400,127,398,106,390,80,371,53,349,33"/>
+<area shape="rect" id="Node000008" href="$inventory__test_8h.html" title="It declares the tests for the inventory module." alt="" coords="456,79,584,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="364,28,478,71,476,76,362,33"/>
+<area shape="rect" id="Node000009" href="$test_8h.html" title="Test tool fundamentals." alt="" coords="608,79,667,104"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="387,28,595,76,594,81,386,33"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="329,105,316,138,314,157,316,177,324,196,336,213,332,216,320,198,311,178,308,157,311,137,324,103"/>
+<area shape="rect" id="Node000007" href="$set_8h.html" title="It defines sets for the whole project." alt="" coords="326,152,381,177"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="339,104,349,138,344,140,334,105"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="356,178,356,212,351,212,351,178"/>
+</map>

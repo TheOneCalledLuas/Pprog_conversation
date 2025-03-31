@@ -84,9 +84,10 @@ $(function() {
 
 <p>It implements the player module.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="inventory_8h_source.html">inventory.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="object_8h_source.html">object.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -95,22 +96,29 @@ Include dependency graph for player.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="player_8c__incl.png" border="0" usemap="#asrc_2player_8c" alt=""/></div>
 <map name="asrc_2player_8c" id="asrc_2player_8c">
-<area shape="rect" title="It implements the player module." alt="" coords="155,5,251,31"/>
-<area shape="rect" href="player_8h.html" title="It defines the player module." alt="" coords="5,79,80,104"/>
-<area shape="poly" title=" " alt="" coords="178,33,82,75,80,71,176,28"/>
-<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="58,225,129,251"/>
-<area shape="poly" title=" " alt="" coords="202,32,182,96,166,138,145,179,116,217,112,214,140,176,161,136,177,94,197,30"/>
-<area shape="rect" href="object_8h.html" title="It handles object related tasks." alt="" coords="56,152,131,177"/>
-<area shape="poly" title=" " alt="" coords="194,32,151,80,110,141,105,138,147,77,190,29"/>
-<area shape="rect" title=" " alt="" coords="205,79,272,104"/>
-<area shape="poly" title=" " alt="" coords="211,30,229,65,224,68,206,32"/>
-<area shape="rect" title=" " alt="" coords="297,79,367,104"/>
-<area shape="poly" title=" " alt="" coords="225,28,300,69,297,74,222,33"/>
-<area shape="rect" title=" " alt="" coords="391,79,462,104"/>
-<area shape="poly" title=" " alt="" coords="239,28,379,72,377,77,238,33"/>
-<area shape="poly" title=" " alt="" coords="43,104,40,138,47,176,57,197,72,214,68,217,53,200,41,178,35,138,38,104"/>
-<area shape="poly" title=" " alt="" coords="53,103,79,139,75,142,49,106"/>
-<area shape="poly" title=" " alt="" coords="96,178,96,212,91,212,91,178"/>
+<area shape="rect" title="It implements the player module." alt="" coords="197,5,293,31"/>
+<area shape="rect" href="inventory_8h.html" title="It handles inventory related tasks." alt="" coords="41,152,135,177"/>
+<area shape="poly" title=" " alt="" coords="204,33,162,52,141,65,123,80,105,109,95,139,90,137,101,107,119,77,138,60,159,47,202,28"/>
+<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="87,299,158,324"/>
+<area shape="poly" title=" " alt="" coords="202,33,158,50,109,74,64,109,45,130,30,153,17,180,10,202,10,224,20,249,30,263,44,275,75,293,73,298,41,280,27,267,15,252,4,225,4,201,13,178,26,151,41,126,60,105,106,70,156,45,201,28"/>
+<area shape="rect" href="object_8h.html" title="It handles object related tasks." alt="" coords="211,152,285,177"/>
+<area shape="poly" title=" " alt="" coords="248,31,250,138,245,138,243,31"/>
+<area shape="rect" href="player_8h.html" title="It defines the player module." alt="" coords="133,79,208,104"/>
+<area shape="poly" title=" " alt="" coords="235,33,195,71,191,67,232,29"/>
+<area shape="rect" title=" " alt="" coords="283,79,349,104"/>
+<area shape="poly" title=" " alt="" coords="259,29,297,67,293,71,255,33"/>
+<area shape="rect" title=" " alt="" coords="374,79,445,104"/>
+<area shape="poly" title=" " alt="" coords="273,28,371,71,369,76,271,33"/>
+<area shape="rect" title=" " alt="" coords="469,79,539,104"/>
+<area shape="poly" title=" " alt="" coords="288,28,456,74,455,79,286,33"/>
+<area shape="poly" title=" " alt="" coords="93,177,119,285,114,286,88,178"/>
+<area shape="rect" href="set_8h.html" title="It defines sets for the whole project." alt="" coords="30,225,85,251"/>
+<area shape="poly" title=" " alt="" coords="85,179,70,214,65,212,81,177"/>
+<area shape="poly" title=" " alt="" coords="70,249,105,287,101,290,66,253"/>
+<area shape="poly" title=" " alt="" coords="244,179,223,213,194,252,151,292,148,288,190,249,219,210,239,176"/>
+<area shape="poly" title=" " alt="" coords="159,106,114,145,110,141,156,102"/>
+<area shape="poly" title=" " alt="" coords="171,105,131,286,126,284,166,104"/>
+<area shape="poly" title=" " alt="" coords="185,102,227,141,223,144,181,106"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -140,9 +148,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a890a99cf83704f8146b91dd11af8df98" id="r_a890a99cf83704f8146b91dd11af8df98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a890a99cf83704f8146b91dd11af8df98">player_set_player_location</a> (<a class="el" href="struct__Player.html">Player</a> *player, Id id)</td></tr>
 <tr class="memdesc:a890a99cf83704f8146b91dd11af8df98"><td class="mdescLeft">&#160;</td><td class="mdescRight">It sets the player location to an specified id.  <br /></td></tr>
 <tr class="separator:a890a99cf83704f8146b91dd11af8df98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f8653e3c985859d75d4827cb236bc31" id="r_a5f8653e3c985859d75d4827cb236bc31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a5f8653e3c985859d75d4827cb236bc31">player_set_object</a> (<a class="el" href="struct__Player.html">Player</a> *player, Id object)</td></tr>
-<tr class="memdesc:a5f8653e3c985859d75d4827cb236bc31"><td class="mdescLeft">&#160;</td><td class="mdescRight">It sets the object of the player to the one you want.  <br /></td></tr>
-<tr class="separator:a5f8653e3c985859d75d4827cb236bc31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d0f94c91712e14c1c86c488ca67b56" id="r_ac6d0f94c91712e14c1c86c488ca67b56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#ac6d0f94c91712e14c1c86c488ca67b56">player_add_object</a> (<a class="el" href="struct__Player.html">Player</a> *player, Id object)</td></tr>
+<tr class="memdesc:ac6d0f94c91712e14c1c86c488ca67b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an object to the inventory.  <br /></td></tr>
+<tr class="separator:ac6d0f94c91712e14c1c86c488ca67b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9278cc6659776cb91ac5fd6a4dc820" id="r_a7b9278cc6659776cb91ac5fd6a4dc820"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a7b9278cc6659776cb91ac5fd6a4dc820">player_get_n_objects</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
+<tr class="memdesc:a7b9278cc6659776cb91ac5fd6a4dc820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of objects the playes has.  <br /></td></tr>
+<tr class="separator:a7b9278cc6659776cb91ac5fd6a4dc820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ae204eaaa5803bcfb72c9308b9bed1" id="r_a40ae204eaaa5803bcfb72c9308b9bed1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a40ae204eaaa5803bcfb72c9308b9bed1">player_get_gdesc</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
 <tr class="memdesc:a40ae204eaaa5803bcfb72c9308b9bed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">It gets the player graphic description.  <br /></td></tr>
 <tr class="separator:a40ae204eaaa5803bcfb72c9308b9bed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,12 +169,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a2bc150d1066f143612fc0ab7654911ba" id="r_a2bc150d1066f143612fc0ab7654911ba"><td class="memItemLeft" align="right" valign="top">Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a2bc150d1066f143612fc0ab7654911ba">player_get_player_location</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
 <tr class="memdesc:a2bc150d1066f143612fc0ab7654911ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">It gets the player location id.  <br /></td></tr>
 <tr class="separator:a2bc150d1066f143612fc0ab7654911ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96e37051cdc1540e0dde770f6b713f39" id="r_a96e37051cdc1540e0dde770f6b713f39"><td class="memItemLeft" align="right" valign="top">Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a96e37051cdc1540e0dde770f6b713f39">player_get_object</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
-<tr class="memdesc:a96e37051cdc1540e0dde770f6b713f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">It gets the id of the object the player has.  <br /></td></tr>
-<tr class="separator:a96e37051cdc1540e0dde770f6b713f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3847b806a897ecb0069b267a23397d" id="r_add3847b806a897ecb0069b267a23397d"><td class="memItemLeft" align="right" valign="top">Id *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#add3847b806a897ecb0069b267a23397d">player_get_inventory</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
+<tr class="memdesc:add3847b806a897ecb0069b267a23397d"><td class="mdescLeft">&#160;</td><td class="mdescRight">It gets the id of the object the player has.  <br /></td></tr>
+<tr class="separator:add3847b806a897ecb0069b267a23397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc37044dd10f828fd54b27c8e088f4e7" id="r_adc37044dd10f828fd54b27c8e088f4e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#adc37044dd10f828fd54b27c8e088f4e7">player_get_health</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
 <tr class="memdesc:adc37044dd10f828fd54b27c8e088f4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the amount of health the player has.  <br /></td></tr>
 <tr class="separator:adc37044dd10f828fd54b27c8e088f4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cebe2ad51da9f7a3af1b4c4e4a13668" id="r_a6cebe2ad51da9f7a3af1b4c4e4a13668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a6cebe2ad51da9f7a3af1b4c4e4a13668">player_has_object</a> (<a class="el" href="struct__Player.html">Player</a> *player, Id object)</td></tr>
+<tr class="memdesc:a6cebe2ad51da9f7a3af1b4c4e4a13668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for an object in a player's inventory.  <br /></td></tr>
+<tr class="separator:a6cebe2ad51da9f7a3af1b4c4e4a13668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d486a0a75399d0a5f912ef7997abf63" id="r_a3d486a0a75399d0a5f912ef7997abf63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a3d486a0a75399d0a5f912ef7997abf63">player_set_inventory_capacity</a> (<a class="el" href="struct__Player.html">Player</a> *player, long capacity)</td></tr>
+<tr class="memdesc:a3d486a0a75399d0a5f912ef7997abf63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the maximun object number for the player.  <br /></td></tr>
+<tr class="separator:a3d486a0a75399d0a5f912ef7997abf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a699c541dc8924c72d31593764e4772" id="r_a3a699c541dc8924c72d31593764e4772"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a3a699c541dc8924c72d31593764e4772">player_get_inventory_capacity</a> (<a class="el" href="struct__Player.html">Player</a> *player)</td></tr>
+<tr class="memdesc:a3a699c541dc8924c72d31593764e4772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the maximun object number for the player.  <br /></td></tr>
+<tr class="separator:a3a699c541dc8924c72d31593764e4772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e7944ed0a4d968bd58d3f3bf843b6e" id="r_a93e7944ed0a4d968bd58d3f3bf843b6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a93e7944ed0a4d968bd58d3f3bf843b6e">player_del_object</a> (<a class="el" href="struct__Player.html">Player</a> *player, Id object)</td></tr>
+<tr class="memdesc:a93e7944ed0a4d968bd58d3f3bf843b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an object out of the player inventory.  <br /></td></tr>
+<tr class="separator:a93e7944ed0a4d968bd58d3f3bf843b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b6f2c3f6fc189d16c6882c59be4ae19" id="r_a4b6f2c3f6fc189d16c6882c59be4ae19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a4b6f2c3f6fc189d16c6882c59be4ae19">player_set_health</a> (<a class="el" href="struct__Player.html">Player</a> *player, int health)</td></tr>
 <tr class="memdesc:a4b6f2c3f6fc189d16c6882c59be4ae19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the player health to a value.  <br /></td></tr>
 <tr class="separator:a4b6f2c3f6fc189d16c6882c59be4ae19"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +201,45 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>04-02-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ac6d0f94c91712e14c1c86c488ca67b56" name="ac6d0f94c91712e14c1c86c488ca67b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d0f94c91712e14c1c86c488ca67b56">&#9670;&#160;</a></span>player_add_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> player_add_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Id&#160;</td>
+          <td class="paramname"><em>object</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an object to the inventory. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointer to the player. </td></tr>
+    <tr><td class="paramname">object</td><td>Id of the object you want the player to have. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK, if everything goes well or ERROR if there was some mistake. </dd></dl>
+
+</div>
+</div>
 <a id="ab8d706037259061de90808be9a6c2b32" name="ab8d706037259061de90808be9a6c2b32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8d706037259061de90808be9a6c2b32">&#9670;&#160;</a></span>player_create()</h2>
 
@@ -203,6 +265,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer the a new player, initialized. </dd></dl>
+
+</div>
+</div>
+<a id="a93e7944ed0a4d968bd58d3f3bf843b6e" name="a93e7944ed0a4d968bd58d3f3bf843b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e7944ed0a4d968bd58d3f3bf843b6e">&#9670;&#160;</a></span>player_del_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> player_del_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Id&#160;</td>
+          <td class="paramname"><em>object</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Takes an object out of the player inventory. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointer to the player. </td></tr>
+    <tr><td class="paramname">object</td><td>Id of the object to be taken. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK, if everything goes well or ERROR if there was some mistake. </dd></dl>
 
 </div>
 </div>
@@ -290,14 +391,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a96e37051cdc1540e0dde770f6b713f39" name="a96e37051cdc1540e0dde770f6b713f39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96e37051cdc1540e0dde770f6b713f39">&#9670;&#160;</a></span>player_get_object()</h2>
+<a id="add3847b806a897ecb0069b267a23397d" name="add3847b806a897ecb0069b267a23397d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3847b806a897ecb0069b267a23397d">&#9670;&#160;</a></span>player_get_inventory()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Id player_get_object </td>
+          <td class="memname">Id * player_get_inventory </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
           <td class="paramname"><em>player</em></td><td>)</td>
@@ -315,6 +416,62 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Id of the object the player has. </dd></dl>
+
+</div>
+</div>
+<a id="a3a699c541dc8924c72d31593764e4772" name="a3a699c541dc8924c72d31593764e4772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a699c541dc8924c72d31593764e4772">&#9670;&#160;</a></span>player_get_inventory_capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long player_get_inventory_capacity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the maximun object number for the player. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointer to the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of objects or -1 if an error takes place. </dd></dl>
+
+</div>
+</div>
+<a id="a7b9278cc6659776cb91ac5fd6a4dc820" name="a7b9278cc6659776cb91ac5fd6a4dc820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b9278cc6659776cb91ac5fd6a4dc820">&#9670;&#160;</a></span>player_get_n_objects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int player_get_n_objects </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of objects the playes has. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pinter to the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of objects the player has, or -1 if an error takes place. </dd></dl>
 
 </div>
 </div>
@@ -399,6 +556,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the name of the player. </dd></dl>
+
+</div>
+</div>
+<a id="a6cebe2ad51da9f7a3af1b4c4e4a13668" name="a6cebe2ad51da9f7a3af1b4c4e4a13668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cebe2ad51da9f7a3af1b4c4e4a13668">&#9670;&#160;</a></span>player_has_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a39db6982619d623273fad8a383489309">Bool</a> player_has_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Id&#160;</td>
+          <td class="paramname"><em>object</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Searches for an object in a player's inventory. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointer to the player. </td></tr>
+    <tr><td class="paramname">object</td><td>Id of the object to be searched for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 if the object wasn't found or </dd></dl>
 
 </div>
 </div>
@@ -508,14 +704,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5f8653e3c985859d75d4827cb236bc31" name="a5f8653e3c985859d75d4827cb236bc31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f8653e3c985859d75d4827cb236bc31">&#9670;&#160;</a></span>player_set_object()</h2>
+<a id="a3d486a0a75399d0a5f912ef7997abf63" name="a3d486a0a75399d0a5f912ef7997abf63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d486a0a75399d0a5f912ef7997abf63">&#9670;&#160;</a></span>player_set_inventory_capacity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> player_set_object </td>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> player_set_inventory_capacity </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct__Player.html">Player</a> *&#160;</td>
           <td class="paramname"><em>player</em>, </td>
@@ -523,8 +719,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Id&#160;</td>
-          <td class="paramname"><em>object</em>&#160;</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>capacity</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -534,12 +730,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>It sets the object of the player to the one you want. </p>
-<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>Sets the maximun object number for the player. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">player</td><td>Pointer to the player. </td></tr>
-    <tr><td class="paramname">object</td><td>Id of the object you want the player to have. </td></tr>
+    <tr><td class="paramname">capacity</td><td>Number of objects. </td></tr>
   </table>
   </dd>
 </dl>
