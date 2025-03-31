@@ -349,33 +349,39 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     free(id_aux_2);
 
     /*4-Prints the player information.*/
-    sprintf(str, "  PLAYER INFORMATION");
-    screen_area_puts(ge->descript, str);
-    sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
-    screen_area_puts(ge->descript, str);
-    sprintf(str, "   Player description: %s", player_get_gdesc(player));
+    sprintf(str, "  PLAYERS INFORMATION");
     screen_area_puts(ge->descript, str);
 
+    for (i = 0; i < game_get_n_players(game); i++)
+    {
+        player = game_get_player(game, i);
+        sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
+        screen_area_puts(ge->descript, str);
+    }
+    screen_area_puts(ge->descript, " ");
+    player = game_get_actual_player(game);
+    screen_area_puts(ge->descript, str);
     if ((n_objects = player_get_n_objects(player)) <= 0)
     {
-        sprintf(str, "   Player has no objects");
+        sprintf(str, "   %s has no objects", player_get_player_name(player));
         screen_area_puts(ge->descript, str);
+        screen_area_puts(ge->descript, " ");
     }
     else
     {
-        sprintf(str, "   Player inventory:");
+        sprintf(str, "   %s inventory:", player_get_player_name(player));
         screen_area_puts(ge->descript, str);
         objects = player_get_inventory(player);
         for (i = 0; i < n_objects; i++)
         {
             obj_name = object_get_name(game_get_object(game, objects[i]));
-            sprintf(str, "   %s", obj_name);
+            sprintf(str, "    %s", obj_name);
             screen_area_puts(ge->descript, str);
         }
+        screen_area_puts(ge->descript, " ");
         free(objects);
         objects = NULL;
     }
-
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == CHAT && refresh == FALSE)
     {
@@ -429,7 +435,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 
     /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
     screen_paint(game_get_turn(game));
-    printf("prompt:> ");
+    if (command_get_code(game_get_last_command(game)) != EXIT)
+    {
+        fprintf(stdout, "%s", (refresh ? "prompt>" : "waiting :) "));
+        fflush(stdout);
+    }
 }
 
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
