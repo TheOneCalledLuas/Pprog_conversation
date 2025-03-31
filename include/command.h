@@ -17,7 +17,7 @@
 /*Ways of refering to the same command.*/
 #define N_CMDT 2
 /*Number of commands.*/
-#define N_CMD 12
+#define N_CMD 9
 
 /**
  * @brief Ways of calling a command (extended or short way.)
@@ -37,10 +37,7 @@ typedef enum
     NO_CMD = -1,    /*!< No Coomand code.*/
     UNKNOWN,        /*!< Unknown command.*/
     EXIT,           /*!< Exit command.*/
-    NEXT,           /*!< Next command.*/
-    BACK,           /*!< Back command.*/
-    LEFT,           /*!< Left command*/
-    RIGTH,          /*!< Right command*/
+    MOVE,           /*!< Move command.*/
     TAKE,           /*!< Take command.*/
     DROP,           /*!< Drop command.*/
     ATTACK,         /*!< Attack command.*/

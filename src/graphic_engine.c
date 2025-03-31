@@ -415,7 +415,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     next or n, back or b,left or l, right or r, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i");
+    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i");
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
