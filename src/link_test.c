@@ -1,8 +1,8 @@
 /**
- * @brief It tests space module
+ * @brief It tests link module
  *
- * @file set_test.c
- * @author Saul Lopez Romero
+ * @file link_test.c
+ * @author Irene García
  * @version 3.2
  * @date 19-02-2025
  * @copyright GNU Public License
@@ -27,7 +27,7 @@
   *  You can decide which test you want to run
   *  or run all the tests.
   *
-  * @author Saul Lopez Romero
+  * @author Irene García
   */
  int main(int argc, char **argv)
  {
@@ -38,7 +38,7 @@
      if (argc < 2)
      {
          /*Runs all.*/
-         printf("Running all test for the module set.c:\n");
+         printf("Running all test for the module link.c:\n");
      }
      else
      {
@@ -53,405 +53,128 @@
          }
      }
      if (all || test == 1)
-         test1_set_create();
+         test1_link_create();
      if (all || test == 2)
-         test1_set_add();
+         test1_link_add();
      if (all || test == 3)
-         test2_set_add();
+         test2_link_add();
      if (all || test == 4)
-         test3_set_add();
+         test3_link_add();
      if (all || test == 5)
-         test4_set_add();
+         test4_link_add();
      if (all || test == 6)
-         test5_set_add();
+         test5_link_add();
      if (all || test == 7)
-         test1_set_increment();
+         test1_link_increment();
      if (all || test == 8)
-         test1_set_len();
+         test1_link_len();
      if (all || test == 9)
-         test2_set_len();
+         test2_link_len();
      if (all || test == 10)
-         test3_set_len();
+         test3_link_len();
      if (all || test == 11)
-         test1_set_find();
+         test1_link_find();
      if (all || test == 12)
-         test2_set_find();
+         test2_link_find();
      if (all || test == 13)
-         test3_set_find();
+         test3_link_find();
      if (all || test == 14)
-         test4_set_find();
+         test4_link_find();
      if (all || test == 15)
-         test5_set_find();
+         test5_link_find();
      if (all || test == 16)
-         test1_set_take();
+         test1_link_take();
      if (all || test == 17)
-         test2_set_take();
+         test2_link_take();
      if (all || test == 18)
-         test3_set_take();
+         test3_link_take();
      if (all || test == 19)
-         test4_set_take();
+         test4_link_take();
      if (all || test == 20)
-         test5_set_take();
+         test5_link_take();
      if (all || test == 21)
-         test1_set_get_content();
+         test1_link_get_content();
      if (all || test == 22)
-         test2_set_get_content();
+         test2_link_get_content();
      if (all || test == 23)
-         test3_set_get_content();
+         test3_link_get_content();
      if (all || test == 24)
-         test2_set_create();
+         test2_link_create();
  
      PRINT_PASSED_PERCENTAGE;
  
      return 0;
  }
  
- void test1_set_create()
+ void test1_link_create()
  {
-     /*Creates a set.*/
-     Set *s = NULL;
-     s = set_create();
+     /*Creates a link.*/
+     Link *l = NULL;
+     l = link_create();
      /*Checks creation.*/
-     PRINT_TEST_RESULT(s != NULL);
+     PRINT_TEST_RESULT(l != NULL);
      /*Frees memory.*/
-     set_destroy(s);
+     link_destroy(l);
  }
  
- void test2_set_create()
+ void test2_link_create()
  {
-     /*Creates a set.*/
-     Set *s = NULL;
-     s = set_create();
+     /*Creates a link.*/
+     Link *l = NULL;
+     l = link_create();
      /*Checks values are default.*/
-     PRINT_TEST_RESULT(set_len(s)==0);
+     PRINT_TEST_RESULT(link_len(s)==0);
      /*Frees memory.*/
-     set_destroy(s);
+     link_destroy(l);
  }
- 
- void test1_set_len()
+
+ void test1_link_get_id()
  {
-     /*Creates a set.*/
-     Set *s = NULL;
-     s = set_create();
-     /*Checks creation.*/
-     PRINT_TEST_RESULT(set_len(s) == 0);
+     /*Creates a link.*/
+     Link *l = NULL;
+     l = link_create(32);
+     link_set_name(s, "merchant");
+     PRINT_TEST_RESULT(link_get_id(l) == 32);
      /*Frees memory.*/
-     set_destroy(s);
+     link_destroy(l);
  }
- 
- void test2_set_len()
+
+ void test2_link_get_id()
  {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     s = set_create();
-     set_add(s, id);
-     /*Checks creation.*/
-     PRINT_TEST_RESULT(set_len(s) == 1);
-     /*Frees memory.*/
-     set_destroy(s);
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_get_id(l) == ID_ERROR);
  }
- 
- void test3_set_len()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     s = set_create();
-     set_add(s, id);
-     set_take(s, id);
-     /*Checks creation.*/
-     PRINT_TEST_RESULT(set_len(s) == 0);
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test1_set_increment()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id1 = 1, id2 = 2;
-     int len1 = 0, len2 = 0;
-     s = set_create();
- 
-     /*Teest management.*/
-     set_add(s, id1);
-     len1 = set_len(s);
-     set_add(s, id2);
-     len2 = set_len(s);
-     PRINT_TEST_RESULT(len1 + 1 == len2);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test1_set_add()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     s = set_create();
-     PRINT_TEST_RESULT(set_add(s, id) == OK);
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test2_set_add()
- {
-     /*Creates a NULL set.*/
-     Set *s = NULL;
-     Id id = 1;
-     PRINT_TEST_RESULT(set_add(s, id) == ERROR);
- }
- 
- void test3_set_add()
- {
-     /*Creates a NULL set.*/
-     Set *s = NULL;
-     int i = 0;
-     Id id = 1;
- 
-     s = set_create();
- 
-     /*Makes the set full.*/
-     for (i = 0; i < 50; i++)
-     {
-         set_add(s, id);
-         id++;
-     }
- 
-     PRINT_TEST_RESULT(set_add(s, id) == ERROR);
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test4_set_add()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     int n_id = 0;
-     s = set_create();
- 
-     /*Adds the id for the first time.*/
-     set_add(s, id);
-     n_id = set_len(s);
- 
-     PRINT_TEST_RESULT(set_add(s, id) == OK && n_id == set_len(s));
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test5_set_add()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     s = set_create();
- 
-     PRINT_TEST_RESULT(set_add(s, -2) == ERROR);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test1_set_find()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, id);
-     PRINT_TEST_RESULT(set_find(s, id) != -1);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- void test2_set_find()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, no_id = 2;
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, id);
-     PRINT_TEST_RESULT(set_find(s, no_id) == -1);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test3_set_find()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
-     s = set_create();
- 
-     /*Searches for an id.*/
-     PRINT_TEST_RESULT(set_find(s, id) == -1);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test4_set_find()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, id_2 = 2, id_3 = 3;
-     s = set_create();
- 
-     set_add(s, id);
-     set_add(s, id_2);
-     set_add(s, id_3);
-     /*Adds an id.*/
-     PRINT_TEST_RESULT(set_find(s, id_2) == 1);
- 
-     /*Frees memory.*/
-     set_destroy(s);
- }
- 
- void test5_set_find()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
- 
-     /*Adds an id.*/
-     PRINT_TEST_RESULT(set_find(s, id) == -1);
- }
- 
- void test1_set_take()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, id_res = 0;
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, id);
-     id_res = set_take(s, id);
-     PRINT_TEST_RESULT(id_res == id);
- 
-     /*Frees the memory.*/
-     set_destroy(s);
- }
- 
- void test2_set_take()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1;
- 
-     PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
- 
-     /*Frees the memory.*/
-     set_destroy(s);
- }
- 
- void test3_set_take()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, s_id = 2;
- 
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, s_id);
-     PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
- 
-     /*Frees the memory.*/
-     set_destroy(s);
- }
- 
- void test4_set_take()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, id_2 = 2;
- 
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, id);
-     set_add(s, id_2);
-     set_take(s, id);
-     PRINT_TEST_RESULT(set_take(s, id) == ID_ERROR);
- 
-     /*Frees the memory.*/
-     set_destroy(s);
- }
- 
- void test5_set_take()
- {
-     /*Creates a set.*/
-     Set *s = NULL;
-     Id id = 1, id_2 = 2, id_3 = 3, id_taken_1 = 0, id_taken_2 = 0, id_taken_3 = 0, id_taken_4 = 0;
- 
-     s = set_create();
- 
-     /*Adds an id.*/
-     set_add(s, id);
-     set_add(s, id_2);
-     set_add(s, id_3);
-     id_taken_1 = set_take(s, id_2);
-     id_taken_2 = set_take(s, id_2);
-     set_add(s, id_2);
-     id_taken_3 = set_take(s, id);
-     id_taken_4 = set_take(s, id_3);
- 
-     PRINT_TEST_RESULT(id_taken_1 == id_2 && id_taken_2 == ID_ERROR && id_taken_3 == id && id_taken_4 == id_3 && set_len(s) == 1);
- 
-     /*Frees the memory.*/
-     set_destroy(s);
- }
- 
- void test1_set_get_content()
- {
-     Set *s = NULL;
-     Id id = 1, id_2 = 2, *id_list = NULL;
- 
-     /*Creates a set.*/
-     s = set_create();
- 
-     /*Adds elements.*/
-     set_add(s, id);
-     set_add(s, id_2);
- 
-     PRINT_TEST_RESULT((id_list = set_get_content(s)) != NULL);
- 
-     /*Memory cleanup.*/
-     set_destroy(s);
-     free(id_list);
- }
- 
- void test2_set_get_content()
- {
-     Set *s = NULL;
-     Id id = 1, id_2 = 2, *id_list = NULL;
- 
-     /*Adds elements (It can't).*/
-     set_add(s, id);
-     set_add(s, id_2);
- 
-     PRINT_TEST_RESULT((id_list = set_get_content(s)) == NULL);
- }
- 
- void test3_set_get_content()
- {
-     Set *s = NULL;
-     Id *id_list = NULL;
- 
-     /*Creates a set.*/
-     s = set_create();
- 
-     PRINT_TEST_RESULT((id_list = set_get_content(s)) == NULL);
- 
-     /*Memory cleanup.*/
-     set_destroy(s);
- }
+
+ void test1_link_get_name()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create();
+    link_set_name(s, "merchant");
+    PRINT_TEST_RESULT(strcmp(link_get_name(l), "merchant") == 0);
+    /*Frees the memory.*/
+    link_destroy(l);
+}
+
+void test2_link_get_name()
+{
+    link *l = NULL;
+    PRINT_TEST_RESULT(link_get_name(l) == NULL);
+}
+
+void test1_link_set_origin()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    l = link_create();
+    link_set_origin(1);
+    PRINT_TEST_RESULT(link_get_origin(l) == 1);
+    /*Frees memory.*/
+    link_destroy(l);
+}
+
+void test2_link_get_id()
+{
+   Link *l = NULL;
+   PRINT_TEST_RESULT(link_get_id(l) == ID_ERROR);
+}

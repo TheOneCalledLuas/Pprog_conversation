@@ -18,4 +18,54 @@
  */
 void test1_inventory_create();
 
+void test1_inventory_set_max_objs();
+
+void test2_inventory_set_max_objs();
+
+void test3_inventory_set_max_objs();
+
+void test4_inventory_set_max_objs();
+
+void test1_inventory_get_max_objs();
+
+void test2_inventory_get_max_objs();
+
+void test3_inventory_get_max_objs();
+
+void test1_inventory_find();
+
+void test2_inventory_find();
+
+void test3_inventory_find();
+
+void test4_inventory_find();
+
+void test5_inventory_find();
+
+void test1_inventory_add();
+
+void test2_inventory_add();
+
+void test3_inventory_add();
+
+void test4_inventory_add();
+
+void test5_inventory_add();
+
+void test6_inventory_add();
+
+void test1_inventory_take();
+
+void test2_inventory_take();
+
+void test3_inventory_take();
+
+void test4_inventory_take();
+
+void test1_inventory_get_content();
+
+void test2_inventory_get_content();
+
+void test3_inventory_get_content();
+
 #endif

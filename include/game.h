@@ -160,6 +160,15 @@ int game_get_n_players (Game * game);
 int game_get_turn(Game * game);
 
 /**
+ * @brief Returns a player by its turn number.
+ * @author Saul Lopez Romero
+ * 
+ * @param game Pointer to the game.
+ * @param player_number Turn number.
+ */
+Player *game_get_player(Game *game, int player_number);
+
+/**
  * @brief Advances to the next turn.
  * @author Saúl López Romero
  * 
