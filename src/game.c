@@ -17,7 +17,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PLAYERS 10
+#define MAX_PLAYERS 10   /*Max number of players.*/
+#define COMMANDS_SAVED 3 /*Number of commands saved.*/
 
 /**
    Game interface implementation.
@@ -33,7 +34,7 @@ struct _Game
     int n_objects;                         /*!< Number of objects.*/
     int n_characters;                      /*!< Number of characters.*/
     int n_links;                           /*!< Number of links.*/
-    Command *last_cmd;                     /*!< A pointer to the last command entered by the user.*/
+    Command *last_cmd;                     /*!< Array with the last commands executed by the players.*/
     Bool finished;                         /*!< Whether the game has finished or not.*/
     int turn;                              /*!< Actual turn.*/
     int n_players;                         /*!< Number of players.*/
@@ -294,6 +295,16 @@ int game_get_n_players(Game *game)
         return -1;
     /*Returns the value.*/
     return game->n_players;
+}
+
+Player *game_get_player(Game *game, int player_number)
+{
+    /*Error handling.*/
+    if (!game || player_number < 0 || player_number >= game->n_players)
+        return NULL;
+
+    /*Returns the player.*/
+    return game->players[player_number];
 }
 
 Status game_next_turn(Game *game)
