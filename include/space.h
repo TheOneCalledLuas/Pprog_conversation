@@ -50,7 +50,7 @@ char *space_get_gdesc_line(Space *space, int line);
  *
  * @param space Pointer to the space.
  * @param line line to be modified.
- * @param string to be set.
+ * @param str to be set.
  * @return OK if all goes as planned, ERROR otherwise.
  */
 Status space_set_gdesc_line(Space *space, int line, char *str);
@@ -128,7 +128,7 @@ Id space_take_object(Space *space, Id object);
  * @brief It gets the n_elements in the set of objects.
  * @author Fernando Mijangos
  * 
- * @param Space Pointer to the space.
+ * @param space Pointer to the space.
  * @return n_elements of the set of object.
  */
 int space_get_n_objects(Space *space);

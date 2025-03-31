@@ -148,7 +148,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>N_CMDT</b>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a8d93932dcdc527c13e06b688b68c7ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae180fe89f0ae48ce5c80ffaa18de9271" id="r_ae180fe89f0ae48ce5c80ffaa18de9271"><td class="memItemLeft" align="right" valign="top"><a id="ae180fe89f0ae48ce5c80ffaa18de9271" name="ae180fe89f0ae48ce5c80ffaa18de9271"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>N_CMD</b>&#160;&#160;&#160;12</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>N_CMD</b>&#160;&#160;&#160;9</td></tr>
 <tr class="separator:ae180fe89f0ae48ce5c80ffaa18de9271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -169,17 +169,14 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0">NO_CMD</a> = -1
 , <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a6ce26a62afab55d7606ad4e92428b30c">UNKNOWN</a>
 , <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a7a10b5d68d31711288e1fe0fa17dbf4f">EXIT</a>
-, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd">NEXT</a>
+, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2aed3ef32890b6da0919b57254c5206c62">MOVE</a>
 , <br />
-&#160;&#160;<a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2ac921ff2cfc571c1d19b0485d7f6926ee">BACK</a>
-, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2adb45120aafd37a973140edee24708065">LEFT</a>
-, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2ac2cd8d8289760e9d504f8e44fdf48e95">RIGTH</a>
-, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a7405647410e343caba1bf383e83d4f5f">TAKE</a>
-, <br />
-&#160;&#160;<a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a8b0b0025af76a3d8f0b7b1d4758e51a6">DROP</a>
+&#160;&#160;<a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a7405647410e343caba1bf383e83d4f5f">TAKE</a>
+, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a8b0b0025af76a3d8f0b7b1d4758e51a6">DROP</a>
 , <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a831c130f9c83adc963152d232a9d61c7">ATTACK</a>
 , <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2aa24d371d8d14298a1bf5a98d3f321bef">CHAT</a>
-, <a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2aab933f64fcaa285df294e1420f6f1b07">INSPECT</a>
+, <br />
+&#160;&#160;<a class="el" href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2aab933f64fcaa285df294e1420f6f1b07">INSPECT</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a805cf38fd2b6d5604bf1f1036b80fde2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code assigned to each command.  <a href="command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2">More...</a><br /></td></tr>
@@ -245,13 +242,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2a7a10b5d68d31711288e1fe0fa17dbf4f" name="a805cf38fd2b6d5604bf1f1036b80fde2a7a10b5d68d31711288e1fe0fa17dbf4f"></a>EXIT&#160;</td><td class="fielddoc"><p>Exit command. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd" name="a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd"></a>NEXT&#160;</td><td class="fielddoc"><p>Next command. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2ac921ff2cfc571c1d19b0485d7f6926ee" name="a805cf38fd2b6d5604bf1f1036b80fde2ac921ff2cfc571c1d19b0485d7f6926ee"></a>BACK&#160;</td><td class="fielddoc"><p>Back command. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2adb45120aafd37a973140edee24708065" name="a805cf38fd2b6d5604bf1f1036b80fde2adb45120aafd37a973140edee24708065"></a>LEFT&#160;</td><td class="fielddoc"><p>Left command </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2ac2cd8d8289760e9d504f8e44fdf48e95" name="a805cf38fd2b6d5604bf1f1036b80fde2ac2cd8d8289760e9d504f8e44fdf48e95"></a>RIGTH&#160;</td><td class="fielddoc"><p>Right command </p>
+<tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2aed3ef32890b6da0919b57254c5206c62" name="a805cf38fd2b6d5604bf1f1036b80fde2aed3ef32890b6da0919b57254c5206c62"></a>MOVE&#160;</td><td class="fielddoc"><p>Move command. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a805cf38fd2b6d5604bf1f1036b80fde2a7405647410e343caba1bf383e83d4f5f" name="a805cf38fd2b6d5604bf1f1036b80fde2a7405647410e343caba1bf383e83d4f5f"></a>TAKE&#160;</td><td class="fielddoc"><p>Take command. </p>
 </td></tr>

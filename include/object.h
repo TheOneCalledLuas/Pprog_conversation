@@ -68,6 +68,7 @@ Status object_set_description(Object * object, char * desc);
  * @author Saúl López Romero
  * 
  * @param object Pointer to the object.
+ * @param name Name string.
  * @return OK if it works as intended, ERROR otherwise.
  */
 Status object_set_name(Object *object, char *name);

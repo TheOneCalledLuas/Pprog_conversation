@@ -16,8 +16,8 @@
 
 struct _Set
 {
-    int n_ids;   /* <! Number of ids in the set.*/
-    Id *content; /* <! Set content.*/
+    int n_ids;   /*<! Number of ids in the set.*/
+    Id *content; /*<! Set content.*/
 };
 
 Set *set_create()

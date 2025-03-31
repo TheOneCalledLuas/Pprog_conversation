@@ -158,7 +158,7 @@
 
 void test2_link_get_name()
 {
-    link *l = NULL;
+    Link *l = NULL;
     PRINT_TEST_RESULT(link_get_name(l) == NULL);
 }
 

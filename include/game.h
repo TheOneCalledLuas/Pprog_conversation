@@ -29,6 +29,7 @@
 #define FIRST_LAST_COMMAND 0
 #define SECOND_LAST_COMMAND 1
 #define THIRD_LAST_COMMAND 2
+#define COMMANDS_SAVED 3 /*Number of commands saved.*/
 
 /**
  * @brief Command

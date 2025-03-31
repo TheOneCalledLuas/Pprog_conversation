@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define G_DESC_LINES 5
+#define G_DESC_LINES 5 /*Number of graphic description lines.*/
 
 /**
  * @brief Space

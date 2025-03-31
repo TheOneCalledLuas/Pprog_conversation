@@ -14,7 +14,7 @@
 <area shape="poly" id="edge36_Node000001_Node000016" title=" " alt="" coords="631,29,514,49,462,64,427,81,411,97,398,115,379,156,368,196,363,225,357,225,363,195,374,154,394,113,407,93,424,77,460,59,513,44,630,24"/>
 <area shape="rect" id="Node000018" href="$set_8c.html" title="It defines common types for the whole project." alt="" coords="1155,79,1231,104"/>
 <area shape="poly" id="edge34_Node000001_Node000018" title=" " alt="" coords="764,24,937,44,1144,76,1156,78,1155,83,1144,81,936,50,763,29"/>
-<area shape="rect" id="Node000019" href="$set__test_8c.html" title="It tests space module." alt="" coords="1255,79,1363,104"/>
+<area shape="rect" id="Node000019" href="$set__test_8c.html" title="It tests set module." alt="" coords="1255,79,1363,104"/>
 <area shape="poly" id="edge35_Node000001_Node000019" title=" " alt="" coords="764,23,978,44,1244,76,1256,78,1255,83,1244,81,978,49,764,28"/>
 <area shape="rect" id="Node000003" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="411,445,539,471"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,399,437,443,435,448,288,404"/>

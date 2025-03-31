@@ -18,7 +18,7 @@
 #include <string.h>
 
 #define MAX_PLAYERS 8    /*Max number of players.*/
-#define COMMANDS_SAVED 3 /*Number of commands saved.*/
+
 
 /**
    Game interface implementation.

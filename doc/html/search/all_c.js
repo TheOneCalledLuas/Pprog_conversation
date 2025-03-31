@@ -7,6 +7,5 @@ var searchData=
   ['n_5fplayers_4',['n_players',['../struct__Game.html#ada91dbe872248188499a2cfb14542f9f',1,'_Game']]],
   ['n_5fspaces_5',['n_spaces',['../struct__Game.html#af091df2bb12ae5c6ec3f63bfc8d7877d',1,'_Game']]],
   ['name_6',['name',['../struct__Character.html#aee69f12fd056869d3f3ea877bdf6f279',1,'_Character::name'],['../struct__link.html#a6c7dfce5d628ebc94c0d674f5694563d',1,'_link::name'],['../struct__Object.html#a03fb9b8d91f071e8e30d669be79cc040',1,'_Object::name'],['../struct__Space.html#aa1c9c994c2d16ecf3ef46138685fdfdc',1,'_Space::name']]],
-  ['next_7',['NEXT',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd',1,'command.h']]],
-  ['no_5fcmd_8',['NO_CMD',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0',1,'command.h']]]
+  ['no_5fcmd_7',['NO_CMD',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0',1,'command.h']]]
 ];

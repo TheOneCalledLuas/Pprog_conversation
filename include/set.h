@@ -55,7 +55,7 @@ int set_find(Set *set, Id id);
  * @author Saul Lopez Romero.
  *
  * @param set Pointer to the set.
- * @param id Id to be added.
+ * @param element Id to be added.
  * @returns Ok if the element was added or already was in the set, ERROR otherwise.
  */
 Status set_add(Set *set, Id element);
@@ -93,7 +93,7 @@ Id *set_get_content(Set *set);
  * @brief Prints set information.
  * @author Saul Lopez Romero.
  * 
- * @param set Pointer to the set.
+ * @param s Pointer to the set.
  * @return OK if everything goes as it should, ERROR otherwise.
  */
 Status set_print(Set *s);

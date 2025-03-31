@@ -114,7 +114,7 @@ Status link_set_origin(Link *link, Id origin);
  * @author Fernando Mijangos.
  *
  * @param link Ponter to the link
- * @param destiantion New id of the destination space
+ * @param destination New id of the destination space
  * @return OK, if everything went well, ERROR otherwise.
  */
 Status link_set_destination(Link *link, Id destination);

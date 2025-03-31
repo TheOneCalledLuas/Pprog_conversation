@@ -12,8 +12,7 @@ It defines the game interface.
 {\ttfamily \#include "{}player.\+h"{}}\newline
 {\ttfamily \#include "{}character.\+h"{}}\newline
 {\ttfamily \#include "{}link.\+h"{}}\newline
-Include dependency graph for game.\+h\+:
-\nopagebreak
+Include dependency graph for game.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -61,6 +60,8 @@ typedef struct \mbox{\hyperlink{struct__Game}{\+\_\+\+Game}} \mbox{\hyperlink{ga
 \item 
 \mbox{\hyperlink{struct__Character}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_a3357a5bfe6a6271c3c14d4ffba405bad}{game\+\_\+get\+\_\+character}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, Id id)
 \begin{DoxyCompactList}\small\item\em Searches for a character to the game structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_a7dcdc9c8ac988f38d08dd7c8c63bdb97}{game\+\_\+get\+\_\+previous\+\_\+command}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, int command\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Gets one of the previously executed commands by the player. \end{DoxyCompactList}\item 
 Id \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_a38cc1fb271f4d14642d554432dbe41e2}{game\+\_\+get\+\_\+characters}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em It returns an array with the ids of the characters, IMPORTANT it returns something that has been allocated, you have to free it. \end{DoxyCompactList}\item 
 Id \mbox{\hyperlink{game_8h_acec3892b0b53c952422a10699e2c4b71}{game\+\_\+get\+\_\+character\+\_\+location}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, Id id)
@@ -737,6 +738,29 @@ Saul Lopez Romero
 {\em player\+\_\+number} & Turn number. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{game_8h_a7dcdc9c8ac988f38d08dd7c8c63bdb97}\label{game_8h_a7dcdc9c8ac988f38d08dd7c8c63bdb97} 
+\index{game.h@{game.h}!game\_get\_previous\_command@{game\_get\_previous\_command}}
+\index{game\_get\_previous\_command@{game\_get\_previous\_command}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_previous\_command()}{game\_get\_previous\_command()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} game\+\_\+get\+\_\+previous\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{int}]{command\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Gets one of the previously executed commands by the player. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em command\+\_\+num} & Command to be returned (use FIRST\+\_\+\+LAST\+\_\+\+COMMAND, SECOND\+\_\+\+LAST\+\_\+\+COMMAND or THIRD\+\_\+\+LAST\+\_\+\+COMMAND) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the command or NULL; 
+\end{DoxyReturn}
 \Hypertarget{game_8h_a34242ac78c87036f8194fee3e92c7fb7}\label{game_8h_a34242ac78c87036f8194fee3e92c7fb7} 
 \index{game.h@{game.h}!game\_get\_space@{game\_get\_space}}
 \index{game\_get\_space@{game\_get\_space}!game.h@{game.h}}

@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_DESCRIPTION 64 /* Maximun word description.*/
+#define MAX_DESCRIPTION 64 /*Maximun word description.*/
 
 /**
  * @brief Object

@@ -1,13 +1,15 @@
 <map id="include/link.h" name="include/link.h">
-<area shape="rect" id="Node000001" title="It defines the link module." alt="" coords="745,5,855,31"/>
+<area shape="rect" id="Node000001" title="It defines the link module." alt="" coords="771,5,880,31"/>
 <area shape="rect" id="Node000002" href="$game_8h.html" title="It defines the game interface." alt="" coords="495,79,617,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="749,37,596,81,595,76,747,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="770,37,600,81,599,76,768,32"/>
 <area shape="rect" id="Node000009" href="$game_8c.html" title="It implements the game structure." alt="" coords="560,225,653,251"/>
-<area shape="poly" id="edge19_Node000001_Node000009" title=" " alt="" coords="782,43,619,227,615,223,779,39"/>
+<area shape="poly" id="edge19_Node000001_Node000009" title=" " alt="" coords="806,43,620,227,617,223,802,39"/>
 <area shape="rect" id="Node000010" href="$game__reader_8c.html" title="It loads and makes all the actions related to space management." alt="" coords="728,225,869,251"/>
-<area shape="poly" id="edge20_Node000001_Node000010" title=" " alt="" coords="803,45,801,225,796,225,797,45"/>
+<area shape="poly" id="edge20_Node000001_Node000010" title=" " alt="" coords="825,45,803,225,797,225,820,45"/>
 <area shape="rect" id="Node000011" href="$link_8c.html" title="It implements the link module." alt="" coords="863,79,943,104"/>
-<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="829,36,887,76,884,81,826,41"/>
+<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="850,38,892,76,888,80,846,42"/>
+<area shape="rect" id="Node000012" href="$link__test_8c.html" title="It tests link module." alt="" coords="967,79,1079,104"/>
+<area shape="poly" id="edge22_Node000001_Node000012" title=" " alt="" coords="871,33,991,76,989,81,869,38"/>
 <area shape="rect" id="Node000003" href="$game__actions_8h.html" title="It defines the game update interface." alt="" coords="360,225,536,251"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="556,118,548,148,533,179,504,208,473,228,470,223,501,203,528,176,543,147,550,117"/>
 <area shape="rect" id="Node000004" href="$game__actions_8c.html" title="It implements the game update through user actions." alt="" coords="396,299,543,324"/>

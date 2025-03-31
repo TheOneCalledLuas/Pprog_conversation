@@ -44,8 +44,8 @@
    [6] [7] [8] */
 typedef enum
 {
-    NORTH_WEST,
-    NORTH,
+    NORTH_WEST, /*!<North west direction.*/
+    NORTH,      /*!<*/
     NORTH_EAST,
     WEST,
     ACTUAL_POSITION,

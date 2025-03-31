@@ -9,6 +9,7 @@ It implements the game update through user actions.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
 {\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include "{}game.\+h"{}}\newline
 {\ttfamily \#include "{}player.\+h"{}}\newline
@@ -29,6 +30,12 @@ Include dependency graph for game\+\_\+actions.\+c\+:
 \item 
 \Hypertarget{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}\label{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449} 
 \#define {\bfseries SUCCESS\+\_\+\+PROB}~2 /\texorpdfstring{$\ast$}{*}Chances to strike (the smaller the better).\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}\label{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0} 
+\#define {\bfseries N\+\_\+\+DIRECTIONS}~4 /\texorpdfstring{$\ast$}{*}Number of directions.\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{game__actions_8c_a80069636d5272c3e8faa89f450700175}\label{game__actions_8c_a80069636d5272c3e8faa89f450700175} 
+\#define {\bfseries N\+\_\+\+VARIATIONS}~2 /\texorpdfstring{$\ast$}{*}Number of possible ways to call each direction.\texorpdfstring{$\ast$}{*}/
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -37,14 +44,8 @@ void \mbox{\hyperlink{game__actions_8c_a6f4777fc8b60f74ffb82fb3df7e20e07}{game\+
 \begin{DoxyCompactList}\small\item\em Action to be executed when an unknown command is given. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__actions_8c_afc2847a7b83e67020a117fa8e1a79c5d}{game\+\_\+actions\+\_\+exit}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Action to be executed when exit is given. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c}{game\+\_\+actions\+\_\+next}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Action to be executed when next command is given. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__actions_8c_a2498a234bdd058d092c1acb816e07194}{game\+\_\+actions\+\_\+back}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Action to be executed when back command is given. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b}{game\+\_\+actions\+\_\+left}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Action to be executed when left command is given. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1}{game\+\_\+actions\+\_\+right}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Action to be executed when right command is given. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_a4a158b09e0b0607e55daee8f2fd04b10}{game\+\_\+actions\+\_\+move}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Moves the active player in that direction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387}{game\+\_\+actions\+\_\+take}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Action to be executed when take command is given. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__actions_8c_a269baddb92b4a469576ff8c3c1ed3440}{game\+\_\+actions\+\_\+drop}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
@@ -91,24 +92,6 @@ Action to be executed when attack command is given.
 
 \begin{DoxyAuthor}{Author}
 Saul López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Pointer to the game structure. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{game__actions_8c_a2498a234bdd058d092c1acb816e07194}\label{game__actions_8c_a2498a234bdd058d092c1acb816e07194} 
-\index{game\_actions.c@{game\_actions.c}!game\_actions\_back@{game\_actions\_back}}
-\index{game\_actions\_back@{game\_actions\_back}!game\_actions.c@{game\_actions.c}}
-\doxysubsubsection{\texorpdfstring{game\_actions\_back()}{game\_actions\_back()}}
-{\footnotesize\ttfamily void game\+\_\+actions\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
-
-
-
-Action to be executed when back command is given. 
-
-\begin{DoxyAuthor}{Author}
-Profesores PProg.
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -187,15 +170,15 @@ Saul López Romero
 {\em game} & Pointer to the game structure. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b}\label{game__actions_8c_ae1f81ac79cba2079a9935b21285daf8b} 
-\index{game\_actions.c@{game\_actions.c}!game\_actions\_left@{game\_actions\_left}}
-\index{game\_actions\_left@{game\_actions\_left}!game\_actions.c@{game\_actions.c}}
-\doxysubsubsection{\texorpdfstring{game\_actions\_left()}{game\_actions\_left()}}
-{\footnotesize\ttfamily void game\+\_\+actions\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+\Hypertarget{game__actions_8c_a4a158b09e0b0607e55daee8f2fd04b10}\label{game__actions_8c_a4a158b09e0b0607e55daee8f2fd04b10} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_move@{game\_actions\_move}}
+\index{game\_actions\_move@{game\_actions\_move}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_move()}{game\_actions\_move()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
 
 
 
-Action to be executed when left command is given. 
+Moves the active player in that direction. 
 
 \begin{DoxyAuthor}{Author}
 Fernando Mijangos.
@@ -204,41 +187,7 @@ Fernando Mijangos.
 \begin{DoxyParams}{Parameters}
 {\em game} & Pointer to the game structure. \\
 \hline
-\end{DoxyParams}
-\Hypertarget{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c}\label{game__actions_8c_a66e50f6ff4525c37c92382cdf5422b3c} 
-\index{game\_actions.c@{game\_actions.c}!game\_actions\_next@{game\_actions\_next}}
-\index{game\_actions\_next@{game\_actions\_next}!game\_actions.c@{game\_actions.c}}
-\doxysubsubsection{\texorpdfstring{game\_actions\_next()}{game\_actions\_next()}}
-{\footnotesize\ttfamily void game\+\_\+actions\+\_\+next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
-
-
-
-Action to be executed when next command is given. 
-
-\begin{DoxyAuthor}{Author}
-Profesores PProg.
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Pointer to the game structure. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1}\label{game__actions_8c_abcf33bd732458eb69207d1744e50ffa1} 
-\index{game\_actions.c@{game\_actions.c}!game\_actions\_right@{game\_actions\_right}}
-\index{game\_actions\_right@{game\_actions\_right}!game\_actions.c@{game\_actions.c}}
-\doxysubsubsection{\texorpdfstring{game\_actions\_right()}{game\_actions\_right()}}
-{\footnotesize\ttfamily void game\+\_\+actions\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
-
-
-
-Action to be executed when right command is given. 
-
-\begin{DoxyAuthor}{Author}
-Fernando Mijangos.
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Pointer to the game structure. \\
+{\em direction} & Direction in which the player moves. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387}\label{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387} 

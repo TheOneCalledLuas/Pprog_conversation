@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['n_0',['N',['../types_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa2c63acbe79d9f41ba6bb7766e9c37702',1,'types.h']]],
-  ['next_1',['NEXT',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2ab13b96bf99a409e019f70dc1602532fd',1,'command.h']]],
-  ['no_5fcmd_2',['NO_CMD',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0',1,'command.h']]]
+  ['ok_0',['OK',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59',1,'types.h']]]
 ];
