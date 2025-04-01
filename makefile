@@ -111,5 +111,11 @@ character_test: character_test.o character.o
 character_test.o: character_test.c character.h types.h test.h character_test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
+inventory_test: inventory_test.o inventory.o
+	$(CC) -o inventory_test $^
+
+inventory_test.o: inventory_test.c inventory_test.h inventory.h types.h test.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
 run:
 	./anthill data/anthill.dat -l ./log/logfile.txt
