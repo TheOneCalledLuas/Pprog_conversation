@@ -44,8 +44,7 @@ struct _Game
 
 Status game_create(Game **game)
 {
-    int i = 0, j = 0;
-    Command *aux = NULL;
+    int i = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -238,7 +237,7 @@ Id game_get_character_location(Game *game, Id id)
 
 Status game_destroy(Game **game)
 {
-    int i = 0, j = 0;
+    int i = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -319,8 +318,7 @@ Status game_next_turn(Game *game)
         return ERROR;
     
     /*Goes to the next last command.*/
-    if(!game_next_command(game))
-        return ERROR;
+
     /*Goes to the next turn.*/
     game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
     return OK;
@@ -560,6 +558,7 @@ Status game_set_last_command(Game *game, Command *command)
     {
         return ERROR;
     }
+    
     /*It sets the last command to what you want.*/
     game->last_cmd[game->turn][game->command_num[game->turn]] = command;
 

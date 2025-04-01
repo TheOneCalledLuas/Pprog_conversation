@@ -149,7 +149,6 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         }
         /*Refreshes the screen so that the player can see what he did.*/
         graphic_engine_paint_game(gengine, game, FALSE);
-
         /*Waits a bit so that the player can look what he did*/
         if (command_get_code(last_cmd) == INSPECT || command_get_code(last_cmd) == CHAT)
             sleep(4);
@@ -158,6 +157,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
 
         /*Goes to the next turn.*/
         game_next_turn(game);
+        game_next_command(game);
     }
 }
 
