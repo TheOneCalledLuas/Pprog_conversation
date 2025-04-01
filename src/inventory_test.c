@@ -332,19 +332,21 @@ void test6_inventory_add()
     inventory_destroy(in);
 }
 
-void test1_inventory_take(){
+void test1_inventory_take()
+{
     /* Creates an inventory. */
     Inventory *in;
     in = inventory_create();
     /* Adds an id. */
-    inventory add(in, 1);
+    inventory_add(in, 1);
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT(inventory_take(in, 1) == 1);
     /* Frees memory. */
     inventory_destroy(in);
 }
 
-void test2_inventory_take(){
+void test2_inventory_take()
+{
     /* Creates an inventory. */
     Inventory *in;
     in = inventory_create();
@@ -354,12 +356,13 @@ void test2_inventory_take(){
     inventory_destroy(in);
 }
 
-void test3_inventory_take(){
+void test3_inventory_take()
+{
     /* Creates an inventory. */
     Inventory *in;
     in = inventory_create();
     /* Adds an id and then takes it out with inventory_take. */
-    inventory add(in, 1);
+    inventory_add(in, 1);
     inventory_take(in, 1);
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT(inventory_take(in, 1) == ID_ERROR);
@@ -367,18 +370,20 @@ void test3_inventory_take(){
     inventory_destroy(in);
 }
 
-void test4_inventory_take(){
+void test4_inventory_take()
+{
     /* Creates a null inventory. */
     Inventory *in = NULL;
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT(inventory_take(in, 1) == ID_ERROR);
 }
 
-void test1_inventory_get_content(){
+void test1_inventory_get_content()
+{
     /* Creates an inventory. */
     Inventory *in;
-    in = inventory_create();
     Id *ids = NULL;
+    in = inventory_create();
     /* Adds many ids. */
     inventory_add(in, 1);
     inventory_add(in, 2);
@@ -390,11 +395,12 @@ void test1_inventory_get_content(){
     free(ids);
 }
 
-void test2_inventory_get_content(){
+void test2_inventory_get_content()
+{
     /* Creates an inventory. */
     Inventory *in;
-    in = inventory_create();
     Id *ids = NULL;
+    in = inventory_create();
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT((ids = inventory_get_content(in)) == NULL);
     /* Frees memory. */
@@ -402,14 +408,15 @@ void test2_inventory_get_content(){
     free(ids);
 }
 
-void test3_inventory_get_content(){
+void test3_inventory_get_content()
+{
     /* Creates a null inventory. */
     Inventory *in = NULL;
     Id *ids = NULL;
-     /* "Adds" many ids. */
-     inventory_add(in, 1);
-     inventory_add(in, 2);
-     inventory_add(in, 3);
+    /* "Adds" many ids. */
+    inventory_add(in, 1);
+    inventory_add(in, 2);
+    inventory_add(in, 3);
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT((ids = inventory_get_content(in)) == NULL);
     /* Frees memory. */
