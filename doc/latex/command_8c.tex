@@ -25,8 +25,7 @@ struct \mbox{\hyperlink{struct__Command}{\+\_\+\+Command}}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}\label{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b} 
-\#define {\bfseries CMD\+\_\+\+LENGHT}~30
+\#define \mbox{\hyperlink{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}{CMD\+\_\+\+LENGHT}}~30
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -55,7 +54,7 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{command_8c_a7c21f279884058e7d4e
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{command_8c_a3574ce85761f52cf9b70d061831533ee}\label{command_8c_a3574ce85761f52cf9b70d061831533ee} 
-char \texorpdfstring{$\ast$}{*} {\bfseries cmd\+\_\+to\+\_\+str} \mbox{[}N\+\_\+\+CMD\mbox{]}\mbox{[}N\+\_\+\+CMDT\mbox{]} = \{\{"{}"{}, "{}No command"{}\}, \{"{}"{}, "{}Unknown"{}\}, \{"{}e"{}, "{}Exit"{}\}, \{"{}m"{}, "{}move"{}\}, \{"{}t"{}, "{}Take"{}\}, \{"{}d"{}, "{}Drop"{}\}, \{"{}a"{}, "{}Attack"{}\}, \{"{}c"{}, "{}Chat"{}\}, \{"{}i"{},"{}Inspect"{}\}\}
+char \texorpdfstring{$\ast$}{*} {\bfseries cmd\+\_\+to\+\_\+str} \mbox{[}\mbox{\hyperlink{command_8h_ae180fe89f0ae48ce5c80ffaa18de9271}{N\+\_\+\+CMD}}\mbox{]}\mbox{[}\mbox{\hyperlink{command_8h_a8d93932dcdc527c13e06b688b68c7ffc}{N\+\_\+\+CMDT}}\mbox{]} = \{\{"{}"{}, "{}No command"{}\}, \{"{}"{}, "{}Unknown"{}\}, \{"{}e"{}, "{}Exit"{}\}, \{"{}m"{}, "{}move"{}\}, \{"{}t"{}, "{}Take"{}\}, \{"{}d"{}, "{}Drop"{}\}, \{"{}a"{}, "{}Attack"{}\}, \{"{}c"{}, "{}Chat"{}\}, \{"{}i"{},"{}Inspect"{}\}\}
 \begin{DoxyCompactList}\small\item\em structure with all the possible commands and the key words to triger them. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -75,6 +74,15 @@ Fernando Mijangos Saul Lopez Romero
 GNU Public License 
 \end{DoxyCopyright}
 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}\label{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b} 
+\index{command.c@{command.c}!CMD\_LENGHT@{CMD\_LENGHT}}
+\index{CMD\_LENGHT@{CMD\_LENGHT}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{CMD\_LENGHT}{CMD\_LENGHT}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+LENGHT~30}
+
+Max lenght for a command. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456}\label{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456} 
@@ -213,7 +221,7 @@ Saúl López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
-{\em command} & Pointer to the command where you will store the information. \\
+{\em com} & Pointer to the command where you will store the information. \\
 \hline
 {\em place} & place to write the outcome (stdout or file intended). \\
 \hline

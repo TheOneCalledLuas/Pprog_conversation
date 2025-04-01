@@ -17,6 +17,9 @@
 #include <string.h>
 #include <unistd.h>
 
+/**
+ * Maximun size of a description line.
+ */
 #define DESC_SIZE 9
 
 Status game_reader_load_spaces(Game *game, char *filename)

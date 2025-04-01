@@ -10,14 +10,14 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#define PLAYER_NAME_SIZE 30
+#define PLAYER_NAME_SIZE 30 /*!<Maxinum name length.*/
 
 #include "types.h"
 #include "object.h"
 #include "inventory.h"
 
 
-typedef struct _Player Player;
+typedef struct _Player Player; /*!<Player type.*/
 
 /**
  * @brief It creates a new player, allocating memory and initializing its variables

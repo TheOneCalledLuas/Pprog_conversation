@@ -120,8 +120,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2b1bd24d2eddf8081d8c541e4cc4fd4b" id="r_a2b1bd24d2eddf8081d8c541e4cc4fd4b"><td class="memItemLeft" align="right" valign="top"><a id="a2b1bd24d2eddf8081d8c541e4cc4fd4b" name="a2b1bd24d2eddf8081d8c541e4cc4fd4b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CMD_LENGHT</b>&#160;&#160;&#160;30</td></tr>
+<tr class="memitem:a2b1bd24d2eddf8081d8c541e4cc4fd4b" id="r_a2b1bd24d2eddf8081d8c541e4cc4fd4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command_8c.html#a2b1bd24d2eddf8081d8c541e4cc4fd4b">CMD_LENGHT</a>&#160;&#160;&#160;30</td></tr>
 <tr class="separator:a2b1bd24d2eddf8081d8c541e4cc4fd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -160,7 +159,7 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a3574ce85761f52cf9b70d061831533ee" id="r_a3574ce85761f52cf9b70d061831533ee"><td class="memItemLeft" align="right" valign="top"><a id="a3574ce85761f52cf9b70d061831533ee" name="a3574ce85761f52cf9b70d061831533ee"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_to_str</b> [N_CMD][N_CMDT] = {{&quot;&quot;, &quot;No command&quot;}, {&quot;&quot;, &quot;Unknown&quot;}, {&quot;e&quot;, &quot;Exit&quot;}, {&quot;m&quot;, &quot;move&quot;}, {&quot;t&quot;, &quot;Take&quot;}, {&quot;d&quot;, &quot;Drop&quot;}, {&quot;a&quot;, &quot;Attack&quot;}, {&quot;c&quot;, &quot;Chat&quot;}, {&quot;i&quot;,&quot;Inspect&quot;}}</td></tr>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_to_str</b> [<a class="el" href="command_8h.html#ae180fe89f0ae48ce5c80ffaa18de9271">N_CMD</a>][<a class="el" href="command_8h.html#a8d93932dcdc527c13e06b688b68c7ffc">N_CMDT</a>] = {{&quot;&quot;, &quot;No command&quot;}, {&quot;&quot;, &quot;Unknown&quot;}, {&quot;e&quot;, &quot;Exit&quot;}, {&quot;m&quot;, &quot;move&quot;}, {&quot;t&quot;, &quot;Take&quot;}, {&quot;d&quot;, &quot;Drop&quot;}, {&quot;a&quot;, &quot;Attack&quot;}, {&quot;c&quot;, &quot;Chat&quot;}, {&quot;i&quot;,&quot;Inspect&quot;}}</td></tr>
 <tr class="memdesc:a3574ce85761f52cf9b70d061831533ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure with all the possible commands and the key words to triger them. <br /></td></tr>
 <tr class="separator:a3574ce85761f52cf9b70d061831533ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -170,7 +169,23 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_to_str</b> [N_C
 <dl class="section version"><dt>Version</dt><dd>3 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>29-02-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a2b1bd24d2eddf8081d8c541e4cc4fd4b" name="a2b1bd24d2eddf8081d8c541e4cc4fd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b1bd24d2eddf8081d8c541e4cc4fd4b">&#9670;&#160;</a></span>CMD_LENGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_LENGHT&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Max lenght for a command. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="aa3d3d6bdeb73c7bbaff6ee913569f456" name="aa3d3d6bdeb73c7bbaff6ee913569f456"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3d3d6bdeb73c7bbaff6ee913569f456">&#9670;&#160;</a></span>command_create()</h2>
 
@@ -362,7 +377,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>cmd_to_str</b> [N_C
 <dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">command</td><td>Pointer to the command where you will store the information. </td></tr>
+    <tr><td class="paramname">com</td><td>Pointer to the command where you will store the information. </td></tr>
     <tr><td class="paramname">place</td><td>place to write the outcome (stdout or file intended). </td></tr>
   </table>
   </dd>

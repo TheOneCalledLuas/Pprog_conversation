@@ -14,10 +14,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_NAME 20
-#define MAX_DESC 7
-#define MAX_MESSAGE 100
+#define MAX_NAME 20 /*!<Max name length.*/
+#define MAX_DESC 7 /*!<Max description line.*/
+#define MAX_MESSAGE 100 /*!<Max message length.*/
 
+/**
+ * Character TAD.
+ */
 struct _Character
 {
     Id id;                      /*!< Id of the character.*/

@@ -20,6 +20,9 @@
 #include "game_reader.h"
 #include "graphic_engine.h"
 
+/**
+ * Maximun argument length.
+ */
 #define MAX_ARG 64
 
 /**
@@ -40,6 +43,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name);
  * @author Saul Lopez Romero
  * @param game Pointer to the game.
  * @param gengine Pointer to the graphic engine.
+ * @param f Pointer to the file for the log.
  */
 void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f);
 
@@ -52,6 +56,13 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f);
  */
 void game_loop_cleanup(Game **game, Graphic_engine *gengine);
 
+/**
+ * @brief Main game function.
+ * @author Saúl López Romero
+ * 
+ * @param argc Number of arguments passed.
+ * @param argv Arguments passed.
+ */
 int main(int argc, char *argv[])
 {
     Game *game = NULL;

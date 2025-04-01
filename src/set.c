@@ -14,6 +14,9 @@
 #include "types.h"
 #include "set.h"
 
+/**
+ * Set TAD.
+ */
 struct _Set
 {
     int n_ids;   /*!<Number of ids in the set.*/

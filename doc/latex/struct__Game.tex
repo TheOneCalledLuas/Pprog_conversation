@@ -2,7 +2,8 @@
 \hypertarget{struct__Game}{}\label{struct__Game}\index{\_Game@{\_Game}}
 
 
-Collaboration diagram for \+\_\+\+Game\+:\nopagebreak
+Collaboration diagram for \+\_\+\+Game\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,15 +13,15 @@ Collaboration diagram for \+\_\+\+Game\+:\nopagebreak
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct__Player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a1376a128e019ecadf837c32c40d05c9b}{players}} \mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}
+\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a1376a128e019ecadf837c32c40d05c9b}{players}} \mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}
 \item 
-\mbox{\hyperlink{struct__Space}{Space}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77}{spaces}} \mbox{[}MAX\+\_\+\+SPACES\mbox{]}
+\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77}{spaces}} \mbox{[}\mbox{\hyperlink{game_8h_a5f54fd55f983a2e33ce076cd9f587e82}{MAX\+\_\+\+SPACES}}\mbox{]}
 \item 
-\mbox{\hyperlink{struct__Object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{objects}} \mbox{[}MAX\+\_\+\+OBJECTS\mbox{]}
+\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}{objects}} \mbox{[}\mbox{\hyperlink{game_8h_acdc7844fbd4d45737d4aa56834d37829}{MAX\+\_\+\+OBJECTS}}\mbox{]}
 \item 
-\mbox{\hyperlink{struct__Character}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ab1ecd8eb67b41eb3c38547f371215b8d}{characters}} \mbox{[}MAX\+\_\+\+CHARACTERS\mbox{]}
+\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_ab1ecd8eb67b41eb3c38547f371215b8d}{characters}} \mbox{[}\mbox{\hyperlink{game_8h_a55994b6ed33f6a399931df0517c6b205}{MAX\+\_\+\+CHARACTERS}}\mbox{]}
 \item 
-\mbox{\hyperlink{struct__link}{Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a2b766f0814f66dcf437600a9c526142e}{links}} \mbox{[}MAX\+\_\+\+LINKS\mbox{]}
+\mbox{\hyperlink{link_8h_a669dc22e9af2486a28a9727ffdb7c98b}{Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a2b766f0814f66dcf437600a9c526142e}{links}} \mbox{[}\mbox{\hyperlink{game_8h_a660ed1ec8604982002a0d6eced0e0367}{MAX\+\_\+\+LINKS}}\mbox{]}
 \item 
 int \mbox{\hyperlink{struct__Game_af091df2bb12ae5c6ec3f63bfc8d7877d}{n\+\_\+spaces}}
 \item 
@@ -30,9 +31,13 @@ int \mbox{\hyperlink{struct__Game_a2980ef5670fb746630cbcfd7e65a4098}{n\+\_\+char
 \item 
 int \mbox{\hyperlink{struct__Game_ae7f86ec86a503598a4b8932658218f69}{n\+\_\+links}}
 \item 
-\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449}{last\+\_\+cmd}} \mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}\mbox{[}COMMANDS\+\_\+\+SAVED\mbox{]}
+int \mbox{\hyperlink{struct__Game_a09e0daf1608225979ea795a9594bca45}{n\+\_\+commands}}
 \item 
-int \mbox{\hyperlink{struct__Game_a9c1329854268669d10899f2f46c9cacf}{command\+\_\+num}} \mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}
+\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_af92f329cddb12581d3ba60cbd5568a6f}{commands}} \mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a7e982545c2556ce0318c9bbfc19c8b42}{COMMANDS\+\_\+\+SAVED}}\mbox{]}
+\item 
+\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449}{last\+\_\+cmd}} \mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}\mbox{[}\mbox{\hyperlink{game_8h_a7e982545c2556ce0318c9bbfc19c8b42}{COMMANDS\+\_\+\+SAVED}}\mbox{]}
+\item 
+int \mbox{\hyperlink{struct__Game_a9c1329854268669d10899f2f46c9cacf}{command\+\_\+num}} \mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}
 \item 
 \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Game_a2718393f54af772d89a41047d8d26682}{finished}}
 \item 
@@ -50,15 +55,21 @@ Game interface implementation.
 \index{\_Game@{\_Game}!characters@{characters}}
 \index{characters@{characters}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{characters}{characters}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__Character}{Character}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::characters\mbox{[}MAX\+\_\+\+CHARACTERS\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::characters\mbox{[}\mbox{\hyperlink{game_8h_a55994b6ed33f6a399931df0517c6b205}{MAX\+\_\+\+CHARACTERS}}\mbox{]}}
 
 Array with all the character of the game. \Hypertarget{struct__Game_a9c1329854268669d10899f2f46c9cacf}\label{struct__Game_a9c1329854268669d10899f2f46c9cacf} 
 \index{\_Game@{\_Game}!command\_num@{command\_num}}
 \index{command\_num@{command\_num}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{command\_num}{command\_num}}
-{\footnotesize\ttfamily int \+\_\+\+Game\+::command\+\_\+num\mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::command\+\_\+num\mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}}
 
-Array which determines the last command. \Hypertarget{struct__Game_a2718393f54af772d89a41047d8d26682}\label{struct__Game_a2718393f54af772d89a41047d8d26682} 
+Array which determines the last command. \Hypertarget{struct__Game_af92f329cddb12581d3ba60cbd5568a6f}\label{struct__Game_af92f329cddb12581d3ba60cbd5568a6f} 
+\index{\_Game@{\_Game}!commands@{commands}}
+\index{commands@{commands}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{commands}{commands}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::commands\mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a7e982545c2556ce0318c9bbfc19c8b42}{COMMANDS\+\_\+\+SAVED}}\mbox{]}}
+
+Commands created. \Hypertarget{struct__Game_a2718393f54af772d89a41047d8d26682}\label{struct__Game_a2718393f54af772d89a41047d8d26682} 
 \index{\_Game@{\_Game}!finished@{finished}}
 \index{finished@{finished}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{finished}{finished}}
@@ -68,13 +79,13 @@ Whether the game has finished or not. \Hypertarget{struct__Game_a8cbf4a2a5c64b78
 \index{\_Game@{\_Game}!last\_cmd@{last\_cmd}}
 \index{last\_cmd@{last\_cmd}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{last\_cmd}{last\_cmd}}
-{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::last\+\_\+cmd\mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}\mbox{[}COMMANDS\+\_\+\+SAVED\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::last\+\_\+cmd\mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}\mbox{[}\mbox{\hyperlink{game_8h_a7e982545c2556ce0318c9bbfc19c8b42}{COMMANDS\+\_\+\+SAVED}}\mbox{]}}
 
 Array with the last commands executed by the players. \Hypertarget{struct__Game_a2b766f0814f66dcf437600a9c526142e}\label{struct__Game_a2b766f0814f66dcf437600a9c526142e} 
 \index{\_Game@{\_Game}!links@{links}}
 \index{links@{links}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{links}{links}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__link}{Link}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::links\mbox{[}MAX\+\_\+\+LINKS\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{link_8h_a669dc22e9af2486a28a9727ffdb7c98b}{Link}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::links\mbox{[}\mbox{\hyperlink{game_8h_a660ed1ec8604982002a0d6eced0e0367}{MAX\+\_\+\+LINKS}}\mbox{]}}
 
 Array with all the links information. \Hypertarget{struct__Game_a2980ef5670fb746630cbcfd7e65a4098}\label{struct__Game_a2980ef5670fb746630cbcfd7e65a4098} 
 \index{\_Game@{\_Game}!n\_characters@{n\_characters}}
@@ -82,7 +93,13 @@ Array with all the links information. \Hypertarget{struct__Game_a2980ef5670fb746
 \doxysubsubsection{\texorpdfstring{n\_characters}{n\_characters}}
 {\footnotesize\ttfamily int \+\_\+\+Game\+::n\+\_\+characters}
 
-Number of characters. \Hypertarget{struct__Game_ae7f86ec86a503598a4b8932658218f69}\label{struct__Game_ae7f86ec86a503598a4b8932658218f69} 
+Number of characters. \Hypertarget{struct__Game_a09e0daf1608225979ea795a9594bca45}\label{struct__Game_a09e0daf1608225979ea795a9594bca45} 
+\index{\_Game@{\_Game}!n\_commands@{n\_commands}}
+\index{n\_commands@{n\_commands}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{n\_commands}{n\_commands}}
+{\footnotesize\ttfamily int \+\_\+\+Game\+::n\+\_\+commands}
+
+Number of commands. \Hypertarget{struct__Game_ae7f86ec86a503598a4b8932658218f69}\label{struct__Game_ae7f86ec86a503598a4b8932658218f69} 
 \index{\_Game@{\_Game}!n\_links@{n\_links}}
 \index{n\_links@{n\_links}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{n\_links}{n\_links}}
@@ -110,19 +127,19 @@ Number of spaces. \Hypertarget{struct__Game_ad45bf5645a26e546d0060a2e61f9cf81}\l
 \index{\_Game@{\_Game}!objects@{objects}}
 \index{objects@{objects}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{objects}{objects}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__Object}{Object}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::objects\mbox{[}MAX\+\_\+\+OBJECTS\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::objects\mbox{[}\mbox{\hyperlink{game_8h_acdc7844fbd4d45737d4aa56834d37829}{MAX\+\_\+\+OBJECTS}}\mbox{]}}
 
 An array with the information of every objects. \Hypertarget{struct__Game_a1376a128e019ecadf837c32c40d05c9b}\label{struct__Game_a1376a128e019ecadf837c32c40d05c9b} 
 \index{\_Game@{\_Game}!players@{players}}
 \index{players@{players}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{players}{players}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__Player}{Player}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::players\mbox{[}MAX\+\_\+\+PLAYERS\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::players\mbox{[}\mbox{\hyperlink{game_8c_a1c346c944e8204fd06dc057393c7c96d}{MAX\+\_\+\+PLAYERS}}\mbox{]}}
 
 Array with all the players. \Hypertarget{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77}\label{struct__Game_ad5f218aa97ec196cf2c13d4832f6bc77} 
 \index{\_Game@{\_Game}!spaces@{spaces}}
 \index{spaces@{spaces}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{spaces}{spaces}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__Space}{Space}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::spaces\mbox{[}MAX\+\_\+\+SPACES\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::spaces\mbox{[}\mbox{\hyperlink{game_8h_a5f54fd55f983a2e33ce076cd9f587e82}{MAX\+\_\+\+SPACES}}\mbox{]}}
 
 An array with the information of every space. \Hypertarget{struct__Game_a2a01590499ec911a85a61cd2eb945a99}\label{struct__Game_a2a01590499ec911a85a61cd2eb945a99} 
 \index{\_Game@{\_Game}!turn@{turn}}

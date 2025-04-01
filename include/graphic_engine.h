@@ -18,7 +18,7 @@
 #include "space.h"
 #include "set.h"
 
-typedef struct _Graphic_engine Graphic_engine;
+typedef struct _Graphic_engine Graphic_engine; /*!< Graphic engine type.*/
 
 /**
  * @brief It creates a new Graphic engine structure with all its variables initialized
