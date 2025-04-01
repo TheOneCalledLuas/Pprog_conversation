@@ -118,7 +118,6 @@ Status game_actions_update(Game *game, Command *command)
     }
 
     game_set_last_command(game, command);
-
     /*It gets the code given.*/
     cmd = command_get_code(command);
 
