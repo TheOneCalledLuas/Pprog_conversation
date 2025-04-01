@@ -20,32 +20,36 @@ void test1_inventory_create();
 
 /**
  * @test Test inventory max_obj setter.
- * @pre Pointer to initialized inventory.
- * @post OK when using a valid value.
+ * @pre Pointer to initialized inventory and a valid value.
+ * @post OK.
  */
 void test1_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
- * @pre Pointer to initialized inventory.
- * @post ERROR when using a negative value.
+ * @pre Pointer to initialized inventory and a negative value.
+ * @post ERROR.
  */
 void test2_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
- * @pre Pointer to initialized inventory.
- * @post ERROR when using a value greater than the overall max.
+ * @pre Pointer to initialized inventory and a value greater than the overall max.
+ * @post ERROR.
  */
 void test3_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
- * @pre Pointer to NULL inventory.
- * @post ERROR despite using a valid value.
+ * @pre Pointer to NULL inventory and a valid value.
+ * @post ERROR.
  */
 void test4_inventory_set_max_objs();
 
+/**
+ * @test Test inventory max_obj getter.
+ * @pre Pointer 
+ */
 void test1_inventory_get_max_objs();
 
 void test2_inventory_get_max_objs();
