@@ -337,7 +337,7 @@ void test1_inventory_take(){
     Inventory *in;
     in = inventory_create();
     /* Adds an id. */
-    inventory add(in, 1);
+    inventory_add(in, 1);
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT(inventory_take(in, 1) == 1);
     /* Frees memory. */
