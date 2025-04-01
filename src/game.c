@@ -24,25 +24,28 @@
 */
 struct _Game
 {
-    Player *players[MAX_PLAYERS];                   /*!< Array with all the players. */
-    Space *spaces[MAX_SPACES];                      /*!< An array with the information of every space. */
-    Object *objects[MAX_OBJECTS];                   /*!< An array with the information of every objects.*/
-    Character *characters[MAX_CHARACTERS];          /*!< Array with all the character of the game.*/
-    Link *links[MAX_LINKS];                         /*!< Array with all the links information.*/
-    int n_spaces;                                   /*!< Number of spaces.*/
-    int n_objects;                                  /*!< Number of objects.*/
-    int n_characters;                               /*!< Number of characters.*/
-    int n_links;                                    /*!< Number of links.*/
-    Command *last_cmd[MAX_PLAYERS][COMMANDS_SAVED]; /*!< Array with the last commands executed by the players.*/
-    int command_num[MAX_PLAYERS];                   /*!< Array which determines the last command.*/
-    Bool finished;                                  /*!< Whether the game has finished or not.*/
-    int turn;                                       /*!< Actual turn.*/
-    int n_players;                                  /*!< Number of players.*/
+    Player *players[MAX_PLAYERS];                    /*!< Array with all the players. */
+    Space *spaces[MAX_SPACES];                       /*!< An array with the information of every space. */
+    Object *objects[MAX_OBJECTS];                    /*!< An array with the information of every objects.*/
+    Character *characters[MAX_CHARACTERS];           /*!< Array with all the character of the game.*/
+    Link *links[MAX_LINKS];                          /*!< Array with all the links information.*/
+    int n_spaces;                                    /*!< Number of spaces.*/
+    int n_objects;                                   /*!< Number of objects.*/
+    int n_characters;                                /*!< Number of characters.*/
+    int n_links;                                     /*!< Number of links.*/
+    int n_commands;                                  /*!< Number of commands.*/
+    Command *commands[MAX_PLAYERS * COMMANDS_SAVED]; /*!< Commands created.*/
+    Command *last_cmd[MAX_PLAYERS][COMMANDS_SAVED];  /*!< Array with the last commands executed by the players.*/
+    int command_num[MAX_PLAYERS];                    /*!< Array which determines the last command.*/
+    Bool finished;                                   /*!< Whether the game has finished or not.*/
+    int turn;                                        /*!< Actual turn.*/
+    int n_players;                                   /*!< Number of players.*/
 };
 
 Status game_create(Game **game)
 {
     int i = 0, j = 0;
+    Command *aux = NULL;
 
     /*Error management.*/
     if (game == NULL)
@@ -75,14 +78,6 @@ Status game_create(Game **game)
     for (i = 0; i < MAX_LINKS; i++)
     {
         (*game)->links[i] = NULL;
-    }
-    for (i = 0; i < MAX_PLAYERS; i++)
-    {
-        (*game)->command_num[i] = FIRST_LAST_COMMAND;
-        for (j = 0; j < COMMANDS_SAVED; j++)
-        {
-            (*game)->last_cmd[i][j] = command_create();
-        }
     }
 
     /*Initializes all members of the game structure.*/
@@ -280,13 +275,9 @@ Status game_destroy(Game **game)
         link_destroy((*game)->links[i]);
     }
     /*Destroys the command.*/
-    for (i = 0; i < MAX_PLAYERS; i++)
+    for (i = 0; i < (*game)->n_commands; i++)
     {
-        for (j = 0; j < COMMANDS_SAVED; j++)
-        {
-            command_destroy((*game)->last_cmd[i][j]);
-            (*game)->last_cmd[i][j] = NULL;
-        }
+        command_destroy((*game)->commands[i]);
     }
     free(*game);
     return OK;
@@ -578,7 +569,7 @@ Status game_next_command(Game *game)
 {
     if (!game)
         return ERROR;
-    
+
     /*Actualises the last command.*/
     game->command_num[game->turn] = (game->command_num[game->turn] - 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
 
@@ -646,6 +637,7 @@ void game_print(Game *game)
 
 Status game_create_from_file(Game **game, char *filename)
 {
+    int i = 0, j = 0;
     /*Error management.*/
     if (game == NULL || filename == NULL)
     {
@@ -691,6 +683,20 @@ Status game_create_from_file(Game **game, char *filename)
     {
         game_destroy(game);
         return ERROR;
+    }
+
+    /*Initialises all the commands.*/
+    for (i = 0; i < (*game)->n_players; i++)
+    {
+        (*game)->command_num[i] = FIRST_LAST_COMMAND;
+        for (j = 0; j < COMMANDS_SAVED; j++)
+        {
+            (*game)->commands[(*game)->n_commands] = command_create();
+            if (!((*game)->commands[(*game)->n_commands]))
+                return ERROR;
+            (*game)->last_cmd[i][j] = (*game)->commands[(*game)->n_commands];
+            (*game)->n_commands = (*game)->n_commands + 1;
+        }
     }
 
     /*Clean exit.*/
