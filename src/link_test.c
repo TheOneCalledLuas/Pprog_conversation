@@ -162,19 +162,53 @@ void test2_link_get_name()
     PRINT_TEST_RESULT(link_get_name(l) == NULL);
 }
 
-void test1_link_set_origin()
+void test1_link_get_origin()
 {
     /*Creates a link.*/
     Link *l = NULL;
     l = link_create();
-    link_set_origin(1);
-    PRINT_TEST_RESULT(link_get_origin(l) == 1);
+    link_set_origin(13);
+    PRINT_TEST_RESULT(link_get_origin(l) == 13);
     /*Frees memory.*/
     link_destroy(l);
 }
 
-void test2_link_get_id()
+void test2_link_get_origin()
 {
    Link *l = NULL;
-   PRINT_TEST_RESULT(link_get_id(l) == ID_ERROR);
+   PRINT_TEST_RESULT(link_get_origin(l) == ID_ERROR);
+}
+
+void test1_link_get_destination()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    l = link_create();
+    link_set_destination(13);
+    PRINT_TEST_RESULT(link_get_destination(l) == 13);
+    /*Frees memory.*/
+    link_destroy(l);
+}
+
+void test2_link_get_destination()
+{
+   Link *l = NULL;
+   PRINT_TEST_RESULT(link_get_destination(l) == ID_ERROR);
+}
+
+void test1_link_get_direction()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    l = link_create();
+    link_set_direction(13);
+    PRINT_TEST_RESULT(link_get_direction(l) == 13);
+    /*Frees memory.*/
+    link_destroy(l);
+}
+
+void test2_link_get_direction()
+{
+   Link *l = NULL;
+   PRINT_TEST_RESULT(link_get_direction(l) == UNK_DIRECTION);
 }
