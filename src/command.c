@@ -15,7 +15,8 @@
 #include <string.h>
 #include <strings.h>
 
-/*Max lenght for a command.*/
+/**
+ * Max lenght for a command.*/
 #define CMD_LENGHT 30
 
 /**

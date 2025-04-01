@@ -11,7 +11,10 @@
 #ifndef LIBSCREEN_H
 #define LIBSCREEN_H
 
-typedef struct _Area Area;
+typedef struct _Area Area; /*!<Area type.*/
+/**
+ * @brief Color enumeration for the screen.
+ */
 typedef enum
 {
     BLUE,

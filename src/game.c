@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PLAYERS 8 /*Max number of players.*/
+#define MAX_PLAYERS 8 /*!<Max number of players.*/
 
 /**
    Game interface implementation.

@@ -15,14 +15,13 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}\label{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127} 
-typedef struct \+\_\+\+Area {\bfseries Area}
+typedef struct \+\_\+\+Area \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}\label{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7} 
-enum {\bfseries Frame\+\_\+color} \{ \newline
+enum \mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}} \{ \newline
 {\bfseries BLUE}
 , {\bfseries GREEN}
 , {\bfseries BLACK}
@@ -33,7 +32,7 @@ enum {\bfseries Frame\+\_\+color} \{ \newline
 , {\bfseries CYAN}
 , {\bfseries WHITE}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Color enumeration for the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,17 +40,17 @@ void \mbox{\hyperlink{libscreen_8h_a3c7e0099996732d34b143dde1a40f02c}{screen\+\_
 \begin{DoxyCompactList}\small\item\em It creates a new screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}{screen\+\_\+destroy}} ()
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\+\_\+paint}} (Frame\+\_\+color color)
+void \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\+\_\+paint}} (\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}} color)
 \begin{DoxyCompactList}\small\item\em It paints in the terminal the actual screen composition. \end{DoxyCompactList}\item 
-Area \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\+\_\+area\+\_\+init}} (int x, int y, int width, int height)
+\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\+\_\+area\+\_\+init}} (int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em It creates a new area inside a screen. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\+\_\+area\+\_\+destroy}} (Area \texorpdfstring{$\ast$}{*}area)
+void \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\+\_\+area\+\_\+destroy}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\+\_\+area\+\_\+clear}} (Area \texorpdfstring{$\ast$}{*}area)
+void \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\+\_\+area\+\_\+clear}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It cleares an area, eraising all its content. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\+\_\+area\+\_\+reset\+\_\+cursor}} (Area \texorpdfstring{$\ast$}{*}area)
+void \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\+\_\+area\+\_\+reset\+\_\+cursor}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It resets the cursor of an area. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\+\_\+area\+\_\+puts}} (Area \texorpdfstring{$\ast$}{*}area, char \texorpdfstring{$\ast$}{*}str)
+void \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\+\_\+area\+\_\+puts}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area, char \texorpdfstring{$\ast$}{*}str)
 \begin{DoxyCompactList}\small\item\em It introduces some information inside an area. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -72,12 +71,21 @@ GNU Public License
 \end{DoxyCopyright}
 
 
+\doxysubsection{Typedef Documentation}
+\Hypertarget{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}\label{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127} 
+\index{libscreen.h@{libscreen.h}!Area@{Area}}
+\index{Area@{Area}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{Area}{Area}}
+{\footnotesize\ttfamily typedef struct \+\_\+\+Area \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}}
+
+Area type. 
+
 \doxysubsection{Function Documentation}
 \Hypertarget{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}\label{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666} 
 \index{libscreen.h@{libscreen.h}!screen\_area\_clear@{screen\_area\_clear}}
 \index{screen\_area\_clear@{screen\_area\_clear}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_area\_clear()}{screen\_area\_clear()}}
-{\footnotesize\ttfamily void screen\+\_\+area\+\_\+clear (\begin{DoxyParamCaption}\item[{Area \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
 
 
 
@@ -95,7 +103,7 @@ This function should be called for earaising all the information in an area, bef
 \index{libscreen.h@{libscreen.h}!screen\_area\_destroy@{screen\_area\_destroy}}
 \index{screen\_area\_destroy@{screen\_area\_destroy}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_area\_destroy()}{screen\_area\_destroy()}}
-{\footnotesize\ttfamily void screen\+\_\+area\+\_\+destroy (\begin{DoxyParamCaption}\item[{Area \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
 
 
 
@@ -113,7 +121,7 @@ This function should be called once the area is not needed anymore, before endin
 \index{libscreen.h@{libscreen.h}!screen\_area\_init@{screen\_area\_init}}
 \index{screen\_area\_init@{screen\_area\_init}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_area\_init()}{screen\_area\_init()}}
-{\footnotesize\ttfamily Area \texorpdfstring{$\ast$}{*} screen\+\_\+area\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*} screen\+\_\+area\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -140,7 +148,7 @@ a new area, initialized
 \index{libscreen.h@{libscreen.h}!screen\_area\_puts@{screen\_area\_puts}}
 \index{screen\_area\_puts@{screen\_area\_puts}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_area\_puts()}{screen\_area\_puts()}}
-{\footnotesize\ttfamily void screen\+\_\+area\+\_\+puts (\begin{DoxyParamCaption}\item[{Area \texorpdfstring{$\ast$}{*}}]{area,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+puts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
 
 
 
@@ -160,7 +168,7 @@ This function sets the string that will be shown in an area. Each string introdu
 \index{libscreen.h@{libscreen.h}!screen\_area\_reset\_cursor@{screen\_area\_reset\_cursor}}
 \index{screen\_area\_reset\_cursor@{screen\_area\_reset\_cursor}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_area\_reset\_cursor()}{screen\_area\_reset\_cursor()}}
-{\footnotesize\ttfamily void screen\+\_\+area\+\_\+reset\+\_\+cursor (\begin{DoxyParamCaption}\item[{Area \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+reset\+\_\+cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
 
 
 
@@ -211,7 +219,7 @@ This function should be called at the beginning of the program, so the complete 
 \index{libscreen.h@{libscreen.h}!screen\_paint@{screen\_paint}}
 \index{screen\_paint@{screen\_paint}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{screen\_paint()}{screen\_paint()}}
-{\footnotesize\ttfamily void screen\+\_\+paint (\begin{DoxyParamCaption}\item[{Frame\+\_\+color}]{color }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void screen\+\_\+paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}}}]{color }\end{DoxyParamCaption})}
 
 
 

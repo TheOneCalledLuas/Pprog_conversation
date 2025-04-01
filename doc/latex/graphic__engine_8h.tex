@@ -27,17 +27,16 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}\label{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1} 
-typedef struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}} {\bfseries Graphic\+\_\+engine}
+typedef struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}} \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16}{graphic\+\_\+engine\+\_\+create}} ()
+\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16}{graphic\+\_\+engine\+\_\+create}} ()
 \begin{DoxyCompactList}\small\item\em It creates a new Graphic engine structure with all its variables initialized. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{graphic__engine_8h_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\+\_\+engine\+\_\+destroy}} (\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge)
+void \mbox{\hyperlink{graphic__engine_8h_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\+\_\+engine\+\_\+destroy}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge)
 \begin{DoxyCompactList}\small\item\em It destroys a graphic engine structure. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{graphic__engine_8h_a3f37ee25263b8fa49264a7d3d4d5bd27}{graphic\+\_\+engine\+\_\+paint\+\_\+game}} (\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge, \mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} refresh)
+void \mbox{\hyperlink{graphic__engine_8h_a3f37ee25263b8fa49264a7d3d4d5bd27}{graphic\+\_\+engine\+\_\+paint\+\_\+game}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge, \mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} refresh)
 \begin{DoxyCompactList}\small\item\em It prints on the terminal an image of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -58,12 +57,21 @@ GNU Public License
 \end{DoxyCopyright}
 
 
+\doxysubsection{Typedef Documentation}
+\Hypertarget{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}\label{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1} 
+\index{graphic\_engine.h@{graphic\_engine.h}!Graphic\_engine@{Graphic\_engine}}
+\index{Graphic\_engine@{Graphic\_engine}!graphic\_engine.h@{graphic\_engine.h}}
+\doxysubsubsection{\texorpdfstring{Graphic\_engine}{Graphic\_engine}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}} \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}}}
+
+Graphic engine type. 
+
 \doxysubsection{Function Documentation}
 \Hypertarget{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16}\label{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16} 
 \index{graphic\_engine.h@{graphic\_engine.h}!graphic\_engine\_create@{graphic\_engine\_create}}
 \index{graphic\_engine\_create@{graphic\_engine\_create}!graphic\_engine.h@{graphic\_engine.h}}
 \doxysubsubsection{\texorpdfstring{graphic\_engine\_create()}{graphic\_engine\_create()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} graphic\+\_\+engine\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} graphic\+\_\+engine\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -79,7 +87,7 @@ Pointer to the initialized graphic engine.
 \index{graphic\_engine.h@{graphic\_engine.h}!graphic\_engine\_destroy@{graphic\_engine\_destroy}}
 \index{graphic\_engine\_destroy@{graphic\_engine\_destroy}!graphic\_engine.h@{graphic\_engine.h}}
 \doxysubsubsection{\texorpdfstring{graphic\_engine\_destroy()}{graphic\_engine\_destroy()}}
-{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
 
 
 
@@ -97,7 +105,7 @@ Saul Lopez Romero
 \index{graphic\_engine.h@{graphic\_engine.h}!graphic\_engine\_paint\_game@{graphic\_engine\_paint\_game}}
 \index{graphic\_engine\_paint\_game@{graphic\_engine\_paint\_game}!graphic\_engine.h@{graphic\_engine.h}}
 \doxysubsubsection{\texorpdfstring{graphic\_engine\_paint\_game()}{graphic\_engine\_paint\_game()}}
-{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+paint\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge,  }\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{refresh }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+paint\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge,  }\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{refresh }\end{DoxyParamCaption})}
 
 
 

@@ -14,9 +14,11 @@
 #include <stdio.h>
 
 #include "types.h"
-/*Ways of refering to the same command.*/
+/**
+ * Ways of refering to the same command.*/
 #define N_CMDT 2
-/*Number of commands.*/
+/**
+ * Number of commands.*/
 #define N_CMD 9
 
 /**
@@ -137,7 +139,7 @@ Status command_get_user_input(Command *command);
  * @brief Prints the command information.
  * @author Saúl López Romero
  *
- * @param command Pointer to the command where you will store the information.
+ * @param com Pointer to the command where you will store the information.
  * @param place place to write the outcome (stdout or file intended).
  * @return OK if everything goes well or ERROR if there was some mistake. 
  */

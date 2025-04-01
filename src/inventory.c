@@ -15,6 +15,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * Inventory TAD.
+ */
 struct _Inventory
 {
     Set *objs;     /*!< Set with the objects in the inventory. */

@@ -17,20 +17,15 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 void \mbox{\hyperlink{inventory__test_8h_a33638f1a88ae16ab8d6bee00145b82b8}{test1\+\_\+inventory\+\_\+create}} ()
 \item 
-\Hypertarget{inventory__test_8h_ace30873f717c8e9e5ffe5e8017474d77}\label{inventory__test_8h_ace30873f717c8e9e5ffe5e8017474d77} 
-void {\bfseries test1\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+void \mbox{\hyperlink{inventory__test_8h_ace30873f717c8e9e5ffe5e8017474d77}{test1\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs}} ()
 \item 
-\Hypertarget{inventory__test_8h_a64fb028724693b382de7a1d9d61604e1}\label{inventory__test_8h_a64fb028724693b382de7a1d9d61604e1} 
-void {\bfseries test2\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+void \mbox{\hyperlink{inventory__test_8h_a64fb028724693b382de7a1d9d61604e1}{test2\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs}} ()
 \item 
-\Hypertarget{inventory__test_8h_a34f6b816f58d7d1903dee652d3b83e99}\label{inventory__test_8h_a34f6b816f58d7d1903dee652d3b83e99} 
-void {\bfseries test3\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+void \mbox{\hyperlink{inventory__test_8h_a34f6b816f58d7d1903dee652d3b83e99}{test3\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs}} ()
 \item 
-\Hypertarget{inventory__test_8h_a309d12b3cd92937f4eb15f092adb09f8}\label{inventory__test_8h_a309d12b3cd92937f4eb15f092adb09f8} 
-void {\bfseries test4\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs} ()
+void \mbox{\hyperlink{inventory__test_8h_a309d12b3cd92937f4eb15f092adb09f8}{test4\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs}} ()
 \item 
-\Hypertarget{inventory__test_8h_a42b51a5b53baf38bddce941a7703d18a}\label{inventory__test_8h_a42b51a5b53baf38bddce941a7703d18a} 
-void {\bfseries test1\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
+void \mbox{\hyperlink{inventory__test_8h_a42b51a5b53baf38bddce941a7703d18a}{test1\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs}} ()
 \item 
 \Hypertarget{inventory__test_8h_ab8a07623d86b3f0d414e4b648fcea9ca}\label{inventory__test_8h_ab8a07623d86b3f0d414e4b648fcea9ca} 
 void {\bfseries test2\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
@@ -38,8 +33,7 @@ void {\bfseries test2\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
 \Hypertarget{inventory__test_8h_a2f84a56b01ad51431c4db33b16078ae6}\label{inventory__test_8h_a2f84a56b01ad51431c4db33b16078ae6} 
 void {\bfseries test3\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs} ()
 \item 
-\Hypertarget{inventory__test_8h_a23c0eb24fb90991d2a9f12a00fd30fc8}\label{inventory__test_8h_a23c0eb24fb90991d2a9f12a00fd30fc8} 
-void {\bfseries test1\+\_\+inventory\+\_\+find} ()
+void \mbox{\hyperlink{inventory__test_8h_a23c0eb24fb90991d2a9f12a00fd30fc8}{test1\+\_\+inventory\+\_\+find}} ()
 \item 
 \Hypertarget{inventory__test_8h_ac1b1c0d834b7e67701693b1ddb1fe53c}\label{inventory__test_8h_ac1b1c0d834b7e67701693b1ddb1fe53c} 
 void {\bfseries test2\+\_\+inventory\+\_\+find} ()
@@ -119,10 +113,91 @@ GNU Public License
 {\footnotesize\ttfamily void test1\+\_\+inventory\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000029}{Test}}]Test Inventory creation. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000029}{Test}}]Test inventory creation. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
-Pointer to Null. 
+Pointer to NULL. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-Non NULL pointer to set. 
+Non NULL pointer to inventory. 
+\end{DoxyPostcond}
+\Hypertarget{inventory__test_8h_a23c0eb24fb90991d2a9f12a00fd30fc8}\label{inventory__test_8h_a23c0eb24fb90991d2a9f12a00fd30fc8} 
+\index{inventory\_test.h@{inventory\_test.h}!test1\_inventory\_find@{test1\_inventory\_find}}
+\index{test1\_inventory\_find@{test1\_inventory\_find}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_inventory\_find()}{test1\_inventory\_find()}}
+{\footnotesize\ttfamily void test1\+\_\+inventory\+\_\+find (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000035}{Test}}]Tests the find function in inventories. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Initialised inventory with an object. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The find function stumbles upon the object. 
+\end{DoxyPostcond}
+\Hypertarget{inventory__test_8h_a42b51a5b53baf38bddce941a7703d18a}\label{inventory__test_8h_a42b51a5b53baf38bddce941a7703d18a} 
+\index{inventory\_test.h@{inventory\_test.h}!test1\_inventory\_get\_max\_objs@{test1\_inventory\_get\_max\_objs}}
+\index{test1\_inventory\_get\_max\_objs@{test1\_inventory\_get\_max\_objs}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_inventory\_get\_max\_objs()}{test1\_inventory\_get\_max\_objs()}}
+{\footnotesize\ttfamily void test1\+\_\+inventory\+\_\+get\+\_\+max\+\_\+objs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000034}{Test}}]Test inventory max\+\_\+obj getter. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer 
+\end{DoxyPrecond}
+\Hypertarget{inventory__test_8h_ace30873f717c8e9e5ffe5e8017474d77}\label{inventory__test_8h_ace30873f717c8e9e5ffe5e8017474d77} 
+\index{inventory\_test.h@{inventory\_test.h}!test1\_inventory\_set\_max\_objs@{test1\_inventory\_set\_max\_objs}}
+\index{test1\_inventory\_set\_max\_objs@{test1\_inventory\_set\_max\_objs}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_inventory\_set\_max\_objs()}{test1\_inventory\_set\_max\_objs()}}
+{\footnotesize\ttfamily void test1\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000030}{Test}}]Test inventory max\+\_\+obj setter. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to initialized inventory and a valid value. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+OK. 
+\end{DoxyPostcond}
+\Hypertarget{inventory__test_8h_a64fb028724693b382de7a1d9d61604e1}\label{inventory__test_8h_a64fb028724693b382de7a1d9d61604e1} 
+\index{inventory\_test.h@{inventory\_test.h}!test2\_inventory\_set\_max\_objs@{test2\_inventory\_set\_max\_objs}}
+\index{test2\_inventory\_set\_max\_objs@{test2\_inventory\_set\_max\_objs}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test2\_inventory\_set\_max\_objs()}{test2\_inventory\_set\_max\_objs()}}
+{\footnotesize\ttfamily void test2\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000031}{Test}}]Test inventory max\+\_\+obj setter. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to initialized inventory and a negative value. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+ERROR. 
+\end{DoxyPostcond}
+\Hypertarget{inventory__test_8h_a34f6b816f58d7d1903dee652d3b83e99}\label{inventory__test_8h_a34f6b816f58d7d1903dee652d3b83e99} 
+\index{inventory\_test.h@{inventory\_test.h}!test3\_inventory\_set\_max\_objs@{test3\_inventory\_set\_max\_objs}}
+\index{test3\_inventory\_set\_max\_objs@{test3\_inventory\_set\_max\_objs}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test3\_inventory\_set\_max\_objs()}{test3\_inventory\_set\_max\_objs()}}
+{\footnotesize\ttfamily void test3\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000032}{Test}}]Test inventory max\+\_\+obj setter. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to initialized inventory and a value greater than the overall max. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+ERROR. 
+\end{DoxyPostcond}
+\Hypertarget{inventory__test_8h_a309d12b3cd92937f4eb15f092adb09f8}\label{inventory__test_8h_a309d12b3cd92937f4eb15f092adb09f8} 
+\index{inventory\_test.h@{inventory\_test.h}!test4\_inventory\_set\_max\_objs@{test4\_inventory\_set\_max\_objs}}
+\index{test4\_inventory\_set\_max\_objs@{test4\_inventory\_set\_max\_objs}!inventory\_test.h@{inventory\_test.h}}
+\doxysubsubsection{\texorpdfstring{test4\_inventory\_set\_max\_objs()}{test4\_inventory\_set\_max\_objs()}}
+{\footnotesize\ttfamily void test4\+\_\+inventory\+\_\+set\+\_\+max\+\_\+objs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000033}{Test}}]Test inventory max\+\_\+obj setter. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to NULL inventory and a valid value. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+ERROR. 
 \end{DoxyPostcond}
