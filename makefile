@@ -79,13 +79,16 @@ redo:
 #                 Test_check                   #
 ################################################
 run_all_test:
-	make set_check; make space_check; make character_check
+	make set_check; make space_check; make character_check; make character_check
 
 check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
 
 set_check:
 	make set_test;./set_test
+
+inventory_check:
+	make clear; make inventory_test;./inventory_test
 
 set_test: set_test.o set.o
 	$(CC) -o $@ $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -111,7 +114,7 @@ character_test: character_test.o character.o
 character_test.o: character_test.c character.h types.h test.h character_test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-inventory_test: inventory_test.o inventory.o
+inventory_test: inventory_test.o inventory.o set.o
 	$(CC) -o inventory_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
 
 inventory_test.o: inventory_test.c inventory_test.h inventory.h types.h test.h

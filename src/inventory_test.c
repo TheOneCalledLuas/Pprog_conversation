@@ -382,8 +382,8 @@ void test1_inventory_get_content()
 {
     /* Creates an inventory. */
     Inventory *in;
-    in = inventory_create();
     Id *ids = NULL;
+    in = inventory_create();
     /* Adds many ids. */
     inventory_add(in, 1);
     inventory_add(in, 2);
@@ -399,8 +399,8 @@ void test2_inventory_get_content()
 {
     /* Creates an inventory. */
     Inventory *in;
-    in = inventory_create();
     Id *ids = NULL;
+    in = inventory_create();
     /* Test if the function works as expected. */
     PRINT_TEST_RESULT((ids = inventory_get_content(in)) == NULL);
     /* Frees memory. */
