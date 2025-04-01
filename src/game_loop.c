@@ -137,6 +137,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         graphic_engine_paint_game(gengine, game, TRUE);
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
+        last_cmd = game_get_last_command(game);
         game_actions_update(game, last_cmd);
 
         /*Makes the log.*/
