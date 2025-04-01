@@ -73,7 +73,7 @@ long inventory_get_max_objs(Inventory *inventory)
     }
 
     /* Return of the value using the set_len function. */
-    return set_len(inventory->objs);
+    return inventory->max_objs;
 }
 
 int inventory_find(Inventory *inventory, Id id)
