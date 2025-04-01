@@ -24,17 +24,13 @@ Include dependency graph for game\+\_\+actions.\+c\+:\nopagebreak
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8}\label{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8} 
-\#define {\bfseries ATTACK\+\_\+\+PROB}~9  /\texorpdfstring{$\ast$}{*}Chances to attack.\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8}{ATTACK\+\_\+\+PROB}}~9
 \item 
-\Hypertarget{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}\label{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449} 
-\#define {\bfseries SUCCESS\+\_\+\+PROB}~2 /\texorpdfstring{$\ast$}{*}Chances to strike (the smaller the better).\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}{SUCCESS\+\_\+\+PROB}}~2
 \item 
-\Hypertarget{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}\label{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0} 
-\#define {\bfseries N\+\_\+\+DIRECTIONS}~4 /\texorpdfstring{$\ast$}{*}Number of directions.\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}{N\+\_\+\+DIRECTIONS}}~4
 \item 
-\Hypertarget{game__actions_8c_a80069636d5272c3e8faa89f450700175}\label{game__actions_8c_a80069636d5272c3e8faa89f450700175} 
-\#define {\bfseries N\+\_\+\+VARIATIONS}~2 /\texorpdfstring{$\ast$}{*}Number of possible ways to call each direction.\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{game__actions_8c_a80069636d5272c3e8faa89f450700175}{N\+\_\+\+VARIATIONS}}~2
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -77,6 +73,33 @@ Fernando Mijangos, Saúl López Romero
 GNU Public License 
 \end{DoxyCopyright}
 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8}\label{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8} 
+\index{game\_actions.c@{game\_actions.c}!ATTACK\_PROB@{ATTACK\_PROB}}
+\index{ATTACK\_PROB@{ATTACK\_PROB}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{ATTACK\_PROB}{ATTACK\_PROB}}
+{\footnotesize\ttfamily \#define ATTACK\+\_\+\+PROB~9}
+
+Chances to attack. \Hypertarget{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}\label{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0} 
+\index{game\_actions.c@{game\_actions.c}!N\_DIRECTIONS@{N\_DIRECTIONS}}
+\index{N\_DIRECTIONS@{N\_DIRECTIONS}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{N\_DIRECTIONS}{N\_DIRECTIONS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+DIRECTIONS~4}
+
+Number of directions. \Hypertarget{game__actions_8c_a80069636d5272c3e8faa89f450700175}\label{game__actions_8c_a80069636d5272c3e8faa89f450700175} 
+\index{game\_actions.c@{game\_actions.c}!N\_VARIATIONS@{N\_VARIATIONS}}
+\index{N\_VARIATIONS@{N\_VARIATIONS}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{N\_VARIATIONS}{N\_VARIATIONS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+VARIATIONS~2}
+
+Number of possible ways to call each direction. \Hypertarget{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}\label{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449} 
+\index{game\_actions.c@{game\_actions.c}!SUCCESS\_PROB@{SUCCESS\_PROB}}
+\index{SUCCESS\_PROB@{SUCCESS\_PROB}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{SUCCESS\_PROB}{SUCCESS\_PROB}}
+{\footnotesize\ttfamily \#define SUCCESS\+\_\+\+PROB~2}
+
+Chances to strike (the smaller the better). 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{game__actions_8c_a68d58c80a2e0f552557788459d60926f}\label{game__actions_8c_a68d58c80a2e0f552557788459d60926f} 
@@ -186,8 +209,6 @@ Fernando Mijangos.
 \begin{DoxyParams}{Parameters}
 {\em game} & Pointer to the game structure. \\
 \hline
-{\em direction} & Direction in which the player moves. \\
-\hline
 \end{DoxyParams}
 \Hypertarget{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387}\label{game__actions_8c_ade93d5e908cecd1e78eeaaa19e9d5387} 
 \index{game\_actions.c@{game\_actions.c}!game\_actions\_take@{game\_actions\_take}}
@@ -229,13 +250,26 @@ Profesores PProg.
 \index{game\_actions.c@{game\_actions.c}!game\_actions\_update@{game\_actions\_update}}
 \index{game\_actions\_update@{game\_actions\_update}!game\_actions.c@{game\_actions.c}}
 \doxysubsubsection{\texorpdfstring{game\_actions\_update()}{game\_actions\_update()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+actions\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{command }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+actions\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
 
 
 
 It changes the player location space, or other things depending on the command entered. 
 
-Game actions implementation. \Hypertarget{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}\label{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab} 
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game you are running. \\
+\hline
+{\em cmd} & Pointer to the command you want to enter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went correct or ERROR it it didn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}\label{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab} 
 \index{game\_actions.c@{game\_actions.c}!random\_int@{random\_int}}
 \index{random\_int@{random\_int}!game\_actions.c@{game\_actions.c}}
 \doxysubsubsection{\texorpdfstring{random\_int()}{random\_int()}}

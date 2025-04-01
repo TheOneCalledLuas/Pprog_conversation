@@ -13,7 +13,7 @@
 
 #include "types.h"
 
-typedef struct _Object Object;
+typedef struct _Object Object; /*!< Object type.*/
 
 /**
  * @brief It handles all the object creation proccess.

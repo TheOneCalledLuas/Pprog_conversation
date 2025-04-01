@@ -25,21 +25,19 @@ Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}\label{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e} 
-\#define {\bfseries MAX\+\_\+\+ARG}~64
+\#define \mbox{\hyperlink{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}{MAX\+\_\+\+ARG}}~64
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{game__loop_8c_a1c78d6052c905d10401d2424b6979772}{game\+\_\+loop\+\_\+init}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
+int \mbox{\hyperlink{game__loop_8c_a1c78d6052c905d10401d2424b6979772}{game\+\_\+loop\+\_\+init}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Initialises the game. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__loop_8c_a078154d0aafde8b73e17211585e1a444}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, FILE \texorpdfstring{$\ast$}{*}f)
+void \mbox{\hyperlink{game__loop_8c_a078154d0aafde8b73e17211585e1a444}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, FILE \texorpdfstring{$\ast$}{*}f)
 \begin{DoxyCompactList}\small\item\em Main game loop, where all the actions take place. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}{game\+\_\+loop\+\_\+cleanup}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine)
+void \mbox{\hyperlink{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}{game\+\_\+loop\+\_\+cleanup}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine)
 \begin{DoxyCompactList}\small\item\em Frees the memory and closes the game. \end{DoxyCompactList}\item 
-\Hypertarget{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97} 
-int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main game function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -59,12 +57,21 @@ GNU Public License
 \end{DoxyCopyright}
 
 
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}\label{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e} 
+\index{game\_loop.c@{game\_loop.c}!MAX\_ARG@{MAX\_ARG}}
+\index{MAX\_ARG@{MAX\_ARG}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ARG}{MAX\_ARG}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+ARG~64}
+
+Maximun argument length. 
+
 \doxysubsection{Function Documentation}
 \Hypertarget{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}\label{game__loop_8c_aaa6e18336e5d688eb618a9307997195d} 
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_cleanup@{game\_loop\_cleanup}}
 \index{game\_loop\_cleanup@{game\_loop\_cleanup}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_cleanup()}{game\_loop\_cleanup()}}
-{\footnotesize\ttfamily void game\+\_\+loop\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+loop\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine }\end{DoxyParamCaption})}
 
 
 
@@ -84,7 +91,7 @@ Fernando Mijangos
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_init@{game\_loop\_init}}
 \index{game\_loop\_init@{game\_loop\_init}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_init()}{game\_loop\_init()}}
-{\footnotesize\ttfamily int game\+\_\+loop\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int game\+\_\+loop\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -109,7 +116,7 @@ Fernando Mijangos
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_run@{game\_loop\_run}}
 \index{game\_loop\_run@{game\_loop\_run}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_run()}{game\_loop\_run()}}
-{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{struct__Graphic__engine}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f }\end{DoxyParamCaption})}
 
 
 
@@ -123,5 +130,27 @@ Saul Lopez Romero
 {\em game} & Pointer to the game. \\
 \hline
 {\em gengine} & Pointer to the graphic engine. \\
+\hline
+{\em f} & Pointer to the file for the log. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{game\_loop.c@{game\_loop.c}!main@{main}}
+\index{main@{main}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main game function. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of arguments passed. \\
+\hline
+{\em argv} & Arguments passed. \\
 \hline
 \end{DoxyParams}

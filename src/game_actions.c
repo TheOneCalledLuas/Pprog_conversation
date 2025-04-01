@@ -20,10 +20,10 @@
 #include "player.h"
 #include "set.h"
 
-#define ATTACK_PROB 9  /*Chances to attack.*/
-#define SUCCESS_PROB 2 /*Chances to strike (the smaller the better).*/
-#define N_DIRECTIONS 4 /*Number of directions.*/
-#define N_VARIATIONS 2 /*Number of possible ways to call each direction.*/
+#define ATTACK_PROB 9  /*!<Chances to attack.*/
+#define SUCCESS_PROB 2 /*!<Chances to strike (the smaller the better).*/
+#define N_DIRECTIONS 4 /*!<Number of directions.*/
+#define N_VARIATIONS 2 /*!<Number of possible ways to call each direction.*/
 
 /**
    Private functions
@@ -49,7 +49,6 @@ void game_actions_exit(Game *game);
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game structure.
- * @param direction Direction in which the player moves.
  */
 void game_actions_move(Game *game);
 
@@ -103,8 +102,8 @@ void game_actions_inspect(Game *game);
  */
 int random_int(int start, int end);
 
-/**
-   Game actions implementation.
+/*
+    Game actions implementation.
 */
 
 Status game_actions_update(Game *game, Command *command)

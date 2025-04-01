@@ -13,13 +13,13 @@
 
 #include "types.h"
 
-typedef struct _Character Character;
+typedef struct _Character Character; /*!<Character type.*/
 
 /**
  * @brief Allocates the memory needed and initializas the values.
  * @author Fernando Mijangos
  * 
- * @param Id Id of the new character.
+ * @param id Id of the new character.
  * @return Pointer to the new character, or NULL if any error happened.
  */
 Character *character_create(Id id);
@@ -65,7 +65,7 @@ char *character_get_name(Character *character);
  * @brief Sets the description of the character to what you want.
  * @author Fernando Mijangos
  * 
- * @param chracter Pointer to the character.
+ * @param character Pointer to the character.
  * @param description New description of the character.
  * @return OK, if everything went as it should, ERROR if it didn't.
  */
@@ -75,7 +75,7 @@ Status character_set_description(Character *character, char* description);
  * @brief Gets the description of the character.
  * @author Fernando Mijangos
  * 
- * @param chracter Pointer to the character.
+ * @param character Pointer to the character.
  * @return Character's description, NULL if error.
  */
 char *character_get_description(Character *character);
@@ -84,7 +84,7 @@ char *character_get_description(Character *character);
  * @brief Sets the value of the friendly value.
  * @author Fernando Mijangos
  * 
- * @param chracter Pointer to the character.
+ * @param character Pointer to the character.
  * @param value New value of the parameter.
  * @return OK, if everything went well, ERROR if it didn't.
  */

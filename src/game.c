@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PLAYERS 8 /*Max number of players.*/
+#define MAX_PLAYERS 8 /*!<Max number of players.*/
 
 /**
    Game interface implementation.
@@ -317,6 +317,10 @@ Status game_next_turn(Game *game)
     /*Error handling.*/
     if (!game)
         return ERROR;
+    
+    /*Goes to the next last command.*/
+    if(!game_next_command(game))
+        return ERROR;
     /*Goes to the next turn.*/
     game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
     return OK;
@@ -558,8 +562,6 @@ Status game_set_last_command(Game *game, Command *command)
     }
     /*It sets the last command to what you want.*/
     game->last_cmd[game->turn][game->command_num[game->turn]] = command;
-    /*Actualises the last command.*/
-    game->command_num[game->turn] = (game->command_num[game->turn] + 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
 
     return OK;
 }

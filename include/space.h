@@ -15,7 +15,7 @@
 #include "object.h"
 #include "set.h"
 
-typedef struct _Space Space;
+typedef struct _Space Space; /*!<Space type.*/
 
 /**
  * @brief It creates a new space, allocating memory and initializing its variables.

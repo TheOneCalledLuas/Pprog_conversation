@@ -144,11 +144,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a8d93932dcdc527c13e06b688b68c7ffc" id="r_a8d93932dcdc527c13e06b688b68c7ffc"><td class="memItemLeft" align="right" valign="top"><a id="a8d93932dcdc527c13e06b688b68c7ffc" name="a8d93932dcdc527c13e06b688b68c7ffc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>N_CMDT</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:a8d93932dcdc527c13e06b688b68c7ffc" id="r_a8d93932dcdc527c13e06b688b68c7ffc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command_8h.html#a8d93932dcdc527c13e06b688b68c7ffc">N_CMDT</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a8d93932dcdc527c13e06b688b68c7ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae180fe89f0ae48ce5c80ffaa18de9271" id="r_ae180fe89f0ae48ce5c80ffaa18de9271"><td class="memItemLeft" align="right" valign="top"><a id="ae180fe89f0ae48ce5c80ffaa18de9271" name="ae180fe89f0ae48ce5c80ffaa18de9271"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>N_CMD</b>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:ae180fe89f0ae48ce5c80ffaa18de9271" id="r_ae180fe89f0ae48ce5c80ffaa18de9271"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command_8h.html#ae180fe89f0ae48ce5c80ffaa18de9271">N_CMD</a>&#160;&#160;&#160;9</td></tr>
 <tr class="separator:ae180fe89f0ae48ce5c80ffaa18de9271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -221,7 +219,38 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>27-01-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae180fe89f0ae48ce5c80ffaa18de9271" name="ae180fe89f0ae48ce5c80ffaa18de9271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae180fe89f0ae48ce5c80ffaa18de9271">&#9670;&#160;</a></span>N_CMD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define N_CMD&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of commands. </p>
+
+</div>
+</div>
+<a id="a8d93932dcdc527c13e06b688b68c7ffc" name="a8d93932dcdc527c13e06b688b68c7ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d93932dcdc527c13e06b688b68c7ffc">&#9670;&#160;</a></span>N_CMDT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define N_CMDT&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ways of refering to the same command. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a805cf38fd2b6d5604bf1f1036b80fde2" name="a805cf38fd2b6d5604bf1f1036b80fde2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a805cf38fd2b6d5604bf1f1036b80fde2">&#9670;&#160;</a></span>CommandCode</h2>
 
@@ -472,7 +501,7 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">command</td><td>Pointer to the command where you will store the information. </td></tr>
+    <tr><td class="paramname">com</td><td>Pointer to the command where you will store the information. </td></tr>
     <tr><td class="paramname">place</td><td>place to write the outcome (stdout or file intended). </td></tr>
   </table>
   </dd>

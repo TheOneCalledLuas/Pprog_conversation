@@ -9,7 +9,7 @@
  */
 
 #ifndef GAME_H
-#define GAME_H
+#define GAME_H /*!<Game_h header.*/
 
 #include "command.h"
 #include "space.h"
@@ -20,16 +20,16 @@
 #include "link.h"
 
 /*Maximun number of objects and spaces per game.*/
-#define MAX_SPACES 100
-#define MAX_OBJECTS 100
-#define MAX_CHARACTERS 100
-#define MAX_LINKS 400
+#define MAX_SPACES 100 /*!<Max spaces.*/
+#define MAX_OBJECTS 100 /*!<Max objects.*/
+#define MAX_CHARACTERS 100 /*!<Max characters.*/
+#define MAX_LINKS 400 /*!<Max links.*/
 
 /*Keywords to obtain last commands.*/
-#define FIRST_LAST_COMMAND 0
-#define SECOND_LAST_COMMAND 1
-#define THIRD_LAST_COMMAND 2
-#define COMMANDS_SAVED 3 /*Number of commands saved.*/
+#define FIRST_LAST_COMMAND 0 /*!<First one from the back.*/
+#define SECOND_LAST_COMMAND 1 /*!<Second one from the back.*/
+#define THIRD_LAST_COMMAND 2 /*!<Third one from the back.*/
+#define COMMANDS_SAVED 3 /*!<Number of commands saved.*/
 
 /**
  * @brief Command

@@ -11,18 +11,22 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#define WORD_SIZE 1000
-#define NO_ID -1
-#define ID_ERROR -2
+#define WORD_SIZE 1000 /*!<Maximun word length.*/
+#define NO_ID -1 /*!<Minor error code.*/
+#define ID_ERROR -2 /*!<Major error code.*/
 
-typedef long Id;
+typedef long Id; /*!< Id type. */
 
+/**Boolean values.*/
 typedef enum
 {
     FALSE,  /*!< False value.*/
     TRUE    /*!< True value.*/
 } Bool;
 
+/**
+ * @brief Status code.
+ */
 typedef enum
 {
     ERROR,  /*!< Error value.*/

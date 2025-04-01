@@ -13,6 +13,9 @@
 #include "link.h"
 #include "types.h"
 
+/**
+ * Link TAD
+ */
 struct _link
 {
     Id id;               /*!< Id of the link.*/

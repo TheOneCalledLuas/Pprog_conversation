@@ -13,9 +13,9 @@
 
 #include "types.h"
 #include <string.h>
-#define MAX_NAME 100
+#define MAX_NAME 100 /*!<Name length.*/
 
-typedef struct _link Link;
+typedef struct _link Link; /*!<Link type.*/
 
 /**
  * @brief Allocates and returns a link.
