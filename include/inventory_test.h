@@ -21,44 +21,53 @@ void test1_inventory_create();
 /**
  * @test Test inventory max_obj setter.
  * @pre Pointer to initialized inventory and a valid value.
- * @post OK.
+ * @post Output = OK.
  */
 void test1_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
  * @pre Pointer to initialized inventory and a negative value.
- * @post ERROR.
+ * @post Output = ERROR.
  */
 void test2_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
  * @pre Pointer to initialized inventory and a value greater than the overall max.
- * @post ERROR.
+ * @post Output = ERROR.
  */
 void test3_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj setter.
  * @pre Pointer to NULL inventory and a valid value.
- * @post ERROR.
+ * @post Output = ERROR.
  */
 void test4_inventory_set_max_objs();
 
 /**
  * @test Test inventory max_obj getter.
- * @pre Pointer 
+ * @pre Pointer to initialized inventory and the set value.
+ * @post Output = 1 (correct).
  */
 void test1_inventory_get_max_objs();
 
+/**
+ * @test Test inventory max_obj getter.
+ * @pre Pointer to initialized inventory with base value.
+ * @post Output = 0 (correct).
+ */
 void test2_inventory_get_max_objs();
 
+/**
+ * @test Test inventory max_obj getter.
+ */
 void test3_inventory_get_max_objs();
 
 /**
  * @test Tests the find function in inventories.
- * @pre Initialised inventory with an object.
+ * @pre Pointer to initialized inventory with an object.
  * @post The find function stumbles upon the object.
  */
 void test1_inventory_find();
