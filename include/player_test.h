@@ -301,9 +301,87 @@ void player_test_player_has_object_1();
 
 /**
  * @test Player object checker test.
- * @pre Initialised player with object.
- * @post The object is found.
+ * @pre Initialised player with object, we search a non added one.
+ * @post The object isn't found.
  */
 void player_test_player_has_object_2();
+
+/**
+ * @test Player object checker test.
+ * @pre Initialised player with invalid object.
+ * @post The object isn't found.
+ */
+void player_test_player_has_object_3();
+
+/**
+ * @test Player object checker test.
+ * @pre Initialised player with objects (plural).
+ * @post The object is found.
+ */
+void player_test_player_has_object_4();
+
+/**
+ * @test Player object checker test.
+ * @pre Uninitialised player with object.
+ * @post The object isn't found.
+ */
+void player_test_player_has_object_5();
+
+/**
+ * @test Player health test.
+ * @pre Initialised player and valid health.
+ * @post The health is set.
+ */
+void player_test_set_health_1();
+
+/**
+ * @test Player health test.
+ * @pre Uninitialised player and valid health.
+ * @post The health isn't set.
+ */
+void player_test_set_health_2();
+
+/**
+ * @test Player health test.
+ * @pre Initialised player and valid health.
+ * @post The health is returned.
+ */
+void player_test_get_health_1();
+
+/**
+ * @test Player health test.
+ * @pre Uninitialised player and valid health.
+ * @post The health is returned.
+ */
+void player_test_get_health_2();
+
+/**
+ * @test Player capacity test.
+ * @pre Initialised player and valid capacity.
+ * @post The capacity is set.
+ */
+void player_test_set_inventory_capacity_1();
+
+/**
+ * @test Player capacity test.
+ * @pre Uninitialised player and valid capacity.
+ * @post The capacity isn't set.
+ */
+void player_test_set_inventory_capacity_2();
+
+/**
+ * @test Player capacity test.
+ * @pre Initialised player and invalid capacity.
+ * @post The capacity isn't set.
+ */
+void player_test_set_inventory_capacity_3();
+
+/**
+ * @test Player capacity test.
+ * @pre Initialised player and valid capacity.
+ * @post The capacity isn't returned.
+ */
+void player_test_get_inventory_capacity_1();
+
 #endif
 
