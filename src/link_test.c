@@ -212,3 +212,160 @@ void test2_link_get_direction()
    Link *l = NULL;
    PRINT_TEST_RESULT(link_get_direction(l) == UNK_DIRECTION);
 }
+
+void test1_link_get_state()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    l = link_create();
+    link_set_direction(13);
+    PRINT_TEST_RESULT(link_get_state(l) == 13);
+    /*Frees memory.*/
+    link_destroy(l);
+}
+
+void test2_link_get_state()
+{
+   Link *l = NULL;
+   PRINT_TEST_RESULT(link_get_state(l) == FALSE);
+}
+
+void test1_link_set_origin()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_origin(l, NO_ID) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test2_link_set_origin()
+{
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_set_origin(l, 5) == ERROR);
+}
+
+void test3_link_set_origin()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_origin(l, 5) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test4_link_set_origin()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_origin(l, ID_ERROR) == ERROR);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test1_link_set_destination()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_destination(l, NO_ID) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test2_link_set_destination()
+{
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_set_destination(l, 5) == ERROR);
+}
+
+void test3_link_set_destination()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_destination(l, 5) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test4_link_set_destination()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_destination(l, ID_ERROR) == ERROR);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test1_link_set_name()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_name(l, NO_ID) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test2_link_set_name()
+{
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_set_name(l, 5) == ERROR);
+}
+
+void test3_link_set_name()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_name(l, 5) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test4_link_set_name()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_name(l, NULL) == ERROR);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test1_link_set_direction()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_direction(l, NO_ID) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test2_link_set_direction()
+{
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_set_direction(l, 0) == ERROR);
+}
+
+void test1_link_set_state()
+{
+    /*Creates the link.*/
+    Link *l = NULL;
+    l = link_create(5);
+    PRINT_TEST_RESULT(link_set_state(l, NO_IsD) == OK);
+    /*Frees the memory.*/
+    link_destroy(s);
+}
+
+void test2_link_set_state()
+{
+    Link *l = NULL;
+    PRINT_TEST_RESULT(link_set_state(l, 0) == ERROR);
+}
