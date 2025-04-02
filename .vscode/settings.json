@@ -5,6 +5,9 @@
         "object.h": "c",
         "game.h": "c",
         "set.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "object_test.h": "c",
+        "types.h": "c",
+        "typeinfo": "c"
     }
 }

@@ -67,7 +67,7 @@ inventory.o: inventory.c set.h inventory.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 clean:
-	rm -f $(OBJDIR)/*.o anthill set_test space_test character_test
+	rm -f $(OBJDIR)/*.o anthill set_test space_test character_test object_test
 
 clear: 
 	rm -f $(OBJDIR)/*.o
@@ -118,6 +118,15 @@ inventory_test: inventory_test.o inventory.o set.o
 	$(CC) -o inventory_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
 
 inventory_test.o: inventory_test.c inventory_test.h inventory.h types.h test.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+object_check:
+	make object_test;./object_test
+
+object_test: object_test.o object.o
+	$(CC) -o object_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
+
+object_test.o: object_test.c object_test.h object.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 run:

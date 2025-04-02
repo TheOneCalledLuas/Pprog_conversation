@@ -17,6 +17,7 @@
 /**
  * Maximun word description.*/
 #define MAX_DESCRIPTION 64 
+#define MAX_NAME 64
 
 /**
  * @brief Object
@@ -35,7 +36,7 @@ Object *object_create(Id id)
     Object *object = NULL;
 
     /*Checks that the id is at least valid.*/
-    if (id <= 0)
+    if (id==NO_ID||id==ID_ERROR)
     {
         return NULL;
     }
@@ -120,7 +121,7 @@ char *object_get_name(Object *object)
 Status object_set_name(Object *object, char *name)
 {
     /*Checks the arguments.*/
-    if (!object || !name)
+    if (!object || !name|| strlen(name)>=MAX_NAME)
     {
         return ERROR;
     }
