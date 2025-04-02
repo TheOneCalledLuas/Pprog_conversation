@@ -19,7 +19,7 @@
 /**
  * Total test number.
  */
-#define MAX_TESTS 20
+#define MAX_TESTS 24
 
 /**
  * @brief Main function which manages the tests.
