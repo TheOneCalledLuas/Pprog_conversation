@@ -123,7 +123,7 @@ void test2_set_create()
     Set *s = NULL;
     s = set_create();
     /*Checks values are default.*/
-    PRINT_TEST_RESULT(set_len(s)==0);
+    PRINT_TEST_RESULT(set_len(s) == 0);
     /*Frees memory.*/
     set_destroy(s);
 }

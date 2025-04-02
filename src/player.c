@@ -18,7 +18,7 @@
 #include <string.h>
 /**
  * Maximun lenght of a description string for a player.*/
-#define MAX_GDESC 10 
+#define MAX_GDESC 10
 
 /**
  * @brief Player
@@ -38,6 +38,9 @@ struct _Player
 Player *player_create(Id id)
 {
     Player *player;
+
+    if (id < 0)
+        return NULL;
 
     /*Allocation of memory for player and error management*/
     player = (Player *)malloc(sizeof(Player));
@@ -219,7 +222,7 @@ long player_get_inventory_capacity(Player *player)
 {
     /*Error handling.*/
     if (!player)
-        return ERROR;
+        return -1;
     /*Returns the value.*/
     return inventory_get_max_objs(player->inventory);
 }
