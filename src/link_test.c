@@ -55,51 +55,66 @@
      if (all || test == 1)
          test1_link_create();
      if (all || test == 2)
-         test1_link_add();
+         test1_link_get_id();
      if (all || test == 3)
-         test2_link_add();
+         test2_link_get_id();
      if (all || test == 4)
-         test3_link_add();
+         test3_link_get_name();
      if (all || test == 5)
-         test4_link_add();
+         test4_link_get_name();
      if (all || test == 6)
-         test5_link_add();
+         test5_link_get_origin();
      if (all || test == 7)
-         test1_link_increment();
+         test1_link_get_origin();
      if (all || test == 8)
-         test1_link_len();
+         test1_link_get_destination();
      if (all || test == 9)
-         test2_link_len();
+         test2_link_get_destination();
      if (all || test == 10)
-         test3_link_len();
+         test3_link_get_direction();
      if (all || test == 11)
-         test1_link_find();
+         test1_link_get_direction();
      if (all || test == 12)
-         test2_link_find();
+         test2_link_get_state();
      if (all || test == 13)
-         test3_link_find();
+         test3_link_get_state();
      if (all || test == 14)
-         test4_link_find();
+         test4_link_set_origin();
      if (all || test == 15)
-         test5_link_find();
+         test5_link_set_origin();
      if (all || test == 16)
-         test1_link_take();
+         test1_link_set_origin();
      if (all || test == 17)
-         test2_link_take();
+         test2_link_set_origin();
      if (all || test == 18)
-         test3_link_take();
+         test3_link_set_origin();
      if (all || test == 19)
-         test4_link_take();
+         test4_link_set_origin();
      if (all || test == 20)
-         test5_link_take();
+         test5_link_set_destination();
      if (all || test == 21)
-         test1_link_get_content();
+         test1_link_set_destination();
      if (all || test == 22)
-         test2_link_get_content();
+         test2_link_set_destination();
      if (all || test == 23)
-         test3_link_get_content();
+         test3_link_set_destination();
      if (all || test == 24)
-         test2_link_create();
+         test1_link_set_name();
+     if (all || test == 25)
+         test2_link_set_name();
+     if (all || test == 26)
+         test3_link_set_name();
+     if (all || test == 27)
+         test4_link_set_name();
+     if (all || test == 28)
+         test1_link_set_direction();
+     if (all || test == 29)
+         test2_link_set_direction();
+     if (all || test == 30)
+         test3_link_set_state();
+     if (all || test == 31)
+         test4_link_set_state();
+  
  
      PRINT_PASSED_PERCENTAGE;
  
@@ -113,17 +128,6 @@
      l = link_create();
      /*Checks creation.*/
      PRINT_TEST_RESULT(l != NULL);
-     /*Frees memory.*/
-     link_destroy(l);
- }
- 
- void test2_link_create()
- {
-     /*Creates a link.*/
-     Link *l = NULL;
-     l = link_create();
-     /*Checks values are default.*/
-     PRINT_TEST_RESULT(link_len(s)==0);
      /*Frees memory.*/
      link_destroy(l);
  }
