@@ -379,9 +379,16 @@ void player_test_set_inventory_capacity_3();
 /**
  * @test Player capacity test.
  * @pre Initialised player and valid capacity.
- * @post The capacity isn't returned.
+ * @post The capacity is returned.
  */
 void player_test_get_inventory_capacity_1();
+
+/**
+ * @test Player capacity test.
+ * @pre Uninitialised player and valid capacity.
+ * @post The capacity isn't returned.
+ */
+void player_test_get_inventory_capacity_2();
 
 #endif
 

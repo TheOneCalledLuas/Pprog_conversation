@@ -959,8 +959,8 @@ void player_test_get_inventory_capacity_2()
     int res = 0;
 
     /*Sets the test up.*/
-    res = player_set_health(player, health);
-    res = player_get_health(player);
+    res = player_set_inventory_capacity(player, health);
+    res = player_get_inventory_capacity(player);
 
     /*Checks the test out.*/
     PRINT_TEST_RESULT(res == -1);
