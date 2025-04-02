@@ -125,7 +125,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
 
 void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
 {
-    Command *last_cmd;
+    Command *last_cmd = NULL;
     Bool do_log = FALSE;
 
     /*Checks the parameters.*/

@@ -44,8 +44,7 @@ struct _Game
 
 Status game_create(Game **game)
 {
-    int i = 0, j = 0;
-    Command *aux = NULL;
+    int i = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -79,6 +78,11 @@ Status game_create(Game **game)
     {
         (*game)->links[i] = NULL;
     }
+    for (i = 0; i < MAX_PLAYERS * COMMANDS_SAVED; i++)
+    {
+        (*game)->commands[i] = NULL;
+        (*game)->last_cmd[i / COMMANDS_SAVED][i % COMMANDS_SAVED] = NULL;
+    }
 
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
@@ -86,6 +90,7 @@ Status game_create(Game **game)
     (*game)->n_characters = 0;
     (*game)->n_players = 0;
     (*game)->n_links = 0;
+    (*game)->n_commands = 0;
     (*game)->turn = 0;
     (*game)->finished = FALSE;
 
@@ -238,7 +243,7 @@ Id game_get_character_location(Game *game, Id id)
 
 Status game_destroy(Game **game)
 {
-    int i = 0, j = 0;
+    int i = 0;
 
     /*Error management.*/
     if (game == NULL)
@@ -317,9 +322,9 @@ Status game_next_turn(Game *game)
     /*Error handling.*/
     if (!game)
         return ERROR;
-    
+
     /*Goes to the next last command.*/
-    if(!game_next_command(game))
+    if (!game_next_command(game))
         return ERROR;
     /*Goes to the next turn.*/
     game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
