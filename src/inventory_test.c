@@ -308,7 +308,7 @@ void test5_inventory_add()
     /* Adds an id. */
     inventory_add(in, 1);
     /* Checks if you can add the same id again. */
-    PRINT_TEST_RESULT(inventory_add(in, 1));
+    PRINT_TEST_RESULT(inventory_add(in, 1) == OK);
     /* Frees memory. */
     inventory_destroy(in);
 }
