@@ -47,118 +47,6 @@ void test2_space_set_name();
 void test3_space_set_name();
 
 /**
- * @test Test function for north_id setting
- * @pre North Space id = 4
- * @post Output = OK
- */
-void test1_space_set_north();
-
-/**
- * @test Test function for north_id setting
- * @pre Pointer to space = NULL
- * @post Output = ERROR
- */
-void test2_space_set_north();
-
-/**
- * @test Test function for north_id setting
- * @pre North Space id = NO_ID
- * @post Output = OK
- */
-void test3_space_set_north();
-
-/**
- * @test Test function for north_id setting
- * @pre North Space id = ID_ERROR
- * @post Output = ERROR
- */
-void test4_space_set_north();
-
-/**
- * @test Test function for south_id setting
- * @pre South Space id = 4
- * @post Output = OK
- */
-void test1_space_set_south();
-
-/**
- * @test Test function for south_id setting
- * @pre Pointer to space = NULL
- * @post Output = ERROR
- */
-void test2_space_set_south();
-
-/**
- * @test Test function for south_id setting
- * @pre South Space id = NO_ID
- * @post Output = OK
- */
-void test3_space_set_south();
-
-/**
- * @test Test function for south_id setting
- * @pre South Space id = ID_ERROR
- * @post Output = ERROR
- */
-void test4_space_set_south();
-
-/**
- * @test Test function for east_id setting
- * @pre East Space id = 4
- * @post Output = OK
- */
-void test1_space_set_east();
-
-/**
- * @test Test function for east_id setting
- * @pre Pointer to space = NULL
- * @post Output = ERROR
- */
-void test2_space_set_east();
-
-/**
- * @test Test function for east_id setting
- * @pre East Space id = NO_ID
- * @post Output = OK
- */
-void test3_space_set_east();
-
-/**
- * @test Test function for east_id setting
- * @pre East Space id = ID_ERROR
- * @post Output = ERROR
- */
-void test4_space_set_east();
-
-/**
- * @test Test function for west_id setting
- * @pre West Space id = 4
- * @post Output = OK
- */
-void test1_space_set_west();
-
-/**
- * @test Test function for west_id setting
- * @pre Pointer to space = NULL
- * @post Output = ERROR
- */
-void test2_space_set_west();
-
-/**
- * @test Test function for west_id setting
- * @pre West Space id = NO_ID
- * @post Output = OK
- */
-void test3_space_set_west();
-
-/**
- * @test Test function for west_id setting
- * @pre West Space id = ID_ERROR
- * @post Output = ERROR
- */
-void test4_space_set_west();
-
-/**
  * @test Test function for id setting
  * @pre Pointer to the space = NON NULL; Space id = 25
  * @post Output = 25
@@ -185,62 +73,6 @@ void test1_space_get_name();
  * @post Output = NULL
  */
 void test2_space_get_name();
-
-/**
- * @test Test function for the north_id setting
- * @pre North_id=4 ; Pointer to space = NON NULL
- * @post Ooutput = 4
- */
-void test1_space_get_north();
-
-/**
- * @test Test function for the north_id setting
- * @pre Pointer to space = NULL
- * @post Output = ID_ERROR
- */
-void test2_space_get_north();
-
-/**
- * @test Test function for the south_id setting
- * @pre South_id=2 ; Pointer to space = NON NULL
- * @post Ooutput = 2
- */
-void test1_space_get_south();
-
-/**
- * @test Test function for the south_id setting
- * @pre Pointer to space = NULL
- * @post Output = ID_ERROR
- */
-void test2_space_get_south();
-
-/**
- * @test Test function for the east_id setting
- * @pre East_id=1 ; Pointer to space = NON NULL
- * @post Output = 1
- */
-void test1_space_get_east();
-
-/**
- * @test Test function for the east_id setting
- * @pre Pointer to space = NULL
- * @post Output = ID_ERROR
- */
-void test2_space_get_east();
-
-/**
- * @test Test function for the west_id setting
- * @pre West_id=6 ; Pointer to space = NON NULL
- * @post Output = 6
- */
-void test1_space_get_west();
-
-/**
- * @test Test function for the west_id setting
- * @pre Pointer to space = NULL
- * @post Output = ID_ERROR
- */
-void test2_space_get_west();
 
 /**
  * @test Test function for the gdesc setting
@@ -472,5 +304,69 @@ void test3_space_get_n_objects();
  * @post Output = 0
  */
 void test4_space_get_n_objects();
+
+/**
+ * @test Test function for the gdesc functions
+ * @pre Pointer to the space = NON NULL; gdesc="potato"; line=1
+ * @post Output = Potato
+ */
+void test1_space_get_gdesc();
+
+/**
+ * @test Test function for the gdesc functions
+ * @pre Pointer to the space =NULL; gdesc="potato"; line=1
+ * @post Output = NULL
+ */
+void test2_space_get_gdesc();
+
+/**
+ * @test Test function for the gdesc functions
+ * @pre Pointer to the space = NON NULL; gdesc=NULL; line=1
+ * @post Output = NULL
+ */
+void test3_space_get_gdesc();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NON NULL; discovered set to: TRUE
+ * @post Outpout = TRUE;
+ */
+void test1_space_is_discovered();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NULL; discovered set to: TRUE
+ * @post Outpout = FALSE;
+ */
+void test2_space_is_discovered();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NON NULL; discovered set to: FALSE
+ * @post Outpout = TRUE;
+ */
+void test3_space_is_discovered();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NON NULL; discovered_new_value: TRUE
+ * @post OK
+ */
+void test1_space_set_discovered();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NULL; discovered_new_value: TRUE
+ * @post ERROR
+ */
+void test2_space_set_discovered();
+
+/**
+ * @test Test function for the discovered functions
+ * @pre Pointer to the space = NON NULL; discovered_new_value: FALSE
+ * @post OK
+ */
+void test3_space_set_discovered();
+
 
 #endif
