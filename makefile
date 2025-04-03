@@ -85,7 +85,7 @@ check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
 
 set_check:
-	make set_test;./set_test
+	make clear; make set_test;./set_test
 
 inventory_check:
 	make clear; make inventory_test;./inventory_test
@@ -97,7 +97,7 @@ set_test.o: set_test.c set_test.h set.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 space_check:
-	make space_test; ./space_test
+	make clear; make space_test; ./space_test
 
 space_test: space_test.o space.o set.o object.o
 	$(CC) -o space_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -106,7 +106,7 @@ space_test.o: space_test.c space.h types.h object.h set.h space_test.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 character_check:
-	make character_test;./character_test
+	make clear; make character_test;./character_test
 
 character_test: character_test.o character.o
 	$(CC) -o character_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -121,7 +121,7 @@ inventory_test.o: inventory_test.c inventory_test.h inventory.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 object_check:
-	make object_test;./object_test
+	make clear; make object_test;./object_test
 
 object_test: object_test.o object.o
 	$(CC) -o object_test $(patsubst %.o, $(OBJDIR)/%.o,$^)

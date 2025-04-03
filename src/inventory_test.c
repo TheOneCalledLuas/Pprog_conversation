@@ -181,7 +181,7 @@ void test2_inventory_get_max_objs()
     Inventory *in;
     in = inventory_create();
     /* Checks the getter with the initial value. */
-    PRINT_TEST_RESULT(inventory_get_max_objs(in) == 0);
+    PRINT_TEST_RESULT(inventory_get_max_objs(in) == 5);
     /* Frees memory. */
     inventory_destroy(in);
 }
@@ -292,6 +292,7 @@ void test4_inventory_add()
     /* Creates an inventory. */
     Inventory *in;
     in = inventory_create();
+    inventory_set_max_objs(in, 0);
     /* Checks adding an id without enough space. */
     PRINT_TEST_RESULT(inventory_add(in, 1) == ERROR);
     /* Frees memory. */
