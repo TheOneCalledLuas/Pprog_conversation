@@ -36,7 +36,7 @@ Inventory *inventory_create()
 
     /* Initialization of an empty inventory. */
     newInv->objs = set_create();
-    newInv->max_objs = 0;
+    newInv->max_objs = 5;
 
     return newInv;
 }

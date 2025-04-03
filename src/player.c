@@ -55,6 +55,7 @@ Player *player_create(Id id)
     player->player_location = NO_ID;
     player->inventory = inventory_create();
     player->health = 20;
+    player->gdesc[0] = '\0';
 
     return player;
 }

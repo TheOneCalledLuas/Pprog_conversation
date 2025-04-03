@@ -220,14 +220,14 @@ void player_test_set_player_gdesc_1();
  * @pre Uninitialised player and valid description.
  * @post ERROR takes place.
  */
-void player_test_set_player_gdesc_3();
+void player_test_set_player_gdesc_2();
 
 /**
  * @test Player object description test.
  * @pre Initialised player and invalid description.
  * @post ERROR takes place.
  */
-void player_test_set_player_gdesc_2();
+void player_test_set_player_gdesc_3();
 
 /**
  * @test Player object description test.
