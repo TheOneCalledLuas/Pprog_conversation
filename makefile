@@ -79,7 +79,7 @@ redo:
 #                 Test_check                   #
 ################################################
 run_all_test:
-	make set_check; make space_check; make character_check; make player_check; make object_check; make inventory_check
+	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check
 
 check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
