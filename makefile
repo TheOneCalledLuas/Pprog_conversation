@@ -140,3 +140,6 @@ player_test.o: player_test.c player_test.h player.h types.h test.h
 
 run:
 	./anthill data/anthill.dat -l ./log/logfile.txt
+
+run_cmd:
+	./anthill data/anthill.dat -l ./log/output.log < game.cmd
