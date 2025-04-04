@@ -17,7 +17,7 @@
 /**
  * Number of tests.
  */
-#define MAX_TESTS 62
+#define MAX_TESTS 51
 
 /**
  * @brief Main function for SPACE unit tests.
@@ -64,93 +64,93 @@ int main(int argc, char **argv)
         test1_space_get_id();
     if (all || test == 7)
         test2_space_get_id();
-    if (all || test == 16)
+    if (all || test == 86)
         test1_space_get_objects();
-    if (all || test == 17)
+    if (all || test == 97)
         test2_space_get_objects();
-    if (all || test == 18)
+    if (all || test == 10)
         test1_space_get_name();
-    if (all || test == 19)
+    if (all || test == 11)
         test2_space_get_name();
-    if (all || test == 28)
+    if (all || test == 12)
         test1_space_add_object();
-    if (all || test == 29)
+    if (all || test == 13)
         test2_space_add_object();
-    if (all || test == 30)
+    if (all || test == 14)
         test3_space_add_object();
-    if (all || test == 31)
+    if (all || test == 15)
         test4_space_add_object();
-    if (all || test == 32)
+    if (all || test == 16)
         test1_space_set_gdesc();
-    if (all || test == 33)
+    if (all || test == 17)
         test2_space_set_gdesc();
-    if (all || test == 34)
+    if (all || test == 18)
         test3_space_set_gdesc();
-    if (all || test == 35)
+    if (all || test == 19)
         test4_space_set_gdesc();
-    if (all || test == 36)
+    if (all || test == 20)
         test5_space_set_gdesc();
-    if (all || test == 37)
+    if (all || test == 21)
         test1_space_find_object();
-    if (all || test == 38)
+    if (all || test == 22)
         test2_space_find_object();
-    if (all || test == 39)
+    if (all || test == 23)
         test3_space_find_object();
-    if (all || test == 40)
+    if (all || test == 24)
         test4_space_find_object();
-    if (all || test == 41)
+    if (all || test == 25)
         test5_space_find_object();
-    if (all || test == 42)
+    if (all || test == 26)
         test1_space_take_object();
-    if (all || test == 43)
+    if (all || test == 27)
         test2_space_take_object();
-    if (all || test == 44)
+    if (all || test == 28)
         test3_space_take_object();
-    if (all || test == 45)
+    if (all || test == 29)
         test4_space_take_object();
-    if (all || test == 46)
+    if (all || test == 30)
         test5_space_take_object();
-    if (all || test == 47)
+    if (all || test == 31)
         test1_space_get_character();
-    if (all || test == 48)
+    if (all || test == 32)
         test2_space_get_character();
-    if (all || test == 49)
+    if (all || test == 33)
         test3_space_get_character();
-    if (all || test == 50)
+    if (all || test == 34)
         test4_space_get_character();
-    if (all || test == 47)
+    if (all || test == 35)
         test1_space_set_character();
-    if (all || test == 48)
+    if (all || test == 36)
         test2_space_set_character();
-    if (all || test == 49)
+    if (all || test == 37)
         test3_space_set_character();
-    if (all || test == 50)
+    if (all || test == 38)
         test4_space_set_character();
-    if (all || test == 59)
+    if (all || test == 39)
         test1_space_get_n_objects();
-    if (all || test == 60)
+    if (all || test == 40)
         test2_space_get_n_objects();
-    if (all || test == 61)
+    if (all || test == 41)
         test3_space_get_n_objects();
-    if (all || test == 62)
+    if (all || test == 42)
         test4_space_get_n_objects();
-    if (all || test == 63)
+    if (all || test == 43)
         test1_space_get_gdesc();
-    if (all || test == 63)
+    if (all || test == 44)
         test2_space_get_gdesc();
-    if (all || test == 63)
+    if (all || test == 45)
         test3_space_get_gdesc();
-    if (all || test == 63)
+    if (all || test == 46)
         test1_space_is_discovered();
-    if (all || test == 63)
+    if (all || test == 47)
         test2_space_is_discovered();
-    if (all || test == 63)
+    if (all || test == 48)
         test3_space_is_discovered();
-    if (all || test == 63)
+    if (all || test == 49)
         test1_space_set_discovered();
-    if (all || test == 63)
+    if (all || test == 50)
         test2_space_set_discovered();
-    if (all || test == 63)
+    if (all || test == 51)
         test3_space_set_discovered();
 
     PRINT_PASSED_PERCENTAGE;
@@ -604,7 +604,7 @@ void test1_space_get_gdesc()
 {
     /*Creates the space. */
     Space *s = NULL;
-    char  word[WORD_SIZE] = "potatoess";
+    char word[WORD_SIZE] = "potatoess";
     s = space_create(5);
     space_set_gdesc_line(s, 1, word);
     /*Checks what is needed.*/
