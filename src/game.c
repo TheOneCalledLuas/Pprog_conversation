@@ -565,7 +565,7 @@ Status game_set_last_command(Game *game, Command *command)
     {
         return ERROR;
     }
-    
+
     /*It sets the last command to what you want.*/
     game->last_cmd[game->turn][game->command_num[game->turn]] = command;
 
@@ -587,10 +587,10 @@ Command *game_get_previous_command(Game *game, int command_num)
 {
     int aux = 0;
     /*Error management.*/
-    if (!game || command_num < 0 || command_num >= COMMANDS_SAVED)
+    if (!game)
         return NULL;
 
-    aux = (game->command_num[game->turn] + command_num) % COMMANDS_SAVED;
+    aux = (game->command_num[game->turn] - command_num + COMMANDS_SAVED) % COMMANDS_SAVED;
 
     return game->last_cmd[game->turn][aux];
 }

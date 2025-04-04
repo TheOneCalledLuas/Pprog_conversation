@@ -154,7 +154,6 @@ Status game_actions_update(Game *game, Command *command)
     default:
         break;
     }
-    game_set_last_command(game, command);
     return OK;
 }
 

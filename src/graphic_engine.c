@@ -452,15 +452,15 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
-    i=(refresh?1:0);
-    for (; i <COMMANDS_SAVED; i++)
+    for (i = 0; i < COMMANDS_SAVED; i++)
     {
-        last_cmd = command_get_code(game_get_previous_command(game, i));
+        last_cmd = command_get_code(game_get_previous_command(game, FIRST_LAST_COMMAND + i + refresh));
         if (last_cmd != NO_CMD)
         {
-            sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i)) == OK ? "OK" : "ERROR"));
+            sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, FIRST_LAST_COMMAND + i - refresh)) == OK ? "OK" : "ERROR"));
             screen_area_puts(ge->feedback, str);
-        }else
+        }
+        else
         {
             screen_area_puts(ge->feedback, " ");
         }
