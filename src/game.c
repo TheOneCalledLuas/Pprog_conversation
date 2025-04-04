@@ -772,3 +772,5 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
     /*If it doesn't find a north connection, returns NO_ID.*/
     return NO_ID;
 }
+
+Link_Property game_get_space_outcoming_connection_info(Game * game, Id space, Direction dir);

@@ -12,16 +12,24 @@
 #define TYPES_H
 
 #define WORD_SIZE 1000 /*!<Maximun word length.*/
-#define NO_ID -1 /*!<Minor error code.*/
-#define ID_ERROR -2 /*!<Major error code.*/
+#define NO_ID -1       /*!<Minor error code.*/
+#define ID_ERROR -2    /*!<Major error code.*/
 
 typedef long Id; /*!< Id type. */
+
+/**Link properties. */
+typedef enum
+{
+    UNK = -1, /*!<Not known state.*/
+    CLOSED,   /*!<Closed link.*/
+    OPENED,   /*!<Opened link.*/
+} Link_Property;
 
 /**Boolean values.*/
 typedef enum
 {
-    FALSE,  /*!< False value.*/
-    TRUE    /*!< True value.*/
+    FALSE, /*!< False value.*/
+    TRUE   /*!< True value.*/
 } Bool;
 
 /**
@@ -29,8 +37,8 @@ typedef enum
  */
 typedef enum
 {
-    ERROR,  /*!< Error value.*/
-    OK      /*!< Good functioning value.*/
+    ERROR, /*!< Error value.*/
+    OK     /*!< Good functioning value.*/
 } Status;
 
 /**
@@ -38,10 +46,10 @@ typedef enum
  */
 typedef enum
 {
-    N,  /*!< North.*/
-    S,  /*!< South.*/
-    E,  /*!< East.*/
-    W,   /*!< West.*/
+    N,            /*!< North.*/
+    S,            /*!< South.*/
+    E,            /*!< East.*/
+    W,            /*!< West.*/
     UNK_DIRECTION /*!< Unknown direction*/
 } Direction;
 

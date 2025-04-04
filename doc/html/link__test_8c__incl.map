@@ -1,19 +1,20 @@
 <map id="src/link_test.c" name="src/link_test.c">
-<area shape="rect" id="Node000001" title="It tests link module." alt="" coords="216,5,328,31"/>
+<area shape="rect" id="Node000001" title="It tests link module." alt="" coords="200,5,312,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,33,86,78,84,73,234,28"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,33,86,77,84,72,220,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="97,79,167,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,33,168,75,166,70,248,28"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="189,152,259,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="263,33,247,54,233,80,227,110,225,139,220,138,221,109,228,78,242,51,259,29"/>
-<area shape="rect" id="Node000005" href="$link_8h.html" title="It defines the link module." alt="" coords="243,79,301,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="275,31,275,65,269,65,269,31"/>
-<area shape="rect" id="Node000006" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="293,152,363,177"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="284,29,301,51,316,78,325,109,329,138,324,139,320,110,311,80,296,54,280,32"/>
-<area shape="rect" id="Node000007" href="$link__test_8h.html" title="Link test function module." alt="" coords="376,79,467,104"/>
-<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="297,28,386,70,383,75,295,33"/>
-<area shape="rect" id="Node000008" href="$test_8h.html" title="Test tool fundamentals." alt="" coords="491,79,549,104"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="313,28,478,75,477,80,311,33"/>
-<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="266,106,242,142,237,139,262,103"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="283,103,313,140,308,143,279,106"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,33,165,74,163,69,235,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="203,225,274,251"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="258,31,243,211,238,211,252,31"/>
+<area shape="rect" id="Node000005" href="$link_8h.html" title="It defines the link module." alt="" coords="291,152,349,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="261,31,269,64,284,103,305,139,301,142,279,105,264,65,256,32"/>
+<area shape="rect" id="Node000006" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="331,225,402,251"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="313,25,360,43,381,58,398,77,406,94,410,112,408,150,397,185,383,215,378,212,392,183,403,149,405,113,401,96,394,80,378,62,357,48,311,30"/>
+<area shape="rect" id="Node000007" href="$link__test_8h.html" title="Link test function module." alt="" coords="293,79,384,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="271,29,316,67,313,72,268,33"/>
+<area shape="rect" id="Node000008" href="$test_8h.html" title="Test tool fundamentals." alt="" coords="459,79,517,104"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="294,28,446,74,445,80,292,33"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="309,179,264,218,260,214,305,175"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="330,176,354,212,349,215,325,179"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="338,105,329,140,324,138,333,104"/>
 </map>

@@ -418,4 +418,13 @@ Link *game_find_link(Game *game, Id link_id);
  */
 Id game_get_space_at(Game *game, Id space, Direction direction);
 
+/**
+ * @brief Gets the link information for a stace regarding the outgoing links.
+ * @author Saúl López Romero.
+ * 
+ * @param game Pointer to the game.
+ * @param space Id of the space.
+ * @param dir Direction for the link.
+ */
+Link_Property game_get_space_outcoming_connection_info(Game * game, Id space, Direction dir);
 #endif
