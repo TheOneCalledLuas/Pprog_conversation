@@ -11,4 +11,6 @@
 #ifndef LINK_TEST_H
 #define LINK_TEST_H
 
+#include "link.h"
+
 #endif

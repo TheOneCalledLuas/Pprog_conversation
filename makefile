@@ -139,7 +139,7 @@ player_test.o: player_test.c player_test.h player.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 run:
-	./anthill data/anthill.dat -l ./log/logfile.txt
+	./anthill data/anthill.dat -l ./log/output.log
 
 run_cmd:
 	./anthill data/anthill.dat -l ./log/output.log < game.cmd
