@@ -425,6 +425,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction);
  * @param game Pointer to the game.
  * @param space Id of the space.
  * @param dir Direction for the link.
+ * @return Link information (OPENED or CLOSED) or UNK in case of error.
  */
 Link_Property game_get_space_outcoming_connection_info(Game * game, Id space, Direction dir);
 #endif
