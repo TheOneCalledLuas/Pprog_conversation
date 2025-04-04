@@ -55,33 +55,33 @@ int main(int argc, char **argv)
     if (all || test == 1)
         test1_link_create();
     if (all || test == 2)
-        test1_link_get_id();
+        test2_link_create();
     if (all || test == 3)
-        test2_link_get_id();
+        test3_link_create();
     if (all || test == 4)
-        test3_link_get_name();
+        test1_link_get_id();
     if (all || test == 5)
-        test4_link_get_name();
+        test2_link_get_id();
     if (all || test == 6)
-        test5_link_get_origin();
+        test1_link_get_name();
     if (all || test == 7)
-        test1_link_get_origin();
+        test2_link_get_name();
     if (all || test == 8)
-        test1_link_get_destination();
+        test1_link_get_origin();
     if (all || test == 9)
-        test2_link_get_destination();
+        test2_link_get_origin();
     if (all || test == 10)
-        test3_link_get_direction();
+        test1_link_get_destination();
     if (all || test == 11)
-        test1_link_get_direction();
+        test2_link_get_destination();
     if (all || test == 12)
-        test2_link_get_state();
+        test1_link_get_direction();
     if (all || test == 13)
-        test3_link_get_state();
+        test2_link_get_direction();
     if (all || test == 14)
-        test4_link_set_origin();
+        test1_link_get_state();
     if (all || test == 15)
-        test5_link_set_origin();
+        test2_link_get_state();
     if (all || test == 16)
         test1_link_set_origin();
     if (all || test == 17)
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
     if (all || test == 19)
         test4_link_set_origin();
     if (all || test == 20)
-        test5_link_set_destination();
+        test4_link_set_destination();
     if (all || test == 21)
         test1_link_set_destination();
     if (all || test == 22)
@@ -111,9 +111,9 @@ int main(int argc, char **argv)
     if (all || test == 29)
         test2_link_set_direction();
     if (all || test == 30)
-        test3_link_set_state();
+        test1_link_set_state();
     if (all || test == 31)
-        test4_link_set_state();
+        test2_link_set_state();
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -124,20 +124,43 @@ void test1_link_create()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create();
+    Id id = 4;
+    l = link_create(id);
     /*Checks creation.*/
     PRINT_TEST_RESULT(l != NULL);
     /*Frees memory.*/
     link_destroy(l);
 }
 
+void test2_link_create()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    Id id = 4;
+    l = link_create(id);
+    /*Checks creation.*/
+    PRINT_TEST_RESULT(link_get_id(l) == 4 && link_get_origin(l) == NO_ID && link_get_destination(l) == NO_ID);
+    /*Frees memory.*/
+    link_destroy(l);
+}
+
+void test3_link_create()
+{
+    /*Creates a link.*/
+    Link *l = NULL;
+    Id id = NO_ID;
+    l = link_create(id);
+    /*Checks creation.*/
+    PRINT_TEST_RESULT(l == NULL);
+}
+
 void test1_link_get_id()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create(32);
-    link_set_name(s, "merchant");
-    PRINT_TEST_RESULT(link_get_id(l) == 32);
+    Id id = 4;
+    l = link_create(id);
+    PRINT_TEST_RESULT(link_get_id(l) == 4);
     /*Frees memory.*/
     link_destroy(l);
 }
@@ -152,8 +175,9 @@ void test1_link_get_name()
 {
     /*Creates the link.*/
     Link *l = NULL;
-    l = link_create();
-    link_set_name(s, "merchant");
+    Id id = 4;
+    l = link_create(id);
+    link_set_name(l, "merchant");
     PRINT_TEST_RESULT(strcmp(link_get_name(l), "merchant") == 0);
     /*Frees the memory.*/
     link_destroy(l);
@@ -169,8 +193,9 @@ void test1_link_get_origin()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create();
-    link_set_origin(13);
+    Id id = 4;
+    l = link_create(id);
+    link_set_origin(l, 13);
     PRINT_TEST_RESULT(link_get_origin(l) == 13);
     /*Frees memory.*/
     link_destroy(l);
@@ -186,8 +211,9 @@ void test1_link_get_destination()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create();
-    link_set_destination(13);
+    Id id = 4;
+    l = link_create(id);
+    link_set_destination(l, 13);
     PRINT_TEST_RESULT(link_get_destination(l) == 13);
     /*Frees memory.*/
     link_destroy(l);
@@ -203,8 +229,9 @@ void test1_link_get_direction()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create();
-    link_set_direction(13);
+    Id id = 4;
+    l = link_create(id);
+    link_set_direction(l, 13);
     PRINT_TEST_RESULT(link_get_direction(l) == 13);
     /*Frees memory.*/
     link_destroy(l);
@@ -220,9 +247,10 @@ void test1_link_get_state()
 {
     /*Creates a link.*/
     Link *l = NULL;
-    l = link_create();
-    link_set_direction(13);
-    PRINT_TEST_RESULT(link_get_state(l) == 13);
+    Id id = 4;
+    l = link_create(id);
+    link_set_state(l, TRUE);
+    PRINT_TEST_RESULT(link_get_state(l) == TRUE);
     /*Frees memory.*/
     link_destroy(l);
 }
@@ -240,7 +268,7 @@ void test1_link_set_origin()
     l = link_create(5);
     PRINT_TEST_RESULT(link_set_origin(l, NO_ID) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test2_link_set_origin()
@@ -256,7 +284,7 @@ void test3_link_set_origin()
     l = link_create(5);
     PRINT_TEST_RESULT(link_set_origin(l, 5) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test4_link_set_origin()
@@ -266,7 +294,7 @@ void test4_link_set_origin()
     l = link_create(5);
     PRINT_TEST_RESULT(link_set_origin(l, ID_ERROR) == ERROR);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test1_link_set_destination()
@@ -274,15 +302,15 @@ void test1_link_set_destination()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_destination(l, NO_ID) == OK);
+    PRINT_TEST_RESULT(link_set_destination(l, 13) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test2_link_set_destination()
 {
     Link *l = NULL;
-    PRINT_TEST_RESULT(link_set_destination(l, 5) == ERROR);
+    PRINT_TEST_RESULT(link_set_destination(l, 13) == ERROR);
 }
 
 void test3_link_set_destination()
@@ -290,9 +318,10 @@ void test3_link_set_destination()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_destination(l, 5) == OK);
+    link_set_destination(l, 12);
+    PRINT_TEST_RESULT(link_set_destination(l, 13) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test4_link_set_destination()
@@ -302,7 +331,7 @@ void test4_link_set_destination()
     l = link_create(5);
     PRINT_TEST_RESULT(link_set_destination(l, ID_ERROR) == ERROR);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test1_link_set_name()
@@ -310,15 +339,15 @@ void test1_link_set_name()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_name(l, NO_ID) == OK);
+    PRINT_TEST_RESULT(link_set_name(l, "merchant") == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test2_link_set_name()
 {
     Link *l = NULL;
-    PRINT_TEST_RESULT(link_set_name(l, 5) == ERROR);
+    PRINT_TEST_RESULT(link_set_name(l, "merchant") == ERROR);
 }
 
 void test3_link_set_name()
@@ -326,9 +355,10 @@ void test3_link_set_name()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_name(l, 5) == OK);
+    link_set_name(l, "merchant");
+    PRINT_TEST_RESULT(link_set_name(l, "owo") == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test4_link_set_name()
@@ -338,7 +368,7 @@ void test4_link_set_name()
     l = link_create(5);
     PRINT_TEST_RESULT(link_set_name(l, NULL) == ERROR);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test1_link_set_direction()
@@ -346,15 +376,15 @@ void test1_link_set_direction()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_direction(l, NO_ID) == OK);
+    PRINT_TEST_RESULT(link_set_direction(l, N) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test2_link_set_direction()
 {
     Link *l = NULL;
-    PRINT_TEST_RESULT(link_set_direction(l, 0) == ERROR);
+    PRINT_TEST_RESULT(link_set_direction(l, UNK_DIRECTION) == ERROR);
 }
 
 void test1_link_set_state()
@@ -362,9 +392,9 @@ void test1_link_set_state()
     /*Creates the link.*/
     Link *l = NULL;
     l = link_create(5);
-    PRINT_TEST_RESULT(link_set_state(l, NO_IsD) == OK);
+    PRINT_TEST_RESULT(link_set_state(l, TRUE) == OK);
     /*Frees the memory.*/
-    link_destroy(s);
+    link_destroy(l);
 }
 
 void test2_link_set_state()

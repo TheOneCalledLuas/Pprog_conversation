@@ -79,7 +79,7 @@ redo:
 #                 Test_check                   #
 ################################################
 run_all_test:
-	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check
+	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check; make link_check
 
 check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
@@ -89,6 +89,9 @@ set_check:
 
 inventory_check:
 	make clear; make inventory_test;./inventory_test
+
+link_check:
+	make clear; make link_test; ./link_test
 
 set_test: set_test.o set.o
 	$(CC) -o $@ $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -136,6 +139,12 @@ player_test: player_test.o player.o inventory.o set.o
 	$(CC) -o player_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
 
 player_test.o: player_test.c player_test.h player.h types.h test.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+link_test: link_test.o link.o 
+	$(CC) -o link_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
+
+link_test.o: link_test.c link_test.h link.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 run:
