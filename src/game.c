@@ -773,4 +773,20 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
     return NO_ID;
 }
 
-Link_Property game_get_space_outcoming_connection_info(Game * game, Id space, Direction dir);
+Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Direction dir)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!game || space < 0)
+        return UNK;
+    /*Searches for the link.*/
+    for (i = 0; i < game->n_links; i++)
+    {
+        if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == dir)
+        {                                                                      /*If the link was found.*/
+            return (link_get_state(game->links[i]) == TRUE ? OPENED : CLOSED); /*Clean exit.*/
+        }
+    }
+    /*The link wasn't found.*/
+    return UNK;
+}
