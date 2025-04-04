@@ -1,7 +1,17 @@
+i grain
+t grain
 m s
-m n
+i seed
+t seed
 m s
 c
+t water
+t water_drop
+m e
+m e
+m e
+m e
 m e
 m s
-e
+m n
+m n
