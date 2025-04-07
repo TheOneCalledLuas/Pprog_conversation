@@ -1,7 +1,8 @@
+Player 1 executed Command Take with arguments "grain" and exit code OK
+Player 3 executed Command Take with arguments "water_drop" and exit code OK
 Player 1 executed Command move with arguments "s" and exit code OK
-Player 1 executed Command move with arguments "s" and exit code OK
-Player 1 executed Command move with arguments "s" and exit code OK
-Player 1 executed Command move with arguments "sm" and exit code ERROR
-Player 1 executed Command move with arguments "n" and exit code OK
-Player 1 executed Command move with arguments "e" and exit code OK
-Player 1 executed Command Exit with arguments "" and exit code OK
+Player 3 executed Command move with arguments "s" and exit code ERROR
+Player 1 executed Command Take with arguments "seed" and exit code OK
+Player 3 executed Command move with arguments "n" and exit code OK
+Player 1 executed Command Inspect with arguments "seed" and exit code ERROR
+Player 3 executed Command Exit with arguments "" and exit code OK

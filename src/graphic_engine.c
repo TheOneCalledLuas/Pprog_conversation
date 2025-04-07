@@ -412,7 +412,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     }
     screen_area_puts(ge->descript, " ");
     player = game_get_actual_player(game);
-    screen_area_puts(ge->descript, str);
     if ((n_objects = player_get_n_objects(player)) <= 0)
     {
         sprintf(str, "   %s has no objects", player_get_player_name(player));
@@ -477,7 +476,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
-    for (i = 0; i < COMMANDS_SAVED; i++)
+    for (i = COMMANDS_SAVED-1; i >=0; i--)
     {
         last_cmd = command_get_code(game_get_previous_command(game, i + refresh));
         if (last_cmd != NO_CMD)

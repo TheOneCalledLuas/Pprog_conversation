@@ -161,6 +161,10 @@ Macros</h2></td></tr>
 <tr class="separator:a7d0dd792eb9fc7e5da125b17779023d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e6b6c4be7a0299f1de372d29f10449" id="r_a25e6b6c4be7a0299f1de372d29f10449"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__actions_8c.html#a25e6b6c4be7a0299f1de372d29f10449">SUCCESS_PROB</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a25e6b6c4be7a0299f1de372d29f10449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd81749117c3dc713a1fd487647f6d7" id="r_a1dd81749117c3dc713a1fd487647f6d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__actions_8c.html#a1dd81749117c3dc713a1fd487647f6d7">DAMAGE_DEALT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a1dd81749117c3dc713a1fd487647f6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36df6f396287daf8f889751934e4856c" id="r_a36df6f396287daf8f889751934e4856c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__actions_8c.html#a36df6f396287daf8f889751934e4856c">MIN_HEALTH</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a36df6f396287daf8f889751934e4856c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a715c6b7045a6431702aace89ccdf9ad0" id="r_a715c6b7045a6431702aace89ccdf9ad0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__actions_8c.html#a715c6b7045a6431702aace89ccdf9ad0">N_DIRECTIONS</a>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:a715c6b7045a6431702aace89ccdf9ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80069636d5272c3e8faa89f450700175" id="r_a80069636d5272c3e8faa89f450700175"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__actions_8c.html#a80069636d5272c3e8faa89f450700175">N_VARIATIONS</a>&#160;&#160;&#160;2</td></tr>
@@ -201,7 +205,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It implements the game update through user actions. </p>
-<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos, Saúl López Romero </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos, Saul López Romero </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>3 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>27-01-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
@@ -218,6 +222,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Chances to attack. </p>
+
+</div>
+</div>
+<a id="a1dd81749117c3dc713a1fd487647f6d7" name="a1dd81749117c3dc713a1fd487647f6d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dd81749117c3dc713a1fd487647f6d7">&#9670;&#160;</a></span>DAMAGE_DEALT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DAMAGE_DEALT&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Amount of health the entity losses when hurt. </p>
+
+</div>
+</div>
+<a id="a36df6f396287daf8f889751934e4856c" name="a36df6f396287daf8f889751934e4856c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36df6f396287daf8f889751934e4856c">&#9670;&#160;</a></span>MIN_HEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_HEALTH&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Minimum health the entity can have before dying. </p>
 
 </div>
 </div>
@@ -311,7 +345,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Action to be executed when chat command is given. </p>
-<dl class="section author"><dt>Author</dt><dd>Saul Lopez Romero</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Saul López Romero</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">game</td><td>Pointer to the game structure. </td></tr>

@@ -15,17 +15,14 @@ It defines the game loop.
 {\ttfamily \#include "{}game\+\_\+actions.\+h"{}}\newline
 {\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
 {\ttfamily \#include "{}graphic\+\_\+engine.\+h"{}}\newline
-Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{game__loop_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for game\+\_\+loop.\+c\+:
+% FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}{MAX\+\_\+\+ARG}}~64
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}{READING\+\_\+\+SECONDS}}~4
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -64,7 +61,13 @@ GNU Public License
 \doxysubsubsection{\texorpdfstring{MAX\_ARG}{MAX\_ARG}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+ARG~64}
 
-Maximun argument length. 
+Maximun argument length. \Hypertarget{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}\label{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0} 
+\index{game\_loop.c@{game\_loop.c}!READING\_SECONDS@{READING\_SECONDS}}
+\index{READING\_SECONDS@{READING\_SECONDS}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{READING\_SECONDS}{READING\_SECONDS}}
+{\footnotesize\ttfamily \#define READING\+\_\+\+SECONDS~4}
+
+Seconds to read the screen. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}\label{game__loop_8c_aaa6e18336e5d688eb618a9307997195d} 

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['second_5flast_5fcommand_0',['SECOND_LAST_COMMAND',['../game_8h.html#af07fb6f6cb9572b5d48c5365422801f9',1,'game.h']]],
-  ['staring_5fpoint_1',['STARING_POINT',['../graphic__engine_8c.html#a13be888792778f0d468152138531d586',1,'graphic_engine.c']]],
-  ['success_5fprob_2',['SUCCESS_PROB',['../game__actions_8c.html#a25e6b6c4be7a0299f1de372d29f10449',1,'game_actions.c']]]
+  ['reading_5fseconds_0',['READING_SECONDS',['../game__loop_8c.html#a77a188708d8f4d51931fa348c1ced7d0',1,'game_loop.c']]],
+  ['reset_1',['RESET',['../test_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'test.h']]]
 ];

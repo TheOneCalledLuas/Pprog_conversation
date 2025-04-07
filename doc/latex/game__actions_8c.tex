@@ -14,19 +14,18 @@ It implements the game update through user actions.
 {\ttfamily \#include "{}game.\+h"{}}\newline
 {\ttfamily \#include "{}player.\+h"{}}\newline
 {\ttfamily \#include "{}set.\+h"{}}\newline
-Include dependency graph for game\+\_\+actions.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{game__actions_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for game\+\_\+actions.\+c\+:
+% FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{game__actions_8c_a7d0dd792eb9fc7e5da125b17779023d8}{ATTACK\+\_\+\+PROB}}~9
 \item 
 \#define \mbox{\hyperlink{game__actions_8c_a25e6b6c4be7a0299f1de372d29f10449}{SUCCESS\+\_\+\+PROB}}~2
+\item 
+\#define \mbox{\hyperlink{game__actions_8c_a1dd81749117c3dc713a1fd487647f6d7}{DAMAGE\+\_\+\+DEALT}}~1
+\item 
+\#define \mbox{\hyperlink{game__actions_8c_a36df6f396287daf8f889751934e4856c}{MIN\+\_\+\+HEALTH}}~0
 \item 
 \#define \mbox{\hyperlink{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}{N\+\_\+\+DIRECTIONS}}~4
 \item 
@@ -61,7 +60,7 @@ int \mbox{\hyperlink{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}{random\
 It implements the game update through user actions. 
 
 \begin{DoxyAuthor}{Author}
-Fernando Mijangos, Saúl López Romero 
+Fernando Mijangos, Saul López Romero 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 3 
@@ -81,7 +80,19 @@ GNU Public License
 \doxysubsubsection{\texorpdfstring{ATTACK\_PROB}{ATTACK\_PROB}}
 {\footnotesize\ttfamily \#define ATTACK\+\_\+\+PROB~9}
 
-Chances to attack. \Hypertarget{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}\label{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0} 
+Chances to attack. \Hypertarget{game__actions_8c_a1dd81749117c3dc713a1fd487647f6d7}\label{game__actions_8c_a1dd81749117c3dc713a1fd487647f6d7} 
+\index{game\_actions.c@{game\_actions.c}!DAMAGE\_DEALT@{DAMAGE\_DEALT}}
+\index{DAMAGE\_DEALT@{DAMAGE\_DEALT}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{DAMAGE\_DEALT}{DAMAGE\_DEALT}}
+{\footnotesize\ttfamily \#define DAMAGE\+\_\+\+DEALT~1}
+
+Amount of health the entity losses when hurt. \Hypertarget{game__actions_8c_a36df6f396287daf8f889751934e4856c}\label{game__actions_8c_a36df6f396287daf8f889751934e4856c} 
+\index{game\_actions.c@{game\_actions.c}!MIN\_HEALTH@{MIN\_HEALTH}}
+\index{MIN\_HEALTH@{MIN\_HEALTH}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{MIN\_HEALTH}{MIN\_HEALTH}}
+{\footnotesize\ttfamily \#define MIN\+\_\+\+HEALTH~0}
+
+Minimum health the entity can have before dying. \Hypertarget{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}\label{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0} 
 \index{game\_actions.c@{game\_actions.c}!N\_DIRECTIONS@{N\_DIRECTIONS}}
 \index{N\_DIRECTIONS@{N\_DIRECTIONS}!game\_actions.c@{game\_actions.c}}
 \doxysubsubsection{\texorpdfstring{N\_DIRECTIONS}{N\_DIRECTIONS}}
@@ -131,7 +142,7 @@ Saul López Romero
 Action to be executed when chat command is given. 
 
 \begin{DoxyAuthor}{Author}
-Saul Lopez Romero
+Saul López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}

@@ -12,17 +12,18 @@ It loads and makes all the actions related to space management.
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-Include dependency graph for game\+\_\+reader.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{game__reader_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for game\+\_\+reader.\+c\+:
+% FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{game__reader_8c_a550a75944350b926760a1bf0c553d87f}{DESC\+\_\+\+SIZE}}~9
+\item 
+\#define \mbox{\hyperlink{game__reader_8c_a9626a13d94da9d536ebb27e605a800dc}{DESC\+\_\+\+LINES}}~5
+\item 
+\#define \mbox{\hyperlink{game__reader_8c_a8606b2e3a4d6e1d1d27f513374fcb265}{DESC\+\_\+\+LENGTH}}~10
+\item 
+\#define \mbox{\hyperlink{game__reader_8c_a77f61f9d08cce5be70639d3ab9a996b4}{IDENTIFIER\+\_\+\+LENGTH}}~3
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -43,7 +44,7 @@ Include dependency graph for game\+\_\+reader.\+c\+:\nopagebreak
 It loads and makes all the actions related to space management. 
 
 \begin{DoxyAuthor}{Author}
-Saúl López Romero 
+Saúl López Romero, Raquel Anguita Martínez de Velasco 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 3 
@@ -57,13 +58,31 @@ GNU Public License
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{game__reader_8c_a550a75944350b926760a1bf0c553d87f}\label{game__reader_8c_a550a75944350b926760a1bf0c553d87f} 
+\Hypertarget{game__reader_8c_a8606b2e3a4d6e1d1d27f513374fcb265}\label{game__reader_8c_a8606b2e3a4d6e1d1d27f513374fcb265} 
+\index{game\_reader.c@{game\_reader.c}!DESC\_LENGTH@{DESC\_LENGTH}}
+\index{DESC\_LENGTH@{DESC\_LENGTH}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{DESC\_LENGTH}{DESC\_LENGTH}}
+{\footnotesize\ttfamily \#define DESC\+\_\+\+LENGTH~10}
+
+Max description length. \Hypertarget{game__reader_8c_a9626a13d94da9d536ebb27e605a800dc}\label{game__reader_8c_a9626a13d94da9d536ebb27e605a800dc} 
+\index{game\_reader.c@{game\_reader.c}!DESC\_LINES@{DESC\_LINES}}
+\index{DESC\_LINES@{DESC\_LINES}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{DESC\_LINES}{DESC\_LINES}}
+{\footnotesize\ttfamily \#define DESC\+\_\+\+LINES~5}
+
+Max description lines. \Hypertarget{game__reader_8c_a550a75944350b926760a1bf0c553d87f}\label{game__reader_8c_a550a75944350b926760a1bf0c553d87f} 
 \index{game\_reader.c@{game\_reader.c}!DESC\_SIZE@{DESC\_SIZE}}
 \index{DESC\_SIZE@{DESC\_SIZE}!game\_reader.c@{game\_reader.c}}
 \doxysubsubsection{\texorpdfstring{DESC\_SIZE}{DESC\_SIZE}}
 {\footnotesize\ttfamily \#define DESC\+\_\+\+SIZE~9}
 
-Maximun size of a description line. 
+Maximun size of a description line. \Hypertarget{game__reader_8c_a77f61f9d08cce5be70639d3ab9a996b4}\label{game__reader_8c_a77f61f9d08cce5be70639d3ab9a996b4} 
+\index{game\_reader.c@{game\_reader.c}!IDENTIFIER\_LENGTH@{IDENTIFIER\_LENGTH}}
+\index{IDENTIFIER\_LENGTH@{IDENTIFIER\_LENGTH}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{IDENTIFIER\_LENGTH}{IDENTIFIER\_LENGTH}}
+{\footnotesize\ttfamily \#define IDENTIFIER\+\_\+\+LENGTH~3}
+
+Number of characters the identifier occupies in the data file. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{game__reader_8c_abb9c617888c6718713ab0ff35992de98}\label{game__reader_8c_abb9c617888c6718713ab0ff35992de98} 

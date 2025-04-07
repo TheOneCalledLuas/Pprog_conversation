@@ -15,13 +15,8 @@ It implements a textual graphic engine.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-Include dependency graph for graphic\+\_\+engine.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{graphic__engine_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for graphic\+\_\+engine.\+c\+:
+% FIG 0
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,16 +43,34 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a4231e3c06e2b46e4681d7254aa4dd303}{WIDTH\+\_\+\+SPACE}}~21
 \item 
-\#define \mbox{\hyperlink{graphic__engine_8c_a6c5f2a457deda8d4dd7b51d87dd7f16a}{HEIGHT\+\_\+\+SPACE}}~9
-\item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a13be888792778f0d468152138531d586}{STARING\+\_\+\+POINT}}~1
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e}{PLAYER\+\_\+\+LENGTH}}~7
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}{NON\+\_\+\+WRITTABLE\+\_\+\+ELEMS}}~5
+\item 
+\Hypertarget{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}\label{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f} 
+\#define {\bfseries LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS}~2 /\texorpdfstring{$\ast$}{*}Number of elements that can\textquotesingle{}t be written on when printing each line of each space.\texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}{EXTRA\+\_\+\+LINE}}~1
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d}{space\+\_\+information}} \{ \newline
+\mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96}{FIRST\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1}{SECOND\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da61334112bc07b71bc5ddb73be716fa2d}{THIRD\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489}{FOURTH\+\_\+\+LINE}}
+, \newline
+\mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd}{FIFTH\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3}{SIXTH\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2}{SEVENTH\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daf9e352c28a5e562b4f4cd00acada0d13}{EIGHT\+\_\+\+LINE}}
+, \newline
+\mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf}{NINETH\+\_\+\+LINE}}
+, \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}{HEIGHT\+\_\+\+SPACE}}
+ \}
 \item 
 enum \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111}{Positions}} \{ \newline
 \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111ab75c2136aaf25d9ed387c66e251582c5}{NORTH\+\_\+\+WEST}}
@@ -107,7 +120,13 @@ GNU Public License
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
+\Hypertarget{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}\label{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e} 
+\index{graphic\_engine.c@{graphic\_engine.c}!EXTRA\_LINE@{EXTRA\_LINE}}
+\index{EXTRA\_LINE@{EXTRA\_LINE}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{EXTRA\_LINE}{EXTRA\_LINE}}
+{\footnotesize\ttfamily \#define EXTRA\+\_\+\+LINE~1}
+
+Number of extra lines beetween elements of the ge. \Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
 \index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_BAN@{HEIGHT\_BAN}}
 \index{HEIGHT\_BAN@{HEIGHT\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{HEIGHT\_BAN}{HEIGHT\_BAN}}
@@ -131,13 +150,7 @@ Help height. \Hypertarget{graphic__engine_8c_ad02fab50eba3e27969ad00f27a73ea92}\
 \doxysubsubsection{\texorpdfstring{HEIGHT\_MAP}{HEIGHT\_MAP}}
 {\footnotesize\ttfamily \#define HEIGHT\+\_\+\+MAP~29}
 
-Map height. \Hypertarget{graphic__engine_8c_a6c5f2a457deda8d4dd7b51d87dd7f16a}\label{graphic__engine_8c_a6c5f2a457deda8d4dd7b51d87dd7f16a} 
-\index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_SPACE@{HEIGHT\_SPACE}}
-\index{HEIGHT\_SPACE@{HEIGHT\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}
-\doxysubsubsection{\texorpdfstring{HEIGHT\_SPACE}{HEIGHT\_SPACE}}
-{\footnotesize\ttfamily \#define HEIGHT\+\_\+\+SPACE~9}
-
-Space height. \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
+Map height. \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
 \index{graphic\_engine.c@{graphic\_engine.c}!MAX\_STRING\_GE@{MAX\_STRING\_GE}}
 \index{MAX\_STRING\_GE@{MAX\_STRING\_GE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_STRING\_GE}{MAX\_STRING\_GE}}
@@ -161,7 +174,7 @@ The amount of charactes the icon for tha player occupies. \Hypertarget{graphic__
 \doxysubsubsection{\texorpdfstring{STARING\_POINT}{STARING\_POINT}}
 {\footnotesize\ttfamily \#define STARING\+\_\+\+POINT~1}
 
-Start of the gap when placed. \Hypertarget{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf}\label{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf} 
+Space height. Start of the gap when placed. \Hypertarget{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf}\label{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf} 
 \index{graphic\_engine.c@{graphic\_engine.c}!WIDTH\_BAN@{WIDTH\_BAN}}
 \index{WIDTH\_BAN@{WIDTH\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{WIDTH\_BAN}{WIDTH\_BAN}}
@@ -233,6 +246,54 @@ SOUTH\+\_\+\+EAST&South east direction. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_IDS@{NUM\_IDS}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!NUM\_IDS@{NUM\_IDS}}}\Hypertarget{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111a965fbc0f426bcbbf36cdcd7a7d56a551}\label{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111a965fbc0f426bcbbf36cdcd7a7d56a551} 
 NUM\+\_\+\+IDS&Number of ids. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d} 
+\index{graphic\_engine.c@{graphic\_engine.c}!space\_information@{space\_information}}
+\index{space\_information@{space\_information}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{space\_information}{space\_information}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d}{space\+\_\+information}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FIRST\_LINE@{FIRST\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FIRST\_LINE@{FIRST\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96} 
+FIRST\+\_\+\+LINE&First line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SECOND\_LINE@{SECOND\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SECOND\_LINE@{SECOND\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1} 
+SECOND\+\_\+\+LINE&Second line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THIRD\_LINE@{THIRD\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!THIRD\_LINE@{THIRD\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da61334112bc07b71bc5ddb73be716fa2d}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da61334112bc07b71bc5ddb73be716fa2d} 
+THIRD\+\_\+\+LINE&Third line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FOURTH\_LINE@{FOURTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FOURTH\_LINE@{FOURTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489} 
+FOURTH\+\_\+\+LINE&Fourth line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FIFTH\_LINE@{FIFTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FIFTH\_LINE@{FIFTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd} 
+FIFTH\+\_\+\+LINE&Fifth line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIXTH\_LINE@{SIXTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SIXTH\_LINE@{SIXTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3} 
+SIXTH\+\_\+\+LINE&Sixth line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEVENTH\_LINE@{SEVENTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SEVENTH\_LINE@{SEVENTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2} 
+SEVENTH\+\_\+\+LINE&Seventh line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EIGHT\_LINE@{EIGHT\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!EIGHT\_LINE@{EIGHT\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daf9e352c28a5e562b4f4cd00acada0d13}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daf9e352c28a5e562b4f4cd00acada0d13} 
+EIGHT\+\_\+\+LINE&Eight line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NINETH\_LINE@{NINETH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!NINETH\_LINE@{NINETH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf} 
+NINETH\+\_\+\+LINE&Nineth line of a space \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HEIGHT\_SPACE@{HEIGHT\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_SPACE@{HEIGHT\_SPACE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985} 
+HEIGHT\+\_\+\+SPACE&Space height \\
 \hline
 
 \end{DoxyEnumFields}

@@ -26,6 +26,8 @@ struct \mbox{\hyperlink{struct__Command}{\+\_\+\+Command}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}{CMD\+\_\+\+LENGHT}}~30
+\item 
+\#define \mbox{\hyperlink{command_8c_a5d69aa83ad3929fba7ff0e38924096de}{CMD\+\_\+\+SHORTCUT}}~1
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -62,7 +64,7 @@ char \texorpdfstring{$\ast$}{*} {\bfseries cmd\+\_\+to\+\_\+str} \mbox{[}\mbox{\
 It implements the command interpreter. 
 
 \begin{DoxyAuthor}{Author}
-Fernando Mijangos Saul Lopez Romero 
+Fernando Mijangos, Saul Lopez Romero, Raquel Anguita Martínez de Velasco 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 3 
@@ -82,7 +84,13 @@ GNU Public License
 \doxysubsubsection{\texorpdfstring{CMD\_LENGHT}{CMD\_LENGHT}}
 {\footnotesize\ttfamily \#define CMD\+\_\+\+LENGHT~30}
 
-Max lenght for a command. 
+Max lenght for a command. \Hypertarget{command_8c_a5d69aa83ad3929fba7ff0e38924096de}\label{command_8c_a5d69aa83ad3929fba7ff0e38924096de} 
+\index{command.c@{command.c}!CMD\_SHORTCUT@{CMD\_SHORTCUT}}
+\index{CMD\_SHORTCUT@{CMD\_SHORTCUT}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{CMD\_SHORTCUT}{CMD\_SHORTCUT}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+SHORTCUT~1}
+
+Command shortcut position. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456}\label{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456} 
@@ -217,7 +225,7 @@ String the the word contains or NULL if something went wrong.
 Prints the command information. 
 
 \begin{DoxyAuthor}{Author}
-Saúl López Romero
+Raquel Anguita Martínez de Velasco
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
