@@ -21,6 +21,8 @@
  * Maximun size of a description line.
  */
 #define DESC_SIZE 9
+#define DESC_LINES 5 /*!< Max description lines. */
+#define DESC_LENGTH 10 /*!< Max description length. */
 
 Status game_reader_load_spaces(Game *game, char *filename)
 {
@@ -29,7 +31,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     char *toks = NULL;
-    char desc[5][10];
+    char desc[DESC_LINES][DESC_LENGTH];
     Id id = NO_ID;
     Space *space = NULL;
     Status status = OK;

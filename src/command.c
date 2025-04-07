@@ -18,6 +18,7 @@
 /**
  * Max lenght for a command.*/
 #define CMD_LENGHT 30
+#define CMD_SHORTCUT 1 /*!< Command shortcut position. */
 
 /**
  * @brief structure with all the possible commands and the key words to triger them.
@@ -198,7 +199,7 @@ Status command_print(Command *com, FILE *place)
     {
         return ERROR;
     }
-    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[(int)(com->code + 1)][1], com->word);
+    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[(int)(com->code + 1)][CMD_SHORTCUT], com->word);
 
     if (com->status == OK)
     {
