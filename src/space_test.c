@@ -597,7 +597,7 @@ void test4_space_get_n_objects()
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(space_get_n_objects(s) == 0);
     /*Frees the memory*/
-    free(s);
+    space_destroy(s);
 }
 
 void test1_space_get_gdesc()
@@ -609,7 +609,7 @@ void test1_space_get_gdesc()
     space_set_gdesc_line(s, 1, word);
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(0 == (strcmp(word, space_get_gdesc_line(s, 1))));
-    free(s);
+    space_destroy(s);
 }
 
 void test2_space_get_gdesc()
@@ -620,7 +620,7 @@ void test2_space_get_gdesc()
     space_set_gdesc_line(s, 1, "potato");
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(space_get_gdesc_line(NULL, 1) == NULL);
-    free(s);
+    space_destroy(s);
 }
 
 void test3_space_get_gdesc()
@@ -631,7 +631,7 @@ void test3_space_get_gdesc()
     space_set_gdesc_line(s, 1, "potato");
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(space_get_gdesc_line(NULL, 1) == NULL);
-    free(s);
+    space_destroy(s);
 }
 
 void test1_space_is_discovered()
@@ -642,7 +642,7 @@ void test1_space_is_discovered()
     space_set_discovered(s, TRUE);
     /*Checks what its needed.*/
     PRINT_TEST_RESULT(TRUE == space_is_discovered(s));
-    free(s);
+    space_destroy(s);
 }
 void test2_space_is_discovered()
 {
@@ -652,7 +652,7 @@ void test2_space_is_discovered()
     space_set_discovered(s, TRUE);
     /*Checks what its needed.*/
     PRINT_TEST_RESULT(FALSE == space_is_discovered(NULL));
-    free(s);
+    space_destroy(s);
 }
 
 void test3_space_is_discovered()
@@ -663,7 +663,7 @@ void test3_space_is_discovered()
     space_set_discovered(s, FALSE);
     /*Checks what its needed.*/
     PRINT_TEST_RESULT(FALSE == space_is_discovered(s));
-    free(s);
+    space_destroy(s);
 }
 
 void test1_space_set_discovered()
@@ -673,7 +673,7 @@ void test1_space_set_discovered()
     s = space_create(5);
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(OK == space_set_discovered(s, TRUE));
-    free(s);
+    space_destroy(s);
 }
 
 void test2_space_set_discovered()
@@ -683,7 +683,7 @@ void test2_space_set_discovered()
     s = space_create(5);
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(ERROR == space_set_discovered(NULL, TRUE));
-    free(s);
+    space_destroy(s);
 }
 
 void test3_space_set_discovered()
@@ -693,5 +693,5 @@ void test3_space_set_discovered()
     s = space_create(5);
     /*Checks what is needed.*/
     PRINT_TEST_RESULT(OK == space_set_discovered(s, FALSE));
-    free(s);
+    space_destroy(s);
 }
