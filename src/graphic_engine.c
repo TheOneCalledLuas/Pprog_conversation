@@ -169,6 +169,7 @@ Status map_init(Game *game, char **map)
     int i = 0, j = 0, t = 0, v = 0;
     char **aux_map;
     Id actual_id[NUM_IDS];
+    Link_Property link_statuses[NUM_IDS];
 
     /*Error control.*/
     if (!game || !map)
@@ -197,15 +198,23 @@ Status map_init(Game *game, char **map)
 
     if ((actual_id[ACTUAL_POSITION] = player_get_player_location(game_get_actual_player(game))) != NO_ID)
     {
-        /*1-Gets the spaces located to the different points of the space.*/
+        /*1-Gets the spaces located to the different points of the space, and the information about the links.*/
         actual_id[NORTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], N);
+        link_statuses[NORTH] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], N);
         actual_id[SOUTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], S);
+        link_statuses[SOUTH] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], S);
         actual_id[WEST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], W);
+        link_statuses[WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], W);
         actual_id[EAST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
+        link_statuses[EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], E);
         actual_id[NORTH_EAST] = NO_ID;
+        link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
         actual_id[NORTH_WEST] = NO_ID;
+        link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
         actual_id[SOUTH_EAST] = NO_ID;
+        link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
         actual_id[SOUTH_WEST] = NO_ID;
+        link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
 
         /*2-Cleans the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -221,7 +230,7 @@ Status map_init(Game *game, char **map)
         {
             for (j = 0; j < 3; j++)
             {
-                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map)))
+                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map))||link_statuses[i*3+j]!=OPENED)
                 {
                     continue;
                 }
