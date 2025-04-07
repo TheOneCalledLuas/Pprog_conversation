@@ -2,7 +2,7 @@
  * @brief It defines the link module
  *
  * @file link.h
- * @author Fernando Mijangos
+ * @author Fernando Mijangos, Irene García
  * @version 1
  * @date 21-03-2025
  * @copyright GNU Public License
