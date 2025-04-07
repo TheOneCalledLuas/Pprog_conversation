@@ -15,8 +15,13 @@ It implements a textual graphic engine.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-Include dependency graph for graphic\+\_\+engine.\+c\+:
-% FIG 0
+Include dependency graph for graphic\+\_\+engine.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphic__engine_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,8 +54,7 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}{NON\+\_\+\+WRITTABLE\+\_\+\+ELEMS}}~5
 \item 
-\Hypertarget{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}\label{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f} 
-\#define {\bfseries LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS}~2 /\texorpdfstring{$\ast$}{*}Number of elements that can\textquotesingle{}t be written on when printing each line of each space.\texorpdfstring{$\ast$}{*}/
+\#define \mbox{\hyperlink{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}{LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS}}~2
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}{EXTRA\+\_\+\+LINE}}~1
 \end{DoxyCompactItemize}
@@ -71,7 +75,7 @@ enum \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d}{spac
 \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf}{NINETH\+\_\+\+LINE}}
 , \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}{HEIGHT\+\_\+\+SPACE}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Numbers used for the lines that form the sapce description. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111}{Positions}} \{ \newline
 \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111ab75c2136aaf25d9ed387c66e251582c5}{NORTH\+\_\+\+WEST}}
 , \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111ad0611de6f28d4a9c9eac959f5344698e}{NORTH}}
@@ -150,7 +154,13 @@ Help height. \Hypertarget{graphic__engine_8c_ad02fab50eba3e27969ad00f27a73ea92}\
 \doxysubsubsection{\texorpdfstring{HEIGHT\_MAP}{HEIGHT\_MAP}}
 {\footnotesize\ttfamily \#define HEIGHT\+\_\+\+MAP~29}
 
-Map height. \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
+Map height. \Hypertarget{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}\label{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f} 
+\index{graphic\_engine.c@{graphic\_engine.c}!LIMIT\_OF\_ELEMENTS@{LIMIT\_OF\_ELEMENTS}}
+\index{LIMIT\_OF\_ELEMENTS@{LIMIT\_OF\_ELEMENTS}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{LIMIT\_OF\_ELEMENTS}{LIMIT\_OF\_ELEMENTS}}
+{\footnotesize\ttfamily \#define LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS~2}
+
+Number of elements that can\textquotesingle{}t be written on when printing each line of each space. \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
 \index{graphic\_engine.c@{graphic\_engine.c}!MAX\_STRING\_GE@{MAX\_STRING\_GE}}
 \index{MAX\_STRING\_GE@{MAX\_STRING\_GE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_STRING\_GE}{MAX\_STRING\_GE}}
@@ -254,6 +264,10 @@ NUM\+\_\+\+IDS&Number of ids. \\
 \index{space\_information@{space\_information}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{space\_information}{space\_information}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9d}{space\+\_\+information}}}
+
+
+
+Numbers used for the lines that form the sapce description. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FIRST\_LINE@{FIRST\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FIRST\_LINE@{FIRST\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96} 

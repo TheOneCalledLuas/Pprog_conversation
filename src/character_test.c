@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_TESTS 28
+#define MAX_TESTS 28 /*!<Maximun number of tests.*/
 
 /**
  * @brief Main function for CHRACTER unit tests.

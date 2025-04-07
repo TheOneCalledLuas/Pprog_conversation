@@ -1,5 +1,5 @@
 <map id="src/object.c" name="src/object.c">
-<area shape="rect" id="Node000001" title="It implements the inventory functionality." alt="" coords="136,5,232,31"/>
+<area shape="rect" id="Node000001" title="It implements the object functionality." alt="" coords="136,5,232,31"/>
 <area shape="rect" id="Node000002" href="$object_8h.html" title="It handles object related tasks." alt="" coords="5,79,80,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,33,79,75,77,70,160,28"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="104,79,171,104"/>

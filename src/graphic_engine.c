@@ -61,22 +61,25 @@
 /**
  * Elements that cannot be written per room.*/
 #define NON_WRITTABLE_ELEMS 5
-#define LIMIT_OF_ELEMENTS 2 /*Number of elements that can't be written on when printing each line of each space.*/
-#define EXTRA_LINE 1         /*!<Number of extra lines beetween elements of the ge.*/
+#define LIMIT_OF_ELEMENTS 2 /*!<Number of elements that can't be written on when printing each line of each space.*/
+#define EXTRA_LINE 1        /*!<Number of extra lines beetween elements of the ge.*/
 
+/**
+ * @brief Numbers used for the lines that form the sapce description.
+ */
 typedef enum
 {
-    FIRST_LINE,     /*!<First line of a space*/
-    SECOND_LINE,    /*!<Second line of a space*/
-    THIRD_LINE,     /*!<Third line of a space*/
-    FOURTH_LINE,    /*!<Fourth line of a space*/
-    FIFTH_LINE,     /*!<Fifth line of a space*/
-    SIXTH_LINE,     /*!<Sixth line of a space*/
-    SEVENTH_LINE,   /*!<Seventh line of a space*/
-    EIGHT_LINE,     /*!<Eight line of a space*/
-    NINETH_LINE,    /*!<Nineth line of a space*/
-    HEIGHT_SPACE    /*!<Space height*/
-}space_information;
+    FIRST_LINE,   /*!<First line of a space*/
+    SECOND_LINE,  /*!<Second line of a space*/
+    THIRD_LINE,   /*!<Third line of a space*/
+    FOURTH_LINE,  /*!<Fourth line of a space*/
+    FIFTH_LINE,   /*!<Fifth line of a space*/
+    SIXTH_LINE,   /*!<Sixth line of a space*/
+    SEVENTH_LINE, /*!<Seventh line of a space*/
+    EIGHT_LINE,   /*!<Eight line of a space*/
+    NINETH_LINE,  /*!<Nineth line of a space*/
+    HEIGHT_SPACE  /*!<Space height*/
+} space_information;
 /**
  * Space positions in array
  * This is like this so that later when printing its easier with a for
@@ -292,11 +295,11 @@ Status map_init(Game *game, char **map)
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
     Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
-    Character *character=NULL;
+    Character *character = NULL;
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE], **map=NULL, *obj_name = NULL;
+    char str[MAX_STRING_GE], **map = NULL, *obj_name = NULL;
     int i = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
@@ -476,7 +479,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
-    for (i = COMMANDS_SAVED-1; i >=0; i--)
+    for (i = COMMANDS_SAVED - 1; i >= 0; i--)
     {
         last_cmd = command_get_code(game_get_previous_command(game, i + refresh));
         if (last_cmd != NO_CMD)
@@ -534,7 +537,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {
-        sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i-LIMIT_OF_ELEMENTS));
+        sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i - LIMIT_OF_ELEMENTS));
     }
     /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = space_get_n_objects(space);

@@ -1,0 +1,17 @@
+<map id="src/inventory.c" name="src/inventory.c">
+<area shape="rect" id="Node000001" title="It implements the inventory functionality." alt="" coords="151,5,267,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8h.html" title="It handles inventory related tasks." alt="" coords="5,79,100,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,33,92,75,90,70,183,28"/>
+<area shape="rect" id="Node000004" href="$set_8h.html" title="It defines sets for the whole project." alt="" coords="91,152,145,177"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="201,32,166,80,132,140,127,138,161,77,197,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="175,79,242,104"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="211,31,211,65,206,65,206,31"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="267,79,337,104"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="225,29,278,68,274,72,222,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="361,79,432,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="240,28,354,71,352,76,238,33"/>
+<area shape="rect" id="Node000003" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="49,225,120,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="58,104,82,211,77,213,53,105"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="65,103,100,140,96,144,61,106"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="115,179,98,214,93,212,110,177"/>
+</map>
