@@ -2,7 +2,7 @@
  * @brief It tests the object module
  *
  * @file object_test.c
- * @author Fernando Mijangos
+ * @author Fernando Mijangos, Irene García
  * @version 3.2
  * @date 02-04-2025
  * @copyright GNU Public License
