@@ -1,15 +1,15 @@
-/** 
+/**
  * @brief It declares the tests for the object module
- * 
+ *
  * @file object_test.h
  * @author Fernando Mijangos
- * @version 0.0 
+ * @version 0.0
  * @date 02-04-2025
  * @copyright GNU Public License
  */
 
- #ifndef OBJECT_TEST_H
- #define OBJECT_TEST_H
+#ifndef OBJECT_TEST_H
+#define OBJECT_TEST_H
 
 /**
  * @test Test object creation.
@@ -150,6 +150,5 @@ void test2_object_get_id();
  * @post 5.
  */
 void test3_object_get_id();
-
 
 #endif

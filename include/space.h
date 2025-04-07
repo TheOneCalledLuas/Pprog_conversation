@@ -2,7 +2,7 @@
  * @brief It defines the space module interface
  *
  * @file space.h
- * @author Fernando Mijangos && Saul Lopez
+ * @author Fernando Mijangos && Saul Lopez && Irene García
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -57,7 +57,7 @@ Status space_set_gdesc_line(Space *space, int line, char *str);
 
 /**
  * @brief It gets the id of a space
- * @author Profesores PPROG
+ * @author Irene García
  *
  * @param space Pointer to the space
  * @return Id of space
@@ -66,7 +66,7 @@ Id space_get_id(Space *space);
 
 /**
  * @brief It sets the name of a space
- * @author Profesores PPROG
+ * @author Irene García
  *
  * @param space Pointer to the space
  * @param name a string with the name to store

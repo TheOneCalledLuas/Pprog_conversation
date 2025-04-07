@@ -19,7 +19,7 @@
 /**
  * Maximun lenght of a description string for a player.*/
 #define MAX_GDESC 10
-#define DEFAULT_HEALTH /*!< Player's default health. */
+#define DEFAULT_HEALTH 20 /*!< Player's default health. */
 
 /**
  * @brief Player

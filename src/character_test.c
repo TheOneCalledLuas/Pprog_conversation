@@ -1,7 +1,7 @@
 /**
  * @brief It tests the character module
  *
- * @file space_test.c
+ * @file character_test.c
  * @author Fernando Mijangos
  * @version 1
  * @date 23-02-2025

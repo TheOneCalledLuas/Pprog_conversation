@@ -2,9 +2,9 @@
  * @brief It defines the command interpreter interface.
  *
  * @file command.h
- * @author Fernando Mijangos Saul Lopez Romero
+ * @author Fernando Mijangos, Saul Lopez Romero, Raquel Anguita Martínez de Velasco
  * @version 1
- * @date 27-01-2025
+ * @date 29-02-2025
  * @copyright GNU Public License
  */
 
@@ -137,7 +137,7 @@ Status command_get_user_input(Command *command);
 
 /**
  * @brief Prints the command information.
- * @author Saúl López Romero
+ * @author Raquel Anguita Martínez de Velasco
  *
  * @param com Pointer to the command where you will store the information.
  * @param place place to write the outcome (stdout or file intended).

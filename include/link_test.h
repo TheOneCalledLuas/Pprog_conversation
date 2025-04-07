@@ -2,7 +2,7 @@
  * @brief Link test function module.
  *
  * @file link_test.h
- * @author Irene García 
+ * @author Irene García, Fernando Mijangos, Saúl López
  * @version 1
  * @date 25-03-2025
  * @copyright GNU Public License

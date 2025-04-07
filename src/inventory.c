@@ -1,7 +1,7 @@
 /**
  * @brief It implements the inventory functionality.
  *
- * @file object.c
+ * @file inventory.c
  * @author Raquel Anguita Martínez de Velasco
  * @version 1
  * @date 18-03-2025

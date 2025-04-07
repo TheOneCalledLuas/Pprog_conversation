@@ -4,7 +4,7 @@
  * @file character.h
  * @author Fernando Mijangos
  * @version 1
- * @date 23-02-2025
+ * @date 23-03-2025
  * @copyright GNU Public License
  */
 
