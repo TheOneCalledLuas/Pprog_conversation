@@ -26,7 +26,7 @@ Object * object_create(Id id);
 
 /**
  * @brief Destroys the object structure propperly.
- * @author Saúl López Romero
+ * @author Irene García
  * 
  * @param object Pointer to the object.
  * @return OK if it works as intended, ERROR otherwise.

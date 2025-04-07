@@ -2,7 +2,7 @@
  * @brief It tests player module.
  *
  * @file player_test.c
- * @author Saul Lopez Romero
+ * @author Saul Lopez Romero, Raquel Anguita Martínez de Velasco
  * @version 1.0
  * @date 27-03-2025
  * @copyright GNU Public License

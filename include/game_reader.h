@@ -2,7 +2,7 @@
  * @brief It loads all the game data into the program.
  *
  * @file game_reader.h
- * @author Saúl López Romero
+ * @author Saúl López Romero, Raquel Anguita Martínez de Velasco
  * @version 3
  * @date 26-02-2025
  * @copyright GNU Public License

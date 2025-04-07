@@ -24,6 +24,7 @@
  * Maximun argument length.
  */
 #define MAX_ARG 64
+#define READING_SECONDS 4 /*!< Seconds to read the screen. */
 
 /**
  * @brief Initialises the game.
@@ -162,7 +163,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         graphic_engine_paint_game(gengine, game, FALSE);
         /*Waits a bit so that the player can look what he did*/
         if (command_get_code(last_cmd) == INSPECT || command_get_code(last_cmd) == CHAT)
-            sleep(4);
+            sleep(READING_SECONDS);
         else
             sleep(command_get_code(last_cmd) == EXIT?0:1);
 

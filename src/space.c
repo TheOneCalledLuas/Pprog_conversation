@@ -19,6 +19,7 @@
  * Number of graphic description lines.
 */
 #define G_DESC_LINES 5
+#define DESC_SIZE 10 /*!< Description size.*/
 
 /**
  * @brief Space
@@ -69,7 +70,7 @@ Space *space_create(Id id)
     /*Sets the array so that it's more accesible.*/
     for (i = 0; i < 5; i++)
     {
-        newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * 10]);
+        newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * DESC_SIZE]);
     }
 
     return newSpace;
@@ -94,7 +95,7 @@ void space_destroy(Space *space)
 char *space_get_gdesc_line(Space *space, int line)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > 4)
+    if (!space || line < 0 || line > G_DESC_LINES - 1)
         return NULL;
 
     /*Returns the line.*/
@@ -104,7 +105,7 @@ char *space_get_gdesc_line(Space *space, int line)
 Status space_set_gdesc_line(Space *space, int line, char *str)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > 4 || !str || strlen(str) != 9)
+    if (!space || line < 0 || line > G_DESC_LINES - 1 || !str || strlen(str) != 9)
         return ERROR;
 
     /*Sets the line.*/
