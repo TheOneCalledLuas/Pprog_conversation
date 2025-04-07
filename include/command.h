@@ -2,7 +2,7 @@
  * @brief It defines the command interpreter interface.
  *
  * @file command.h
- * @author Fernando Mijangos Saul Lopez Romero, Raquel Anguita Martínez de Velasco
+ * @author Fernando Mijangos Saul Lopez Romero
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License

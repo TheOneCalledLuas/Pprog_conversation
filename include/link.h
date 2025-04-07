@@ -55,7 +55,7 @@ char *link_get_name(Link *link);
 
 /**
  * @brief Gets the id of the origin space.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link Pointer to the link.
  * @return Id of the space of origin, ID_error if error.
@@ -64,7 +64,7 @@ Id link_get_origin(Link *link);
 
 /**
  * @brief Gets the id of the space of destiantion.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link ointer to the link.
  * @return Id of the space of destination, ID_ERROR if error.
@@ -73,7 +73,7 @@ Id link_get_destination(Link *link);
 
 /**
  * @brief Gets the direction the link is pointing to.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link Pointer to the link.
  * @return Direction to where the link points, UNK_DIRECTION if error.
@@ -82,7 +82,7 @@ Direction link_get_direction(Link *link);
 
 /**
  * @brief Gets the state of the link.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link Pointer to the link.
  * @return TRUE if the link is opened, FALSE if it isn't, FALSE if error.
@@ -101,7 +101,7 @@ Status link_set_name(Link *link, char *name);
 
 /**
  * @brief Sets the id of the origin space.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link Pointer to the link.
  * @param origin New id of the origin space.
@@ -111,7 +111,7 @@ Status link_set_origin(Link *link, Id origin);
 
 /**
  * @brief Sets the id of the destination space.
- * @author Fernando Mijangos.
+ * @author Irene García.
  *
  * @param link Ponter to the link
  * @param destination New id of the destination space
