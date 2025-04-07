@@ -19,6 +19,7 @@
  * Number of graphic description lines.
 */
 #define G_DESC_LINES 5
+#define DESC_SIZE 10 /*!< Description size.*/
 
 /**
  * @brief Space
@@ -69,7 +70,7 @@ Space *space_create(Id id)
     /*Sets the array so that it's more accesible.*/
     for (i = 0; i < 5; i++)
     {
-        newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * 10]);
+        newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * DESC_SIZE]);
     }
 
     return newSpace;

@@ -19,6 +19,7 @@
 /**
  * Maximun lenght of a description string for a player.*/
 #define MAX_GDESC 10
+#define DEFAULT_HEALTH /*!< Player's default health. */
 
 /**
  * @brief Player
@@ -54,7 +55,7 @@ Player *player_create(Id id)
     player->player_name[0] = '\0';
     player->player_location = NO_ID;
     player->inventory = inventory_create();
-    player->health = 20;
+    player->health = DEFAULT_HEALTH;
     player->gdesc[0] = '\0';
 
     return player;
