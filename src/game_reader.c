@@ -23,6 +23,7 @@
 #define DESC_SIZE 9
 #define DESC_LINES 5 /*!< Max description lines. */
 #define DESC_LENGTH 10 /*!< Max description length. */
+#define IDENTIFIER_LENGTH 3 /*!< Number of characters the identifier occupies in the data file. */
 
 Status game_reader_load_spaces(Game *game, char *filename)
 {
@@ -53,10 +54,10 @@ Status game_reader_load_spaces(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, file))
     {
         /*Checks that the line contains a room.*/
-        if (strncmp("#s:", line, 3) == 0)
+        if (strncmp("#s:", line, IDENTIFIER_LENGTH) == 0)
         {
             /*Takes the information data by data and saves it.*/
-            toks = strtok(line + 3, "|");
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
@@ -146,10 +147,10 @@ Status game_reader_load_objects(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, file))
     {
         /*Checks that the line contains an object.*/
-        if (strncmp("#o:", line, 3) == 0)
+        if (strncmp("#o:", line, IDENTIFIER_LENGTH) == 0)
         {
             /*Takes the information data by data.*/
-            toks = strtok(line + 3, "|");
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
@@ -202,10 +203,10 @@ Status game_reader_load_characters(Game *game, char *name_file)
 
     while (fgets(data, WORD_SIZE, file))
     {
-        if (strncmp("#c:", data, 3) == 0)
+        if (strncmp("#c:", data, IDENTIFIER_LENGTH) == 0)
         {
             /*Gets the id of the character and creates it.*/
-            toks = strtok(data + 3, "|");
+            toks = strtok(data + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
             if (!(character = character_create(id)))
 {                return ERROR;
@@ -280,10 +281,10 @@ Status game_reader_load_players(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#p:", line, 3) == 0)
+        if (strncmp("#p:", line, IDENTIFIER_LENGTH) == 0)
         {
             /*Takes the information data by data.*/
-            toks = strtok(line + 3, "|");
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
             player_id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
@@ -342,10 +343,10 @@ Status game_reader_load_links(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#l:", line, 3) == 0)
+        if (strncmp("#l:", line, IDENTIFIER_LENGTH) == 0)
         {
             /*Takes the information data by data.*/
-            toks = strtok(line + 3, "|");
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(name, toks);
