@@ -82,16 +82,16 @@ run_all_test:
 	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check; make link_check
 
 check:
-	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/logfile.txt
+	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/output.log
 
 set_check:
-	make clear; make set_test;./set_test
+	make clear; make set_test; valgrind -s --leak-check=full --show-leak-kinds=all ./set_test
 
 inventory_check:
-	make clear; make inventory_test;./inventory_test
+	make clear; make inventory_test; valgrind -s --leak-check=full --show-leak-kinds=all ./inventory_test
 
 link_check:
-	make clear; make link_test; ./link_test
+	make clear; make link_test; valgrind -s --leak-check=full --show-leak-kinds=all ./link_test
 
 set_test: set_test.o set.o
 	$(CC) -o $@ $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -100,7 +100,7 @@ set_test.o: set_test.c set_test.h set.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 space_check:
-	make clear; make space_test; ./space_test
+	make clear; make space_test; valgrind -s --leak-check=full --show-leak-kinds=all ./space_test
 
 space_test: space_test.o space.o set.o object.o
 	$(CC) -o space_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -109,7 +109,7 @@ space_test.o: space_test.c space.h types.h object.h set.h space_test.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 character_check:
-	make clear; make character_test;./character_test
+	make clear; make character_test;valgrind -s --leak-check=full --show-leak-kinds=all ./character_test
 
 character_test: character_test.o character.o
 	$(CC) -o character_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -124,7 +124,7 @@ inventory_test.o: inventory_test.c inventory_test.h inventory.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 object_check:
-	make clear; make object_test;./object_test
+	make clear; make object_test;valgrind -s --leak-check=full --show-leak-kinds=all ./object_test
 
 object_test: object_test.o object.o
 	$(CC) -o object_test $(patsubst %.o, $(OBJDIR)/%.o,$^)
@@ -133,7 +133,7 @@ object_test.o: object_test.c object_test.h object.h types.h test.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 player_check:
-	make clear; make player_test; ./player_test
+	make clear; make player_test;valgrind -s --leak-check=full --show-leak-kinds=all ./player_test
 
 player_test: player_test.o player.o inventory.o set.o
 	$(CC) -o player_test $(patsubst %.o, $(OBJDIR)/%.o,$^)

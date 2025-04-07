@@ -177,6 +177,9 @@ void player_test_create_1()
 
     /*Checks the result.*/
     PRINT_TEST_RESULT(player != NULL);
+
+    /*Frees the memory.*/
+    player_destroy(player);
 }
 
 void player_test_create_2()

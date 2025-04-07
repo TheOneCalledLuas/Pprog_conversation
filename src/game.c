@@ -783,8 +783,9 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
     for (i = 0; i < game->n_links; i++)
     {
         if (link_get_origin(game->links[i]) == space && link_get_direction(game->links[i]) == dir)
-        {                                                                      /*If the link was found.*/
-            return (link_get_state(game->links[i]) == TRUE ? OPENED : CLOSED); /*Clean exit.*/
+        { /*If the link was found.*/
+            /*Clean exit.*/
+            return (link_get_state(game->links[i]) == TRUE ? OPENED : CLOSED);
         }
     }
     /*The link wasn't found.*/
