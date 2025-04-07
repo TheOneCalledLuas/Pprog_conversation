@@ -2,7 +2,7 @@
  * @brief It implements the link module
  *
  * @file link.c
- * @author Fernando Mijangos, Irene García
+ * @author Fernando Mijangos
  * @version 1
  * @date 21-03-2025
  * @copyright GNU Public License

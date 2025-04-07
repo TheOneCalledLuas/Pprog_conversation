@@ -2,7 +2,7 @@
  * @brief It implements the game update through user actions.
  *
  * @file game_actions.c
- * @author Fernando Mijangos, Saúl López Romero
+ * @author Fernando Mijangos, Saul López Romero
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -22,6 +22,8 @@
 
 #define ATTACK_PROB 9  /*!<Chances to attack.*/
 #define SUCCESS_PROB 2 /*!<Chances to strike (the smaller the better).*/
+#define DAMAGE_DEALT 1 /*!<Amount of health the entity losses when hurt.*/
+#define MIN_HEALTH 0   /*!<Minimum health the entity can have before dying.*/
 #define N_DIRECTIONS 4 /*!<Number of directions.*/
 #define N_VARIATIONS 2 /*!<Number of possible ways to call each direction.*/
 
@@ -70,7 +72,7 @@ void game_actions_drop(Game *game);
 
 /**
  * @brief Action to be executed when chat command is given.
- * @author Saul Lopez Romero
+ * @author Saul López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -203,6 +205,11 @@ void game_actions_move(Game *game)
 
     /*Sets the player location it to the id space in that direction of him.*/
     current_id = game_get_space_at(game, space_id, direction);
+    if (game_get_space_outcoming_connection_info(game, space_id, direction) != OPENED)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
     if (current_id != NO_ID && current_id != ID_ERROR)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
@@ -213,6 +220,7 @@ void game_actions_move(Game *game)
         return;
     }
     command_set_status(game_get_last_command(game), OK);
+
     return;
 }
 
@@ -346,22 +354,22 @@ void game_actions_attack(Game *game)
     }
     character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
 
-    if (character_get_friendly(character) == FALSE && character_get_health(character) > 0 && player_get_health(player) > 0)
+    if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
     {
         /*Starts a fight between the entities.*/
         rand_num = random_int(0, ATTACK_PROB);
         if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
         {
             /*Hits player.*/
-            player_set_health(player, player_get_health(player) - 1);
+            player_set_health(player, player_get_health(player) - DAMAGE_DEALT);
         }
         else
         {
             /*Hits character.*/
-            character_set_health(character, character_get_health(character) - 1);
+            character_set_health(character, character_get_health(character) - DAMAGE_DEALT);
         }
         /*Checks if the player died.*/
-        if (player_get_health(player) <= 0)
+        if (player_get_health(player) <= MIN_HEALTH)
         {
             game_set_finished(game, TRUE);
         }

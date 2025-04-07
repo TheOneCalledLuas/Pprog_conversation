@@ -2,8 +2,7 @@
  * @brief It defines the link module
  *
  * @file link.h
- * @author Fernando Mijangos, Irene García
- * @version 1
+ * @author Fernando Mijangos
  * @date 21-03-2025
  * @copyright GNU Public License
  */
@@ -11,8 +10,8 @@
 #ifndef LINK_H
 #define LINK_H
 
-#include "types.h"
 #include <string.h>
+#include "types.h"
 #define MAX_NAME 100 /*!<Name length.*/
 
 typedef struct _link Link; /*!<Link type.*/
@@ -55,7 +54,7 @@ char *link_get_name(Link *link);
 
 /**
  * @brief Gets the id of the origin space.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link Pointer to the link.
  * @return Id of the space of origin, ID_error if error.
@@ -64,7 +63,7 @@ Id link_get_origin(Link *link);
 
 /**
  * @brief Gets the id of the space of destiantion.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link ointer to the link.
  * @return Id of the space of destination, ID_ERROR if error.
@@ -73,7 +72,7 @@ Id link_get_destination(Link *link);
 
 /**
  * @brief Gets the direction the link is pointing to.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link Pointer to the link.
  * @return Direction to where the link points, UNK_DIRECTION if error.
@@ -82,7 +81,7 @@ Direction link_get_direction(Link *link);
 
 /**
  * @brief Gets the state of the link.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link Pointer to the link.
  * @return TRUE if the link is opened, FALSE if it isn't, FALSE if error.
@@ -101,7 +100,7 @@ Status link_set_name(Link *link, char *name);
 
 /**
  * @brief Sets the id of the origin space.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link Pointer to the link.
  * @param origin New id of the origin space.
@@ -111,7 +110,7 @@ Status link_set_origin(Link *link, Id origin);
 
 /**
  * @brief Sets the id of the destination space.
- * @author Irene García.
+ * @author Fernando Mijangos.
  *
  * @param link Ponter to the link
  * @param destination New id of the destination space

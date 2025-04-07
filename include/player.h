@@ -2,7 +2,7 @@
  * @brief It defines the player module
  *
  * @file player.h
- * @author Fernando Mijangos, saúl López Romero
+ * @author Fernando Mijangos && Saúl López Romero
  * @version 3
  * @date 04-02-2025
  * @copyright GNU Public License

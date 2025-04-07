@@ -2,7 +2,7 @@
  * @brief It defines sets for the whole project
  *
  * @file set.h
- * @author Saúl López Romero
+ * @author Saúl López Romero && Fernando Mijangos
  * @version 1
  * @date 27-0122025
  * @copyright GNU Public License
