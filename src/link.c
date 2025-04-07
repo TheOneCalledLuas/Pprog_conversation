@@ -13,6 +13,9 @@
 #include "link.h"
 #include "types.h"
 
+#define MAX_NAME 100 /*!<Max name lenght.*/
+
+
 /**
  * Link TAD
  */

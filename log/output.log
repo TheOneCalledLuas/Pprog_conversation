@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Player 1 executed Command Take with arguments "grain" and exit code OK :Take grain
 Player 3 executed Command Take with arguments "water_drop" and exit code OK :Take water_drop
 Player 1 executed Command move with arguments "s" and exit code OK :move s
@@ -26,3 +27,5 @@ Player 1 executed Command Inspect with arguments "soil" and exit code ERROR :Ins
 Player 3 executed Command Attack with arguments "" and exit code OK :Attack 
 Player 1 executed Command Chat with arguments "" and exit code ERROR :Chat 
 Player 3 executed Command Exit with arguments "" and exit code OK :Exit 
+=======
+>>>>>>> Stashed changes

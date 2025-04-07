@@ -12,7 +12,6 @@
 
 #include <string.h>
 #include "types.h"
-#define MAX_NAME 100 /*!<Name length.*/
 
 typedef struct _link Link; /*!<Link type.*/
 
