@@ -230,10 +230,12 @@ Status map_init(Game *game, char **map)
         {
             for (j = 0; j < 3; j++)
             {
-                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map))||link_statuses[i*3+j]!=OPENED)
-                {
+                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map)))
                     continue;
-                }
+
+                if (link_statuses[i * 3 + j] != OPENED && actual_id[i * 3 + j] != actual_id[ACTUAL_POSITION])
+                    continue;
+
                 for (t = 0; t < HEIGHT_SPACE; t++)
                 {
                     /*The -1 after width_space in the loop is so that it doesnt copy the '\0'*/
@@ -247,13 +249,13 @@ Status map_init(Game *game, char **map)
 
         /*4-Puts the arrows.*/
         if (actual_id[NORTH] != NO_ID)
-            map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = '^';
+            map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = (link_statuses[NORTH]==OPENED? '^': 'X');
         if (actual_id[WEST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = '<';
+            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = (link_statuses[WEST]==OPENED? '<': 'X');
         if (actual_id[EAST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = '>';
+            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = (link_statuses[EAST]==OPENED? '>': 'X');
         if (actual_id[SOUTH] != NO_ID)
-            map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = 'v';
+            map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = (link_statuses[SOUTH]==OPENED? 'v': 'X');
         /*5-puts \0*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {

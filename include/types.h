@@ -22,7 +22,7 @@ typedef enum
 {
     UNK = -1, /*!<Not known state.*/
     CLOSED,   /*!<Closed link.*/
-    OPENED,   /*!<Opened link.*/
+    OPENED   /*!<Opened link.*/
 } Link_Property;
 
 /**Boolean values.*/

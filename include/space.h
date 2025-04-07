@@ -36,7 +36,7 @@ void space_destroy(Space *space);
 
 /**
  * @brief Gets a determined line of the graphic description.
- * @author Saúl López Romero.
+ * @author Saul Lopez Romero.
  *
  * @param space Pointer to the space.
  * @param line line to be given.
@@ -76,7 +76,7 @@ Status space_set_name(Space *space, char *name);
 
 /**
  * @brief It gets the name of a space
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space
  * @return  a string with the name of the space
