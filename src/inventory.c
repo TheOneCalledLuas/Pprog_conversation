@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define DEFAULT_MAX_OBJ 5 /*!< Default number of max_obj. */
+
 /**
  * Inventory TAD.
  */
@@ -36,7 +38,7 @@ Inventory *inventory_create()
 
     /* Initialization of an empty inventory. */
     newInv->objs = set_create();
-    newInv->max_objs = 5;
+    newInv->max_objs = DEFAULT_MAX_OBJ;
 
     return newInv;
 }

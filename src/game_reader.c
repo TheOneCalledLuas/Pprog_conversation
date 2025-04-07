@@ -62,7 +62,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
             toks = strtok(NULL, "|");
             strcpy(name, toks);
             /*Takes the graphic description.*/
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < DESC_LINES; i++)
             {
                 toks = strtok(NULL, "|");
 
@@ -77,7 +77,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
 /*If DEBUG mode is active (defined) prints what it has read.*/
 #ifdef DEBUG
             printf("Leido: %ld|%s|\n", id, name);
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < DESC_LINES; i++)
             {
                 printf("%s|", desc[i]);
             }
@@ -90,12 +90,12 @@ Status game_reader_load_spaces(Game *game, char *filename)
             {
                 space_set_name(space, name);
                 game_add_space(game, space);
-                for (i = 0; i < 5; i++)
+                for (i = 0; i < DESC_LINES; i++)
                 {
                     space_set_gdesc_line(space, i, desc[i]);
                 }
 #ifdef DEBUG
-                for (i = 0; i < 5; i++)
+                for (i = 0; i < DESC_LINES; i++)
                 {
                     printf("%s|", space_get_gdesc_line(space, i));
                 }

@@ -62,13 +62,13 @@ Space *space_create(Id id)
     /*Initialisation of gdesc. I chose to do it this way because if
       we manage to get a decent amount of spaces, storing them in the
       stack will definitely be a potencial problem.*/
-    if (!(newSpace->__gdesc_data = (char *)calloc(50, sizeof(char))))
+    if (!(newSpace->__gdesc_data = (char *)calloc(G_DESC_LINES * DESC_SIZE, sizeof(char))))
     {
         free(newSpace);
         return NULL;
     }
     /*Sets the array so that it's more accesible.*/
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < G_DESC_LINES; i++)
     {
         newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * DESC_SIZE]);
     }
@@ -269,7 +269,7 @@ Status space_print(Space *space)
 
     /* 4. Print the graphic description of the space.*/
     fprintf(stdout, "Graphic description: \n");
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < G_DESC_LINES; i++)
     {
         fprintf(stdout, "%s\n", space->gdesc[i]);
     }
