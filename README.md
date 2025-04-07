@@ -12,5 +12,5 @@ Estructura del respositorio:
     .h en /include
     
 
-I3:
+I3: ESTOOOOOOOOOOOOO ES UNA PUTA MIERDAAAAAAAAAAAAAA uwu nya
     
