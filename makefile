@@ -14,7 +14,7 @@ TESTDIR = ./test
 #List with all the object names
 MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o
 
-.PHONY = all clean clear check redo run run_cmd run_all_test
+.PHONY = all clean clear check redo run run_cmd run_all_test doxygen
 
 #Path rules.
 vpath %.h include
@@ -157,4 +157,4 @@ run:
 	./anthill data/anthill.dat -l ./log/output.log
 
 run_cmd:
-	./anthill data/anthill.dat -l ./log/output.log < game.cmd
+	./anthill data/anthill.dat -l ./log/output.log < game1.cmd; ./anthill data/anthill.dat -l ./log/output.log < game2.cmd
