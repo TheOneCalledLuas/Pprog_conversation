@@ -2,7 +2,7 @@
  * @brief It implements the object functionality.
  *
  * @file object.c
- * @author Saúl López Romero
+ * @author Saúl López Romero, Irene García
  * @version 2
  * @date 01-02-2025
  * @copyright GNU Public License
