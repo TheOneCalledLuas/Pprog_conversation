@@ -52,7 +52,6 @@
 #define WIDTH_SPACE 21
 /**
  * Space height.*/
-#define HEIGHT_SPACE 9
 /**
  * Start of the gap when placed.*/
 #define STARING_POINT 1
@@ -62,7 +61,22 @@
 /**
  * Elements that cannot be written per room.*/
 #define NON_WRITTABLE_ELEMS 5
+#define LIMIT_OF_ELEMENTS 2 /*Number of elements that can't be written on when printing each line of each space.*/
+#define EXTRA_LINE 1         /*!<Number of extra lines beetween elements of the ge.*/
 
+typedef enum
+{
+    FIRST_LINE,     /*!<First line of a space*/
+    SECOND_LINE,    /*!<Second line of a space*/
+    THIRD_LINE,     /*!<Third line of a space*/
+    FOURTH_LINE,    /*!<Fourth line of a space*/
+    FIFTH_LINE,     /*!<Fifth line of a space*/
+    SIXTH_LINE,     /*!<Sixth line of a space*/
+    SEVENTH_LINE,   /*!<Seventh line of a space*/
+    EIGHT_LINE,     /*!<Eight line of a space*/
+    NINETH_LINE,    /*!<Nineth line of a space*/
+    HEIGHT_SPACE    /*!<Space height*/
+}space_information;
 /**
  * Space positions in array
  * This is like this so that later when printing its easier with a for
@@ -125,7 +139,7 @@ Graphic_engine *graphic_engine_create()
     static Graphic_engine *ge = NULL;
 
     /*Screen initialisation.*/
-    screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4, WIDTH_MAP + WIDTH_DES + 3);
+    screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 3 * EXTRA_LINE);
 
     /*Space allocation and error management.*/
     ge = (Graphic_engine *)malloc(sizeof(Graphic_engine));
@@ -136,10 +150,10 @@ Graphic_engine *graphic_engine_create()
 
     /*It gives the value needed for each variable.*/
     ge->map = screen_area_init(STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript = screen_area_init(WIDTH_MAP + 2, STARING_POINT, WIDTH_DES, HEIGHT_MAP);
-    ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 - WIDTH_BAN) / 2), HEIGHT_MAP + 2, WIDTH_BAN, HEIGHT_BAN);
-    ge->help = screen_area_init(1, HEIGHT_MAP + HEIGHT_BAN + 2, WIDTH_MAP + WIDTH_DES + 1, HEIGHT_HLP);
-    ge->feedback = screen_area_init(1, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 3, WIDTH_MAP + WIDTH_DES + 1, HEIGHT_FDB);
+    ge->descript = screen_area_init(WIDTH_MAP + 2 * EXTRA_LINE, STARING_POINT, WIDTH_DES, HEIGHT_MAP);
+    ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE - WIDTH_BAN) / 2), HEIGHT_MAP + 2 * EXTRA_LINE, WIDTH_BAN, HEIGHT_BAN);
+    ge->help = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + 2 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE, HEIGHT_HLP);
+    ge->feedback = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 3 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE, HEIGHT_FDB);
 
     /*Clean exit.*/
     return ge;
@@ -168,8 +182,8 @@ Status map_init(Game *game, char **map)
 {
     int i = 0, j = 0, t = 0, v = 0;
     char **aux_map;
-    Id actual_id[NUM_IDS];
-    Link_Property link_statuses[NUM_IDS];
+    Id actual_id[NUM_IDS]={NO_ID};
+    Link_Property link_statuses[NUM_IDS]={CLOSED};
 
     /*Error control.*/
     if (!game || !map)
@@ -249,13 +263,13 @@ Status map_init(Game *game, char **map)
 
         /*4-Puts the arrows.*/
         if (actual_id[NORTH] != NO_ID)
-            map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = (link_statuses[NORTH]==OPENED? '^': 'X');
+            map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = (link_statuses[NORTH] == OPENED ? '^' : 'X');
         if (actual_id[WEST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = (link_statuses[WEST]==OPENED? '<': 'X');
+            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = (link_statuses[WEST] == OPENED ? '<' : 'X');
         if (actual_id[EAST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = (link_statuses[EAST]==OPENED? '>': 'X');
+            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = (link_statuses[EAST] == OPENED ? '>' : 'X');
         if (actual_id[SOUTH] != NO_ID)
-            map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = (link_statuses[SOUTH]==OPENED? 'v': 'X');
+            map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = (link_statuses[SOUTH] == OPENED ? 'v' : 'X');
         /*5-puts \0*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
@@ -278,11 +292,11 @@ Status map_init(Game *game, char **map)
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
     Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
-    Character *character;
+    Character *character=NULL;
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE], **map, *obj_name = NULL;
+    char str[MAX_STRING_GE], **map=NULL, *obj_name = NULL;
     int i = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
@@ -355,7 +369,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         id_list = game_get_objects(game);
         for (i = 0; i < game_get_n_objects(game); i++)
         {
-            if ((id_aux = game_get_object_location(game, id_list[i])) != -1)
+            if ((id_aux = game_get_object_location(game, id_list[i])) != NO_ID)
             {
                 /*If the object is inside a discovered space it prints it.*/
                 if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
@@ -488,7 +502,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {
-    char aux[PLAYER_LENGTH] = {"   "}, aux_2[WIDTH_SPACE - 2], *aux_3 = NULL, aux_4[WIDTH_SPACE - 5];
+    char aux[PLAYER_LENGTH] = {"   "}, aux_2[WIDTH_SPACE - LIMIT_OF_ELEMENTS], *aux_3 = NULL, aux_4[WIDTH_SPACE - NON_WRITTABLE_ELEMS];
     Space *space;
     int i, j, n_objs_space, cond = 0;
     Id *set;
@@ -510,18 +524,18 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     /*If the space hasn't been discovered, it prints a blank space.*/
     if (space_is_discovered(space) == FALSE)
     {
-        sprintf(destination[0], "+------------------+");
+        sprintf(destination[FIRST_LINE], "+------------------+");
         for (i = 1; i < HEIGHT_SPACE - 1; i++)
             sprintf(destination[i], "|                  |");
-        sprintf(destination[8], "+------------------+");
+        sprintf(destination[NINETH_LINE], "+------------------+");
         return OK;
     }
     /*Starts printing the space.*/
-    sprintf(destination[0], "+------------------+");
-    sprintf(destination[1], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
-    for (i = 0; i < 5; i++)
+    sprintf(destination[FIRST_LINE], "+------------------+");
+    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
+    for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {
-        sprintf(destination[i + 2], "|%-18s|", space_get_gdesc_line(space, i));
+        sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i-LIMIT_OF_ELEMENTS));
     }
     /*Once the space is printed, shows the objects on screen.*/
     n_objs_space = space_get_n_objects(space);
@@ -530,7 +544,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     if (set)
     {
         /*Looks how many strings it can print inside the 12 letters in the space given and stores the final string
-        in aux_2 (WDITH_SPACE -2 for the barriers, -3 for the extra things i'm placing)*/
+        in aux_2 (WIDTH_SPACE -2 for the barriers, -3 for the extra things i'm placing)*/
 
         /*1-Looks how many objects it can fit inside the space given, 'i' will have the amount of objects that can be printed*/
         for (i = n_objs_space; cond == 0 && i != 0; i--)
@@ -581,7 +595,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
 
     /*Finishes printing the spaces.*/
-    sprintf(destination[7], "|%-18s|", aux_2);
-    sprintf(destination[8], "+------------------+");
+    sprintf(destination[EIGHT_LINE], "|%-18s|", aux_2);
+    sprintf(destination[NINETH_LINE], "+------------------+");
     return OK;
 }
