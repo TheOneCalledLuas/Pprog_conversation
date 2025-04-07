@@ -1,31 +1,6 @@
-<<<<<<< Updated upstream
+Player 1 executed Command Inspect with arguments "grain" and exit code OK :Inspect grain
+Player 3 executed Command move with arguments "n" and exit code OK :move n
 Player 1 executed Command Take with arguments "grain" and exit code OK :Take grain
-Player 3 executed Command Take with arguments "water_drop" and exit code OK :Take water_drop
-Player 1 executed Command move with arguments "s" and exit code OK :move s
-Player 3 executed Command move with arguments "n" and exit code OK :move n
-Player 1 executed Command Take with arguments "seed" and exit code OK :Take seed
-Player 3 executed Command move with arguments "e" and exit code OK :move e
-Player 1 executed Command move with arguments "s" and exit code OK :move s
-Player 3 executed Command Take with arguments "soil" and exit code OK :Take soil
-Player 1 executed Command move with arguments "e" and exit code OK :move e
-Player 3 executed Command move with arguments "e" and exit code OK :move e
-Player 1 executed Command move with arguments "e" and exit code OK :move e
-Player 3 executed Command move with arguments "e" and exit code OK :move e
-Player 1 executed Command move with arguments "e" and exit code OK :move e
-Player 3 executed Command move with arguments "e" and exit code OK :move e
-Player 1 executed Command move with arguments "e" and exit code OK :move e
-Player 3 executed Command move with arguments "s" and exit code OK :move s
-Player 1 executed Command move with arguments "s" and exit code OK :move s
-Player 3 executed Command move with arguments "n" and exit code OK :move n
-Player 1 executed Command move with arguments "n" and exit code OK :move n
-Player 3 executed Command Drop with arguments "soil" and exit code OK :Drop soil
-Player 1 executed Command Drop with arguments "grain" and exit code OK :Drop grain
-Player 3 executed Command Drop with arguments "water_drop" and exit code OK :Drop water_drop
-Player 1 executed Command Drop with arguments "seed" and exit code OK :Drop seed
-Player 3 executed Command move with arguments "n" and exit code OK :move n
-Player 1 executed Command Inspect with arguments "soil" and exit code ERROR :Inspect soil
-Player 3 executed Command Attack with arguments "" and exit code OK :Attack 
+Player 3 executed Command Chat with arguments "" and exit code OK :Chat 
 Player 1 executed Command Chat with arguments "" and exit code ERROR :Chat 
 Player 3 executed Command Exit with arguments "" and exit code OK :Exit 
-=======
->>>>>>> Stashed changes
