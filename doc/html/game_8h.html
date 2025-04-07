@@ -314,6 +314,9 @@ Functions</h2></td></tr>
 <tr class="memitem:adf85ace43fb6de7195ed17fba20c53b4" id="r_adf85ace43fb6de7195ed17fba20c53b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#adf85ace43fb6de7195ed17fba20c53b4">game_get_space_at</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, <a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a> space, <a class="el" href="types_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> direction)</td></tr>
 <tr class="memdesc:adf85ace43fb6de7195ed17fba20c53b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks for the space situated at a given direction from a space.  <br /></td></tr>
 <tr class="separator:adf85ace43fb6de7195ed17fba20c53b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fbaa485f190bccc174d04c046c81ff3" id="r_a9fbaa485f190bccc174d04c046c81ff3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a86510721209a8e5ede12ab30088010a8">Link_Property</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a9fbaa485f190bccc174d04c046c81ff3">game_get_space_outcoming_connection_info</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, <a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a> space, <a class="el" href="types_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> dir)</td></tr>
+<tr class="memdesc:a9fbaa485f190bccc174d04c046c81ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the link information for a stace regarding the outgoing links.  <br /></td></tr>
+<tr class="separator:a9fbaa485f190bccc174d04c046c81ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It defines the game interface. </p>
@@ -1517,6 +1520,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Id of the space at that position. </dd></dl>
+
+</div>
+</div>
+<a id="a9fbaa485f190bccc174d04c046c81ff3" name="a9fbaa485f190bccc174d04c046c81ff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fbaa485f190bccc174d04c046c81ff3">&#9670;&#160;</a></span>game_get_space_outcoming_connection_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a86510721209a8e5ede12ab30088010a8">Link_Property</a> game_get_space_outcoming_connection_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td>
+          <td class="paramname"><em>space</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a>&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the link information for a stace regarding the outgoing links. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game. </td></tr>
+    <tr><td class="paramname">space</td><td>Id of the space. </td></tr>
+    <tr><td class="paramname">dir</td><td>Direction for the link. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Link information (OPENED or CLOSED) or UNK in case of error. </dd></dl>
 
 </div>
 </div>

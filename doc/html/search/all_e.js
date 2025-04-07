@@ -16,5 +16,6 @@ var searchData=
   ['objects_13',['objects',['../struct__Space.html#a661ed8b0fc8085b6db70188aa5085625',1,'_Space::objects'],['../struct__Game.html#ad45bf5645a26e546d0060a2e61f9cf81',1,'_Game::objects']]],
   ['objs_14',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
   ['ok_15',['OK',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59',1,'types.h']]],
-  ['origin_16',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
+  ['opened_16',['OPENED',['../types_8h.html#a86510721209a8e5ede12ab30088010a8a45c1c97bdcce420fc01045ee101a0cf2',1,'types.h']]],
+  ['origin_17',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
 ];

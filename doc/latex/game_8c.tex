@@ -109,7 +109,9 @@ void \mbox{\hyperlink{game_8c_a6a00b3f5db99150d9180e439d400e083}{game\+\_\+print
 \mbox{\hyperlink{link_8h_a669dc22e9af2486a28a9727ffdb7c98b}{Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8c_a94b9cec4efb057e7eb0d3ff637ca5a18}{game\+\_\+find\+\_\+link}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} link\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Takes a link from the link array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{game_8c_adf85ace43fb6de7195ed17fba20c53b4}{game\+\_\+get\+\_\+space\+\_\+at}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} space, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} direction)
-\begin{DoxyCompactList}\small\item\em Looks for the space situated at a given direction from a space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Looks for the space situated at a given direction from a space. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a86510721209a8e5ede12ab30088010a8}{Link\+\_\+\+Property}} \mbox{\hyperlink{game_8c_a9fbaa485f190bccc174d04c046c81ff3}{game\+\_\+get\+\_\+space\+\_\+outcoming\+\_\+connection\+\_\+info}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} space, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Gets the link information for a stace regarding the outgoing links. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -803,6 +805,31 @@ Profesores PPROG
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Id of the space at that position. 
+\end{DoxyReturn}
+\Hypertarget{game_8c_a9fbaa485f190bccc174d04c046c81ff3}\label{game_8c_a9fbaa485f190bccc174d04c046c81ff3} 
+\index{game.c@{game.c}!game\_get\_space\_outcoming\_connection\_info@{game\_get\_space\_outcoming\_connection\_info}}
+\index{game\_get\_space\_outcoming\_connection\_info@{game\_get\_space\_outcoming\_connection\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_get\_space\_outcoming\_connection\_info()}{game\_get\_space\_outcoming\_connection\_info()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a86510721209a8e5ede12ab30088010a8}{Link\+\_\+\+Property}} game\+\_\+get\+\_\+space\+\_\+outcoming\+\_\+connection\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Gets the link information for a stace regarding the outgoing links. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em space} & Id of the space. \\
+\hline
+{\em dir} & Direction for the link. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Link information (OPENED or CLOSED) or UNK in case of error. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_aa09e1df33f2417cc314eca6a5ae822f3}\label{game_8c_aa09e1df33f2417cc314eca6a5ae822f3} 
 \index{game.c@{game.c}!game\_get\_turn@{game\_get\_turn}}

@@ -14,18 +14,26 @@ TESTDIR = ./test
 #List with all the object names
 MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o
 
-.PHONY = all clean clear check
+.PHONY = all clean clear check redo run run_cmd run_all_test
 
-#Path rules
+#Path rules.
 vpath %.h include
 vpath %.c src
 vpath %.o obj
 vpath %.a lib
 
+#Main objectives. 
 all: anthill
 
 anthill:  $(MAKE_OBJ)
 	$(CC) -o $(EXE) $(patsubst %.o, $(OBJDIR)/%.o,$(MAKE_OBJ)) -L./$(LIBDIR)/ -lscreen
+
+doxygen:
+	doxygen Doxyfile
+
+#In order to run individual tests do "make {module_name}_check"
+run_all_test:
+	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check; make link_check
 
 command.o: command.c command.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
@@ -78,8 +86,6 @@ redo:
 ################################################
 #                 Test_check                   #
 ################################################
-run_all_test:
-	make set_check; make space_check; make character_check; make object_check; make inventory_check; make player_check; make link_check
 
 check:
 	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/output.log
