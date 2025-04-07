@@ -181,9 +181,9 @@ void graphic_engine_destroy(Graphic_engine *ge)
 Status map_init(Game *game, char **map)
 {
     int i = 0, j = 0, t = 0, v = 0;
-    char **aux_map;
-    Id actual_id[NUM_IDS]={NO_ID};
-    Link_Property link_statuses[NUM_IDS]={CLOSED};
+    char **aux_map = NULL;
+    Id actual_id[NUM_IDS] = {NO_ID};
+    Link_Property link_statuses[NUM_IDS] = {CLOSED};
 
     /*Error control.*/
     if (!game || !map)

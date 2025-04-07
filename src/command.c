@@ -23,7 +23,7 @@
 /**
  * @brief structure with all the possible commands and the key words to triger them.
  */
-char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"m", "move"}, {"t", "Take"}, {"d", "Drop"}, {"a", "Attack"}, {"c", "Chat"}, {"i","Inspect"}};
+char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"m", "move"}, {"t", "Take"}, {"d", "Drop"}, {"a", "Attack"}, {"c", "Chat"}, {"i", "Inspect"}};
 
 /**
  * @brief Command
@@ -154,7 +154,7 @@ Status command_get_user_input(Command *command)
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
-        token = strtok(input, " \n");
+        token = strtok(input, " \r\n");
         if (!token)
         {
             /*2.1. If there isnt a word stored in the first token, return unknown command.*/
@@ -181,7 +181,7 @@ Status command_get_user_input(Command *command)
         }
 
         /*2.4 Assigns the extra word the user might have inputed.*/
-        token = strtok(NULL, " \n");
+        token = strtok(NULL, " \r\n");
         if (!command_set_word(command, token))
         {
             return ERROR;
@@ -209,5 +209,6 @@ Status command_print(Command *com, FILE *place)
     {
         fprintf(place, "ERROR");
     }
+    fprintf(place, " :%s %s", cmd_to_str[(int)(com->code + 1)][CMD_SHORTCUT], com->word);
     return OK;
 }
