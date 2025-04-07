@@ -95,7 +95,7 @@ void space_destroy(Space *space)
 char *space_get_gdesc_line(Space *space, int line)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > 4)
+    if (!space || line < 0 || line > G_DESC_LINES - 1)
         return NULL;
 
     /*Returns the line.*/
@@ -105,7 +105,7 @@ char *space_get_gdesc_line(Space *space, int line)
 Status space_set_gdesc_line(Space *space, int line, char *str)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > 4 || !str || strlen(str) != 9)
+    if (!space || line < 0 || line > G_DESC_LINES - 1 || !str || strlen(str) != 9)
         return ERROR;
 
     /*Sets the line.*/
