@@ -17,6 +17,31 @@
 typedef struct _Animation_Manager Animation_Manager; /*!< Animation manager type.*/
 typedef struct _Animation Animation; /*!< Animation type.*/
 
+/**
+ * @brief Initialises the animator manager.
+ * @author Saúl López Romero.
+ * 
+ * @param animation_route Directory route where the animations are stored.
+ * @return Pointer to the struct of NULL.
+ */
+Animation_Manager * animations_manager_init(char * animation_route);
 
+/**
+ * @brief Destroys the animator manager.
+ * @author Saúl López Romero.
+ * 
+ * @param am Animator manager to destroy.
+ */
+void animations_manager_destroy(Animation_Manager * am);
+
+/**
+ * @brief Runs a certain animation.
+ * @author Saúl López Romero.
+ * 
+ * @param am Animator manager.
+ * @param anim_id Aniamtion id.
+ * @returns OK if everything goes as expected, ERROR otherwise.
+ */
+Status animations_run(Animation_Manager * am, Id anim_id);
 
 #endif

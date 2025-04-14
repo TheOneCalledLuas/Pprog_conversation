@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "animations.h"
 #include "types.h"
@@ -41,3 +42,4 @@ struct _Animation
     int height_padding;   /*!< Number of white spaces left bellow the animation, set to zero by default.*/
     float refresh_rate;   /*!< Seconds left between each frame.*/
 };
+
