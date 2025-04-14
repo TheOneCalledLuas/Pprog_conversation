@@ -387,6 +387,87 @@ void game_actions_inspect(Game *game)
     return;
 }
 
+/*Recruit y abandon son provisionales hasta que follow esté implementado.*/
+void game_actions_recruit(Game *game)
+{
+    Player *player = NULL;
+    Id character = NO_ID, player_location = NO_ID;
+    Bool same_character = FALSE;
+
+    /*Error handling.*/
+    if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks that the player meets the requirements to recruit.*/
+    player = game_get_actual_player(game);
+    player_location = player_get_player_location(player);
+    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
+    same_character = (space_get_character(game_get_space(game, player_location)) == character);
+    if (same_character == FALSE)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Actual command.*/
+    if (character_get_friendly(game_get_character(game, character)) == FALSE && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    {
+        if (character_set_follow(game_get_character(game, character), player, TRUE) == ERROR)
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+        }
+        command_set_status(game_get_last_command(game), OK);
+        return;
+    }
+    command_set_status(game_get_last_command(game), ERROR);
+}
+
+void game_actions_abandon(Game *game)
+{
+    Player *player = NULL;
+    Id character = NO_ID, player_location = NO_ID;
+    Bool following_character = FALSE;
+
+    /*Error handling.*/
+    if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks that the player meets the requirements to abandon.*/
+    player = game_get_actual_player(game);
+    player_location = player_get_player_location(player);
+    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
+    following_character = character_get_follow(character, player);
+    if (following_character == FALSE)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Actual command.*/
+    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    {
+        if (character_set_follow(character, player, FALSE) == ERROR)
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+        if (space_set_character(game_get_space(game, player_location), character) == ERROR)
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+        command_set_status(game_get_last_command(game), OK);
+        return;
+    }
+    command_set_status(game_get_last_command(game), ERROR);
+}
+
 int random_int(int start, int end)
 {
     /*Srand was called beforehand.*/

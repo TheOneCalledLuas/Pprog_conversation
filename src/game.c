@@ -170,6 +170,27 @@ int game_get_num_characters(Game *game)
     return game->n_characters;
 }
 
+Id game_get_character_by_name(Game *game, char *word)
+{
+    int i;
+    /*Error handling.*/
+    if (!game || !word)
+    {
+        return ID_ERROR;
+    }
+    /*Searches the character by its name.*/
+    for (i = 0; i < game->n_characters; i++)
+    {
+        if (!(strcmp(word, character_get_name(game->characters[i]))))
+        {
+            /*Returns the character id.*/
+            return (character_get_id(game->characters[i]));
+        }
+    }
+    /*The character wasn't found.*/
+    return NO_ID;
+}
+
 Space *game_get_space(Game *game, Id id)
 {
     int i = 0;

@@ -19,7 +19,7 @@
 #define N_CMDT 2
 /**
  * Number of commands.*/
-#define N_CMD 9
+#define N_CMD 11
 
 /**
  * @brief Ways of calling a command (extended or short way.)
@@ -44,7 +44,9 @@ typedef enum
     DROP,           /*!< Drop command.*/
     ATTACK,         /*!< Attack command.*/
     CHAT,           /*!< Chat command.*/
-    INSPECT         /*!< Inspect command.*/
+    INSPECT,        /*!< Inspect command.*/
+    RECRUIT,        /*!< Recruit command.*/
+    ABANDON         /*!< Abandon command.*/
 } CommandCode;
 /**
  * @brief Command

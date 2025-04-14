@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  *
  * @file game.h
- * @author Saul Lopez Romero, Fernando Mijangos
+ * @author Saul Lopez Romero, Fernando Mijangos, Raquel Anguita Martínez de Velasco
  * @version 3
  * @date 29-02-2025
  * @copyright GNU Public License
@@ -106,6 +106,16 @@ Status game_add_character(Game *game, Character *character);
  * @return Object number or -1 if an error takes place.
  */
 int game_get_num_characters(Game *game);
+
+/**
+ * @brief Gets a character with a specfic name inside the game
+ * @author Raquel Anguita Martínez de Velasco
+ *
+ * @param game Pointer to the game.
+ * @param word Character's name.
+ * @return Id of the character or NO_ID in any other case.
+ */
+Id game_get_character_by_name(Game *game, char *word);
 
 /**
  * @brief Adds a space to the game structure.
