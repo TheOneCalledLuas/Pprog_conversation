@@ -27,7 +27,7 @@ struct _Animation_Manager
     Animation *animations;           /*!< Animation list.*/
     int n_animations;                /*!< Number of animations.*/
     char animations_route[MAX_LINE]; /*!< Path to the animation dir.*/
-    char *animation_files;           /*!< file with all the animation file names.*/
+    char **animation_files;           /*!< file with all the animation file names.*/
 };
 
 /**
@@ -45,3 +45,5 @@ struct _Animation
     float refresh_rate;     /*!< Seconds left between each frame.*/
     char *background_color; /*!< Background color during the animation.*/
 };
+
+Animation_Manager *animation_manager_init(char *animation_route, char * animation_file);
