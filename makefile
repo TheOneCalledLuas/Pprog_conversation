@@ -74,6 +74,9 @@ link.o: link.c link.h types.h
 inventory.o: inventory.c set.h inventory.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
+gamerules.o: gamerules.c gamerules.h game.h types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
 clean:
 	rm -f $(OBJDIR)/*.o anthill set_test space_test character_test object_test inventory_test link_test player_test
 

@@ -11,6 +11,9 @@
 #ifndef GAMERULES_H
 #define GAMERULES_H /*!< Gamerules lib.*/
 
+#include "types.h"
+#include "game.h"
+
 typedef struct _Game_values Game_values; /*!< Struct with all the game values, which determine some outcomes.*/
 typedef struct _Gamerule Gamerule;       /*!< Gamerule struct.*/
 

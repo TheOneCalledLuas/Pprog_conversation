@@ -11,10 +11,6 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
-/* Por lo que sea vscode no se traga que esta linea estae n el .h, la pongo y la quitaré al final
-para que quite las rayas rojas de una vez.*/
-typedef Status (*Gamerule_func)(Game *game, Gamerule *gr); /*!< Pointer to function stored in a Gamerule.*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -194,6 +190,7 @@ Status gamerule_try_exec(Game *game, Gamerule *gr)
             break;
         }
     }
+    return OK;
 }
 
 Id gamerules_get_id(Gamerule *gr)
