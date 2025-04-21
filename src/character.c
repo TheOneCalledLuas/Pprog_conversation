@@ -10,12 +10,13 @@
 
 #include "character.h"
 #include "types.h"
+#include "player.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_NAME 20 /*!<Max name length.*/
-#define MAX_DESC 7 /*!<Max description line.*/
+#define MAX_NAME 20     /*!<Max name length.*/
+#define MAX_DESC 7      /*!<Max description line.*/
 #define MAX_MESSAGE 100 /*!<Max message length.*/
 
 /**
@@ -83,7 +84,7 @@ Status character_set_name(Character *character, char *name)
     }
     /*Sets the value.*/
     strncpy(character->name, name, MAX_NAME);
-    character->name[MAX_NAME-1]='\0';
+    character->name[MAX_NAME - 1] = '\0';
     return OK;
 }
 
@@ -99,10 +100,10 @@ Status character_set_description(Character *character, char *description)
     {
         return ERROR;
     }
-    
+
     /*Sets the value.*/
     strncpy(character->description, description, MAX_DESC);
-    character->description[MAX_DESC-1]='\0';
+    character->description[MAX_DESC - 1] = '\0';
 
     return OK;
 }
@@ -115,7 +116,7 @@ char *character_get_description(Character *character)
 Status character_set_friendly(Character *character, Bool value)
 {
     /*Error management.*/
-    if (!character || (value !=TRUE && value != FALSE))
+    if (!character || (value != TRUE && value != FALSE))
     {
         return ERROR;
     }
@@ -142,7 +143,7 @@ Status character_set_message(Character *character, char *message)
 
     /*Sets the value.*/
     strncpy(character->message, message, MAX_MESSAGE);
-    character->message[MAX_MESSAGE-1]='\0';
+    character->message[MAX_MESSAGE - 1] = '\0';
 
     return OK;
 }
@@ -190,3 +191,9 @@ Status character_print(Character *character)
 
     return OK;
 }
+
+/*A quien sea que haga esto; estos prototipos los ha puesto para que el  makefile genere el juego, pero, la verdad es que hablo sin mirar
+las instruccione, pero me parece que lo mejor para hacer el follow si nos deja es que el character tenga un campo que sea Id player, con el  id del jugador
+al que sigue o -1 si ninguno. Eso facilita las cosas. Si dudas avisa. Saúl López.*/
+Bool character_get_follow(Character *character, Player *player) { return FALSE; }
+Status character_set_follow(Character *character, Player *player, Bool follow) { return ERROR; }

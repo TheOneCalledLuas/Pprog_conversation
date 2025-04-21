@@ -19,6 +19,7 @@
 #include "game.h"
 #include "player.h"
 #include "set.h"
+#include "character.h"
 
 #define ATTACK_PROB 9  /*!<Chances to attack.*/
 #define SUCCESS_PROB 2 /*!<Chances to strike (the smaller the better).*/

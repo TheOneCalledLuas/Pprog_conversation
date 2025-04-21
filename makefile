@@ -12,7 +12,7 @@ LOGDIR = ./log
 TESTDIR = ./test
 
 #List with all the object names
-MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o
+MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o
 
 .PHONY = all clean clear check redo run run_cmd run_all_test doxygen
 
@@ -38,13 +38,13 @@ run_all_test:
 command.o: command.c command.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_reader.h
+game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_reader.h character.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_reader.h graphic_engine.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h
+game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h gamerules.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 	
 game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h set.h player.h character.h link.h
@@ -65,7 +65,7 @@ player.o: player.c player.h types.h object.h
 set.o: set.c types.h set.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-character.o: character.c character.h types.h
+character.o: character.c character.h types.h player.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 link.o: link.c link.h types.h

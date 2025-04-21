@@ -12,6 +12,7 @@
 #include "character.h"
 #include "game_reader.h"
 #include "link.h"
+#include "gamerules.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,6 +41,7 @@ struct _Game
     Bool finished;                                   /*!< Whether the game has finished or not.*/
     int turn;                                        /*!< Actual turn.*/
     int n_players;                                   /*!< Number of players.*/
+    Game_values *game_values;                        /*!< Structure which holds all the gamerule handling inside. */
 };
 
 Status game_create(Game **game)
@@ -55,6 +57,12 @@ Status game_create(Game **game)
     (*game) = (Game *)malloc(sizeof(Game));
     if ((*game) == NULL)
     {
+        return ERROR;
+    }
+
+    if (((*game)->game_values = gamerules_values_init()) == NULL)
+    {
+        free(*game);
         return ERROR;
     }
 
@@ -305,7 +313,23 @@ Status game_destroy(Game **game)
     {
         command_destroy((*game)->commands[i]);
     }
+
+    /*Destroys the gamerules and game values.*/
+    if ((*game)->game_values)
+    {
+        while (gamerules_get_n_gamerules((*game)->game_values) > 0)
+        {
+            gamerules_values_delete_last((*game)->game_values);
+        }
+        gamerules_values_destroy((*game)->game_values);
+    }
+    (*game)->game_values = NULL;
+
+    /*Sets the pointer to NULL. */
     free(*game);
+    (*game) = NULL;
+
+    /*Clean exit.*/
     return OK;
 }
 
