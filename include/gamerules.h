@@ -11,11 +11,11 @@
 #ifndef GAMERULES_H
 #define GAMERULES_H /*!< Gamerules lib.*/
 
-#include "types.h"
-#include "game.h"
-
 typedef struct _Game_values Game_values; /*!< Struct with all the game values, which determine some outcomes.*/
 typedef struct _Gamerule Gamerule;       /*!< Gamerule struct.*/
+
+#include "types.h"
+#include "game.h"
 
 typedef Status (*Gamerule_func)(Game *game, Gamerule *gr); /*!< Pointer to function stored in a Gamerule.*/
 
@@ -40,5 +40,17 @@ Status gamerules_set_valid(Gamerule *gr, Bool value);
 int gamerules_increment_has_exec(Gamerule *gr);
 Status gamerules_set_do_once(Gamerule *gr, Bool value);
 Status gamerules_set_value(Gamerule *gr, int value);
+Status gamerules_try_exec_all(Game *game, Game_values *gv);
+
+/*Now we have the actual gamerule functions.*/
+/**
+ * @brief opnes the gatte between P3 and P4.
+ * @author Saúl López Romero
+ * 
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_open_gate(Game *game, Gamerule *gr);
 
 #endif

@@ -67,5 +67,15 @@ Status game_reader_load_links(Game *game, char *filename);
  */
 Status game_reader_load_characters(Game *game, char *filename);
 
+/**
+ * @brief Loads all the gamerules from the data file.
+ * Should be called the last one.
+ * @author Saúl López Romero
+ * 
+ * @param game Pointer to the game structure, where all the information related to game is included.
+ * @param filename Name of the data file where the map is stored.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_reader_load_gamerules(Game *game, char *filename);
 
 #endif

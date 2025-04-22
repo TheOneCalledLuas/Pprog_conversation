@@ -19,6 +19,7 @@
 #include "game_actions.h"
 #include "game_reader.h"
 #include "graphic_engine.h"
+#include "gamerules.h"
 
 /**
  * Maximun argument length.
@@ -149,7 +150,10 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
         last_cmd = game_get_last_command(game);
-        game_actions_update(game, last_cmd);
+        game_actions_update(game, last_cmd); 
+        
+        /*Tries to execute all the gamerules.*/
+        gamerules_try_exec_all(game, game_get_game_values(game));
 
         /*Refreshes the screen so that the player can see what he did.*/
         graphic_engine_paint_game(gengine, game, FALSE);

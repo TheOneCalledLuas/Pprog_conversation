@@ -199,6 +199,16 @@ Id game_get_character_by_name(Game *game, char *word)
     return NO_ID;
 }
 
+Game_values *game_get_game_values(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    /*Returns the game values.*/
+    return game->game_values;
+}
+
 Space *game_get_space(Game *game, Id id)
 {
     int i = 0;
@@ -273,6 +283,7 @@ Id game_get_character_location(Game *game, Id id)
 Status game_destroy(Game **game)
 {
     int i = 0;
+    Gamerule *gr = NULL;
 
     /*Error management.*/
     if (game == NULL)
@@ -319,7 +330,8 @@ Status game_destroy(Game **game)
     {
         while (gamerules_get_n_gamerules((*game)->game_values) > 0)
         {
-            gamerules_values_delete_last((*game)->game_values);
+            gr = gamerules_values_delete_last((*game)->game_values);
+            gamerules_gamerule_destroy(gr);
         }
         gamerules_values_destroy((*game)->game_values);
     }
@@ -752,6 +764,13 @@ Status game_create_from_file(Game **game, char *filename)
 
     /*Loads the characters.*/
     if (game_reader_load_characters(*game, filename) == ERROR)
+    {
+        game_destroy(game);
+        return ERROR;
+    }
+
+    /*Loads all the gamerules.*/
+    if (game_reader_load_gamerules(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;

@@ -41,7 +41,7 @@ command.o: command.c command.h types.h
 game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_reader.h character.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_reader.h graphic_engine.h
+game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_reader.h graphic_engine.h gamerules.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h gamerules.h

@@ -20,16 +20,16 @@
 #include "link.h"
 
 /*Maximun number of objects and spaces per game.*/
-#define MAX_SPACES 100 /*!<Max spaces.*/
-#define MAX_OBJECTS 100 /*!<Max objects.*/
+#define MAX_SPACES 100     /*!<Max spaces.*/
+#define MAX_OBJECTS 100    /*!<Max objects.*/
 #define MAX_CHARACTERS 100 /*!<Max characters.*/
-#define MAX_LINKS 400 /*!<Max links.*/
+#define MAX_LINKS 400      /*!<Max links.*/
 
 /*Keywords to obtain last commands.*/
-#define FIRST_LAST_COMMAND 0 /*!<First one from the back.*/
+#define FIRST_LAST_COMMAND 0  /*!<First one from the back.*/
 #define SECOND_LAST_COMMAND 1 /*!<Second one from the back.*/
-#define THIRD_LAST_COMMAND 2 /*!<Third one from the back.*/
-#define COMMANDS_SAVED 3 /*!<Number of commands saved.*/
+#define THIRD_LAST_COMMAND 2  /*!<Third one from the back.*/
+#define COMMANDS_SAVED 3      /*!<Number of commands saved.*/
 
 /**
  * @brief Command
@@ -38,6 +38,7 @@
  */
 typedef struct _Game Game;
 
+#include "gamerules.h"
 /**
  * @brief Searches for a character to the game structure.
  * @author Saúl López Romero
@@ -165,6 +166,15 @@ Status game_destroy(Game **game);
  * @return Pointer to the space, if it exists.
  */
 Space *game_get_space(Game *game, Id id);
+
+/**
+ * @brief returns the game values.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @return Pointer to the game values or NULL.
+ */
+Game_values *game_get_game_values(Game *game);
 
 /**
  * @brief Returns the id of the space at that position.
@@ -431,11 +441,11 @@ Id game_get_space_at(Game *game, Id space, Direction direction);
 /**
  * @brief Gets the link information for a stace regarding the outgoing links.
  * @author Saúl López Romero.
- * 
+ *
  * @param game Pointer to the game.
  * @param space Id of the space.
  * @param dir Direction for the link.
  * @return Link information (OPENED or CLOSED) or UNK in case of error.
  */
-Link_Property game_get_space_outcoming_connection_info(Game * game, Id space, Direction dir);
+Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Direction dir);
 #endif
