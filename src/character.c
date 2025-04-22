@@ -30,6 +30,7 @@ struct _Character
     Bool friendly;              /*!< Whether the character is friendly or not.*/
     char message[MAX_MESSAGE];  /*!< Message of the character.*/
     int health;                 /*!< Amount of health of the character.*/
+    Id follow;               /*!< Id of the character it follows.*/
 };
 
 Character *character_create(Id id)
@@ -51,6 +52,7 @@ Character *character_create(Id id)
     character->description[0] = '\0';
     character->friendly = FALSE;
     character->message[0] = '\0';
+    character->follow = NO_ID;
     /*Clean exit.*/
     return character;
 }
@@ -171,6 +173,30 @@ int character_get_health(Character *character)
     return (character ? character->health : -1);
 }
 
+Status character_set_follow(Character *character, Id player)
+{
+    /*Error handling.*/
+    if (!character)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value.*/
+    character->follow = NO_ID;
+    return OK;
+}
+Id character_get_follow(Character *character)
+{
+    /*Error handling.*/
+    if (!character)
+    {
+        return ID_ERROR;
+    }
+    /*Returns the value.*/
+    return character->follow;
+}
+
+
 Status character_print(Character *character)
 {
     /*Error management.*/
@@ -188,12 +214,6 @@ Status character_print(Character *character)
 
     /*3-Printf the extra information of the character.*/
     fprintf(stdout, "--> Character state(0=enemy, 1=friendly): %d \n", character->friendly);
-
+    fprintf(stdout, "--> Character follow: (Id: %ld) \n", character->follow);
     return OK;
 }
-
-/*A quien sea que haga esto; estos prototipos los ha puesto para que el  makefile genere el juego, pero, la verdad es que hablo sin mirar
-las instruccione, pero me parece que lo mejor para hacer el follow si nos deja es que el character tenga un campo que sea Id player, con el  id del jugador
-al que sigue o -1 si ninguno. Eso facilita las cosas. Si dudas avisa. Saúl López.*/
-Bool character_get_follow(Character *character, Player *player) { return FALSE; }
-Status character_set_follow(Character *character, Player *player, Bool follow) { return ERROR; }

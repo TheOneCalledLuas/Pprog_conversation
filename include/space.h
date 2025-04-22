@@ -134,23 +134,55 @@ Id space_take_object(Space *space, Id object);
 int space_get_n_objects(Space *space);
 
 /**
- * @brief Returns the character id.
- * @author Saul Lopez Romero
- *
+ * @brief It returns an array with the ids of the characters in the space
+ *          IMPORTANT you have to free the array after using it
+ * @author Fernando Mijangos
+ * 
  * @param space Pointer to the space.
- * @return Id of the character you are taking.
+ * @return Array with the ids of the characters.
+ *          IMPORTANT you have to free the array after useing it.
  */
-Id space_get_character(Space *space);
+Id *space_get_characters(Space *space);
 
 /**
- * @brief Sets the space's character.
- * @author Saul Lopez Romero
- *
- * @param space Pointer to the space.
- * @param id Id of the character to be set up.
- * @return OK if it goes as planned, ERROR otherwise.
+ * @brief It adds a character to the space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param character Id of the character you want to add
+ * @return OK if everything went well, ERROR otherwise
  */
-Status space_set_character(Space *space, Id id);
+Status space_add_character(Space *space, Id character);
+
+/**
+ * @brief It searches for a character inside of the space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param character Id of the character you searching for
+ * @return position of the id in the set of characters, -1 otherwise
+ */
+int space_find_character(Space *space, Id character);
+
+/**
+ * @brief It takes a character from the space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @param character Id of the chracter you want to remove
+ * @return Id of the character taken out, ID_ERROR if any error
+ */
+Id space_take_character(Space *space, Id character);
+
+/**
+ * @brief Returns the number of characters inside of a space
+ * @author Fernando Mijangos
+ * 
+ * @param space Pointer to the space
+ * @return  Number of characters, -1 if ERROR
+ */
+int space_get_n_characters(Space *space);
+
 
 /**
  * @brief Gets the information about if the space hs been discovered or not.

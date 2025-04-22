@@ -294,7 +294,7 @@ Status map_init(Game *game, char **map)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
-    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL;
+    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL, *characters = NULL;
     Character *character = NULL;
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
@@ -437,17 +437,31 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         objects = NULL;
     }
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
+    id_aux = NO_ID;
     if (command_get_code(game_get_last_command(game)) == CHAT && refresh == FALSE)
     {
-        id_aux = space_get_character(space_act);
-        /*Checks that there's a friendly NPC to talk with.*/
-        if (id_aux != NO_ID && (character_get_friendly(game_get_character(game, id_aux)) == TRUE))
+        /*5.1-Gets the characters in the space.*/
+        if (!(characters = space_get_characters(space_act)))
+            return;
+        /*5.2-Searches for the character the argument of the last action provides.*/
+        for (i = 0; i < space_get_n_characters(space_act); i++)
         {
-            screen_area_puts(ge->descript, " ");
-            sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
-            screen_area_puts(ge->descript, str);
-            command_set_status(game_get_last_command(game), OK);
+            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_word(game_get_last_command(game))) == 0)
+            {
+                id_aux = characters[i];
+            }
+            if (id_aux != NO_ID)
+            {
+                if (character_get_friendly(game_get_character(game, id_aux)) == TRUE && character_get_health(game_get_character(game, id_aux)) > 0)
+                {
+                    screen_area_puts(ge->descript, " ");
+                    sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
+                    screen_area_puts(ge->descript, str);
+                    command_set_status(game_get_last_command(game), OK);
+                }
+            }
         }
+        free(characters);
     }
     /*6.Prints the object information if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == INSPECT && refresh == FALSE)
@@ -505,9 +519,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {
     char aux[PLAYER_LENGTH] = {"   "}, aux_2[WIDTH_SPACE - LIMIT_OF_ELEMENTS], *aux_3 = NULL, aux_4[WIDTH_SPACE - NON_WRITTABLE_ELEMS];
-    Space *space;
+    Space *space = NULL;
     int i, j, n_objs_space, cond = 0;
-    Id *set;
+    Id *set = NULL, *characters = NULL;
 
     /*Error handling.*/
     if (!game || space_id == NO_ID || space_id == ID_ERROR)
@@ -534,7 +548,10 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
     /*Starts printing the space.*/
     sprintf(destination[FIRST_LINE], "+------------------+");
-    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, space_get_character(space)))) != NULL ? aux_3 : ""), space_id);
+    if (!(characters = space_get_characters(space)))
+        return;
+    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, characters[1])) != NULL ? aux_3 : "")), space_id);
+    free(characters);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {
         sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i - LIMIT_OF_ELEMENTS));

@@ -33,7 +33,7 @@ struct _Space
     Set *objects;              /*!< A set with the objects the space has */
     char *gdesc[G_DESC_LINES]; /*!< Strings which create the space's graphic description. */
     char *__gdesc_data;        /*!< Actual matrix with the gdesc.*/
-    Id character;              /*!< Character id.*/
+    Set *characters;           /*!< A set with the characters the space has.*/
     Bool discovered;           /*!< True if visited, False if never visited.*/
 };
 
@@ -56,7 +56,7 @@ Space *space_create(Id id)
     newSpace->id = id;
     newSpace->name[0] = '\0';
     newSpace->objects = set_create();
-    newSpace->character = NO_ID;
+    newSpace->characters = set_create();
     newSpace->discovered = FALSE;
 
     /*Initialisation of gdesc. I chose to do it this way because if
@@ -195,34 +195,56 @@ Id space_take_object(Space *space, Id object)
     return set_take(space->objects, object);
 }
 
-Id space_get_character(Space *space)
+Id *space_get_characters(Space *space)
 {
-    /*Error handling.*/
+    Id *set_characters;
     if (!space)
-        return ID_ERROR;
+    {
+        return NULL;
+    }
+    /*Error handling.*/
+    if (!(set_characters = set_get_content(space->characters)))
+    {
+        return NULL;
+    }
+    return set_characters;
+}
 
-    /*Returns the value.*/
-    return space->character;
+Status space_add_character(Space *space, Id character)
+{
+    if (!space || character == NO_ID || character == ID_ERROR)
+    {
+        return ERROR;
+    }
+    return ((set_add(space->characters, character)) ? OK : ERROR);
+}
+
+int space_find_character(Space *space, Id character)
+{
+    if (!space || character == NO_ID || character == ID_ERROR)
+    {
+        return -1;
+    }
+    return set_find(space->objects, character);
+}
+
+Id space_take_character(Space *space, Id character)
+{
+    if (!space || character == NO_ID || character == ID_ERROR)
+    {
+        return ID_ERROR;
+    }
+    return set_take(space->objects, character);
+}
+
+int space_get_n_character(Space *space)
+{
+    return(!space? -1: set_len(space->characters));
 }
 
 int space_get_n_objects(Space *space)
 {
     return (!space ? -1 : set_len(space->objects));
-}
-
-Status space_set_character(Space *space, Id id)
-{
-    /*Error handling.*/
-    if (!space || id == ID_ERROR)
-    {
-        return ERROR;
-    }
-
-    /*Sets the value.*/
-    space->character = id;
-
-    /*Clean exit.*/
-    return OK;
 }
 
 Bool space_is_discovered(Space *space)

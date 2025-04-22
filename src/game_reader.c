@@ -234,11 +234,9 @@ Status game_reader_load_characters(Game *game, char *name_file)
             /*Gets the space where the character is at and sets it there.*/
             toks = strtok(NULL, "|");
             id_sp = atol(toks);
-            if ((space_set_character(game_get_space(game, id_sp), id)) == ERROR)
-            {
-                return ERROR;
-                fclose(file);
-            }
+            if ((space_add_character(game_get_space(game, id_sp), id)) == ERROR)
+            {                return ERROR;
+                fclose(file);}
 
             /*Gets the amount of health of the character and sets it.*/
             toks = strtok(NULL, "|");
