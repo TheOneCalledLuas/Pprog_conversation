@@ -443,8 +443,8 @@ void game_actions_recruit(Game *game)
 void game_actions_abandon(Game *game)
 {
     Player *player = NULL;
-    Id character = NO_ID, player_location = NO_ID;
-    Bool following_character = FALSE;
+    Character *character = NULL;
+    Id player_location = NO_ID, following_player = NO_ID;
 
     /*Error handling.*/
     if (!game)
@@ -456,18 +456,18 @@ void game_actions_abandon(Game *game)
     /*Checks that the player meets the requirements to abandon.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
-    following_character = character_get_follow(character, player);
-    if (following_character == FALSE)
+    character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
+    following_player = character_get_follow(character);
+    if (following_player == player_get_player_id(player))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*Actual command.*/
-    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(character) > MIN_HEALTH)
     {
-        if (character_set_follow(character, player, FALSE) == ERROR)
+        if (character_set_follow(character, NO_ID) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;
