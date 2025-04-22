@@ -549,8 +549,8 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     /*Starts printing the space.*/
     sprintf(destination[FIRST_LINE], "+------------------+");
     if (!(characters = space_get_characters(space)))
-        return;
-    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, characters[1])) != NULL ? aux_3 : "")), space_id);
+        return ERROR;
+    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3 = character_get_description(game_get_character(game, characters[0])) != NULL ? aux_3 : "")), space_id);
     free(characters);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {

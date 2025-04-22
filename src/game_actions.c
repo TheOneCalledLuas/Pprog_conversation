@@ -96,6 +96,21 @@ void game_actions_attack(Game *game);
 void game_actions_inspect(Game *game);
 
 /**
+ * @brief Action to be executed when abando command is given.
+ * @author Raquel Anguita
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_abandon(Game *game);
+
+/**
+ * @brief Action to be executed when recruit command is given.
+ * @author Raquel Anguita
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_recruit(Game *game);
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -348,7 +363,6 @@ void game_actions_attack(Game *game)
     int rand_num = 0, i;
     Id player_location = NO_ID, *characters;
     Player *player = NULL;
-    Bool has_character = FALSE;
     Character *character = NULL;
 
     /*Error handling.*/
@@ -361,7 +375,7 @@ void game_actions_attack(Game *game)
     /*Checks that the player meets the requirements to attack.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    if (characters = space_get_characters(game_get_space(game, player_location)))
+    if ((characters = space_get_characters(game_get_space(game, player_location))))
         return;
     if (!characters)
     {
@@ -370,7 +384,7 @@ void game_actions_attack(Game *game)
     }
     for (i = 0; i < space_get_n_characters(game_get_space(game, player_location)); i++)
     {
-        if (strcmp(command_get_word(game_get_last_command), character_get_name(game_get_character(game, characters[i]))) == 0)
+        if (strcmp(command_get_word(game_get_last_command(game)), character_get_name(game_get_character(game, characters[i]))) == 0)
         {
             character = game_get_character(game, characters[i]);
         }

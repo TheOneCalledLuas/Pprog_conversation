@@ -88,6 +88,8 @@ void space_destroy(Space *space)
         {
             set_destroy(space->objects);
         }
+        if ( space ->characters)
+            set_destroy(space->characters);
         free(space);
     }
 }
