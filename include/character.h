@@ -154,7 +154,7 @@ Status character_set_follow(Character *character, Id player);
  * @param character Pointer to the character.
  * @return Id of the player that the character follows, ID_ERROR if error.
  */
-int character_get_follow(Character *character);
+Id character_get_follow(Character *character);
 
 /**
  * @brief Gets the id of the player the character follows.
@@ -165,8 +165,5 @@ int character_get_follow(Character *character);
  */
 
 Status character_print(Character *character);
-
-Bool character_get_follow(Character *character, Player *player);
-Status character_set_follow(Character *character, Player *player, Bool follow);
 
 #endif

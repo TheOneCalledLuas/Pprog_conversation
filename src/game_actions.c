@@ -370,7 +370,7 @@ void game_actions_attack(Game *game)
     }
     for (i = 0; i < space_get_n_characters(game_get_space(game, player_location)); i++)
     {
-        if (strcmp(command_get_word(game_get_last_command), character_get_name(game_get_character(game, characters[i])))==0)
+        if (strcmp(command_get_word(game_get_last_command), character_get_name(game_get_character(game, characters[i]))) == 0)
         {
             character = game_get_character(game, characters[i]);
         }
@@ -421,7 +421,8 @@ void game_actions_inspect(Game *game)
 void game_actions_recruit(Game *game)
 {
     Player *player = NULL;
-    Id character = NO_ID, player_location = NO_ID;
+    Character *character = NULL;
+    Id player_location = NO_ID;
     Bool same_character = FALSE;
 
     /*Error handling.*/
@@ -434,8 +435,8 @@ void game_actions_recruit(Game *game)
     /*Checks that the player meets the requirements to recruit.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
-    same_character = (space_get_character(game_get_space(game, player_location)) == character);
+    character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
+    same_character = (space_get_character(game_get_space(game, player_location)) == character_get_id(character));
     if (same_character == FALSE)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -443,9 +444,9 @@ void game_actions_recruit(Game *game)
     }
 
     /*Actual command.*/
-    if (character_get_friendly(game_get_character(game, character)) == FALSE && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH)
     {
-        if (character_set_follow(game_get_character(game, character), player, TRUE) == ERROR)
+        if (character_set_follow(character, player_get_player_id(player)) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
         }
@@ -458,8 +459,8 @@ void game_actions_recruit(Game *game)
 void game_actions_abandon(Game *game)
 {
     Player *player = NULL;
-    Id character = NO_ID, player_location = NO_ID;
-    Bool following_character = FALSE;
+    Character *character = NULL;
+    Id player_location = NO_ID, following_player = NO_ID;
 
     /*Error handling.*/
     if (!game)
@@ -471,23 +472,23 @@ void game_actions_abandon(Game *game)
     /*Checks that the player meets the requirements to abandon.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
-    following_character = character_get_follow(character, player);
-    if (following_character == FALSE)
+    character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
+    following_player = character_get_follow(character);
+    if (following_player == player_get_player_id(player))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*Actual command.*/
-    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(character) > MIN_HEALTH)
     {
-        if (character_set_follow(character, player, FALSE) == ERROR)
+        if (character_set_follow(character, NO_ID) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;
         }
-        if (space_add_character(game_get_space(game, player_location), character) == ERROR)
+        if (space_add_character(game_get_space(game, player_location), character_get_id(character)) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;
