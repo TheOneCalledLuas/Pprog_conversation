@@ -29,6 +29,10 @@ struct _Object
     Id id;                    /*!< Id of the object, it must be unique. */
     char name[WORD_SIZE + 1]; /*!< Object name. */
     char *description;        /*!< Object description.*/
+    int health;               /*!< Determines the amount of health the object gives or takes.*/
+    bool movable;             /*!< Determines wether a object can be moved or not.*/
+    Id dependency;            /*!< Determines if the object needs another object to be taken.*/
+    Id open;                  /*!< Determines if the object can open a link.*/
 };
 
 Object *object_create(Id id)
