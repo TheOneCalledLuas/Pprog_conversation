@@ -436,7 +436,7 @@ void game_actions_recruit(Game *game)
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
     character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
-    same_character = (space_get_character(game_get_space(game, player_location)) == character_get_id(character));
+    same_character = (space_find_character(game_get_space(game, player_location), character_get_id(character)) != -1);
     if (same_character == FALSE)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -481,7 +481,7 @@ void game_actions_abandon(Game *game)
     }
 
     /*Actual command.*/
-    if (space_get_character(game_get_space(game, player_location)) != NO_ID && character_get_health(character) > MIN_HEALTH)
+    if (character_get_health(character) > MIN_HEALTH)
     {
         if (character_set_follow(character, NO_ID) == ERROR)
         {
