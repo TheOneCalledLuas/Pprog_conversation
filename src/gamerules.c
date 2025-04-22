@@ -11,11 +11,14 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
+#define P3_P4_GATE 49 /*!< Id of the gate between P3 and P4.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "gamerules.h"
 #include "game.h"
+#include "link.h"
 #include "types.h"
 
 struct _Gamerule
@@ -80,6 +83,22 @@ Status gamerules_values_add(Game_values *gv, Gamerule *gr)
     }
     /*Adds the gamerule.*/
     gv->gamerules[gv->n_gamerules++] = gr;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_try_exec_all(Game *game, Game_values *gv) {
+    int i = 0;
+    /*Error handling.*/
+    if (!game || !gv)
+        return ERROR;
+
+    /*Executes all the gamerules. */
+    for (i = 0; i < gv->n_gamerules; i++)
+    {
+        gamerule_try_exec(game, gv->gamerules[i]);
+    }
 
     /*Clean exit.*/
     return OK;
@@ -286,4 +305,27 @@ Status gamerules_set_value(Gamerule *gr, int value)
 
     /*Clean exit.*/
     return OK;
+}
+
+/*Now we have all the gamerule functions.*/
+
+Status gamerules_open_gate(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if the gamerule meets the requirements to be executed.*/
+    if (player_has_object(game_get_actual_player(game), gr->value) == TRUE)
+    {
+        /*Opens the gate.*/
+        link_set_state(game_find_link(game, P3_P4_GATE), TRUE);
+        gamerules_increment_has_exec(gr);
+        return OK;
+    }
+    else
+    {
+        /*The gamerule doesn't have to be executed.*/
+        return OK;
+    }
 }

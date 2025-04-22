@@ -11,6 +11,7 @@
 #include "game_reader.h"
 #include "game.h"
 #include "link.h"
+#include "gamerules.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,8 +22,8 @@
  * Maximun size of a description line.
  */
 #define DESC_SIZE 9
-#define DESC_LINES 5 /*!< Max description lines. */
-#define DESC_LENGTH 10 /*!< Max description length. */
+#define DESC_LINES 5        /*!< Max description lines. */
+#define DESC_LENGTH 10      /*!< Max description length. */
 #define IDENTIFIER_LENGTH 3 /*!< Number of characters the identifier occupies in the data file. */
 
 Status game_reader_load_spaces(Game *game, char *filename)
@@ -209,47 +210,61 @@ Status game_reader_load_characters(Game *game, char *name_file)
             toks = strtok(data + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
             if (!(character = character_create(id)))
-{                return ERROR;
-                fclose(file);}
+            {
+                return ERROR;
+                fclose(file);
+            }
             toks = strtok(NULL, "|");
 
             /*Gets the name of the character and sets it.*/
             if ((character_set_name(character, toks)) == ERROR)
-            {                return ERROR;
-                fclose(file);}
+            {
+                return ERROR;
+                fclose(file);
+            }
 
             /*Gets the description of the character and sets it.*/
             toks = strtok(NULL, "|");
             if ((character_set_description(character, toks)) == ERROR)
-            {                return ERROR;
-                fclose(file);}
+            {
+                return ERROR;
+                fclose(file);
+            }
 
             /*Gets the space where the character is at and sets it there.*/
             toks = strtok(NULL, "|");
             id_sp = atol(toks);
             if ((space_set_character(game_get_space(game, id_sp), id)) == ERROR)
-            {                return ERROR;
-                fclose(file);}
+            {
+                return ERROR;
+                fclose(file);
+            }
 
             /*Gets the amount of health of the character and sets it.*/
             toks = strtok(NULL, "|");
             health = atoi(toks);
-            if((character_set_health(character, health))==ERROR)
-            {                return ERROR;
-                fclose(file);}
-            
+            if ((character_set_health(character, health)) == ERROR)
+            {
+                return ERROR;
+                fclose(file);
+            }
+
             /*Gets the status of friendly for that character and sets it.*/
-            toks =strtok(NULL, "|");
-            friendly=atoi(toks);
-            if((character_set_friendly(character, friendly))==ERROR)
-            {                return ERROR;
-                fclose(file);}
-            
+            toks = strtok(NULL, "|");
+            friendly = atoi(toks);
+            if ((character_set_friendly(character, friendly)) == ERROR)
+            {
+                return ERROR;
+                fclose(file);
+            }
+
             /*Gets the message of the player and sets it.*/
             toks = strtok(NULL, "|");
-            if((character_set_message(character, toks))==ERROR)
-            {                return ERROR;
-                fclose(file);}
+            if ((character_set_message(character, toks)) == ERROR)
+            {
+                return ERROR;
+                fclose(file);
+            }
 
             game_add_character(game, character);
         }
@@ -373,6 +388,76 @@ Status game_reader_load_links(Game *game, char *filename)
             link_set_state(link, state);
             /*Adds the player to the space.*/
             game_add_link(game, link);
+        }
+    }
+    /*Close the file.*/
+    fclose(f);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_reader_load_gamerules(Game *game, char *filename)
+{
+    FILE *f = NULL;
+    Gamerule *gr = NULL;
+    char name[WORD_SIZE];
+    char line[WORD_SIZE];
+    Id id = 0;
+    char *toks = NULL;
+    int value = 0;
+    Bool is_valid = 0, do_once = 0;
+
+    /*Error handling.*/
+    if (!game || !filename)
+        return ERROR;
+
+    /*Opens the file.*/
+    if (!(f = fopen(filename, "r")))
+        return ERROR;
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, f))
+    {
+        /*Checks that the line contains a player.*/
+        if (strncmp("#g:", line, IDENTIFIER_LENGTH) == 0)
+        {
+            /*Takes the information data by data.*/
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            is_valid = atol(toks);
+            toks = strtok(NULL, "|");
+            do_once = atol(toks);
+            toks = strtok(NULL, "|");
+            value = atol(toks);
+
+            /*Creates an object and saves the data.*/
+            gr = gamerules_gamerule_create(id);
+            /*Checks that the memory allocacion took place.*/
+            if (!gr)
+            {
+                return ERROR;
+            }
+            gamerules_set_name(gr, name);
+            gamerules_set_valid(gr, is_valid);
+            gamerules_set_do_once(gr, do_once);
+            gamerules_set_value(gr, value);
+            
+            /*Assigns the gamerule func to the structure.*/
+            switch (id)
+            {
+            case 20:
+                gamerules_gamerule_set_func(gr, gamerules_open_gate);
+                break;
+
+            default:
+                break;
+            }
+            /*Adds the gamerule to the game.*/
+            gamerules_values_add(game_get_game_values(game), gr);
         }
     }
     /*Close the file.*/
