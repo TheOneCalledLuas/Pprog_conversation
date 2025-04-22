@@ -214,7 +214,7 @@ Status character_print(Character *character)
 
     /*3-Printf the extra information of the character.*/
     fprintf(stdout, "--> Character state(0=enemy, 1=friendly): %d \n", character->friendly);
-
+    fprintf(stdout, "--> Character follow: (Id: %ld) \n", character->follow);
     return OK;
 }
 
