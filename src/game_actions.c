@@ -166,7 +166,7 @@ Status game_actions_update(Game *game, Command *command)
     case RECRUIT:
         game_actions_recruit(game);
         break;
-        
+
     default:
         break;
     }
@@ -345,8 +345,8 @@ void game_actions_chat(Game *game)
 
 void game_actions_attack(Game *game)
 {
-    int rand_num = 0;
-    Id player_location = NO_ID;
+    int rand_num = 0, i;
+    Id player_location = NO_ID, *characters;
     Player *player = NULL;
     Bool has_character = FALSE;
     Character *character = NULL;
@@ -357,16 +357,30 @@ void game_actions_attack(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+
     /*Checks that the player meets the requirements to attack.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    has_character = space_get_character(game_get_space(game, player_location)) != NO_ID;
-    if (!has_character)
+    if (characters = space_get_characters(game_get_space(game, player_location)))
+        return;
+    if (!characters)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    character = game_get_character(game, space_get_character(game_get_space(game, player_location)));
+    for (i = 0; i < space_get_n_characters(game_get_space(game, player_location)); i++)
+    {
+        if (strcmp(command_get_word(game_get_last_command), character_get_name(game_get_character(game, characters[i])))==0)
+        {
+            character = game_get_character(game, characters[i]);
+        }
+    }
+    if (character == NULL)
+    {
+        free(characters);
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
 
     if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
     {
@@ -387,9 +401,11 @@ void game_actions_attack(Game *game)
         {
             game_set_finished(game, TRUE);
         }
+        free(characters);
         command_set_status(game_get_last_command(game), OK);
         return;
     }
+    free(characters);
     command_set_status(game_get_last_command(game), ERROR);
 }
 
@@ -471,7 +487,7 @@ void game_actions_abandon(Game *game)
             command_set_status(game_get_last_command(game), ERROR);
             return;
         }
-        if (space_set_character(game_get_space(game, player_location), character) == ERROR)
+        if (space_add_character(game_get_space(game, player_location), character) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;

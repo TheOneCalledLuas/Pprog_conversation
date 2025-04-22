@@ -263,7 +263,7 @@ Id game_get_character_location(Game *game, Id id)
     /*Searches for the object.*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_get_character(game->spaces[i]) == id)
+        if (space_find_character(game->spaces[i], id) != -1)
             return space_get_id(game->spaces[i]);
     }
     /*The character wasn't found in any space.*/
