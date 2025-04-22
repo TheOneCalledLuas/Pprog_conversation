@@ -166,7 +166,7 @@ Status game_actions_update(Game *game, Command *command)
     case RECRUIT:
         game_actions_recruit(game);
         break;
-        
+
     default:
         break;
     }
@@ -405,7 +405,8 @@ void game_actions_inspect(Game *game)
 void game_actions_recruit(Game *game)
 {
     Player *player = NULL;
-    Id character = NO_ID, player_location = NO_ID;
+    Character *character = NULL;
+    Id player_location = NO_ID;
     Bool same_character = FALSE;
 
     /*Error handling.*/
@@ -418,8 +419,8 @@ void game_actions_recruit(Game *game)
     /*Checks that the player meets the requirements to recruit.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    character = game_get_character_by_name(game, command_get_word(game_get_last_command(game)));
-    same_character = (space_get_character(game_get_space(game, player_location)) == character);
+    character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
+    same_character = (space_get_character(game_get_space(game, player_location)) == character_get_id(character));
     if (same_character == FALSE)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -427,9 +428,9 @@ void game_actions_recruit(Game *game)
     }
 
     /*Actual command.*/
-    if (character_get_friendly(game_get_character(game, character)) == FALSE && character_get_health(game_get_character(game, character)) > MIN_HEALTH)
+    if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH)
     {
-        if (character_set_follow(game_get_character(game, character), player, TRUE) == ERROR)
+        if (character_set_follow(character, player_get_player_id(player)) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
         }
