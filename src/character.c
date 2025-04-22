@@ -217,9 +217,3 @@ Status character_print(Character *character)
     fprintf(stdout, "--> Character follow: (Id: %ld) \n", character->follow);
     return OK;
 }
-
-/*A quien sea que haga esto; estos prototipos los ha puesto para que el  makefile genere el juego, pero, la verdad es que hablo sin mirar
-las instruccione, pero me parece que lo mejor para hacer el follow si nos deja es que el character tenga un campo que sea Id player, con el  id del jugador
-al que sigue o -1 si ninguno. Eso facilita las cosas. Si dudas avisa. Saúl López.*/
-Bool character_get_follow(Character *character, Player *player) { return FALSE; }
-Status character_set_follow(Character *character, Player *player, Bool follow) { return ERROR; }
