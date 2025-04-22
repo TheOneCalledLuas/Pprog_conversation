@@ -472,7 +472,7 @@ void game_actions_abandon(Game *game)
             command_set_status(game_get_last_command(game), ERROR);
             return;
         }
-        if (space_set_character(game_get_space(game, player_location), character) == ERROR)
+        if (space_set_character(game_get_space(game, player_location), character_get_id(character)) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;
