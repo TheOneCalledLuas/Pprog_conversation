@@ -655,6 +655,26 @@ Status game_set_finished(Game *game, Bool finished)
     return OK;
 }
 
+int game_get_player_n_follow(Game *game, Player *player){
+    int n_characters, i, follow = 0;
+    Id id_player;
+
+    if(!game || !player){
+        return -1;
+    }
+
+    n_characters = game_get_num_characters(game);
+    id_player = player_get_player_id(player);
+
+    for(i = 0; i < n_characters; i++){
+        if(character_get_follow(game->characters[i]) == id_player){
+            follow++;
+        }
+    }
+
+    return follow;
+}
+
 void game_print(Game *game)
 {
     int i = 0;
