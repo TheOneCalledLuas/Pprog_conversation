@@ -237,7 +237,7 @@ Id space_take_character(Space *space, Id character)
     return set_take(space->objects, character);
 }
 
-int space_get_n_character(Space *space)
+int space_get_n_characters(Space *space)
 {
     return(!space? -1: set_len(space->characters));
 }
