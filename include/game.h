@@ -281,6 +281,16 @@ Object *game_get_object(Game *game, Id id);
 Id game_get_object_location(Game *game, Id id);
 
 /**
+ * @brief It gets the number of characters following a player.
+ * @author Raquel Anguita Martínez de Velasco
+ *
+ * @param game Pointer to the game.
+ * @param player Pointer to the player.
+ * @return Number of characters following the player; -1 if there were any errors.
+ */
+int game_get_player_n_follow(Game *game, Player *player);
+
+/**
  * @brief It returns a pointer to the last command.
  * @author Profesores PPROG
  *
