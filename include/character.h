@@ -144,6 +144,26 @@ int character_get_health(Character *character);
  * @param character Pointer to the character.
  * @return OK if it works, ERROR otherwise.
  */
+
+Status character_set_follow(Character *character, Id player);
+
+/**
+ * @brief Gets the id of the player the character follows.
+ * @author Irene García.
+ *
+ * @param character Pointer to the character.
+ * @return Id of the player that the character follows, ID_ERROR if error.
+ */
+int character_get_follow(Character *character);
+
+/**
+ * @brief Gets the id of the player the character follows.
+ * @author Irene García.
+ *
+ * @param character Pointer to the character.
+ * @return Id of the player that the character follows, ID_ERROR if error.
+ */
+
 Status character_print(Character *character);
 
 Bool character_get_follow(Character *character, Player *player);
