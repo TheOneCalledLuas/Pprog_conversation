@@ -30,7 +30,7 @@ struct _Character
     Bool friendly;              /*!< Whether the character is friendly or not.*/
     char message[MAX_MESSAGE];  /*!< Message of the character.*/
     int health;                 /*!< Amount of health of the character.*/
-    Id follow;               /*!< Id of the character it follows.*/
+    Id follow;                  /*!< Id of the character it follows.*/
 };
 
 Character *character_create(Id id)
@@ -176,13 +176,13 @@ int character_get_health(Character *character)
 Status character_set_follow(Character *character, Id player)
 {
     /*Error handling.*/
-    if (!character)
+    if (!character || player == ID_ERROR)
     {
         return ERROR;
     }
 
     /*Sets the value.*/
-    character->follow = NO_ID;
+    character->follow = player;
     return OK;
 }
 Id character_get_follow(Character *character)

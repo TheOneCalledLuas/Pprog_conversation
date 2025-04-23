@@ -50,6 +50,8 @@ typedef enum
     S,            /*!< South.*/
     E,            /*!< East.*/
     W,            /*!< West.*/
+    U,            /*!< Up.*/
+    D,            /*!< Down.*/
     UNK_DIRECTION /*!< Unknown direction*/
 } Direction;
 

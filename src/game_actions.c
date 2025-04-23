@@ -25,7 +25,7 @@
 #define SUCCESS_PROB 2 /*!<Chances to strike (the smaller the better).*/
 #define DAMAGE_DEALT 1 /*!<Amount of health the entity losses when hurt.*/
 #define MIN_HEALTH 0   /*!<Minimum health the entity can have before dying.*/
-#define N_DIRECTIONS 4 /*!<Number of directions.*/
+#define N_DIRECTIONS 6 /*!<Number of directions.*/
 #define N_VARIATIONS 2 /*!<Number of possible ways to call each direction.*/
 
 /**
@@ -200,11 +200,12 @@ void game_actions_move(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
+    Id *characters;
     Direction direction = UNK_DIRECTION;
     int i = 0;
 
     /*List with all the possible directions the player can move towards.*/
-    char *dir_from_string[N_DIRECTIONS][N_VARIATIONS] = {{"n", "north"}, {"s", "south"}, {"e", "east"}, {"w", "west"}};
+    char *dir_from_string[N_DIRECTIONS][N_VARIATIONS] = {{"n", "north"}, {"s", "south"}, {"e", "east"}, {"w", "west"}, {"u", "up"}, {"d", "down"}};
 
     /*Gets the player location.*/
     space_id = player_get_player_location(game_get_actual_player(game));
@@ -231,7 +232,19 @@ void game_actions_move(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-
+    /*Removes the characters that are following the player from the space they are at*/
+    if (!(characters = game_get_characters(game)))
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    for (i = 0; i < game_get_num_characters(game); i++)
+    {
+        if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
+        {
+            space_take_character(game_get_space(game, space_id), characters[i]);
+        }
+    }
     /*Sets the player location it to the id space in that direction of him.*/
     current_id = game_get_space_at(game, space_id, direction);
     if (game_get_space_outcoming_connection_info(game, space_id, direction) != OPENED)
@@ -242,6 +255,13 @@ void game_actions_move(Game *game)
     if (current_id != NO_ID && current_id != ID_ERROR)
     {
         player_set_player_location(game_get_actual_player(game), current_id);
+        for (i = 0; i < game_get_num_characters(game); i++)
+        {
+            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
+            {
+                space_add_character(game_get_space(game, space_id), characters[i]);
+            }
+        }
     }
     else
     {
@@ -458,7 +478,7 @@ void game_actions_recruit(Game *game)
     }
 
     /*Actual command.*/
-    if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH)
+    if (character_get_friendly(character) == TRUE && character_get_health(character) > MIN_HEALTH)
     {
         if (character_set_follow(character, player_get_player_id(player)) == ERROR)
         {
@@ -474,7 +494,7 @@ void game_actions_abandon(Game *game)
 {
     Player *player = NULL;
     Character *character = NULL;
-    Id player_location = NO_ID, following_player = NO_ID;
+    Id following_player = NO_ID;
 
     /*Error handling.*/
     if (!game)
@@ -485,7 +505,6 @@ void game_actions_abandon(Game *game)
 
     /*Checks that the player meets the requirements to abandon.*/
     player = game_get_actual_player(game);
-    player_location = player_get_player_location(player);
     character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
     following_player = character_get_follow(character);
     if (following_player == player_get_player_id(player))
@@ -495,14 +514,9 @@ void game_actions_abandon(Game *game)
     }
 
     /*Actual command.*/
-    if (character_get_health(character) > MIN_HEALTH)
+    if (character_get_follow(character) != NO_ID && character_get_follow(character) != ID_ERROR)
     {
         if (character_set_follow(character, NO_ID) == ERROR)
-        {
-            command_set_status(game_get_last_command(game), ERROR);
-            return;
-        }
-        if (space_add_character(game_get_space(game, player_location), character_get_id(character)) == ERROR)
         {
             command_set_status(game_get_last_command(game), ERROR);
             return;
