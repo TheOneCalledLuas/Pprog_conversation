@@ -41,6 +41,7 @@ int gamerules_increment_has_exec(Gamerule *gr);
 Status gamerules_set_do_once(Gamerule *gr, Bool value);
 Status gamerules_set_value(Gamerule *gr, int value);
 Status gamerules_try_exec_all(Game *game, Game_values *gv);
+Status gamerules_set_n_exec_times(Gamerule *gr, int has_exec);
 
 /*Now we have the actual gamerule functions.*/
 /**

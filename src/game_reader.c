@@ -445,6 +445,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             gamerules_set_valid(gr, is_valid);
             gamerules_set_do_once(gr, do_once);
             gamerules_set_value(gr, value);
+            gamerules_set_n_exec_times(gr, has_exec);
             
             /*Assigns the gamerule func to the structure.*/
             switch (id)

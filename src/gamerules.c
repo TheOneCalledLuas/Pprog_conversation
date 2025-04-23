@@ -88,7 +88,8 @@ Status gamerules_values_add(Game_values *gv, Gamerule *gr)
     return OK;
 }
 
-Status gamerules_try_exec_all(Game *game, Game_values *gv) {
+Status gamerules_try_exec_all(Game *game, Game_values *gv)
+{
     int i = 0;
     /*Error handling.*/
     if (!game || !gv)
@@ -307,6 +308,18 @@ Status gamerules_set_value(Gamerule *gr, int value)
     return OK;
 }
 
+Status gamerules_set_n_exec_times(Gamerule *gr, int has_exec)
+{
+    /*Error handling.*/
+    if (!gr)
+        return ERROR;
+
+    /*Sets the value.*/
+    gr->has_exec = has_exec;
+
+    /*Clean exit.*/
+    return OK;
+}
 /*Now we have all the gamerule functions.*/
 
 Status gamerules_open_gate(Game *game, Gamerule *gr)
