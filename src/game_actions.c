@@ -200,7 +200,7 @@ void game_actions_move(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
-    Id *characters;
+    Id *characters=NULL;
     Direction direction = UNK_DIRECTION;
     int i = 0;
 
@@ -249,6 +249,7 @@ void game_actions_move(Game *game)
     current_id = game_get_space_at(game, space_id, direction);
     if (game_get_space_outcoming_connection_info(game, space_id, direction) != OPENED)
     {
+        free(characters);
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
@@ -259,17 +260,19 @@ void game_actions_move(Game *game)
         {
             if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
             {
-                space_add_character(game_get_space(game, space_id), characters[i]);
+                space_add_character(game_get_space(game, current_id), characters[i]);
             }
         }
     }
     else
     {
+        free(characters);
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+    
+    free(characters);
     command_set_status(game_get_last_command(game), OK);
-
     return;
 }
 
@@ -471,7 +474,7 @@ void game_actions_recruit(Game *game)
     player_location = player_get_player_location(player);
     character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
     same_character = (space_find_character(game_get_space(game, player_location), character_get_id(character)) != -1);
-    if (same_character == FALSE)
+    if (same_character == FALSE && character_get_follow(character)!=NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -507,7 +510,7 @@ void game_actions_abandon(Game *game)
     player = game_get_actual_player(game);
     character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
     following_player = character_get_follow(character);
-    if (following_player == player_get_player_id(player))
+    if (following_player != player_get_player_id(player))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;

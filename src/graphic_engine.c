@@ -28,7 +28,7 @@
 #define WIDTH_MAP 67
 /**
  * Description width.*/
-#define WIDTH_DES 30
+#define WIDTH_DES 35
 /**
  * Banner width.*/
 #define WIDTH_BAN 23
@@ -396,7 +396,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
         {
             character = game_get_character(game, id_aux_2[i]);
-            sprintf(str, "   %-6s: %ld (%d)", character_get_description(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
+            sprintf(str, "   %-6s (%s): %ld (%d)", character_get_description(character), character_get_name(character),game_get_character_location(game, character_get_id(character)), character_get_health(character));
             screen_area_puts(ge->descript, str);
         }
     }
@@ -548,11 +548,17 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
     /*Starts printing the space.*/
     sprintf(destination[FIRST_LINE], "+------------------+");
-    if (!(characters = space_get_characters(space)))
-        return ERROR;
-    aux_3 = character_get_description(game_get_character(game, characters[0]));
+    i = space_get_n_characters(space);
+    if (i != 0)
+    {
+        if (i == NO_ID)
+            return ERROR;
+        if (!(characters = space_get_characters(space)))
+            return ERROR;
+        aux_3 = character_get_description(game_get_character(game, characters[0]));
+        free(characters);
+    }
     sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3) != NULL ? aux_3 : ""), space_id);
-    free(characters);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {
         sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i - LIMIT_OF_ELEMENTS));

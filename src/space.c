@@ -227,7 +227,7 @@ int space_find_character(Space *space, Id character)
     {
         return -1;
     }
-    return set_find(space->objects, character);
+    return set_find(space->characters, character);
 }
 
 Id space_take_character(Space *space, Id character)
@@ -236,7 +236,7 @@ Id space_take_character(Space *space, Id character)
     {
         return ID_ERROR;
     }
-    return set_take(space->objects, character);
+    return set_take(space->characters, character);
 }
 
 int space_get_n_characters(Space *space)

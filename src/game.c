@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include <string.h>
 
 #define MAX_PLAYERS 8 /*!<Max number of players.*/
@@ -189,7 +190,7 @@ Id game_get_character_by_name(Game *game, char *word)
     /*Searches the character by its name.*/
     for (i = 0; i < game->n_characters; i++)
     {
-        if (!(strcmp(word, character_get_name(game->characters[i]))))
+        if (!(strcasecmp(word, character_get_name(game->characters[i]))))
         {
             /*Returns the character id.*/
             return (character_get_id(game->characters[i]));
