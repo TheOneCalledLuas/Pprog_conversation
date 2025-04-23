@@ -403,7 +403,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     char line[WORD_SIZE];
     Id id = 0;
     char *toks = NULL;
-    int value = 0;
+    int value = 0, has_exec=0;
     Bool is_valid = 0, do_once = 0;
 
     /*Error handling.*/
@@ -427,6 +427,8 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             strcpy(name, toks);
             toks = strtok(NULL, "|");
             is_valid = atol(toks);
+            toks = strtok(NULL, "|");
+            has_exec = atol(toks);
             toks = strtok(NULL, "|");
             do_once = atol(toks);
             toks = strtok(NULL, "|");
