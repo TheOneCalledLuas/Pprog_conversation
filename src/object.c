@@ -16,7 +16,7 @@
 
 /**
  * Maximun word description.*/
-#define MAX_DESCRIPTION 64 
+#define MAX_DESCRIPTION 64
 #define MAX_NAME 64 /*!< Max name length.*/
 
 /**
@@ -30,7 +30,7 @@ struct _Object
     char name[WORD_SIZE + 1]; /*!< Object name. */
     char *description;        /*!< Object description.*/
     int health;               /*!< Determines the amount of health the object gives or takes.*/
-    bool movable;             /*!< Determines wether a object can be moved or not.*/
+    Bool movable;             /*!< Determines wether a object can be moved or not.*/
     Id dependency;            /*!< Determines if the object needs another object to be taken.*/
     Id open;                  /*!< Determines if the object can open a link.*/
 };
@@ -40,7 +40,7 @@ Object *object_create(Id id)
     Object *object = NULL;
 
     /*Checks that the id is at least valid.*/
-    if (id==NO_ID||id==ID_ERROR)
+    if (id == NO_ID || id == ID_ERROR)
     {
         return NULL;
     }
@@ -98,7 +98,8 @@ char *object_get_description(Object *object)
     return object->description;
 }
 
-Status object_set_description(Object * object, char * desc) {
+Status object_set_description(Object *object, char *desc)
+{
     /*Checks the arguemnts*/
     if (!object || !desc || strlen(desc) >= MAX_DESCRIPTION)
     {
@@ -106,7 +107,7 @@ Status object_set_description(Object * object, char * desc) {
     }
 
     /*Sets the value.*/
-    strcpy(object->description,desc);
+    strcpy(object->description, desc);
     return OK;
 }
 
@@ -125,7 +126,7 @@ char *object_get_name(Object *object)
 Status object_set_name(Object *object, char *name)
 {
     /*Checks the arguments.*/
-    if (!object || !name|| strlen(name)>=MAX_NAME)
+    if (!object || !name || strlen(name) >= MAX_NAME)
     {
         return ERROR;
     }

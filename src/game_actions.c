@@ -408,7 +408,7 @@ void game_actions_attack(Game *game)
         else
         {
             /*Hits character.*/
-            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + game_get_player_n_follo(game, player)));
+            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + game_get_player_n_follow(game, player)));
         }
         /*Checks if the player died.*/
         if (player_get_health(player) <= MIN_HEALTH)
