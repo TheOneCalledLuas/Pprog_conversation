@@ -110,13 +110,14 @@ Status command_set_status(Command *command, Status status);
 Status command_get_status(Command *command);
 
 /**
- * @brief Returns the word stored in the command.
+ * @brief Returns the argument in "number"position stored in the command.
  * @author Fernando Mijangos
  * 
  * @param command Pointer to the command.
+ * @param number Position of the argument.
  * @return String the the word contains or NULL if something went wrong.
  */
-char *command_get_word(Command *command);
+char *command_get_argument(Command *command, int number);
 
 /**
  * @brief Sets the word of the command the the defined one.
@@ -124,9 +125,10 @@ char *command_get_word(Command *command);
  * 
  * @param command Pointer to the command structure.
  * @param word string that will be copied.
+ * @param position Position of the argument
  * @return OK, if everything went well, ERROR if it didnt't.
  */
-Status command_set_word(Command *command, char *word);
+Status command_set_argument(Command *command, char *word, int position);
 
 /**
  * @brief Reads an input from the user, and assigns a code to command depending on the input.

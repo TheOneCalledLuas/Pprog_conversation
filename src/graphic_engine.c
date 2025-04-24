@@ -299,7 +299,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE], **map = NULL, *obj_name = NULL;
+    char str[MAX_STRING_GE],str2[MAX_STRING_GE/2] ,**map = NULL, *obj_name = NULL;
     int i = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
@@ -446,7 +446,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         /*5.2-Searches for the character the argument of the last action provides.*/
         for (i = 0; i < space_get_n_characters(space_act); i++)
         {
-            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_word(game_get_last_command(game))) == 0)
+            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game),0)) == 0)
             {
                 id_aux = characters[i];
             }
@@ -468,7 +468,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     {
         last_space = game_get_space(game, player_get_player_location(player));
         /*Searches for the object.*/
-        desc_id = game_get_object_by_name(game, command_get_word(game_get_last_command(game)));
+        desc_id = game_get_object_by_name(game, command_get_argument(game_get_last_command(game), 0));
         if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(player, desc_id)))
         {
             /*If the object was found anywhere accesible by the player.*/
@@ -489,7 +489,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i");
+    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i, recruit or r, forsake or f");
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
@@ -498,7 +498,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         last_cmd = command_get_code(game_get_previous_command(game, i + refresh));
         if (last_cmd != NO_CMD)
         {
-            sprintf(str, " -%-7s (%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i + refresh)) == OK ? "OK" : "ERROR"));
+            sprintf(str2,"%s %s %s %s",command_get_argument(game_get_previous_command(game, i+refresh),0),command_get_argument(game_get_previous_command(game, i+refresh),1),command_get_argument(game_get_previous_command(game, i+refresh),2),command_get_argument(game_get_previous_command(game, i+refresh),3)  );
+            sprintf(str, " -%s %s(%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL],str2, cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i + refresh)) == OK ? "OK" : "ERROR"));
             screen_area_puts(ge->feedback, str);
         }
         else

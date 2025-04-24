@@ -17,8 +17,9 @@
 
 /**
  * Max lenght for a command.*/
-#define CMD_LENGHT 30
+#define CMD_LENGHT 50
 #define CMD_SHORTCUT 1 /*!< Command shortcut position. */
+#define N_ARGS 4 /*!< Number of possible arguments you can input*/
 
 /**
  * @brief structure with all the possible commands and the key words to triger them.
@@ -33,13 +34,14 @@ char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "E
 struct _Command
 {
     CommandCode code;      /*!< Name of the command. */
-    char word[CMD_LENGHT]; /*!< Extra information the player might give.*/
+    char word[N_ARGS][CMD_LENGHT]; /*!< Extra information the player might give.*/
     Status status;         /*!< If the las command had any effect or not.*/
 };
 
 Command *command_create()
 {
     Command *newCommand = NULL;
+    int i=0;
 
     /*Allocation of memory and error management*/
     newCommand = (Command *)malloc(sizeof(Command));
@@ -50,7 +52,10 @@ Command *command_create()
 
     /*Initialization of an empty command.*/
     newCommand->code = NO_CMD;
-    newCommand->word[0] = '\0';
+    for(i=0;i<N_ARGS;i++)
+    {
+        newCommand->word[i][0]='\0';
+    }
     newCommand->status = OK;
 
     return newCommand;
@@ -96,27 +101,27 @@ CommandCode command_get_code(Command *command)
     return command->code;
 }
 
-char *command_get_word(Command *command)
+char *command_get_argument(Command *command, int position)
 {
-    if (!command)
+    if (!command || position<0 || position>=N_ARGS)
     {
         return NULL;
     }
     /*Gets the value.*/
-    return command->word;
+    return command->word[position];
 }
 
-Status command_set_word(Command *command, char *word)
+Status command_set_argument(Command *command, char *word, int position)
 {
     /*Error handling.*/
-    if (!command || !word)
+    if (!command || !word || position<0 || position>=N_ARGS)
     {
         return ERROR;
     }
 
     /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0.*/
-    strncpy(command->word, word, CMD_LENGHT);
-    command->word[CMD_LENGHT - 1] = '\0';
+    strncpy(command->word[position], word, CMD_LENGHT);
+    command->word[position][CMD_LENGHT - 1] = '\0';
 
     return OK;
 }
@@ -150,7 +155,11 @@ Status command_get_user_input(Command *command)
     {
         return ERROR;
     }
-    command->word[0] = '\0';
+    for(i=0;i<N_ARGS;i++)
+    {
+        command->word[i][0]='\0';
+    }
+    i = UNKNOWN - NO_CMD + 1;
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
@@ -181,15 +190,15 @@ Status command_get_user_input(Command *command)
         }
 
         /*2.4 Assigns the extra word the user might have inputed.*/
-        token = strtok(NULL, " \r\n");
-        if (!command_set_word(command, token))
+        for(i=0;i<N_ARGS;i++)
         {
-            return ERROR;
+            token = strtok(NULL, " \r\n");
+            strcpy(command->word[i], (token==NULL?"\0": token));
         }
-        return OK;
     }
     else /*2.5 If it cant read the input from the user, return exit.*/
         return command_set_code(command, EXIT);
+    return OK;
 }
 
 Status command_print(Command *com, FILE *place)
@@ -199,7 +208,7 @@ Status command_print(Command *com, FILE *place)
     {
         return ERROR;
     }
-    fprintf(place, "Command %s with arguments \"%s\" and exit code ", cmd_to_str[(int)(com->code + 1)][CMD_SHORTCUT], com->word);
+    fprintf(place, "Command %s with arguments \"%s\"\"%s\"\"%s\"\"%s\" and exit code ", cmd_to_str[(int)(com->code + 1)][CMD_SHORTCUT], com->word[0],com->word[1],com->word[2],com->word[3]);
 
     if (com->status == OK)
     {
@@ -209,6 +218,5 @@ Status command_print(Command *com, FILE *place)
     {
         fprintf(place, "ERROR");
     }
-    fprintf(place, " :%s %s", cmd_to_str[(int)(com->code + 1)][CMD_SHORTCUT], com->word);
     return OK;
 }
