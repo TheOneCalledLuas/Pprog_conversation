@@ -320,6 +320,45 @@ Status gamerules_set_n_exec_times(Gamerule *gr, int has_exec)
     /*Clean exit.*/
     return OK;
 }
+
+Gamerule *gamerules_get_gamerule_by_id(Game_values *gv, Id id)
+{
+    int i = 0;
+
+    /*Error handling.*/
+    if (!gv || id <= NO_ID)
+        return NULL;
+
+    /*Searches the gamerule by its id.*/
+    for (i = 0; i < gv->n_gamerules; i++)
+    {
+        if (gv->gamerules[i]->id == id)
+            return gv->gamerules[i];
+    }
+
+    /*The gamerule wasn't found.*/
+    return NULL;
+}
+
+Gamerule *gamerules_get_gamerule_by_name(Game_values *gv, char *name)
+{
+    int i = 0;
+
+    /*Error handling.*/
+    if (!gv || !name)
+        return NULL;
+
+    /*Searches the gamerule by its name.*/
+    for (i = 0; i < gv->n_gamerules; i++)
+    {
+        if (strcmp(gv->gamerules[i]->name, name) == 0)
+            return gv->gamerules[i];
+    }
+
+    /*The gamerule wasn't found.*/
+    return NULL;
+}
+
 /*Now we have all the gamerule functions.*/
 
 Status gamerules_open_gate(Game *game, Gamerule *gr)
