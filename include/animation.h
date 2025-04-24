@@ -21,10 +21,9 @@ typedef struct _Animation Animation;                 /*!< Animation type.*/
  * @author Saúl López Romero.
  *
  * @param animation_route Directory route where the animations are stored.
- * @param animation_file File with all the animation file names.
  * @return Pointer to the struct of NULL.
  */
-Animation_Manager *animation_manager_init(char *animation_route, char * animation_file);
+Animation_Manager *animation_manager_init(char *animation_route);
 
 /**
  * @brief Destroys the animator manager.
@@ -49,10 +48,10 @@ Status animation_manager_add_animation(Animation_Manager *am, Animation *anim);
  * @author Saúl López Romero.
  *
  * @param am Animator manager.
- * @param anim_id Animation id.
+ * @param pos Position of the animation to delete.
  * @returns OK if everything goes as expected, ERROR otherwise.
  */
-Status animation_manager_del_animation(Animation_Manager *am, Id anim_id);
+Status animation_manager_del_animation(Animation_Manager *am, int pos);
 
 /**
  * @brief Runs a certain animation.
@@ -67,10 +66,18 @@ Status animation_run(Animation_Manager *am, Id anim_id);
 /**
  * @brief Initialises an animation.
  * @author Saúl López Romero.
- * 
+ *
  * @param id Animation id.
  * @param filename File where the animation is stored.
  */
 Animation *animation_init(Id id, char *filename);
+
+/**
+ * @brief Destroys an animation.
+ * @author Saúl López Romero.
+ *
+ * @param anim Animation to destroy.
+ */
+void animation_destroy(Animation *anim);
 
 #endif

@@ -41,3 +41,10 @@
 #l:49|P3-P4|123|124|1|0|
 
 #g:20|do_open_gate|1|0|1|22|
+ #g:21|set_anim_default|1|0|1|0
+
+
+Las animaciones tienen la siguiente estructura:
+ id|name|path|width|height|frames|time_per_frame|
+ widht_padding|height_padding|back_colour|char_colour|
+#a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|0|
