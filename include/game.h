@@ -281,16 +281,6 @@ Object *game_get_object(Game *game, Id id);
 Id game_get_object_location(Game *game, Id id);
 
 /**
- * @brief It gets the number of characters following a player.
- * @author Raquel Anguita Martínez de Velasco
- *
- * @param game Pointer to the game.
- * @param player Pointer to the player.
- * @return Number of characters following the player; -1 if there were any errors.
- */
-int game_get_player_n_follow(Game *game, Player *player);
-
-/**
  * @brief It returns a pointer to the last command.
  * @author Profesores PPROG
  *
@@ -447,6 +437,16 @@ Link *game_find_link(Game *game, Id link_id);
  *          NO_ID, returns ID_ERROR if any error.
  */
 Id game_get_space_at(Game *game, Id space, Direction direction);
+
+/**
+ * @brief Looks how many followers a player has
+ * @author Raquel Anguita
+ * 
+ * @param game Pointer to the game
+ * @param player Id of the player you want the information from
+ * @return Number of followers of that player, -1 if error
+ */
+int game_get_n_followers(Game *game, Id player);
 
 /**
  * @brief Gets the link information for a stace regarding the outgoing links.

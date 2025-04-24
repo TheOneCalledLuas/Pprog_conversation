@@ -604,30 +604,6 @@ Object *game_get_object(Game *game, Id id)
     return NULL;
 }
 
-int game_get_player_n_follow(Game *game, Player *player)
-{
-    int n_characters, i, follow = 0;
-    Id id_player;
-
-    if (!game || !player)
-    {
-        return -1;
-    }
-
-    n_characters = game_get_num_characters(game);
-    id_player = player_get_player_id(player);
-
-    for (i = 0; i < n_characters; i++)
-    {
-        if (character_get_follow(game->characters[i]) == id_player)
-        {
-            follow++;
-        }
-    }
-
-    return follow;
-}
-
 Command *game_get_last_command(Game *game)
 {
     /*Error management.*/
@@ -860,6 +836,22 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 
     /*If it doesn't find a north connection, returns NO_ID.*/
     return NO_ID;
+}
+
+int game_get_n_followers(Game *game, Id player)
+{
+    int i=0, n=0;
+    /*Error management*/
+    if(!(game) || player==NO_ID || player ==ID_ERROR)
+        return -1;
+    
+    /*Counts the number of followers.*/
+    for(i=0;i<game->n_characters;i++)
+    {
+        if(character_get_follow(game->characters[i])==player)
+            n++;
+    }
+    return n;
 }
 
 Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Direction dir)

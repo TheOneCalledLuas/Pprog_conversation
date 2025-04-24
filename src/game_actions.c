@@ -200,7 +200,7 @@ void game_actions_move(Game *game)
 {
     Id current_id = NO_ID;
     Id space_id = NO_ID;
-    Id *characters=NULL;
+    Id *characters = NULL;
     Direction direction = UNK_DIRECTION;
     int i = 0;
 
@@ -270,7 +270,7 @@ void game_actions_move(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    
+
     free(characters);
     command_set_status(game_get_last_command(game), OK);
     return;
@@ -383,8 +383,8 @@ void game_actions_chat(Game *game)
 
 void game_actions_attack(Game *game)
 {
-    int rand_num = 0, i;
-    Id player_location = NO_ID, *characters;
+    int rand_num = 0;
+    Id player_location = NO_ID;
     Player *player = NULL;
     Character *character = NULL;
 
@@ -395,30 +395,22 @@ void game_actions_attack(Game *game)
         return;
     }
 
-    /*Checks that the player meets the requirements to attack.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    if ((characters = space_get_characters(game_get_space(game, player_location))))
-        return;
-    if (!characters)
+
+    /*1-If it doesnt find the character you are trying to attack, return ERROR.*/
+    if (!(character = game_get_character(game,game_get_character_by_name(game, command_get_word(game_get_last_command(game))))))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    for (i = 0; i < space_get_n_characters(game_get_space(game, player_location)); i++)
+    if (space_find_character(game_get_space(game, player_location), character_get_id(character)) == -1)
     {
-        if (strcmp(command_get_word(game_get_last_command(game)), character_get_name(game_get_character(game, characters[i]))) == 0)
-        {
-            character = game_get_character(game, characters[i]);
-        }
-    }
-    if (character == NULL)
-    {
-        free(characters);
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
+    /*2-If that character isnt friendly, attack it*/
     if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
     {
         /*Starts a fight between the entities.*/
@@ -431,18 +423,16 @@ void game_actions_attack(Game *game)
         else
         {
             /*Hits character.*/
-            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + game_get_player_n_follow(game, player)));
+            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + game_get_n_followers(game, player_get_player_id(player))));
         }
         /*Checks if the player died.*/
         if (player_get_health(player) <= MIN_HEALTH)
         {
             game_set_finished(game, TRUE);
         }
-        free(characters);
         command_set_status(game_get_last_command(game), OK);
         return;
     }
-    free(characters);
     command_set_status(game_get_last_command(game), ERROR);
 }
 
@@ -474,7 +464,7 @@ void game_actions_recruit(Game *game)
     player_location = player_get_player_location(player);
     character = game_get_character(game, game_get_character_by_name(game, command_get_word(game_get_last_command(game))));
     same_character = (space_find_character(game_get_space(game, player_location), character_get_id(character)) != -1);
-    if (same_character == FALSE && character_get_follow(character)!=NO_ID)
+    if (same_character == FALSE || character_get_follow(character) != NO_ID)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
