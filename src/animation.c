@@ -15,10 +15,38 @@
 
 #include "animation.h"
 #include "types.h"
+#include "graphic_engine.h"
 
 #define MAX_LINE 128       /*!< Max number of cheracters per line.*/
 #define ESCAPE_CODE_LEN 6  /*!< Escape code lenght with the final /0.*/
+#define MAX_COLOR 8        /*!< Max number of colors.*/
+#define N_COL 2            /*!< Number color-modifiable parts.*/
 #define MAX_ANIMATIONS 100 /*!< Max animation number.*/
+
+/*Color codes.*/
+#define RESET_COLOR "\x1b[0m" /*!< Reset color escape code.*/
+#define BLACK_T "\x1b[30m"    /*!< Black text color.*/
+#define BLACK_F "\x1b[40m"    /*!< Black background color.*/
+#define RED_T "\x1b[31m"      /*!< Red text color.*/
+#define RED_F "\x1b[41m"      /*!< Red background color.*/
+#define GREEN_T "\x1b[32m"    /*!< Green text color.*/
+#define GREEN_F "\x1b[42m"    /*!< Green background color.*/
+#define YELLOW_T "\x1b[33m"   /*!< Yellow text color.*/
+#define YELLOW_F "\x1b[43m"   /*!< Yellow background color.*/
+#define BLUE_T "\x1b[34m"     /*!< Blue text color.*/
+#define BLUE_F "\x1b[44m"     /*!< Blue background color.*/
+#define MAGENTA_T "\x1b[35m"  /*!< Magenta text color.*/
+#define MAGENTA_F "\x1b[45m"  /*!< Magenta background color.*/
+#define CYAN_T "\x1b[36m"     /*!< Cyan text color.*/
+#define CYAN_F "\x1b[46m"     /*!< Cyan background color.*/
+#define WHITE_T "\x1b[37m"    /*!< White text color.*/
+#define WHITE_F "\x1b[47m"    /*!< White background color.*/
+
+#define TEXT_COLOR 0       /*!< Text color. */
+#define BACKGROUND_COLOR 1 /*!< Background color. */
+
+/*Array with all the colors plced in order.*/
+char color[N_COL][MAX_COLOR][ESCAPE_CODE_LEN] = {{BLACK_T, RED_T, GREEN_T, YELLOW_T, BLUE_T, MAGENTA_T, CYAN_T, WHITE_T}, {BLACK_F, RED_F, GREEN_F, YELLOW_F, BLUE_F, MAGENTA_F, CYAN_F, WHITE_F}};
 
 /**
  * @brief This struct is in charge of handling all the game animations.
@@ -508,4 +536,39 @@ Animation *animation_manager_get_animation_by_name(Animation_Manager *am, char *
 
     /*The animation wasn't found.*/
     return NULL;
+}
+
+Status animation_run(Animation_Manager *am, Id anim_id)
+{
+    FILE *f = NULL;
+    Animation *anim = NULL;
+    char line[MAX_LINE] = "";
+    int i = 0, j = 0;
+
+    /*Error handling.*/
+    if (!am || anim_id == NO_ID)
+        return ERROR;
+
+    /*Searches for the animation to be runned.*/
+    if (!(anim = animation_manager_get_animation_by_id(am, anim_id)))
+        return ERROR;
+
+    /*Opens the file where the animation is stored.*/
+    if (!(f = fopen(anim->animation_file, "r")))
+        return ERROR;
+
+    /*Reads the file line by line, and prints it on the screen.*/
+    for (i = 0; i < anim->n_images; i++)
+    {
+        for (j = 0; j < anim->height; j++)
+        {
+            if (fgets(line, MAX_LINE, f) == NULL)
+            {
+                fclose(f);
+                return ERROR;
+            }
+            /*Prints the line on the screen.*/
+            printf("%s%s%s%s", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line,RESET_COLOR);
+        }
+    }
 }
