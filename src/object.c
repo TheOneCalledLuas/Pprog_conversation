@@ -64,6 +64,10 @@ Object *object_create(Id id)
     object->id = id;
     object->name[0] = '\0';
     object->description[0] = '\0';
+    object->health = 0;
+    object->movable = FALSE;
+    object->dependency = NO_ID;
+    object->open = NO_ID;
 
     /*Clean exit.*/
     return object;
@@ -151,6 +155,90 @@ Id object_get_id(Object *object)
 
     /*Returns the id.*/
     return object->id;
+}
+
+
+Status object_set_health(Object *object, int *health)
+{
+    /*Error handling.*/
+    if (!object){
+        return ERROR;
+    }
+    object->health = health;
+    
+    return OK;
+}
+
+int object_get_health(Object *object)
+{
+    /*Error handling.*/
+    if(!object){
+        return ERROR;
+    }
+
+    return object->health;
+}
+    
+Status object_is_movable(Object *object, Bool *movable)
+{
+    /*Error handling.*/
+    if (!object || (movable !=TRUE && movable !=FALSE)){
+        return ERROR;
+    }
+    object->movable = movable;
+    
+    return OK;
+}    
+
+Bool object_get_movable(Object *object)
+{
+    return (object ? object->movable: FALSE);
+}
+
+Status object_set_dependency(Object *object, Id dependency)
+{
+    /*Error handling.*/
+    if (!object || dependency == ID_ERROR)
+    {
+        return ERROR;
+    }
+    
+    /*Sets the value.*/
+    object->dependency = dependency;
+        return OK;
+}
+
+Id object_get_dependency(Object *object)
+{
+    /*Error handling.*/
+    if(!object){
+        return ID_ERROR;
+    }
+    /*Returns the value.*/
+    return object->dependency;
+}
+
+Status object_set_open(Object *object, Id open)
+{
+     /*Error handling.*/
+     if (!object || open == ID_ERROR)
+     {
+         return ERROR;
+     }
+     
+     /*Sets the value.*/
+     object->open = open;
+         return OK;   
+}
+
+Id object_get_open(Object *object)
+{
+    /*Error handling.*/
+    if(!object){
+        return ID_ERROR;
+    }
+    /*Returns the value.*/
+    return object->open;
 }
 
 Status object_print_info(Object *object)
