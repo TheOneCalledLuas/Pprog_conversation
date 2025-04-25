@@ -40,7 +40,7 @@ struct _Animation
     char *animation_file; /*!< Animation file, where the data is stored.*/
     long n_images;        /*!< Number of frames for the animation.*/
     int widht;            /*!< Animation widht.*/
-    int lenght;           /*!< Animation lenght.*/
+    int height;           /*!< Animation height.*/
     int side_padding;     /*!< Number of white spaces left to the left, set to zero by default.*/
     int height_padding;   /*!< Number of white spaces left bellow the animation, set to zero by default.*/
     float refresh_rate;   /*!< Seconds left between each frame.*/
@@ -99,13 +99,13 @@ void animation_manager_destroy(Animation_Manager *am)
 
 Status animation_manager_add_animation(Animation_Manager *am, Animation *anim)
 {
-    /* Error handling.*/
+    /*Error handling.*/
     if (am == NULL || anim == NULL || am->n_animations >= MAX_ANIMATIONS)
     {
         return ERROR;
     }
 
-    /* Adding the animation to the list.*/
+    /*Adding the animation to the list.*/
     am->animations[am->n_animations] = anim;
     am->n_animations++;
 
@@ -170,7 +170,7 @@ Animation *animation_init(Id id, char *filename)
     anim->name[0] = '\0';
     anim->n_images = 0;
     anim->widht = 0;
-    anim->lenght = 0;
+    anim->height = 0;
     anim->side_padding = 0;
     anim->height_padding = 0;
     anim->refresh_rate = 0.0;
@@ -197,4 +197,315 @@ void animation_destroy(Animation *anim)
         /* Frees the animation struct.*/
         free(anim);
     }
+}
+
+Id animation_get_id(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return NO_ID;
+
+    /*Clean exit.*/
+    return anim->id;
+}
+char *animation_get_name(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return NULL;
+
+    /*Clean exit.*/
+    return anim->name;
+}
+
+Status animation_set_name(Animation *anim, char *name)
+{
+    /*Error handling.*/
+    if (!anim || !name || strlen(name) == 0 || strlen(name) > MAX_LINE)
+    {
+        return ERROR;
+    }
+
+    /*Copies the name.*/
+    strcpy(anim->name, name);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+char *animation_get_file_name(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return NULL;
+
+    /*Clean exit.*/
+    return anim->animation_file;
+}
+
+Status animation_set_file_name(Animation *anim, char *filename)
+{
+    /*Error handling.*/
+    if (!anim || !filename || strlen(filename) == 0 || strlen(filename) > MAX_LINE)
+    {
+        return ERROR;
+    }
+
+    /*Copies the new file name.*/
+    strcpy(anim->animation_file, filename);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_n_images(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->n_images;
+}
+
+Status animation_set_n_images(Animation *anim, int n_images)
+{
+    /*Error handling.*/
+    if (!anim || n_images < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the number of images.*/
+    anim->n_images = n_images;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_width(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->widht;
+}
+
+Status animation_set_width(Animation *anim, int width)
+{
+    /*Error handling.*/
+    if (!anim || width < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the width.*/
+    anim->widht = width;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_height(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->height;
+}
+
+Status animation_set_height(Animation *anim, int height)
+{
+    /*Error handling.*/
+    if (!anim || height < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the height.*/
+    anim->height = height;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_side_padding(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->side_padding;
+}
+
+Status animation_set_side_padding(Animation *anim, int side_padding)
+{
+    /*Error handling.*/
+    if (!anim || side_padding < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the side padding.*/
+    anim->side_padding = side_padding;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_height_padding(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->height_padding;
+}
+
+Status animation_set_height_padding(Animation *anim, int height_padding)
+{
+    /*Error handling.*/
+    if (!anim || height_padding < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the height padding.*/
+    anim->height_padding = height_padding;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+float animation_get_refresh_rate(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->refresh_rate;
+}
+
+Status animation_set_refresh_rate(Animation *anim, float refresh_rate)
+{
+    /*Error handling.*/
+    if (!anim || refresh_rate < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the refresh rate.*/
+    anim->refresh_rate = refresh_rate;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_background_color(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->background_color;
+}
+
+Status animation_set_background_color(Animation *anim, int background_color)
+{
+    /*Error handling.*/
+    if (!anim || background_color < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the background color.*/
+    anim->background_color = background_color;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_get_font_color(Animation *anim)
+{
+    /*Error handling.*/
+    if (!anim)
+        return -1;
+
+    /*Clean exit.*/
+    return anim->font_color;
+}
+
+Status animation_set_font_color(Animation *anim, int font_color)
+{
+    /*Error handling.*/
+    if (!anim || font_color < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the font color.*/
+    anim->font_color = font_color;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+int animation_manager_get_n_animations(Animation_Manager *am)
+{
+    /*Error handling.*/
+    if (!am)
+        return -1;
+
+    /*Clean exit.*/
+    return am->n_animations;
+}
+
+Animation *animation_manager_get_animation_by_id(Animation_Manager *am, Id id)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!am || id == NO_ID)
+        return NULL;
+
+    /*Searches for the animation to be returned.*/
+    for (i = 0; i < am->n_animations; i++)
+    {
+        if (am->animations[i]->id == id)
+        {
+            /*The animation was found, and thus is returned.*/
+            return am->animations[i];
+        }
+    }
+
+    /*The animation wasn't found.*/
+    return NULL;
+}
+
+Animation *animation_manager_get_animation_by_name(Animation_Manager *am, char *name)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!am || !name || strlen(name) == 0 || strlen(name) > MAX_LINE)
+        return NULL;
+
+    /*Searches for the animation to be returned.*/
+    for (i = 0; i < am->n_animations; i++)
+    {
+        if (strcmp(am->animations[i]->name, name) == 0)
+        {
+            /*The animation was found, and thus is returned.*/
+            return am->animations[i];
+        }
+    }
+
+    /*The animation wasn't found.*/
+    return NULL;
 }
