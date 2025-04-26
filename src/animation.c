@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "animation.h"
 #include "types.h"
@@ -560,6 +561,10 @@ Status animation_run(Animation_Manager *am, Id anim_id)
     /*Reads the file line by line, and prints it on the screen.*/
     for (i = 0; i < anim->n_images; i++)
     {
+        /*Clears the screen.*/
+        system("clear");
+
+        /*Prints the frame.*/
         for (j = 0; j < anim->height; j++)
         {
             if (fgets(line, MAX_LINE, f) == NULL)
@@ -567,8 +572,18 @@ Status animation_run(Animation_Manager *am, Id anim_id)
                 fclose(f);
                 return ERROR;
             }
+            if (line[0] == '#')
+            {
+                /*If the line was a comment, it is skipped.*/
+                j--;
+                continue;
+            }
             /*Prints the line on the screen.*/
-            printf("%s%s%s%s", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line,RESET_COLOR);
+            printf("%s%s%s%s", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line, RESET_COLOR);
         }
+        /*Sleeps the program for the frame duration.*/
+        sleep(anim->refresh_rate * 1000000);
+        nanosleep(anim->refresh_rate * 1000000);
+        usleep(anim->refresh_rate * 1000000);
     }
 }
