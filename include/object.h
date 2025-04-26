@@ -90,9 +90,9 @@ Id object_get_id(Object *object);
  * @return Object's id.
  */
 
-Status object_set_health(Object *object, int *health);
+Status object_set_health(Object *object, int health);
 int object_get_health(Object *object);
-Status object_is_movable(Object *object, Bool *movable);
+Status object_is_movable(Object *object, Bool movable);
 Bool object_get_movable(Object *object);
 Status object_set_dependency(Object *object, Id dependency);
 Id object_get_dependency(Object *object);

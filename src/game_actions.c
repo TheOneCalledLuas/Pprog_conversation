@@ -110,6 +110,15 @@ void game_actions_abandon(Game *game);
  * @param game Pointer to the game structure.
  */
 void game_actions_recruit(Game *game);
+
+/**
+ * @brief Action to be exectured when the map command is given
+ * @author Fernando Mijangos
+ *
+ * @param game Pointer to the game
+ */
+void game_actions_map(Game *game);
+
 /**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
@@ -182,6 +191,9 @@ Status game_actions_update(Game *game, Command *command)
         game_actions_recruit(game);
         break;
 
+    case MAP:
+        game_actions_map(game);
+        break;
     default:
         break;
     }
@@ -218,7 +230,7 @@ void game_actions_move(Game *game)
     /*Gets the direction in which the player will move*/
     while (direction == UNK_DIRECTION && i < N_DIRECTIONS)
     {
-        if (strcasecmp(command_get_argument(game_get_last_command(game), 0), dir_from_string[i][CMDS])==0 || strcasecmp(command_get_argument(game_get_last_command(game),0), dir_from_string[i][CMDL])==0)
+        if (strcasecmp(command_get_argument(game_get_last_command(game), 0), dir_from_string[i][CMDS]) == 0 || strcasecmp(command_get_argument(game_get_last_command(game), 0), dir_from_string[i][CMDL]) == 0)
         {
             direction = i;
         }
@@ -290,7 +302,7 @@ void game_actions_take(Game *game)
     }
 
     /*1-Gets all the different things it needs and error management.*/
-    object = game_get_object_by_name(game, command_get_argument(game_get_last_command(game),0));
+    object = game_get_object_by_name(game, command_get_argument(game_get_last_command(game), 0));
     if (object == NO_ID || object == ID_ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -399,7 +411,7 @@ void game_actions_attack(Game *game)
     player_location = player_get_player_location(player);
 
     /*1-If it doesnt find the character you are trying to attack, return ERROR.*/
-    if (!(character = game_get_character(game,game_get_character_by_name(game, command_get_argument(game_get_last_command(game),0)))))
+    if (!(character = game_get_character(game, game_get_character_by_name(game, command_get_argument(game_get_last_command(game), 0)))))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -462,7 +474,7 @@ void game_actions_recruit(Game *game)
     /*Checks that the player meets the requirements to recruit.*/
     player = game_get_actual_player(game);
     player_location = player_get_player_location(player);
-    character = game_get_character(game, game_get_character_by_name(game, command_get_argument(game_get_last_command(game),0)));
+    character = game_get_character(game, game_get_character_by_name(game, command_get_argument(game_get_last_command(game), 0)));
     same_character = (space_find_character(game_get_space(game, player_location), character_get_id(character)) != -1);
     if (same_character == FALSE || character_get_follow(character) != NO_ID)
     {
@@ -517,6 +529,13 @@ void game_actions_abandon(Game *game)
         command_set_status(game_get_last_command(game), OK);
         return;
     }
+    command_set_status(game_get_last_command(game), ERROR);
+}
+
+void game_actions_map(Game *game)
+{
+    /*The mpa action is managed by graphic engine; it starts as an error and
+    if it goes as it should the error code is set to OK, similar to chat. */
     command_set_status(game_get_last_command(game), ERROR);
 }
 

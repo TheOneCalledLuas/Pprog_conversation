@@ -150,8 +150,8 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
         last_cmd = game_get_last_command(game);
-        game_actions_update(game, last_cmd); 
-        
+        game_actions_update(game, last_cmd);
+
         /*Tries to execute all the gamerules.*/
         gamerules_try_exec_all(game, game_get_game_values(game));
 
@@ -172,9 +172,12 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         else
             sleep(command_get_code(last_cmd) == EXIT ? 0 : 1);
 
-        /*Goes to the next turn.*/
-        game_next_turn(game);
-        game_next_command(game);
+        /*Goes to the next turn if a command that changes turn is used.*/
+        if (command_get_code(last_cmd) == MOVE)
+        {
+            game_next_turn(game);
+            game_next_command(game);
+        }
     }
 }
 

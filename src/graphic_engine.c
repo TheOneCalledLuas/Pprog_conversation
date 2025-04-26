@@ -224,14 +224,36 @@ Status map_init(Game *game, char **map)
         link_statuses[WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], W);
         actual_id[EAST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
         link_statuses[EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], E);
-        actual_id[NORTH_EAST] = NO_ID;
-        link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
-        actual_id[NORTH_WEST] = NO_ID;
-        link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
-        actual_id[SOUTH_EAST] = NO_ID;
-        link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
-        actual_id[SOUTH_WEST] = NO_ID;
-        link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], UNK_DIRECTION);
+        if ((actual_id[NORTH_EAST] = game_get_space_at(game, actual_id[NORTH], E)) == NO_ID)
+        {
+            actual_id[NORTH_EAST] = game_get_space_at(game, actual_id[EAST], N);
+            link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], N);
+        }
+        else
+            link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], E);
+        if ((actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[NORTH], W)) == NO_ID)
+        {
+            actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[EAST], W);
+            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], W);
+        }
+        else
+            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], W);
+
+        if ((actual_id[SOUTH_EAST] = game_get_space_at(game, actual_id[SOUTH], E)) == NO_ID)
+        {
+            actual_id[SOUTH_EAST] = game_get_space_at(game, actual_id[EAST], S);
+            link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], S);
+        }
+        else
+            link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[SOUTH], E);
+
+        if ((actual_id[SOUTH_WEST] = game_get_space_at(game, actual_id[SOUTH], W)) == NO_ID)
+        {
+            actual_id[SOUTH_WEST] = game_get_space_at(game, actual_id[WEST], S);
+            link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[WEST], S);
+        }
+        else
+            link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[SOUTH], W);
 
         /*2-Cleans the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -299,7 +321,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE],str2[MAX_STRING_GE/2] ,**map = NULL, *obj_name = NULL;
+    char str[MAX_STRING_GE]={'\0'}, str2[MAX_STRING_GE / 2], **map = NULL, *obj_name = NULL;
     int i = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
@@ -311,55 +333,72 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         return;
 
     /*MAP SECTION.*/
-    /*1-Allocates memory needed.*/
-    if (!(map = (char **)calloc(HEIGHT_MAP, sizeof(char *))))
+    screen_area_clear(ge->map);
+    /*Puts the place where the player is to discovered.*/
+    space_set_discovered((game_get_space(game, player_get_player_location(game_get_actual_player(game)))), OPENED);
+    /*Several options*/
+    /*A- If the command that puts the map is the last one given, print the map.*/
+    if (command_get_code(game_get_last_command(game)) == MAP)
     {
-        return;
-    }
-    for (i = 0; i < HEIGHT_MAP; i++)
-    {
-        if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
+        /*1-Allocates memory needed.*/
+        if (!(map = (char **)calloc(HEIGHT_MAP, sizeof(char *))))
+        {
+            return;
+        }
+        for (i = 0; i < HEIGHT_MAP; i++)
+        {
+            if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
+            {
+                for (i = 0; i < HEIGHT_MAP; i++)
+                {
+                    if (map[i])
+                        free(map[i]);
+                }
+                free(map);
+                return;
+            }
+        }
+
+        /*2-Fills the map that we modify and later print.*/
+        if (map_init(game, map) == ERROR)
         {
             for (i = 0; i < HEIGHT_MAP; i++)
             {
                 if (map[i])
                     free(map[i]);
             }
-            free(map);
             return;
         }
-    }
-    /*2-Clears the map.*/
-    screen_area_clear(ge->map);
 
-    /*4-Sets the space where the player is at to discovered.*/
-    if (space_set_discovered(space_act, TRUE) == ERROR)
-        return;
-
-    /*3-Fills the map that we modify and later print.*/
-    if (map_init(game, map) == ERROR)
-    {
+        /*3-Prints the map.*/
+        for (i = 0; i < HEIGHT_MAP; i++)
+        {
+            screen_area_puts(ge->map, map[i]);
+        }
+        /*4-Frees the allocated memory.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
             if (map[i])
                 free(map[i]);
         }
-        return;
+        free(map);
+        command_set_status(game_get_last_command(game), OK);
     }
-
-    /*4-Prints the map.*/
-    for (i = 0; i < HEIGHT_MAP; i++)
+    /*B-If none of the options above meets it requirements, print the space where the player is at.*/
+    else
     {
-        screen_area_puts(ge->map, map[i]);
+        /*1-Prints the texture of the space*/
+        for (i = 0; i < SPACE_TEXTURE_LINES; i++)
+        {
+            strncpy(str, space_get_texture_line(space_act, i), WIDTH_MAP -2);
+            str[WIDTH_MAP - 1] = '\0';
+            /*Esto despues habrá que cambiarlo a hacer algo parecido a map. Ahora no tengo tiempo*/
+            screen_area_puts(ge->map, str);
+        }
+        /*2-Prints the player*/
+        /*3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four*/
+        /*4-Prints the characters there are*/
     }
-    /*5-Frees the allocated memory.*/
-    for (i = 0; i < HEIGHT_MAP; i++)
-    {
-        if (map[i])
-            free(map[i]);
-    }
-    free(map);
-
     /*DESCRIPTION SECTION.*/
     /*1-Clears the area.*/
     screen_area_clear(ge->descript);
@@ -396,7 +435,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
         {
             character = game_get_character(game, id_aux_2[i]);
-            sprintf(str, "   %-6s (%s): %ld (%d)", character_get_description(character), character_get_name(character),game_get_character_location(game, character_get_id(character)), character_get_health(character));
+            sprintf(str, "   %-6s (%s): %ld (%d)", character_get_description(character), character_get_name(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
             screen_area_puts(ge->descript, str);
         }
     }
@@ -446,7 +485,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         /*5.2-Searches for the character the argument of the last action provides.*/
         for (i = 0; i < space_get_n_characters(space_act); i++)
         {
-            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game),0)) == 0)
+            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
             {
                 id_aux = characters[i];
             }
@@ -498,8 +537,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         last_cmd = command_get_code(game_get_previous_command(game, i + refresh));
         if (last_cmd != NO_CMD)
         {
-            sprintf(str2,"%s %s %s %s",command_get_argument(game_get_previous_command(game, i+refresh),0),command_get_argument(game_get_previous_command(game, i+refresh),1),command_get_argument(game_get_previous_command(game, i+refresh),2),command_get_argument(game_get_previous_command(game, i+refresh),3)  );
-            sprintf(str, " -%s %s(%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL],str2, cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i + refresh)) == OK ? "OK" : "ERROR"));
+            sprintf(str2, "%s %s %s %s", command_get_argument(game_get_previous_command(game, i + refresh), 0), command_get_argument(game_get_previous_command(game, i + refresh), 1), command_get_argument(game_get_previous_command(game, i + refresh), 2), command_get_argument(game_get_previous_command(game, i + refresh), 3));
+            sprintf(str, " -%s %s(%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], str2, cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i + refresh)) == OK ? "OK" : "ERROR"));
             screen_area_puts(ge->feedback, str);
         }
         else

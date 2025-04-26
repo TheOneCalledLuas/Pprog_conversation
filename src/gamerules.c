@@ -197,7 +197,10 @@ Status gamerule_try_exec(Game *game, Gamerule *gr)
         case TRUE:
             if (gr->has_exec == 0) /*If its the first time the gamerule is activated.*/
             {
-                return (gr->do_gamerule)(game, gr);
+                if(gr->do_gamerule!= NULL)
+                {
+                    return (gr->do_gamerule)(game, gr);
+                }
             }
             else
             {

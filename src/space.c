@@ -17,9 +17,9 @@
 #include <string.h>
 /**
  * Number of graphic description lines.
-*/
+ */
 #define G_DESC_LINES 5
-#define DESC_SIZE 10 /*!< Description size.*/
+#define DESC_SIZE 10     /*!< Description size.*/
 
 /**
  * @brief Space
@@ -28,13 +28,15 @@
  */
 struct _Space
 {
-    Id id;                     /*!< Id number of the space, it must be unique. */
-    char name[WORD_SIZE + 1];  /*!< Name of the space. */
-    Set *objects;              /*!< A set with the objects the space has */
-    char *gdesc[G_DESC_LINES]; /*!< Strings which create the space's graphic description. */
-    char *__gdesc_data;        /*!< Actual matrix with the gdesc.*/
-    Set *characters;           /*!< A set with the characters the space has.*/
-    Bool discovered;           /*!< True if visited, False if never visited.*/
+    Id id;                       /*!< Id number of the space, it must be unique. */
+    char name[WORD_SIZE + 1];    /*!< Name of the space. */
+    Set *objects;                /*!< A set with the objects the space has */
+    char *gdesc[G_DESC_LINES];   /*!< Strings which create the space's graphic description. */
+    char *__gdesc_data;          /*!< Actual matrix with the gdesc.*/
+    Set *characters;             /*!< A set with the characters the space has.*/
+    Bool discovered;             /*!< True if visited, False if never visited.*/
+    char *texture[SPACE_TEXTURE_LINES]; /*!< Strings which create the texture of the space*/
+    char *__texture_data;         /*!< Actual matrix with the texture*/
 };
 
 Space *space_create(Id id)
@@ -73,6 +75,20 @@ Space *space_create(Id id)
         newSpace->gdesc[i] = &(newSpace->__gdesc_data[i * DESC_SIZE]);
     }
 
+    /*Initialisation of texture. I chose to do it this way because if
+  we manage to get a decent amount of spaces, storing them in the
+  stack will definitely be a potencial problem.*/
+    if (!(newSpace->__texture_data = (char *)calloc(SPACE_TEXTURE_LINES * SPACE_TEXTURE_SIZE, sizeof(char))))
+    {
+        free(newSpace);
+        return NULL;
+    }
+    /*Sets the array so that it's more accesible.*/
+    for (i = 0; i < SPACE_TEXTURE_LINES; i++)
+    {
+        newSpace->texture[i] = &(newSpace->__texture_data[i * SPACE_TEXTURE_SIZE]);
+    }
+
     return newSpace;
 }
 
@@ -84,11 +100,13 @@ void space_destroy(Space *space)
     {
         if (space->__gdesc_data)
             free(space->__gdesc_data);
+        if (space->__texture_data)
+            free(space->__texture_data);
         if (space->objects)
         {
             set_destroy(space->objects);
         }
-        if ( space ->characters)
+        if (space->characters)
             set_destroy(space->characters);
         free(space);
     }
@@ -114,6 +132,28 @@ Status space_set_gdesc_line(Space *space, int line, char *str)
     strcpy(space->gdesc[line], str);
 
     /*Clean Exit.*/
+    return OK;
+}
+
+char *space_get_texture_line(Space *space, int line)
+{
+    /*Error management*/
+    if (!space || line < 0 || line > SPACE_TEXTURE_LINES - 1)
+        return NULL;
+
+    /*Returns the line.*/
+    return space->texture[line];
+}
+
+Status space_set_texture_line(Space *space, int line, char *str)
+{
+    /*Error management*/
+    if (!space || line < 0 || line > SPACE_TEXTURE_LINES - 1)
+        return ERROR;
+
+    /*Sets the line.*/
+    strcpy(space->texture[line], str);
+
     return OK;
 }
 
@@ -241,7 +281,7 @@ Id space_take_character(Space *space, Id character)
 
 int space_get_n_characters(Space *space)
 {
-    return(!space? -1: set_len(space->characters));
+    return (!space ? -1 : set_len(space->characters));
 }
 
 int space_get_n_objects(Space *space)

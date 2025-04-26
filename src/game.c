@@ -824,7 +824,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 {
     int i;
     /*Error managment.*/
-    if (!(game) || space == NO_ID || space == ID_ERROR || direction < 0 || direction > W)
+    if (!(game) || space == ID_ERROR || direction < 0 || direction > W)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing that direction, returns the destination.*/

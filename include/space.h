@@ -14,6 +14,8 @@
 #include "types.h"
 #include "object.h"
 #include "set.h"
+#define SPACE_TEXTURE_LINES 29 /*!< Lines of each texture.*/
+#define SPACE_TEXTURE_SIZE 67 /*!< Size of the texture.*/
 
 typedef struct _Space Space; /*!<Space type.*/
 
@@ -54,6 +56,27 @@ char *space_get_gdesc_line(Space *space, int line);
  * @return OK if all goes as planned, ERROR otherwise.
  */
 Status space_set_gdesc_line(Space *space, int line, char *str);
+
+/**
+ * @brief Gets a determined line of the texture.
+ * @author Fernando Mijangos.
+ * 
+ * @param space Pointer to the space.
+ * @param line line to be given.
+ * @return NULL if an error takes place, the line otherwise.
+ */
+char *space_get_texture_line(Space *space, int line);
+
+/**
+ * @brief Sets a line of the texture.
+ * @author Fernando Mijangos.
+ * 
+ * @param space Pointer to the space.
+ *  @param line line to be modified.
+ * @param str to be set.
+ * @return OK if all goes as planned, ERROR otherwise.
+ */
+Status space_set_texture_line(Space *space, int line, char *str);
 
 /**
  * @brief It gets the id of a space

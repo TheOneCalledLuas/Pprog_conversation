@@ -29,11 +29,14 @@
 Status game_reader_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
+    FILE *textures = NULL;
     int i = 0;
+    char texture_file[WORD_SIZE] = "";
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     char *toks = NULL;
     char desc[DESC_LINES][DESC_LENGTH];
+    char aux[WORD_SIZE] = "";
     Id id = NO_ID;
     Space *space = NULL;
     Status status = OK;
@@ -48,8 +51,30 @@ Status game_reader_load_spaces(Game *game, char *filename)
     file = fopen(filename, "r");
     if (file == NULL)
     {
+        printf("Error opening the file inside space reader.\n");
         return ERROR;
     }
+    /*Searches for the texture file name*/
+    while (fgets(line, WORD_SIZE, file))
+    {
+        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
+        {
+            for(i=3;i<strlen(line)-2;i++)
+            {
+                texture_file[i-3]=line[i];
+            }
+        }
+    }
+    /*Opens the texture file.*/
+    textures = fopen(texture_file, "r");
+    if(textures == NULL)
+    {
+        fclose(file);
+        printf("Error opening the texture file inside space reader.\n");
+        return ERROR;
+    }
+    /*Starts reading the information file from the beggining again.*/
+    rewind(file);
 
     /*Gets the data line by line.*/
     while (fgets(line, WORD_SIZE, file))
@@ -95,6 +120,29 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 {
                     space_set_gdesc_line(space, i, desc[i]);
                 }
+                /*Looks for the correct texture*/
+                sprintf(aux, "#s:%ld", id);
+                status=ERROR;
+                while (fgets(line, WORD_SIZE, textures))
+                {
+                    if (strncmp(aux, line, IDENTIFIER_LENGTH) == 0)
+                    {
+                        status = OK;
+                        /*Sets the texture.*/
+                        for (i = 0; i < SPACE_TEXTURE_LINES; i++)
+                        {
+                            fgets(line, WORD_SIZE, textures);
+                            space_set_texture_line(space, i, line);
+                        }
+                    }
+                }
+                if(status==ERROR)
+                {
+                    for(i=0;i<SPACE_TEXTURE_LINES;i++)
+                    {
+                        space_set_texture_line(space, i, "  ");
+                    }
+                }
 #ifdef DEBUG
                 for (i = 0; i < DESC_LINES; i++)
                 {
@@ -106,16 +154,22 @@ Status game_reader_load_spaces(Game *game, char *filename)
             }
             else
             {
+                fclose(file);
+                fclose(textures);
+                printf("Error reading the file spaces.\n");
                 return ERROR;
             }
         }
     }
+    status = OK;
     /*If something went wrong while reading the file.*/
     if (ferror(file))
     {
+        printf("Error reading the file spaces.\n");
         status = ERROR;
     }
     /*Closes the file.*/
+    fclose(textures);
     fclose(file);
 
     /*Clean exit.*/
@@ -235,8 +289,10 @@ Status game_reader_load_characters(Game *game, char *name_file)
             toks = strtok(NULL, "|");
             id_sp = atol(toks);
             if ((space_add_character(game_get_space(game, id_sp), id)) == ERROR)
-            {                return ERROR;
-                fclose(file);}
+            {
+                return ERROR;
+                fclose(file);
+            }
 
             /*Gets the amount of health of the character and sets it.*/
             toks = strtok(NULL, "|");
@@ -403,7 +459,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     char line[WORD_SIZE];
     Id id = 0;
     char *toks = NULL;
-    int value = 0, has_exec=0;
+    int value = 0, has_exec = 0;
     Bool is_valid = 0, do_once = 0;
 
     /*Error handling.*/
@@ -446,7 +502,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             gamerules_set_do_once(gr, do_once);
             gamerules_set_value(gr, value);
             gamerules_set_n_exec_times(gr, has_exec);
-            
+
             /*Assigns the gamerule func to the structure.*/
             switch (id)
             {

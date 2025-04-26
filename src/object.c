@@ -158,7 +158,7 @@ Id object_get_id(Object *object)
 }
 
 
-Status object_set_health(Object *object, int *health)
+Status object_set_health(Object *object, int health)
 {
     /*Error handling.*/
     if (!object){
@@ -179,7 +179,7 @@ int object_get_health(Object *object)
     return object->health;
 }
     
-Status object_is_movable(Object *object, Bool *movable)
+Status object_is_movable(Object *object, Bool movable)
 {
     /*Error handling.*/
     if (!object || (movable !=TRUE && movable !=FALSE)){

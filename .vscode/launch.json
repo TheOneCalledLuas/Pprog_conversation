@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["/home/fernandpo/cosa_uni/proyecto_program/data/anthill.dat","-l", "/home/fernandpo/cosa_uni/proyecto_program/log/output.log"],
+            "args": ["data/anthill.dat","-l", "./log/output.log"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
