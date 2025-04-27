@@ -91,7 +91,29 @@ int main(int argc, char **argv)
     if (all || test == 19)
         test2_object_get_id();
     if (all || test == 20)
-        test3_object_get_id();
+        test_object_get_id();
+    if (all || test == 21)
+        test1_object_set_health();
+    if (all || test == 22)
+        test1_object_get_health()
+    if (all || test == 23)
+        test1_object_is_movable();
+    if (all || test == 24)
+        test2_object_is_movable();
+    if (all || test == 25)
+        test1_object_get_movable();
+    if (all || test == 26)
+        test1_object_set_dependency();
+    if (all || test == 27)
+        test2_object_set_description();
+    if (all || test == 28)
+        test1_object_get_dependency();
+    if (all || test == 29)
+        test1_object_set_open();
+    if (all || test == 30)
+        test2_object_set_open();
+    if (all || test == 31)
+        test1_object_get_open();
 
     /*Prints the passed perecentage.*/
     PRINT_PASSED_PERCENTAGE;
@@ -328,5 +350,130 @@ void test3_object_get_id()
     /*Checks the id again , cause why not.*/
     PRINT_TEST_RESULT(-6 == object_get_id(o));
     /*Frees the memory.*/
+    object_destroy(o);
+}
+
+void test1_object_set_health()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /*Test the starting value of health.*/
+    PRINT_TEST_RESULT(0 == object_set_health(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_get_health()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /*Tests the starting value of health.*/
+    PRINT_TEST_RESULT(0 == object_get_health(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_is_movable()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /*Checks the starting value of movable.*/
+    PRINT_TEST_RESULT(!object_is_movable(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test2_object_is_movable()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    object_is_movable(o) = 0;
+    /*Checks if movable has a value that isn't TRUE 0or FALSE.*/
+    PRINT_TEST_RESULT(ERROR == object_is_movable(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_get_movable()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /*Checks if an object is movable*/
+    PRINT_TEST_RESULT(object_get_movable(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_set_dependency()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    object_set_dependency(o) = ID_ERROR;
+    /**/
+    PRINT_TEST_RESULT(!object_set_dependency(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test2_object_set_dependency()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    object_set_dependency(o)= -6;
+    /*Checks dapendency's value*/
+    PRINT_TEST_RESULT(!object_set_dependency(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_get_dependency()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /**/
+    PRINT_TEST_RESULT(object_get_dependency(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_set_open()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /**/
+    PRINT_TEST_RESULT(object_set_open(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test2_object_set_open()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    object_set_open(o) = ID_ERROR;
+    /**/
+    PRINT_TEST_RESULT(!object_set_open(o));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
+void test1_object_get_open()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /**/
+    PRINT_TEST_RESULT(object_get_open(o));
+    /*Frees the memory*/
     object_destroy(o);
 }

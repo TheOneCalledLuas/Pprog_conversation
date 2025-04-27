@@ -106,20 +106,79 @@ Status object_set_name(Object *object, char *name);
 Id object_get_id(Object *object);
 
 /**
- * @brief Gets the object's name.
- * @author Saúl López Romero
+ * @brief Sets the amount of health an object gives
+ * @author Irene García
  * 
  * @param object Pointer to the object.
- * @return Object's id.
+ * @param health The amount of health it gives or takes
+ * @return Object's health.
  */
-
 Status object_set_health(Object *object, int health);
+
+/**
+ * @brief Gets the amount of health an object gives.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @return Object's health.
+ */
 int object_get_health(Object *object);
+
+/**
+ * @brief Determines wether an object is movable or not.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @param movable True if it can be moved, false otherwise.
+ * @return Object's movable value.
+ */
 Status object_is_movable(Object *object, Bool movable);
+
+/**
+ * @brief Gets the information of the movability of an object.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @return Object's movable value.
+ */
 Bool object_get_movable(Object *object);
+
+/**
+ * @brief  Determines wether an object is dependant on other to be interacted with.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @param dependency Wether an object depends on another or not
+ * @return Object's dependency value.
+ */
 Status object_set_dependency(Object *object, Id dependency);
+
+/**
+ * @brief Gets the dependency value of an object.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @return Object's dependency value.
+ */
 Id object_get_dependency(Object *object);
+
+/**
+ * @brief Determines wether an object can open a link between spaces or not.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @param open value of the open parameter
+ * @return Object's open value.
+ */
 Status object_set_open(Object *object, Id open);
+
+/**
+ * @brief Gets the o'pen value of an object.
+ * @author Irene García
+ * 
+ * @param object Pointer to the object.
+ * @return Object's open value.
+ */
 Id object_get_open(Object *object);
 
 /**
