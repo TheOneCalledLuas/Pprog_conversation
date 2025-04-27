@@ -140,6 +140,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
                         for (i = 0; i < SPACE_TEXTURE_LINES; i++)
                         {
                             fgets(line, WORD_SIZE, textures);
+                            line[SPACE_TEXTURE_SIZE-1]='\0';
                             space_set_texture_line(space, i, line);
                         }
                     }
@@ -276,6 +277,7 @@ Status game_reader_load_objects(Game *game, char *filename)
                     for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
                     {
                         fgets(line, WORD_SIZE, textures);
+                        line[OBJECT_TEXTURE_SIZE-1]='\0';
                         object_set_texture_line(object, i, line);
                     }
                 }
@@ -425,15 +427,16 @@ Status game_reader_load_characters(Game *game, char *name_file)
             }
             /*Searches for the correct texture to save it*/
             status = ERROR;
-            sprintf(aux, "#o:%ld", id_sp);
+            sprintf(aux, "#c:%ld", id);
             while (fgets(data, WORD_SIZE, textures) && status == ERROR)
             {
-                if (strncmp(aux, data, sizeof(aux)) == 0)
+                if (strncmp(aux, data, strlen(aux)) == 0)
                 {
                     status = OK;
-                    for (i = 0; i < CHARACTER_TEXTURE_SIZE; i++)
+                    for (i = 0; i < CHARACTER_TEXTURE_LINES; i++)
                     {
                         fgets(data, WORD_SIZE, textures);
+                        data[CHARACTER_TEXTURE_SIZE-1]='\0';
                         character_set_texture_line(character, i, data);
                     }
                 }
@@ -545,12 +548,13 @@ Status game_reader_load_players(Game *game, char *filename)
             sprintf(name, "#p:%ld", player_id);
             while(fgets(line,WORD_SIZE, textures) && status==ERROR)
             {
-                if(strncmp(name, line, sizeof(name))==0)
+                if(strncmp(name, line, strlen(name))==0)
                 {
                     status = OK;
                     for(i=0;i<PLAYER_TEXTURE_LINES;i++)
                     {
                         fgets(line, WORD_SIZE,textures);
+                        line[PLAYER_TEXTURE_SIZE-1]='\0';
                         player_set_texture_line(player, i, line);
                     }
                 }

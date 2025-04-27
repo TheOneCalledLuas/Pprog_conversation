@@ -174,10 +174,9 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
 
         /*Goes to the next turn if a command that changes turn is used.*/
         if (command_get_code(last_cmd) == MOVE)
-        {
             game_next_turn(game);
-            game_next_command(game);
-        }
+
+        game_next_command(game);
     }
 }
 

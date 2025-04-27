@@ -14,12 +14,13 @@
 
 #o:21|grain|11|grain desc|
 #o:22|seed|121|seed desc|
-#o:23|water_drop|123|water desc|
+#o:23|water|123|water desc|
 #o:24|soil|125|soil desc|
 
 #p:1|Ant|mO^|11|5|3|
 #p:3|Worm|-^-^-|123|5|3|
 
+0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
 #l:31|Entry-P1|11|121|1|1|
 #l:32|P1-Entry|121|11|0|1|
 #l:33|P1-P2|121|122|1|1|
@@ -29,7 +30,7 @@
 #l:37|P4-P3|124|123|0|1|
 #l:38|P4-Despensa|124|13|1|1|
 #l:39|Despensa-P4|13|124|0|1|
-#l:40|Agujero-Despensa|14|13|1|1|
+#l:40|Agujero-Despensa|14|13|5|1|
 #l:41|P7-Agujero|127|14|2|1|
 #l:42|Agujero-P7|14|127|3|1|
 #l:43|P6-P7|126|127|2|1|

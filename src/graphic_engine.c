@@ -106,7 +106,8 @@ typedef enum
  */
 struct _Graphic_engine
 {
-    Area *map;      /*!< Map area dimensions.*/
+    Area *room;     /*!< Room area dimensions.*/
+    Area *map;      /*!< Map dimensions.*/
     Area *descript; /*!< Description area dimensions.*/
     Area *banner;   /*!< Banner area dimensions.*/
     Area *help;     /*!< Help area dimensions.*/
@@ -142,7 +143,7 @@ Graphic_engine *graphic_engine_create()
     static Graphic_engine *ge = NULL;
 
     /*Screen initialisation.*/
-    screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 3 * EXTRA_LINE);
+    screen_init(HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + HEIGHT_FDB + 4 * EXTRA_LINE, WIDTH_MAP * 2 + WIDTH_DES + 5 * EXTRA_LINE);
 
     /*Space allocation and error management.*/
     ge = (Graphic_engine *)malloc(sizeof(Graphic_engine));
@@ -153,10 +154,11 @@ Graphic_engine *graphic_engine_create()
 
     /*It gives the value needed for each variable.*/
     ge->map = screen_area_init(STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript = screen_area_init(WIDTH_MAP + 2 * EXTRA_LINE, STARING_POINT, WIDTH_DES, HEIGHT_MAP);
-    ge->banner = screen_area_init((int)((WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE - WIDTH_BAN) / 2), HEIGHT_MAP + 2 * EXTRA_LINE, WIDTH_BAN, HEIGHT_BAN);
-    ge->help = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + 2 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE, HEIGHT_HLP);
-    ge->feedback = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 3 * EXTRA_LINE, WIDTH_MAP + WIDTH_DES + 1 * EXTRA_LINE, HEIGHT_FDB);
+    ge->room = screen_area_init(WIDTH_MAP + 2 * EXTRA_LINE, STARING_POINT, WIDTH_MAP, HEIGHT_MAP);
+    ge->descript = screen_area_init((WIDTH_MAP + 2 * EXTRA_LINE) * 2, STARING_POINT, WIDTH_DES, HEIGHT_MAP);
+    ge->banner = screen_area_init((int)((WIDTH_MAP * 2 + WIDTH_DES + 1 * EXTRA_LINE - WIDTH_BAN) / 2), HEIGHT_MAP + 2 * EXTRA_LINE, WIDTH_BAN, HEIGHT_BAN);
+    ge->help = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + 2 * EXTRA_LINE, WIDTH_MAP * 2 + WIDTH_DES + 2 * EXTRA_LINE, HEIGHT_HLP);
+    ge->feedback = screen_area_init(1 * EXTRA_LINE, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 3 * EXTRA_LINE, WIDTH_MAP * 2 + WIDTH_DES + 2 * EXTRA_LINE, HEIGHT_FDB);
 
     /*Clean exit.*/
     return ge;
@@ -169,11 +171,12 @@ void graphic_engine_destroy(Graphic_engine *ge)
         return;
 
     /*Destroys everything.*/
-    screen_area_destroy(ge->map);
+    screen_area_destroy(ge->room);
     screen_area_destroy(ge->descript);
     screen_area_destroy(ge->banner);
     screen_area_destroy(ge->help);
     screen_area_destroy(ge->feedback);
+    screen_area_destroy(ge->map);
 
     screen_destroy();
     free(ge);
@@ -233,7 +236,7 @@ Status map_init(Game *game, char **map)
             link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], E);
         if ((actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[NORTH], W)) == NO_ID)
         {
-            actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[EAST], W);
+            actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[EAST], N);
             link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], W);
         }
         else
@@ -321,8 +324,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE]={'\0'}, str2[MAX_STRING_GE / 2], **map = NULL, *obj_name = NULL;
-    int i = 0, n_objects = 0;
+    char str[MAX_STRING_GE] = {'\0'}, str2[MAX_STRING_GE / 2], **map = NULL, *obj_name = NULL;
+    int i = 0, j = 0, k = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_actual_player(game);
@@ -332,22 +335,71 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     if (!ge || !game)
         return;
 
+    /*Sets the space where the player is to discovered*/
+    space_set_discovered((game_get_space(game, player_get_player_location(game_get_actual_player(game)))), TRUE);
+
     /*MAP SECTION.*/
     screen_area_clear(ge->map);
-    /*Puts the place where the player is to discovered.*/
-    space_set_discovered((game_get_space(game, player_get_player_location(game_get_actual_player(game)))), OPENED);
-    /*Several options*/
-    /*A- If the command that puts the map is the last one given, print the map.*/
-    if (command_get_code(game_get_last_command(game)) == MAP)
+    /*1-Allocates memory needed.*/
+    if (!(map = (char **)calloc(HEIGHT_MAP, sizeof(char *))))
     {
-        /*1-Allocates memory needed.*/
-        if (!(map = (char **)calloc(HEIGHT_MAP, sizeof(char *))))
+        return;
+    }
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
         {
+            for (i = 0; i < HEIGHT_MAP; i++)
+            {
+                if (map[i])
+                    free(map[i]);
+            }
+            free(map);
             return;
         }
+    }
+
+    /*2-Fills the map that we modify and later print.*/
+    if (map_init(game, map) == ERROR)
+    {
         for (i = 0; i < HEIGHT_MAP; i++)
         {
-            if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
+            if (map[i])
+                free(map[i]);
+        }
+        return;
+    }
+
+    /*3-Prints the map.*/
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        screen_area_puts(ge->map, map[i]);
+    }
+    /*We dont free map here cause we use it again later.*/
+
+    /*SPACE SECTION*/
+    /*1-Fills the map array we used later with new information*/
+    screen_area_clear(ge->room);
+    {
+        /*1.1-Prints the texture of the space*/
+        for (i = 0; i < SPACE_TEXTURE_LINES; i++)
+        {
+            strncpy(map[i], space_get_texture_line(space_act, i), SPACE_TEXTURE_SIZE);
+        }
+        /*1.2-Prints the player*/
+        for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
+        {
+            strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
+            for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
+            {
+                if (str[j] != '&')
+                    map[i + 9][j + 27] = str[j];
+            }
+        }
+        /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four*/
+        if (space_get_n_objects(space_act) != 0)
+        {
+            if (!(objects = space_get_objects(space_act)))
             {
                 for (i = 0; i < HEIGHT_MAP; i++)
                 {
@@ -357,48 +409,74 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 free(map);
                 return;
             }
-        }
-
-        /*2-Fills the map that we modify and later print.*/
-        if (map_init(game, map) == ERROR)
-        {
-            for (i = 0; i < HEIGHT_MAP; i++)
+            for (i = 0; i < space_get_n_objects(space_act) && i < 6; i++)
             {
-                if (map[i])
-                    free(map[i]);
+                if (objects[i] != NO_ID && objects[i] != ID_ERROR)
+                {
+                    for (j = 0; j < OBJECT_TEXTURE_LINES; j++)
+                    {
+                        strncpy(str, object_get_texture_line(game_get_object(game, objects[i]), j), OBJECT_TEXTURE_SIZE);
+                        for (k = 0; k < OBJECT_TEXTURE_SIZE - 1; k++)
+                        {
+                            if (str[j] != '&')
+                                map[j + 22][k + 1 + i * 10] = str[k];
+                        }
+                    }
+                }
             }
-            return;
+            free(objects);
         }
+        /*1.4-Prints the characters there are*/
+        if (space_get_n_characters(space_act) > 0)
+        {
+            if(!(characters = space_get_characters(space_act)))
+            {
+                for (i = 0; i < HEIGHT_MAP; i++)
+                {
+                    if (map[i])
+                        free(map[i]);
+                }
+                free(map);
+                return;
+            }
+            for (i = 0; i < space_get_n_characters(space_act); i++)
+            {
+                if (characters[i] != NO_ID && characters[i] != ID_ERROR)
+                {
+                    for (j = 0; j < CHARACTER_TEXTURE_LINES; j++)
+                    {
+                        strncpy(str, character_get_texture_line(game_get_character(game, characters[i]), j), CHARACTER_TEXTURE_SIZE);
+                        for (k = 0; k < CHARACTER_TEXTURE_SIZE - 1; k++)
+                        {
+                            if (i < 3)
+                            {
+                                if (str[j] != '&')
+                                    map[j + 11 + i * 5][k + 45 + 2*i] = str[k];
+                            }
+                            else if (str[j] != '&')
+                                map[j + 11 + (i - 3) * 5][k + 12 - 2*i] = str[k];
+                        }
+                    }
+                }
+            }
+            free(characters);
+        }
+    }
 
-        /*3-Prints the map.*/
-        for (i = 0; i < HEIGHT_MAP; i++)
-        {
-            screen_area_puts(ge->map, map[i]);
-        }
-        /*4-Frees the allocated memory.*/
-        for (i = 0; i < HEIGHT_MAP; i++)
-        {
-            if (map[i])
-                free(map[i]);
-        }
-        free(map);
-        command_set_status(game_get_last_command(game), OK);
-    }
-    /*B-If none of the options above meets it requirements, print the space where the player is at.*/
-    else
+    /*2-Prints the map*/
+    for (i = 0; i < HEIGHT_MAP; i++)
     {
-        /*1-Prints the texture of the space*/
-        for (i = 0; i < SPACE_TEXTURE_LINES; i++)
-        {
-            strncpy(str, space_get_texture_line(space_act, i), WIDTH_MAP -2);
-            str[WIDTH_MAP - 1] = '\0';
-            /*Esto despues habrá que cambiarlo a hacer algo parecido a map. Ahora no tengo tiempo*/
-            screen_area_puts(ge->map, str);
-        }
-        /*2-Prints the player*/
-        /*3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four*/
-        /*4-Prints the characters there are*/
+        screen_area_puts(ge->room, map[i]);
     }
+
+    /*3-Frees the map memory.*/
+    for (i = 0; i < HEIGHT_MAP; i++)
+    {
+        if (map[i])
+            free(map[i]);
+    }
+    free(map);
+
     /*DESCRIPTION SECTION.*/
     /*1-Clears the area.*/
     screen_area_clear(ge->descript);

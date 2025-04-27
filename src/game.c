@@ -142,7 +142,7 @@ Character *game_get_character(Game *game, Id id)
         return NULL;
 
     /*Searches for the id.*/
-    for (i = 0; i < game->n_objects; i++)
+    for (i = 0; i < game->n_characters; i++)
     {
         if (character_get_id(game->characters[i]) == id)
         {
@@ -824,7 +824,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 {
     int i;
     /*Error managment.*/
-    if (!(game) || space == ID_ERROR || direction < 0 || direction > W)
+    if (!(game) || space == ID_ERROR || direction < 0 || direction > D)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing that direction, returns the destination.*/
