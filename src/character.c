@@ -31,11 +31,14 @@ struct _Character
     char message[MAX_MESSAGE];  /*!< Message of the character.*/
     int health;                 /*!< Amount of health of the character.*/
     Id follow;                  /*!< Id of the character it follows.*/
+    char *texture[CHARACTER_TEXTURE_LINES]; /*!< Strings which create the texture of the character.*/
+    char *__texture_data;       /*!< Actual matrix with the texture.*/
 };
 
 Character *character_create(Id id)
 {
     Character *character = NULL;
+    int i;
     /*Error management.*/
     if (id < 0)
         return NULL;
@@ -53,6 +56,17 @@ Character *character_create(Id id)
     character->friendly = FALSE;
     character->message[0] = '\0';
     character->follow = NO_ID;
+    character->health = 0;
+    character->__texture_data = (char*)calloc(CHARACTER_TEXTURE_SIZE*CHARACTER_TEXTURE_LINES, sizeof(char));
+    if (!character->__texture_data)
+    {
+        free(character);
+        return NULL;
+    }
+    for(i=0;i<CHARACTER_TEXTURE_LINES;i++)
+    {
+        character->texture[i]=&(character->__texture_data[i*CHARACTER_TEXTURE_SIZE]);
+    }
     /*Clean exit.*/
     return character;
 }
@@ -62,8 +76,33 @@ void character_destroy(Character *character)
     /*Error management.*/
     if (character)
     {
+        free(character->__texture_data);
         free(character);
     }
+}
+
+Status character_set_texture_line(Character *character, int line, char *str)
+{
+    /*Error handling.*/
+    if (!character || line < 0 || line >= CHARACTER_TEXTURE_LINES || !str)
+    {
+        return ERROR;
+    }
+    /*Sets the value.*/
+    strncpy(character->texture[line], str, CHARACTER_TEXTURE_SIZE);
+    character->texture[line][CHARACTER_TEXTURE_SIZE - 1] = '\0';
+    return OK;
+}
+
+char *character_get_texture_line(Character *character, int line)
+{
+    /*Error handling.*/
+    if (!character || line < 0 || line >= CHARACTER_TEXTURE_LINES)
+    {
+        return NULL;
+    }
+    /*Returns the value.*/
+    return character->texture[line];
 }
 
 Id character_get_id(Character *character)

@@ -11,6 +11,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #define PLAYER_NAME_SIZE 30 /*!<Maxinum name length.*/
+#define PLAYER_TEXTURE_LINES 7 /*!< Lines of each texture.*/
+#define PLAYER_TEXTURE_SIZE 10 /*!< Size of the texture.*/
 
 #include "types.h"
 #include "object.h"
@@ -27,6 +29,28 @@ typedef struct _Player Player; /*!<Player type.*/
  * @return Pointer the a new player, initialized.
  */
 Player *player_create(Id id);
+
+/**
+ * @brief It sets a line of the texture.
+ * @author Fernando Mijangos.
+ *
+ * @param player Pointer to the player.
+ * @param line line to be modified.
+ * @param str to be set.
+ * @return OK if all goes as planned, ERROR otherwise.
+ */
+char *player_get_texture_line(Player *player, int line);
+
+/**
+ * @brief It sets a line of the texture.
+ * @author Fernando Mijangos.
+ * 
+ * @param player Pointer to the player.
+ * @param line line to be given.
+ * @param str to be set.
+ * @return NULL if an error takes place, the line otherwise.
+ */
+Status player_set_texture_line(Player *player, int line, char *str);
 
 /**
  * @brief It destroys a player, freeing the allocated memory

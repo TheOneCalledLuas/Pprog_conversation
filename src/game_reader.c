@@ -55,19 +55,26 @@ Status game_reader_load_spaces(Game *game, char *filename)
         return ERROR;
     }
     /*Searches for the texture file name*/
-    while (fgets(line, WORD_SIZE, file))
+    status = ERROR;
+    while (fgets(line, WORD_SIZE, file) && status == ERROR)
     {
         if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
         {
-            for(i=3;i<strlen(line)-2;i++)
+            status = OK;
+            for (i = 3; i < strlen(line) - 2; i++)
             {
-                texture_file[i-3]=line[i];
+                texture_file[i - 3] = line[i];
             }
         }
     }
+    if (status == ERROR)
+    {
+        fclose(file);
+        return ERROR;
+    }
     /*Opens the texture file.*/
     textures = fopen(texture_file, "r");
-    if(textures == NULL)
+    if (textures == NULL)
     {
         fclose(file);
         printf("Error opening the texture file inside space reader.\n");
@@ -79,6 +86,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
     /*Gets the data line by line.*/
     while (fgets(line, WORD_SIZE, file))
     {
+        rewind(textures);
         /*Checks that the line contains a room.*/
         if (strncmp("#s:", line, IDENTIFIER_LENGTH) == 0)
         {
@@ -122,10 +130,10 @@ Status game_reader_load_spaces(Game *game, char *filename)
                 }
                 /*Looks for the correct texture*/
                 sprintf(aux, "#s:%ld", id);
-                status=ERROR;
-                while (fgets(line, WORD_SIZE, textures))
+                status = ERROR;
+                while (fgets(line, WORD_SIZE, textures) && status == ERROR)
                 {
-                    if (strncmp(aux, line, IDENTIFIER_LENGTH) == 0)
+                    if (strncmp(aux, line, strlen(aux)) == 0)
                     {
                         status = OK;
                         /*Sets the texture.*/
@@ -136,9 +144,9 @@ Status game_reader_load_spaces(Game *game, char *filename)
                         }
                     }
                 }
-                if(status==ERROR)
+                if (status == ERROR)
                 {
-                    for(i=0;i<SPACE_TEXTURE_LINES;i++)
+                    for (i = 0; i < SPACE_TEXTURE_LINES; i++)
                     {
                         space_set_texture_line(space, i, "  ");
                     }
@@ -171,7 +179,6 @@ Status game_reader_load_spaces(Game *game, char *filename)
     /*Closes the file.*/
     fclose(textures);
     fclose(file);
-
     /*Clean exit.*/
     return status;
 }
@@ -179,10 +186,14 @@ Status game_reader_load_spaces(Game *game, char *filename)
 Status game_reader_load_objects(Game *game, char *filename)
 {
     FILE *file = NULL;
+    FILE *textures = NULL;
+    int i = 0;
+    char texture_file[WORD_SIZE] = "";
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     char desc[WORD_SIZE] = "";
     Id id = NO_ID, space_id = NO_ID;
+    Status status = OK;
     Object *object = NULL;
     char *toks = NULL;
 
@@ -197,10 +208,38 @@ Status game_reader_load_objects(Game *game, char *filename)
     {
         return ERROR;
     }
+    /*Searches for the name of the textures*/
+    status = ERROR;
+    while (status == ERROR && fgets(line, WORD_SIZE, file))
+    {
+        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
+        {
+            status = OK;
+            for (i = 3; i < strlen(line) - 2; i++)
+            {
+                texture_file[i - 3] = line[i];
+            }
+        }
+    }
+    texture_file[i - 3] = '\0';
+    if (status == ERROR)
+    {
+        fclose(file);
+        return ERROR;
+    }
+    /*Opens the texture file.*/
+    if (!(textures = fopen(texture_file, "r")))
+    {
+        fclose(file);
+        return ERROR;
+    }
+    /*Starts reading the information file from the beggining again.*/
+    rewind(file);
 
     /*Gets the data line by line.*/
     while (fgets(line, WORD_SIZE, file))
     {
+        rewind(textures);
         /*Checks that the line contains an object.*/
         if (strncmp("#o:", line, IDENTIFIER_LENGTH) == 0)
         {
@@ -225,7 +264,29 @@ Status game_reader_load_objects(Game *game, char *filename)
             object_set_name(object, name);
             object_set_description(object, desc);
             game_add_object(game, object);
-
+            /*Looks for the correct texture*/
+            status = ERROR;
+            sprintf(name, "#o:%ld", id);
+            while (status == ERROR && fgets(line, WORD_SIZE, textures))
+            {
+                if (strncmp(name, line, strlen(name)) == 0)
+                {
+                    status = OK;
+                    /*Sets the texture.*/
+                    for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
+                    {
+                        fgets(line, WORD_SIZE, textures);
+                        object_set_texture_line(object, i, line);
+                    }
+                }
+            }
+            if (status == ERROR)
+            {
+                for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
+                {
+                    object_set_texture_line(object, i, "  ");
+                }
+            }
             /*Places the object in its initial place.*/
             if (space_id != -1)
             {
@@ -233,9 +294,15 @@ Status game_reader_load_objects(Game *game, char *filename)
             }
         }
     }
+    status = OK;
     /*Close the file.*/
+    if (ferror(file))
+    {
+        printf("Error reading the file spaces.\n");
+        status = ERROR;
+    }
     fclose(file);
-
+    fclose(textures);
     /*Clean exit.*/
     return OK;
 }
@@ -243,11 +310,16 @@ Status game_reader_load_objects(Game *game, char *filename)
 Status game_reader_load_characters(Game *game, char *name_file)
 {
     FILE *file = NULL;
+    FILE *textures = NULL;
+    int i = 0;
+    Status status = OK;
+    char texture_file[WORD_SIZE] = "";
     Character *character;
     Id id = NO_ID, id_sp = NO_ID;
     Bool friendly = FALSE;
     int health = 0;
     char data[WORD_SIZE] = "";
+    char aux[WORD_SIZE] = "";
     char *toks = NULL;
 
     /*Opens the file.*/
@@ -256,10 +328,42 @@ Status game_reader_load_characters(Game *game, char *name_file)
         return ERROR;
     }
 
+    /*Gets the name of the texture file*/
+    status = ERROR;
+    while (fgets(data, WORD_SIZE, file) && status == ERROR)
+    {
+        if (strncmp("#t:", data, IDENTIFIER_LENGTH) == 0)
+        {
+            status = OK;
+            /*Its up to that -2 to remove the \n and \r that appear*/
+            for (i = 3; i < strlen(data) - 2; i++)
+            {
+                texture_file[i - 3] = data[i];
+            }
+        }
+    }
+    texture_file[i] = '\0';
+    if (status == ERROR)
+    {
+        fclose(file);
+        return ERROR;
+    }
+    /*Opens the texture file*/
+    if (!(textures = fopen(texture_file, "r")))
+    {
+        fclose(file);
+        return ERROR;
+    }
+    /*Rewinds the previous file to the top*/
+    rewind(file);
+
+    /*Reads the rest of the file*/
     while (fgets(data, WORD_SIZE, file))
     {
         if (strncmp("#c:", data, IDENTIFIER_LENGTH) == 0)
         {
+            /*Rewinds the texture file*/
+            rewind(textures);
             /*Gets the id of the character and creates it.*/
             toks = strtok(data + IDENTIFIER_LENGTH, "|");
             id = atol(toks);
@@ -319,10 +423,33 @@ Status game_reader_load_characters(Game *game, char *name_file)
                 return ERROR;
                 fclose(file);
             }
-
+            /*Searches for the correct texture to save it*/
+            status = ERROR;
+            sprintf(aux, "#o:%ld", id_sp);
+            while (fgets(data, WORD_SIZE, textures) && status == ERROR)
+            {
+                if (strncmp(aux, data, sizeof(aux)) == 0)
+                {
+                    status = OK;
+                    for (i = 0; i < CHARACTER_TEXTURE_SIZE; i++)
+                    {
+                        fgets(data, WORD_SIZE, textures);
+                        character_set_texture_line(character, i, data);
+                    }
+                }
+            }
+            /*If it didnt find it, fill with spaces.*/
+            if (status == ERROR)
+            {
+                for (i = 0; i < CHARACTER_TEXTURE_LINES; i++)
+                {
+                    character_set_texture_line(character, i, "  ");
+                }
+            }
             game_add_character(game, character);
         }
     }
+    fclose(textures);
     fclose(file);
     return OK;
 }
@@ -330,13 +457,16 @@ Status game_reader_load_characters(Game *game, char *name_file)
 Status game_reader_load_players(Game *game, char *filename)
 {
     FILE *f = NULL;
+    FILE *textures = NULL;
+    char texture_file[WORD_SIZE] = "";
+    Status status = ERROR;
     Player *player = NULL;
     char name[WORD_SIZE];
     char gdesc[WORD_SIZE];
     char line[WORD_SIZE];
     Id player_id = 0, space_id = 0;
     char *toks = NULL;
-    int player_inventory = 0, player_health = 0;
+    int player_inventory = 0, player_health = 0, i = 0;
 
     /*Error handling.*/
     if (!game || !filename)
@@ -346,12 +476,44 @@ Status game_reader_load_players(Game *game, char *filename)
     if (!(f = fopen(filename, "r")))
         return ERROR;
 
+    /*Searches for the texture file.*/
+    status = ERROR;
+    while (fgets(line, WORD_SIZE, f))
+    {
+        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
+        {
+            status = OK;
+            /*Its up to that -2 to remove the \n and \r that appear*/
+            for (i = 3; i < strlen(line) - 2; i++)
+            {
+                texture_file[i - 3] = line[i];
+            }
+            texture_file[i]='\0';
+        }
+    }
+    /*If it didnt find the texture file, return ERROR*/
+    if (status == ERROR)
+    {
+        printf("Couldn't find the texture file in object game reader\n");
+        fclose(f);
+        return ERROR;
+    }
+    /*Opens the texture file.*/
+    if (!(textures = fopen(texture_file, "r")))
+    {
+        fclose(f);
+        return ERROR;
+    }
+    /*Rewinds the file*/
+    rewind(f);
     /*Gets the data line by line.*/
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
         if (strncmp("#p:", line, IDENTIFIER_LENGTH) == 0)
         {
+            /*Rewinds the texture file*/
+            rewind(textures);
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
             player_id = atol(toks);
@@ -378,11 +540,35 @@ Status game_reader_load_players(Game *game, char *filename)
             player_set_gdesc(player, gdesc);
             player_set_health(player, player_health);
             player_set_inventory_capacity(player, player_inventory);
+            /*Searches for the player texture.*/
+            status = ERROR;
+            sprintf(name, "#p:%ld", player_id);
+            while(fgets(line,WORD_SIZE, textures) && status==ERROR)
+            {
+                if(strncmp(name, line, sizeof(name))==0)
+                {
+                    status = OK;
+                    for(i=0;i<PLAYER_TEXTURE_LINES;i++)
+                    {
+                        fgets(line, WORD_SIZE,textures);
+                        player_set_texture_line(player, i, line);
+                    }
+                }
+            }
+            /*If it didnt find the texture fills it with spaces.*/
+            if(status==ERROR)
+            {
+                for(i=0;i<PLAYER_TEXTURE_LINES;i++)
+                {
+                    player_set_texture_line(player, i, " ");
+                }
+            }
             /*Adds the player to the space.*/
             game_add_player(game, player);
         }
     }
     /*Close the file.*/
+    fclose(textures);
     fclose(f);
 
     /*Clean exit.*/

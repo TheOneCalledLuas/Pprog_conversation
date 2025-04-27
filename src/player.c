@@ -34,11 +34,14 @@ struct _Player
     Inventory *inventory;               /*!< Player inventory.*/
     int health;                         /*!< Health points the player has.*/
     char gdesc[MAX_GDESC];              /*!< Graphic description for the player.*/
+    char *texture[PLAYER_TEXTURE_LINES]; /*!< Texture of the player.*/
+    char *__texture;                 /*!< Actual matrix with the gdesc.*/
 };
 
 Player *player_create(Id id)
 {
     Player *player;
+    int i;
 
     if (id < 0)
         return NULL;
@@ -56,9 +59,43 @@ Player *player_create(Id id)
     player->player_location = NO_ID;
     player->inventory = inventory_create();
     player->health = DEFAULT_HEALTH;
+    if(!(player->__texture=(char *)calloc(PLAYER_TEXTURE_LINES * PLAYER_TEXTURE_SIZE, sizeof(char))))
+    {
+        return NULL;
+    }
+    /*Sets the array so that it's more accesible.*/
+    for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
+    {
+        player->texture[i] = &(player->__texture[i * PLAYER_TEXTURE_SIZE]);
+    }
     player->gdesc[0] = '\0';
 
     return player;
+}
+
+char *player_get_texture_line(Player *player, int line)
+{
+    /*Error management*/
+    if (player == NULL || line < 0 || line >= PLAYER_TEXTURE_LINES)
+    {
+        return NULL;
+    }
+
+    /*Returns the value.*/
+    return player->texture[line];
+}
+
+Status player_set_texture_line(Player *player, int line, char *str)
+{
+    /*Error management*/
+    if (player == NULL || line < 0 || line >= PLAYER_TEXTURE_LINES || str == NULL)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value.*/
+    strcpy(player->texture[line], str);
+    return OK;
 }
 
 Status player_destroy(Player *player)
@@ -71,6 +108,7 @@ Status player_destroy(Player *player)
 
     /*Frees the memory*/
     inventory_destroy(player->inventory);
+    free(player->__texture);
     free(player);
     return OK;
 }

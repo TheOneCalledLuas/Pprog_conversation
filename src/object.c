@@ -26,18 +26,21 @@
  */
 struct _Object
 {
-    Id id;                    /*!< Id of the object, it must be unique. */
-    char name[WORD_SIZE + 1]; /*!< Object name. */
-    char *description;        /*!< Object description.*/
-    int health;               /*!< Determines the amount of health the object gives or takes.*/
-    Bool movable;             /*!< Determines wether a object can be moved or not.*/
-    Id dependency;            /*!< Determines if the object needs another object to be taken.*/
-    Id open;                  /*!< Determines if the object can open a link.*/
+    Id id;                               /*!< Id of the object, it must be unique. */
+    char name[WORD_SIZE + 1];            /*!< Object name. */
+    char *description;                   /*!< Object description.*/
+    int health;                          /*!< Determines the amount of health the object gives or takes.*/
+    Bool movable;                        /*!< Determines wether a object can be moved or not.*/
+    Id dependency;                       /*!< Determines if the object needs another object to be taken.*/
+    Id open;                             /*!< Determines if the object can open a link.*/
+    char *texture[OBJECT_TEXTURE_LINES];  /*!< Strings which create the texture of the space*/
+    char *__texture_data;                /*!< Actual matrix with the texture*/
 };
 
 Object *object_create(Id id)
 {
     Object *object = NULL;
+    int i = 0;
 
     /*Checks that the id is at least valid.*/
     if (id == NO_ID || id == ID_ERROR)
@@ -68,6 +71,18 @@ Object *object_create(Id id)
     object->movable = FALSE;
     object->dependency = NO_ID;
     object->open = NO_ID;
+    /*Allocates memory for the textures.*/
+    if (!(object->__texture_data = (char *)calloc(OBJECT_TEXTURE_LINES * OBJECT_TEXTURE_SIZE, sizeof(char))))
+    {
+        free(object->description);
+        free(object);
+        return NULL;
+    }
+    /*Sets the array so that it's more accesible.*/
+    for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
+    {
+        object->texture[i] = &(object->__texture_data[i * OBJECT_TEXTURE_SIZE]);
+    }
 
     /*Clean exit.*/
     return object;
@@ -84,6 +99,7 @@ Status object_destroy(Object *object)
 
     /*Frees the memory.*/
     free(object->description);
+    free(object->__texture_data);
     free(object);
 
     /*Clean exit.*/
@@ -113,6 +129,33 @@ Status object_set_description(Object *object, char *desc)
     /*Sets the value.*/
     strcpy(object->description, desc);
     return OK;
+}
+
+Status object_set_texture_line(Object *object, int line, char *str)
+{
+    /*Checks the arguments.*/
+    if (!object || line < 0 || line > OBJECT_TEXTURE_LINES - 1 || !str || strlen(str) != OBJECT_TEXTURE_SIZE - 1)
+    {
+        return ERROR;
+    }
+
+    /*Sets the line.*/
+    strcpy(object->texture[line], str);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+char *object_get_texture_line(Object *object, int line)
+{
+    /*Checks the arguments.*/
+    if (!object || line < 0 || line > OBJECT_TEXTURE_LINES - 1)
+    {
+        return NULL;
+    }
+
+    /*Returns the line.*/
+    return object->texture[line];
 }
 
 char *object_get_name(Object *object)

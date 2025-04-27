@@ -12,6 +12,8 @@
 #define OBJECT_H
 
 #include "types.h"
+#define OBJECT_TEXTURE_LINES 5 /*!< Lines of each texture.*/
+#define OBJECT_TEXTURE_SIZE 10 /*!< Size of the texture.*/
 
 typedef struct _Object Object; /*!< Object type.*/
 
@@ -32,6 +34,27 @@ Object * object_create(Id id);
  * @return OK if it works as intended, ERROR otherwise.
  */
 Status object_destroy(Object *object);
+
+/**
+ * @brief Sets a line of the texture.
+ * @author Fernando Mijangos.
+ * 
+ * @param object Pointer to the object.
+ * @param line line to be modified.
+ * @param str to be set.
+ * @return OK if all goes as planned, ERROR otherwise.
+ */
+Status object_set_texture_line(Object *object, int line, char *str);
+
+/**
+ * @brief Gets a determined line of the texture.
+ * @author Fernando Mijangos.
+ * 
+ * @param object Pointer to the object.
+ * @param line line to be given.
+ * @return NULL if an error takes place, the line otherwise.
+ */
+char *object_get_texture_line(Object *object, int line);
 
 /**
  * @brief Gets the object's name.

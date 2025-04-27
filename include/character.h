@@ -10,6 +10,8 @@
 
 #ifndef CHARACTER_H
 #define CHARACTER_H
+#define CHARACTER_TEXTURE_LINES 5 /*!< Lines of each texture.*/
+#define CHARACTER_TEXTURE_SIZE 10 /*!< Size of the texture.*/
 
 #include "types.h"
 #include "player.h"
@@ -42,6 +44,26 @@ void character_destroy(Character *character);
  */
 Id character_get_id(Character *character);
 
+/**
+ * @brief Sets a line of the texture.
+ * @author Fernando Mijangos.
+ *
+ * @param character Pointer to the character.
+ * @param line line to be modified.
+ * @param str to be set.
+ * @return OK if all goes as planned, ERROR otherwise.
+ */
+Status character_set_texture_line(Character *character, int line, char *str);
+
+/**
+ * @brief Gets a determined line of the texture.
+ * @author Fernando Mijangos.
+ *
+ * @param character Pointer to the character.
+ * @param line line to be given.
+ * @return NULL if an error takes place, the line otherwise.
+ */
+char *character_get_texture_line(Character *character, int line);
 /**
  * @brief Sets the name of the character to what you want.
  * @author Fernando Mijangos
