@@ -91,15 +91,15 @@ int main(int argc, char **argv)
     if (all || test == 19)
         test2_object_get_id();
     if (all || test == 20)
-        test_object_get_id();
+        test3_object_get_id();
     if (all || test == 21)
         test1_object_set_health();
     if (all || test == 22)
-        test1_object_get_health()
+        test1_object_get_health();
     if (all || test == 23)
-        test1_object_is_movable();
+        test1_object_set_movable();
     if (all || test == 24)
-        test2_object_is_movable();
+        test2_object_set_movable();
     if (all || test == 25)
         test1_object_get_movable();
     if (all || test == 26)
@@ -158,7 +158,7 @@ void test1_object_get_gdesc()
     /*Sets the gdesc*/
     object_set_description(o, "potato");
     /*Checks.*/
-    PRINT_TEST_RESULT(0==strcmp("potato", object_get_description(o)));
+    PRINT_TEST_RESULT(0 == strcmp("potato", object_get_description(o)));
     /*Frees the memory.*/
     object_destroy(o);
 }
@@ -169,7 +169,7 @@ void test2_object_get_gdesc()
     Object *o = NULL;
     o = object_create(5);
     /*Checks.*/
-    PRINT_TEST_RESULT(0!=strcmp("potato", object_get_description(o)));
+    PRINT_TEST_RESULT(0 != strcmp("potato", object_get_description(o)));
     /*Frees the memory.*/
     object_destroy(o);
 }
@@ -255,7 +255,7 @@ void test2_object_get_name()
     /*Puts the name to NULL, althought its already initialized to NULL.*/
     object_set_name(o, NULL);
     /*Compares the results, with a NULL as string*/
-    PRINT_TEST_RESULT(0!=(strcmp("potato", object_get_name(o))));
+    PRINT_TEST_RESULT(0 != (strcmp("potato", object_get_name(o))));
     /*Frees the memory.*/
     object_destroy(o);
 }
@@ -268,7 +268,7 @@ void test3_object_get_name()
     /*Sets the name.*/
     object_set_name(o, "potato");
     /*Compares the results, but the object the thing is searching is NULL*/
-    PRINT_TEST_RESULT(object_get_name(NULL)==NULL);
+    PRINT_TEST_RESULT(object_get_name(NULL) == NULL);
     /*Frees the memory.*/
     object_destroy(o);
 }
@@ -359,7 +359,7 @@ void test1_object_set_health()
     /*Creates an object.*/
     o = object_create(5);
     /*Test the starting value of health.*/
-    PRINT_TEST_RESULT(0 == object_set_health(o));
+    PRINT_TEST_RESULT(OK == object_set_health(o, 7));
     /*Frees the memory*/
     object_destroy(o);
 }
@@ -375,25 +375,13 @@ void test1_object_get_health()
     object_destroy(o);
 }
 
-void test1_object_is_movable()
+void test1_object_get_movable()
 {
     Object *o = NULL;
     /*Creates an object.*/
     o = object_create(5);
     /*Checks the starting value of movable.*/
-    PRINT_TEST_RESULT(!object_is_movable(o));
-    /*Frees the memory*/
-    object_destroy(o);
-}
-
-void test2_object_is_movable()
-{
-    Object *o = NULL;
-    /*Creates an object.*/
-    o = object_create(5);
-    object_is_movable(o) = 0;
-    /*Checks if movable has a value that isn't TRUE 0or FALSE.*/
-    PRINT_TEST_RESULT(ERROR == object_is_movable(o));
+    PRINT_TEST_RESULT(FALSE == object_get_movable(o));
     /*Frees the memory*/
     object_destroy(o);
 }
@@ -414,9 +402,8 @@ void test1_object_set_dependency()
     Object *o = NULL;
     /*Creates an object.*/
     o = object_create(5);
-    object_set_dependency(o) = ID_ERROR;
-    /**/
-    PRINT_TEST_RESULT(!object_set_dependency(o));
+    /*Sets the value.*/
+    PRINT_TEST_RESULT(OK == object_set_dependency(o, 1));
     /*Frees the memory*/
     object_destroy(o);
 }
@@ -426,9 +413,8 @@ void test2_object_set_dependency()
     Object *o = NULL;
     /*Creates an object.*/
     o = object_create(5);
-    object_set_dependency(o)= -6;
     /*Checks dapendency's value*/
-    PRINT_TEST_RESULT(!object_set_dependency(o));
+    PRINT_TEST_RESULT(ERROR == object_set_dependency(o, -2));
     /*Frees the memory*/
     object_destroy(o);
 }
@@ -449,8 +435,8 @@ void test1_object_set_open()
     Object *o = NULL;
     /*Creates an object.*/
     o = object_create(5);
-    /**/
-    PRINT_TEST_RESULT(object_set_open(o));
+    /*Sets the value.*/
+    PRINT_TEST_RESULT(object_set_open(o, 1) == OK);
     /*Frees the memory*/
     object_destroy(o);
 }
@@ -460,9 +446,8 @@ void test2_object_set_open()
     Object *o = NULL;
     /*Creates an object.*/
     o = object_create(5);
-    object_set_open(o) = ID_ERROR;
-    /**/
-    PRINT_TEST_RESULT(!object_set_open(o));
+    /*Sets a negative value.*/
+    PRINT_TEST_RESULT(object_set_open(o, ID_ERROR) == ERROR);
     /*Frees the memory*/
     object_destroy(o);
 }

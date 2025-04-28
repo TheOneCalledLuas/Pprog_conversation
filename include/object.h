@@ -132,7 +132,7 @@ int object_get_health(Object *object);
  * @param movable True if it can be moved, false otherwise.
  * @return Object's movable value.
  */
-Status object_is_movable(Object *object, Bool movable);
+Status object_set_movable(Object *object, Bool movable);
 
 /**
  * @brief Gets the information of the movability of an object.
