@@ -151,4 +151,81 @@ void test2_object_get_id();
  */
 void test3_object_get_id();
 
+/**
+ * @test Test set health function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_set_health();
+
+/**
+ * @test Test get health function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_get_health();
+
+/**
+ * @test Test set movable function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_set_movable();
+
+/**
+ * @test Test set movable function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test2_object_set_movable();
+
+/**
+ * @test Test get movable function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_get_movable();
+
+/**
+ * @test Test set dependency function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_set_dependency();
+
+/**
+ * @test Test set dependency function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test2_object_set_dependency();
+
+/**
+ * @test Test get dependency function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_get_dependency();
+
+/**
+ * @test Test set open function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_set_open();
+
+/**
+ * @test Test set open function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test2_object_set_open();
+
+/**
+ * @test Test get open function.
+ * @pre Pointer to object=Non NULL | Object id=-6
+ * @post 5.
+ */
+void test1_object_get_open();
+
 #endif
