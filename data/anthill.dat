@@ -16,7 +16,7 @@
 #o:22|seed|121|seed desc|
 #o:23|water|123|water desc|
 #o:24|soil|125|soil desc|
-#o:25|eldritch_artifact|124|gun desc|
+#o:25|eldritch_artifact|11|gun desc|
 
 #p:1|Ant|mO^|11|5|3|
 #p:3|Worm|-^-^-|123|5|3|
@@ -51,3 +51,9 @@ Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|0|
+
+Esto son todos los archivos que tienen partidas guardadas 
+IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER´
+
+######FILESAVES#######
+#f:game_saves/New_game.txt
