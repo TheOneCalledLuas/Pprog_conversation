@@ -8,6 +8,8 @@ y a continuación su id
 
 EXTRA el caracter '&' actua como caracter transparente
 
+
+
 #c:2
 ---------
 -CHARACT-
@@ -68,6 +70,12 @@ EXTRA el caracter '&' actua como caracter transparente
 -SOIL   -
 ---------
 
+#o:25
+&&&&&&&&&
+&&______&
+&/&__==="
+/&(-´&&&&
+`-´&&&&&&
 
 #s:11
 ------------------------------------------------------------------
