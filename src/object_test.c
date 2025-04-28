@@ -99,9 +99,9 @@ int main(int argc, char **argv)
     if (all || test == 23)
         test1_object_set_movable();
     if (all || test == 24)
-        test2_object_set_movable();
-    if (all || test == 25)
         test1_object_get_movable();
+    if (all || test == 25)
+        test2_object_get_movable();
     if (all || test == 26)
         test1_object_set_dependency();
     if (all || test == 27)
