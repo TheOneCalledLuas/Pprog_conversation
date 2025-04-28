@@ -375,6 +375,17 @@ void test1_object_get_health()
     object_destroy(o);
 }
 
+void test1_object_set_movable()
+{
+    Object *o = NULL;
+    /*Creates an object.*/
+    o = object_create(5);
+    /*Checks if an object is movable*/
+    PRINT_TEST_RESULT(OK == object_set_movable(o, FALSE));
+    /*Frees the memory*/
+    object_destroy(o);
+}
+
 void test1_object_get_movable()
 {
     Object *o = NULL;
@@ -386,7 +397,7 @@ void test1_object_get_movable()
     object_destroy(o);
 }
 
-void test1_object_get_movable()
+void test2_object_get_movable()
 {
     Object *o = NULL;
     /*Creates an object.*/

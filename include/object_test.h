@@ -177,14 +177,14 @@ void test1_object_set_movable();
  * @pre Pointer to object=Non NULL | Object id=-6
  * @post 5.
  */
-void test2_object_set_movable();
+void test1_object_get_movable();
 
 /**
  * @test Test get movable function.
  * @pre Pointer to object=Non NULL | Object id=-6
  * @post 5.
  */
-void test1_object_get_movable();
+void test2_object_get_movable();
 
 /**
  * @test Test set dependency function.
