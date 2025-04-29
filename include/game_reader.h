@@ -79,8 +79,7 @@ Status game_reader_load_characters(Game *game, char *filename);
 Status game_reader_load_gamerules(Game *game, char *filename);
 
 /**
- * @brief Loads all the savefiles from the data file.
- * Should be called the last one.
+ * @brief Loads all the savefiles from the data file, only loads names, doesnt create more.
  * @author Fernando Mijangos
  *
  * @param game Pointer to the game structure, where all the information related to game is included.

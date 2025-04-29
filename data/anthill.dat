@@ -104,4 +104,8 @@ Esto son todos los archivos que tienen partidas guardadas
 IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER
 
 ######FILESAVES#######
-#f:game_saves/New_game.txt
+#f:game_saves/Potato.txt
+#f:game_saves/potato.txt
+#f:game_saves/potato2.txt
+#f:game_saves/potato3.txt
+#f:game_saves/thing.txt

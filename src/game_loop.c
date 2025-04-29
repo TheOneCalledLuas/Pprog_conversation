@@ -128,7 +128,10 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
 void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
 {
     Command *last_cmd = NULL;
+    char str[WORD_SIZE] = "";
+    Bool cond=FALSE;
     Bool do_log = FALSE;
+    int i = 0;
 
     /*Checks the parameters.*/
     if (!gengine || !game) /*File could be NULL intended.*/
@@ -141,6 +144,81 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
     {
         do_log = TRUE;
     }
+    /*Asks wheatehr if u want to load a game or save a game*/
+    do
+    {
+        printf("Do you want to load a game? (y/n)\n");
+        scanf("%s", str);
+        if(strcmp(str, "y") == 0)
+        {
+            /*Prints the names of all the possible savefiles*/
+            for(i=0; i<game_get_n_savefiles(game); i++)
+            {
+                printf("%d- \"%s\"\n", i+1,game_get_savefile(game, i));
+            }
+            /*Asks which ones does it want to load*/
+            do
+            {
+                printf("Please, write the name of the savefile you want to load.\n");
+                scanf("%s", str);
+                /*Checks if the savefile exists*/
+                if(game_find_savefile_by_name(game, str) == ERROR)
+                {
+                    printf("The savefile does not exist.\n");
+                    cond=FALSE;
+                }
+                else
+                {
+                    /*Loads the game*/
+                    game_load_savefile(game, str);
+                    cond=TRUE;
+                }
+            } while (cond==FALSE);
+            
+            
+        }
+        else if(strcmp(str, "n") == 0)
+        {
+            /*Checks that there is space for more savefiles*/
+            if(game_get_n_savefiles(game) == MAX_SAVEFILES)
+            {
+                printf("There is no space for more savefiles.\n");
+                cond=TRUE;
+            }
+            /*Asks the name of the savefile the user wants to create*/
+            do
+            {
+                printf("Please, write the name of the savefile you want to create.\n");
+                scanf("%s", str);
+                /*Checks that the name is not too long*/
+                if(strlen(str) > WORD_SIZE)
+                {
+                    printf("The name is too long.\n");
+                    cond=FALSE;
+                }
+                /*Checks that the name does not exist yet*/
+                else if(game_find_savefile_by_name(game, str) == ERROR)
+                {
+                    game_add_new_savefile(game, str);
+                    cond=TRUE;
+                }
+                else
+                {
+                    printf("The savefile already exists.\n");
+                    cond=FALSE;
+                }
+            } while (cond==FALSE);
+        }
+        else
+        {
+            printf("Please, write a valid answer.\n");
+            cond=TRUE;
+        }
+
+    } while (cond ==FALSE);
+    
+    
+    game_save_game(game, str);
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
     while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(game) == FALSE))
@@ -151,6 +229,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
         /*Gets the last command.*/
         last_cmd = game_get_last_command(game);
         game_actions_update(game, last_cmd);
+
 
         /*Tries to execute all the gamerules.*/
         gamerules_try_exec_all(game, game_get_game_values(game));

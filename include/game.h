@@ -497,14 +497,44 @@ char *game_get_datafile(Game *game);
 Status game_set_datafile(Game *game, char *str);
 
 /**
- * @brief Adds a new safefile
+ * @brief Adds a new safefile, creating a new file
  * @author Fernando Mijangos
  * 
  * @param game Pointer to the game
  * @param name Pointer to the name of the new safefile
  * @return OK if everything went well, ERROR otherwise
  */
-Status game_add_new_safefile(Game *game, char *name);
+Status game_add_new_savefile(Game *game, char *name);
+
+/**
+ * @brief Adds a new safefile without creating a new file
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name of the new safefile
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_add_savefile(Game *game, char *name);
+
+/**
+ * @brief Looks for a safefile by its name
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name of the safefile
+ * @return OK if it exists, ERROR otherwise
+ */
+Status game_find_savefile_by_name(Game *game, char *name);
+
+/**
+ * @brief Gets the name of a safefile by its position in the array
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param position Position of the safefile in the array
+ * @return Pointer to the name of the safefile, NULL if error
+ */
+char *game_get_savefile(Game *game, int position);
 
 /**
  * @brief Removes a safefile, removing the file that has all its information

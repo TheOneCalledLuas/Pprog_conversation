@@ -140,7 +140,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
                         for (i = 0; i < SPACE_TEXTURE_LINES; i++)
                         {
                             fgets(line, WORD_SIZE, textures);
-                            line[SPACE_TEXTURE_SIZE-1]='\0';
+                            line[SPACE_TEXTURE_SIZE - 1] = '\0';
                             space_set_texture_line(space, i, line);
                         }
                     }
@@ -277,7 +277,7 @@ Status game_reader_load_objects(Game *game, char *filename)
                     for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
                     {
                         fgets(line, WORD_SIZE, textures);
-                        line[OBJECT_TEXTURE_SIZE-1]='\0';
+                        line[OBJECT_TEXTURE_SIZE - 1] = '\0';
                         object_set_texture_line(object, i, line);
                     }
                 }
@@ -436,7 +436,7 @@ Status game_reader_load_characters(Game *game, char *name_file)
                     for (i = 0; i < CHARACTER_TEXTURE_LINES; i++)
                     {
                         fgets(data, WORD_SIZE, textures);
-                        data[CHARACTER_TEXTURE_SIZE-1]='\0';
+                        data[CHARACTER_TEXTURE_SIZE - 1] = '\0';
                         character_set_texture_line(character, i, data);
                     }
                 }
@@ -491,7 +491,7 @@ Status game_reader_load_players(Game *game, char *filename)
             {
                 texture_file[i - 3] = line[i];
             }
-            texture_file[i]='\0';
+            texture_file[i] = '\0';
         }
     }
     /*If it didnt find the texture file, return ERROR*/
@@ -546,23 +546,23 @@ Status game_reader_load_players(Game *game, char *filename)
             /*Searches for the player texture.*/
             status = ERROR;
             sprintf(name, "#p:%ld", player_id);
-            while(fgets(line,WORD_SIZE, textures) && status==ERROR)
+            while (fgets(line, WORD_SIZE, textures) && status == ERROR)
             {
-                if(strncmp(name, line, strlen(name))==0)
+                if (strncmp(name, line, strlen(name)) == 0)
                 {
                     status = OK;
-                    for(i=0;i<PLAYER_TEXTURE_LINES;i++)
+                    for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
                     {
-                        fgets(line, WORD_SIZE,textures);
-                        line[PLAYER_TEXTURE_SIZE-1]='\0';
+                        fgets(line, WORD_SIZE, textures);
+                        line[PLAYER_TEXTURE_SIZE - 1] = '\0';
                         player_set_texture_line(player, i, line);
                     }
                 }
             }
             /*If it didnt find the texture fills it with spaces.*/
-            if(status==ERROR)
+            if (status == ERROR)
             {
-                for(i=0;i<PLAYER_TEXTURE_LINES;i++)
+                for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
                 {
                     player_set_texture_line(player, i, " ");
                 }
@@ -711,5 +711,41 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     fclose(f);
 
     /*Clean exit.*/
+    return OK;
+}
+
+Status game_reader_load_savefiles(Game *game, char *filename)
+{
+    FILE *file = NULL;
+    int i;
+    char str[WORD_SIZE], *toks;
+
+    /*Error management*/
+    if (!(game) || !filename || strlen(filename) > WORD_SIZE)
+        return ERROR;
+
+    /*Opens the file*/
+    if (!(file = fopen(filename, "r")))
+        return ERROR;
+
+    /*Reads the file*/
+    while (fgets(str, WORD_SIZE, file))
+    {
+        if (strncmp("#f:", str, IDENTIFIER_LENGTH) == 0)
+        {
+            toks = strtok(str + IDENTIFIER_LENGTH + strlen("game_saves/"), ".");
+            /*Looks that the file doesnt correspond to an existing one*/
+            for (i = 0; i < (game_get_n_savefiles(game)); i++)
+            {
+                if (game_find_savefile_by_name(game, toks) == OK)
+                {
+                    fclose(file);
+                    return ERROR;
+                }
+            }
+            game_add_savefile(game, toks);
+        }
+    }
+    fclose(file);
     return OK;
 }
