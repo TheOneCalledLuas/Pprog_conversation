@@ -45,7 +45,7 @@
 #o:223|baby_food|1113|food desc|
 #o:224|mystery_water|123|toilet desc|
 
-#p:2|Ant|mO^|11|10|3|
+#p:2|Ant|mO^|111|10|3|
 #p:3|Worm|-^-^-|123|10|3|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN

@@ -233,6 +233,16 @@ Status game_next_turn(Game *game);
 int game_get_next_turn(Game *game);
 
 /**
+ * @brief Searches for a link with a specific id
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param link Id of the link to be searched
+ * @return Pointer to the link, NULL if error
+ */
+Link *game_get_link(Game *game, Id link);
+
+/**
  * @brief Gets the actual player.
  * @author Saúl López Romero.
  *
