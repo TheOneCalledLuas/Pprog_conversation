@@ -1,13 +1,22 @@
-#s:11|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|
-#s:121|Corridor_1|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
-#s:122|Corridor_2|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
-#s:123|Corridor_3|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
-#s:124|Corridor_4|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|
-#s:13|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
-#s:125|Corridor_5|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|
-#s:126|Corridor_6|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
-#s:127|Corridor_7|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
-#s:14|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|
+#s:1111|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
+#s:1112|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:1113|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1114|Stairs_1|         |  ---¬   |      ¬  |   mo' ¬ |         |
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:114|Lair|mo'   'om| _ \   /_ | _\\o//_ |/ /(_)\ \|  \   /  |
+#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |
+#s:1211|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:1212|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1213|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|
+#s:1221|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1222|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|
+#s:1223|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
+#s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |
+#s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
 
 #c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
 #c:4|Spider|/\OO/\|123|5|0|I wont't talk to you!|
@@ -18,8 +27,8 @@
 #o:24|soil|125|soil desc|
 #o:25|eldritch_artifact|11|gun desc|
 
-#p:1|Ant|mO^|11|5|3|
-#p:3|Worm|-^-^-|123|5|3|
+#p:1|Ant|mO^|11|10|3|
+#p:3|Worm|-^-^-|123|10|3|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
 #l:31|Entry-P1|11|121|1|1|
