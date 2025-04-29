@@ -348,7 +348,14 @@ Status game_load_savefile(Game *game, char *name)
             aux1 = atoi(toks);
             link_set_state((Object *)aux_structure, aux1);
         }
+        else
+        {
+            printf("something in the savefile doesnt match the intended format\n");
+            return ERROR;
+        }
     }
+    fclose(file);
+    return OK;
 }
 
 Link *game_get_link(Game *game, Id link)
