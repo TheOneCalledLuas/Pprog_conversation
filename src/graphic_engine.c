@@ -429,7 +429,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         /*1.4-Prints the characters there are.*/
         if (space_get_n_characters(space_act) > 0)
         {
-            if(!(characters = space_get_characters(space_act)))
+            if (!(characters = space_get_characters(space_act)))
             {
                 for (i = 0; i < HEIGHT_MAP; i++)
                 {
@@ -451,10 +451,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                             if (i < 3)
                             {
                                 if (str[k] != '&')
-                                    map[j + 11 + i * 5][k + 45 + 2*i] = str[k];
+                                    map[j + 11 + i * 5][k + 45 + 2 * i] = str[k];
                             }
                             else if (str[k] != '&')
-                                map[j + 11 + (i - 3) * 5][k + 12 - 2*i] = str[k];
+                                map[j + 11 + (i - 3) * 5][k + 12 - 2 * i] = str[k];
                         }
                     }
                 }
@@ -676,7 +676,11 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         aux_3 = character_get_description(game_get_character(game, characters[0]));
         free(characters);
     }
-    sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3) != NULL ? aux_3 : ""), space_id);
+    /*Looks if the given space id fits in the space given*/
+    if (space_id > 999)
+        sprintf(destination[SECOND_LINE], "|%-7s %6s %3d|", aux, ((aux_3) != NULL ? aux_3 : ""), 999);
+    else
+        sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3) != NULL ? aux_3 : " "), space_id);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
     {
         sprintf(destination[i], "|%-18s|", space_get_gdesc_line(space, i - LIMIT_OF_ELEMENTS));
@@ -728,8 +732,14 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         knows there are more objects that are't being represented.*/
         if (cond == TRUE)
         {
-            strcpy(aux_4, aux_2);
-            sprintf(aux_2, "%s%s", aux_4, "...");
+            /*Copies the all the content it can into aux_4*/
+            for (i = 0; i < WIDTH_SPACE - NON_WRITTABLE_ELEMS; i++)
+            {
+                aux_4[i] = aux_2[i];
+            }
+            aux_4[i] = '\0';
+            /*Adds the "..." to the end of the string.*/
+            sprintf(aux_2, "%s%s", aux_4, "..");
         }
         free(set);
     }
@@ -739,6 +749,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
 
     /*Finishes printing the spaces.*/
+
     sprintf(destination[EIGHT_LINE], "|%-18s|", aux_2);
     sprintf(destination[NINETH_LINE], "+------------------+");
     return OK;
