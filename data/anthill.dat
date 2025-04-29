@@ -29,11 +29,20 @@
 #c:69|Baby_Spider|/\omo/\|1113|2|0|I won't talk to you...|
 #c:60|Arachne|/\0W0/\|114|8|0|I won't talk to you, peasant!|
 
-#o:21|grain|11|grain desc|
-#o:22|seed|121|seed desc|
-#o:23|water|123|water desc|
-#o:24|soil|125|soil desc|
-#o:25|eldritch_artifact|11|gun desc|
+#o:211|seed|1111|seed desc|
+#o:212|potion_1|131|potion desc|
+#o:213|potion_2|131|potion desc|
+#o:214|potion_3|131|potion desc|
+#o:215|eldritch_artifact|123|gun desc|
+#o:216|dynamite|1212|dynamite desc|
+#o:217|lever_1|1213|lever desc|
+#o:218|lever_2|1223|lever desc|
+#o:219|breadcrumbs|122|crumbs desc|
+#o:220|treasure|1221|treasure desc|
+#o:221|eldritch_rocks|132|ammo desc|
+#o:222|spider_food|132|food desc|
+#o:223|baby_food|1113|food desc|
+#o:224|mystery_water|123|toilet desc|
 
 #p:2|Ant|mO^|11|10|3|
 #p:3|Worm|-^-^-|123|10|3|
