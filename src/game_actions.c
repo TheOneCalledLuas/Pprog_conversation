@@ -120,6 +120,22 @@ void game_actions_recruit(Game *game);
 void game_actions_map(Game *game);
 
 /**
+ * @brief Action to be executed when exit is given.
+ * @author Profesores PProg.
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_use(Game *game);
+
+/**
+ * @brief Action to be executed when exit is given.
+ * @author Profesores PProg.
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_open(Game *game);
+
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -534,10 +550,106 @@ void game_actions_abandon(Game *game)
 
 void game_actions_map(Game *game)
 {
-    /*The mpa action is managed by graphic engine; it starts as an error and
+    /*The map action is managed by graphic engine; it starts as an error and
     if it goes as it should the error code is set to OK, similar to chat. */
     command_set_status(game_get_last_command(game), ERROR);
 }
+
+void game_actions_use(Game *game)
+{
+    Space *last_space = NULL;
+    Id object_id = ID_ERROR;
+    Player *player = NULL;
+    Object *object = NULL;
+    char *entity = NULL;
+    Id target = NO_ID;
+    Bool do_take = FALSE;
+
+    /*Error handling.*/
+    if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Gets all the necessary information.*/
+    player = game_get_actual_player(game);
+    object_id = game_get_object_by_name(game, command_get_argument(game_get_last_command(game), FIRST_ARG));
+    last_space = game_get_space(game, player_get_player_location(player));
+
+    /*Checks that the player meets the requirements to use the provided object.*/
+    if (object_id <= NO_ID)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*If the object can't be used with use it ends here.*/
+    if (object_get_health(object_id) == 0)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Searches if the object is reachable.*/
+    if (object_id >= 0 && (space_find_object(last_space, object_id) != -1 || player_has_object(player, object_id)))
+    {
+        /*If the object was found anywhere accesible by the player.*/
+        object = game_get_object(game, object_id);
+    }
+    else
+    {
+        /*The object isn't reachable.*/
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    /*Checks where to use the object.*/
+    if (strcasecmp(command_get_argument(game_get_last_command(game), SECOND_ARG), "over") == 0)
+    {
+        /*The object is intended to be used over a specific entity.*/
+        entity = command_get_argument(game_get_last_command(game), THIRD_ARG);
+        /*Checks if the entity was a player or a character.*/
+        if ((target = game_get_player_by_name(game, entity)) >= 0)
+        {
+            /*The object was used over an actual player.*/
+            player_set_health(game_get_player_by_id(game, target), player_get_health(player) + object_get_health(object_id));
+            do_take = TRUE;
+            command_set_status(game_get_last_command(game), OK);
+        }
+        else if (game_get_character_by_name(game, entity) != NO_ID)
+        {
+            /*The object was used over a character.*/
+            character_set_health(game_get_character(game, game_get_character_by_name(game, entity)), character_get_health(game_get_character(game, game_get_character_by_name(game, entity))) + object_get_health(object_id));
+            command_set_status(game_get_last_command(game), OK);
+            do_take = TRUE;
+        }
+        else
+        {
+            /*The object was used over an invalid entity.*/
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+    }
+    else
+    {
+        /*The object was used over the actual player.*/
+        player_set_health(player, player_get_health(player) + object_get_health(object_id));
+        command_set_status(game_get_last_command(game), OK);
+        do_take = TRUE;
+    }
+
+    /*Checks if the object has to be taken out.*/
+    if (do_take)
+    {
+        /*Tries to take the object from the space AND inventory. If the object isn't there, it must be on one of them
+          and it won't happen anything if the object isn't there  when we try to take it out.*/
+        player_del_object(player, object_id);
+        space_take_object(last_space, object_id);
+    }
+    return;
+}
+
+void game_actions_open(Game *game) {}
 
 int random_int(int start, int end)
 {

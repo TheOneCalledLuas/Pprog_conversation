@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 # Checks the arguments passed to the script.
 if [ $# -gt 2 -a $# -eq 0 ]; then

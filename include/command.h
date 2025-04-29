@@ -19,7 +19,7 @@
 #define N_CMDT 2
 /**
  * Number of commands.*/
-#define N_CMD 12
+#define N_CMD 14
 
 /**
  * @brief Ways of calling a command (extended or short way.)
@@ -27,8 +27,8 @@
  */
 typedef enum
 {
-    CMDS,       /*!< Command to be accessed.*/
-    CMDL        /*!< Short or long command name.*/
+    CMDS, /*!< Command to be accessed.*/
+    CMDL  /*!< Short or long command name.*/
 } CommandType;
 
 /**
@@ -36,19 +36,33 @@ typedef enum
  */
 typedef enum
 {
-    NO_CMD = -1,    /*!< No Coomand code.*/
-    UNKNOWN,        /*!< Unknown command.*/
-    EXIT,           /*!< Exit command.*/
-    MOVE,           /*!< Move command.*/
-    TAKE,           /*!< Take command.*/
-    DROP,           /*!< Drop command.*/
-    ATTACK,         /*!< Attack command.*/
-    CHAT,           /*!< Chat command.*/
-    INSPECT,        /*!< Inspect command.*/
-    RECRUIT,        /*!< Recruit command.*/
-    ABANDON,         /*!< Abandon command.*/
-    MAP             /*!< Map command.*/
+    NO_CMD = -1, /*!< No Coomand code.*/
+    UNKNOWN,     /*!< Unknown command.*/
+    EXIT,        /*!< Exit command.*/
+    MOVE,        /*!< Move command.*/
+    TAKE,        /*!< Take command.*/
+    DROP,        /*!< Drop command.*/
+    ATTACK,      /*!< Attack command.*/
+    CHAT,        /*!< Chat command.*/
+    INSPECT,     /*!< Inspect command.*/
+    RECRUIT,     /*!< Recruit command.*/
+    ABANDON,     /*!< Abandon command.*/
+    MAP,         /*!< Map command.*/
+    USE,         /*!< Use command.*/
+    OPEN         /*!< Open command.*/
 } CommandCode;
+
+/**
+ * @brief Command args.
+ */
+typedef enum
+{
+    FIRST_ARG = 0, /*!< First argument. */
+    SECOND_ARG,    /*!< Second argument. */
+    THIRD_ARG,     /*!< Third argument. */
+    FOURTH_ARG     /*!< Fourth argument. */
+} CommandArg;
+
 /**
  * @brief Command
  * Command structure.
@@ -94,7 +108,7 @@ CommandCode command_get_code(Command *command);
 /**
  * @brief It sets the status of the command.
  * @author Fernando Mijangos
- * 
+ *
  * @param command Pointer to the command.
  * @param status New status.
  * @return OK if everything went well, ERROR otherwise.
@@ -113,7 +127,7 @@ Status command_get_status(Command *command);
 /**
  * @brief Returns the argument in "number"position stored in the command.
  * @author Fernando Mijangos
- * 
+ *
  * @param command Pointer to the command.
  * @param number Position of the argument.
  * @return String the the word contains or NULL if something went wrong.
@@ -123,7 +137,7 @@ char *command_get_argument(Command *command, int number);
 /**
  * @brief Sets the word of the command the the defined one.
  * @author Fernando Mijangos
- * 
+ *
  * @param command Pointer to the command structure.
  * @param word string that will be copied.
  * @param position Position of the argument
@@ -146,7 +160,7 @@ Status command_get_user_input(Command *command);
  *
  * @param com Pointer to the command where you will store the information.
  * @param place place to write the outcome (stdout or file intended).
- * @return OK if everything goes well or ERROR if there was some mistake. 
+ * @return OK if everything goes well or ERROR if there was some mistake.
  */
 Status command_print(Command *com, FILE *place);
 

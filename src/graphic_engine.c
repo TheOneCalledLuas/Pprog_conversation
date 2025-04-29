@@ -6,7 +6,7 @@
  * @version 7
  * @date 2-03-2025
  * @copyright GNU Public License
- */
+ .*/
 
 #include "graphic_engine.h"
 
@@ -66,26 +66,26 @@
 
 /**
  * @brief Numbers used for the lines that form the sapce description.
- */
+ .*/
 typedef enum
 {
-    FIRST_LINE,   /*!<First line of a space*/
-    SECOND_LINE,  /*!<Second line of a space*/
-    THIRD_LINE,   /*!<Third line of a space*/
-    FOURTH_LINE,  /*!<Fourth line of a space*/
-    FIFTH_LINE,   /*!<Fifth line of a space*/
-    SIXTH_LINE,   /*!<Sixth line of a space*/
-    SEVENTH_LINE, /*!<Seventh line of a space*/
-    EIGHT_LINE,   /*!<Eight line of a space*/
-    NINETH_LINE,  /*!<Nineth line of a space*/
-    HEIGHT_SPACE  /*!<Space height*/
+    FIRST_LINE,   /*!<First line of a space.*/
+    SECOND_LINE,  /*!<Second line of a space.*/
+    THIRD_LINE,   /*!<Third line of a space.*/
+    FOURTH_LINE,  /*!<Fourth line of a space.*/
+    FIFTH_LINE,   /*!<Fifth line of a space.*/
+    SIXTH_LINE,   /*!<Sixth line of a space.*/
+    SEVENTH_LINE, /*!<Seventh line of a space.*/
+    EIGHT_LINE,   /*!<Eight line of a space.*/
+    NINETH_LINE,  /*!<Nineth line of a space.*/
+    HEIGHT_SPACE  /*!<Space height.*/
 } space_information;
 /**
  * Space positions in array
  * This is like this so that later when printing its easier with a for
  *    [0] [1] [2]
  *    [3] [4] [5]
- *    [6] [7] [8] */
+ *    [6] [7] [8] .*/
 typedef enum
 {
     NORTH_WEST,      /*!<North west direction.*/
@@ -103,7 +103,7 @@ typedef enum
  * @brief _Graphic_engine
  *
  * This struct stores all the information of the dimmensions needed for the graphic engine.
- */
+ .*/
 struct _Graphic_engine
 {
     Area *room;     /*!< Room area dimensions.*/
@@ -124,7 +124,7 @@ struct _Graphic_engine
  * @param space_id Id of the space you are searching information from.
  * @param destination the array where you are storing the information.
  * @return OK if everything went well, ERROR otherwise.
- */
+ .*/
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination);
 
 /**
@@ -133,7 +133,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination);
  *
  * @param game Pointer to the game.
  * @param map Map to be initialised.
- */
+ .*/
 Status map_init(Game *game, char **map);
 
 /* END OF PRIVATE FUNCTIONS.*/
@@ -280,7 +280,7 @@ Status map_init(Game *game, char **map)
 
                 for (t = 0; t < HEIGHT_SPACE; t++)
                 {
-                    /*The -1 after width_space in the loop is so that it doesnt copy the '\0'*/
+                    /*The -1 after width_space in the loop is so that it doesnt copy the '\0'.*/
                     for (v = 0; v < WIDTH_SPACE - 1; v++)
                     {
                         map[i * (HEIGHT_SPACE + 1) + t][j * (WIDTH_SPACE + 2) + v] = aux_map[t][v];
@@ -298,7 +298,7 @@ Status map_init(Game *game, char **map)
             map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = (link_statuses[EAST] == OPENED ? '>' : 'X');
         if (actual_id[SOUTH] != NO_ID)
             map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = (link_statuses[SOUTH] == OPENED ? 'v' : 'X');
-        /*5-puts \0*/
+        /*5-puts \0.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
             map[i][WIDTH_MAP - 1] = '\0';
@@ -335,7 +335,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     if (!ge || !game)
         return;
 
-    /*Sets the space where the player is to discovered*/
+    /*Sets the space where the player is to discovered.*/
     space_set_discovered((game_get_space(game, player_get_player_location(game_get_actual_player(game)))), TRUE);
 
     /*MAP SECTION.*/
@@ -377,16 +377,16 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     }
     /*We dont free map here cause we use it again later.*/
 
-    /*SPACE SECTION*/
-    /*1-Fills the map array we used later with new information*/
+    /*SPACE SECTION.*/
+    /*1-Fills the map array we used later with new information.*/
     screen_area_clear(ge->room);
     {
-        /*1.1-Prints the texture of the space*/
+        /*1.1-Prints the texture of the space.*/
         for (i = 0; i < SPACE_TEXTURE_LINES; i++)
         {
             strncpy(map[i], space_get_texture_line(space_act, i), SPACE_TEXTURE_SIZE);
         }
-        /*1.2-Prints the player*/
+        /*1.2-Prints the player.*/
         for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
         {
             strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
@@ -396,7 +396,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                     map[i + 9][j + 27] = str[j];
             }
         }
-        /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four*/
+        /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four.*/
         if (space_get_n_objects(space_act) != 0)
         {
             if (!(objects = space_get_objects(space_act)))
@@ -426,7 +426,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             }
             free(objects);
         }
-        /*1.4-Prints the characters there are*/
+        /*1.4-Prints the characters there are.*/
         if (space_get_n_characters(space_act) > 0)
         {
             if(!(characters = space_get_characters(space_act)))
@@ -463,7 +463,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
     }
 
-    /*2-Prints the map*/
+    /*2-Prints the map.*/
     for (i = 0; i < HEIGHT_MAP; i++)
     {
         screen_area_puts(ge->room, map[i]);
@@ -688,9 +688,9 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     if (set)
     {
         /*Looks how many strings it can print inside the 12 letters in the space given and stores the final string
-        in aux_2 (WIDTH_SPACE -2 for the barriers, -3 for the extra things i'm placing)*/
+        in aux_2 (WIDTH_SPACE -2 for the barriers, -3 for the extra things i'm placing).*/
 
-        /*1-Looks how many objects it can fit inside the space given, 'i' will have the amount of objects that can be printed*/
+        /*1-Looks how many objects it can fit inside the space given, 'i' will have the amount of objects that can be printed.*/
         for (i = n_objs_space; cond == 0 && i != 0; i--)
         {
             for (j = 0; j < i; j++)
@@ -704,12 +704,12 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
             }
         }
 
-        /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing*/
+        /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing.*/
         if (i < n_objs_space - 1)
             cond = TRUE;
         aux_2[0] = '\0';
 
-        /*3-Fills the string with the tags of the objects that fit*/
+        /*3-Fills the string with the tags of the objects that fit.*/
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));
@@ -725,7 +725,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         }
 
         /*4-If the previous condition is equal to 1, it adds "..." so that the player
-        knows there are more objects that are't being represented*/
+        knows there are more objects that are't being represented.*/
         if (cond == TRUE)
         {
             strcpy(aux_4, aux_2);

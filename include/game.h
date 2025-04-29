@@ -458,4 +458,25 @@ int game_get_n_followers(Game *game, Id player);
  * @return Link information (OPENED or CLOSED) or UNK in case of error.
  */
 Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Direction dir);
+
+/**
+ * @brief It gets the player by its name.
+ * @author Saul Lopez Romero.
+ * 
+ * @param game Pointer to the game.
+ * @param name Name of the player.
+ * @return Id of the player, NO_ID if it doesn't exist, ID_ERROR if an error takes place.
+ */
+Id player_get_player_by_name(Game *game, char *name);
+
+/**
+ * @brief It gets the player by its id.
+ * @author Saul Lopez Romero.
+ * 
+ * @param game Pointer to the game.
+ * @param id Id of the player.
+ * @return Pointer to the player, NULL if it doesn't exist or an error takes place.
+ */
+Player * game_get_player_by_id(Game *game, Id id);
+
 #endif

@@ -872,3 +872,42 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
     /*The link wasn't found.*/
     return UNK;
 }
+
+Id player_get_player_by_name(Game *game, char *name) {
+    int i = 0;
+    /*Error handling.*/
+    if (!game || !name)
+    {
+        return ID_ERROR;
+    }
+    /*Searches the player by its name.*/
+    for (i = 0; i < game->n_players; i++)
+    {
+        if (!(strcasecmp(name, player_get_name(game->players[i]))))
+        {
+            /*Returns the player id.*/
+            return (player_get_player_id(game->players[i]));
+        }
+    }
+    /*The player wasn't found.*/
+    return NO_ID;
+}
+
+Player * game_get_player_by_id(Game *game, Id id) {
+    int i = 0;
+    /*Error handling.*/
+    if (!game || id == NO_ID)
+        return NULL;
+
+    /*Searches for the player.*/
+    for (i = 0; i < game->n_players; i++)
+    {
+        if (id == player_get_player_id(game->players[i]))
+        {
+            /*Returns the player when found.*/
+            return game->players[i];
+        }
+    }
+    /*The player wasn't found.*/
+    return NULL;
+}
