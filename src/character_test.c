@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_TESTS 28 /*!<Maximun number of tests.*/
+#define MAX_TESTS 30 /*!<Maximun number of tests.*/
 
 /**
  * @brief Main function for CHRACTER unit tests.
@@ -105,6 +105,10 @@ int main(int argc, char **argv)
         test1_character_get_message();
     if (all || test == 28)
         test2_character_get_message();
+    if (all || test == 29)
+        test1_character_get_follow();
+    if (all || test == 30)
+        test2_character_get_follow();
 
     PRINT_PASSED_PERCENTAGE;
 
@@ -354,6 +358,26 @@ void test1_character_get_message()
     PRINT_TEST_RESULT(strcmp(character_get_message(character), "SI")==0);
     /*Frees the character.*/
     character_destroy(character);;
+}
+
+void test1_character_get_follow()
+{
+    /*Initializes the variables.*/
+    Character *character = NULL;
+    character = character_create(5);
+    PRINT_TEST_RESULT(character_get_follow(character, 3) == OK);
+    /*Frees the character.*/
+    character_destroy(character);
+}
+
+void test2_character_get_follow()
+{
+    /*Initializes the variables.*/
+    Character *character = NULL;
+    character = character_create(5);
+    PRINT_TEST_RESULT(character_get_id(character, ID_ERROR) == ID_ERROR);
+    /*Frees the character*/
+    character_destroy(character);
 }
 
 void test2_character_get_message()
