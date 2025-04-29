@@ -360,6 +360,13 @@ void test1_character_get_message()
     character_destroy(character);;
 }
 
+void test2_character_get_message()
+{
+    Character *character=NULL;
+    character_set_message(character, "SI");
+    PRINT_TEST_RESULT(character_get_message(character)==NULL);
+}
+
 void test1_character_get_follow()
 {
     /*Initializes the variables.*/
@@ -378,11 +385,4 @@ void test2_character_get_follow()
     PRINT_TEST_RESULT(character_get_id(character, ID_ERROR) == ID_ERROR);
     /*Frees the character*/
     character_destroy(character);
-}
-
-void test2_character_get_message()
-{
-    Character *character=NULL;
-    character_set_message(character, "SI");
-    PRINT_TEST_RESULT(character_get_message(character)==NULL);
 }

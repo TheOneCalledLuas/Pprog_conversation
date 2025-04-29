@@ -209,3 +209,17 @@ void test1_character_get_message();
  * @post Returns NULL.
  */
 void test2_character_get_message();
+
+/**
+ * @test Test Character_set_name.
+ * @pre Player = Non ID_ERROR.
+ * @post Returns OK.
+ */
+void test1_character_get_follow();
+
+/**
+ * @test Test character_get_follow.
+ * @pre Player following = ID_ERROR.
+ * @post Returns OK.
+ */
+void test2_character_get_follow();
