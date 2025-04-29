@@ -211,7 +211,7 @@ void test1_character_get_message();
 void test2_character_get_message();
 
 /**
- * @test Test Character_set_name.
+ * @test Test Character_get_follow.
  * @pre Player = Non ID_ERROR.
  * @post Returns OK.
  */
