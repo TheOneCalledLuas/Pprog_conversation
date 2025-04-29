@@ -61,65 +61,6 @@ Character *game_get_character(Game *game, Id id);
 Command *game_get_previous_command(Game *game, int command_num);
 
 /**
- * @brief Returns how many savefiles there are stored in this moment
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game
- * @return Number of savefiles, -1 if error
- */
-int game_get_n_savefiles(Game *game);
-
-/**
- * @brief Removes a savefile from the game
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game
- * @param name Name of the savefile to be removed
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_remove_savefile(Game *game, char *name);
-
-/**
- * @brief Gets the name of the savefile at a given position
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game
- * @param position Position of the savefile in the array
- * @return Name of the savefile, NULL if error
- */
-char *game_get_savefile_name(Game *game, int position);
-
-/**
- * @brief Adds a savefile to the game
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game
- * @param name Name of the savefile to be added
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_add_new_savefile(Game *game, char *name);
-
-/**
- * @brief Saves the current status of the game
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name_file Name of the file wher you wnt to store the information
- * @return OK, iff everything went well, ERROR otherwise
- */
-Status game_save_game(Game*game, char *name_file);
-
-/**
- * @brief Loads a savefile into the game
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name_file Name of the savefile you want to load
- * @return OK, if everything went well, ERROR otherwise
- */
-Status game_load_savefile(Game *game, char*name_file);
-
-/**
  * @brief Goes to the next command.
  * @author Saúl López Romero
  *
@@ -507,6 +448,83 @@ Id game_get_space_at(Game *game, Id space, Direction direction);
  * @return Number of followers of that player, -1 if error
  */
 int game_get_n_followers(Game *game, Id player);
+
+/**
+ * @brief Returns the number of savefilse
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @return Number of savefiles, -1 if ERROR
+ */
+int game_get_n_savefiles(Game *game);
+
+/**
+ * @brief Sets the number of savefiles to what you want
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param num New number of savefiles
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_set_n_savefiles(Game *game, int num);
+
+/**
+ * @brief returns the name of the datafile
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @return Name of the datafile, NULL if error
+ */
+char *game_get_datafile(Game *game);
+
+/**
+ * @brief Sets the name of the datafile
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_set_datafile(Game *game, char *str);
+
+/**
+ * @brief Adds a new safefile
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name of the new safefile
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_add_new_safefile(Game *game, char *name);
+
+/**
+ * @brief Removes a safefile, removing the file that has all its information
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name of the safefile to deleted
+ * @return Ok if everything went well, ERROR otherwise
+ */
+Status game_remove_savefile(Game *game, char *name);
+
+/**
+ * @brief Saves the current status of the game
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name_file Name of the file wher you wnt to store the information
+ * @return OK, iff everything went well, ERROR otherwise
+ */
+Status game_save_game(Game*game, char *name_file);
+
+/**
+ * @brief Loads a savefile into the game
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name_file Name of the savefile you want to load
+ * @return OK, if everything went well, ERROR otherwise
+ */
+Status game_load_savefile(Game *game, char*name_file);
 
 /**
  * @brief Gets the link information for a stace regarding the outgoing links.

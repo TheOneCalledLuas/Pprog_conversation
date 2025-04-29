@@ -53,7 +53,7 @@ Las animaciones tienen la siguiente estructura:
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|0|
 
 Esto son todos los archivos que tienen partidas guardadas 
-IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER´
+IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER
 
 ######FILESAVES#######
 #f:game_saves/New_game.txt

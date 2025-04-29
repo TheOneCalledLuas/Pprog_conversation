@@ -1,2 +1,16 @@
-#p:2
-#p:4
+Players tienen localización, tienent num_objetos, tienen objectos, tienen vida
+Los characters tienen vida y follow
+Los objetos tienen vida, open
+Los espacios tienen num_objetos, objetos, num_characters, characters, discovered
+Los links tienen estado
+
+Estructura player
+    #p:id|id_localización|num_objetos|o1|o2|o3....|vida
+Estructura character
+    #c:id|vida|follow
+Estructura objetos
+    #o:id|vida|open
+Estructura espacios
+    #s:id|num_objetos|o1|o2|o3....|num_characters|c1|c2|c3...|discovered
+Estructura links
+    #l:id|estado

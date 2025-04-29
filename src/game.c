@@ -19,7 +19,8 @@
 #include <strings.h>
 #include <string.h>
 
-#define MAX_PLAYERS 8 /*!<Max number of players.*/
+#define MAX_PLAYERS 8       /*!<Max number of players.*/
+#define IDENTIFIER_LENGHT 3 /*!<Size of the weord that identifies a str*/
 
 /**
    Game interface implementation.
@@ -43,6 +44,9 @@ struct _Game
     int turn;                                        /*!< Actual turn.*/
     int n_players;                                   /*!< Number of players.*/
     Game_values *game_values;                        /*!< Structure which holds all the gamerule handling inside. */
+    int n_savefiles;                                 /*!< Number of savefiles.*/
+    char savefiles[MAX_SAVEFILES][WORD_SIZE];        /*!< Array with the names of the savefiles, example -> "New_game.txt".*/
+    char datafile[WORD_SIZE];                        /*!< Name of the .dat file, example -> "anthill.dat"*/
 };
 
 Status game_create(Game **game)
@@ -101,8 +105,400 @@ Status game_create(Game **game)
     (*game)->n_links = 0;
     (*game)->n_commands = 0;
     (*game)->turn = 0;
+    (*game)->n_savefiles = 0;
+    for (i = 0; i < MAX_SAVEFILES; i++)
+        (*game)->savefiles[i][0] = '\0';
+
+    (*game)->datafile[0] = '\0';
     (*game)->finished = FALSE;
 
+    return OK;
+}
+
+int game_get_n_savefiles(Game *game)
+{
+    /*Error management and returns the value*/
+    return (game ? game->n_savefiles : -1);
+}
+
+Status game_set_n_savefiles(Game *game, int num)
+{
+    /*Error mangement*/
+    if (!(game) || num < 0 || num > MAX_SAVEFILES)
+        return ERROR;
+
+    /*Sets the new value*/
+    game->n_savefiles = num;
+    return OK;
+}
+
+char *game_get_datafile(Game *game)
+{
+    /*ERROR management*/
+    if (!(game) || strlen(game->datafile <= 0 || strlen(game->datafile) > WORD_SIZE))
+        return NULL;
+
+    return game->datafile;
+}
+
+Status game_set_datafile(Game *game, char *str)
+{
+    /*Error management*/
+    if (!(game) || !(str) || strlen(str) > WORD_SIZE)
+        return ERROR;
+
+    /*Sets the value*/
+    strcpy(game->datafile, str);
+    return OK;
+}
+
+Status game_add_new_safefile(Game *game, char *name)
+{
+    FILE *data = NULL;
+    char str[WORD_SIZE];
+    int i;
+    /*Error management*/
+    if (!(game) || !(name) || strlen(name) > WORD_SIZE || game->n_savefiles >= MAX_SAVEFILES)
+        return ERROR;
+
+    /*Checks that the name doesnt match an existing one*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(game->savefiles[i], name) == 0)
+            return ERROR;
+    }
+
+    /*Creates a new file with that name.*/
+    sprintf(">game_saves/%s.txt", name);
+    system(str);
+    /*Adds the savefile*/
+    strcpy(game->savefiles[game->n_savefiles], name);
+    game->n_savefiles++;
+    /*Opens the datafile so it can modify it, and copies the name inside of it*/
+    if (data = fopen(game->datafile, "a"))
+        return ERROR;
+
+    fprintf(data, "#f:%s", name);
+
+    fclose(data);
+    return OK;
+}
+
+Status game_remove_savefile(Game *game, char *name)
+{
+    FILE *data = NULL;
+    Bool condition = FALSE;
+    char str[WORD_SIZE];
+    int i;
+
+    /*ERROR management*/
+    if (!(game) || !(name) || strlen(name) > WORD_SIZE || game->n_savefiles <= 0)
+        return ERROR;
+
+    /*Checks that that savefile exists*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(game->savefiles[i], name) == 0)
+        {
+            condition == TRUE;
+        }
+    }
+    /*Removes that name from the list of savefiles names*/
+    for (i = 0; strcmp(game->savefiles[i], name) != 0; i++)
+        ;
+    while (i < game->n_savefiles - 1)
+    {
+        strcpy(game->savefiles[i], game->savefiles[i + 1]);
+        i++;
+    }
+    game->savefiles[i + 1][0] = '\0';
+    game->n_savefiles--;
+
+    /*Removes that savefile from the data file*/
+    if (!(data = fopen(game->datafile, "r+")))
+        return ERROR;
+
+    condition = FALSE;
+    while (condition == FALSE)
+    {
+        if (strncmp("######FILESAVES#######", str, strlen("######FILESAVES#######")) == 0)
+            condition = TRUE;
+    }
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        sprintf(str, "#t:%s\n", game->savefiles[i]);
+        fprintf(data, str);
+    }
+    fprintf(data, "\n");
+    fclose(data);
+    return OK;
+}
+
+Status game_load_savefile(Game *game, char *name)
+{
+    FILE *file;
+    int i, id, aux1, aux2;
+    Bool cond = FALSE;
+    void *aux_structure;
+    char str[WORD_SIZE], *toks = NULL;
+    /*Error management.*/
+    if (!game || !name || strlen(name) > WORD_SIZE)
+        return ERROR;
+
+    /*Checks that the savefile exists*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(game->savefiles[i], name) == 0)
+        {
+            cond = TRUE;
+        }
+    }
+
+    /*Opens the file*/
+    sprintf(str, "game_save/%s.txt", name);
+    if (!(file = fopen(str, "r")))
+        return ERROR;
+
+    /*Starts reading the file*/
+    while (fgets(str, WORD_SIZE, file))
+    {
+        /*If what is reading is a character, do this*/
+        if (strncmp("#c:", str, IDENTIFIER_LENGHT) == 0)
+        {
+            toks = strtok(str + IDENTIFIER_LENGHT, "|");
+            id = atoi(toks);
+            aux_structure = (void *)(game_get_character(game, id));
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            character_set_health((Character *)aux_structure, aux1);
+            toks = stsrtok(toks);
+            aux1 = atoi(toks);
+            character_set_follow((Character *)aux_structure, aux1);
+        }
+        /*If what is reading is a player, do this*/
+        else if (strncmp("#p:", str, IDENTIFIER_LENGHT) == 0)
+        {
+            toks = strtok(str + IDENTIFIER_LENGHT, "|");
+            id = atoi(toks);
+            aux_structure = (void *)(game_get_player(game, id));
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            player_set_player_location((Player *)aux_structure, id);
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            while (aux1 > 0)
+            {
+                toks = strtok(NULL, "|");
+                aux2 = atoi(toks);
+                player_add_object((Player *)aux_structure, aux2);
+                aux1--;
+            }
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            player_set_health((Player *)aux_structure, aux1);
+        }
+        /*If what is reading is an object, do this*/
+        else if (strncmp("#o:", str, IDENTIFIER_LENGHT) == 0)
+        {
+            toks = strtok(NULL, "|");
+            id = atoi(toks);
+            aux_structure = (void *)(game_get_object(game, id));
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            object_set_health((Object *)aux_structure, aux1);
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            object_set_open((Game *)aux_structure, aux1);
+        }
+        /*If what is reading is a space, do this*/
+        else if (strncmp("#s:", str, IDENTIFIER_LENGHT) == 0)
+        {
+            toks = strtok(str + IDENTIFIER_LENGHT, "|");
+            id = atoi(toks);
+            aux_structure = (void *)(game_get_space(game, id));
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            while (aux1 > 0)
+            {
+                toks = strtok(NULL, "|");
+                aux2 = atoi(toks);
+                space_add_object((Space *)aux_structure, aux2);
+                aux1--;
+            }
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            while (aux1 > 0)
+            {
+                toks = strtok(NULL, "|");
+                aux2 = atoi(toks);
+                space_add_character((Space *)aux_structure, aux2);
+                aux1--;
+            }
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            space_set_discovered((Space *)aux_structure, aux1);
+        }
+        /*If what is reading is a link, do this*/
+        else if (strncmp("#l:", str, IDENTIFIER_LENGHT) == 0)
+        {
+            toks = strtok(NULL, "|");
+            id = atoi(toks);
+            aux_structure = (void *)(game_get_link(game, id));
+            toks = strtok(NULL, "|");
+            aux1 = atoi(toks);
+            link_set_state((Object *)aux_structure, aux1);
+        }
+    }
+}
+
+Link *game_get_link(Game *game, Id link)
+{
+    int i;
+    /*Error management*/
+    if (!(game) || !(link))
+        return NULL;
+
+    for (i = 0; i < game->n_links; i++)
+    {
+        if (link_get_id(game->links[i]) == link)
+            return game->links[i];
+    }
+    return NULL;
+}
+
+Status game_save_game(Game *game, char *name)
+{
+    FILE *file = NULL;
+    Id *ids = NULL;
+    int i, j, aux1, aux2;
+    char str1[WORD_SIZE], str2[WORD_SIZE];
+    /*Error management*/
+    if (!(game) || !(name))
+        return ERROR;
+
+    /*Opens the file*/
+    sprintf(str1, "game_saves/%s.txt", name);
+    if (!(file = fopen(str1, "w")))
+        return ERROR;
+
+    /*Starts saving things*/
+    /*1-First, it saves the players*/
+    for (i = 0; i < game->n_players; i++)
+    {
+        /*Gets his id*/
+        aux1 = player_get_player_id(game->players[i]);
+        sprintf(str1, "#p:%d", aux1);
+        strcpy(str2, str1);
+        /*Gets the n_objects*/
+        aux1 = player_get_n_objects(game->players[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        /*Gets each of the objects*/
+        if (!(ids = player_get_inventory(game->players[i])))
+        {
+            fclose(file);
+            return ERROR;
+        }
+        for (j = 0; j < aux1; j++)
+        {
+            strcpy(str2, str1);
+            sprintf(str1, "%s|%ld", ids[j]);
+        }
+        strcpy(str2, str1);
+        /*Gets the health*/
+        aux1 = player_get_health(game->players[i]);
+        sprintf(str1, "%s|%d\n", str2, aux1);
+        /*Prints the line inside the file*/
+        fprintf(file, str1);
+        free(ids);
+    }
+    /*2-It saves the characters*/
+    for (i = 0; i < game->n_characters; i++)
+    {
+        /*Gets his id*/
+        aux1 = character_get_id(game->characters[i]);
+        sprintf(str1, "#c:%d", aux1);
+        strcpy(str2, str1);
+        /*Gets his health*/
+        aux1 = character_get_health(game->characters[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        strcpy(str2, str1);
+        /*Gets the player the character follows*/
+        aux1 = character_get_follow(game->characters[i]);
+        sprintf(str1, "str2|%d\n", aux1);
+        /*Prints the line in the file*/
+        fprintf(file, str1);
+    }
+    /*3-It saves the objects*/
+    for (i = 0; i < game->n_objects; i++)
+    {
+        /*Gets the object id*/
+        aux1 = object_get_id(game->objects[i]);
+        sprintf(str1, "#o:%d", aux1);
+        strcpy(str2, str1);
+        /*Gets the health it has*/
+        aux1 = object_get_health(game->objects[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        strcpy(str2, str1);
+        /*Gets the open value of the object*/
+        aux1 = object_get_open(game->objects[i]);
+        sprintf(str1, "%s|%d\n", str2, aux1);
+        /*Prints the line in the file*/
+        fprintf(file, str1);
+    }
+    /*4-It saves the links*/
+    for (i = 0; i < game->n_links; i++)
+    {
+        /*Gets the link id*/
+        aux1 = object_get_id(game->objects[i]);
+        sprintf(str1, "#l:%d", aux1);
+        strcpy(str2, str1);
+        /*Gets the state of the link*/
+        aux1 = object_get_open(game->links[i]);
+        sprintf(str1, "%s|%d\n", str1, aux1);
+        /*Prints the line in the file*/
+        fprintf(file, str1);
+    }
+    /*5-Prints the spaces information*/
+    for (i = 0; i < game->n_spaces; i++)
+    {
+        /*Gets the space id*/
+        aux1 = space_get_id(game->spaces[i]);
+        sprintf(str1, "#s:%d", aux1);
+        strcpy(str2, str1);
+        /*Gets the number of objects in the space*/
+        aux1 = space_get_n_objects(game->spaces[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        strcpy(str2, str1);
+        /*Gets each of the objects id*/
+        if (!(ids = space_get_objects(game->spaces[i])))
+            return ERROR;
+
+        for (i = 0; i < aux1; i++)
+        {
+            sprintf(str1, "%s|%d", str2, ids[i]);
+            strcpy(str2, str1);
+        }
+        free(ids);
+        /*Gets the number of characters*/
+        aux1 = space_get_n_characters(game->spaces[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        strcpy(str2, str1);
+        /*Gets each of the characters*/
+        if (!(ids = space_get_characters(game->spaces[i])))
+            return ERROR;
+
+        for (i = 0; i < aux1; i++)
+        {
+            sprintf(str1, "%s|%d", str2, ids[i]);
+            strcpy(str2, str1);
+        }
+        free(ids);
+        /*Gets the discovered value*/
+        aux1 = space_is_discovered(game->spaces[i]);
+        sprintf(str1, "%s|%d", str2, aux1);
+        /*Prints the line in the file*/
+        fprintf(file, str1);
+    }
     return OK;
 }
 
@@ -124,7 +520,7 @@ Id *game_get_characters(Game *game)
         return NULL;
     }
 
-    /*Gets thhe character's id.*/
+    /*Gets the character's id.*/
     for (i = 0; i < n_elements; i++)
     {
         characters[i] = character_get_id(game->characters[i]);
@@ -840,15 +1236,15 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 
 int game_get_n_followers(Game *game, Id player)
 {
-    int i=0, n=0;
+    int i = 0, n = 0;
     /*Error management*/
-    if(!(game) || player==NO_ID || player ==ID_ERROR)
+    if (!(game) || player == NO_ID || player == ID_ERROR)
         return -1;
-    
+
     /*Counts the number of followers.*/
-    for(i=0;i<game->n_characters;i++)
+    for (i = 0; i < game->n_characters; i++)
     {
-        if(character_get_follow(game->characters[i])==player)
+        if (character_get_follow(game->characters[i]) == player)
             n++;
     }
     return n;
