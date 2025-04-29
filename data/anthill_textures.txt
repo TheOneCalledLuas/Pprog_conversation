@@ -72,9 +72,9 @@ EXTRA el caracter '&' actua como caracter transparente
 
 #o:25
 &&&&&&&&&
-& ______&
- / __==="
-/ (-'&&&&
+&&______&
+`/&__==="
+/&(-'&&&&
 '-'&&&&&&
 
 #s:11
