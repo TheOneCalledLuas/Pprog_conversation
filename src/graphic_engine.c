@@ -636,7 +636,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {
-    char aux[PLAYER_LENGTH] = {"   "}, aux_2[WIDTH_SPACE - LIMIT_OF_ELEMENTS], *aux_3 = NULL, aux_4[WIDTH_SPACE - NON_WRITTABLE_ELEMS];
+    char aux[PLAYER_LENGTH] = {"   "}, aux_2[WORD_SIZE], *aux_3 = NULL, aux_4[WIDTH_SPACE - NON_WRITTABLE_ELEMS];
     Space *space = NULL;
     int i, j, n_objs_space, cond = 0;
     Id *set = NULL, *characters = NULL;
