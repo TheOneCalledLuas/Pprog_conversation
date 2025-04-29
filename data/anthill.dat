@@ -18,8 +18,16 @@
 #s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |
 #s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
 
-#c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
-#c:4|Spider|/\OO/\|123|5|0|I wont't talk to you!|
+#c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant|
+#c:62|Vengeful_Ant|mo^|1111|5|1|Kill all spiders!|
+#c:63|Mysterious_Spider|/\OMO/\|1112|5|0|I wont't talk to you!|
+#c:64|Spider_Guard|/\OMO/\|1114|5|0|I won't talk to you!|
+#c:65|Worried_Ant|mo^|121|5|1|Help me save the baby!|
+#c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
+#c:67|Alchemist_Spider|/\OMO/\|131|5|0|I won't talk to you!|
+#c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
+#c:69|Baby_Spider|/\omo/\|1113|2|0|I won't talk to you...|
+#c:60|Arachne|/\0W0/\|114|8|0|I won't talk to you, peasant!|
 
 #o:21|grain|11|grain desc|
 #o:22|seed|121|seed desc|
@@ -27,7 +35,7 @@
 #o:24|soil|125|soil desc|
 #o:25|eldritch_artifact|11|gun desc|
 
-#p:1|Ant|mO^|11|10|3|
+#p:2|Ant|mO^|11|10|3|
 #p:3|Worm|-^-^-|123|10|3|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
