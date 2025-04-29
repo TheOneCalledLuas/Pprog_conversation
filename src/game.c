@@ -460,7 +460,7 @@ Status game_save_game(Game *game, char *name)
         sprintf(str1, "#l:%d", aux1);
         strcpy(str2, str1);
         /*Gets the state of the link*/
-        aux1 = object_get_open(game->links[i]);
+        aux1 = object_get_open(game->links[i]); //Te pongo esto para que sepas que te he cambiado esta linea, tenías object_get_open(game->links[i]), pero no es un objeto, srry por el comentario no ansi, es para que salte warning y lo puedas ver, no la halla liado. Saúl.
         sprintf(str1, "%s|%d\n", str1, aux1);
         /*Prints the line in the file*/
         fprintf(file, str1);
@@ -1276,7 +1276,8 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
     return UNK;
 }
 
-Id player_get_player_by_name(Game *game, char *name) {
+Id game_get_player_by_name(Game *game, char *name)
+{
     int i = 0;
     /*Error handling.*/
     if (!game || !name)
@@ -1286,7 +1287,7 @@ Id player_get_player_by_name(Game *game, char *name) {
     /*Searches the player by its name.*/
     for (i = 0; i < game->n_players; i++)
     {
-        if (!(strcasecmp(name, player_get_name(game->players[i]))))
+        if (!(strcasecmp(name, player_get_player_name(game->players[i]))))
         {
             /*Returns the player id.*/
             return (player_get_player_id(game->players[i]));
@@ -1296,7 +1297,8 @@ Id player_get_player_by_name(Game *game, char *name) {
     return NO_ID;
 }
 
-Player * game_get_player_by_id(Game *game, Id id) {
+Player *game_get_player_by_id(Game *game, Id id)
+{
     int i = 0;
     /*Error handling.*/
     if (!game || id == NO_ID)

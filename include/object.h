@@ -173,7 +173,7 @@ Id object_get_dependency(Object *object);
 Status object_set_open(Object *object, Id open);
 
 /**
- * @brief Gets the o'pen value of an object.
+ * @brief Gets the open value of an object.
  * @author Irene García
  * 
  * @param object Pointer to the object.

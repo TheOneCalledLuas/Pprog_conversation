@@ -545,7 +545,7 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
  * @param name Name of the player.
  * @return Id of the player, NO_ID if it doesn't exist, ID_ERROR if an error takes place.
  */
-Id player_get_player_by_name(Game *game, char *name);
+Id game_get_player_by_name(Game *game, char *name);
 
 /**
  * @brief It gets the player by its id.

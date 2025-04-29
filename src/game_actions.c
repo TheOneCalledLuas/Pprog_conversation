@@ -585,13 +585,6 @@ void game_actions_use(Game *game)
         return;
     }
 
-    /*If the object can't be used with use it ends here.*/
-    if (object_get_health(object_id) == 0)
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-
     /*Searches if the object is reachable.*/
     if (object_id >= 0 && (space_find_object(last_space, object_id) != -1 || player_has_object(player, object_id)))
     {
@@ -604,6 +597,14 @@ void game_actions_use(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+
+    /*If the object can't be used with use it ends here.*/
+    if (object_get_health(object) == 0)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
     /*Checks where to use the object.*/
     if (strcasecmp(command_get_argument(game_get_last_command(game), SECOND_ARG), "over") == 0)
     {
@@ -613,14 +614,14 @@ void game_actions_use(Game *game)
         if ((target = game_get_player_by_name(game, entity)) >= 0)
         {
             /*The object was used over an actual player.*/
-            player_set_health(game_get_player_by_id(game, target), player_get_health(player) + object_get_health(object_id));
+            player_set_health(game_get_player_by_id(game, target), player_get_health(player) + object_get_health(object));
             do_take = TRUE;
             command_set_status(game_get_last_command(game), OK);
         }
         else if (game_get_character_by_name(game, entity) != NO_ID)
         {
             /*The object was used over a character.*/
-            character_set_health(game_get_character(game, game_get_character_by_name(game, entity)), character_get_health(game_get_character(game, game_get_character_by_name(game, entity))) + object_get_health(object_id));
+            character_set_health(game_get_character(game, game_get_character_by_name(game, entity)), character_get_health(game_get_character(game, game_get_character_by_name(game, entity))) + object_get_health(object));
             command_set_status(game_get_last_command(game), OK);
             do_take = TRUE;
         }
@@ -634,7 +635,7 @@ void game_actions_use(Game *game)
     else
     {
         /*The object was used over the actual player.*/
-        player_set_health(player, player_get_health(player) + object_get_health(object_id));
+        player_set_health(player, player_get_health(player) + object_get_health(object));
         command_set_status(game_get_last_command(game), OK);
         do_take = TRUE;
     }
@@ -650,7 +651,10 @@ void game_actions_use(Game *game)
     return;
 }
 
-void game_actions_open(Game *game) {}
+void game_actions_open(Game *game)
+{
+    /*TO DO.*/
+}
 
 int random_int(int start, int end)
 {
