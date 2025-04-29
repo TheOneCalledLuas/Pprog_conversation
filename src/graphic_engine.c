@@ -392,7 +392,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
-                if (str[j] != '&')
+                if (str[k] != '&')
                     map[i + 9][j + 27] = str[j];
             }
         }
@@ -418,7 +418,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                         strncpy(str, object_get_texture_line(game_get_object(game, objects[i]), j), OBJECT_TEXTURE_SIZE);
                         for (k = 0; k < OBJECT_TEXTURE_SIZE - 1; k++)
                         {
-                            if (str[j] != '&')
+                            if (str[k] != '&')
                                 map[j + 22][k + 1 + i * 10] = str[k];
                         }
                     }
@@ -450,10 +450,10 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                         {
                             if (i < 3)
                             {
-                                if (str[j] != '&')
+                                if (str[k] != '&')
                                     map[j + 11 + i * 5][k + 45 + 2*i] = str[k];
                             }
-                            else if (str[j] != '&')
+                            else if (str[k] != '&')
                                 map[j + 11 + (i - 3) * 5][k + 12 - 2*i] = str[k];
                         }
                     }

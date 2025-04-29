@@ -1,46 +1,94 @@
-#s:11|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|
-#s:121|Corridor_1|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
-#s:122|Corridor_2|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
-#s:123|Corridor_3|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
-#s:124|Corridor_4|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|
-#s:13|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
-#s:125|Corridor_5|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|
-#s:126|Corridor_6|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
-#s:127|Corridor_7|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|
-#s:14|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|
+#s:1111|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
+#s:1112|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:1113|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1114|Stairs_1|         |  ---¬   |      ¬  |   mo' ¬ |         |
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:114|Lair|mo'   'om| _ \   /_ | _\\o//_ |/ /(_)\ \|  \   /  |
+#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |
+#s:1211|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:1212|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1213|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|
+#s:1221|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:1222|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|
+#s:1223|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
+#s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |
+#s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
 
-#c:2|MerchAnt|o^w^o|122|5|1|Hello fellow ant|
-#c:4|Spider|/\OO/\|123|5|0|I wont't talk to you!|
+#c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant|
+#c:62|Vengeful_Ant|mo^|1111|5|1|Kill all spiders!|
+#c:63|Mysterious_Spider|/\OMO/\|1112|5|0|I wont't talk to you!|
+#c:64|Spider_Guard|/\OMO/\|1114|5|0|I won't talk to you!|
+#c:65|Worried_Ant|mo^|121|5|1|Help me save the baby!|
+#c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
+#c:67|Alchemist_Spider|/\OMO/\|131|5|0|I won't talk to you!|
+#c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
+#c:69|Baby_Spider|/\omo/\|1113|2|0|I won't talk to you...|
+#c:60|Arachne|/\0W0/\|114|8|0|I won't talk to you, peasant!|
 
-#o:21|grain|11|grain desc|
-#o:22|seed|121|seed desc|
-#o:23|water|123|water desc|
-#o:24|soil|125|soil desc|
-#o:25|eldritch_artifact|124|gun desc|
+#o:211|seed|1111|seed desc|
+#o:212|potion_1|131|potion desc|
+#o:213|potion_2|131|potion desc|
+#o:214|potion_3|131|potion desc|
+#o:215|eldritch_artifact|123|gun desc|
+#o:216|dynamite|1212|dynamite desc|
+#o:217|lever_1|1213|lever desc|
+#o:218|lever_2|1223|lever desc|
+#o:219|breadcrumbs|122|crumbs desc|
+#o:220|treasure|1221|treasure desc|
+#o:221|eldritch_rocks|132|ammo desc|
+#o:222|spider_food|132|food desc|
+#o:223|baby_food|1113|food desc|
+#o:224|mystery_water|123|toilet desc|
 
-#p:1|Ant|mO^|11|5|3|
-#p:3|Worm|-^-^-|123|5|3|
+#p:2|Ant|mO^|11|10|3|
+#p:3|Worm|-^-^-|123|10|3|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
-#l:31|Entry-P1|11|121|1|1|
-#l:32|P1-Entry|121|11|0|1|
-#l:33|P1-P2|121|122|1|1|
-#l:34|P2-P1|122|121|0|1|
-#l:35|P2-P3|122|123|1|1|
-#l:36|P3-P2|123|122|0|1|
-#l:37|P4-P3|124|123|0|1|
-#l:38|P4-Despensa|124|13|1|1|
-#l:39|Despensa-P4|13|124|0|1|
-#l:40|Agujero-Despensa|14|13|5|1|
-#l:41|P7-Agujero|127|14|2|1|
-#l:42|Agujero-P7|14|127|3|1|
-#l:43|P6-P7|126|127|2|1|
-#l:44|P7-P6|127|126|3|1|
-#l:45|P5-P6|125|126|2|1|
-#l:46|P6-P5|126|125|3|1|
-#l:47|P2-P5|122|125|2|1|
-#l:48|P5-P2|125|122|3|1|
-#l:49|P3-P4|123|124|1|0|
+#l:311|Tutorial-Entry|111|112|1|1|
+#l:321|Entry-Corridor_11|112|1111|3|1|
+#l:331|Entry-Stairs_1|112|1114|2|1|
+#l:341|Entry-Hole|122|113|1|1|
+#l:351|Corridor_11-Corridor_12|1111|1112|1|1|
+#l:361|Corridor_12-Corridor_13|1112|1113|1|1|
+#l:371|Stairs_1-Stairs_2|1114|121|4|1|
+#l:381|Stairs_2-Corridor_21|121|1211|0|1|
+#l:391|Corridor_21-Corridor_22|1211|1212|2|1|
+#l:401|Corridor_22-Lever_1|1212|1213|2|1|
+#l:411|Lever_1-Pantry|1213|123|1|1|
+#l:421|Stairs_2-Corridor_23|121|1221|1|1|
+#l:431|Corridor_23-Corridor_24|1221|1222|2|1|
+#l:441|Corridor_24-Lever_2|1222|1223|2|1|
+#l:451|Lever_2-Pantry|1223|123|0|1|
+#l:461|Stairs_2-Hallway|121|122|2|1|
+#l:471|Hallway-Pantry|122|123|2|1|
+#l:481|Hole-Laboratory|113|131|5|1|
+#l:491|Laboratory-Cell|131|132|1|1|
+#l:301|Hole-Lair|113|114|1|1|
+#l:310|Entry-Room_0|112|0|4|1|
+#l:320|Corridor_11-Entry|1111|112|2|1|
+#l:330|Stairs_1-Entry|1114|112|3|1|
+#l:340|Hole-Entry|113|122|0|1|
+#l:350|Corridor_12-Corridor_11|1112|1111|0|1|
+#l:360|Corridor_13-Corridor_12|1113|1112|0|1|
+#l:370|Stairs_2-Stairs_1|121|1114|5|1|
+#l:380|Corridor_21-Stairs_2|1211|121|1|1|
+#l:390|Corridor_22-Corridor_21|1212|1211|3|1|
+#l:400|Lever_1-Corridor_22|1213|1212|3|1|
+#l:410|Pantry-Lever_1|123|1213|0|1|
+#l:420|Corridor_23-Stairs_2|1221|121|0|1|
+#l:430|Corridor_24-Corridor_23|1222|1221|3|1|
+#l:440|Lever_2-Corridor_24|1223|1222|3|1|
+#l:450|Pantry-Lever_2|123|1223|1|1|
+#l:460|Hallway-Stairs_2|122|121|3|1|
+#l:470|Pantry-Hallway|123|122|3|1|
+#l:480|Laboratory-Hole|131|113|4|0|
+#l:490|Cell-Laboratory|132|131|0|1|
+#l:300|Lair-Hole|114|113|0|1|
 
 #g:20|do_open_gate|1|0|1|22|
 #g:21|set_anim_default|1|0|1|0
@@ -51,3 +99,9 @@ Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|0|
+
+Esto son todos los archivos que tienen partidas guardadas 
+IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER
+
+######FILESAVES#######
+#f:game_saves/New_game.txt

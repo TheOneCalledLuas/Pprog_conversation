@@ -260,19 +260,7 @@ void game_actions_move(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    /*Removes the characters that are following the player from the space they are at*/
-    if (!(characters = game_get_characters(game)))
-    {
-        command_set_status(game_get_last_command(game), ERROR);
-        return;
-    }
-    for (i = 0; i < game_get_num_characters(game); i++)
-    {
-        if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
-        {
-            space_take_character(game_get_space(game, space_id), characters[i]);
-        }
-    }
+
     /*Sets the player location it to the id space in that direction of him.*/
     current_id = game_get_space_at(game, space_id, direction);
     if (game_get_space_outcoming_connection_info(game, space_id, direction) != OPENED)
@@ -283,6 +271,19 @@ void game_actions_move(Game *game)
     }
     if (current_id != NO_ID && current_id != ID_ERROR)
     {
+        /*Removes the characters that are following the player from the space they are at, if the conditions are met*/
+        if (!(characters = game_get_characters(game)))
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+        for (i = 0; i < game_get_num_characters(game); i++)
+        {
+            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
+            {
+                space_take_character(game_get_space(game, space_id), characters[i]);
+            }
+        }
         player_set_player_location(game_get_actual_player(game), current_id);
         for (i = 0; i < game_get_num_characters(game); i++)
         {
