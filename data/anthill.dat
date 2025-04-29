@@ -1,3 +1,4 @@
+#s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
 #s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|
 #s:1111|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
 #s:1112|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
@@ -48,25 +49,46 @@
 #p:3|Worm|-^-^-|123|10|3|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
-#l:31|Entry-P1|11|121|1|1|
-#l:32|P1-Entry|121|11|0|1|
-#l:33|P1-P2|121|122|1|1|
-#l:34|P2-P1|122|121|0|1|
-#l:35|P2-P3|122|123|1|1|
-#l:36|P3-P2|123|122|0|1|
-#l:37|P4-P3|124|123|0|1|
-#l:38|P4-Despensa|124|13|1|1|
-#l:39|Despensa-P4|13|124|0|1|
-#l:40|Agujero-Despensa|14|13|5|1|
-#l:41|P7-Agujero|127|14|2|1|
-#l:42|Agujero-P7|14|127|3|1|
-#l:43|P6-P7|126|127|2|1|
-#l:44|P7-P6|127|126|3|1|
-#l:45|P5-P6|125|126|2|1|
-#l:46|P6-P5|126|125|3|1|
-#l:47|P2-P5|122|125|2|1|
-#l:48|P5-P2|125|122|3|1|
-#l:49|P3-P4|123|124|1|0|
+#l:311|Tutorial-Entry|111|112|1|1|
+#l:321|Entry-Corridor_11|112|1111|3|1|
+#l:331|Entry-Stairs_1|112|1114|2|1|
+#l:341|Entry-Hole|122|113|1|1|
+#l:351|Corridor_11-Corridor_12|1111|1112|1|1|
+#l:361|Corridor_12-Corridor_13|1112|1113|1|1|
+#l:371|Stairs_1-Stairs_2|1114|121|4|1|
+#l:381|Stairs_2-Corridor_21|121|1211|0|1|
+#l:391|Corridor_21-Corridor_22|1211|1212|2|1|
+#l:401|Corridor_22-Lever_1|1212|1213|2|1|
+#l:411|Lever_1-Pantry|1213|123|1|1|
+#l:421|Stairs_2-Corridor_23|121|1221|1|1|
+#l:431|Corridor_23-Corridor_24|1221|1222|2|1|
+#l:441|Corridor_24-Lever_2|1222|1223|2|1|
+#l:451|Lever_2-Pantry|1223|123|0|1|
+#l:461|Stairs_2-Hallway|121|122|2|1|
+#l:471|Hallway-Pantry|122|123|2|1|
+#l:481|Hole-Laboratory|113|131|5|1|
+#l:491|Laboratory-Cell|131|132|1|1|
+#l:301|Hole-Lair|113|114|1|1|
+#l:310|Entry-Room_0|112|0|4|1|
+#l:320|Corridor_11-Entry|1111|112|2|1|
+#l:330|Stairs_1-Entry|1114|112|3|1|
+#l:340|Hole-Entry|113|122|0|1|
+#l:350|Corridor_12-Corridor_11|1112|1111|0|1|
+#l:360|Corridor_13-Corridor_12|1113|1112|0|1|
+#l:370|Stairs_2-Stairs_1|121|1114|5|1|
+#l:380|Corridor_21-Stairs_2|1211|121|1|1|
+#l:390|Corridor_22-Corridor_21|1212|1211|3|1|
+#l:400|Lever_1-Corridor_22|1213|1212|3|1|
+#l:410|Pantry-Lever_1|123|1213|0|1|
+#l:420|Corridor_23-Stairs_2|1221|121|0|1|
+#l:430|Corridor_24-Corridor_23|1222|1221|3|1|
+#l:440|Lever_2-Corridor_24|1223|1222|3|1|
+#l:450|Pantry-Lever_2|123|1223|1|1|
+#l:460|Hallway-Stairs_2|122|121|3|1|
+#l:470|Pantry-Hallway|123|122|3|1|
+#l:480|Laboratory-Hole|131|113|4|0|
+#l:490|Cell-Laboratory|132|131|0|1|
+#l:300|Lair-Hole|114|113|0|1|
 
 #g:20|do_open_gate|1|0|1|22|
 #g:21|set_anim_default|1|0|1|0
