@@ -52,7 +52,7 @@
 #l:311|Tutorial-Entry|111|112|1|1|
 #l:321|Entry-Corridor_11|112|711|3|1|
 #l:331|Entry-Stairs_1|112|714|2|1|
-#l:341|Entry-Hole|122|113|1|1|
+#l:341|Entry-Hole|112|113|1|1|
 #l:351|Corridor_11-Corridor_12|711|712|1|1|
 #l:361|Corridor_12-Corridor_13|712|713|1|1|
 #l:371|Stairs_1-Stairs_2|714|121|4|1|
@@ -72,7 +72,7 @@
 #l:310|Entry-Room_0|112|0|4|1|
 #l:320|Corridor_11-Entry|711|112|2|1|
 #l:330|Stairs_1-Entry|714|112|3|1|
-#l:340|Hole-Entry|113|122|0|1|
+#l:340|Hole-Entry|113|112|0|1|
 #l:350|Corridor_12-Corridor_11|712|711|0|1|
 #l:360|Corridor_13-Corridor_12|713|712|0|1|
 #l:370|Stairs_2-Stairs_1|121|714|5|1|
