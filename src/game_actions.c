@@ -112,14 +112,6 @@ void game_actions_abandon(Game *game);
 void game_actions_recruit(Game *game);
 
 /**
- * @brief Action to be exectured when the map command is given
- * @author Fernando Mijangos
- *
- * @param game Pointer to the game
- */
-void game_actions_map(Game *game);
-
-/**
  * @brief Action to be executed when exit is given.
  * @author Profesores PProg.
  *
@@ -205,10 +197,6 @@ Status game_actions_update(Game *game, Command *command)
 
     case RECRUIT:
         game_actions_recruit(game);
-        break;
-
-    case MAP:
-        game_actions_map(game);
         break;
     default:
         break;
@@ -546,13 +534,6 @@ void game_actions_abandon(Game *game)
         command_set_status(game_get_last_command(game), OK);
         return;
     }
-    command_set_status(game_get_last_command(game), ERROR);
-}
-
-void game_actions_map(Game *game)
-{
-    /*The map action is managed by graphic engine; it starts as an error and
-    if it goes as it should the error code is set to OK, similar to chat. */
     command_set_status(game_get_last_command(game), ERROR);
 }
 

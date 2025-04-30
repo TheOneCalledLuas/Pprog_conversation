@@ -99,13 +99,4 @@ Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|0|
-
-Esto son todos los archivos que tienen partidas guardadas 
-IMPORTANTE, NO TOCAR LO QUE HAY DEBAJO, PQ PUEDE SER ELIMINADO SIN QUERER
-
-######FILESAVES#######
-#f:game_saves/Potato.txt
-#f:game_saves/potato.txt
-#f:game_saves/potato2.txt
-#f:game_saves/potato3.txt
-#f:game_saves/thing.txt
+#f:game_saves/lpatato.txt

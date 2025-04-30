@@ -713,39 +713,3 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     /*Clean exit.*/
     return OK;
 }
-
-Status game_reader_load_savefiles(Game *game, char *filename)
-{
-    FILE *file = NULL;
-    int i;
-    char str[WORD_SIZE], *toks;
-
-    /*Error management*/
-    if (!(game) || !filename || strlen(filename) > WORD_SIZE)
-        return ERROR;
-
-    /*Opens the file*/
-    if (!(file = fopen(filename, "r")))
-        return ERROR;
-
-    /*Reads the file*/
-    while (fgets(str, WORD_SIZE, file))
-    {
-        if (strncmp("#f:", str, IDENTIFIER_LENGTH) == 0)
-        {
-            toks = strtok(str + IDENTIFIER_LENGTH + strlen("game_saves/"), ".");
-            /*Looks that the file doesnt correspond to an existing one*/
-            for (i = 0; i < (game_get_n_savefiles(game)); i++)
-            {
-                if (game_find_savefile_by_name(game, toks) == OK)
-                {
-                    fclose(file);
-                    return ERROR;
-                }
-            }
-            game_add_savefile(game, toks);
-        }
-    }
-    fclose(file);
-    return OK;
-}

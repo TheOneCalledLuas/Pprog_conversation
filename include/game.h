@@ -24,7 +24,6 @@
 #define MAX_OBJECTS 100    /*!<Max objects.*/
 #define MAX_CHARACTERS 100 /*!<Max characters.*/
 #define MAX_LINKS 400      /*!<Max links.*/
-#define MAX_SAVEFILES 10   /*!<Max savefiles*/
 
 /*Keywords to obtain last commands.*/
 #define FIRST_LAST_COMMAND 0  /*!<First one from the back.*/
@@ -458,113 +457,6 @@ Id game_get_space_at(Game *game, Id space, Direction direction);
  * @return Number of followers of that player, -1 if error
  */
 int game_get_n_followers(Game *game, Id player);
-
-/**
- * @brief Returns the number of savefilse
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @return Number of savefiles, -1 if ERROR
- */
-int game_get_n_savefiles(Game *game);
-
-/**
- * @brief Sets the number of savefiles to what you want
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param num New number of savefiles
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_set_n_savefiles(Game *game, int num);
-
-/**
- * @brief returns the name of the datafile
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @return Name of the datafile, NULL if error
- */
-char *game_get_datafile(Game *game);
-
-/**
- * @brief Sets the name of the datafile
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_set_datafile(Game *game, char *str);
-
-/**
- * @brief Adds a new safefile, creating a new file
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name Pointer to the name of the new safefile
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_add_new_savefile(Game *game, char *name);
-
-/**
- * @brief Adds a new safefile without creating a new file
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name Pointer to the name of the new safefile
- * @return OK if everything went well, ERROR otherwise
- */
-Status game_add_savefile(Game *game, char *name);
-
-/**
- * @brief Looks for a safefile by its name
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name Pointer to the name of the safefile
- * @return OK if it exists, ERROR otherwise
- */
-Status game_find_savefile_by_name(Game *game, char *name);
-
-/**
- * @brief Gets the name of a safefile by its position in the array
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param position Position of the safefile in the array
- * @return Pointer to the name of the safefile, NULL if error
- */
-char *game_get_savefile(Game *game, int position);
-
-/**
- * @brief Removes a safefile, removing the file that has all its information
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name Pointer to the name of the safefile to deleted
- * @return Ok if everything went well, ERROR otherwise
- */
-Status game_remove_savefile(Game *game, char *name);
-
-/**
- * @brief Saves the current status of the game
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name_file Name of the file wher you wnt to store the information
- * @return OK, iff everything went well, ERROR otherwise
- */
-Status game_save_game(Game*game, char *name_file);
-
-/**
- * @brief Loads a savefile into the game
- * @author Fernando Mijangos
- * 
- * @param game Pointer to the game
- * @param name_file Name of the savefile you want to load
- * @return OK, if everything went well, ERROR otherwise
- */
-Status game_load_savefile(Game *game, char*name_file);
 
 /**
  * @brief Gets the link information for a stace regarding the outgoing links.
