@@ -172,7 +172,7 @@ Status animation_manager_del_animation(Animation_Manager *am, int pos)
     }
 
     /*Frees and deletes the animation.*/
-    free(am->animations[pos]);
+    animation_destroy(am->animations[pos]);
     am->animations[pos] = NULL;
     am->n_animations--;
 
