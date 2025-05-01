@@ -523,7 +523,7 @@ Status game_reader_load_players(Game *game, char *filename)
     char name[WORD_SIZE];
     char gdesc[WORD_SIZE];
     char line[WORD_SIZE];
-    Id player_id = 0, space_id = 0;
+    Id player_id = 0, space_id = 0, aux_id=0;
     char *toks = NULL;
     int player_inventory = 0, player_health = 0, i = 0;
 
@@ -609,7 +609,9 @@ Status game_reader_load_players(Game *game, char *filename)
                 toks = strtok(NULL, "|");
                 if (toks)
                 {
-                    player_add_object(player, atol(toks));
+                    aux_id = atol(toks);
+                    if ( aux_id!=NO_ID )
+                        player_add_object(player, atol(toks));
                 }
             }
             /*Searches for the player texture.*/
@@ -800,7 +802,7 @@ Status game_reader_load_savefile_names(Game *game)
     for (i = 0; i < MAX_SAVEFILES && fgets(str, WORD_SIZE, file); i++)
     {
         /*Removes the \n  and \rfrom the name*/
-        for(i=0;i<strlen(str);i++)
+        for (i = 0; i < strlen(str); i++)
         {
             if (str[i] == '\n')
                 str[i] = '\0';
@@ -973,6 +975,12 @@ Status game_reader_save_game(Game *game, char *filename)
                     {
                         sprintf(str2, "%ld|", ids2[j]);
                         strcat(str, str2);
+                    }
+                    while(j<player_get_inventory_capacity(aux_structure))
+                    {
+                        sprintf(str2, "-1|");
+                        strcat(str, str2);
+                        j++;
                     }
                     free(ids2);
                 }
