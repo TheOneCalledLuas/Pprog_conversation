@@ -1,34 +1,34 @@
-#s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
-#s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
-#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:714|Stairs_1|         |  ---¬   |      ¬  |   mo' ¬ |         |0|
-#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
-#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
-#s:114|Lair|mo'   'om| _ \   /_ | _\\o//_ |/ /(_)\ \|  \   /  |0|
-#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |0|
-#s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
-#s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:723|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|0|
-#s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
-#s:733|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
-#s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
-#s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|
+#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|
+#s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:714|Stairs_1|         |  ---¬   |      ¬  |   mo' ¬ |         |
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|
+#s:114|Lair|mo'   'om| _ \   /_ | _\\o//_ |/ /(_)\ \|  \   /  |
+#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |
+#s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|
+#s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:723|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|
+#s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|
+#s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|
+#s:733|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|
+#s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |
+#s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|
 
 #c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant|
 #c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders!|
-#c:63|Mysterious_Spider|/\OO/\|712|5|0|I wont't talk to you!|
-#c:64|Spider_Guard|/\OO/\|714|5|0|I won't talk to you!|
+#c:63|Mysterious_Spider|/\OMO/\|712|5|0|I wont't talk to you!|
+#c:64|Spider_Guard|/\OMO/\|714|5|0|I won't talk to you!|
 #c:65|Worried_Ant|mo^|121|5|1|Help me save the baby!|
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
-#c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
+#c:67|Alchemist_Spider|/\OMO/\|131|5|0|I won't talk to you!|
 #c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
 #c:69|Baby_Spider|/\omo/\|713|2|0|I won't talk to you...|
-#c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
+#c:60|Arachne|/\0W0/\|114|8|0|I won't talk to you, peasant!|
 
 #o:211|seed|711|seed desc|
 #o:212|potion_1|131|potion desc|
@@ -52,7 +52,7 @@
 #l:311|Tutorial-Entry|111|112|1|1|
 #l:321|Entry-Corridor_11|112|711|3|1|
 #l:331|Entry-Stairs_1|112|714|2|1|
-#l:341|Entry-Hole|112|113|1|1|
+#l:341|Entry-Hole|122|113|1|1|
 #l:351|Corridor_11-Corridor_12|711|712|1|1|
 #l:361|Corridor_12-Corridor_13|712|713|1|1|
 #l:371|Stairs_1-Stairs_2|714|121|4|1|
@@ -72,7 +72,7 @@
 #l:310|Entry-Room_0|112|0|4|1|
 #l:320|Corridor_11-Entry|711|112|2|1|
 #l:330|Stairs_1-Entry|714|112|3|1|
-#l:340|Hole-Entry|113|112|0|1|
+#l:340|Hole-Entry|113|122|0|1|
 #l:350|Corridor_12-Corridor_11|712|711|0|1|
 #l:360|Corridor_13-Corridor_12|713|712|0|1|
 #l:370|Stairs_2-Stairs_1|121|714|5|1|
@@ -93,10 +93,8 @@
 #g:20|do_open_gate|1|0|1|22|
 #g:21|set_anim_default|1|0|1|0
 
-esto es para saber de quien es el turno
-#T:0|
-
 #t:data/anthill_textures.txt
+
 Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|

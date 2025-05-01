@@ -14,6 +14,9 @@
 #define WORD_SIZE 1000 /*!<Maximun word length.*/
 #define NO_ID -1       /*!<Minor error code.*/
 #define ID_ERROR -2    /*!<Major error code.*/
+#define SAVEFILES_NAMES "data/savefiles_names.txt" /*!<Name of the file where the savefiles names are stored.*/
+#define MAX_SAVEFILES 10 /*!<Maximum number of savefiles*/
+
 
 typedef long Id; /*!< Id type. */
 

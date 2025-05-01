@@ -47,7 +47,6 @@ typedef enum
     INSPECT,     /*!< Inspect command.*/
     RECRUIT,     /*!< Recruit command.*/
     ABANDON,     /*!< Abandon command.*/
-    MAP,         /*!< Map command.*/
     USE,         /*!< Use command.*/
     OPEN,        /*!< Open command.*/
     SAVE         /*!< Save command.*/

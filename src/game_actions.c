@@ -128,6 +128,14 @@ void game_actions_use(Game *game);
 void game_actions_open(Game *game);
 
 /**
+ * @brief Action to be executed when save command is given.
+ * @author Fernando Mijangos
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_save(Game *game);
+
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -197,6 +205,9 @@ Status game_actions_update(Game *game, Command *command)
 
     case RECRUIT:
         game_actions_recruit(game);
+        break;
+    case SAVE:
+        game_actions_save(game);
         break;
     default:
         break;
@@ -631,6 +642,14 @@ void game_actions_use(Game *game)
     }
     return;
 }
+
+void game_actions_save(Game *game)
+{
+    /*The save action is managed by game_loop; it starts as an error and
+    if it goes as it should the error code is set to OK. */
+    command_set_status(game_get_last_command(game), ERROR);
+    return;
+}   
 
 void game_actions_open(Game *game)
 {

@@ -223,6 +223,16 @@ Player *game_get_player(Game *game, int player_number);
 Status game_next_turn(Game *game);
 
 /**
+ * @brief Sets the turn to the one you want, this should only be used by game_reader
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game.
+ * @param turn Turn number.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_set_turn(Game *game, int turn);
+
+/**
  * @brief Returns the next turn.
  * @author Saúl López Romero
  *
@@ -488,5 +498,155 @@ Id game_get_player_by_name(Game *game, char *name);
  * @return Pointer to the player, NULL if it doesn't exist or an error takes place.
  */
 Player * game_get_player_by_id(Game *game, Id id);
+
+/**
+ * @brief It gets an initialized array with the players ids.
+ *          IMPORTANT you have to free it after using it.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Array of ids of the players, NULL if an error takes place.
+ *      IMPORTANT you have to free it after using it.
+ * 
+ */
+Id *game_get_players(Game *game);
+
+/**
+ * @brief It gets an initialized array with the spaces ids.
+ *         IMPORTANT you have to free it after using it.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Array of ids of the spaces, NULL if an error takes place.
+ *         IMPORTANT you have to free it after using it.
+ */
+Id *game_get_spaces(Game *game);
+
+/**
+ * @brief It gets the number of spaces in the game.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Number of spaces in the game, -1 if an error takes place.
+ */
+int game_get_n_spaces(Game *game);
+
+/**
+ * @brief It gets an initialized array with the links ids.
+ *         IMPORTANT you have to free it after using it.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Array of ids of the links, NULL if an error takes place.
+ *         IMPORTANT you have to free it after using it.
+ */
+Id *game_get_links(Game *game);
+
+/**
+ * @brief It gets the number of links in the game.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Number of links in the game, -1 if an error takes place.
+ */
+int game_get_n_links(Game *game);
+
+/**
+ * @brief It gets an initialized array with the objects ids.
+ *         IMPORTANT you have to free it after using it.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Array of ids of the objects, NULL if an error takes place.
+ *        IMPORTANT you have to free it after using it.
+ */
+Id *game_get_gamerules(Game *game);
+
+/**
+ * @brief It gets the number of gamerules in the game.
+ * @author Fernando Mijangos.
+ * 
+ * @param game Pointer to the game.
+ * @return Number of gamerules in the game, -1 if an error takes place.
+ */
+int game_get_n_gamerules(Game *game);
+
+/**
+ * @brief Adds a new savefile name to the game structure
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name
+ * @return OK if everything went well, ERROr othewise
+ */
+Status game_add_savefile(Game *game, char *name);
+
+/**
+ * @brief Adds a new savefile, creating a new file for it and adding its name to the game structure
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name
+ * @return Ok if everything went well, ERROR otherwise
+ */
+Status game_add_new_savefile(Game *game, char *name);
+
+/**
+ * @brief Deletes a savefile, deleting its file and removing it from the game strucutre
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Pointer to the name
+ * @return OK if everythig went well, ERROR otherwise
+ */
+Status game_delete_savefile(Game *game, char *name);
+
+/**
+ * @brief Gets the number of savefiles there are
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @return Number of existing savefiles, -1 if error
+ */
+int game_get_n_savefiles(Game *game);
+
+/**
+ * @brief Sets the number of savefiles to what you want
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param n New number of savfiles
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_set_n_savefiles(Game *game, int n);
+
+/**
+ * @brief It gets the name of a savefile in a position of the array
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param n Position you want the name for
+ * @return Pointer to the name of the savefile in that position, NULL if ERROR
+ */
+char *game_get_savefile(Game *game, int n);
+
+/**
+ * @brief It gets the name of the current savefile
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @return Pointer to the name of the current savefile, NULL if ERROR
+ */
+char *game_get_current_savefile(Game *game);
+
+/**
+ * @brief It sets the name of the current savefile to what you want
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param name Name of the savefile you want to set as current
+ * @return OK if everything went well, ERROR otherwise
+ */
+Status game_set_current_savefile(Game *game, char *name);
 
 #endif

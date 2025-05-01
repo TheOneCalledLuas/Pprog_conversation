@@ -38,6 +38,27 @@ struct _Game_values
     int n_gamerules;      /*!< Number of gamerules.*/
 };
 
+Id *gamerules_get_all_gamerules(Game_values *gv)
+{
+    int i = 0, len=0;
+    Id *ids = NULL;
+    /*Error handling.*/
+    if(!gv)
+        return NULL;
+    len = gv->n_gamerules;
+    if(len == 0)
+        return NULL;
+    /*Allocates memory.*/
+    if(!(ids = (Id *)calloc(len, sizeof(Id))))
+        return NULL;
+    /*Gets the ids.*/
+    for(i=0; i<len; i++)
+    {
+        ids[i] = gv->gamerules[i]->id;
+    }
+    return ids;
+}
+
 Game_values *gamerules_values_init()
 {
     Game_values *gv = NULL;
