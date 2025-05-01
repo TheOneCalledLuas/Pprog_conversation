@@ -649,11 +649,84 @@ void game_actions_save(Game *game)
     if it goes as it should the error code is set to OK. */
     command_set_status(game_get_last_command(game), ERROR);
     return;
-}   
+}
 
 void game_actions_open(Game *game)
 {
-    /*TO DO.*/
+    Command *command = NULL;
+    Space *act_space = NULL;
+    Link *link = NULL;
+    Object *object = NULL;
+
+    /*Error handling.*/
+    if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Gathers all the information.*/
+    if (!(command = game_get_last_command(game)) || strcasecmp(command_get_argument(command, SECOND_ARG), "with") != 0 || strcmp(command_get_argument(command, FIRST_ARG), "") == 0)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    act_space = game_get_space(game, player_get_player_location(game_get_actual_player(game)));
+    link = game_get_link_by_name(game, command_get_argument(command, FIRST_ARG));
+    object = game_get_object(game, game_get_object_by_name(game, command_get_argument(command, THIRD_ARG)));
+
+    /*More error management.*/
+    if (!act_space || !link || !object)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks if the object opens the link.*/
+    if (object_get_open(object) != link_get_id(link))
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks if the link is reachable and can be opened.*/
+    if (link_get_state(link) == ((Bool)CLOSED))
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    if (link_get_destination(link) != space_get_id(act_space) && link_get_origin(link) != space_get_id(act_space))
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks if the object is reachable.*/
+    if (player_has_object(game_get_actual_player(game), object_get_id(object)) == TRUE)
+    {
+        /*Executes the command and takes the object out of the inventory.*/
+        link_set_state(link, OPENED);
+        player_del_object(game_get_actual_player(game), object_get_id(object));
+    }
+    else if (space_find_object(act_space, object_get_id(object)) != -1)
+    {
+        /*Executes the command and takes the object out of the space.*/
+        link_set_state(link, OPENED);
+        space_take_object(act_space, object_get_id(object));
+    }
+    else
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Clean exit.*/
+    command_set_status(game_get_last_command(game), OK);
+    return;
 }
 
 int random_int(int start, int end)

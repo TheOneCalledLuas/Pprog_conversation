@@ -168,6 +168,16 @@ Status game_create_from_file(Game **game, char *filename);
 int game_get_n_animations(Game *game);
 
 /**
+ * @brief It searches for a link by its name.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game structure.
+ * @param name Name of the link to be searched.
+ * @return Pointer to the link, NULL if it wasn't found or an error took place.
+ */
+Link * game_get_link_by_name(Game *game, char *name);
+
+/**
  * @brief It destroys all the information about the spaces, and the last command.
  * @author Saul Lopez Romero
  *

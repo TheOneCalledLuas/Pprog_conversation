@@ -920,6 +920,24 @@ void game_print(Game *game)
     return;
 }
 
+Link *game_get_link_by_name(Game *game, char *name)
+{
+    int i = 0;
+    /*Error management.*/
+    if (!(game) || name == NULL)
+        return NULL;
+
+    /*Searches for the link and returns it. */
+    for (i = 0; i < game->n_links; i++)
+    {
+        if (link_get_name(game->links[i]) && strcmp(link_get_name(game->links[i]), name) == 0)
+            return game->links[i];
+    }
+
+    /*The link wasn't found */
+    return NULL;
+}
+
 Status game_create_from_file(Game **game, char *filename)
 {
     int i = 0, j = 0;
