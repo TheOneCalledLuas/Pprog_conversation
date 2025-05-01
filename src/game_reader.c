@@ -1088,7 +1088,7 @@ Status game_reader_load_animations(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#g:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#a:", line, IDENTIFIER_LENGTH) == 0)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
@@ -1141,5 +1141,5 @@ Status game_reader_load_animations(Game *game, char *filename)
     fclose(f);
 
     /*Clean exit.*/
-    reutrn OK;
+    return OK;
 }
