@@ -1,16 +1,16 @@
 #s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|1|
-#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
+#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
 #s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
 #s:714|Stairs_1|         |         |         |         |         |0|
 #s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
-#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|1|
 #s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
 #s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |0|
 #s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:723|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:723|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
 #s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|0|
 #s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
 #s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
@@ -34,7 +34,7 @@
 #o:214|potion_3|131|potion desc|
 #o:215|eldritch_artifacttttttttttttttttt|123|gun desc|
 #o:216|dynamite|722|dynamite desc|
-#o:217|lever_1|723|lever desc|
+#o:217|lever_1|-1|lever desc|
 #o:218|lever_2|733|lever desc|
 #o:219|breadcrumbs|122|crumbs desc|
 #o:220|treasure|731|treasure desc|
@@ -42,8 +42,8 @@
 #o:222|spider_food|132|food desc|
 #o:223|baby_food|713|food desc|
 #o:224|mystery_water|123|toilet desc|
-#p:2|Ant|mO^|711|10|3|-1|-1|-1|
-#p:3|Worm|-^-^-|123|10|3|-1|-1|-1|
+#p:2|Ant|mO^|113|10|3|-1|-1|-1|
+#p:3|Worm|-^-^-|723|10|3|217|-1|-1|
 #l:311|Tutorial-Entry|111|112|1|1|
 #l:321|Entry-Corridor_11|112|711|3|1|
 #l:331|Entry-Stairs_1|112|714|2|1|
