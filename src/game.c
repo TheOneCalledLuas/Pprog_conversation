@@ -156,7 +156,7 @@ Status game_set_current_savefile(Game *game, char *name)
             condition = TRUE;
     }
     /*If it dint't exist return ERROR*/
-    if(condition == FALSE)
+    if (condition == FALSE)
         return ERROR;
     /*Sets the name of the current savefile*/
     strcpy(game->current_savefile, name);
@@ -190,7 +190,7 @@ Status game_add_new_savefile(Game *game, char *name)
             return ERROR;
     }
     /*Adds the new savefile to the game structure*/
-    if(game_add_savefile(game, name)==ERROR)
+    if (game_add_savefile(game, name) == ERROR)
         return ERROR;
     /*Prints that name into the savefiles_names.txt*/
     fprintf(f, "%s\n", name);
@@ -983,7 +983,7 @@ Status game_create_from_file(Game **game, char *filename)
         game_destroy(game);
         return ERROR;
     }
-    
+
     /*Loads the savefile names*/
     if (game_reader_load_savefile_names(*game) == ERROR)
     {
@@ -992,7 +992,7 @@ Status game_create_from_file(Game **game, char *filename)
     }
 
     /*Loads the turn*/
-    if(game_reader_load_last_turn(*game, filename) == ERROR)
+    if (game_reader_load_last_turn(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;

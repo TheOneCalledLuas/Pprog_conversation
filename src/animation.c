@@ -562,19 +562,23 @@ Status animation_run(Animation_Manager *am, Id anim_id)
 {
     FILE *f = NULL;
     Animation *anim = NULL;
-    char line[MAX_LINE] = "";
+    char line[MAX_LINE*2+1] = "";
     int i = 0, j = 0, k = 0;
 
     /*Error handling.*/
     if (!am || anim_id == NO_ID)
         return ERROR;
-
-    /*Searches for the animation to be runned.*/
+    
+    /*Searches for the animation.*/
     if (!(anim = animation_manager_get_animation_by_id(am, anim_id)))
         return ERROR;
+    
+    /*Creates the animation path.*/
+    sprintf(line, "%s/%s", am->animations_route, anim->animation_file);
+
 
     /*Opens the file where the animation is stored.*/
-    if (!(f = fopen(anim->animation_file, "r")))
+    if (!(f = fopen(line, "r")))
         return ERROR;
 
     /*Reads the file line by line, and prints it on the screen.*/
