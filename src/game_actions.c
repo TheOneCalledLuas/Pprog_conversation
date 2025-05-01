@@ -332,6 +332,13 @@ void game_actions_take(Game *game)
     }
     player = game_get_actual_player(game);
 
+    /*1.2.-CHeecks if the object can be taken.*/
+    if (object_get_movable(game_get_object(game, object)) == FALSE)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
     /*3-Player takes the object and error management.*/
     if (!player_add_object(player, object))
     {
