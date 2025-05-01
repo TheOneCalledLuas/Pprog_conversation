@@ -77,23 +77,34 @@ struct _Animation
     int font_color;       /*!< Font color during the animation.*/
 };
 
+/*Private functions.*/
+
+/**
+ * @brief Waits a certain amount of time in miliseconds.
+ * @author Saúl López Romero.
+ *
+ * @param time Time to wait in miliseconds.
+ * @return OK if everything goes as expected, ERROR otherwise.
+ */
+Status wait(float time);
+
 Animation_Manager *animation_manager_init(char *animation_file)
 {
     Animation_Manager *am = NULL;
 
-    /* Error handling.*/
+    /*Error handling.*/
     if (animation_file == NULL || strlen(animation_file) == 0 || strlen(animation_file) > MAX_LINE)
     {
         return NULL;
     }
 
-    /* Memory allocation.*/
+    /*Memory allocation.*/
     if (!(am = (Animation_Manager *)calloc(1, sizeof(Animation_Manager))))
     {
         return NULL;
     }
 
-    /* Memory allocation for the animation list.*/
+    /*Memory allocation for the animation list.*/
     if (!(am->animations = (Animation **)calloc(MAX_ANIMATIONS, sizeof(Animation *))))
     {
         free(am);
@@ -114,14 +125,24 @@ void animation_manager_destroy(Animation_Manager *am)
 {
     int i;
 
-    /* Error handling.*/
+    /*Error handling.*/
     if (am)
     {
-        /* Frees the animation list.*/
+        /*Frees the animations in the list.*/
+        for (i = 0; i < am->n_animations; i++)
+        {
+            if (am->animations[i])
+            {
+                animation_destroy(am->animations[i]);
+                am->animations[i] = NULL;
+            }
+        }
+
+        /*Frees the animation list.*/
         if (am->animations)
             free(am->animations);
 
-        /* Frees the animator manager.*/
+        /*Frees the animator manager.*/
         free(am);
     }
 }
@@ -138,15 +159,13 @@ Status animation_manager_add_animation(Animation_Manager *am, Animation *anim)
     am->animations[am->n_animations] = anim;
     am->n_animations++;
 
-    /* Clean exit.*/
+    /*Clean exit.*/
     return OK;
 }
 
 Status animation_manager_del_animation(Animation_Manager *am, int pos)
 {
-    int i = 0;
-
-    /* Error handling.*/
+    /*Error handling.*/
     if (am == NULL || am->n_animations <= 0 || pos < 0 || pos >= am->n_animations)
     {
         return ERROR;
@@ -157,7 +176,7 @@ Status animation_manager_del_animation(Animation_Manager *am, int pos)
     am->animations[pos] = NULL;
     am->n_animations--;
 
-    /* Clean exit.*/
+    /*Clean exit.*/
     return OK;
 }
 
@@ -165,19 +184,19 @@ Animation *animation_init(Id id, char *filename)
 {
     Animation *anim = NULL;
 
-    /* Error handling.*/
+    /*Error handling.*/
     if (id == NO_ID || filename == NULL || strlen(filename) == 0 || strlen(filename) > MAX_LINE)
     {
         return NULL;
     }
 
-    /* Memory allocation.*/
+    /*Memory allocation.*/
     if (!(anim = (Animation *)calloc(1, sizeof(Animation))))
     {
         return NULL;
     }
 
-    /* Copying the animation file name.*/
+    /*Copying the animation file name.*/
     anim->animation_file = (char *)calloc(strlen(filename) + 1, sizeof(char));
     if (anim->animation_file == NULL)
     {
@@ -186,7 +205,7 @@ Animation *animation_init(Id id, char *filename)
     }
     strcpy(anim->animation_file, filename);
 
-    /* Memory allocation for the animation name.*/
+    /*Memory allocation for the animation name.*/
     if (!(anim->name = (char *)calloc(MAX_LINE, sizeof(char))))
     {
         free(anim->animation_file);
@@ -194,7 +213,7 @@ Animation *animation_init(Id id, char *filename)
         return NULL;
     }
 
-    /* Setting the values to their default state.*/
+    /*Setting the values to their default state.*/
     anim->id = id;
     anim->name[0] = '\0';
     anim->n_images = 0;
@@ -206,24 +225,24 @@ Animation *animation_init(Id id, char *filename)
     anim->background_color = 0;
     anim->font_color = 0;
 
-    /* Clean exit.*/
+    /*Clean exit.*/
     return anim;
 }
 
 void animation_destroy(Animation *anim)
 {
-    /* Error handling.*/
+    /*Error handling.*/
     if (anim)
     {
-        /* Frees the animation file name.*/
+        /*Frees the animation file name.*/
         if (anim->animation_file)
             free(anim->animation_file);
 
-        /* Frees the animation name.*/
+        /*Frees the animation name.*/
         if (anim->name)
             free(anim->name);
 
-        /* Frees the animation struct.*/
+        /*Frees the animation struct.*/
         free(anim);
     }
 }
@@ -544,7 +563,7 @@ Status animation_run(Animation_Manager *am, Id anim_id)
     FILE *f = NULL;
     Animation *anim = NULL;
     char line[MAX_LINE] = "";
-    int i = 0, j = 0;
+    int i = 0, j = 0, k = 0;
 
     /*Error handling.*/
     if (!am || anim_id == NO_ID)
@@ -578,12 +597,51 @@ Status animation_run(Animation_Manager *am, Id anim_id)
                 j--;
                 continue;
             }
+            /*Adds the side padding to the line.*/
+            for (k = 0; k < anim->side_padding; k++)
+            {
+                printf(" ");
+            }
             /*Prints the line on the screen.*/
             printf("%s%s%s%s", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line, RESET_COLOR);
+            /*Adds the height padding to the line.*/
+            for (k = 0; k < anim->height_padding; k++)
+            {
+                printf("\n");
+            }
         }
+
         /*Sleeps the program for the frame duration.*/
-        sleep(anim->refresh_rate * 1000000);
-        nanosleep(anim->refresh_rate * 1000000);
-        usleep(anim->refresh_rate * 1000000);
+        wait(anim->refresh_rate);
     }
+
+    /*Closes the file.*/
+    fclose(f);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status wait(float time)
+{
+    /*I've been investigating and the only option we have to make the program wait a determined
+      amount of miliseconds is to use what is known as a busy loop. It's not the best option, but
+      nanosleep and usleep give warnings with -ansi and -pedantic, so there's no other option.
+    */
+    clock_t start_time, end_time;
+    double elapsed_time;
+    /*Error handling.*/
+    if (time < 0)
+        return ERROR;
+
+    /*Lets the time pass.*/
+    start_time = clock();
+    do
+    {
+        end_time = clock();
+        elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+    } while (elapsed_time < time);
+
+    /*Cleean exit.*/
+    return OK;
 }

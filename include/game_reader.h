@@ -60,7 +60,7 @@ Status game_reader_load_links(Game *game, char *filename);
 /**
  * @brief Loads all the characters from the data file.
  * @author Raquel Anguita.
- * 
+ *
  * @param game Pointer to the game.
  * @param filename NAme of the data file where the characters are stored.
  * @return OK if everything went well, ERROR otherwise.
@@ -71,12 +71,21 @@ Status game_reader_load_characters(Game *game, char *filename);
  * @brief Loads all the gamerules from the data file.
  * Should be called the last one.
  * @author Saúl López Romero
- * 
+ *
  * @param game Pointer to the game structure, where all the information related to game is included.
- * @param filename Name of the data file where the map is stored.
+ * @param filename Name of the data file where the gamerules are stored.
  * @return OK for a clean exit, otherwise ERROR.
  */
 Status game_reader_load_gamerules(Game *game, char *filename);
 
+/**
+ * @brief Loads all the animations from the data file.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game structure, where all the information related to game is included.
+ * @param filename Name of the data file where the animations are stored.
+ * @return OK for  a clean exit, otherwise ERROR.
+ */
+Status game_reader_load_animations(Game *game, char *filename);
 
 #endif

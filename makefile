@@ -12,7 +12,7 @@ LOGDIR = ./log
 TESTDIR = ./test
 
 #List with all the object names
-MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o
+MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o animation.o
 
 .PHONY = all clean clear check redo run run_cmd run_all_test doxygen
 
@@ -43,7 +43,7 @@ game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.
 game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h gamerules.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 	
-game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h set.h player.h character.h link.h
+game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h set.h player.h character.h link.h animation.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h libscreen.h
@@ -71,6 +71,9 @@ inventory.o: inventory.c set.h inventory.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 gamerules.o: gamerules.c gamerules.h game.h types.h
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+animation.o: animation.c animation.h types.h graphic_engine.h 
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 clean:

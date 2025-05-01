@@ -12,6 +12,7 @@
 #include "game.h"
 #include "link.h"
 #include "gamerules.h"
+#include "animation.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -705,6 +706,85 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             }
             /*Adds the gamerule to the game.*/
             gamerules_values_add(game_get_game_values(game), gr);
+        }
+    }
+    /*Close the file.*/
+    fclose(f);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_reader_load_animations(Game *game, char *filename)
+{
+    FILE *f = NULL;
+    Animation *an = NULL;
+    char name[WORD_SIZE],path[WORD_SIZE];
+    char line[WORD_SIZE];
+    Id id = 0;
+    char *toks = NULL;
+    int widht, height, frames, widht_padding, height_padding,background_color,font_color;
+    float refresh_rate = 0.0;
+
+    /*Error handling.*/
+    if (!game || !filename)
+        return ERROR;
+    
+    /*Opens the file.*/
+    if (!(f = fopen(filename, "r")))
+        return ERROR;
+
+    /*Gets the data line by line.*/
+    while (fgets(line, WORD_SIZE, f))
+    {
+        /*Checks that the line contains a player.*/
+        if (strncmp("#g:", line, IDENTIFIER_LENGTH) == 0)
+        {
+            /*Takes the information data by data.*/
+            toks = strtok(line + IDENTIFIER_LENGTH, "|");
+            id = atol(toks);
+            toks = strtok(NULL, "|");
+            strcpy(name, toks);
+            toks = strtok(NULL, "|");
+            strcpy(path, toks);
+            toks = strtok(NULL, "|");
+            widht = atol(toks);
+            toks = strtok(NULL, "|");
+            height = atol(toks);
+            toks = strtok(NULL, "|");
+            frames = atol(toks);
+            toks = strtok(NULL, "|");
+            refresh_rate = (float)atof(toks);
+            toks = strtok(NULL, "|");
+            widht_padding = atol(toks);
+            toks = strtok(NULL, "|");
+            height_padding = atol(toks);
+            toks = strtok(NULL, "|");
+            background_color = atol(toks);
+            toks = strtok(NULL, "|");
+            font_color = atol(toks);
+
+            /*Creates an object and saves the data.*/
+            an = animation_init(id,path);
+            /*Checks that the memory allocacion took place.*/
+            if (!an)
+            {
+                return ERROR;
+            }
+
+            /*Sets the values.*/
+            animation_set_name(an, name);
+            animation_set_width(an, widht);
+            animation_set_height(an, height);
+            animation_set_n_images(an, frames);
+            animation_set_refresh_rate(an, refresh_rate);
+            animation_set_side_padding(an, widht_padding);
+            animation_set_height_padding(an, height_padding);
+            animation_set_background_color(an, background_color);
+            animation_set_font_color(an, font_color);
+
+            /*Adds the animation to the game.*/
+            animation_manager_add_animation(game_get_animation_manager(game), an);
         }
     }
     /*Close the file.*/

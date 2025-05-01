@@ -13,6 +13,7 @@
 #include "game_reader.h"
 #include "link.h"
 #include "gamerules.h"
+#include "animation.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +44,8 @@ struct _Game
     Bool finished;                                   /*!< Whether the game has finished or not.*/
     int turn;                                        /*!< Actual turn.*/
     int n_players;                                   /*!< Number of players.*/
-    Game_values *game_values;                        /*!< Structure which holds all the gamerule handling inside. */
+    Game_values *game_values;                        /*!< Structure which holds all the gamerule handling inside.*/
+    Animation_Manager *animation_manager;            /*!< Animation manager.*/
 };
 
 Status game_create(Game **game)
@@ -64,6 +66,13 @@ Status game_create(Game **game)
 
     if (((*game)->game_values = gamerules_values_init()) == NULL)
     {
+        free(*game);
+        return ERROR;
+    }
+
+    if (((*game)->animation_manager = animation_manager_init("anim/")) == NULL)
+    {
+        free((*game)->game_values);
         free(*game);
         return ERROR;
     }
@@ -121,7 +130,6 @@ Link *game_get_link(Game *game, Id link)
     }
     return NULL;
 }
-
 
 Id *game_get_characters(Game *game)
 {
@@ -298,6 +306,16 @@ Id game_get_character_location(Game *game, Id id)
     return NO_ID;
 }
 
+Animation_Manager *game_get_animation_manager(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    /*Returns the animation manager. */
+    return game->animation_manager;
+}
+
 Status game_destroy(Game **game)
 {
     int i = 0;
@@ -355,12 +373,34 @@ Status game_destroy(Game **game)
     }
     (*game)->game_values = NULL;
 
+    /*Destroys the animation manager and all the animations.*/
+    for (i = 0; i < game_get_n_animations(*game); i++)
+    {
+        animation_manager_del_animation((*game)->animation_manager, i);
+    }
+
+    if ((*game)->animation_manager)
+    {
+        animation_manager_destroy((*game)->animation_manager);
+        (*game)->animation_manager = NULL;
+    }
+
     /*Sets the pointer to NULL. */
     free(*game);
     (*game) = NULL;
 
     /*Clean exit.*/
     return OK;
+}
+
+int game_get_n_animations(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return -1;
+
+    /*Returns the number of animations. */
+    return animation_manager_get_n_animations(game->animation_manager);
 }
 
 int game_get_turn(Game *game)
@@ -773,6 +813,14 @@ Status game_create_from_file(Game **game, char *filename)
         game_destroy(game);
         return ERROR;
     }
+
+    /*Loads all the animations.*/
+    if (game_reader_load_animations(*game, filename) == ERROR)
+    {
+        game_destroy(game);
+        return ERROR;
+    }
+
 
     /*Initialises all the commands.*/
     for (i = 0; i < (*game)->n_players; i++)

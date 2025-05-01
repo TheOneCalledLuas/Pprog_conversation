@@ -11,6 +11,8 @@
 #ifndef ANIMATIONS_H
 #define ANIMATIONS_H /*!< Animations lib.*/
 
+#include "types.h"
+
 #define MAX_ANIMATIONS 100 /*!< Max animation number.*/
 
 typedef struct _Animation_Manager Animation_Manager; /*!< Animation manager type.*/

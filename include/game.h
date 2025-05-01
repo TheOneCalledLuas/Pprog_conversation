@@ -39,6 +39,16 @@
 typedef struct _Game Game;
 
 #include "gamerules.h"
+#include "animation.h"
+/**
+ * @brief Returns the animation manager.
+ * @author Saúl López Romero
+ * 
+ * @param game Game structure, where all the information related to game is included.
+ * @return Pointer to the animation manager or NULL if an error takes place.
+ */
+Animation_Manager *game_get_animation_manager(Game *game);
+
 /**
  * @brief Searches for a character to the game structure.
  * @author Saúl López Romero
@@ -149,6 +159,15 @@ Status game_create(Game **game);
 Status game_create_from_file(Game **game, char *filename);
 
 /**
+ * @brief It returns the number of animations loaded in the game.
+ * @author Saul Lopez Romero
+ *
+ * @param game Pointer to the game structure.
+ * @return Number of animations in the game or -1 if an error takes place.
+ */
+int game_get_n_animations(Game *game);
+
+/**
  * @brief It destroys all the information about the spaces, and the last command.
  * @author Saul Lopez Romero
  *
@@ -234,7 +253,7 @@ int game_get_next_turn(Game *game);
 /**
  * @brief Searches for a link with a specific id
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param link Id of the link to be searched
  * @return Pointer to the link, NULL if error
@@ -472,7 +491,7 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
 /**
  * @brief It gets the player by its name.
  * @author Saul Lopez Romero.
- * 
+ *
  * @param game Pointer to the game.
  * @param name Name of the player.
  * @return Id of the player, NO_ID if it doesn't exist, ID_ERROR if an error takes place.
@@ -482,11 +501,11 @@ Id game_get_player_by_name(Game *game, char *name);
 /**
  * @brief It gets the player by its id.
  * @author Saul Lopez Romero.
- * 
+ *
  * @param game Pointer to the game.
  * @param id Id of the player.
  * @return Pointer to the player, NULL if it doesn't exist or an error takes place.
  */
-Player * game_get_player_by_id(Game *game, Id id);
+Player *game_get_player_by_id(Game *game, Id id);
 
 #endif
