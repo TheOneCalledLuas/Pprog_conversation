@@ -27,6 +27,17 @@ typedef Status (*Gamerule_func)(Game *game, Gamerule *gr); /*!< Pointer to funct
 Game_values *gamerules_values_init();
 
 /**
+ * @brief It returns an initialised array with the ids of the gamerules.
+ *      IMPORTANT The array must be freed after use.
+ * @author Fernando Mijangos
+ * 
+ * @param gv Pointer to the game values struct.
+ * @return Pointer to the array with the ids of the gamerules or NULL if an error takes place.
+ *      IMPORTANT The array must be freed after use.
+ */
+Id *gamerules_get_all_gamerules(Game_values *gv);
+
+/**
  * @brief It destroys the game values.
  * @author Saúl López Romero
  *

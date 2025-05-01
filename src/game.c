@@ -44,7 +44,10 @@ struct _Game
     Bool finished;                                   /*!< Whether the game has finished or not.*/
     int turn;                                        /*!< Actual turn.*/
     int n_players;                                   /*!< Number of players.*/
-    Game_values *game_values;                        /*!< Structure which holds all the gamerule handling inside.*/
+    Game_values *game_values;                        /*!< Structure whiZch holds all the gamerule handling inside. */
+    char savefiles[MAX_SAVEFILES][WORD_SIZE];        /*!< Maximum number of savefiles that can exist*/
+    char current_savefile[WORD_SIZE];                /*!< Name of the current savefile*/
+    int n_savefiles;                                 /*!< Number of savefiles that currently exist*/
     Animation_Manager *animation_manager;            /*!< Animation manager.*/
 };
 
@@ -102,6 +105,10 @@ Status game_create(Game **game)
         (*game)->commands[i] = NULL;
         (*game)->last_cmd[i / COMMANDS_SAVED][i % COMMANDS_SAVED] = NULL;
     }
+    for (i = 0; i < MAX_SAVEFILES; i++)
+    {
+        (*game)->savefiles[i][0] = '\0';
+    }
 
     /*Initializes all members of the game structure.*/
     (*game)->n_spaces = 0;
@@ -112,8 +119,153 @@ Status game_create(Game **game)
     (*game)->n_commands = 0;
     (*game)->turn = 0;
     (*game)->finished = FALSE;
+    (*game)->n_savefiles = 0;
 
     return OK;
+}
+
+Status game_add_savefile(Game *game, char *name)
+{
+    int i;
+    /*Error management*/
+    if (!(game) || !name || game->n_savefiles >= MAX_SAVEFILES)
+        return ERROR;
+    /*Looks that the savefile doesnt exist already*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(name, game->savefiles[i]) == 0)
+            return ERROR;
+    }
+    /*Adds the savfile*/
+    strcpy(game->savefiles[i], name);
+    game->n_savefiles++;
+    return OK;
+}
+
+Status game_set_current_savefile(Game *game, char *name)
+{
+    int i;
+    Bool condition = FALSE;
+    /*Error management*/
+    if (!(game) || !name)
+        return ERROR;
+    /*Checks that it exists*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(name, game->savefiles[i]) == 0)
+            condition = TRUE;
+    }
+    /*If it dint't exist return ERROR*/
+    if(condition == FALSE)
+        return ERROR;
+    /*Sets the name of the current savefile*/
+    strcpy(game->current_savefile, name);
+    return OK;
+}
+
+char *game_get_current_savefile(Game *game)
+{
+    /*Error management*/
+    if (!(game))
+        return NULL;
+    /*Returns the name of the current savefile*/
+    return game->current_savefile;
+}
+
+Status game_add_new_savefile(Game *game, char *name)
+{
+    FILE *f = NULL;
+    int i = 0;
+    char str[WORD_SIZE] = "";
+    /*Error management*/
+    if (!game || !name || game->n_savefiles >= MAX_SAVEFILES)
+        return ERROR;
+    /*Tries to open the file with the savefiles names*/
+    if (!(f = fopen(SAVEFILES_NAMES, "a")))
+        return ERROR;
+    /*Checks the it doesnt exist alreay*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        if (strcmp(name, game->savefiles[i]) == 0)
+            return ERROR;
+    }
+    /*Adds the new savefile to the game structure*/
+    if(game_add_savefile(game, name)==ERROR)
+        return ERROR;
+    /*Prints that name into the savefiles_names.txt*/
+    fprintf(f, "%s\n", name);
+    /*Prints the command that will be inputed into the terminal*/
+    sprintf(str, ">data/%s.dat", name);
+    system(str);
+    fclose(f);
+    return OK;
+}
+
+Status game_delete_savefile(Game *game, char *name)
+{
+    FILE *f = NULL;
+    int i = 0;
+    char str[WORD_SIZE] = "";
+    /*Error management*/
+    if (!(game) || !(name) || game->n_savefiles <= 0)
+        return ERROR;
+
+    /*Tries to open the file with the savefiles names*/
+    if (!(f = fopen(SAVEFILES_NAMES, "w")))
+        return ERROR;
+
+    /*Finds the savefile with that name and deletes it*/
+    for (i = 0; i < game->n_savefiles; i++)
+    {
+        /*If it finds it do this*/
+        if (strcmp(name, game->savefiles[i]) == 0)
+        {
+            /*1-Deletes it from the list of names in the game structure*/
+            while (i < game->n_savefiles - 1)
+            {
+                strcpy(game->savefiles[i], game->savefiles[i + 1]);
+                i++;
+            }
+            game->n_savefiles--;
+            game->savefiles[game->n_savefiles][0] = '\0';
+            /*2-Creates the command that will be used in terminal*/
+            sprintf(str, "rm data/%s.dat", name);
+            system(str);
+            /*3-Prints in the savefile_names text file the real savefiles*/
+            for (i = 0; i < game->n_savefiles; i++)
+            {
+                fprintf(f, "%s\n", game->savefiles[i]);
+            }
+            return OK;
+        }
+    }
+    return ERROR;
+}
+
+int game_get_n_savefiles(Game *game)
+{
+    /*Error management and returns the value*/
+    return (game ? game->n_savefiles : -1);
+}
+
+Status game_set_n_savefiles(Game *game, int n)
+{
+    /*Error managment*/
+    if (!(game) || n < 0 || n > MAX_SAVEFILES)
+        return ERROR;
+
+    /*Sets the new value*/
+    game->n_savefiles = n;
+    return OK;
+}
+
+char *game_get_savefile(Game *game, int n)
+{
+    /*Error management*/
+    if (!(game) || n < 0 || n >= MAX_SAVEFILES)
+        return NULL;
+    /*Returns what was asked*/
+    return game->savefiles[n];
 }
 
 Link *game_get_link(Game *game, Id link)
@@ -443,6 +595,17 @@ Status game_next_turn(Game *game)
         return ERROR;
     /*Goes to the next turn.*/
     game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
+    return OK;
+}
+
+Status game_set_turn(Game *game, int turn)
+{
+    /*Error handling.*/
+    if (!game || turn < 0 || turn >= game->n_players)
+        return ERROR;
+
+    /*Sets the turn.*/
+    game->turn = turn;
     return OK;
 }
 
@@ -820,7 +983,20 @@ Status game_create_from_file(Game **game, char *filename)
         game_destroy(game);
         return ERROR;
     }
+    
+    /*Loads the savefile names*/
+    if (game_reader_load_savefile_names(*game) == ERROR)
+    {
+        game_destroy(game);
+        return ERROR;
+    }
 
+    /*Loads the turn*/
+    if(game_reader_load_last_turn(*game, filename) == ERROR)
+    {
+        game_destroy(game);
+        return ERROR;
+    }
 
     /*Initialises all the commands.*/
     for (i = 0; i < (*game)->n_players; i++)
@@ -977,4 +1153,106 @@ Player *game_get_player_by_id(Game *game, Id id)
     }
     /*The player wasn't found.*/
     return NULL;
+}
+
+Id *game_get_players(Game *game)
+{
+    Id *players = NULL;
+    int i = 0, len = 0;
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    len = game->n_players;
+    if (len == 0)
+        return NULL;
+
+    /*Allocates memory.*/
+    if (!(players = (Id *)calloc(len, sizeof(Id))))
+        return NULL;
+
+    for (i = 0; i < len; i++)
+    {
+        players[i] = player_get_player_id(game->players[i]);
+    }
+
+    /*Clean exit.*/
+    return players;
+}
+
+Id *game_get_spaces(Game *game)
+{
+    Id *spaces = NULL;
+    int i = 0, len = 0;
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    len = game->n_spaces;
+    if (len == 0)
+        return NULL;
+
+    /*Allocates memory.*/
+    if (!(spaces = (Id *)calloc(len, sizeof(Id))))
+        return NULL;
+
+    for (i = 0; i < len; i++)
+    {
+        spaces[i] = space_get_id(game->spaces[i]);
+    }
+
+    /*Clean exit.*/
+    return spaces;
+}
+
+Id *game_get_links(Game *game)
+{
+    Id *links = NULL;
+    int i = 0, len = 0;
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+
+    len = game->n_links;
+    if (len == 0)
+        return NULL;
+
+    /*Allocates memory.*/
+    if (!(links = (Id *)calloc(len, sizeof(Id))))
+        return NULL;
+
+    for (i = 0; i < len; i++)
+    {
+        links[i] = link_get_id(game->links[i]);
+    }
+
+    /*Clean exit.*/
+    return links;
+}
+
+Id *game_get_gamerules(Game *game)
+{
+    /*Error handling.*/
+    if (!game)
+        return NULL;
+    /*Clean exit.*/
+    return gamerules_get_all_gamerules(game->game_values);
+}
+
+int game_get_n_gamerules(Game *game)
+{
+    /*Error management and gets the number of gamerules*/
+    return (game ? gamerules_get_n_gamerules(game->game_values) : -1);
+}
+
+int game_get_n_links(Game *game)
+{
+    /*ERror management and gets the number of links*/
+    return (game ? game->n_links : -1);
+}
+
+int game_get_n_spaces(Game *game)
+{
+    /*Error management and gets the number of spaces*/
+    return (game ? game->n_spaces : -1);
 }

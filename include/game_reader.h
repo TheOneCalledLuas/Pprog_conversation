@@ -88,4 +88,35 @@ Status game_reader_load_gamerules(Game *game, char *filename);
  */
 Status game_reader_load_animations(Game *game, char *filename);
 
+/**
+ * @brief Loads all the savefile names from the data file.
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game
+ * @param filename Name of the file where the savefile names are stored.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_reader_load_savefile_names(Game *game);
+
+/**
+ * @brief Saves the game in a file.
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game.
+ * @param filename Name of the file where the game is going to be saved.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_reader_save_game(Game *game, char *filename);
+
+/**
+ * @brief Loads the last turn of the game.
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game.
+ * @param filename Name of the file where the last turn is stored.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_reader_load_last_turn(Game *game, char *filename);
+
+
 #endif
