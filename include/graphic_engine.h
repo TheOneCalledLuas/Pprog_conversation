@@ -47,4 +47,38 @@ void graphic_engine_destroy(Graphic_engine *ge);
  */
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh);
 
+/**
+ * @brief It creates a new Graphic engine structure with all its varialbes initialized in menu mode
+ * @author Fernando Mijangos
+ * 
+ * @return Pointer to the initialized graphic engine.
+ */
+Graphic_engine *graphic_engine_menu_create();
+
+/**
+ * @brief It destroyes a graphic engine structure in menu mode
+ * @author Fernando Mijangos
+ * 
+ * @param ge The graphic engine structure you want to destroy.
+ */
+void graphic_engine_menu_destroy(Graphic_engine *ge);
+
+/**
+ * @brief It paints the menu in the terminal
+ * @author Fernando Mijangos
+ * 
+ * @param ge Pointer to the graphic engine you are using.
+ * @param game Pointer to the game you are running.
+ * @param state The state of the game you are in.
+ *              0:Prints screen where there arent saves
+ *              1:Prints screen where there are saves
+ *              2:Prints screen where you can load a game
+ *              3:Prints screen where you tried to load a game that doesnt exist
+ *              4:Prints screen where you create a new game
+ *              5:Prints a screen where you try to create a game that already exists or cant be created
+ *              6:Prints screen where you chose which file to delete
+ *              7:Prints screen where you fail to delete a file
+ */
+void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state);
+
 #endif

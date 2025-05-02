@@ -12,7 +12,7 @@ LOGDIR = ./log
 TESTDIR = ./test
 
 #List with all the object names
-MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o animation.o
+MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o animation.o libscreen.o
 
 .PHONY = all clean clear check redo run run_cmd run_all_test doxygen
 
@@ -26,7 +26,7 @@ vpath %.a lib
 all: anthill
 
 anthill:  $(MAKE_OBJ)
-	$(CC) -o $(EXE) $(patsubst %.o, $(OBJDIR)/%.o,$(MAKE_OBJ)) -L./$(LIBDIR)/ -lscreen
+	$(CC) -o $(EXE) $(patsubst %.o, $(OBJDIR)/%.o,$(MAKE_OBJ))
 
 doxygen:
 	doxygen Doxyfile
@@ -74,6 +74,9 @@ gamerules.o: gamerules.c gamerules.h game.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 animation.o: animation.c animation.h types.h graphic_engine.h 
+	$(CC) $(DO_OBJ) $(CFLAGS) $<
+
+libscreen.o: libscreen.c libscreen.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 clean:

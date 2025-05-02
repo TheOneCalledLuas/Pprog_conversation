@@ -136,6 +136,14 @@ void game_actions_open(Game *game);
 void game_actions_save(Game *game);
 
 /**
+ * @brief Action to be executed when menu command is given.
+ * @author Fernando Mijangos
+ * 
+ * @param game Pointer to the game structure.
+ */
+void game_actions_menu(Game *game);
+
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -733,6 +741,14 @@ void game_actions_open(Game *game)
 
     /*Clean exit.*/
     command_set_status(game_get_last_command(game), OK);
+    return;
+}
+
+void game_actions_menu(Game *game)
+{
+    /*The menu action is managed by game_loop; it starts as an error and
+    if it goes as it should the error code is set to OK. */
+    command_set_status(game_get_last_command(game), ERROR);
     return;
 }
 

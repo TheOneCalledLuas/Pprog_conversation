@@ -39,7 +39,7 @@
  *
  * @return 1 if it goes wrong, 0 otherwise.
  */
-int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name);
+int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengine_menu, char *file_name);
 
 /**
  * @brief Main game loop, where all the actions take place.
@@ -49,7 +49,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name);
  * @param gengine Pointer to the graphic engine.
  * @param f Pointer to the file for the log.
  */
-void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f);
+void game_loop_run(Game *game, Graphic_engine *gengine,Graphic_engine *gengine_menu, FILE *f);
 
 /**
  * @brief Frees the memory and closes the game.
@@ -58,7 +58,7 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f);
  * @param game Pointer to the game.
  * @param gengine The graphic engine you are using.
  */
-void game_loop_cleanup(Game **game, Graphic_engine *gengine);
+void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu);
 
 /**
  * @brief Loads or creates a new game, asks the user to chose.
@@ -81,6 +81,7 @@ int main(int argc, char *argv[])
 {
     Game *game = NULL;
     Graphic_engine *gengine = NULL;
+    Graphic_engine *gengine_menu = NULL;
     FILE *f = NULL;
     int i = 0;
 
@@ -104,10 +105,10 @@ int main(int argc, char *argv[])
     }
 
     /*Game loop is initated and terminated when its supposed to.*/
-    if (!game_loop_init(&game, &gengine, argv[1]))
+    if (!game_loop_init(&game, &gengine,&gengine_menu, argv[1]))
     {
-        game_loop_run(game, gengine, f);
-        game_loop_cleanup(&game, gengine);
+        game_loop_run(game, gengine, gengine_menu,f);
+        game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
             fclose(f);
@@ -117,7 +118,7 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
+int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengine_menu, char *file_name)
 {
     /*Takes all the information related to the game from a file.*/
     if (game_create_from_file(game, file_name) == ERROR)
@@ -135,6 +136,14 @@ int game_loop_init(Game **game, Graphic_engine **gengine, char *file_name)
 
     /*Starts the graphic engine.*/
     if ((*gengine = graphic_engine_create()) == NULL)
+    {
+        fprintf(stderr, "Error while initializing graphic engine.\n");
+        game_destroy(game);
+        return EXIT_FAILURE;
+    }
+
+    /*Starts the menu graphich_engine*/
+    if(!(*gengine_menu = graphic_engine_menu_create()))
     {
         fprintf(stderr, "Error while initializing graphic engine.\n");
         game_destroy(game);
@@ -303,7 +312,7 @@ Status game_loop_load_or_save(Game **game, char *file_name)
     return OK;
 }
 
-void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
+void game_loop_run(Game *game, Graphic_engine *gengine,Graphic_engine *gengine_menu, FILE *f)
 {
     Command *last_cmd = NULL;
     Bool do_log = FALSE;
@@ -359,9 +368,10 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f)
     }
 }
 
-void game_loop_cleanup(Game **game, Graphic_engine *gengine)
+void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu)
 {
     /*Frees all the memory.*/
     game_destroy(game);
     graphic_engine_destroy(gengine);
+    graphic_engine_menu_destroy(gengine_menu);
 }
