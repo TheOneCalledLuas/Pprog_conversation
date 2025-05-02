@@ -28,6 +28,15 @@
 #define READING_SECONDS 4        /*!< Seconds to read the screen. */
 #define NUMBER_OF_BAD_LETTERS 13 /*!<Number of possible invalid letters for a new savefile name*/
 #define NAME_SIZE 100            /*!< Max size of the name of the savefile. */
+#define FIRST_CHAR 0             /*!<Position number 0 of a string, used to get inputs in menu*/
+#define SECOND_CHAR 1            /*!<Position number 1 of a string, used to get inputs in menu*/
+
+typedef enum
+{
+    CREATE = 1, /*!<Code for create savefile*/
+    LOAD,       /*!<Code for load savefile*/
+    DELETE      /*!<Code for delete savefile*/
+} Menu_actions;
 
 /**
  * @brief Initialises the game.
@@ -39,7 +48,7 @@
  *
  * @return 1 if it goes wrong, 0 otherwise.
  */
-int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengine_menu, char *file_name);
+int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengine_menu, char *file_name);
 
 /**
  * @brief Main game loop, where all the actions take place.
@@ -48,8 +57,9 @@ int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengin
  * @param game Pointer to the game.
  * @param gengine Pointer to the graphic engine.
  * @param f Pointer to the file for the log.
+ * @param base_savefile named of the file that is used a template for new games
  */
-void game_loop_run(Game *game, Graphic_engine *gengine,Graphic_engine *gengine_menu, FILE *f);
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile);
 
 /**
  * @brief Frees the memory and closes the game.
@@ -68,7 +78,7 @@ void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gen
  * @param filename Name of the file where the information for new games is stored, so it doesnt write over it.
  * @return OK if everything went well, ERROR otherwise.
  */
-Status game_loop_load_or_save(Game **game, char *filename);
+Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *filename);
 
 /**
  * @brief Main game function.
@@ -105,9 +115,9 @@ int main(int argc, char *argv[])
     }
 
     /*Game loop is initated and terminated when its supposed to.*/
-    if (!game_loop_init(&game, &gengine,&gengine_menu, argv[1]))
+    if (!game_loop_init(&game, &gengine, &gengine_menu, argv[1]))
     {
-        game_loop_run(game, gengine, gengine_menu,f);
+        game_loop_run(&game, gengine, gengine_menu, f, argv[1]);
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
@@ -118,7 +128,7 @@ int main(int argc, char *argv[])
     return EXIT_SUCCESS;
 }
 
-int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengine_menu, char *file_name)
+int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengine_menu, char *file_name)
 {
     /*Takes all the information related to the game from a file.*/
     if (game_create_from_file(game, file_name) == ERROR)
@@ -126,8 +136,17 @@ int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengin
         fprintf(stderr, "Error while initializing game.\n");
         return EXIT_FAILURE;
     }
+
+    /*Starts the menu graphich_engine*/
+    if (!(*gengine_menu = graphic_engine_menu_create()))
+    {
+        fprintf(stderr, "Error while initializing graphic engine.\n");
+        game_destroy(game);
+        return EXIT_FAILURE;
+    }
+
     /*Loads or creates a new game*/
-    if (ERROR == game_loop_load_or_save(game, file_name))
+    if (ERROR == game_loop_menu(game, *gengine_menu, file_name))
     {
         fprintf(stderr, "Error while loading or creating a game.\n");
         game_destroy(game);
@@ -142,193 +161,237 @@ int game_loop_init(Game **game, Graphic_engine **gengine,Graphic_engine **gengin
         return EXIT_FAILURE;
     }
 
-    /*Starts the menu graphich_engine*/
-    if(!(*gengine_menu = graphic_engine_menu_create()))
-    {
-        fprintf(stderr, "Error while initializing graphic engine.\n");
-        game_destroy(game);
-        return EXIT_FAILURE;
-    }
-
     /*Clean exit.*/
     return 0;
 }
 
-Status game_loop_load_or_save(Game **game, char *file_name)
+Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
 {
     Bool condition = FALSE;
     char str[WORD_SIZE], str2[NAME_SIZE], bad_letters[NUMBER_OF_BAD_LETTERS] = ".&|?'\"\n!¿¡";
     int number, i, j;
 
-    /*Asks if you want to load or save a game*/
-    if (game_get_n_savefiles(*game) > 0)
+    do
     {
-        do
+        /*If there is at least one existing savefile, it gives some options for the user*/
+        if (game_get_n_savefiles(*game) > 0)
         {
-            printf("Do you want to create(1) or load(2) a game:");
-            scanf("%d", &number);
-            if (number == 1)
+            do
             {
-                /*If the player wants to create a game, asks for the name of the new game*/
-                if (game_get_n_savefiles(*game) < MAX_SAVEFILES)
+                /*Gets the input*/
+                if (game_get_n_savefiles(*game) > MAX_SAVEFILES)
                 {
                     do
                     {
-                        printf("Existing savefiles:\n");
-                        /*Prints all the names of the savefiles*/
-                        for (i = 0; i < game_get_n_savefiles(*game); i++)
-                            printf("<%s>\n", game_get_savefile(*game, i));
-                        /*Asks the user to chose a name for the new game*/
-                        printf("Chose a name for the new game that doesn't match the ones above:");
+                        graphic_engine_menu_paint(ge_menu, *game, LIMIT_SAVEFILES);
+                        printf("prompt>");
+                        /*I get the input this way to prevent possible errors.*/
                         scanf("%s", str);
-                        /*Checks the the name doesnt have weird characters*/
-                        for (i = 0; i < strlen(str); i++)
+                        if (str[FIRST_CHAR] == '2' || str[FIRST_CHAR] == '3')
                         {
-                            for (j = 0; j < NUMBER_OF_BAD_LETTERS; j++)
+                            str[SECOND_CHAR] = '\0';
+                            number = atoi(str);
+                            condition = TRUE;
+                        }
+                    } while (condition == FALSE);
+                }
+                else
+                {
+                    do
+                    {
+                        graphic_engine_menu_paint(ge_menu, *game, EXISTING_SAVES);
+                        printf("prompt>");
+                        scanf("%s", str);
+                        if (str[FIRST_CHAR] == '1' || str[FIRST_CHAR] == '2' || str[FIRST_CHAR] == '3')
+                        {
+                            str[SECOND_CHAR] = '\0';
+                            number = atoi(str);
+                            condition = TRUE;
+                        }
+                    } while (condition == FALSE);
+                }
+                condition = FALSE;
+                /*If the player wants to create a new game , it does this*/
+                if (number == CREATE)
+                {
+                    if (game_get_n_savefiles(*game) < MAX_SAVEFILES)
+                    {
+                        /*Paints the menu*/
+                        graphic_engine_menu_paint(ge_menu, *game, NEW_GAME);
+                        do
+                        {
+                            /*Gets the name*/
+                            scanf("%s", str);
+                            /*Checks the the name doesnt have weird characters*/
+                            for (i = 0; i < strlen(str); i++)
                             {
-                                if (str[i] == bad_letters[j])
+                                for (j = 0; j < NUMBER_OF_BAD_LETTERS; j++)
+                                {
+                                    if (str[i] == bad_letters[j])
+                                        condition = TRUE;
+                                }
+                            }
+                            /*Checks that the name doesnt match the one where the new game information is stored, but first it cuts the name */
+                            for (i = 0; i < strlen(file_name) - strlen(".dat"); i++)
+                            {
+                                str2[i] = file_name[i];
+                            }
+                            str2[i] = '\0';
+                            if (strcmp(str, str2 + strlen("data/")) == 0)
+                                condition = TRUE;
+
+                            /*Cheks that the name doesnt match any other existing one*/
+                            for (i = 0; i < game_get_n_savefiles(*game); i++)
+                            {
+                                if (strcmp(str, game_get_savefile(*game, i)) == 0)
                                     condition = TRUE;
                             }
-                        }
-                        /*Checks that the name doesnt match the one where the new game information is stored, but first it cuts the name */
-                        for(i=0;i<strlen(file_name)-strlen(".dat");i++)
-                        {
-                            str2[i]=file_name[i];
-                        }
-                        str2[i]='\0';
-                        if(strcmp(str, str2+strlen("data/"))==0)
-                        {
-                            condition = TRUE;
-                            printf("Dont use a name with that word, it can mess with the real data file, try again\n");
-                        }
-
-                        /*Cheks that the name doesnt match any other existing one*/
+                            condition = !condition;
+                            /*If there aren't any bad characters it does this*/
+                            if (condition == TRUE)
+                            {
+                                /*It frees the game that had been created and creates a new one*/
+                                game_destroy(game);
+                                /*And starts a new game using the template*/
+                                game_create_from_file(game, file_name);
+                                if (ERROR == game_add_new_savefile(*game, str))
+                                {
+                                    printf("Error while creating new savefile.\n");
+                                    return ERROR;
+                                }
+                                /*Saves the game*/
+                                if (game_reader_save_game(*game, str) == ERROR)
+                                {
+                                    printf("Error while saving game.\n");
+                                    return ERROR;
+                                }
+                            }
+                            /*Else, it continues looping*/
+                            else
+                                graphic_engine_menu_paint(ge_menu, *game, FAIL_NEW_GAME);
+                        } while (condition == FALSE);
+                        game_set_current_savefile(*game, str);
+                        /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
+                        fgets(str, WORD_SIZE, stdin);
+                        return OK;
+                    }
+                }
+                else if (number == LOAD)
+                {
+                    /*Prints the menu*/
+                    graphic_engine_menu_paint(ge_menu, *game, LOAD_GAME);
+                    /*Asks the user a file*/
+                    do
+                    {
+                        /*Gets the name of the savefile*/
+                        scanf("%s", str);
+                        /*Checks that savefile exists*/
                         for (i = 0; i < game_get_n_savefiles(*game); i++)
                         {
                             if (strcmp(str, game_get_savefile(*game, i)) == 0)
+                            {
+                                /*If it finds it, it loads it and sets condition to TRUE*/
+                                /*Destroys what had been created*/
+                                game_destroy(game);
+                                /*Gets the real location of the file*/
+                                strcpy(str2, str);
+                                sprintf(str, "data/%s.dat", str2);
+                                /*Loads the real file*/
+                                if (game_create_from_file(game, str) == ERROR)
+                                {
+                                    fprintf(stderr, "Error while loading game.\n");
+                                    return ERROR;
+                                }
+                                /*Sets the condition to TRUE so that it stops looping*/
                                 condition = TRUE;
-                        }
-                        condition = !condition;
-                        /*If there aren't any bad characters it does this*/
-                        if (condition == TRUE)
-                        {
-                            /*The game that ha been loadede was already a new game, so it just adds this new game*/
-                            if (ERROR == game_add_new_savefile(*game, str))
-                            {
-                                fprintf(stderr, "Error while creating new savefile.\n");
-                                return ERROR;
-                            }
-                            /*Saves the game*/
-                            if (game_reader_save_game(*game, str) == ERROR)
-                            {
-                                fprintf(stderr, "Error while saving game.\n");
-                                return ERROR;
                             }
                         }
-                        /*Else, it continues looping*/
-                        else
-                            printf("Not a good name, try again\n");
+                        if (condition == FALSE)
+                            graphic_engine_paint_game(ge_menu, *game, FAIL_LOAD_GAME);
                     } while (condition == FALSE);
-                    game_set_current_savefile(*game, str);
-                    /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
+                    game_set_current_savefile(*game, str2);
+                    /*Gets a string from the terminal cuase if not the first action that the player does, gets ignored, as there is a \n*/
                     fgets(str, WORD_SIZE, stdin);
                     return OK;
                 }
-                else
-                    printf("Max_number of savefiles reached\n");
-            }
-            else if (number == 2)
-            {
-                /*Prints all the savefiles*/
-                printf("Existing savefiles:\n");
-                for (i = 0; i < game_get_n_savefiles(*game); i++)
-                    printf("<%s>\n",game_get_savefile(*game, i));
-                /*Asks the user to chose one*/
-                do
+                else if (number == DELETE)
                 {
-                    printf("Type the name of the savefile you want to load, the names are shown up:\n");
+                    /*Prints the menu*/
+                    graphic_engine_menu_paint(ge_menu, *game, DELETE);
+                    /*Asks the user a file*/
+                    /*Gets the name of the savefile*/
                     scanf("%s", str);
                     /*Checks that savefile exists*/
                     for (i = 0; i < game_get_n_savefiles(*game); i++)
                     {
                         if (strcmp(str, game_get_savefile(*game, i)) == 0)
                         {
-                            /*If it finds it, it loads it and sets condition to TRUE*/
-                            /*Destroys what had been created*/
-                            game_destroy(game);
-                            /*Gets the real location of the file*/
-                            strcpy(str2, str);
-                            sprintf(str, "data/%s.dat", str2);
-                            /*Loads the real file*/
-                            if (game_create_from_file(game, str) == ERROR)
-                            {
-                                fprintf(stderr, "Error while loading game.\n");
-                                return ERROR;
-                            }
-                            /*Sets the condition to TRUE so that it stops looping*/
-                            condition = TRUE;
+                            /*If it finds it, it deletes it and sets condition to TRUE*/
+                            game_delete_savefile(*game, str);
                         }
                     }
-                } while (condition == FALSE);
-                game_set_current_savefile(*game, str2);
-            }
-            else
-                printf("Chose an available choice\n");
-
-        } while (condition == FALSE);
-        /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
-        fgets(str, WORD_SIZE, stdin);
-        return OK;
-    }
-    else
-    {
-        /*As there arent any savefiles, ask the user for the name of the new savefile*/
-        do
-        {
-            condition = FALSE;
-            printf("There are no savefiles, chose a name for the new game:");
-            scanf("%s", str);
-            /*Checks the name of the new savefile*/
-            for (i = 0; i < strlen(str); i++)
-            {
-                for (j = 0; j < NUMBER_OF_BAD_LETTERS; j++)
-                {
-                    if (str[i] == bad_letters[j])
-                        condition = TRUE;
+                    /*Even if it doesn't find the file, as we dont want to force the player to delete a savefile.*/
+                    /*we set the condition to TRUE so it goes out of the loop*/
+                    condition = TRUE;
                 }
-            }
-            condition = !condition;
-        } while (condition == FALSE);
-        /*If the name is ok, it creates the new savefile*/
-        if (ERROR == game_add_new_savefile(*game, str))
-        {
-            fprintf(stderr, "Error while creating new savefile.\n");
-            return ERROR;
+            } while (condition == FALSE);
         }
-        game_reader_save_game(*game, str);
-    }
-    /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
-    fgets(str, WORD_SIZE, stdin);
+
+        /*If there aren't any savefiles, it makes the player create a new one*/
+        else
+        {
+            /*As there arent any savefiles, ask the user for the name of the new savefile*/
+            graphic_engine_menu_paint(ge_menu, *game, NO_SAVES);
+            do
+            {
+                condition = FALSE;
+                scanf("%s", str);
+                /*Checks the name of the new savefile*/
+                for (i = 0; i < strlen(str); i++)
+                {
+                    for (j = 0; j < NUMBER_OF_BAD_LETTERS; j++)
+                    {
+                        if (str[i] == bad_letters[j])
+                            condition = TRUE;
+                    }
+                }
+                condition = !condition;
+            } while (condition == FALSE);
+            /*If the name is ok, it creates the new savefile*/
+            if (ERROR == game_add_new_savefile(*game, str))
+            {
+                graphic_engine_menu_paint(ge_menu, *game, NO_SAVES);
+                return ERROR;
+            }
+            game_reader_save_game(*game, str);
+
+            /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
+            fgets(str, WORD_SIZE, stdin);
+            return OK;
+        }
+        if (number == DELETE)
+            condition = FALSE;
+    } while (condition == FALSE);
     return OK;
 }
 
-void game_loop_run(Game *game, Graphic_engine *gengine,Graphic_engine *gengine_menu, FILE *f)
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile)
 {
     Command *last_cmd = NULL;
     Bool do_log = FALSE;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
-    while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(game) == FALSE))
+    while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(*game) == FALSE))
     {
-        last_cmd = game_get_last_command(game);
-        graphic_engine_paint_game(gengine, game, TRUE);
+        last_cmd = game_get_last_command(*game);
+        graphic_engine_paint_game(gengine, *game, TRUE);
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
-        last_cmd = game_get_last_command(game);
-        game_actions_update(game, last_cmd);
+        last_cmd = game_get_last_command(*game);
+        game_actions_update(*game, last_cmd);
         if (command_get_code(last_cmd) == SAVE)
         {
-            if (game_reader_save_game(game, game_get_current_savefile(game)) == ERROR)
+            if (game_reader_save_game(*game, game_get_current_savefile(*game)) == ERROR)
             {
                 fprintf(stderr, "Error while saving game.\n");
                 return;
@@ -336,35 +399,41 @@ void game_loop_run(Game *game, Graphic_engine *gengine,Graphic_engine *gengine_m
             command_set_argument(last_cmd, "game", 0);
             command_set_argument(last_cmd, "saved", 1);
             command_set_argument(last_cmd, "as", 2);
-            command_set_argument(last_cmd, game_get_current_savefile(game), 3);
+            command_set_argument(last_cmd, game_get_current_savefile(*game), 3);
             command_set_status(last_cmd, OK);
         }
 
         /*Tries to execute all the gamerules.*/
-        gamerules_try_exec_all(game, game_get_game_values(game));
+        gamerules_try_exec_all(*game, game_get_game_values(*game));
 
         /*Refreshes the screen so that the player can see what he did.*/
-        graphic_engine_paint_game(gengine, game, FALSE);
+        graphic_engine_paint_game(gengine, *game, FALSE);
 
         /*Makes the log.*/
         if (do_log)
         {
-            fprintf(f, "Player %ld executed ", player_get_player_id(game_get_actual_player(game)));
+            fprintf(f, "Player %ld executed ", player_get_player_id(game_get_actual_player(*game)));
             command_print(last_cmd, f);
             fprintf(f, "\n");
         }
 
-        /*Waits a bit so that the player can look what he did*/
-        if (command_get_code(last_cmd) == INSPECT || command_get_code(last_cmd) == CHAT)
-            sleep(READING_SECONDS);
+        if (command_get_code(last_cmd) != MENU)
+        {
+
+            /*Waits a bit so that the player can look what he did*/
+            if (command_get_code(last_cmd) == INSPECT || command_get_code(last_cmd) == CHAT)
+                sleep(READING_SECONDS);
+            else
+                sleep(command_get_code(last_cmd) == EXIT ? 0 : 1);
+
+            /*Goes to the next turn if a command that changes turn is used.*/
+            if (command_get_code(last_cmd) == MOVE)
+                game_next_turn(*game);
+
+            game_next_command(*game);
+        }
         else
-            sleep(command_get_code(last_cmd) == EXIT ? 0 : 1);
-
-        /*Goes to the next turn if a command that changes turn is used.*/
-        if (command_get_code(last_cmd) == MOVE)
-            game_next_turn(game);
-
-        game_next_command(game);
+            game_loop_menu(game, gengine_menu, base_savefile);
     }
 }
 

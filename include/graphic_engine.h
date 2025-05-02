@@ -18,6 +18,22 @@
 #include "space.h"
 #include "set.h"
 
+/**
+ * @brief Cods for possible situations that can appear in menu
+ */
+typedef enum
+{
+    NO_SAVES,         /*!<No existing saves situation*/
+    EXISTING_SAVES,   /*!<Existing daves situations*/
+    LIMIT_SAVEFILES,  /*!<Max number of savefiles reached*/
+    LOAD_GAME,        /*!<Load game situations*/
+    FAIL_LOAD_GAME,   /*!<Fail to load a game situation*/
+    NEW_GAME,         /*!<New game situation*/
+    FAIL_NEW_GAME,    /*!<Fail to create a new game*/
+    DELETE_FILE,      /*!<Delete file situation*/
+    N_MENU_SITUATIONS /*!<Number of possible situations*/
+} Menu_states;
+
 typedef struct _Graphic_engine Graphic_engine; /*!< Graphic engine type.*/
 
 /**
@@ -50,7 +66,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh);
 /**
  * @brief It creates a new Graphic engine structure with all its varialbes initialized in menu mode
  * @author Fernando Mijangos
- * 
+ *
  * @return Pointer to the initialized graphic engine.
  */
 Graphic_engine *graphic_engine_menu_create();
@@ -58,7 +74,7 @@ Graphic_engine *graphic_engine_menu_create();
 /**
  * @brief It destroyes a graphic engine structure in menu mode
  * @author Fernando Mijangos
- * 
+ *
  * @param ge The graphic engine structure you want to destroy.
  */
 void graphic_engine_menu_destroy(Graphic_engine *ge);
@@ -66,18 +82,17 @@ void graphic_engine_menu_destroy(Graphic_engine *ge);
 /**
  * @brief It paints the menu in the terminal
  * @author Fernando Mijangos
- * 
+ *
  * @param ge Pointer to the graphic engine you are using.
  * @param game Pointer to the game you are running.
  * @param state The state of the game you are in.
- *              0:Prints screen where there arent saves
- *              1:Prints screen where there are saves
- *              2:Prints screen where you can load a game
- *              3:Prints screen where you tried to load a game that doesnt exist
- *              4:Prints screen where you create a new game
- *              5:Prints a screen where you try to create a game that already exists or cant be created
- *              6:Prints screen where you chose which file to delete
- *              7:Prints screen where you fail to delete a file
+ * @note             0->Prints screen where there arent saves
+ * @note             1->Prints screen where there are saves
+ * @note             2->Prints screen where you can load a game
+ * @note             3->Prints screen where you tried to load a game that doesnt exist
+ * @note             4->Prints screen where you create a new game
+ * @note             5->Prints a screen where you try to create a game that already exists or cant be created
+ * @note             6->Prints screen where you chose which file to delete
  */
 void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state);
 
