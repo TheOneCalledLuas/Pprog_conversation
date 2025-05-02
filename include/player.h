@@ -10,14 +10,13 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#define PLAYER_NAME_SIZE 30 /*!<Maxinum name length.*/
+#define PLAYER_NAME_SIZE 30    /*!<Maxinum name length.*/
 #define PLAYER_TEXTURE_LINES 7 /*!< Lines of each texture.*/
 #define PLAYER_TEXTURE_SIZE 10 /*!< Size of the texture.*/
 
 #include "types.h"
 #include "object.h"
 #include "inventory.h"
-
 
 typedef struct _Player Player; /*!<Player type.*/
 
@@ -29,6 +28,25 @@ typedef struct _Player Player; /*!<Player type.*/
  * @return Pointer the a new player, initialized.
  */
 Player *player_create(Id id);
+
+/**
+ * @brief It sets the player team.
+ * @author Saúl López Romero
+ *
+ * @param player Pointer to the player.
+ * @param team Id of the team.
+ * @return OK, if everything goes well or ERROR if there was some mistake.
+ */
+Status player_set_team(Player *player, Id team);
+
+/**
+ * @brief It gets the player team.
+ * @author Saúl López Romero
+ *
+ * @param player Pointer to the player.
+ * @return Id of the team or NO_ID if an error takes place.
+ */
+Id player_get_team(Player *player);
 
 /**
  * @brief It sets a line of the texture.
@@ -44,7 +62,7 @@ char *player_get_texture_line(Player *player, int line);
 /**
  * @brief It sets a line of the texture.
  * @author Fernando Mijangos.
- * 
+ *
  * @param player Pointer to the player.
  * @param line line to be given.
  * @param str to be set.
@@ -74,7 +92,7 @@ Status player_set_player_name(Player *player, char name[PLAYER_NAME_SIZE]);
 /**
  * @brief Takes an object out of the player inventory.
  * @author Saúl López Romero
- * 
+ *
  * @param player Pointer to the player.
  * @param object Id of the object to be taken.
  * @return OK, if everything goes well or ERROR if there was some mistake.
@@ -84,7 +102,7 @@ Status player_del_object(Player *player, Id object);
 /**
  * @brief Gets the number of objects the playes has.
  * @author Saúl López Romero.
- * 
+ *
  * @param player Pinter to the player.
  * @return Number of objects the player has, or -1 if an error takes place.
  */
@@ -93,7 +111,7 @@ int player_get_n_objects(Player *player);
 /**
  * @brief Sets the maximun object number for the player.
  * @author Saúl López Romero
- * 
+ *
  * @param player Pointer to the player.
  * @param capacity Number of objects.
  * @return OK, if everything goes well or ERROR if there was some mistake.
@@ -103,7 +121,7 @@ Status player_set_inventory_capacity(Player *player, long capacity);
 /**
  * @brief Gets the maximun object number for the player.
  * @author Saúl López Romero
- * 
+ *
  * @param player Pointer to the player.
  * @return Number of objects or -1 if an error takes place.
  */
@@ -182,7 +200,7 @@ Id player_get_player_location(Player *player);
  * @param player Pointer to the player.
  * @return Id of the object the player has.
  */
-Id * player_get_inventory(Player *player);
+Id *player_get_inventory(Player *player);
 
 /**
  * @brief Gets the amount of health the player has.
@@ -196,13 +214,12 @@ int player_get_health(Player *player);
 /**
  * @brief Searches for an object in a player's inventory.
  * @author Saúl López Romero.
- * 
+ *
  * @param player Pointer to the player.
  * @param object Id of the object to be searched for.
- * @return -1 if the object wasn't found or 
+ * @return -1 if the object wasn't found or
  */
-Bool player_has_object(Player * player, Id object);
-
+Bool player_has_object(Player *player, Id object);
 
 /**
  * @brief Sets the player health to a value.

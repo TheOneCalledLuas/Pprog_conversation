@@ -43,11 +43,80 @@ typedef struct _Game Game;
 /**
  * @brief Returns the animation manager.
  * @author Saúl López Romero
- * 
+ *
  * @param game Game structure, where all the information related to game is included.
  * @return Pointer to the animation manager or NULL if an error takes place.
  */
 Animation_Manager *game_get_animation_manager(Game *game);
+
+/**
+ * @brief Returns the number of teams.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return Number of teams or -1 if an error takes place.
+ */
+int game_get_n_teams(Game *game);
+
+/**
+ * @brief Sets the number of teams.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param n_teams Number of existent teams to be set.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_n_teams(Game *game, int n_teams);
+
+/**
+ * @brief Returns the id of the player who asked to team.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return Id of the player who asked to team or NO_ID if an error takes place.
+ */
+Id game_get_team_request(Game *game);
+
+/**
+ * @brief Sets the id of the player who asked to team.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param id Id of the player who asked to team.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_team_request(Game *game, Id id);
+
+/**
+ * @brief Creates a team with two players, the id of the team will be the id of the leader one.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param player_leader Id of the player who will be the leader of the team.
+ * @param player_member Id of the player who will be the member of the team.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_create_team(Game *game, Id player_leader, Id player_member);
+
+/**
+ * @brief Destroys a team, setting the id of the players to NO_ID.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param player Id of the player who will be the leader of the team.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_destroy_team(Game *game, Id player);
+
+/**
+ * @brief Gets the id of the player who is allyed with the first one.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param player Id of the player who will be the leader of the team.
+ * @return Id of the member of the team or NO_ID if an error takes place or the player isn't teamed.
+ */
+Id game_get_teammate_from_player(Game *game, Id player);
 
 /**
  * @brief Searches for a character to the game structure.
@@ -175,7 +244,7 @@ int game_get_n_animations(Game *game);
  * @param name Name of the link to be searched.
  * @return Pointer to the link, NULL if it wasn't found or an error took place.
  */
-Link * game_get_link_by_name(Game *game, char *name);
+Link *game_get_link_by_name(Game *game, char *name);
 
 /**
  * @brief It destroys all the information about the spaces, and the last command.
@@ -254,7 +323,7 @@ Status game_next_turn(Game *game);
 /**
  * @brief Sets the turn to the one you want, this should only be used by game_reader
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game.
  * @param turn Turn number.
  * @return OK if everything went well, ERROR otherwise.
@@ -532,11 +601,11 @@ Player *game_get_player_by_id(Game *game, Id id);
  * @brief It gets an initialized array with the players ids.
  *          IMPORTANT you have to free it after using it.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Array of ids of the players, NULL if an error takes place.
  *      IMPORTANT you have to free it after using it.
- * 
+ *
  */
 Id *game_get_players(Game *game);
 
@@ -544,7 +613,7 @@ Id *game_get_players(Game *game);
  * @brief It gets an initialized array with the spaces ids.
  *         IMPORTANT you have to free it after using it.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Array of ids of the spaces, NULL if an error takes place.
  *         IMPORTANT you have to free it after using it.
@@ -554,7 +623,7 @@ Id *game_get_spaces(Game *game);
 /**
  * @brief It gets the number of spaces in the game.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Number of spaces in the game, -1 if an error takes place.
  */
@@ -564,7 +633,7 @@ int game_get_n_spaces(Game *game);
  * @brief It gets an initialized array with the links ids.
  *         IMPORTANT you have to free it after using it.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Array of ids of the links, NULL if an error takes place.
  *         IMPORTANT you have to free it after using it.
@@ -574,7 +643,7 @@ Id *game_get_links(Game *game);
 /**
  * @brief It gets the number of links in the game.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Number of links in the game, -1 if an error takes place.
  */
@@ -584,7 +653,7 @@ int game_get_n_links(Game *game);
  * @brief It gets an initialized array with the objects ids.
  *         IMPORTANT you have to free it after using it.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Array of ids of the objects, NULL if an error takes place.
  *        IMPORTANT you have to free it after using it.
@@ -594,7 +663,7 @@ Id *game_get_gamerules(Game *game);
 /**
  * @brief It gets the number of gamerules in the game.
  * @author Fernando Mijangos.
- * 
+ *
  * @param game Pointer to the game.
  * @return Number of gamerules in the game, -1 if an error takes place.
  */
@@ -603,7 +672,7 @@ int game_get_n_gamerules(Game *game);
 /**
  * @brief Adds a new savefile name to the game structure
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param name Pointer to the name
  * @return OK if everything went well, ERROr othewise
@@ -613,7 +682,7 @@ Status game_add_savefile(Game *game, char *name);
 /**
  * @brief Adds a new savefile, creating a new file for it and adding its name to the game structure
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param name Pointer to the name
  * @return Ok if everything went well, ERROR otherwise
@@ -623,7 +692,7 @@ Status game_add_new_savefile(Game *game, char *name);
 /**
  * @brief Deletes a savefile, deleting its file and removing it from the game strucutre
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param name Pointer to the name
  * @return OK if everythig went well, ERROR otherwise
@@ -633,7 +702,7 @@ Status game_delete_savefile(Game *game, char *name);
 /**
  * @brief Gets the number of savefiles there are
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @return Number of existing savefiles, -1 if error
  */
@@ -642,7 +711,7 @@ int game_get_n_savefiles(Game *game);
 /**
  * @brief Sets the number of savefiles to what you want
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param n New number of savfiles
  * @return OK if everything went well, ERROR otherwise
@@ -652,7 +721,7 @@ Status game_set_n_savefiles(Game *game, int n);
 /**
  * @brief It gets the name of a savefile in a position of the array
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param n Position you want the name for
  * @return Pointer to the name of the savefile in that position, NULL if ERROR
@@ -662,7 +731,7 @@ char *game_get_savefile(Game *game, int n);
 /**
  * @brief It gets the name of the current savefile
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @return Pointer to the name of the current savefile, NULL if ERROR
  */
@@ -671,7 +740,7 @@ char *game_get_current_savefile(Game *game);
 /**
  * @brief It sets the name of the current savefile to what you want
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game
  * @param name Name of the savefile you want to set as current
  * @return OK if everything went well, ERROR otherwise

@@ -28,14 +28,15 @@
  */
 struct _Player
 {
-    Id player_id;                       /*!< Id of the player.*/
-    char player_name[PLAYER_NAME_SIZE]; /*!< Name of the player.*/
-    Id player_location;                 /*!< id of the space where the player is at.*/
-    Inventory *inventory;               /*!< Player inventory.*/
-    int health;                         /*!< Health points the player has.*/
-    char gdesc[MAX_GDESC];              /*!< Graphic description for the player.*/
+    Id player_id;                        /*!< Id of the player.*/
+    char player_name[PLAYER_NAME_SIZE];  /*!< Name of the player.*/
+    Id player_location;                  /*!< id of the space where the player is at.*/
+    Inventory *inventory;                /*!< Player inventory.*/
+    int health;                          /*!< Health points the player has.*/
+    char gdesc[MAX_GDESC];               /*!< Graphic description for the player.*/
     char *texture[PLAYER_TEXTURE_LINES]; /*!< Texture of the player.*/
-    char *__texture;                 /*!< Actual matrix with the gdesc.*/
+    char *__texture;                     /*!< Actual matrix with the gdesc.*/
+    Id team;                             /*!< Id of the team the player belongs to. */
 };
 
 Player *player_create(Id id)
@@ -59,7 +60,8 @@ Player *player_create(Id id)
     player->player_location = NO_ID;
     player->inventory = inventory_create();
     player->health = DEFAULT_HEALTH;
-    if(!(player->__texture=(char *)calloc(PLAYER_TEXTURE_LINES * PLAYER_TEXTURE_SIZE, sizeof(char))))
+    player->team = NO_ID;
+    if (!(player->__texture = (char *)calloc(PLAYER_TEXTURE_LINES * PLAYER_TEXTURE_SIZE, sizeof(char))))
     {
         return NULL;
     }
@@ -83,6 +85,32 @@ char *player_get_texture_line(Player *player, int line)
 
     /*Returns the value.*/
     return player->texture[line];
+}
+
+Status player_set_team(Player *player, Id team)
+{
+    /*Error management*/
+    if (player == NULL || team < NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value.*/
+    player->team = team;
+
+    return OK;
+}
+
+Id player_get_team(Player *player)
+{
+    /*Error management*/
+    if (player == NULL)
+    {
+        return NO_ID;
+    }
+
+    /*Returns the value.*/
+    return player->team;
 }
 
 Status player_set_texture_line(Player *player, int line, char *str)

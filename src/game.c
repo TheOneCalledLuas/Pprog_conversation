@@ -44,12 +44,148 @@ struct _Game
     Bool finished;                                   /*!< Whether the game has finished or not.*/
     int turn;                                        /*!< Actual turn.*/
     int n_players;                                   /*!< Number of players.*/
-    Game_values *game_values;                        /*!< Structure whiZch holds all the gamerule handling inside. */
-    char savefiles[MAX_SAVEFILES][WORD_SIZE];        /*!< Maximum number of savefiles that can exist*/
-    char current_savefile[WORD_SIZE];                /*!< Name of the current savefile*/
-    int n_savefiles;                                 /*!< Number of savefiles that currently exist*/
+    Game_values *game_values;                        /*!< Structure whiZch holds all the gamerule handling inside.*/
+    char savefiles[MAX_SAVEFILES][WORD_SIZE];        /*!< Maximum number of savefiles that can exist.*/
+    char current_savefile[WORD_SIZE];                /*!< Name of the current savefile.*/
+    int n_savefiles;                                 /*!< Number of savefiles that currently exist.*/
     Animation_Manager *animation_manager;            /*!< Animation manager.*/
+    int n_teams;                                     /*!< Number of teams.*/
+    Id to_team;                                      /*!< Id of the player who asked to team. */
 };
+
+int game_get_n_teams(Game *game)
+{
+    /*Error management.*/
+    if (!game)
+    {
+        return -1;
+    }
+
+    /*Returns the number of teams.*/
+    return game->n_teams;
+}
+
+Status game_set_n_teams(Game *game, int n_teams)
+{
+    /*Error management.*/
+    if (!game || n_teams < 0)
+    {
+        return ERROR;
+    }
+
+    /*Sets the number of teams.*/
+    game->n_teams = n_teams;
+
+    return OK;
+}
+
+Id game_get_team_request(Game *game)
+{
+    /*Error management.*/
+    if (!game)
+    {
+        return ID_ERROR;
+    }
+
+    /*Returns the id of the player who asked to team.*/
+    return game->to_team;
+}
+
+Status game_create_team(Game *game, Id player_leader, Id player_member)
+{
+    /*Error management.*/
+    if (!game || player_leader <= NO_ID || player_member <= NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Checks that the players aren't alreaddy in a team.*/
+    if (player_get_team(game_get_player(game, player_leader)) != NO_ID || player_get_team(game_get_player(game, player_member)) != NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Teams the players.*/
+    player_set_team(game_get_player(game, player_leader), player_leader);
+    player_set_team(game_get_player(game, player_member), player_leader);
+
+    /*Actualises the number of teams.*/
+    game_set_n_teams(game, game_get_n_teams(game) + 1);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_destroy_team(Game *game, Id player)
+{
+    Id player_member = NO_ID;
+
+    /*Error management.*/
+    if (!game || player <= NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Checks that the players are in a team.*/
+    if (player_get_team(game_get_player(game, player)) == NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Searches for the player member of the team. */
+    player_member = game_get_teammate_from_player(game, player);
+
+    /*Destroys the team.*/
+    player_set_team(game_get_player(game, player), NO_ID);
+    player_set_team(game_get_player(game, player_member), NO_ID);
+
+    /*Actualises the number of teams.*/
+    game_set_n_teams(game, game_get_n_teams(game) - 1);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Id game_get_teammate_from_player(Game *game, Id player)
+{
+    Id team = NO_ID, act_team;
+    int i = 0;
+
+    /*Error management.*/
+    if (!game || player <= NO_ID)
+    {
+        return NO_ID;
+    }
+
+    act_team = player_get_team(game_get_player(game, player));
+
+    /*Searches for the player. */
+    for (i = 0; i < game->n_players; i++)
+    {
+        if (player_get_team(game->players[i]) == act_team && player_get_player_id(game->players[i]) != player)
+        {
+            team = player_get_player_id(game->players[i]);
+            break;
+        }
+    }
+
+    /*Returns the id of the team, which will be NO_ID if the teeammate wasn't found. */
+    return team;
+}
+
+Status game_set_team_request(Game *game, Id id)
+{
+    /*Error management.*/
+    if (!game || id <= NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Sets the id of the player who asked to team.*/
+    game->to_team = id;
+
+    return OK;
+}
 
 Status game_create(Game **game)
 {
@@ -120,6 +256,8 @@ Status game_create(Game **game)
     (*game)->turn = 0;
     (*game)->finished = FALSE;
     (*game)->n_savefiles = 0;
+    (*game)->n_teams = 0;
+    (*game)->to_team = NO_ID;
 
     return OK;
 }
