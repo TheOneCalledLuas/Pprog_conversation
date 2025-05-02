@@ -641,6 +641,12 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
     }
     /*7.Prints if a coop request was made.*/
+    if (game_get_player_to_team(game) == player_get_id(player) && refresh == FALSE)
+    {
+        screen_area_puts(ge->descript, " ");
+        sprintf(str, "  COOP REQUEST: %s", player_get_player_name(game_get_player_by_id(game, game_get_team_request(game))));
+        screen_area_puts(ge->descript, str);
+    }
 
     /*BANNER AREA.*/
     screen_area_puts(ge->banner, "----`````--.._____..---`````---````----...._____....-`````--...__..._`````--.._____..---`````---```.---`````---````----...._____....-`````--...__..._`````--..__ ----'''---_");
