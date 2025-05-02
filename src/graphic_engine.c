@@ -154,11 +154,11 @@ Graphic_engine *graphic_engine_create()
     }
 
     /*It gives the value needed for each variable.*/
-    ge->banner = screen_area_init(2*STARING_POINT,STARING_POINT, WIDTH_MAP * 2 + WIDTH_DES + 4 * EXTRA_LINE, HEIGHT_BAN);
-    ge->map = screen_area_init(STARING_POINT+EXTRA_LINE, STARING_POINT+HEIGHT_BAN+EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
-    ge->room = screen_area_init(WIDTH_MAP + 2 * EXTRA_LINE+2*STARING_POINT, STARING_POINT+HEIGHT_BAN+EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript = screen_area_init((WIDTH_MAP + 3 * EXTRA_LINE) * 2, STARING_POINT+HEIGHT_BAN+EXTRA_LINE, WIDTH_DES, HEIGHT_MAP);
-    ge->help = screen_area_init(2 *STARING_POINT, HEIGHT_MAP + HEIGHT_BAN + 2 * EXTRA_LINE+STARING_POINT,  WIDTH_MAP * 2 + WIDTH_DES + 4 * EXTRA_LINE, HEIGHT_HLP);
+    ge->banner = screen_area_init(2 * STARING_POINT, STARING_POINT, WIDTH_MAP * 2 + WIDTH_DES + 4 * EXTRA_LINE, HEIGHT_BAN);
+    ge->map = screen_area_init(STARING_POINT + EXTRA_LINE, STARING_POINT + HEIGHT_BAN + EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
+    ge->room = screen_area_init(WIDTH_MAP + 2 * EXTRA_LINE + 2 * STARING_POINT, STARING_POINT + HEIGHT_BAN + EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
+    ge->descript = screen_area_init((WIDTH_MAP + 3 * EXTRA_LINE) * 2, STARING_POINT + HEIGHT_BAN + EXTRA_LINE, WIDTH_DES, HEIGHT_MAP);
+    ge->help = screen_area_init(2 * STARING_POINT, HEIGHT_MAP + HEIGHT_BAN + 2 * EXTRA_LINE + STARING_POINT, WIDTH_MAP * 2 + WIDTH_DES + 4 * EXTRA_LINE, HEIGHT_HLP);
     ge->feedback = screen_area_init(2 * STARING_POINT, HEIGHT_MAP + HEIGHT_BAN + HEIGHT_HLP + 4 * EXTRA_LINE, WIDTH_MAP * 2 + WIDTH_DES + 4 * EXTRA_LINE, HEIGHT_FDB);
 
     /*Clean exit.*/
@@ -169,19 +169,19 @@ Graphic_engine *graphic_engine_menu_create()
 {
     static Graphic_engine *ge = NULL;
     /*Screen initialisation.*/
-    screen_menu_init(HEIGHT_BAN+HEIGHT_MAP+3*EXTRA_LINE, WIDTH_MAP +4*EXTRA_LINE);
+    screen_menu_init(HEIGHT_BAN + HEIGHT_MAP + 3 * EXTRA_LINE, WIDTH_MAP + 4 * EXTRA_LINE);
 
     /*Memory allocation and error management*/
-    if(!(ge = (Graphic_engine *)malloc(sizeof(Graphic_engine))))
+    if (!(ge = (Graphic_engine *)malloc(sizeof(Graphic_engine))))
         return NULL;
 
     /*It gives the value needed for each variable.*/
-    ge->banner =screen_area_init_menu(2*STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_BAN);
-    ge->map = screen_area_init_menu(2*STARING_POINT, STARING_POINT+HEIGHT_BAN+EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript =screen_area_init_menu(0,0,0,0);
-    ge->room = screen_area_init_menu(0,0,0,0);
-    ge->help = screen_area_init_menu(0,0,0,0);
-    ge->feedback = screen_area_init_menu(0,0,0,0);
+    ge->banner = screen_area_init_menu(2 * STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_BAN);
+    ge->map = screen_area_init_menu(2 * STARING_POINT, STARING_POINT + HEIGHT_BAN + EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
+    ge->descript = screen_area_init_menu(0, 0, 0, 0);
+    ge->room = screen_area_init_menu(0, 0, 0, 0);
+    ge->help = screen_area_init_menu(0, 0, 0, 0);
+    ge->feedback = screen_area_init_menu(0, 0, 0, 0);
     /*Clean exit*/
     return ge;
 }
@@ -640,19 +640,19 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             command_set_status(game_get_last_command(game), OK);
         }
     }
+    /*7.Prints if a coop request was made.*/
 
     /*BANNER AREA.*/
     screen_area_puts(ge->banner, "----`````--.._____..---`````---````----...._____....-`````--...__..._`````--.._____..---`````---```.---`````---````----...._____....-`````--...__..._`````--..__ ----'''---_");
     screen_area_puts(ge->banner, "     _..._  \\_\\                                          \\_\\  _..._               _                                         __ \\/ __      \\_/-.--.--.--.--.--.  ");
     screen_area_puts(ge->banner, "     (_..._)( \")                                          (\" )(_..._)            ( )                                       /o \\{}/ o\\     (\")__)__)__)__)__)__)");
-    screen_area_puts(ge->banner, "       // \\\\ ^^ -. ,--. ,------.        .- --.  ,--.  ,-   ^^  // \\\\  ,--. ,--.  ,-.-    ,--.       ,--.            ,----. \\   (). -/.    ,-^.\"\" \"\"-\"\" \"\"-\"\"-\"\"  "); 
+    screen_area_puts(ge->banner, "       // \\\\ ^^ -. ,--. ,------.        .- --.  ,--.  ,-   ^^  // \\\\  ,--. ,--.  ,-.-    ,--.       ,--.            ,----. \\   (). -/.    ,-^.\"\" \"\"-\"\" \"\"-\"\"-\"\"  ");
     screen_area_puts(ge->banner, "    |'--.-----|  | |  | |  .---'       /  .-. \\ |   \\ |  |  |'-------\\|  | |  |  | _|,._ |  |.      |  |           '  .-._) `> /\\<`  \\   |   `.'   |  |  .---'  ");
-    screen_area_puts(ge->banner, "    '--.  .--'|   .|  | |  |           ' '  |  ||    \\|  |  '--.  .--'|   -|  |  |/  _  \\|  |       |  |           |  |     (o/\\/\\o)|  | |         |  |  |   "); 
+    screen_area_puts(ge->banner, "    '--.  .--'|   .|  | |  |           ' '  |  ||    \\|  |  '--.  .--'|   -|  |  |/  _  \\|  |       |  |           |  |     (o/\\/\\o)|  | |         |  |  |   ");
     screen_area_puts(ge->banner, "       |  |   |       | |  '--.        | '-.'  ||  .     |     |  |   |   -:  |  |  6 \\  \\ _oo _    |  | __        |  | .--, ) | |(.'  | |  |'.'|  |  |  '--. ");
     screen_area_puts(ge->banner, "       |  |   |  | |  | |  `---.       |  | |  ||  | \\   |     |  |   |  | |__,.=\"^         ||\\ |   |      |       |  '--' |   |  | |  | |  |   |  |  |  `---.   ");
     screen_area_puts(ge->banner, "       `--'   `--' `--' `------'       `--' `--'`--'  `--'     `--'   `--'<.__________________/-'   '------'       `------'    `--' `--' `--'   `--'  `------'  ");
     screen_area_puts(ge->banner, "__--'`````--.._____..---`````---````----...._____....-`````--...__..._`````--.._____..---`````---```.---`````---````----...._____....-`````--...__..._`````--..__ ----'''---_");
-
 
     /*HELP AREA.*/
     screen_area_clear(ge->help);
@@ -688,39 +688,39 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 
 void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
 {
-    char str[MAX_STRING_GE]="\0";
+    char str[MAX_STRING_GE] = "\0";
 
     /*PRINTS THE BANNER*/
     /*1-Clears that section*/
-    screen_area_clear_menu(ge->banner);    
+    screen_area_clear_menu(ge->banner);
     /*2-Prints the menu title*/
-/*                 |__/ _   .-.                 */   
-/*                (o_o)(_`>(   )                */
-/*  ,--.   ,--.  , { }//||\\`-',--,  ,--. ,--.  */
-/*  |   `.'   |  |  .---'|   \ |  |  |  | |  |  */ 
-/*  |         |  |  |    |    \|  |  |  | |  |  */
-/*  |  |'.'|  | (|  '--. |  .     |  |  | |  |  */
-/*  |  |   |  |  |  .--' |  |\    |  |  | |  |  */
-/*  |  |   |  |  |  `--.--.--.--.--.--.\_/'  /  */
-/*  `--'   `--'  `----(__(__(__(__(__(__(")-'   */
-/*                     "" "" "" "" "" "" ^      */
-    screen_area_puts_menu(ge->banner,  "                |__/ _   .-.               ");
-    screen_area_puts_menu(ge->banner,  "               (o_o)(_`>(   )              ");
-    screen_area_puts_menu(ge->banner,  "  ,--.   ,--.  , { }//||\\\\`-',--,  ,--. ,--.");
-    screen_area_puts_menu(ge->banner,  "  |   `.'   |  |  .---'|   \\ |  |  |  | |  |");
-    screen_area_puts_menu(ge->banner,  "  |         |  |  |    |    \\|  |  |  | |  |");
-    screen_area_puts_menu(ge->banner,  "  |  |'.'|  | (|  '--. |  .     |  |  | |  |");
-    screen_area_puts_menu(ge->banner,  "  |  |   |  |  |  .--' |  |\\    |  |  | |  |");
-    screen_area_puts_menu(ge->banner,  "  |  |   |  |  |  `--.--.--.--.--.--.\\_/'  /");
-    screen_area_puts_menu(ge->banner,  "  `--'   `--'  `----(__(__(__(__(__(__(\"`-'-' ");
-    screen_area_puts_menu(ge->banner,  "                     \"\" \"\" \"\" \"\" \"\" \"\" ^      ");
+    /*                 |__/ _   .-.                 */
+    /*                (o_o)(_`>(   )                */
+    /*  ,--.   ,--.  , { }//||\\`-',--,  ,--. ,--.  */
+    /*  |   `.'   |  |  .---'|   \ |  |  |  | |  |  */
+    /*  |         |  |  |    |    \|  |  |  | |  |  */
+    /*  |  |'.'|  | (|  '--. |  .     |  |  | |  |  */
+    /*  |  |   |  |  |  .--' |  |\    |  |  | |  |  */
+    /*  |  |   |  |  |  `--.--.--.--.--.--.\_/'  /  */
+    /*  `--'   `--'  `----(__(__(__(__(__(__(")-'   */
+    /*                     "" "" "" "" "" "" ^      */
+    screen_area_puts_menu(ge->banner, "                |__/ _   .-.               ");
+    screen_area_puts_menu(ge->banner, "               (o_o)(_`>(   )              ");
+    screen_area_puts_menu(ge->banner, "  ,--.   ,--.  , { }//||\\\\`-',--,  ,--. ,--.");
+    screen_area_puts_menu(ge->banner, "  |   `.'   |  |  .---'|   \\ |  |  |  | |  |");
+    screen_area_puts_menu(ge->banner, "  |         |  |  |    |    \\|  |  |  | |  |");
+    screen_area_puts_menu(ge->banner, "  |  |'.'|  | (|  '--. |  .     |  |  | |  |");
+    screen_area_puts_menu(ge->banner, "  |  |   |  |  |  .--' |  |\\    |  |  | |  |");
+    screen_area_puts_menu(ge->banner, "  |  |   |  |  |  `--.--.--.--.--.--.\\_/'  /");
+    screen_area_puts_menu(ge->banner, "  `--'   `--'  `----(__(__(__(__(__(__(\"`-'-' ");
+    screen_area_puts_menu(ge->banner, "                     \"\" \"\" \"\" \"\" \"\" \"\" ^      ");
 
     /*PRINTS THE INFORMATION IN THE MAP AREA*/
     screen_area_clear(ge->map);
     /*TO DO later*/
 
     screen_menu_paint(state);
-    return ;
+    return;
 }
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
 {

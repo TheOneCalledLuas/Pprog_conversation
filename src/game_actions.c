@@ -138,10 +138,34 @@ void game_actions_save(Game *game);
 /**
  * @brief Action to be executed when menu command is given.
  * @author Fernando Mijangos
- * 
+ *
  * @param game Pointer to the game structure.
  */
 void game_actions_menu(Game *game);
+
+/**
+ * @brief Action to be executed when wait command is given.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_wait(Game *game);
+
+/**
+ * @brief Action to be executed when coop command is given.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_coop(Game *game);
+
+/**
+ * @brief Action to be executed when coop command is given.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game structure.
+ */
+void game_actions_uncoop(Game *game);
 
 /**
  * @brief Returns a random number in a range.
@@ -749,6 +773,54 @@ void game_actions_menu(Game *game)
     /*The menu action is managed by game_loop; it starts as an error and
     if it goes as it should the error code is set to OK. */
     command_set_status(game_get_last_command(game), ERROR);
+    return;
+}
+
+void game_actions_wait(Game *game)
+{
+    command_set_status(game_get_last_command(game), OK);
+    return;
+}
+
+void game_actions_coop(Game *game)
+{
+    Status result = ERROR;
+    Id player_id = NO_ID;
+    /*Error handling.*/
+    if (!game)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    switch (game_get_team_request(game))
+    {
+    case NO_ID:
+        /*Checks if a number was introduced.*/
+        if (strcmp(command_get_argument(game_get_last_command(game), 0), "") == 0)
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+        /*Sets it up for the other player to respond.*/
+        player_id = game_get_player_by_name(game, command_get_argument(game_get_last_command(game), 0));
+        game_set_team_request(game, player_get_player_id(game_get_actual_player(game)));
+        game_set_player_to_team(game, player_id);
+        command_set_status(game_get_last_command(game), OK);
+        break;
+    default:
+        result = game_create_team(game, game_get_team_request(game), player_get_player_id(game_get_actual_player(game)));
+        command_set_status(game_get_last_command(game), result);
+        return;
+    }
+    return;
+}
+
+void game_actions_uncoop(Game *game)
+{
+    Status result = ERROR;
+    result = game_destroy_team(game, player_get_player_id(game_get_actual_player(game)));
+    command_set_status(game_get_last_command(game), result);
     return;
 }
 

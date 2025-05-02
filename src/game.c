@@ -50,7 +50,8 @@ struct _Game
     int n_savefiles;                                 /*!< Number of savefiles that currently exist.*/
     Animation_Manager *animation_manager;            /*!< Animation manager.*/
     int n_teams;                                     /*!< Number of teams.*/
-    Id to_team;                                      /*!< Id of the player who asked to team. */
+    Id to_team;                                      /*!< Id of the player who is asked to team. */
+    Id team_req;                                     /*!< Id of the player who asked to team. */
 };
 
 int game_get_n_teams(Game *game)
@@ -63,6 +64,32 @@ int game_get_n_teams(Game *game)
 
     /*Returns the number of teams.*/
     return game->n_teams;
+}
+
+Status game_set_player_to_team(Game *game, Id player)
+{
+    /*Error management. */
+    if (!game || player <= NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Sets the id of the player who asked to team. */
+    game->team_req = player;
+
+    return OK;
+}
+
+Id game_get_player_to_team(Game *game)
+{
+    /*Error management. */
+    if (!game)
+    {
+        return NO_ID;
+    }
+
+    /*Returns the id of the player who asked to team. */
+    return game->team_req;
 }
 
 Status game_set_n_teams(Game *game, int n_teams)
@@ -98,8 +125,22 @@ Status game_create_team(Game *game, Id player_leader, Id player_member)
     {
         return ERROR;
     }
+    if (player_leader == player_member)
+        return ERROR;
 
-    /*Checks that the players aren't alreaddy in a team.*/
+    /*Checks that the coop request is for this player.*/
+    if (player_member != player_get_player_id(game_get_actual_player(game)))
+    {
+        return ERROR;
+    }
+
+    /*Checks that both players are in the same place.*/
+    if (player_get_player_location(game_get_player(game, player_leader)) != player_get_player_location(game_get_player(game, player_member)))
+    {
+        return ERROR;
+    }
+
+    /*Checks that the players aren't already in a team.*/
     if (player_get_team(game_get_player(game, player_leader)) != NO_ID || player_get_team(game_get_player(game, player_member)) != NO_ID)
     {
         return ERROR;
@@ -111,6 +152,10 @@ Status game_create_team(Game *game, Id player_leader, Id player_member)
 
     /*Actualises the number of teams.*/
     game_set_n_teams(game, game_get_n_teams(game) + 1);
+
+    /*Actualises the game struct values.*/
+    game->to_team = NO_ID;
+    game->team_req = NO_ID;
 
     /*Clean exit.*/
     return OK;

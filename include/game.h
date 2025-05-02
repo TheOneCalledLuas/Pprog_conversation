@@ -59,6 +59,25 @@ Animation_Manager *game_get_animation_manager(Game *game);
 int game_get_n_teams(Game *game);
 
 /**
+ * @brief Sets the id of the player who is asked to team.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param player Id of the player who is asked to team.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_player_to_team(Game *game, Id player);
+
+/**
+ * @brief Returns the id of the player who is asked to team.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return Id of the player who is asked to team or NO_ID if an error takes place.
+ */
+Id game_get_player_to_team(Game *game);
+
+/**
  * @brief Sets the number of teams.
  * @author Saúl López Romero
  *
