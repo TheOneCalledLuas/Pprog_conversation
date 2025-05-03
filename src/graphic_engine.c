@@ -598,7 +598,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     }
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     id_aux = NO_ID;
-    if (command_get_code(game_get_last_command(game)) == CHAT && refresh == FALSE)
+    if (command_get_code(game_get_last_command(game)) == CHAT)
     {
         /*5.1-Gets the characters in the space.*/
         if (!(characters = space_get_characters(space_act)))
@@ -624,7 +624,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         free(characters);
     }
     /*6.Prints the object information if the conditions for it appearing are satisfied.*/
-    if (command_get_code(game_get_last_command(game)) == INSPECT && refresh == FALSE)
+    if (command_get_code(game_get_last_command(game)) == INSPECT)
     {
         last_space = game_get_space(game, player_get_player_location(player));
         /*Searches for the object.*/
@@ -642,7 +642,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
     }
     /*7.Prints if a coop request was made.*/
-    if ((game_get_player_to_team(game) == player_get_player_id(player)) && (refresh == FALSE))
+    if ((game_get_player_to_team(game) == player_get_player_id(player)))
     {
         screen_area_puts(ge->descript, " ");
         sprintf(str, "  COOP REQUEST: %s", player_get_player_name(game_get_player_by_id(game, game_get_team_request(game))));
@@ -686,11 +686,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 
     /*PRINTS ALL THE THINGS INTO THE TERMINAL.*/
     screen_paint(game_get_turn(game));
-    if (command_get_code(game_get_last_command(game)) != EXIT)
-    {
-        fprintf(stdout, "%s", (refresh ? "prompt>" : "waiting :) "));
-        fflush(stdout);
-    }
 }
 
 void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
@@ -746,9 +741,10 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
 
         screen_area_puts_menu(ge->map, "   NO SAVEFILES FOUND");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+
+        screen_area_puts_menu(ge->map, "   - Type the name of the savefile you want to create:");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   Type the name of the savefile you want to create:");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
         break;
     case EXISTING_SAVES:
@@ -756,13 +752,14 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "       <%s>", game_get_savefile(game, i));
+            sprintf(str, "         <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
             number_rows++;
         }
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+
+        screen_area_puts_menu(ge->map, "   - Do you want to create(1), load(2) or delete(3) a game:");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   Do you want to create(1), load(2) or delete(3) a game:");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
         break;
     case LIMIT_SAVEFILES:
@@ -776,9 +773,9 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   MAX NUMBER OF SAVEFILES REACHED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        screen_area_puts_menu(ge->map, "   - Do you want to load(2), or delete(3) a game:");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   Do you want to load(2), or delete(3) a game:");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
         break;
     case LOAD_GAME:
@@ -792,9 +789,9 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        screen_area_puts_menu(ge->map, "   - Chose one of the savefiles mentioned above");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
         break;
     case FAIL_LOAD_GAME:
@@ -808,11 +805,11 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        screen_area_puts_menu(ge->map, "   - Chose one of the savefiles mentioned above");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     That name isn't available, please chose one");
+        screen_area_puts_menu(ge->map, "   - That name isn't available, please chose one");
         number_rows++;
         break;
     case NEW_GAME:
@@ -826,12 +823,13 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
-        number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones ");
+        screen_area_puts_menu(ge->map, "   - Chose a name for the new savefile that doesn't match the ones ");
         number_rows++;
         screen_area_puts_menu(ge->map, "     above");
         number_rows++;
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+        number_rows++;
+
         break;
     case FAIL_NEW_GAME:
         screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
@@ -844,13 +842,15 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones ");
+        screen_area_puts_menu(ge->map, "   - Chose a name for the new savefile that doesn't match the ones ");
         number_rows++;
         screen_area_puts_menu(ge->map, "     above");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     That name is taken, please chose another one");
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   - That name is taken, please chose another one");
         number_rows++;
         break;
     case DELETE_FILE:
@@ -864,13 +864,13 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   DELETE SAVEFILE SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
-        number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name of the ones above to delete");
+        screen_area_puts_menu(ge->map, "   - Chose a name of the ones above to delete");
         number_rows++;
         screen_area_puts_menu(ge->map, "     If an incorrect name is given, it will be understood that");
         number_rows++;
         screen_area_puts_menu(ge->map, "     you don't want to delete a savefile");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
         number_rows++;
 
         break;
