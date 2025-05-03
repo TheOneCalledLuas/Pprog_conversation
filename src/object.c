@@ -33,6 +33,8 @@ struct _Object
     Bool movable;                        /*!< Determines wether a object can be moved or not.*/
     Id dependency;                       /*!< Determines if the object needs another object to be taken.*/
     Id open;                             /*!< Determines if the object can open a link.*/
+    Bool is_used;                        /*!< Determines if the object is used or not. */
+    Bool special_use;                    /*!< Determines if the object is used in a special way, gamerule intended.*/
     char *texture[OBJECT_TEXTURE_LINES]; /*!< Strings which create the texture of the space*/
     char *__texture_data;                /*!< Actual matrix with the texture*/
 };
@@ -71,6 +73,8 @@ Object *object_create(Id id)
     object->movable = FALSE;
     object->dependency = NO_ID;
     object->open = NO_ID;
+    object->is_used = FALSE;
+    object->special_use = FALSE;
     /*Allocates memory for the textures.*/
     if (!(object->__texture_data = (char *)calloc(OBJECT_TEXTURE_LINES * OBJECT_TEXTURE_SIZE, sizeof(char))))
     {
@@ -104,6 +108,60 @@ Status object_destroy(Object *object)
 
     /*Clean exit.*/
     return OK;
+}
+
+Status object_set_special_use(Object *object, Bool special_use)
+{
+    /*Checks the arguments.*/
+    if (!object || (special_use != TRUE && special_use != FALSE))
+    {
+        return ERROR;
+    }
+
+    /*Sets the value. */
+    object->special_use = special_use;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Bool object_get_special_use(Object *object)
+{
+    /*Checks the arguments.*/
+    if (!object)
+    {
+        return FALSE;
+    }
+
+    /*Returns the value. */
+    return object->special_use;
+}
+
+Status object_set_is_used(Object *object, Bool is_used)
+{
+    /*Checks the arguments.*/
+    if (!object || (is_used != TRUE && is_used != FALSE))
+    {
+        return ERROR;
+    }
+
+    /*Sets the value. */
+    object->is_used = is_used;
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Bool object_get_is_used(Object *object)
+{
+    /*Checks the arguments.*/
+    if (!object)
+    {
+        return FALSE;
+    }
+
+    /*Returns the value. */
+    return object->is_used;
 }
 
 char *object_get_description(Object *object)
