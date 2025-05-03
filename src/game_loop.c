@@ -303,7 +303,7 @@ Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
                             }
                         }
                         if (condition == FALSE)
-                            graphic_engine_paint_game(ge_menu, *game, FAIL_LOAD_GAME);
+                            graphic_engine_menu_paint(ge_menu, *game, FAIL_LOAD_GAME);
                     } while (condition == FALSE);
                     game_set_current_savefile(*game, str2);
                     /*Gets a string from the terminal cuase if not the first action that the player does, gets ignored, as there is a \n*/
