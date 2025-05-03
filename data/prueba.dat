@@ -146,6 +146,6 @@
 #l:490|Cell-Laboratory|132|131|0|1|
 #l:300|Lair-Hole|114|113|0|1|
 #g:20|do_open_gate|1|0|1|22|
-#g:21|set_anim_default|1|0|1|0|
+#g:21|use_train_pass|1|0|1|13|
 #t:data/anthill_textures.txt
 #T:0|

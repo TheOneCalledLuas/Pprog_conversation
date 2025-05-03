@@ -766,4 +766,14 @@ char *game_get_current_savefile(Game *game);
  */
 Status game_set_current_savefile(Game *game, char *name);
 
+/**
+ * @brief It moves all the players to a room.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param room Id of the room where you want to move the players.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_move_all_players(Game * game, Id room);
+
 #endif

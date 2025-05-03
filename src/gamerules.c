@@ -11,14 +11,18 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
-#define P3_P4_GATE 49 /*!< Id of the gate between P3 and P4.*/
+#define P3_P4_GATE 49     /*!< Id of the gate between P3 and P4.*/
+#define START_ROOM_ID 111 /*!< Id of the start room.*/
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <strings.h>
 
 #include "gamerules.h"
 #include "game.h"
 #include "link.h"
+#include "command.h"
 #include "types.h"
 
 struct _Gamerule
@@ -40,19 +44,19 @@ struct _Game_values
 
 Id *gamerules_get_all_gamerules(Game_values *gv)
 {
-    int i = 0, len=0;
+    int i = 0, len = 0;
     Id *ids = NULL;
     /*Error handling.*/
-    if(!gv)
+    if (!gv)
         return NULL;
     len = gv->n_gamerules;
-    if(len == 0)
+    if (len == 0)
         return NULL;
     /*Allocates memory.*/
-    if(!(ids = (Id *)calloc(len, sizeof(Id))))
+    if (!(ids = (Id *)calloc(len, sizeof(Id))))
         return NULL;
     /*Gets the ids.*/
-    for(i=0; i<len; i++)
+    for (i = 0; i < len; i++)
     {
         ids[i] = gv->gamerules[i]->id;
     }
@@ -218,7 +222,7 @@ Status gamerule_try_exec(Game *game, Gamerule *gr)
         case TRUE:
             if (gr->has_exec == 0) /*If its the first time the gamerule is activated.*/
             {
-                if(gr->do_gamerule!= NULL)
+                if (gr->do_gamerule != NULL)
                 {
                     return (gr->do_gamerule)(game, gr);
                 }
@@ -402,6 +406,52 @@ Status gamerules_open_gate(Game *game, Gamerule *gr)
     else
     {
         /*The gamerule doesn't have to be executed.*/
+        return OK;
+    }
+}
+
+Status gamerules_use_train_pass(Game *game, Gamerule *gr)
+{
+    Object *pass = NULL;
+    Command *cmd = NULL;
+    Id pass_id = NO_ID; /*Id of the pass.*/
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Gets the pass id.*/
+    pass_id = gamerules_get_value(gr);
+
+    /*Gets the Pass.*/
+    if (!(pass = game_get_object(game, pass_id)))
+    {
+        return ERROR;
+    }
+
+    /*Checks if the gamerule meets the requirements to be executed.*/
+    if (object_get_is_used(pass))
+    {
+        /*They attempted to use the pass, checks if it was used correctly.*/
+        if (!(cmd = game_get_last_command(game)))
+            return ERROR;
+    }
+    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, 0), object_get_name(pass)) == 0 && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == 0 && strcasecmp(command_get_argument(cmd, THIRD_ARG), "AnTrain") == 0)
+    {
+        /*The pass was used correctly.*/
+        game_move_all_players(game, START_ROOM_ID);
+
+        /*Attempts to move the pass out of the inventory.*/
+        player_del_object(game_get_actual_player(game), pass_id);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+        return OK;
+    }
+    else
+    {
+        /*The gamerule doesn't have to be executed, as the pass wasn't used correctly.*/
+        object_set_is_used(pass, FALSE);
+        command_set_status(cmd, ERROR);
         return OK;
     }
 }

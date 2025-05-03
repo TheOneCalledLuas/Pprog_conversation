@@ -30,7 +30,7 @@ Game_values *gamerules_values_init();
  * @brief It returns an initialised array with the ids of the gamerules.
  *      IMPORTANT The array must be freed after use.
  * @author Fernando Mijangos
- * 
+ *
  * @param gv Pointer to the game values struct.
  * @return Pointer to the array with the ids of the gamerules or NULL if an error takes place.
  *      IMPORTANT The array must be freed after use.
@@ -273,5 +273,15 @@ Gamerule *gamerules_get_gamerule_by_id(Game_values *gv, Id id);
  * @return OK if everything goes well, ERROR otherwise.
  */
 Status gamerules_open_gate(Game *game, Gamerule *gr);
+
+/**
+ * @brief Uses the train and ends the tutorial.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_use_train_pass(Game *game, Gamerule *gr);
 
 #endif

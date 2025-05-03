@@ -15,7 +15,6 @@ Datos del Tutorial
 #s:26|North_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:27|South_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 
-0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
 #l:15|Move_Up|14|15|4|1|
@@ -160,7 +159,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:300|Lair-Hole|114|113|0|1|
 
 #g:20|do_open_gate|1|0|1|22|
-#g:21|set_anim_default|1|0|1|0
+#g:21|use_train_pass|1|0|1|13
 
 esto es para saber de quien es el turno
 #T:0|

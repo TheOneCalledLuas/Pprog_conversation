@@ -241,7 +241,7 @@ Status game_create(Game **game)
     {
         return ERROR;
     }
-    if(*game != NULL)
+    if (*game != NULL)
     {
         game_destroy(game);
         *game = NULL;
@@ -668,7 +668,7 @@ Status game_destroy(Game **game)
     {
         return ERROR;
     }
-    if(!(*game))
+    if (!(*game))
     {
         return ERROR;
     }
@@ -1140,12 +1140,12 @@ Status game_create_from_file(Game **game, char *filename)
     {
         return ERROR;
     }
-    if(*game != NULL)
+    if (*game != NULL)
     {
         game_destroy(game);
     }
-    *game=NULL;
-    
+    *game = NULL;
+
     /*Creates the game.*/
     if (game_create(game) == ERROR)
     {
@@ -1472,4 +1472,24 @@ int game_get_n_spaces(Game *game)
 {
     /*Error management and gets the number of spaces*/
     return (game ? game->n_spaces : -1);
+}
+
+Status game_move_all_players(Game *game, Id room)
+{
+    int i = 0;
+
+    /*Error management*/
+    if (!game || room <= NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Moves all the players to the room given*/
+    for (i = 0; i < game->n_players; i++)
+    {
+        player_set_player_location(game->players[i], room);
+    }
+
+    /*Clean exit*/
+    return OK;
 }

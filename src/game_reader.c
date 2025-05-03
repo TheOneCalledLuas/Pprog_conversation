@@ -792,6 +792,9 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             case 20:
                 gamerules_gamerule_set_func(gr, gamerules_open_gate);
                 break;
+            case 21:
+                gamerules_gamerule_set_func(gr, gamerules_use_train_pass);
+                break;
 
             default:
                 break;
