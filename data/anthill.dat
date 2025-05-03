@@ -30,20 +30,21 @@
 #c:69|Baby_Spider|/\omo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
 
-#o:211|seed|711|seed desc|
-#o:212|potion_1|131|potion desc|
-#o:213|potion_2|131|potion desc|
-#o:214|potion_3|131|potion desc|
-#o:215|eldritch_artifact|123|gun desc|
-#o:216|dynamite|722|dynamite desc|
-#o:217|lever_1|723|lever desc|
-#o:218|lever_2|733|lever desc|
-#o:219|breadcrumbs|122|crumbs desc|
-#o:220|treasure|731|treasure desc|
-#o:221|eldritch_rocks|132|ammo desc|
-#o:222|spider_food|132|food desc|
-#o:223|baby_food|713|food desc|
-#o:224|mystery_water|123|toilet desc|
+Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
+#o:211|seed|711|seed desc|4|1|-1|-1|0|0
+#o:212|potion_1|131|potion desc|6|1|-1|-1|0|0
+#o:213|potion_2|131|potion desc|6|1|-1|-1|0|0
+#o:214|potion_3|131|potion desc|6|1|-1|-1|0|0
+#o:215|eldritch_artifact|123|gun desc|-20|1|-1|-1|0|0
+#o:216|dynamite|722|dynamite desc|-25|1|-1|-1|0|0
+#o:217|lever_1|723|lever desc|0|0|-1|-1|0|0
+#o:218|lever_2|733|lever desc|0|0|-1|-1|0|0
+#o:219|breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
+#o:220|treasure|731|treasure desc|0|1|-1|-1|0|0
+#o:221|eldritch_rocks|132|ammo desc|0|1|-1|-1|0|0
+#o:222|spider_food|132|food desc|5|1|-1|-1|0|0
+#o:223|baby_food|713|food desc|5|1|-1|-1|0|0
+#o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0
 
 #p:2|Ant|mO^|111|10|3|-1|-1|-1|
 #p:3|Worm|-^-^-|123|10|3|-1|-1|-1|

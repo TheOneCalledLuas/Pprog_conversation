@@ -201,14 +201,15 @@ Status game_reader_load_objects(Game *game, char *filename)
 {
     FILE *file = NULL;
     FILE *textures = NULL;
-    int i = 0;
+    int i = 0, health = 0;
     char texture_file[WORD_SIZE] = "";
     char line[WORD_SIZE] = "";
     char name[WORD_SIZE] = "";
     char desc[WORD_SIZE] = "";
-    Id id = NO_ID, space_id = NO_ID;
+    Id id = NO_ID, space_id = NO_ID, open = NO_ID, dependency = NO_ID;
     Status status = OK;
     Object *object = NULL;
+    Bool special_use = FALSE, used = FALSE, movable = FALSE;
     char *toks = NULL;
 
     /*Checks the arguments.*/
@@ -271,6 +272,18 @@ Status game_reader_load_objects(Game *game, char *filename)
             space_id = atol(toks);
             toks = strtok(NULL, "|");
             strcpy(desc, toks);
+            toks = strtok(NULL, "|");
+            health = atoi(toks);
+            toks = strtok(NULL, "|");
+            movable = atoi(toks);
+            toks = strtok(NULL, "|");
+            dependency = atol(toks);
+            toks = strtok(NULL, "|");
+            open = atol(toks);
+            toks = strtok(NULL, "|");
+            used = atoi(toks);
+            toks = strtok(NULL, "|");
+            special_use = atoi(toks);
 
             /*Creates an object and saves the data.*/
             object = object_create(id);
@@ -282,6 +295,14 @@ Status game_reader_load_objects(Game *game, char *filename)
             }
             object_set_name(object, name);
             object_set_description(object, desc);
+            object_set_health(object, health);
+            object_set_movable(object, movable);
+            object_set_dependency(object, dependency);
+            object_set_open(object, open);
+            object_set_is_used(object, used);
+            object_set_special_use(object, special_use);
+
+            /*Adds the object to the game. */
             game_add_object(game, object);
             /*Looks for the correct texture*/
             status = ERROR;
@@ -524,7 +545,7 @@ Status game_reader_load_players(Game *game, char *filename)
     char name[WORD_SIZE];
     char gdesc[WORD_SIZE];
     char line[WORD_SIZE];
-    Id player_id = 0, space_id = 0, aux_id=0;
+    Id player_id = 0, space_id = 0, aux_id = 0;
     char *toks = NULL;
     int player_inventory = 0, player_health = 0, i = 0;
 
@@ -611,7 +632,7 @@ Status game_reader_load_players(Game *game, char *filename)
                 if (toks)
                 {
                     aux_id = atol(toks);
-                    if ( aux_id!=NO_ID )
+                    if (aux_id != NO_ID)
                         player_add_object(player, atol(toks));
                 }
             }
@@ -977,7 +998,7 @@ Status game_reader_save_game(Game *game, char *filename)
                         sprintf(str2, "%ld|", ids2[j]);
                         strcat(str, str2);
                     }
-                    while(j<player_get_inventory_capacity(aux_structure))
+                    while (j < player_get_inventory_capacity(aux_structure))
                     {
                         sprintf(str2, "-1|");
                         strcat(str, str2);
@@ -1077,17 +1098,17 @@ Status game_reader_load_animations(Game *game, char *filename)
 {
     FILE *f = NULL;
     Animation *an = NULL;
-    char name[WORD_SIZE],path[WORD_SIZE];
+    char name[WORD_SIZE], path[WORD_SIZE];
     char line[WORD_SIZE];
     Id id = 0;
     char *toks = NULL;
-    int widht, height, frames, widht_padding, height_padding,background_color,font_color;
+    int widht, height, frames, widht_padding, height_padding, background_color, font_color;
     float refresh_rate = 0.0;
 
     /*Error handling.*/
     if (!game || !filename)
         return ERROR;
-    
+
     /*Opens the file.*/
     if (!(f = fopen(filename, "r")))
         return ERROR;
@@ -1123,7 +1144,7 @@ Status game_reader_load_animations(Game *game, char *filename)
             font_color = atol(toks);
 
             /*Creates an object and saves the data.*/
-            an = animation_init(id,path);
+            an = animation_init(id, path);
             /*Checks that the memory allocacion took place.*/
             if (!an)
             {
