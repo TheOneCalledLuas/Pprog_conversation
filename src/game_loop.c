@@ -13,8 +13,6 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
 
 #include "command.h"
 #include "game.h"
@@ -452,31 +450,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     Command *last_cmd = NULL;
     CommandCode last_code = UNKNOWN;
     Bool do_log = FALSE;
-    Mix_Music *music = NULL;
 
-    /*Initializes the music thing player*/
-    if (SDL_Init(SDL_INIT_AUDIO) < 0)
-    {
-        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-        return;
-    }
-
-    /*Opens the default audio device*/
-    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, DEFAULT_CHUNKSIZE) < 0)
-    {
-        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-        return;
-    }
-
-    /*Opens the second music file*/
-    music=Mix_LoadMUS("music/loop_music.wav");
-    if(music ==NULL)
-    {
-        SDL_Quit();
-        Mix_CloseAudio();
-    }
-    Mix_VolumeMusic(64);
-    Mix_PlayMusic(music, N_LOOPS_MUSIC);
     /*It runs the game while you dont want to exit or the game is terminated.*/
     graphic_engine_paint_game(gengine, *game, TRUE);
     while ((last_code != EXIT) && (game_get_finished(*game) == FALSE))
@@ -502,8 +476,6 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             if (game_reader_save_game(*game, game_get_current_savefile(*game)) == ERROR)
             {
                 fprintf(stderr, "Error while saving game.\n");
-                Mix_CloseAudio();
-                SDL_Quit();
                 return;
             }
             command_set_argument(last_cmd, "game", 0);
@@ -544,27 +516,11 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             game_next_command(*game);
         }
     }
-
-    Mix_FreeMusic(music);
-    /*Loads a music file*/
-    music = Mix_LoadMUS("music/final_music.wav");
-    if (music == NULL)
-    {
-        printf("Failed to load music! SDL_mixer Error: %s\n", Mix_GetError());
-        return;
-    }
-
-    /*-1 means that it will loop indefinately*/
-    Mix_PlayMusic(music, N_LOOPS_MUSIC);
     /*Prints the final screen*/
     graphic_engine_menu_paint(gengine_menu, *game, FINAL);
     printf("press enter to go out");
     /*If user presses enter it will leave*/
     getchar();
-    /*Frees the music*/
-    Mix_FreeMusic(music);
-    Mix_CloseAudio();
-    SDL_Quit();
 }
 
 void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu)
