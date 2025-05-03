@@ -949,8 +949,11 @@ Status game_reader_save_game(Game *game, char *filename)
             /*Gets the object*/
             aux_structure = (void *)game_get_object(game, ids[i]);
             /*Writes the information of the object*/
-            sprintf(str, "#o:%ld|%s|%ld|%s|\n", object_get_id(aux_structure), object_get_name(aux_structure),
-                    game_get_object_location(game, object_get_id(aux_structure)), object_get_description(aux_structure));
+            sprintf(str, "#o:%ld|%s|%ld|%s|%d|%d|%ld|%ld|%d|%d|\n", object_get_id(aux_structure), object_get_name(aux_structure),
+                    game_get_object_location(game, object_get_id(aux_structure)), object_get_description(aux_structure),
+                    object_get_health(aux_structure),object_get_movable(aux_structure),object_get_dependency(aux_structure)
+                    , object_get_open(aux_structure), object_get_is_used(aux_structure),object_get_special_use(aux_structure));
+                    
             fprintf(f, "%s", str);
         }
         free(ids);
@@ -1016,8 +1019,11 @@ Status game_reader_save_game(Game *game, char *filename)
                     }
                 }
             }
+            /*Writes the team the player belongs to*/
+            sprintf(str2, "%ld|\n", player_get_team(aux_structure));
+            strcat(str, str2);
             /*Prints the information into the file.*/
-            fprintf(f, "%s\n", str);
+            fprintf(f, "%s", str);
         }
         free(ids);
     }
