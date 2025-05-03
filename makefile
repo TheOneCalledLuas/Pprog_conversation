@@ -26,7 +26,7 @@ vpath %.a lib
 all: anthill
 
 anthill:  $(MAKE_OBJ)
-	$(CC) -o $(EXE) $(patsubst %.o, $(OBJDIR)/%.o,$(MAKE_OBJ))
+	$(CC) -o $(EXE) $(patsubst %.o, $(OBJDIR)/%.o,$(MAKE_OBJ)) -lSDL2 -lSDL2_mixer
 
 doxygen:
 	doxygen Doxyfile

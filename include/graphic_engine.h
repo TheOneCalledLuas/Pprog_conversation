@@ -31,6 +31,7 @@ typedef enum
     NEW_GAME,         /*!<New game situation*/
     FAIL_NEW_GAME,    /*!<Fail to create a new game*/
     DELETE_FILE,      /*!<Delete file situation*/
+    FINAL,            /*!<Used when exiting the game to put credits*/
     N_MENU_SITUATIONS /*!<Number of possible situations*/
 } Menu_states;
 
