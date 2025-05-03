@@ -70,7 +70,7 @@ Datos de La zona Principal
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
 #c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
 #c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
-#c:69|Baby_Spider|/\omo/\|713|2|0|I won't talk to you...|
+#c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
@@ -89,8 +89,8 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:223|baby_food|713|food desc|5|1|-1|-1|0|0
 #o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0
 
-#p:2|Ant|mO^|111|10|3|-1|-1|-1|
-#p:3|Worm|-^-^-|123|10|3|-1|-1|-1|
+#p:2|Ant|mO^|111|10|3|-1|-1|-1|-1|
+#p:3|Worm|-^-^-|123|10|3|-1|-1|-1|-1|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
 #l:311|Tutorial-Entry|111|112|1|1|

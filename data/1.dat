@@ -1,21 +1,21 @@
 #s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
-#s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
-#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
+#s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|1|
+#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
 #s:714|Stairs_1|         |         |         |         |         |0|
-#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
 #s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
 #s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
-#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |0|
+#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|__/ \___ |1|
 #s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
 #s:723|Lever_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|0|
-#s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
-#s:733|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|1|
+#s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
+#s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|1|
+#s:733|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|1|
 #s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
 #s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant|
@@ -28,22 +28,22 @@
 #c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
 #c:69|Baby_Spider|/\omo/|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
-#o:211|seed|711|seed desc|
-#o:212|potion_1|131|potion desc|
-#o:213|potion_2|131|potion desc|
-#o:214|potion_3|131|potion desc|
-#o:215|eldritch_artifacttttttttttttttttt|123|gun desc|
-#o:216|dynamite|722|dynamite desc|
-#o:217|lever_1|723|lever desc|
-#o:218|lever_2|733|lever desc|
-#o:219|breadcrumbs|122|crumbs desc|
-#o:220|treasure|731|treasure desc|
-#o:221|eldritch_rocks|132|ammo desc|
-#o:222|spider_food|132|food desc|
-#o:223|baby_food|713|food desc|
-#o:224|mystery_water|123|toilet desc|
-#p:2|Ant|mO^|111|10|3|-1|-1|-1|
-#p:3|Worm|-^-^-|123|10|3|-1|-1|-1|
+#o:211|seed|-1|seed desc|4|1|-1|-1|0|0|
+#o:212|potion_1|131|potion desc|6|1|-1|-1|0|0|
+#o:213|potion_2|131|potion desc|6|1|-1|-1|0|0|
+#o:214|potion_3|131|potion desc|6|1|-1|-1|0|0|
+#o:215|eldritch_artifact|-1|gun desc|-20|1|-1|-1|0|0|
+#o:216|dynamite|722|dynamite desc|-25|1|-1|-1|0|0|
+#o:217|lever_1|723|lever desc|0|0|-1|-1|0|0|
+#o:218|lever_2|733|lever desc|0|0|-1|-1|0|0|
+#o:219|breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0|
+#o:220|treasure|-1|treasure desc|0|1|-1|-1|0|0|
+#o:221|eldritch_rocks|132|ammo desc|0|1|-1|-1|0|0|
+#o:222|spider_food|132|food desc|5|1|-1|-1|0|0|
+#o:223|baby_food|-1|food desc|5|1|-1|-1|0|0|
+#o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0|
+#p:2|Ant|mO^|712|10|3|211|223|-1|-1|
+#p:3|Worm|-^-^-|122|10|3|215|220|-1|-1|
 #l:311|Tutorial-Entry|111|112|1|1|
 #l:321|Entry-Corridor_11|112|711|3|1|
 #l:331|Entry-Stairs_1|112|714|2|1|
@@ -87,4 +87,4 @@
 #g:20|do_open_gate|1|0|1|22|
 #g:21|set_anim_default|1|0|1|0|
 #t:data/anthill_textures.txt
-#T:0|
+#T:1|

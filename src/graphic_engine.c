@@ -708,17 +708,6 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     screen_area_clear_menu(ge->map);
     /*2-Prints the menu title*/
 
-    /*                                    |__/ _   .-.                */
-    /*        -._ _                      (o_o)(_`>(   )               */
-    /*     .'o  oOOOo`.    ,--.   ,--.  , { }//||\\`-',--,  ,--. ,--. */
-    /*    :~~~-.oOo   o`.  |   `.'   |  |  .---'|   \ |  |  |  | |  | */
-    /*     `. \ ~-.  oOOo. |         |  |  |    |    \|  |  |  | |  | */
-    /*       `.; / ~.  OO: |  |'.'|  | (|  '--. |  .     |  |  | |  | */
-    /*       .'  ;-- `.o.' |  |   |  |  |  .--' |  |\    |  |  | |  | */
-    /*      ,'  ; ~~--'~   |  |   |  |  |  `--.--.--.--.--.--.\_/'  / */
-    /*      ;  ;           `--'   `--'  `----(__(__(__(__(__(__(")-'  */
-    /* __\\;_\\//_\/______\\;_\\//_\///\\//\\/"" "" "" "" "" "" ^ \\//*/
-
     screen_area_puts_menu(ge->banner, "                                    |__/ _   .-.                ");
     screen_area_puts_menu(ge->banner, "        -._ _                      (o_o)(_`>(   )               ");
     screen_area_puts_menu(ge->banner, "     .'o  oOOOo`.    ,--.   ,--.  , { }//||\\\\`-',--,  ,--. ,--. ");
@@ -749,12 +738,15 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     number_rows++;
     screen_area_puts_menu(ge->map, "                              |___/                   ");
     number_rows++;
+
     /*1-Decides which thing to print in function of the state given, and does what it should according to it*/
     switch (state)
     {
     case NO_SAVES:
 
         screen_area_puts_menu(ge->map, "   NO SAVEFILES FOUND");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
         screen_area_puts_menu(ge->map, "   Type the name of the savefile you want to create:");
         number_rows++;
@@ -768,6 +760,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             screen_area_puts_menu(ge->map, str);
             number_rows++;
         }
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        number_rows++;
         screen_area_puts_menu(ge->map, "   Do you want to create(1), load(2) or delete(3) a game:");
         number_rows++;
         break;
@@ -781,6 +775,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
         }
         screen_area_puts_menu(ge->map, "   MAX NUMBER OF SAVEFILES REACHED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
         screen_area_puts_menu(ge->map, "   Do you want to load(2), or delete(3) a game:");
         number_rows++;
@@ -796,6 +792,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
         number_rows++;
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
+        number_rows++;
         screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
         number_rows++;
         break;
@@ -809,6 +807,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
         }
         screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
         screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
         number_rows++;
@@ -826,9 +826,12 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile ");
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     that doesn't match the ones above");
+        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones ");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     above");
+        number_rows++;
         break;
     case FAIL_NEW_GAME:
         screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
@@ -841,9 +844,13 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         }
         screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones above");
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
-        screen_area_puts_menu(ge->map, "     Chose a name that isn't shown above");
+        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones ");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     above");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     That name is taken, please chose another one");
         number_rows++;
         break;
     case DELETE_FILE:
@@ -856,6 +863,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
         }
         screen_area_puts_menu(ge->map, "   DELETE SAVEFILE SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   If u want to exit type \"4\"");
         number_rows++;
         screen_area_puts_menu(ge->map, "     Chose a name of the ones above to delete");
         number_rows++;
