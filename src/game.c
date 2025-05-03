@@ -936,7 +936,7 @@ Id game_get_object_by_name(Game *game, char *word)
     /*Searches the object by its name.*/
     for (i = 0; i < game->n_objects; i++)
     {
-        if (!(strcmp(word, object_get_name(game->objects[i]))))
+        if (!(strcasecmp(word, object_get_name(game->objects[i]))))
         {
             /*Returns the object id.*/
             return (object_get_id(game->objects[i]));

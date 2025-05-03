@@ -133,8 +133,10 @@ int main(int argc, char *argv[])
     else
     {
         game_loop_cleanup(&game, gengine, gengine_menu);
+        if (f)
+            fclose(f);
     }
-    
+
     /*Clean exit.*/
     return EXIT_SUCCESS;
 }
@@ -196,7 +198,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
             do
             {
                 /*Gets the input*/
-                if (game_get_n_savefiles(*game) > MAX_SAVEFILES)
+                if (game_get_n_savefiles(*game) >= MAX_SAVEFILES)
                 {
                     do
                     {
@@ -223,7 +225,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                 {
                     do
                     {
-                        graphic_engine_menu_paint(ge_menu, *game, EXISTING_SAVES);
+                        graphic_engine_menu_paint(ge_menu, *game,EXISTING_SAVES);
                         printf("prompt>");
                         scanf("%s", str);
                         if (str[FIRST_CHAR] == '1' || str[FIRST_CHAR] == '2' || str[FIRST_CHAR] == '3' || str[FIRST_CHAR] == '4')
@@ -245,6 +247,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                         do
                         {
                             /*Gets the name*/
+                            printf("propmt>");
                             scanf("%s", str);
                             /*Checks the the name doesnt have weird characters*/
                             for (i = 0; i < strlen(str); i++)
@@ -318,6 +321,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                     do
                     {
                         /*Gets the name of the savefile*/
+                        printf("prompt>");
                         scanf("%s", str);
                         if (str[FIRST_CHAR] != '4')
                         {
@@ -364,6 +368,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                     /*Prints the menu*/
                     graphic_engine_menu_paint(ge_menu, *game, DELETE);
                     /*Gets the name of the savefile*/
+                    printf("prompt>");
                     scanf("%s", str);
                     /*Checks that savefile exists*/
                     for (i = 0; i < game_get_n_savefiles(*game); i++)
@@ -395,6 +400,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
             do
             {
                 condition = FALSE;
+                printf("prompt>");
                 scanf("%s", str);
                 if (str[FIRST_CHAR] == '4')
                 {
@@ -444,15 +450,19 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     Bool do_log = FALSE;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
+    graphic_engine_paint_game(gengine, *game, TRUE);
     while ((last_code != EXIT) && (game_get_finished(*game) == FALSE))
     {
         if (last_code == MENU)
         {
             game_loop_menu(game, gengine_menu, base_savefile);
         }
+        if (last_code == MOVE)
+            graphic_engine_paint_game(gengine, *game, TRUE);
+
         last_cmd = game_get_last_command(*game);
         last_code = command_get_code(last_cmd);
-        graphic_engine_paint_game(gengine, *game, TRUE);
+        printf("prompt>");
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
         last_cmd = game_get_last_command(*game);
@@ -492,7 +502,10 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
 
             /*Waits a bit so that the player can look what he did*/
             if (last_code == MOVE)
+            {
+                printf("waiting :)");
                 sleep(READING_SECONDS);
+            }
 
             /*Goes to the next turn if a command that changes turn is used.*/
             if (last_code == MOVE)
