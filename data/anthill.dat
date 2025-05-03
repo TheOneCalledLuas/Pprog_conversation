@@ -1,3 +1,46 @@
+Datos del Tutorial
+#s:13|Starting_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:14|Direction_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:15|Up_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:16|Down_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:17|Object_Room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:18|Use_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:19|Attack_room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:20|Attack_room_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:21|Follow_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:22|Open_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:23|Abandon_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:24|Lore_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:25|Antrain_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:26|North_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:27|South_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+
+0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
+#l:13|Start_Move|13|14|2|1|
+#l:14|Move_Start|14|13|3|1|
+#l:15|Move_Up|14|15|4|1|
+#l:16|Up_move|15|14|5|1|
+#l:17|Move_Down|14|16|5|1|
+#l:18|Down_Move|16|14|4|1|
+#l:19|Move_North|14|26|0|1|
+#l:20|North_Move|26|14|1|1|
+#l:21|Move_South|14|27|1|1|
+#l:22|South_Move|27|14|0|1|
+#l:23|Move_Object|14|17|2|1|
+#l:24|Object_Move|17|14|3|1|
+#l:25|Object_Use|17|18|2|1|
+#l:26|Use_Object|18|17|3|1|
+#l:27|Use_Attack1|18|19|2|1|
+#l:28|Attack1_Use|19|18|3|1|
+#l:29|Attack1_Attack2|19|20|2|1|
+#l:30|Attack2_Attack1|20|19|3|1|
+#l:31|Attack2_Follow|20|21|1|1|
+#l:32|Follow_Attack2|21|20|0|1|
+#l:33|Follow_Open|21|22|1|1|
+#l:34|Open_Follow|22|21|0|1|
+
+
+Datos de La zona Principal
 #s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
