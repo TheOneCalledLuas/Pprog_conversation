@@ -241,6 +241,15 @@ Status game_actions_update(Game *game, Command *command)
     case SAVE:
         game_actions_save(game);
         break;
+    case MENU:
+        game_actions_menu(game);
+        break;
+    case USE:
+        game_actions_use(game);
+        break;
+    case OPEN:
+        game_actions_open(game);
+        break;
     default:
         break;
     }
@@ -629,6 +638,14 @@ void game_actions_use(Game *game)
         return;
     }
 
+    /*Does the special case where the object has a special use manged by a gamerule.*/
+    if (object_get_special_use(object))
+    {
+        object_set_is_used(object, TRUE);
+        command_set_status(game_get_last_command(game), OK);
+        return;
+    }
+
     /*If the object can't be used with use it ends here.*/
     if (object_get_health(object) == 0)
     {
@@ -647,6 +664,7 @@ void game_actions_use(Game *game)
             /*The object was used over an actual player.*/
             player_set_health(game_get_player_by_id(game, target), player_get_health(player) + object_get_health(object));
             do_take = TRUE;
+            object_set_is_used(object, TRUE);
             command_set_status(game_get_last_command(game), OK);
         }
         else if (game_get_character_by_name(game, entity) != NO_ID)
@@ -654,6 +672,7 @@ void game_actions_use(Game *game)
             /*The object was used over a character.*/
             character_set_health(game_get_character(game, game_get_character_by_name(game, entity)), character_get_health(game_get_character(game, game_get_character_by_name(game, entity))) + object_get_health(object));
             command_set_status(game_get_last_command(game), OK);
+            object_set_is_used(object, TRUE);
             do_take = TRUE;
         }
         else
@@ -667,6 +686,7 @@ void game_actions_use(Game *game)
     {
         /*The object was used over the actual player.*/
         player_set_health(player, player_get_health(player) + object_get_health(object));
+        object_set_is_used(object, TRUE);
         command_set_status(game_get_last_command(game), OK);
         do_take = TRUE;
     }
@@ -696,6 +716,7 @@ void game_actions_open(Game *game)
     Space *act_space = NULL;
     Link *link = NULL;
     Object *object = NULL;
+    Bool condition1 = FALSE, condition2 = FALSE;
 
     /*Error handling.*/
     if (!game)
@@ -705,11 +726,14 @@ void game_actions_open(Game *game)
     }
 
     /*Gathers all the information.*/
-    if (!(command = game_get_last_command(game)) || strcasecmp(command_get_argument(command, SECOND_ARG), "with") != 0 || strcmp(command_get_argument(command, FIRST_ARG), "") == 0)
+    if (!(command = game_get_last_command(game)))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+    condition1 = strcasecmp(command_get_argument(command, SECOND_ARG), "with") != 0;
+    condition2 = strlen(command_get_argument(command, FIRST_ARG)) == 0;
+    if (condition1 || condition2)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
@@ -733,7 +757,7 @@ void game_actions_open(Game *game)
     }
 
     /*Checks if the link is reachable and can be opened.*/
-    if (link_get_state(link) == ((Bool)CLOSED))
+    if (link_get_state(link) == ((Bool)OPENED))
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;

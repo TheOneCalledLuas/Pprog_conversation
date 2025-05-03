@@ -5,12 +5,12 @@
 #s:17|Object_Room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:18|Use_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:19|Attack_room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:20|Attack_room_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:21|Follow_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:22|Open_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:23|Abandon_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:24|Lore_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:25|Antrain_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:20|Attack_room_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:21|Follow_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:22|Open_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:23|Abandon_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:24|Lore_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:25|Antrain_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|1|
 #s:26|North_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:27|South_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:0|Room_0|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
@@ -30,7 +30,7 @@
 #s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
 #s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
 #s:733|Lever_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|1|
 #s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
 #s:132|Cell|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
 #c:13|Trantveler|m0'|21|5|1|Hello fellow traveler. Wanna team up?|
@@ -46,8 +46,8 @@
 #c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
 #c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
-#o:13|Train_Pass|24|Ticket you can use for the train.|0|1|-1|-1|0|1|
-#o:14|Wooden_Key|22|A wooden key for a wooden door, isn't it?|0|1|-1|35|0|0|
+#o:13|Train_Pass|-1|Ticket you can use for the train.|0|1|-1|-1|0|1|
+#o:14|Wooden_Key|-1|A wooden key for a wooden door, isn't it?|0|1|-1|35|0|0|
 #o:15|Wooden_Door|22|A wooden door which might need a wooden key.|0|0|-1|-1|0|0|
 #o:16|Mushroom|14|A suspicious mushroom. Is it edible?|3|1|-1|-1|0|0|
 #o:17|Rock|20|A small rock, or is it a projectile?|-3|1|-1|-1|0|0|
@@ -56,11 +56,11 @@
 #o:20|Stone_sign|17|Do you see that object? Take it with "take" command.|0|0|-1|-1|0|0|
 #o:21|Ancient_sign|18|Let's eat that yummy mushroom. Use the "use" command.|0|0|-1|-1|0|0|
 #o:22|Dirty_sign|19|Oh no, an enemy. Attack it with the "attack" command.|0|0|-1|-1|0|0|
-#o:23|Bloody_sign|20||0|0|-1|-1|0|0|
-#o:24|Wet_sign|21||0|0|-1|-1|0|0|
-#o:25|New_sign|22||0|0|-1|-1|0|0|
-#o:26|Rusty_sign|23||0|0|-1|-1|0|0|
-#o:27|AnTrain|25||0|0|-1|-1|0|0|
+#o:23|Bloody_sign|20|0|0|0|-1|0|0|0|
+#o:24|Wet_sign|21|0|0|0|-1|0|0|0|
+#o:25|New_sign|22|0|0|0|-1|0|0|0|
+#o:26|Rusty_sign|23|0|0|0|-1|0|0|0|
+#o:27|AnTrain|25|0|0|0|-1|0|0|0|
 #o:211|seed|711|seed desc|4|1|-1|-1|0|0|
 #o:212|potion_1|131|potion desc|6|1|-1|-1|0|0|
 #o:213|potion_2|131|potion desc|6|1|-1|-1|0|0|
@@ -75,7 +75,7 @@
 #o:222|spider_food|132|food desc|5|1|-1|-1|0|0|
 #o:223|baby_food|713|food desc|5|1|-1|-1|0|0|
 #o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0|
-#p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
+#p:2|Ant|mO^|25|10|3|13|-1|-1|-1|
 #p:3|Worm|-^-^-|123|10|3|-1|-1|-1|-1|
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
@@ -99,7 +99,7 @@
 #l:32|Follow_Attack2|21|20|0|1|
 #l:33|Follow_Open|21|22|1|1|
 #l:34|Open_Follow|22|21|0|1|
-#l:35|Wooden_Door|22|23|2|0|
+#l:35|Wooden_Door|22|23|2|1|
 #l:36|Abandon_Open|23|22|3|1|
 #l:37|Abandon_Lore|23|24|2|1|
 #l:38|Lore_Abandon|24|23|3|1|
