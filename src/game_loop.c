@@ -168,8 +168,8 @@ int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengi
 Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
 {
     Bool condition = FALSE;
-    char str[WORD_SIZE], str2[NAME_SIZE], bad_letters[NUMBER_OF_BAD_LETTERS] = ".&|?'\"\n!¿¡";
-    int number, i, j;
+    char str[WORD_SIZE]="", str2[NAME_SIZE]="", bad_letters[NUMBER_OF_BAD_LETTERS] = ".&|?'\"\n!¿¡";
+    int number=0, i=0, j=0;
 
     do
     {
@@ -250,8 +250,6 @@ Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
                             /*If there aren't any bad characters it does this*/
                             if (condition == TRUE)
                             {
-                                /*It frees the game that had been created and creates a new one*/
-                                game_destroy(game);
                                 /*And starts a new game using the template*/
                                 game_create_from_file(game, file_name);
                                 if (ERROR == game_add_new_savefile(*game, str))
@@ -291,8 +289,6 @@ Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
                             if (strcmp(str, game_get_savefile(*game, i)) == 0)
                             {
                                 /*If it finds it, it loads it and sets condition to TRUE*/
-                                /*Destroys what had been created*/
-                                game_destroy(game);
                                 /*Gets the real location of the file*/
                                 strcpy(str2, str);
                                 sprintf(str, "data/%s.dat", str2);
@@ -318,7 +314,6 @@ Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
                 {
                     /*Prints the menu*/
                     graphic_engine_menu_paint(ge_menu, *game, DELETE);
-                    /*Asks the user a file*/
                     /*Gets the name of the savefile*/
                     scanf("%s", str);
                     /*Checks that savefile exists*/
@@ -378,18 +373,26 @@ Status game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_name)
 void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile)
 {
     Command *last_cmd = NULL;
+    CommandCode last_code = UNKNOWN;
     Bool do_log = FALSE;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
-    while ((command_get_code(last_cmd) != EXIT) && (game_get_finished(*game) == FALSE))
+    while ((last_code != EXIT) && (game_get_finished(*game) == FALSE))
     {
+        if(last_code == MENU)
+        {
+            game_loop_menu(game, gengine_menu, base_savefile);
+        }
         last_cmd = game_get_last_command(*game);
+        last_code = command_get_code(last_cmd);
         graphic_engine_paint_game(gengine, *game, TRUE);
         command_get_user_input(last_cmd);
         /*Gets the last command.*/
         last_cmd = game_get_last_command(*game);
+        last_code = command_get_code(last_cmd);
+        /*Checks if the command is valid.*/
         game_actions_update(*game, last_cmd);
-        if (command_get_code(last_cmd) == SAVE)
+        if (last_code == SAVE)
         {
             if (game_reader_save_game(*game, game_get_current_savefile(*game)) == ERROR)
             {
@@ -417,23 +420,21 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             fprintf(f, "\n");
         }
 
-        if (command_get_code(last_cmd) != MENU)
+        if (last_code != MENU)
         {
 
             /*Waits a bit so that the player can look what he did*/
-            if (command_get_code(last_cmd) == INSPECT || command_get_code(last_cmd) == CHAT)
+            if (last_code == INSPECT || last_code == CHAT)
                 sleep(READING_SECONDS);
             else
                 sleep(command_get_code(last_cmd) == EXIT ? 0 : 1);
 
             /*Goes to the next turn if a command that changes turn is used.*/
-            if (command_get_code(last_cmd) == MOVE)
+            if (last_code == MOVE)
                 game_next_turn(*game);
 
             game_next_command(*game);
         }
-        else
-            game_loop_menu(game, gengine_menu, base_savefile);
     }
 }
 
@@ -443,4 +444,5 @@ void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gen
     game_destroy(game);
     graphic_engine_destroy(gengine);
     graphic_engine_menu_destroy(gengine_menu);
+    *game=NULL;
 }

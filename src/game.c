@@ -241,6 +241,11 @@ Status game_create(Game **game)
     {
         return ERROR;
     }
+    if(*game != NULL)
+    {
+        game_destroy(game);
+        *game = NULL;
+    }
     /*Memory allocation.*/
     (*game) = (Game *)malloc(sizeof(Game));
     if ((*game) == NULL)
@@ -303,7 +308,7 @@ Status game_create(Game **game)
     (*game)->n_savefiles = 0;
     (*game)->n_teams = 0;
     (*game)->to_team = NO_ID;
-
+    (*game)->team_req = NO_ID;
     return OK;
 }
 
@@ -419,9 +424,11 @@ Status game_delete_savefile(Game *game, char *name)
             {
                 fprintf(f, "%s\n", game->savefiles[i]);
             }
+            fclose(f);
             return OK;
         }
     }
+    fclose(f);
     return ERROR;
 }
 
@@ -658,6 +665,10 @@ Status game_destroy(Game **game)
 
     /*Error management.*/
     if (game == NULL)
+    {
+        return ERROR;
+    }
+    if(!(*game))
     {
         return ERROR;
     }
@@ -1129,7 +1140,12 @@ Status game_create_from_file(Game **game, char *filename)
     {
         return ERROR;
     }
-
+    if(*game != NULL)
+    {
+        game_destroy(game);
+    }
+    *game=NULL;
+    
     /*Creates the game.*/
     if (game_create(game) == ERROR)
     {

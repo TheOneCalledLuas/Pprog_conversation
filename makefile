@@ -100,7 +100,7 @@ do_all_test:
 	make do_set_test; make do_space_test; make do_character_test; make do_object_test; make do_inventory_test; make do_player_test; make do_link_test
 
 check:
-	valgrind -s --leak-check=full --show-leak-kinds=all ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/output.log
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(EXE) data/anthill.dat -l ./$(LOGDIR)/output.log
 
 check_set_test:
 	make clear; make set_test; valgrind -s --leak-check=full --show-leak-kinds=all ./set_test
@@ -190,4 +190,7 @@ run:
 	./anthill data/anthill.dat -l ./log/output.log
 
 run_cmd:
-	./anthill data/anthill.dat -l ./log/output.log < game1.cmd; ./anthill data/anthill.dat -l ./log/output.log < game2.cmd
+	./anthill data/anthill.dat -l ./log/output.log < game1.cmd
+
+run_cmd_check:
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log < game1.cmd

@@ -182,6 +182,7 @@ Graphic_engine *graphic_engine_menu_create()
     ge->room = screen_area_init_menu(0, 0, 0, 0);
     ge->help = screen_area_init_menu(0, 0, 0, 0);
     ge->feedback = screen_area_init_menu(0, 0, 0, 0);
+
     /*Clean exit*/
     return ge;
 }
@@ -702,8 +703,9 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         return;
 
     /*PRINTS THE BANNER*/
-    /*1-Clears that section*/
+    /*1-Clears that sections*/
     screen_area_clear_menu(ge->banner);
+    screen_area_clear_menu(ge->map);
     /*2-Prints the menu title*/
 
     /*                                    |__/ _   .-.                */
@@ -728,8 +730,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     screen_area_puts_menu(ge->banner, "      ;  ;           `--'   `--'  `----(__(__(__(__(__(__(\")-'  ");
     screen_area_puts_menu(ge->banner, " __\\\\;_\\\\//_\\/______\\\\;_\\\\//_\\///\\\\//\\\\/\"\" \"\" \"\" \"\" \"\" \"\" ^ \\\\//");
 
-    /*PRINTS THE INFORMATION IN THE MAP AREA*/
-    screen_area_clear_menu(ge->map);
+    /*PRINTS THE INFORMATION IN THE MAP AREA*/    
     screen_area_puts_menu(ge->map, "WELCOME TO THE ANTHILL GAME");
     screen_area_puts_menu(ge->map, "CHOSE AN OPTION FROM THE ONES BELOW");
     /*1-Decides which thing to print in function of the state given, and does what it should according to it*/

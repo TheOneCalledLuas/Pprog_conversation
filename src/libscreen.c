@@ -274,6 +274,7 @@ Area *screen_area_init_menu(int x, int y, int width, int height)
       for (i = 0; i < area->height; i++)
         memset(ACCESS_MENU(area->cursor, 0, i), (int)FG_CHAR, (size_t)area->width);
     }
+    area->cursor = ACCESS_MENU(__data_menu, area->x, area->y);
   }
   return area;
 }
