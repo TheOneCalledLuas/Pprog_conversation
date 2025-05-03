@@ -696,7 +696,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
 {
     char str[MAX_STRING_GE] = "\0";
-    int i;
+    int i, number_rows = 0;
 
     /*Error management*/
     if (!(game) || !(ge) || state < 0 || state >= N_MENU_SITUATIONS)
@@ -730,92 +730,149 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     screen_area_puts_menu(ge->banner, "      ;  ;           `--'   `--'  `----(__(__(__(__(__(__(\")-'  ");
     screen_area_puts_menu(ge->banner, " __\\\\;_\\\\//_\\/______\\\\;_\\\\//_\\///\\\\//\\\\/\"\" \"\" \"\" \"\" \"\" \"\" ^ \\\\//");
 
-    /*PRINTS THE INFORMATION IN THE MAP AREA*/    
-    screen_area_puts_menu(ge->map, "WELCOME TO THE ANTHILL GAME");
-    screen_area_puts_menu(ge->map, "CHOSE AN OPTION FROM THE ONES BELOW");
+    /*PRINTS THE INFORMATION IN THE MAP AREA*/
+    screen_area_puts_menu(ge->map, "");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "   __      __   _                    _         _   _        ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "   \\ \\    / /__| |__ ___ _ __  ___  | |_ ___  | |_| |_  ___ ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "    \\ \\/\\/ / -_) / _/ _ \\ '  \\/ -_) |  _/ _ \\ |  _| ' \\/ -_)_ ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "     \\_/\\_/\\___|_\\__\\___/_|_|_\\___|  \\__\\___/  \\__|_||_|\\___|");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "     __ _ _ _| |_| |_ (_) | |  __ _ __ _ _ __  ___       ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "    / _` | ' \\  _| ' \\| | | | / _` / _` | '  \\/ -_)_     ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "    \\__,_|_||_\\__|_||_|_|_|_| \\__, \\__,_|_|_|_\\___(_)    ");
+    number_rows++;
+    screen_area_puts_menu(ge->map, "                              |___/                   ");
+    number_rows++;
     /*1-Decides which thing to print in function of the state given, and does what it should according to it*/
     switch (state)
     {
     case NO_SAVES:
-        screen_area_puts_menu(ge->map, "No existing savefiles");
-        screen_area_puts_menu(ge->map, "Type the name of your new savefile");
+
+        screen_area_puts_menu(ge->map, "   NO SAVEFILES FOUND");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   Type the name of the savefile you want to create:");
+        number_rows++;
         break;
     case EXISTING_SAVES:
-        screen_area_puts_menu(ge->map, "SAVEFILES FOUND:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Do you want to create(1), load(2) or delete(3) a game:");
+        screen_area_puts_menu(ge->map, "   Do you want to create(1), load(2) or delete(3) a game:");
+        number_rows++;
         break;
     case LIMIT_SAVEFILES:
-        screen_area_puts_menu(ge->map, "SAVEFILES FOUND:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "MAX NUMBER OF SAVEFILES REACHED");
-        screen_area_puts_menu(ge->map, "Do you want to load(2), or delete(3) a game:");
+        screen_area_puts_menu(ge->map, "   MAX NUMBER OF SAVEFILES REACHED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "   Do you want to load(2), or delete(3) a game:");
+        number_rows++;
         break;
     case LOAD_GAME:
-    screen_area_puts_menu(ge->map, "LOAD SAVEFILE SELECTED");
-    screen_area_puts_menu(ge->map, "AVAILABLE SAVEFILES");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Chose one of the savefiles mentioned above");
+        screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
+        number_rows++;
         break;
     case FAIL_LOAD_GAME:
-    screen_area_puts_menu(ge->map, "LOAD SAVEFILE SELECTED");
-    screen_area_puts_menu(ge->map, "AVAILABLE SAVFILES:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Chose one of the savefiles mentioned above");
-        screen_area_puts_menu(ge->map, "That name isn't available, please chose one");
+        screen_area_puts_menu(ge->map, "   LOAD SAVEFILE SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose one of the savefiles mentioned above");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     That name isn't available, please chose one");
+        number_rows++;
         break;
     case NEW_GAME:
-        screen_area_puts_menu(ge->map, "CREATE NEW GAME SELECTED");
-        screen_area_puts_menu(ge->map, "EXISTING_SAVEFILES:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Chose a name for the new savefile that doesn't match the ones above");
+        screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile ");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     that doesn't match the ones above");
         break;
     case FAIL_NEW_GAME:
-        screen_area_puts_menu(ge->map, "CREATE NEW GAME SELECTED");
-        screen_area_puts_menu(ge->map, "EXISTING_SAVEFILES:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Chose a name for the new savefile that doesn't match the ones above");
-        screen_area_puts_menu(ge->map, "Chose a name that isn't shown above");
+        screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose a name for the new savefile that doesn't match the ones above");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose a name that isn't shown above");
+        number_rows++;
         break;
     case DELETE_FILE:
-        screen_area_puts_menu(ge->map, "DELETE SAVEFILE SELECTED");
-        screen_area_puts_menu(ge->map, "EXISTING_SAVEFILES:");
+        screen_area_puts_menu(ge->map, "   SAVEFILES FOUND:");
+        number_rows++;
         for (i = 0; i < game_get_n_savefiles(game); i++)
         {
-            sprintf(str, "    <%s>", game_get_savefile(game, i));
+            sprintf(str, "       <%s>", game_get_savefile(game, i));
             screen_area_puts_menu(ge->map, str);
+            number_rows++;
         }
-        screen_area_puts_menu(ge->map, "Chose a name of the ones above to delete");
-        screen_area_puts_menu(ge->map, "If an incorrect name is given, it will be understood that");
-        screen_area_puts_menu(ge->map, "you don't want to delete a savefile");
+        screen_area_puts_menu(ge->map, "   DELETE SAVEFILE SELECTED");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     Chose a name of the ones above to delete");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     If an incorrect name is given, it will be understood that");
+        number_rows++;
+        screen_area_puts_menu(ge->map, "     you don't want to delete a savefile");
+        number_rows++;
 
         break;
     default:
         break;
+    }
+    /*2-Fills the rest of the space with space*/
+    while (number_rows <= HEIGHT_MAP)
+    {
+        screen_area_puts_menu(ge->map, " ");
+        number_rows++;
     }
 
     screen_menu_paint(game_get_turn(game));
