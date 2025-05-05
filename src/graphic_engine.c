@@ -884,6 +884,8 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     }
     else
     {
+
+        /* PRINTS THE CREDITS */
         screen_area_clear_menu(ge->map);
         screen_area_puts_menu(ge->map, "");
         screen_area_puts_menu(ge->map, "    ____ ____  _____ ____ ___ _____ ____  ");
@@ -896,16 +898,25 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         screen_area_puts_menu(ge->map, "          /_\\| | | |_   _| || |/ _ \\| _ \\/ __|");
         screen_area_puts_menu(ge->map, "         / _ \\ |_| | | | | __ | (_) |   /\\__ \\");
         screen_area_puts_menu(ge->map, "        /_/ \\_\\___/  |_| |_||_|\\___/|_|_\\|___/");
-        screen_area_puts_menu(ge->map, "");
-        screen_area_puts_menu(ge->map, "        \\_\\");
-        screen_area_puts_menu(ge->map, "         (\" )/(-l-)\\");
-        screen_area_puts_menu(ge->map, "          /\\  //\\\\");
-        screen_area_puts_menu(ge->map, "");
-        screen_area_puts_menu(ge->map, "        .(\" )      ");
-        screen_area_puts_menu(ge->map, "        ,()-()( )  ");
-        screen_area_puts_menu(ge->map, "         / /   \\ \\  ");
-        screen_area_puts_menu(ge->map,"");
-        
+        screen_area_puts_menu(ge->map, "                          ___                ");
+        screen_area_puts_menu(ge->map, "         \\_\\             |_ _|_ _ ___ _ _  ___ ");
+        screen_area_puts_menu(ge->map, "         (\" )/(-l-)\\      | || '_/ -_) ' \\/ -_)");
+        screen_area_puts_menu(ge->map, "          /\\  //\\\\       |___|_| \\___|_||_\\___|    ");
+        screen_area_puts_menu(ge->map, "                          ___                    _ ");
+        screen_area_puts_menu(ge->map, "        .(\" )            | _ \\__ _ __ _ _  _ ___| |");
+        screen_area_puts_menu(ge->map, "        ,()-()( )        |   / _` / _` | || / -_) |");
+        screen_area_puts_menu(ge->map, "         / /   \\\\        |_|_\\__,_\\__, |\\_,_\\___|_|");
+        screen_area_puts_menu(ge->map, "                          ___        |_|               _     ");
+        screen_area_puts_menu(ge->map,"         |__/ _    _     | __|__ _ _ _ _  __ _ _ _  __| |___ ");
+        screen_area_puts_menu(ge->map,"        (o_o)(_`>( _ )   | _/ -_) '_| ' \\/ _` | ' \\/ _` / _ \\");
+        screen_area_puts_menu(ge->map,"            //  \\\\       |_|\\___|_| |_||_\\__,_|_||_\\__,_\\___/");
+        screen_area_puts_menu(ge->map, "                          ___         __ _ ");
+        screen_area_puts_menu(ge->map, "           __     ,      / __| __ _ _/_/| |");
+        screen_area_puts_menu(ge->map,"          (__).o.@c      \\__ \\/ _` | || | | ");
+        screen_area_puts_menu(ge->map, "          /  |  \\        |___/\\__,_|\\_,_|_|");
+
+
+        /*END OF CREDITS*/        
     }
     screen_menu_paint(game_get_turn(game));
     return;
