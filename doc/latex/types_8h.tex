@@ -20,6 +20,10 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \#define \mbox{\hyperlink{types_8h_a642e16f35aa1e585c25e405ede76e115}{NO\+\_\+\+ID}}~-\/1
 \item 
 \#define \mbox{\hyperlink{types_8h_a8bc834dfab3a08dfe243dfe3865300f5}{ID\+\_\+\+ERROR}}~-\/2
+\item 
+\#define \mbox{\hyperlink{types_8h_ab162d1d3bde02d512ffe5410504e4b9d}{SAVEFILES\+\_\+\+NAMES}}~"{}data/savefiles\+\_\+names.\+txt"{}
+\item 
+\#define \mbox{\hyperlink{types_8h_a284e246efd84eaaf67d80a1228c1cf0c}{MAX\+\_\+\+SAVEFILES}}~10
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -48,7 +52,9 @@ enum \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{
 , \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab199e021998d49b1f09338d8b9b18ecb}{E}}
 , \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7}{W}}
 , \newline
-\mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60}{UNK\+\_\+\+DIRECTION}}
+\mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaac461e84f27bbb236874e1011cd66031f}{U}}
+, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa77a6b11f9898c052926f1d49765861e8}{D}}
+, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60}{UNK\+\_\+\+DIRECTION}}
  \}
 \begin{DoxyCompactList}\small\item\em Cardinal points. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -77,13 +83,25 @@ GNU Public License
 \doxysubsubsection{\texorpdfstring{ID\_ERROR}{ID\_ERROR}}
 {\footnotesize\ttfamily \#define ID\+\_\+\+ERROR~-\/2}
 
-Major error code. \Hypertarget{types_8h_a642e16f35aa1e585c25e405ede76e115}\label{types_8h_a642e16f35aa1e585c25e405ede76e115} 
+Major error code. \Hypertarget{types_8h_a284e246efd84eaaf67d80a1228c1cf0c}\label{types_8h_a284e246efd84eaaf67d80a1228c1cf0c} 
+\index{types.h@{types.h}!MAX\_SAVEFILES@{MAX\_SAVEFILES}}
+\index{MAX\_SAVEFILES@{MAX\_SAVEFILES}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_SAVEFILES}{MAX\_SAVEFILES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+SAVEFILES~10}
+
+Maximum number of savefiles \Hypertarget{types_8h_a642e16f35aa1e585c25e405ede76e115}\label{types_8h_a642e16f35aa1e585c25e405ede76e115} 
 \index{types.h@{types.h}!NO\_ID@{NO\_ID}}
 \index{NO\_ID@{NO\_ID}!types.h@{types.h}}
 \doxysubsubsection{\texorpdfstring{NO\_ID}{NO\_ID}}
 {\footnotesize\ttfamily \#define NO\+\_\+\+ID~-\/1}
 
-Minor error code. \Hypertarget{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89}\label{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89} 
+Minor error code. \Hypertarget{types_8h_ab162d1d3bde02d512ffe5410504e4b9d}\label{types_8h_ab162d1d3bde02d512ffe5410504e4b9d} 
+\index{types.h@{types.h}!SAVEFILES\_NAMES@{SAVEFILES\_NAMES}}
+\index{SAVEFILES\_NAMES@{SAVEFILES\_NAMES}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{SAVEFILES\_NAMES}{SAVEFILES\_NAMES}}
+{\footnotesize\ttfamily \#define SAVEFILES\+\_\+\+NAMES~"{}data/savefiles\+\_\+names.\+txt"{}}
+
+Name of the file where the savefiles names are stored. \Hypertarget{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89}\label{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89} 
 \index{types.h@{types.h}!WORD\_SIZE@{WORD\_SIZE}}
 \index{WORD\_SIZE@{WORD\_SIZE}!types.h@{types.h}}
 \doxysubsubsection{\texorpdfstring{WORD\_SIZE}{WORD\_SIZE}}
@@ -142,6 +160,14 @@ E&East. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{W@{W}!types.h@{types.h}}\index{types.h@{types.h}!W@{W}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaab722ceeb601c72cd78fbd35f3581fdf7} 
 W&West. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U@{U}!types.h@{types.h}}\index{types.h@{types.h}!U@{U}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaac461e84f27bbb236874e1011cd66031f}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaac461e84f27bbb236874e1011cd66031f} 
+U&Up. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D@{D}!types.h@{types.h}}\index{types.h@{types.h}!D@{D}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa77a6b11f9898c052926f1d49765861e8}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa77a6b11f9898c052926f1d49765861e8} 
+D&Down. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{UNK\_DIRECTION@{UNK\_DIRECTION}!types.h@{types.h}}\index{types.h@{types.h}!UNK\_DIRECTION@{UNK\_DIRECTION}}}\Hypertarget{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60}\label{types_8h_a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60} 

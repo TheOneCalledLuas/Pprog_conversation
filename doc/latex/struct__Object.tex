@@ -13,6 +13,22 @@ Object.
 char \mbox{\hyperlink{struct__Object_a03fb9b8d91f071e8e30d669be79cc040}{name}} \mbox{[}\mbox{\hyperlink{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89}{WORD\+\_\+\+SIZE}}+1\mbox{]}
 \item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Object_a88e3a0020fcd51c7bec44479e360a57e}{description}}
+\item 
+int \mbox{\hyperlink{struct__Object_a475087d45b50fe2f6c72b55e3d500e92}{health}}
+\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Object_aece138596e657260c73f5163ddc253b5}{movable}}
+\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Object_afec53e4289e64d19508e1f04c93de411}{dependency}}
+\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Object_a0922dd9891e6aa617ce1d51ae27c0175}{open}}
+\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Object_a5dea39689b8b933a42934a37f86f6620}{is\+\_\+used}}
+\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Object_abcd152978e2fb22928ad8381669fd0b4}{special\+\_\+use}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Object_aa1065d4890455058d38063f4a95bf101}{texture}} \mbox{[}\mbox{\hyperlink{object_8h_af0778807508bcdf84829a129fb37c5cb}{OBJECT\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Object_a322821a2d1a5d47c94f6bf96ee5e9bbb}{\+\_\+\+\_\+texture\+\_\+data}}
 \end{DoxyCompactItemize}
 
 
@@ -22,25 +38,73 @@ Object.
 Object structure with all the relevant information regarding the object. 
 
 \doxysubsection{Field Documentation}
-\Hypertarget{struct__Object_a88e3a0020fcd51c7bec44479e360a57e}\label{struct__Object_a88e3a0020fcd51c7bec44479e360a57e} 
+\Hypertarget{struct__Object_a322821a2d1a5d47c94f6bf96ee5e9bbb}\label{struct__Object_a322821a2d1a5d47c94f6bf96ee5e9bbb} 
+\index{\_Object@{\_Object}!\_\_texture\_data@{\_\_texture\_data}}
+\index{\_\_texture\_data@{\_\_texture\_data}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{\_\_texture\_data}{\_\_texture\_data}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Object\+::\+\_\+\+\_\+texture\+\_\+data}
+
+Actual matrix with the texture \Hypertarget{struct__Object_afec53e4289e64d19508e1f04c93de411}\label{struct__Object_afec53e4289e64d19508e1f04c93de411} 
+\index{\_Object@{\_Object}!dependency@{dependency}}
+\index{dependency@{dependency}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{dependency}{dependency}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Object\+::dependency}
+
+Determines if the object needs another object to be taken. \Hypertarget{struct__Object_a88e3a0020fcd51c7bec44479e360a57e}\label{struct__Object_a88e3a0020fcd51c7bec44479e360a57e} 
 \index{\_Object@{\_Object}!description@{description}}
 \index{description@{description}!\_Object@{\_Object}}
 \doxysubsubsection{\texorpdfstring{description}{description}}
 {\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Object\+::description}
 
-Object description. \Hypertarget{struct__Object_a3cff7a0e8dc4e9d23895ed9af1b7653a}\label{struct__Object_a3cff7a0e8dc4e9d23895ed9af1b7653a} 
+Object description. \Hypertarget{struct__Object_a475087d45b50fe2f6c72b55e3d500e92}\label{struct__Object_a475087d45b50fe2f6c72b55e3d500e92} 
+\index{\_Object@{\_Object}!health@{health}}
+\index{health@{health}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{health}{health}}
+{\footnotesize\ttfamily int \+\_\+\+Object\+::health}
+
+Determines the amount of health the object gives or takes. \Hypertarget{struct__Object_a3cff7a0e8dc4e9d23895ed9af1b7653a}\label{struct__Object_a3cff7a0e8dc4e9d23895ed9af1b7653a} 
 \index{\_Object@{\_Object}!id@{id}}
 \index{id@{id}!\_Object@{\_Object}}
 \doxysubsubsection{\texorpdfstring{id}{id}}
 {\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Object\+::id}
 
-Id of the object, it must be unique. \Hypertarget{struct__Object_a03fb9b8d91f071e8e30d669be79cc040}\label{struct__Object_a03fb9b8d91f071e8e30d669be79cc040} 
+Id of the object, it must be unique. \Hypertarget{struct__Object_a5dea39689b8b933a42934a37f86f6620}\label{struct__Object_a5dea39689b8b933a42934a37f86f6620} 
+\index{\_Object@{\_Object}!is\_used@{is\_used}}
+\index{is\_used@{is\_used}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{is\_used}{is\_used}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \+\_\+\+Object\+::is\+\_\+used}
+
+Determines if the object is used or not. \Hypertarget{struct__Object_aece138596e657260c73f5163ddc253b5}\label{struct__Object_aece138596e657260c73f5163ddc253b5} 
+\index{\_Object@{\_Object}!movable@{movable}}
+\index{movable@{movable}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{movable}{movable}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \+\_\+\+Object\+::movable}
+
+Determines wether a object can be moved or not. \Hypertarget{struct__Object_a03fb9b8d91f071e8e30d669be79cc040}\label{struct__Object_a03fb9b8d91f071e8e30d669be79cc040} 
 \index{\_Object@{\_Object}!name@{name}}
 \index{name@{name}!\_Object@{\_Object}}
 \doxysubsubsection{\texorpdfstring{name}{name}}
 {\footnotesize\ttfamily char \+\_\+\+Object\+::name\mbox{[}\mbox{\hyperlink{types_8h_a92ed8507d1cd2331ad09275c5c4c1c89}{WORD\+\_\+\+SIZE}}+1\mbox{]}}
 
-Object name. 
+Object name. \Hypertarget{struct__Object_a0922dd9891e6aa617ce1d51ae27c0175}\label{struct__Object_a0922dd9891e6aa617ce1d51ae27c0175} 
+\index{\_Object@{\_Object}!open@{open}}
+\index{open@{open}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{open}{open}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Object\+::open}
+
+Determines if the object can open a link. \Hypertarget{struct__Object_abcd152978e2fb22928ad8381669fd0b4}\label{struct__Object_abcd152978e2fb22928ad8381669fd0b4} 
+\index{\_Object@{\_Object}!special\_use@{special\_use}}
+\index{special\_use@{special\_use}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{special\_use}{special\_use}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \+\_\+\+Object\+::special\+\_\+use}
+
+Determines if the object is used in a special way, gamerule intended. \Hypertarget{struct__Object_aa1065d4890455058d38063f4a95bf101}\label{struct__Object_aa1065d4890455058d38063f4a95bf101} 
+\index{\_Object@{\_Object}!texture@{texture}}
+\index{texture@{texture}!\_Object@{\_Object}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Object\+::texture\mbox{[}\mbox{\hyperlink{object_8h_af0778807508bcdf84829a129fb37c5cb}{OBJECT\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}}
+
+Strings which create the texture of the space 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

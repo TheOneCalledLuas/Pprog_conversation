@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['s_0',['S',['../types_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaf1ce01387d2348f8b858721a7db81670',1,'types.h']]],
-  ['second_5fline_1',['SECOND_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1',1,'graphic_engine.c']]],
-  ['seventh_5fline_2',['SEVENTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2',1,'graphic_engine.c']]],
-  ['sixth_5fline_3',['SIXTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3',1,'graphic_engine.c']]],
-  ['south_4',['SOUTH',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a8ef5c0bce69283a9986011a63eea8a6b',1,'graphic_engine.c']]],
-  ['south_5feast_5',['SOUTH_EAST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111ad9ab50fab1cc6f797e75ef86ee46a926',1,'graphic_engine.c']]],
-  ['south_5fwest_6',['SOUTH_WEST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a90b239afc7fa8d4642b326cc0fce0ddc',1,'graphic_engine.c']]]
+  ['n_0',['N',['../types_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa2c63acbe79d9f41ba6bb7766e9c37702',1,'types.h']]],
+  ['n_5fmenu_5fsituations_1',['N_MENU_SITUATIONS',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66a97b1885770be9f2bb1a6565f55300e7c',1,'graphic_engine.h']]],
+  ['new_5fgame_2',['NEW_GAME',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66ac9e8468c9768465a565bc176a753e261',1,'graphic_engine.h']]],
+  ['nineth_5fline_3',['NINETH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf',1,'graphic_engine.c']]],
+  ['no_5fcmd_4',['NO_CMD',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a785693a1d550a18688638e9124af41d0',1,'command.h']]],
+  ['no_5fsaves_5',['NO_SAVES',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66a0ed6f4fc2c64f6cd0eccdc9d9428581d',1,'graphic_engine.h']]],
+  ['north_6',['NORTH',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111ad0611de6f28d4a9c9eac959f5344698e',1,'graphic_engine.c']]],
+  ['north_5feast_7',['NORTH_EAST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111ad6a6889fa230e3d0f72495725f8d0308',1,'graphic_engine.c']]],
+  ['north_5fwest_8',['NORTH_WEST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111ab75c2136aaf25d9ed387c66e251582c5',1,'graphic_engine.c']]],
+  ['num_5fids_9',['NUM_IDS',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a965fbc0f426bcbbf36cdcd7a7d56a551',1,'graphic_engine.c']]]
 ];

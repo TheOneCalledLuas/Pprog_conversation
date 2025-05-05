@@ -22,6 +22,13 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \includegraphics[width=350pt]{space_8h__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{space_8h_af3fbea34830d16a9f397c1bea02e15e1}{SPACE\+\_\+\+TEXTURE\+\_\+\+LINES}}~29
+\item 
+\#define \mbox{\hyperlink{space_8h_a80de5be625c0595fffa4d37607e76a70}{SPACE\+\_\+\+TEXTURE\+\_\+\+SIZE}}~67
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,6 +45,10 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{space_8h_a866cf3d8133720dc44299
 \begin{DoxyCompactList}\small\item\em Gets a determined line of the graphic description. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a6235610be91845ed56ddefadaa79ce12}{space\+\_\+set\+\_\+gdesc\+\_\+line}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, int line, char \texorpdfstring{$\ast$}{*}str)
 \begin{DoxyCompactList}\small\item\em Sets a line of the graphic description. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{space_8h_af5e7c0b7b5daef5e4fbb3c6f98356979}{space\+\_\+get\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, int line)
+\begin{DoxyCompactList}\small\item\em Gets a determined line of the texture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a17e56ba8fc8f1a0f9408e7a7504cfc05}{space\+\_\+set\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, int line, char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Sets a line of the texture. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{space_8h_ac8ddfd0d8692fd852ee49698c446cb50}{space\+\_\+get\+\_\+id}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
 \begin{DoxyCompactList}\small\item\em It gets the id of a space. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a03ae5d9d7a842346d89e56409c3cb3e1}{space\+\_\+set\+\_\+name}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, char \texorpdfstring{$\ast$}{*}name)
@@ -54,10 +65,16 @@ int \mbox{\hyperlink{space_8h_a3979d7cdd6e4da84007cf2b6a252df66}{space\+\_\+find
 \begin{DoxyCompactList}\small\item\em It removes an object from the set of the space. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{space_8h_a6f263efc24ce0f0ef5ba1ce58d1a0ff1}{space\+\_\+get\+\_\+n\+\_\+objects}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
 \begin{DoxyCompactList}\small\item\em It gets the n\+\_\+elements in the set of objects. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{space_8h_a2b1d65484b8f7241c56cb2ca9bb1fdcd}{space\+\_\+get\+\_\+character}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
-\begin{DoxyCompactList}\small\item\em Returns the character id. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_aa4dce872dc290841edb6806d3d86abb8}{space\+\_\+set\+\_\+character}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
-\begin{DoxyCompactList}\small\item\em Sets the space\textquotesingle{}s character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{space_8h_a92c1238bd8008ec3367fb6a1d39cf12b}{space\+\_\+get\+\_\+characters}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
+\begin{DoxyCompactList}\small\item\em It returns an array with the ids of the characters in the space IMPORTANT you have to free the array after using it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_aae269f34bb1294f51b9e84b36dbdb48c}{space\+\_\+add\+\_\+character}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} character)
+\begin{DoxyCompactList}\small\item\em It adds a character to the space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{space_8h_ae980d8d8a4f45ba47b5daa131b786ead}{space\+\_\+find\+\_\+character}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} character)
+\begin{DoxyCompactList}\small\item\em It searches for a character inside of the space. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{space_8h_a0426d2424ce99ce71ec87573ac55bce1}{space\+\_\+take\+\_\+character}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} character)
+\begin{DoxyCompactList}\small\item\em It takes a character from the space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{space_8h_a627ed3411610db26214995c24a8ff65f}{space\+\_\+get\+\_\+n\+\_\+characters}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
+\begin{DoxyCompactList}\small\item\em Returns the number of characters inside of a space. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{space_8h_a11ef2558d58f17e45585463657374f34}{space\+\_\+is\+\_\+discovered}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space)
 \begin{DoxyCompactList}\small\item\em Gets the information about if the space hs been discovered or not. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{space_8h_a323cce5d84b29f2fb9f382b20f685821}{space\+\_\+set\+\_\+discovered}} (\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}space, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} value)
@@ -83,6 +100,21 @@ GNU Public License
 \end{DoxyCopyright}
 
 
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{space_8h_af3fbea34830d16a9f397c1bea02e15e1}\label{space_8h_af3fbea34830d16a9f397c1bea02e15e1} 
+\index{space.h@{space.h}!SPACE\_TEXTURE\_LINES@{SPACE\_TEXTURE\_LINES}}
+\index{SPACE\_TEXTURE\_LINES@{SPACE\_TEXTURE\_LINES}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{SPACE\_TEXTURE\_LINES}{SPACE\_TEXTURE\_LINES}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+TEXTURE\+\_\+\+LINES~29}
+
+Lines of each texture. \Hypertarget{space_8h_a80de5be625c0595fffa4d37607e76a70}\label{space_8h_a80de5be625c0595fffa4d37607e76a70} 
+\index{space.h@{space.h}!SPACE\_TEXTURE\_SIZE@{SPACE\_TEXTURE\_SIZE}}
+\index{SPACE\_TEXTURE\_SIZE@{SPACE\_TEXTURE\_SIZE}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{SPACE\_TEXTURE\_SIZE}{SPACE\_TEXTURE\_SIZE}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+TEXTURE\+\_\+\+SIZE~67}
+
+Size of the texture. 
+
 \doxysubsection{Typedef Documentation}
 \Hypertarget{space_8h_a67533ffc2b70463baecc38fb0629bbfc}\label{space_8h_a67533ffc2b70463baecc38fb0629bbfc} 
 \index{space.h@{space.h}!Space@{Space}}
@@ -93,6 +125,29 @@ GNU Public License
 Space type. 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{space_8h_aae269f34bb1294f51b9e84b36dbdb48c}\label{space_8h_aae269f34bb1294f51b9e84b36dbdb48c} 
+\index{space.h@{space.h}!space\_add\_character@{space\_add\_character}}
+\index{space\_add\_character@{space\_add\_character}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_add\_character()}{space\_add\_character()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} space\+\_\+add\+\_\+character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{character }\end{DoxyParamCaption})}
+
+
+
+It adds a character to the space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space \\
+\hline
+{\em character} & Id of the character you want to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise 
+\end{DoxyReturn}
 \Hypertarget{space_8h_aa347c99b1fa4ee60ec40e865496477ae}\label{space_8h_aa347c99b1fa4ee60ec40e865496477ae} 
 \index{space.h@{space.h}!space\_add\_object@{space\_add\_object}}
 \index{space\_add\_object@{space\_add\_object}!space.h@{space.h}}
@@ -155,6 +210,29 @@ Fernando Mijangos
 {\em space} & Pointer to the space that must be destroyed. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{space_8h_ae980d8d8a4f45ba47b5daa131b786ead}\label{space_8h_ae980d8d8a4f45ba47b5daa131b786ead} 
+\index{space.h@{space.h}!space\_find\_character@{space\_find\_character}}
+\index{space\_find\_character@{space\_find\_character}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_find\_character()}{space\_find\_character()}}
+{\footnotesize\ttfamily int space\+\_\+find\+\_\+character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{character }\end{DoxyParamCaption})}
+
+
+
+It searches for a character inside of the space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space \\
+\hline
+{\em character} & Id of the character you searching for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+position of the id in the set of characters, -\/1 otherwise 
+\end{DoxyReturn}
 \Hypertarget{space_8h_a3979d7cdd6e4da84007cf2b6a252df66}\label{space_8h_a3979d7cdd6e4da84007cf2b6a252df66} 
 \index{space.h@{space.h}!space\_find\_object@{space\_find\_object}}
 \index{space\_find\_object@{space\_find\_object}!space.h@{space.h}}
@@ -178,18 +256,18 @@ Fernando Mijangos
 \begin{DoxyReturn}{Returns}
 Possition of the id in the set if found, -\/1 otherwise 
 \end{DoxyReturn}
-\Hypertarget{space_8h_a2b1d65484b8f7241c56cb2ca9bb1fdcd}\label{space_8h_a2b1d65484b8f7241c56cb2ca9bb1fdcd} 
-\index{space.h@{space.h}!space\_get\_character@{space\_get\_character}}
-\index{space\_get\_character@{space\_get\_character}!space.h@{space.h}}
-\doxysubsubsection{\texorpdfstring{space\_get\_character()}{space\_get\_character()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} space\+\_\+get\+\_\+character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space }\end{DoxyParamCaption})}
+\Hypertarget{space_8h_a92c1238bd8008ec3367fb6a1d39cf12b}\label{space_8h_a92c1238bd8008ec3367fb6a1d39cf12b} 
+\index{space.h@{space.h}!space\_get\_characters@{space\_get\_characters}}
+\index{space\_get\_characters@{space\_get\_characters}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_get\_characters()}{space\_get\_characters()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \texorpdfstring{$\ast$}{*} space\+\_\+get\+\_\+characters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space }\end{DoxyParamCaption})}
 
 
 
-Returns the character id. 
+It returns an array with the ids of the characters in the space IMPORTANT you have to free the array after using it. 
 
 \begin{DoxyAuthor}{Author}
-Saul Lopez Romero
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -197,7 +275,7 @@ Saul Lopez Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Id of the character you are taking. 
+Array with the ids of the characters. IMPORTANT you have to free the array after useing it. 
 \end{DoxyReturn}
 \Hypertarget{space_8h_a866cf3d8133720dc44299eaa7b062305}\label{space_8h_a866cf3d8133720dc44299eaa7b062305} 
 \index{space.h@{space.h}!space\_get\_gdesc\_line@{space\_get\_gdesc\_line}}
@@ -242,6 +320,27 @@ Irene García
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Id of space 
+\end{DoxyReturn}
+\Hypertarget{space_8h_a627ed3411610db26214995c24a8ff65f}\label{space_8h_a627ed3411610db26214995c24a8ff65f} 
+\index{space.h@{space.h}!space\_get\_n\_characters@{space\_get\_n\_characters}}
+\index{space\_get\_n\_characters@{space\_get\_n\_characters}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_get\_n\_characters()}{space\_get\_n\_characters()}}
+{\footnotesize\ttfamily int space\+\_\+get\+\_\+n\+\_\+characters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space }\end{DoxyParamCaption})}
+
+
+
+Returns the number of characters inside of a space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of characters, -\/1 if ERROR 
 \end{DoxyReturn}
 \Hypertarget{space_8h_a6f263efc24ce0f0ef5ba1ce58d1a0ff1}\label{space_8h_a6f263efc24ce0f0ef5ba1ce58d1a0ff1} 
 \index{space.h@{space.h}!space\_get\_n\_objects@{space\_get\_n\_objects}}
@@ -306,6 +405,29 @@ Fernando Mijangos
 \begin{DoxyReturn}{Returns}
 Array with the ids of the objects IMPORTANT you have to free the array after using it. 
 \end{DoxyReturn}
+\Hypertarget{space_8h_af5e7c0b7b5daef5e4fbb3c6f98356979}\label{space_8h_af5e7c0b7b5daef5e4fbb3c6f98356979} 
+\index{space.h@{space.h}!space\_get\_texture\_line@{space\_get\_texture\_line}}
+\index{space\_get\_texture\_line@{space\_get\_texture\_line}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_get\_texture\_line()}{space\_get\_texture\_line()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} space\+\_\+get\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+Gets a determined line of the texture. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space. \\
+\hline
+{\em line} & line to be given. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+NULL if an error takes place, the line otherwise. 
+\end{DoxyReturn}
 \Hypertarget{space_8h_a11ef2558d58f17e45585463657374f34}\label{space_8h_a11ef2558d58f17e45585463657374f34} 
 \index{space.h@{space.h}!space\_is\_discovered@{space\_is\_discovered}}
 \index{space\_is\_discovered@{space\_is\_discovered}!space.h@{space.h}}
@@ -347,29 +469,6 @@ Fernando Mijangos.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK, if everything goes well or ERROR if there was some mistake. 
-\end{DoxyReturn}
-\Hypertarget{space_8h_aa4dce872dc290841edb6806d3d86abb8}\label{space_8h_aa4dce872dc290841edb6806d3d86abb8} 
-\index{space.h@{space.h}!space\_set\_character@{space\_set\_character}}
-\index{space\_set\_character@{space\_set\_character}!space.h@{space.h}}
-\doxysubsubsection{\texorpdfstring{space\_set\_character()}{space\_set\_character()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} space\+\_\+set\+\_\+character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id }\end{DoxyParamCaption})}
-
-
-
-Sets the space\textquotesingle{}s character. 
-
-\begin{DoxyAuthor}{Author}
-Saul Lopez Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em space} & Pointer to the space. \\
-\hline
-{\em id} & Id of the character to be set up. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OK if it goes as planned, ERROR otherwise. 
 \end{DoxyReturn}
 \Hypertarget{space_8h_a323cce5d84b29f2fb9f382b20f685821}\label{space_8h_a323cce5d84b29f2fb9f382b20f685821} 
 \index{space.h@{space.h}!space\_set\_discovered@{space\_set\_discovered}}
@@ -441,6 +540,54 @@ Irene García
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK, if everything goes well or ERROR if there was some mistake 
+\end{DoxyReturn}
+\Hypertarget{space_8h_a17e56ba8fc8f1a0f9408e7a7504cfc05}\label{space_8h_a17e56ba8fc8f1a0f9408e7a7504cfc05} 
+\index{space.h@{space.h}!space\_set\_texture\_line@{space\_set\_texture\_line}}
+\index{space\_set\_texture\_line@{space\_set\_texture\_line}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_set\_texture\_line()}{space\_set\_texture\_line()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} space\+\_\+set\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{int}]{line,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Sets a line of the texture. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space. \\
+\hline
+{\em line} & line to be modified. \\
+\hline
+{\em str} & to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if all goes as planned, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{space_8h_a0426d2424ce99ce71ec87573ac55bce1}\label{space_8h_a0426d2424ce99ce71ec87573ac55bce1} 
+\index{space.h@{space.h}!space\_take\_character@{space\_take\_character}}
+\index{space\_take\_character@{space\_take\_character}!space.h@{space.h}}
+\doxysubsubsection{\texorpdfstring{space\_take\_character()}{space\_take\_character()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} space\+\_\+take\+\_\+character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}} \texorpdfstring{$\ast$}{*}}]{space,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{character }\end{DoxyParamCaption})}
+
+
+
+It takes a character from the space. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em space} & Pointer to the space \\
+\hline
+{\em character} & Id of the chracter you want to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the character taken out, ID\+\_\+\+ERROR if any error 
 \end{DoxyReturn}
 \Hypertarget{space_8h_a5b832bddeb2b3b92b49f1574ef74ea7c}\label{space_8h_a5b832bddeb2b3b92b49f1574ef74ea7c} 
 \index{space.h@{space.h}!space\_take\_object@{space\_take\_object}}

@@ -35,16 +35,44 @@ struct \mbox{\hyperlink{struct__Object}{\+\_\+\+Object}}
 \begin{DoxyCompactList}\small\item\em It handles all the object creation proccess. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_aab2d9fe61ae9c48522635d006dd50396}{object\+\_\+destroy}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Destroys the object structure propperly. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a80ba632ab27aa28fcac767e723815349}{object\+\_\+set\+\_\+special\+\_\+use}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} special\+\_\+use)
+\begin{DoxyCompactList}\small\item\em Sets the special\+\_\+use value of an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{object_8c_a331233681874f812e0b877415f4bb2ad}{object\+\_\+get\+\_\+special\+\_\+use}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the special\+\_\+use value of an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a1a83035325434819e760845526d747a9}{object\+\_\+set\+\_\+is\+\_\+used}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} is\+\_\+used)
+\begin{DoxyCompactList}\small\item\em Sets the is\+\_\+used value of an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{object_8c_ab7bfc623762827c7f885471b86679da9}{object\+\_\+get\+\_\+is\+\_\+used}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the is\+\_\+used value of an object. \end{DoxyCompactList}\item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object_8c_a757d40431826a2cb60b8816a42f72f6d}{object\+\_\+get\+\_\+description}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Gets the object\textquotesingle{}s description. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a38991fcce27ce36021a2bb1a12232bba}{object\+\_\+set\+\_\+description}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, char \texorpdfstring{$\ast$}{*}desc)
 \begin{DoxyCompactList}\small\item\em Gets the object\textquotesingle{}s description. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a2d3f2666020c9bea885b5a769ece143d}{object\+\_\+set\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, int line, char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Sets a line of the texture. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object_8c_a3973a63fe4801f84481eb76954454189}{object\+\_\+get\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, int line)
+\begin{DoxyCompactList}\small\item\em Gets a determined line of the texture. \end{DoxyCompactList}\item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object_8c_a23a705e99313a55db679de3683d2185b}{object\+\_\+get\+\_\+name}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Gets the object\textquotesingle{}s name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a14bf659f3055f0243d1af4b246d062b4}{object\+\_\+set\+\_\+name}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, char \texorpdfstring{$\ast$}{*}name)
 \begin{DoxyCompactList}\small\item\em Sets the object\textquotesingle{}s name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{object_8c_ac5af152381a21853c6a28cc120e8e7fe}{object\+\_\+get\+\_\+id}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Gets the object\textquotesingle{}s name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a183e210dfb8064d0e8edc5e5f66641a7}{object\+\_\+set\+\_\+health}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, int health)
+\begin{DoxyCompactList}\small\item\em Sets the amount of health an object gives. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{object_8c_a82874ef4a7f8e8f5a14d184006a33e80}{object\+\_\+get\+\_\+health}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the amount of health an object gives. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a16deb2a22a4eccb39676735f1e1a50c1}{object\+\_\+set\+\_\+movable}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} movable)
+\begin{DoxyCompactList}\small\item\em Determines wether an object is movable or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{object_8c_a92d5761384a7b8516d88f528ccd7e61c}{object\+\_\+get\+\_\+movable}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the information of the movability of an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_af0d455a288c1119694417c942602e912}{object\+\_\+set\+\_\+dependency}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} dependency)
+\begin{DoxyCompactList}\small\item\em Determines wether an object is dependant on other to be interacted with. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{object_8c_a9d40c68527b9f7b8264065914069b5e2}{object\+\_\+get\+\_\+dependency}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the dependency value of an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_ac35d6934bd5e39f1907599ffaf2c8446}{object\+\_\+set\+\_\+open}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} open)
+\begin{DoxyCompactList}\small\item\em Determines wether an object can open a link between spaces or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{object_8c_a49dbce205db36230c53fb0ccf0a73174}{object\+\_\+get\+\_\+open}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Gets the open value of an object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a03653b29058fcde7ce5ee2e3187f84e7}{object\+\_\+print\+\_\+info}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Prints the object info (debug intended). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -124,6 +152,27 @@ Irene García
 \begin{DoxyReturn}{Returns}
 OK if it works as intended, ERROR otherwise. 
 \end{DoxyReturn}
+\Hypertarget{object_8c_a9d40c68527b9f7b8264065914069b5e2}\label{object_8c_a9d40c68527b9f7b8264065914069b5e2} 
+\index{object.c@{object.c}!object\_get\_dependency@{object\_get\_dependency}}
+\index{object\_get\_dependency@{object\_get\_dependency}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_dependency()}{object\_get\_dependency()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} object\+\_\+get\+\_\+dependency (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the dependency value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s dependency value. 
+\end{DoxyReturn}
 \Hypertarget{object_8c_a757d40431826a2cb60b8816a42f72f6d}\label{object_8c_a757d40431826a2cb60b8816a42f72f6d} 
 \index{object.c@{object.c}!object\_get\_description@{object\_get\_description}}
 \index{object\_get\_description@{object\_get\_description}!object.c@{object.c}}
@@ -144,6 +193,27 @@ Irene García
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Pointer to the object description. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a82874ef4a7f8e8f5a14d184006a33e80}\label{object_8c_a82874ef4a7f8e8f5a14d184006a33e80} 
+\index{object.c@{object.c}!object\_get\_health@{object\_get\_health}}
+\index{object\_get\_health@{object\_get\_health}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_health()}{object\_get\_health()}}
+{\footnotesize\ttfamily int object\+\_\+get\+\_\+health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the amount of health an object gives. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s health. 
 \end{DoxyReturn}
 \Hypertarget{object_8c_ac5af152381a21853c6a28cc120e8e7fe}\label{object_8c_ac5af152381a21853c6a28cc120e8e7fe} 
 \index{object.c@{object.c}!object\_get\_id@{object\_get\_id}}
@@ -166,6 +236,48 @@ Saúl López Romero
 \begin{DoxyReturn}{Returns}
 Object\textquotesingle{}s id. 
 \end{DoxyReturn}
+\Hypertarget{object_8c_ab7bfc623762827c7f885471b86679da9}\label{object_8c_ab7bfc623762827c7f885471b86679da9} 
+\index{object.c@{object.c}!object\_get\_is\_used@{object\_get\_is\_used}}
+\index{object\_get\_is\_used@{object\_get\_is\_used}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_is\_used()}{object\_get\_is\_used()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} object\+\_\+get\+\_\+is\+\_\+used (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the is\+\_\+used value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s is\+\_\+used value or FALSE if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a92d5761384a7b8516d88f528ccd7e61c}\label{object_8c_a92d5761384a7b8516d88f528ccd7e61c} 
+\index{object.c@{object.c}!object\_get\_movable@{object\_get\_movable}}
+\index{object\_get\_movable@{object\_get\_movable}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_movable()}{object\_get\_movable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} object\+\_\+get\+\_\+movable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the information of the movability of an object. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s movable value. 
+\end{DoxyReturn}
 \Hypertarget{object_8c_a23a705e99313a55db679de3683d2185b}\label{object_8c_a23a705e99313a55db679de3683d2185b} 
 \index{object.c@{object.c}!object\_get\_name@{object\_get\_name}}
 \index{object\_get\_name@{object\_get\_name}!object.c@{object.c}}
@@ -187,6 +299,71 @@ Saúl López Romero
 \begin{DoxyReturn}{Returns}
 Pointer to the object name. 
 \end{DoxyReturn}
+\Hypertarget{object_8c_a49dbce205db36230c53fb0ccf0a73174}\label{object_8c_a49dbce205db36230c53fb0ccf0a73174} 
+\index{object.c@{object.c}!object\_get\_open@{object\_get\_open}}
+\index{object\_get\_open@{object\_get\_open}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_open()}{object\_get\_open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} object\+\_\+get\+\_\+open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the open value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s open value. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a331233681874f812e0b877415f4bb2ad}\label{object_8c_a331233681874f812e0b877415f4bb2ad} 
+\index{object.c@{object.c}!object\_get\_special\_use@{object\_get\_special\_use}}
+\index{object\_get\_special\_use@{object\_get\_special\_use}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_special\_use()}{object\_get\_special\_use()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} object\+\_\+get\+\_\+special\+\_\+use (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+Gets the special\+\_\+use value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s special\+\_\+use value or FALSE if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a3973a63fe4801f84481eb76954454189}\label{object_8c_a3973a63fe4801f84481eb76954454189} 
+\index{object.c@{object.c}!object\_get\_texture\_line@{object\_get\_texture\_line}}
+\index{object\_get\_texture\_line@{object\_get\_texture\_line}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_get\_texture\_line()}{object\_get\_texture\_line()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} object\+\_\+get\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+Gets a determined line of the texture. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em line} & line to be given. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+NULL if an error takes place, the line otherwise. 
+\end{DoxyReturn}
 \Hypertarget{object_8c_a03653b29058fcde7ce5ee2e3187f84e7}\label{object_8c_a03653b29058fcde7ce5ee2e3187f84e7} 
 \index{object.c@{object.c}!object\_print\_info@{object\_print\_info}}
 \index{object\_print\_info@{object\_print\_info}!object.c@{object.c}}
@@ -207,6 +384,29 @@ Saúl López Romero
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK if it works as intended, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_af0d455a288c1119694417c942602e912}\label{object_8c_af0d455a288c1119694417c942602e912} 
+\index{object.c@{object.c}!object\_set\_dependency@{object\_set\_dependency}}
+\index{object\_set\_dependency@{object\_set\_dependency}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_dependency()}{object\_set\_dependency()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+dependency (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{dependency }\end{DoxyParamCaption})}
+
+
+
+Determines wether an object is dependant on other to be interacted with. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em dependency} & Wether an object depends on another or not \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s dependency value. 
 \end{DoxyReturn}
 \Hypertarget{object_8c_a38991fcce27ce36021a2bb1a12232bba}\label{object_8c_a38991fcce27ce36021a2bb1a12232bba} 
 \index{object.c@{object.c}!object\_set\_description@{object\_set\_description}}
@@ -231,6 +431,75 @@ Irene García
 \begin{DoxyReturn}{Returns}
 OK if it works as intended, ERROR otherwise. 
 \end{DoxyReturn}
+\Hypertarget{object_8c_a183e210dfb8064d0e8edc5e5f66641a7}\label{object_8c_a183e210dfb8064d0e8edc5e5f66641a7} 
+\index{object.c@{object.c}!object\_set\_health@{object\_set\_health}}
+\index{object\_set\_health@{object\_set\_health}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_health()}{object\_set\_health()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{int}]{health }\end{DoxyParamCaption})}
+
+
+
+Sets the amount of health an object gives. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em health} & The amount of health it gives or takes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s health. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a1a83035325434819e760845526d747a9}\label{object_8c_a1a83035325434819e760845526d747a9} 
+\index{object.c@{object.c}!object\_set\_is\_used@{object\_set\_is\_used}}
+\index{object\_set\_is\_used@{object\_set\_is\_used}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_is\_used()}{object\_set\_is\_used()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+is\+\_\+used (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{is\+\_\+used }\end{DoxyParamCaption})}
+
+
+
+Sets the is\+\_\+used value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em is\+\_\+used} & Wether the object is used or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works as intended, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a16deb2a22a4eccb39676735f1e1a50c1}\label{object_8c_a16deb2a22a4eccb39676735f1e1a50c1} 
+\index{object.c@{object.c}!object\_set\_movable@{object\_set\_movable}}
+\index{object\_set\_movable@{object\_set\_movable}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_movable()}{object\_set\_movable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+movable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{movable }\end{DoxyParamCaption})}
+
+
+
+Determines wether an object is movable or not. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em movable} & True if it can be moved, false otherwise. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s movable value. 
+\end{DoxyReturn}
 \Hypertarget{object_8c_a14bf659f3055f0243d1af4b246d062b4}\label{object_8c_a14bf659f3055f0243d1af4b246d062b4} 
 \index{object.c@{object.c}!object\_set\_name@{object\_set\_name}}
 \index{object\_set\_name@{object\_set\_name}!object.c@{object.c}}
@@ -253,4 +522,75 @@ Saúl López Romero
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK if it works as intended, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_ac35d6934bd5e39f1907599ffaf2c8446}\label{object_8c_ac35d6934bd5e39f1907599ffaf2c8446} 
+\index{object.c@{object.c}!object\_set\_open@{object\_set\_open}}
+\index{object\_set\_open@{object\_set\_open}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_open()}{object\_set\_open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{open }\end{DoxyParamCaption})}
+
+
+
+Determines wether an object can open a link between spaces or not. 
+
+\begin{DoxyAuthor}{Author}
+Irene García
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em open} & value of the open parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object\textquotesingle{}s open value. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a80ba632ab27aa28fcac767e723815349}\label{object_8c_a80ba632ab27aa28fcac767e723815349} 
+\index{object.c@{object.c}!object\_set\_special\_use@{object\_set\_special\_use}}
+\index{object\_set\_special\_use@{object\_set\_special\_use}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_special\_use()}{object\_set\_special\_use()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+special\+\_\+use (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{special\+\_\+use }\end{DoxyParamCaption})}
+
+
+
+Sets the special\+\_\+use value of an object. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em special\+\_\+use} & Wether the object is used in a special way or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works as intended, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{object_8c_a2d3f2666020c9bea885b5a769ece143d}\label{object_8c_a2d3f2666020c9bea885b5a769ece143d} 
+\index{object.c@{object.c}!object\_set\_texture\_line@{object\_set\_texture\_line}}
+\index{object\_set\_texture\_line@{object\_set\_texture\_line}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{object\_set\_texture\_line()}{object\_set\_texture\_line()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} object\+\_\+set\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{int}]{line,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Sets a line of the texture. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Pointer to the object. \\
+\hline
+{\em line} & line to be modified. \\
+\hline
+{\em str} & to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if all goes as planned, ERROR otherwise. 
 \end{DoxyReturn}

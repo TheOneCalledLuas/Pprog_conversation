@@ -47,7 +47,7 @@
 #define BACKGROUND_COLOR 1 /*!< Background color. */
 
 /*Array with all the colors plced in order.*/
-char color[N_COL][MAX_COLOR][ESCAPE_CODE_LEN] = {{BLACK_T, RED_T, GREEN_T, YELLOW_T, BLUE_T, MAGENTA_T, CYAN_T, WHITE_T}, {BLACK_F, RED_F, GREEN_F, YELLOW_F, BLUE_F, MAGENTA_F, CYAN_F, WHITE_F}};
+char color[N_COL][MAX_COLOR][ESCAPE_CODE_LEN] = {{BLACK_T, RED_T, GREEN_T, YELLOW_T, BLUE_T, MAGENTA_T, CYAN_T, WHITE_T}, {BLACK_F, RED_F, GREEN_F, YELLOW_F, BLUE_F, MAGENTA_F, CYAN_F, WHITE_F}}; /*!<Text Colors.*/
 
 /**
  * @brief This struct is in charge of handling all the game animations.
@@ -562,20 +562,19 @@ Status animation_run(Animation_Manager *am, Id anim_id)
 {
     FILE *f = NULL;
     Animation *anim = NULL;
-    char line[MAX_LINE*2+1] = "";
+    char line[MAX_LINE * 2 + 1] = "";
     int i = 0, j = 0, k = 0;
 
     /*Error handling.*/
     if (!am || anim_id == NO_ID)
         return ERROR;
-    
+
     /*Searches for the animation.*/
     if (!(anim = animation_manager_get_animation_by_id(am, anim_id)))
         return ERROR;
-    
+
     /*Creates the animation path.*/
     sprintf(line, "%s/%s", am->animations_route, anim->animation_file);
-
 
     /*Opens the file where the animation is stored.*/
     if (!(f = fopen(line, "r")))

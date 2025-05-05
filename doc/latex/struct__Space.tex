@@ -11,7 +11,7 @@ Collaboration diagram for \+\_\+\+Space\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=145pt]{struct__Space__coll__graph}
+\includegraphics[width=161pt]{struct__Space__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Data Fields}
@@ -27,9 +27,13 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a24d9bdd59aced188
 \item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a9ccbaa9c8dbbcb865600b2ebf5093540}{\+\_\+\+\_\+gdesc\+\_\+data}}
 \item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0}{character}}
+\mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a59a51b1add065eaf16c620e9fa801f0e}{characters}}
 \item 
 \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Space_abb3388dbc84f4a0f70fe5b588b0a3619}{discovered}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a398d31959c1f44e7c66df2732ba48208}{texture}} \mbox{[}\mbox{\hyperlink{space_8h_af3fbea34830d16a9f397c1bea02e15e1}{SPACE\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Space_a10cd6ba7435593bf702e90ca3fc36c37}{\+\_\+\+\_\+texture\+\_\+data}}
 \end{DoxyCompactItemize}
 
 
@@ -45,13 +49,19 @@ This struct stores all the information of a space.
 \doxysubsubsection{\texorpdfstring{\_\_gdesc\_data}{\_\_gdesc\_data}}
 {\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::\+\_\+\+\_\+gdesc\+\_\+data}
 
-Actual matrix with the gdesc. \Hypertarget{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0}\label{struct__Space_aaa99e9594f50265ce6f0481c4829f2d0} 
-\index{\_Space@{\_Space}!character@{character}}
-\index{character@{character}!\_Space@{\_Space}}
-\doxysubsubsection{\texorpdfstring{character}{character}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Space\+::character}
+Actual matrix with the gdesc. \Hypertarget{struct__Space_a10cd6ba7435593bf702e90ca3fc36c37}\label{struct__Space_a10cd6ba7435593bf702e90ca3fc36c37} 
+\index{\_Space@{\_Space}!\_\_texture\_data@{\_\_texture\_data}}
+\index{\_\_texture\_data@{\_\_texture\_data}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{\_\_texture\_data}{\_\_texture\_data}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::\+\_\+\+\_\+texture\+\_\+data}
 
-Character id. \Hypertarget{struct__Space_abb3388dbc84f4a0f70fe5b588b0a3619}\label{struct__Space_abb3388dbc84f4a0f70fe5b588b0a3619} 
+Actual matrix with the texture \Hypertarget{struct__Space_a59a51b1add065eaf16c620e9fa801f0e}\label{struct__Space_a59a51b1add065eaf16c620e9fa801f0e} 
+\index{\_Space@{\_Space}!characters@{characters}}
+\index{characters@{characters}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{characters}{characters}}
+{\footnotesize\ttfamily \mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}}\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::characters}
+
+A set with the characters the space has. \Hypertarget{struct__Space_abb3388dbc84f4a0f70fe5b588b0a3619}\label{struct__Space_abb3388dbc84f4a0f70fe5b588b0a3619} 
 \index{\_Space@{\_Space}!discovered@{discovered}}
 \index{discovered@{discovered}!\_Space@{\_Space}}
 \doxysubsubsection{\texorpdfstring{discovered}{discovered}}
@@ -81,7 +91,13 @@ Name of the space. \Hypertarget{struct__Space_a661ed8b0fc8085b6db70188aa5085625}
 \doxysubsubsection{\texorpdfstring{objects}{objects}}
 {\footnotesize\ttfamily \mbox{\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}}\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::objects}
 
-A set with the objects the space has 
+A set with the objects the space has \Hypertarget{struct__Space_a398d31959c1f44e7c66df2732ba48208}\label{struct__Space_a398d31959c1f44e7c66df2732ba48208} 
+\index{\_Space@{\_Space}!texture@{texture}}
+\index{texture@{texture}!\_Space@{\_Space}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Space\+::texture\mbox{[}\mbox{\hyperlink{space_8h_af3fbea34830d16a9f397c1bea02e15e1}{SPACE\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}}
+
+Strings which create the texture of the space 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

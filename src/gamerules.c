@@ -25,6 +25,9 @@
 #include "command.h"
 #include "types.h"
 
+/**
+ * @brief TAD gamerule.
+ */
 struct _Gamerule
 {
     Id id;                     /*!< Gamerule id. Must be unique.*/
@@ -36,6 +39,9 @@ struct _Gamerule
     Gamerule_func do_gamerule; /*!< Function to be exectuted for each gamerule.*/
 };
 
+/**
+ * @brief Structure to store all the gamerules.
+ */
 struct _Game_values
 {
     Gamerule **gamerules; /*!< Gamerules.*/

@@ -1,12 +1,21 @@
 var searchData=
 [
-  ['false_0',['FALSE',['../types_8h.html#a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a',1,'types.h']]],
-  ['feedback_1',['feedback',['../struct__Graphic__engine.html#a4fc0ef353d000b20d57fb75d898c6d2d',1,'_Graphic_engine']]],
-  ['fifth_5fline_2',['FIFTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd',1,'graphic_engine.c']]],
-  ['finished_3',['finished',['../struct__Game.html#a2718393f54af772d89a41047d8d26682',1,'_Game']]],
-  ['first_5flast_5fcommand_4',['FIRST_LAST_COMMAND',['../game_8h.html#a0bf1321f0491968e98b7b2ec596503fc',1,'game.h']]],
-  ['first_5fline_5',['FIRST_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96',1,'graphic_engine.c']]],
-  ['fourth_5fline_6',['FOURTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489',1,'graphic_engine.c']]],
-  ['frame_5fcolor_7',['Frame_color',['../libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7',1,'libscreen.h']]],
-  ['friendly_8',['friendly',['../struct__Character.html#a3cbca4d3292eb9713b0eb75609ab931c',1,'_Character']]]
+  ['fail_5fload_5fgame_0',['FAIL_LOAD_GAME',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66af9d8320afbbf4186c498be28bb0a7e3d',1,'graphic_engine.h']]],
+  ['fail_5fmenu_1',['FAIL_MENU',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa1b9cdcdd5f5b29036becff3d1c12fade',1,'game_loop.c']]],
+  ['fail_5fnew_5fgame_2',['FAIL_NEW_GAME',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66a1b4681ddb0181cdf2320ffd4ed59e8ea',1,'graphic_engine.h']]],
+  ['false_3',['FALSE',['../types_8h.html#a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a',1,'types.h']]],
+  ['feedback_4',['feedback',['../struct__Graphic__engine.html#a4fc0ef353d000b20d57fb75d898c6d2d',1,'_Graphic_engine']]],
+  ['fifth_5fline_5',['FIFTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd',1,'graphic_engine.c']]],
+  ['final_6',['FINAL',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66afb43b8264ea4d3dd9957ba1b3fd3f3d5',1,'graphic_engine.h']]],
+  ['finished_7',['finished',['../struct__Game.html#a2718393f54af772d89a41047d8d26682',1,'_Game']]],
+  ['first_5farg_8',['FIRST_ARG',['../command_8h.html#a0cbd7a216c9f7a9b484523bf8417434eab8e09b0db95a65a26588278fdb9f8c8b',1,'command.h']]],
+  ['first_5fchar_9',['FIRST_CHAR',['../game__loop_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'game_loop.c']]],
+  ['first_5flast_5fcommand_10',['FIRST_LAST_COMMAND',['../game_8h.html#a0bf1321f0491968e98b7b2ec596503fc',1,'game.h']]],
+  ['first_5fline_11',['FIRST_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96',1,'graphic_engine.c']]],
+  ['follow_12',['follow',['../struct__Character.html#aaeb072002ac3e76a1f5dffd3e043ccf3',1,'_Character']]],
+  ['font_5fcolor_13',['font_color',['../struct__Animation.html#a1ec303abb5613e87a45b28be2d068333',1,'_Animation']]],
+  ['fourth_5farg_14',['FOURTH_ARG',['../command_8h.html#a0cbd7a216c9f7a9b484523bf8417434ea8857ef31333b80126f84d4f5b3fbc2be',1,'command.h']]],
+  ['fourth_5fline_15',['FOURTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489',1,'graphic_engine.c']]],
+  ['frame_5fcolor_16',['Frame_color',['../libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7',1,'libscreen.h']]],
+  ['friendly_17',['friendly',['../struct__Character.html#a3cbca4d3292eb9713b0eb75609ab931c',1,'_Character']]]
 ];

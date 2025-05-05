@@ -86,6 +86,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="character_8h_source.html">character.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -94,18 +95,31 @@ Include dependency graph for character.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="character_8c__incl.png" border="0" usemap="#asrc_2character_8c" alt=""/></div>
 <map name="asrc_2character_8c" id="asrc_2character_8c">
-<area shape="rect" title="It implements the character module." alt="" coords="151,5,267,31"/>
-<area shape="rect" href="character_8h.html" title="It implements the character module." alt="" coords="5,79,100,104"/>
-<area shape="poly" title=" " alt="" coords="185,33,92,75,90,70,183,28"/>
-<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="60,152,131,177"/>
-<area shape="poly" title=" " alt="" coords="201,33,115,143,111,140,197,29"/>
-<area shape="rect" title=" " alt="" coords="175,79,242,104"/>
-<area shape="poly" title=" " alt="" coords="211,31,211,65,206,65,206,31"/>
-<area shape="rect" title=" " alt="" coords="267,79,337,104"/>
-<area shape="poly" title=" " alt="" coords="225,29,278,68,274,72,222,33"/>
-<area shape="rect" title=" " alt="" coords="361,79,432,104"/>
-<area shape="poly" title=" " alt="" coords="240,28,354,71,352,76,238,33"/>
-<area shape="poly" title=" " alt="" coords="62,103,84,139,79,142,57,106"/>
+<area shape="rect" title="It implements the character module." alt="" coords="267,5,383,31"/>
+<area shape="rect" href="character_8h.html" title="It implements the character module." alt="" coords="55,79,150,104"/>
+<area shape="poly" title=" " alt="" coords="290,33,152,77,151,72,289,28"/>
+<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="87,372,158,397"/>
+<area shape="poly" title=" " alt="" coords="323,32,305,88,297,125,293,163,293,239,290,286,283,305,267,326,246,344,222,359,172,377,170,372,220,354,243,340,263,322,278,303,285,285,288,239,288,163,291,124,300,86,318,30"/>
+<area shape="rect" href="player_8h.html" title="It defines the player module." alt="" coords="65,152,140,177"/>
+<area shape="poly" title=" " alt="" coords="309,33,134,147,131,142,306,29"/>
+<area shape="rect" title=" " alt="" coords="328,79,395,104"/>
+<area shape="poly" title=" " alt="" coords="334,30,352,65,347,68,329,32"/>
+<area shape="rect" title=" " alt="" coords="419,79,490,104"/>
+<area shape="poly" title=" " alt="" coords="347,28,422,69,420,74,345,33"/>
+<area shape="rect" title=" " alt="" coords="514,79,585,104"/>
+<area shape="poly" title=" " alt="" coords="362,28,502,72,500,77,361,33"/>
+<area shape="poly" title=" " alt="" coords="92,106,73,127,56,153,30,200,13,239,9,258,9,278,14,299,25,323,47,347,76,365,73,369,44,352,20,325,9,301,4,279,3,258,8,238,26,197,51,151,69,124,88,102"/>
+<area shape="poly" title=" " alt="" coords="105,104,105,138,100,138,100,104"/>
+<area shape="poly" title=" " alt="" coords="93,179,70,206,46,242,37,262,32,283,32,303,38,323,57,346,82,363,79,368,54,350,34,325,27,304,27,282,32,260,41,239,65,202,89,176"/>
+<area shape="rect" href="object_8h.html" title="It handles object related tasks." alt="" coords="48,299,123,324"/>
+<area shape="poly" title=" " alt="" coords="104,178,91,285,86,285,99,177"/>
+<area shape="rect" href="inventory_8h.html" title="It handles inventory related tasks." alt="" coords="123,225,218,251"/>
+<area shape="poly" title=" " alt="" coords="116,176,152,213,148,217,112,180"/>
+<area shape="poly" title=" " alt="" coords="94,323,113,359,108,361,89,326"/>
+<area shape="poly" title=" " alt="" coords="169,252,133,360,128,358,164,250"/>
+<area shape="rect" href="set_8h.html" title="It defines sets for the whole project." alt="" coords="198,299,253,324"/>
+<area shape="poly" title=" " alt="" coords="182,249,210,286,206,289,178,253"/>
+<area shape="poly" title=" " alt="" coords="210,326,152,366,149,362,207,322"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -131,6 +145,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac98557390cd237b1a840f57c9bef6564" id="r_ac98557390cd237b1a840f57c9bef6564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#ac98557390cd237b1a840f57c9bef6564">character_destroy</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character)</td></tr>
 <tr class="memdesc:ac98557390cd237b1a840f57c9bef6564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees all the memory that was allocated in character, and sets character to NULL.  <br /></td></tr>
 <tr class="separator:ac98557390cd237b1a840f57c9bef6564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516e71b2f9754d8f5c8422b2ad5030bb" id="r_a516e71b2f9754d8f5c8422b2ad5030bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a516e71b2f9754d8f5c8422b2ad5030bb">character_set_texture_line</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character, int line, char *str)</td></tr>
+<tr class="memdesc:a516e71b2f9754d8f5c8422b2ad5030bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a line of the texture.  <br /></td></tr>
+<tr class="separator:a516e71b2f9754d8f5c8422b2ad5030bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a411f133c65d8c9a3c38bddbddac9371d" id="r_a411f133c65d8c9a3c38bddbddac9371d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a411f133c65d8c9a3c38bddbddac9371d">character_get_texture_line</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character, int line)</td></tr>
+<tr class="memdesc:a411f133c65d8c9a3c38bddbddac9371d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a determined line of the texture.  <br /></td></tr>
+<tr class="separator:a411f133c65d8c9a3c38bddbddac9371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab909e43e2cfc3a8588056409edd43a64" id="r_ab909e43e2cfc3a8588056409edd43a64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#ab909e43e2cfc3a8588056409edd43a64">character_get_id</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character)</td></tr>
 <tr class="memdesc:ab909e43e2cfc3a8588056409edd43a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the id of the character.  <br /></td></tr>
 <tr class="separator:ab909e43e2cfc3a8588056409edd43a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,8 +184,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a76626ec669fc81adfb5abb97f636006a" id="r_a76626ec669fc81adfb5abb97f636006a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a76626ec669fc81adfb5abb97f636006a">character_get_health</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character)</td></tr>
 <tr class="memdesc:a76626ec669fc81adfb5abb97f636006a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the amount of health of the character.  <br /></td></tr>
 <tr class="separator:a76626ec669fc81adfb5abb97f636006a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f20e6c60e9d44e5d76b140ed139c3a" id="r_aa1f20e6c60e9d44e5d76b140ed139c3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#aa1f20e6c60e9d44e5d76b140ed139c3a">character_set_follow</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character, <a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a> player)</td></tr>
+<tr class="memdesc:aa1f20e6c60e9d44e5d76b140ed139c3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the information of the character.  <br /></td></tr>
+<tr class="separator:aa1f20e6c60e9d44e5d76b140ed139c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70fbb3e42a1088e2e86ac510634aa9e4" id="r_a70fbb3e42a1088e2e86ac510634aa9e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a70fbb3e42a1088e2e86ac510634aa9e4">character_get_follow</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character)</td></tr>
+<tr class="memdesc:a70fbb3e42a1088e2e86ac510634aa9e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the id of the player the character follows.  <br /></td></tr>
+<tr class="separator:a70fbb3e42a1088e2e86ac510634aa9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aadc03e7f931721a3ec9c39e715acde" id="r_a9aadc03e7f931721a3ec9c39e715acde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a9aadc03e7f931721a3ec9c39e715acde">character_print</a> (<a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *character)</td></tr>
-<tr class="memdesc:a9aadc03e7f931721a3ec9c39e715acde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the information of the character.  <br /></td></tr>
+<tr class="memdesc:a9aadc03e7f931721a3ec9c39e715acde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the id of the player the character follows.  <br /></td></tr>
 <tr class="separator:a9aadc03e7f931721a3ec9c39e715acde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -301,6 +327,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Character's description, NULL if error. </dd></dl>
+
+</div>
+</div>
+<a id="a70fbb3e42a1088e2e86ac510634aa9e4" name="a70fbb3e42a1088e2e86ac510634aa9e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fbb3e42a1088e2e86ac510634aa9e4">&#9670;&#160;</a></span>character_get_follow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a> character_get_follow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *&#160;</td>
+          <td class="paramname"><em>character</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the id of the player the character follows. </p>
+<dl class="section author"><dt>Author</dt><dd>Irene García.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>Pointer to the character. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Id of the player that the character follows, ID_ERROR if error. </dd></dl>
 
 </div>
 </div>
@@ -444,6 +498,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a411f133c65d8c9a3c38bddbddac9371d" name="a411f133c65d8c9a3c38bddbddac9371d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a411f133c65d8c9a3c38bddbddac9371d">&#9670;&#160;</a></span>character_get_texture_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * character_get_texture_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *&#160;</td>
+          <td class="paramname"><em>character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a determined line of the texture. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>Pointer to the character. </td></tr>
+    <tr><td class="paramname">line</td><td>line to be given. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if an error takes place, the line otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a9aadc03e7f931721a3ec9c39e715acde" name="a9aadc03e7f931721a3ec9c39e715acde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9aadc03e7f931721a3ec9c39e715acde">&#9670;&#160;</a></span>character_print()</h2>
 
@@ -460,15 +553,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prints the information of the character. </p>
-<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<p>Gets the id of the player the character follows. </p>
+<dl class="section author"><dt>Author</dt><dd>Irene García.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">character</td><td>Pointer to the character. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>OK if it works, ERROR otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Id of the player that the character follows, ID_ERROR if error. </dd></dl>
 
 </div>
 </div>
@@ -508,6 +601,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>OK, if everything went as it should, ERROR if it didn't. </dd></dl>
+
+</div>
+</div>
+<a id="aa1f20e6c60e9d44e5d76b140ed139c3a" name="aa1f20e6c60e9d44e5d76b140ed139c3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f20e6c60e9d44e5d76b140ed139c3a">&#9670;&#160;</a></span>character_set_follow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> character_set_follow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *&#160;</td>
+          <td class="paramname"><em>character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the information of the character. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>Pointer to the character. </td></tr>
+    <tr><td class="paramname">player</td><td>Player id. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if it works, ERROR otherwise. </dd></dl>
 
 </div>
 </div>
@@ -664,6 +796,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>OK, if everything went well, ERROR if it didn't. </dd></dl>
+
+</div>
+</div>
+<a id="a516e71b2f9754d8f5c8422b2ad5030bb" name="a516e71b2f9754d8f5c8422b2ad5030bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a516e71b2f9754d8f5c8422b2ad5030bb">&#9670;&#160;</a></span>character_set_texture_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> character_set_texture_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="character_8h.html#a2cd4b80780220bc0f0f1d7424f104fa6">Character</a> *&#160;</td>
+          <td class="paramname"><em>character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a line of the texture. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>Pointer to the character. </td></tr>
+    <tr><td class="paramname">line</td><td>line to be modified. </td></tr>
+    <tr><td class="paramname">str</td><td>to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if all goes as planned, ERROR otherwise. </dd></dl>
 
 </div>
 </div>

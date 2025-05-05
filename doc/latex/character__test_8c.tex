@@ -22,7 +22,7 @@ Include dependency graph for character\+\_\+test.\+c\+:\nopagebreak
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{character__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}{MAX\+\_\+\+TESTS}}~28
+\#define \mbox{\hyperlink{character__test_8c_a2a77d2f2c5b698c69c19e1f8782bf709}{MAX\+\_\+\+TESTS}}~30
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -84,6 +84,10 @@ void \mbox{\hyperlink{character__test_8c_a7c168a8f372cad844e385b5d96298973}{test
 void \mbox{\hyperlink{character__test_8c_a9f1dfd0daea14e2ced5915b529c45df4}{test1\+\_\+character\+\_\+get\+\_\+message}} ()
 \item 
 void \mbox{\hyperlink{character__test_8c_a085a8c64daee7cb3a5bc38a9017717ba}{test2\+\_\+character\+\_\+get\+\_\+message}} ()
+\item 
+void \mbox{\hyperlink{character__test_8c_ac02332cbf3f45d71a6971c5db4c3f305}{test1\+\_\+character\+\_\+get\+\_\+follow}} ()
+\item 
+void \mbox{\hyperlink{character__test_8c_ab4ef086465db4935e63168c6611eaaf3}{test2\+\_\+character\+\_\+get\+\_\+follow}} ()
 \end{DoxyCompactItemize}
 
 
@@ -109,7 +113,7 @@ GNU Public License
 \index{character\_test.c@{character\_test.c}!MAX\_TESTS@{MAX\_TESTS}}
 \index{MAX\_TESTS@{MAX\_TESTS}!character\_test.c@{character\_test.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_TESTS}{MAX\_TESTS}}
-{\footnotesize\ttfamily \#define MAX\+\_\+\+TESTS~28}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+TESTS~30}
 
 Maximun number of tests. 
 
@@ -151,6 +155,20 @@ Pointer to the character = Non NULL;
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 Returns the description. 
+\end{DoxyPostcond}
+\Hypertarget{character__test_8c_ac02332cbf3f45d71a6971c5db4c3f305}\label{character__test_8c_ac02332cbf3f45d71a6971c5db4c3f305} 
+\index{character\_test.c@{character\_test.c}!test1\_character\_get\_follow@{test1\_character\_get\_follow}}
+\index{test1\_character\_get\_follow@{test1\_character\_get\_follow}!character\_test.c@{character\_test.c}}
+\doxysubsubsection{\texorpdfstring{test1\_character\_get\_follow()}{test1\_character\_get\_follow()}}
+{\footnotesize\ttfamily void test1\+\_\+character\+\_\+get\+\_\+follow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000029}{Test}}]Test Character\+\_\+get\+\_\+follow. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Player = Non ID\+\_\+\+ERROR. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns OK. 
 \end{DoxyPostcond}
 \Hypertarget{character__test_8c_aa3b5f4115ecc697d865cabc7afd6ba28}\label{character__test_8c_aa3b5f4115ecc697d865cabc7afd6ba28} 
 \index{character\_test.c@{character\_test.c}!test1\_character\_get\_friendly@{test1\_character\_get\_friendly}}
@@ -290,6 +308,20 @@ Pointer to the character = NULL;
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 Returns NULL. 
+\end{DoxyPostcond}
+\Hypertarget{character__test_8c_ab4ef086465db4935e63168c6611eaaf3}\label{character__test_8c_ab4ef086465db4935e63168c6611eaaf3} 
+\index{character\_test.c@{character\_test.c}!test2\_character\_get\_follow@{test2\_character\_get\_follow}}
+\index{test2\_character\_get\_follow@{test2\_character\_get\_follow}!character\_test.c@{character\_test.c}}
+\doxysubsubsection{\texorpdfstring{test2\_character\_get\_follow()}{test2\_character\_get\_follow()}}
+{\footnotesize\ttfamily void test2\+\_\+character\+\_\+get\+\_\+follow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000030}{Test}}]Test character\+\_\+get\+\_\+follow. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Player following = ID\+\_\+\+ERROR. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns OK. 
 \end{DoxyPostcond}
 \Hypertarget{character__test_8c_a86a876aee28d07e4f303bc58c5a64f51}\label{character__test_8c_a86a876aee28d07e4f303bc58c5a64f51} 
 \index{character\_test.c@{character\_test.c}!test2\_character\_get\_friendly@{test2\_character\_get\_friendly}}

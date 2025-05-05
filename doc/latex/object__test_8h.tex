@@ -54,6 +54,28 @@ void \mbox{\hyperlink{object__test_8h_aa88e9e9dab92ba9c58851d7a7a8415f0}{test1\+
 void \mbox{\hyperlink{object__test_8h_a1ff250f0f43297f57fcce1f3a6ae490b}{test2\+\_\+object\+\_\+get\+\_\+id}} ()
 \item 
 void \mbox{\hyperlink{object__test_8h_aeac5e45ffae949234d573742d6f98cf6}{test3\+\_\+object\+\_\+get\+\_\+id}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_a59954750d3968951e7b9e13ea321b2f1}{test1\+\_\+object\+\_\+set\+\_\+health}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_aa41bc64bde1b7fe6f01af29a6d04b204}{test1\+\_\+object\+\_\+get\+\_\+health}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_a093b7556c2271c532f607b6e7f15c36c}{test1\+\_\+object\+\_\+set\+\_\+movable}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_a28605c20187056beac0c0e12a2a39fc3}{test1\+\_\+object\+\_\+get\+\_\+movable}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_a70a20d7dbb2cfdfd3c94572d083be5e5}{test2\+\_\+object\+\_\+get\+\_\+movable}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_aef1285f1a9ad407e927375aba038a706}{test1\+\_\+object\+\_\+set\+\_\+dependency}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_aa60a8195c4200bf68d77b34705a5fd40}{test2\+\_\+object\+\_\+set\+\_\+dependency}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_aff882e9769d27a86bd3ede47c1be29d4}{test1\+\_\+object\+\_\+get\+\_\+dependency}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_aae624c0b21b2f9539e706daf3e472166}{test1\+\_\+object\+\_\+set\+\_\+open}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_a8cf57f8cea3ced6dc675c3c24b8bf8b9}{test2\+\_\+object\+\_\+set\+\_\+open}} ()
+\item 
+void \mbox{\hyperlink{object__test_8h_ab767449f517f5a5b4ee790cd15bd4d77}{test1\+\_\+object\+\_\+get\+\_\+open}} ()
 \end{DoxyCompactItemize}
 
 
@@ -82,12 +104,26 @@ GNU Public License
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000086}{Test}}]Test object creation. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000088}{Test}}]Test object creation. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 id\+\_\+object=5. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 Pointer to object. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_aff882e9769d27a86bd3ede47c1be29d4}\label{object__test_8h_aff882e9769d27a86bd3ede47c1be29d4} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_get\_dependency@{test1\_object\_get\_dependency}}
+\index{test1\_object\_get\_dependency@{test1\_object\_get\_dependency}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_get\_dependency()}{test1\_object\_get\_dependency()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+dependency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000115}{Test}}]Test get dependency function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_a43375c48c794bb6b2ed3fb8d949149b5}\label{object__test_8h_a43375c48c794bb6b2ed3fb8d949149b5} 
 \index{object\_test.h@{object\_test.h}!test1\_object\_get\_gdesc@{test1\_object\_get\_gdesc}}
@@ -96,12 +132,26 @@ Pointer to object.
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+gdesc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000089}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000091}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Description="{}potato"{}. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 "{}potato"{}. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_aa41bc64bde1b7fe6f01af29a6d04b204}\label{object__test_8h_aa41bc64bde1b7fe6f01af29a6d04b204} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_get\_health@{test1\_object\_get\_health}}
+\index{test1\_object\_get\_health@{test1\_object\_get\_health}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_get\_health()}{test1\_object\_get\_health()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000109}{Test}}]Test get health function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_aa88e9e9dab92ba9c58851d7a7a8415f0}\label{object__test_8h_aa88e9e9dab92ba9c58851d7a7a8415f0} 
 \index{object\_test.h@{object\_test.h}!test1\_object\_get\_id@{test1\_object\_get\_id}}
@@ -110,9 +160,23 @@ Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Description="{}potato"{}.
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000103}{Test}}]Test get id function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000105}{Test}}]Test get id function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=5 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_a28605c20187056beac0c0e12a2a39fc3}\label{object__test_8h_a28605c20187056beac0c0e12a2a39fc3} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_get\_movable@{test1\_object\_get\_movable}}
+\index{test1\_object\_get\_movable@{test1\_object\_get\_movable}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_get\_movable()}{test1\_object\_get\_movable()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+movable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000111}{Test}}]Test set movable function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 5. 
@@ -124,12 +188,40 @@ Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=5
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000096}{Test}}]Test get name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000098}{Test}}]Test get name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Name="{}potato"{}. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 "{}potato"{}. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_ab767449f517f5a5b4ee790cd15bd4d77}\label{object__test_8h_ab767449f517f5a5b4ee790cd15bd4d77} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_get\_open@{test1\_object\_get\_open}}
+\index{test1\_object\_get\_open@{test1\_object\_get\_open}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_get\_open()}{test1\_object\_get\_open()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+get\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000118}{Test}}]Test get open function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_aef1285f1a9ad407e927375aba038a706}\label{object__test_8h_aef1285f1a9ad407e927375aba038a706} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_set\_dependency@{test1\_object\_set\_dependency}}
+\index{test1\_object\_set\_dependency@{test1\_object\_set\_dependency}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_set\_dependency()}{test1\_object\_set\_dependency()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+dependency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000113}{Test}}]Test set dependency function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_afb26b8c66d332354df8bfd57a8033b8f}\label{object__test_8h_afb26b8c66d332354df8bfd57a8033b8f} 
 \index{object\_test.h@{object\_test.h}!test1\_object\_set\_description@{test1\_object\_set\_description}}
@@ -138,12 +230,40 @@ Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Name="{}potato"{}.
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000092}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000094}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New description="{}potato"{}. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 OK. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_a59954750d3968951e7b9e13ea321b2f1}\label{object__test_8h_a59954750d3968951e7b9e13ea321b2f1} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_set\_health@{test1\_object\_set\_health}}
+\index{test1\_object\_set\_health@{test1\_object\_set\_health}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_set\_health()}{test1\_object\_set\_health()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000108}{Test}}]Test set health function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_a093b7556c2271c532f607b6e7f15c36c}\label{object__test_8h_a093b7556c2271c532f607b6e7f15c36c} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_set\_movable@{test1\_object\_set\_movable}}
+\index{test1\_object\_set\_movable@{test1\_object\_set\_movable}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_set\_movable()}{test1\_object\_set\_movable()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+movable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000110}{Test}}]Test set movable function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_a74e25ad653c4a32b9922fff8e4f916fd}\label{object__test_8h_a74e25ad653c4a32b9922fff8e4f916fd} 
 \index{object\_test.h@{object\_test.h}!test1\_object\_set\_name@{test1\_object\_set\_name}}
@@ -152,12 +272,26 @@ OK.
 {\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000099}{Test}}]Test set name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000101}{Test}}]Test set name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New name="{}potato"{}. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 OK. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_aae624c0b21b2f9539e706daf3e472166}\label{object__test_8h_aae624c0b21b2f9539e706daf3e472166} 
+\index{object\_test.h@{object\_test.h}!test1\_object\_set\_open@{test1\_object\_set\_open}}
+\index{test1\_object\_set\_open@{test1\_object\_set\_open}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test1\_object\_set\_open()}{test1\_object\_set\_open()}}
+{\footnotesize\ttfamily void test1\+\_\+object\+\_\+set\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000116}{Test}}]Test set open function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_add54ab5e33a1b0a93e9ddcf73591bd9f}\label{object__test_8h_add54ab5e33a1b0a93e9ddcf73591bd9f} 
 \index{object\_test.h@{object\_test.h}!test2\_object\_create@{test2\_object\_create}}
@@ -166,7 +300,7 @@ OK.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000087}{Test}}]Test object creation. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000089}{Test}}]Test object creation. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 id\+\_\+object=NO\+\_\+\+ID. 
 \end{DoxyPrecond}
@@ -180,7 +314,7 @@ NULL.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+get\+\_\+gdesc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000090}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000092}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Description=NULL. 
 \end{DoxyPrecond}
@@ -194,12 +328,26 @@ NULL.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000104}{Test}}]Test get id function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000106}{Test}}]Test get id function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=NULL 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 ID\+\_\+\+ERROR. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_a70a20d7dbb2cfdfd3c94572d083be5e5}\label{object__test_8h_a70a20d7dbb2cfdfd3c94572d083be5e5} 
+\index{object\_test.h@{object\_test.h}!test2\_object\_get\_movable@{test2\_object\_get\_movable}}
+\index{test2\_object\_get\_movable@{test2\_object\_get\_movable}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test2\_object\_get\_movable()}{test2\_object\_get\_movable()}}
+{\footnotesize\ttfamily void test2\+\_\+object\+\_\+get\+\_\+movable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000112}{Test}}]Test get movable function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_abdfafbc7b8588d3dcdb05fd2beb2397e}\label{object__test_8h_abdfafbc7b8588d3dcdb05fd2beb2397e} 
 \index{object\_test.h@{object\_test.h}!test2\_object\_get\_name@{test2\_object\_get\_name}}
@@ -208,12 +356,26 @@ ID\+\_\+\+ERROR.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000097}{Test}}]Test get name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000099}{Test}}]Test get name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Name=NULL. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 NULL. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_aa60a8195c4200bf68d77b34705a5fd40}\label{object__test_8h_aa60a8195c4200bf68d77b34705a5fd40} 
+\index{object\_test.h@{object\_test.h}!test2\_object\_set\_dependency@{test2\_object\_set\_dependency}}
+\index{test2\_object\_set\_dependency@{test2\_object\_set\_dependency}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test2\_object\_set\_dependency()}{test2\_object\_set\_dependency()}}
+{\footnotesize\ttfamily void test2\+\_\+object\+\_\+set\+\_\+dependency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000114}{Test}}]Test set dependency function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_a65e32c3642c1d9207cdd84b134c616da}\label{object__test_8h_a65e32c3642c1d9207cdd84b134c616da} 
 \index{object\_test.h@{object\_test.h}!test2\_object\_set\_description@{test2\_object\_set\_description}}
@@ -222,7 +384,7 @@ NULL.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+set\+\_\+description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000093}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000095}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New description=NULL. 
 \end{DoxyPrecond}
@@ -236,12 +398,26 @@ ERROR.
 {\footnotesize\ttfamily void test2\+\_\+object\+\_\+set\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000100}{Test}}]Test set name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000102}{Test}}]Test set name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New name=NULL. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 ERROR. 
+\end{DoxyPostcond}
+\Hypertarget{object__test_8h_a8cf57f8cea3ced6dc675c3c24b8bf8b9}\label{object__test_8h_a8cf57f8cea3ced6dc675c3c24b8bf8b9} 
+\index{object\_test.h@{object\_test.h}!test2\_object\_set\_open@{test2\_object\_set\_open}}
+\index{test2\_object\_set\_open@{test2\_object\_set\_open}!object\_test.h@{object\_test.h}}
+\doxysubsubsection{\texorpdfstring{test2\_object\_set\_open()}{test2\_object\_set\_open()}}
+{\footnotesize\ttfamily void test2\+\_\+object\+\_\+set\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000117}{Test}}]Test set open function. \end{DoxyRefDesc}
+\begin{DoxyPrecond}{Precondition}
+Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+5. 
 \end{DoxyPostcond}
 \Hypertarget{object__test_8h_a818f180e2b7402835c6ac7ec0ba49f64}\label{object__test_8h_a818f180e2b7402835c6ac7ec0ba49f64} 
 \index{object\_test.h@{object\_test.h}!test3\_object\_create@{test3\_object\_create}}
@@ -250,7 +426,7 @@ ERROR.
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000088}{Test}}]Test object creation. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000090}{Test}}]Test object creation. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 id\+\_\+object=ID\+\_\+\+ERROR. 
 \end{DoxyPrecond}
@@ -264,7 +440,7 @@ NULL.
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+get\+\_\+gdesc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000091}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000093}{Test}}]Test get gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=NULL \texorpdfstring{$\vert$}{|} Description="{}potato"{}. 
 \end{DoxyPrecond}
@@ -278,7 +454,7 @@ NULL.
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000105}{Test}}]Test get id function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000107}{Test}}]Test get id function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6 
 \end{DoxyPrecond}
@@ -292,7 +468,7 @@ Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} Object id=-\/6
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000098}{Test}}]Test get name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000100}{Test}}]Test get name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=NULL \texorpdfstring{$\vert$}{|} Name="{}potato"{}. 
 \end{DoxyPrecond}
@@ -306,7 +482,7 @@ NULL.
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+set\+\_\+description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000094}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000096}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=NULL \texorpdfstring{$\vert$}{|} New description="{}potato"{}. 
 \end{DoxyPrecond}
@@ -320,7 +496,7 @@ ERROR.
 {\footnotesize\ttfamily void test3\+\_\+object\+\_\+set\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000101}{Test}}]Test set name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000103}{Test}}]Test set name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=NULL \texorpdfstring{$\vert$}{|} New name="{}potato"{}. 
 \end{DoxyPrecond}
@@ -334,7 +510,7 @@ ERROR.
 {\footnotesize\ttfamily void test4\+\_\+object\+\_\+set\+\_\+description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000095}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000097}{Test}}]Test set gdesc function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New description=+100 character long string. 
 \end{DoxyPrecond}
@@ -348,7 +524,7 @@ ERROR.
 {\footnotesize\ttfamily void test4\+\_\+object\+\_\+set\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000102}{Test}}]Test set name function. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000104}{Test}}]Test set name function. \end{DoxyRefDesc}
 \begin{DoxyPrecond}{Precondition}
 Pointer to object=Non NULL \texorpdfstring{$\vert$}{|} New name=+100 character long string. 
 \end{DoxyPrecond}

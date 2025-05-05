@@ -247,7 +247,7 @@ Status gamerules_set_n_exec_times(Gamerule *gr, int has_exec);
  * @author Saúl López Romero
  *
  * @param gv Pointer to the game values struct.
- * @param id Id of the gamerule.
+ * @param name Gamerule name.
  * @return Pointer to the gamerule struct or NULL if an error takes place.
  */
 Gamerule *gamerules_get_gamerule_by_name(Game_values *gv, char *name);

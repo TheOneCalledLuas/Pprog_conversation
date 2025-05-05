@@ -99,7 +99,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:acfdfc42f6522d75fa3c16713afde8127" id="r_acfdfc42f6522d75fa3c16713afde8127"><td class="memItemLeft" align="right" valign="top">typedef struct _Area&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a></td></tr>
+<tr class="memitem:acfdfc42f6522d75fa3c16713afde8127" id="r_acfdfc42f6522d75fa3c16713afde8127"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__Area.html">_Area</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a></td></tr>
 <tr class="separator:acfdfc42f6522d75fa3c16713afde8127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -124,27 +124,48 @@ Functions</h2></td></tr>
 <tr class="memitem:a3c7e0099996732d34b143dde1a40f02c" id="r_a3c7e0099996732d34b143dde1a40f02c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a3c7e0099996732d34b143dde1a40f02c">screen_init</a> (int rows, int columns)</td></tr>
 <tr class="memdesc:a3c7e0099996732d34b143dde1a40f02c"><td class="mdescLeft">&#160;</td><td class="mdescRight">It creates a new screen.  <br /></td></tr>
 <tr class="separator:a3c7e0099996732d34b143dde1a40f02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1481e21431750a9ad75cb14697e52b3f" id="r_a1481e21431750a9ad75cb14697e52b3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a1481e21431750a9ad75cb14697e52b3f">screen_menu_init</a> (int rows, int columns)</td></tr>
+<tr class="memdesc:a1481e21431750a9ad75cb14697e52b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">It creates a new screen in menu mode.  <br /></td></tr>
+<tr class="separator:a1481e21431750a9ad75cb14697e52b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d6d82dde2bb4f3ddc4d276dabe313ef" id="r_a3d6d82dde2bb4f3ddc4d276dabe313ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a3d6d82dde2bb4f3ddc4d276dabe313ef">screen_destroy</a> ()</td></tr>
 <tr class="memdesc:a3d6d82dde2bb4f3ddc4d276dabe313ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">It destroys a new screen area.  <br /></td></tr>
 <tr class="separator:a3d6d82dde2bb4f3ddc4d276dabe313ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b385ae7a8e7de10f9e66acf478c00c" id="r_a98b385ae7a8e7de10f9e66acf478c00c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a98b385ae7a8e7de10f9e66acf478c00c">screen_paint</a> (<a class="el" href="libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7">Frame_color</a> color)</td></tr>
+<tr class="memitem:ad9777a67bb7c538bee8b271149687fbc" id="r_ad9777a67bb7c538bee8b271149687fbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#ad9777a67bb7c538bee8b271149687fbc">screen_menu_destroy</a> ()</td></tr>
+<tr class="memdesc:ad9777a67bb7c538bee8b271149687fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">It destroys a new screen area in menu mode.  <br /></td></tr>
+<tr class="separator:ad9777a67bb7c538bee8b271149687fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b385ae7a8e7de10f9e66acf478c00c" id="r_a98b385ae7a8e7de10f9e66acf478c00c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a98b385ae7a8e7de10f9e66acf478c00c">screen_paint</a> (<a class="el" href="libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7">Frame_color</a> <a class="el" href="animation_8c.html#a0fd916977d83dc2ddd879f82c49a527d">color</a>)</td></tr>
 <tr class="memdesc:a98b385ae7a8e7de10f9e66acf478c00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">It paints in the terminal the actual screen composition.  <br /></td></tr>
 <tr class="separator:a98b385ae7a8e7de10f9e66acf478c00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33edacc0eee646e438d2ab3120db91d1" id="r_a33edacc0eee646e438d2ab3120db91d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a33edacc0eee646e438d2ab3120db91d1">screen_menu_paint</a> (<a class="el" href="libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7">Frame_color</a> <a class="el" href="animation_8c.html#a0fd916977d83dc2ddd879f82c49a527d">color</a>)</td></tr>
+<tr class="memdesc:a33edacc0eee646e438d2ab3120db91d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">It paints in the terminal the actual screen composition in menu mode.  <br /></td></tr>
+<tr class="separator:a33edacc0eee646e438d2ab3120db91d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c601f4602ad83e212facc1f53da8f88" id="r_a4c601f4602ad83e212facc1f53da8f88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a4c601f4602ad83e212facc1f53da8f88">screen_area_init</a> (int x, int y, int width, int height)</td></tr>
 <tr class="memdesc:a4c601f4602ad83e212facc1f53da8f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">It creates a new area inside a screen.  <br /></td></tr>
 <tr class="separator:a4c601f4602ad83e212facc1f53da8f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5a397ba171fbde9c010cc5188ea825" id="r_a3c5a397ba171fbde9c010cc5188ea825"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a3c5a397ba171fbde9c010cc5188ea825">screen_area_init_menu</a> (int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:a3c5a397ba171fbde9c010cc5188ea825"><td class="mdescLeft">&#160;</td><td class="mdescRight">It creates a new area inside a screen in menu mode.  <br /></td></tr>
+<tr class="separator:a3c5a397ba171fbde9c010cc5188ea825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca5123ed5a7afb75e79c0001e5d1df4f" id="r_aca5123ed5a7afb75e79c0001e5d1df4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#aca5123ed5a7afb75e79c0001e5d1df4f">screen_area_destroy</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area)</td></tr>
 <tr class="memdesc:aca5123ed5a7afb75e79c0001e5d1df4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">It destroys a new screen area.  <br /></td></tr>
 <tr class="separator:aca5123ed5a7afb75e79c0001e5d1df4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0950dc68cba3d491b909a8abaac1c666" id="r_a0950dc68cba3d491b909a8abaac1c666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a0950dc68cba3d491b909a8abaac1c666">screen_area_clear</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area)</td></tr>
 <tr class="memdesc:a0950dc68cba3d491b909a8abaac1c666"><td class="mdescLeft">&#160;</td><td class="mdescRight">It cleares an area, eraising all its content.  <br /></td></tr>
 <tr class="separator:a0950dc68cba3d491b909a8abaac1c666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7a42bbe53a5b8e9e3d169e7d6d499c" id="r_a4c7a42bbe53a5b8e9e3d169e7d6d499c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a4c7a42bbe53a5b8e9e3d169e7d6d499c">screen_area_clear_menu</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area)</td></tr>
+<tr class="memdesc:a4c7a42bbe53a5b8e9e3d169e7d6d499c"><td class="mdescLeft">&#160;</td><td class="mdescRight">It cleares an area in menu mode, eraising all its content.  <br /></td></tr>
+<tr class="separator:a4c7a42bbe53a5b8e9e3d169e7d6d499c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af77fa9df4f7170e1e3bf1c6209b7f0c2" id="r_af77fa9df4f7170e1e3bf1c6209b7f0c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#af77fa9df4f7170e1e3bf1c6209b7f0c2">screen_area_reset_cursor</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area)</td></tr>
 <tr class="memdesc:af77fa9df4f7170e1e3bf1c6209b7f0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">It resets the cursor of an area.  <br /></td></tr>
 <tr class="separator:af77fa9df4f7170e1e3bf1c6209b7f0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80634fddfbc2530f2d74938c31e3c05e" id="r_a80634fddfbc2530f2d74938c31e3c05e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a80634fddfbc2530f2d74938c31e3c05e">screen_area_reset_cursor_menu</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area)</td></tr>
+<tr class="memdesc:a80634fddfbc2530f2d74938c31e3c05e"><td class="mdescLeft">&#160;</td><td class="mdescRight">It resets the cursor of an area in menu mode.  <br /></td></tr>
+<tr class="separator:a80634fddfbc2530f2d74938c31e3c05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f4cd4c7899c096d6c90cc33de9a9814" id="r_a4f4cd4c7899c096d6c90cc33de9a9814"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a4f4cd4c7899c096d6c90cc33de9a9814">screen_area_puts</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area, char *str)</td></tr>
 <tr class="memdesc:a4f4cd4c7899c096d6c90cc33de9a9814"><td class="mdescLeft">&#160;</td><td class="mdescRight">It introduces some information inside an area.  <br /></td></tr>
 <tr class="separator:a4f4cd4c7899c096d6c90cc33de9a9814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399b7147225723690b01997e635314d1" id="r_a399b7147225723690b01997e635314d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libscreen_8h.html#a399b7147225723690b01997e635314d1">screen_area_puts_menu</a> (<a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *area, char *str)</td></tr>
+<tr class="memdesc:a399b7147225723690b01997e635314d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">It introduces some information inside an area in menu mode.  <br /></td></tr>
+<tr class="separator:a399b7147225723690b01997e635314d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It defines the screen interface. </p>
@@ -160,7 +181,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct _Area <a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a></td>
+          <td class="memname">typedef struct <a class="el" href="struct__Area.html">_Area</a> <a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -187,6 +208,33 @@ Functions</h2></td></tr>
 
 <p>It cleares an area, eraising all its content. </p>
 <dl class="section author"><dt>Author</dt><dd>Profesores PPROG</dd></dl>
+<p>This function should be called for earaising all the information in an area, before introducing a new state of it. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">area</td><td>the area to be cleared </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c7a42bbe53a5b8e9e3d169e7d6d499c" name="a4c7a42bbe53a5b8e9e3d169e7d6d499c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7a42bbe53a5b8e9e3d169e7d6d499c">&#9670;&#160;</a></span>screen_area_clear_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_area_clear_menu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *&#160;</td>
+          <td class="paramname"><em>area</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It cleares an area in menu mode, eraising all its content. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
 <p>This function should be called for earaising all the information in an area, before introducing a new state of it. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">area</td><td>the area to be cleared </td></tr>
@@ -276,6 +324,59 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3c5a397ba171fbde9c010cc5188ea825" name="a3c5a397ba171fbde9c010cc5188ea825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c5a397ba171fbde9c010cc5188ea825">&#9670;&#160;</a></span>screen_area_init_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> * screen_area_init_menu </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It creates a new area inside a screen in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>it allocates memory for a new area and initializes its members. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>the x-coordinate of the up-left corner of the area </td></tr>
+    <tr><td class="paramname">y</td><td>the x-coordinate of the up-left corner of the area </td></tr>
+    <tr><td class="paramname">width</td><td>the width of the area </td></tr>
+    <tr><td class="paramname">height</td><td>the height of the area </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a new area, initialized </dd></dl>
+
+</div>
+</div>
 <a id="a4f4cd4c7899c096d6c90cc33de9a9814" name="a4f4cd4c7899c096d6c90cc33de9a9814"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f4cd4c7899c096d6c90cc33de9a9814">&#9670;&#160;</a></span>screen_area_puts()</h2>
 
@@ -314,6 +415,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a399b7147225723690b01997e635314d1" name="a399b7147225723690b01997e635314d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399b7147225723690b01997e635314d1">&#9670;&#160;</a></span>screen_area_puts_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_area_puts_menu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *&#160;</td>
+          <td class="paramname"><em>area</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It introduces some information inside an area in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>This function sets the string that will be shown in an area. Each string introduced will be a line in the specified area. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">area</td><td>the area to be modified </td></tr>
+    <tr><td class="paramname">str</td><td>a string that contains the information to be included in a particular area </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af77fa9df4f7170e1e3bf1c6209b7f0c2" name="af77fa9df4f7170e1e3bf1c6209b7f0c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af77fa9df4f7170e1e3bf1c6209b7f0c2">&#9670;&#160;</a></span>screen_area_reset_cursor()</h2>
 
@@ -332,6 +471,33 @@ Functions</h2></td></tr>
 
 <p>It resets the cursor of an area. </p>
 <dl class="section author"><dt>Author</dt><dd>Profesores PPROG</dd></dl>
+<p>This function reset the cursor to the up-left corner of the area. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">area</td><td>the involved area </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a80634fddfbc2530f2d74938c31e3c05e" name="a80634fddfbc2530f2d74938c31e3c05e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80634fddfbc2530f2d74938c31e3c05e">&#9670;&#160;</a></span>screen_area_reset_cursor_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_area_reset_cursor_menu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libscreen_8h.html#acfdfc42f6522d75fa3c16713afde8127">Area</a> *&#160;</td>
+          <td class="paramname"><em>area</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It resets the cursor of an area in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
 <p>This function reset the cursor to the up-left corner of the area. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">area</td><td>the involved area </td></tr>
@@ -400,6 +566,92 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad9777a67bb7c538bee8b271149687fbc" name="ad9777a67bb7c538bee8b271149687fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9777a67bb7c538bee8b271149687fbc">&#9670;&#160;</a></span>screen_menu_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_menu_destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It destroys a new screen area in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>As it frees the screen, it must be called at the end of the program, once the areas created have been freed. </p>
+
+</div>
+</div>
+<a id="a1481e21431750a9ad75cb14697e52b3f" name="a1481e21431750a9ad75cb14697e52b3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1481e21431750a9ad75cb14697e52b3f">&#9670;&#160;</a></span>screen_menu_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_menu_init </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>columns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It creates a new screen in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>This function should be called at the beginning of the program, so the complete screen is allocated before starting defining areas. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rows</td><td>the number of rows that will have the full screen </td></tr>
+    <tr><td class="paramname">columns</td><td>the number of columns that will have the full screen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a33edacc0eee646e438d2ab3120db91d1" name="a33edacc0eee646e438d2ab3120db91d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33edacc0eee646e438d2ab3120db91d1">&#9670;&#160;</a></span>screen_menu_paint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void screen_menu_paint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7">Frame_color</a>&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It paints in the terminal the actual screen composition in menu mode. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<p>This function should be called when some updates in the screen want to be shown. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>the color of the frame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a98b385ae7a8e7de10f9e66acf478c00c" name="a98b385ae7a8e7de10f9e66acf478c00c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98b385ae7a8e7de10f9e66acf478c00c">&#9670;&#160;</a></span>screen_paint()</h2>
 
@@ -418,7 +670,12 @@ Functions</h2></td></tr>
 
 <p>It paints in the terminal the actual screen composition. </p>
 <dl class="section author"><dt>Author</dt><dd>Profesores PPROG</dd></dl>
-<p>This function should be called when some updates in the screen want to be shown. </p>
+<p>This function should be called when some updates in the screen want to be shown. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>the color of the frame </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -28,6 +28,12 @@ char \mbox{\hyperlink{struct__Player_a5d11c0ca8ca623fe4f658e4dd966e60d}{player\+
 int \mbox{\hyperlink{struct__Player_a660f836f5258dd532ae6bc77e447b80f}{health}}
 \item 
 char \mbox{\hyperlink{struct__Player_a826f1854c520168947fac828f6279417}{gdesc}} \mbox{[}\mbox{\hyperlink{player_8c_ad5e6bf0470b64b198a22be7c9dc06181}{MAX\+\_\+\+GDESC}}\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Player_af703882b79948400cd69867d28652bb0}{texture}} \mbox{[}\mbox{\hyperlink{player_8h_ae566b8cf7afb7b5f93dfb1ee0b8702f1}{PLAYER\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Player_a906701b716b852df49fda65055a472cc}{\+\_\+\+\_\+texture}}
+\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Player_a6346978679480a2d7e5f2508e7409fbe}{team}}
 \end{DoxyCompactItemize}
 
 
@@ -37,7 +43,13 @@ Player.
 It stores all the information related to a player. 
 
 \doxysubsection{Field Documentation}
-\Hypertarget{struct__Player_a826f1854c520168947fac828f6279417}\label{struct__Player_a826f1854c520168947fac828f6279417} 
+\Hypertarget{struct__Player_a906701b716b852df49fda65055a472cc}\label{struct__Player_a906701b716b852df49fda65055a472cc} 
+\index{\_Player@{\_Player}!\_\_texture@{\_\_texture}}
+\index{\_\_texture@{\_\_texture}!\_Player@{\_Player}}
+\doxysubsubsection{\texorpdfstring{\_\_texture}{\_\_texture}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Player\+::\+\_\+\+\_\+texture}
+
+Actual matrix with the gdesc. \Hypertarget{struct__Player_a826f1854c520168947fac828f6279417}\label{struct__Player_a826f1854c520168947fac828f6279417} 
 \index{\_Player@{\_Player}!gdesc@{gdesc}}
 \index{gdesc@{gdesc}!\_Player@{\_Player}}
 \doxysubsubsection{\texorpdfstring{gdesc}{gdesc}}
@@ -73,7 +85,19 @@ id of the space where the player is at. \Hypertarget{struct__Player_a5d11c0ca8ca
 \doxysubsubsection{\texorpdfstring{player\_name}{player\_name}}
 {\footnotesize\ttfamily char \+\_\+\+Player\+::player\+\_\+name\mbox{[}\mbox{\hyperlink{player_8h_a42f73c9bae789a139c8a6b5ca8770b14}{PLAYER\+\_\+\+NAME\+\_\+\+SIZE}}\mbox{]}}
 
-Name of the player. 
+Name of the player. \Hypertarget{struct__Player_a6346978679480a2d7e5f2508e7409fbe}\label{struct__Player_a6346978679480a2d7e5f2508e7409fbe} 
+\index{\_Player@{\_Player}!team@{team}}
+\index{team@{team}!\_Player@{\_Player}}
+\doxysubsubsection{\texorpdfstring{team}{team}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Player\+::team}
+
+Id of the team the player belongs to. \Hypertarget{struct__Player_af703882b79948400cd69867d28652bb0}\label{struct__Player_af703882b79948400cd69867d28652bb0} 
+\index{\_Player@{\_Player}!texture@{texture}}
+\index{texture@{texture}!\_Player@{\_Player}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Player\+::texture\mbox{[}\mbox{\hyperlink{player_8h_ae566b8cf7afb7b5f93dfb1ee0b8702f1}{PLAYER\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}}
+
+Texture of the player. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
