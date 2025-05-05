@@ -901,6 +901,15 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         screen_area_puts_menu(ge->map, "          /_\\| | | |_   _| || |/ _ \\| _ \\/ __|");
         screen_area_puts_menu(ge->map, "         / _ \\ |_| | | | | __ | (_) |   /\\__ \\");
         screen_area_puts_menu(ge->map, "        /_/ \\_\\___/  |_| |_||_|\\___/|_|_\\|___/");
+        screen_area_puts_menu(ge->map, "");
+        screen_area_puts_menu(ge->map, "        \\_\\");
+        screen_area_puts_menu(ge->map, "         (\" )/(-l-)\\");
+        screen_area_puts_menu(ge->map, "          /\\  //\\\\");
+        screen_area_puts_menu(ge->map, "");
+        screen_area_puts_menu(ge->map, "        .(\" )      ");
+        screen_area_puts_menu(ge->map, "        ,()-()( )  ");
+        screen_area_puts_menu(ge->map, "         / /   \\ \\  ");
+        screen_area_puts_menu(ge->map,"");
         
     }
     screen_menu_paint(game_get_turn(game));
