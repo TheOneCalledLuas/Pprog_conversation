@@ -279,8 +279,8 @@ Status map_init(Game *game, char **map)
             link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], E);
         if ((actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[NORTH], W)) == NO_ID)
         {
-            actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[EAST], N);
-            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], W);
+            actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[WEST], N);
+            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[WEST], W);
         }
         else
             link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], W);

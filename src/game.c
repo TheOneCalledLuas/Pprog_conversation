@@ -1050,7 +1050,7 @@ Status game_next_command(Game *game)
         return ERROR;
 
     /*Actualises the last command.*/
-    game->command_num[game->turn] = (game->command_num[game->turn] - 1 + COMMANDS_SAVED) % COMMANDS_SAVED;
+    game->command_num[game->turn] = (game->command_num[game->turn] +1) % COMMANDS_SAVED;
 
     return OK;
 }
