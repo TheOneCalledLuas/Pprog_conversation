@@ -1,0 +1,1024 @@
+\doxysection{src/animation.c File Reference}
+\hypertarget{animation_8c}{}\label{animation_8c}\index{src/animation.c@{src/animation.c}}
+
+
+It implements animations into the game.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}animation.\+h"{}}\newline
+{\ttfamily \#include "{}types.\+h"{}}\newline
+{\ttfamily \#include "{}graphic\+\_\+engine.\+h"{}}\newline
+Include dependency graph for animation.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{animation_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Animation__Manager}{\+\_\+\+Animation\+\_\+\+Manager}}
+\begin{DoxyCompactList}\small\item\em This struct is in charge of handling all the game animations. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct__Animation}{\+\_\+\+Animation}}
+\begin{DoxyCompactList}\small\item\em Animation stucture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a842ed03f27719bc87666bfd1f75415b8}{MAX\+\_\+\+LINE}}~128
+\item 
+\#define \mbox{\hyperlink{animation_8c_a3851cb64a3d59149a8decc5d66191392}{ESCAPE\+\_\+\+CODE\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{animation_8c_a06e884cefba9e5c96e18ba7e0891a896}{MAX\+\_\+\+COLOR}}~8
+\item 
+\#define \mbox{\hyperlink{animation_8c_aa1ca982cd5aa9c974edfddab55fb994b}{N\+\_\+\+COL}}~2
+\item 
+\#define \mbox{\hyperlink{animation_8c_a99f9cfd68ef4237b568bda6e3e63312f}{MAX\+\_\+\+ANIMATIONS}}~100
+\item 
+\#define \mbox{\hyperlink{animation_8c_ad7c3b975e5552a122f836b02fa138502}{RESET\+\_\+\+COLOR}}~"{}\textbackslash{}x1b\mbox{[}0m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a8b92bcd3859081e6f73f85b7e9c08a33}{BLACK\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}30m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a4cab736dc2dbe88e2fbc2e4bc82523c3}{BLACK\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}40m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_ac95bff74598a07803c6640b13e5638c9}{RED\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}31m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a42c7209a1db62e99858db30bd7bde43e}{RED\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}41m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a146aa4ab92c754e64cb513e08b8458e7}{GREEN\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}32m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_ad317bbd8f86c4377ee80521463127043}{GREEN\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}42m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_aabe5e9a612a590c43abb1c0078cae1ec}{YELLOW\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}33m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a8cd43f9068415d1fc1503a959c50035d}{YELLOW\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}43m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a87a9d9a9e3ea3e523f7fdc41a35bd2d8}{BLUE\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}34m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_af3de3e929ec5a9d64d482657258a9787}{BLUE\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}44m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_aa0fd7d8b2730f9a0a373f119a5eab24f}{MAGENTA\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}35m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a1a5f188ffb7b991ac6e38b45f201cb0c}{MAGENTA\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}45m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a7cb807f796eaf4fe84b51aa7e379afd6}{CYAN\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}36m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_aaa5e9b8d9005c0c216c44a35f42c7f6b}{CYAN\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}46m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_af9ac8f0080dd468af4272856f6f08e78}{WHITE\+\_\+T}}~"{}\textbackslash{}x1b\mbox{[}37m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_ac66d0418ae76a9d28ddb074575da363f}{WHITE\+\_\+F}}~"{}\textbackslash{}x1b\mbox{[}47m"{}
+\item 
+\#define \mbox{\hyperlink{animation_8c_a21d8d1acc9bd2ed93b1960661f09cbf6}{TEXT\+\_\+\+COLOR}}~0
+\item 
+\#define \mbox{\hyperlink{animation_8c_a61ae6f1ae401c962137f2ae1d2a158df}{BACKGROUND\+\_\+\+COLOR}}~1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a38ff5209931d57a3306132694d19edf8}{wait}} (float time)
+\begin{DoxyCompactList}\small\item\em Waits a certain amount of time in miliseconds. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_a5539bf9160e134e0f8ec487d61d31437}{animation\+\_\+manager\+\_\+init}} (char \texorpdfstring{$\ast$}{*}animation\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Initialises the animator manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animation_8c_a6dff1023f4be1deb4407de2e2c159193}{animation\+\_\+manager\+\_\+destroy}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am)
+\begin{DoxyCompactList}\small\item\em Destroys the animator manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a2f2816fbf0dd9aa7e841c9d6ad33a034}{animation\+\_\+manager\+\_\+add\+\_\+animation}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am, \mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Adds a certain animation to the manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_aae14fa858dc4f6cfb5f89db8c59f4650}{animation\+\_\+manager\+\_\+del\+\_\+animation}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am, int pos)
+\begin{DoxyCompactList}\small\item\em Deletes a certain animation from the manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_a9460c50e73bf5010b0174c13398ab868}{animation\+\_\+init}} (\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Initialises an animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animation_8c_ad67bb26b929744962d0c6b1dbd640388}{animation\+\_\+destroy}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Destroys an animation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{animation_8c_af4b3b68e8b51ada8076380f751790d8c}{animation\+\_\+get\+\_\+id}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation id. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_a1252672d639bc83ba97ad9fc57093f14}{animation\+\_\+get\+\_\+name}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_acc3a4b129f3bed882a8a8be3d13fd0b4}{animation\+\_\+set\+\_\+name}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Sets the animation name. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_aeec6369fc7ac3b4671681b832f049a69}{animation\+\_\+get\+\_\+file\+\_\+name}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation file name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a214a3107b87a08d2c8691291aedf2beb}{animation\+\_\+set\+\_\+file\+\_\+name}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Sets the animation file name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_a308f54feb2b37b270d4c669aa11757de}{animation\+\_\+get\+\_\+n\+\_\+images}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation number of images. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a38ebe7558ebbeb50f8f72874e1d9185f}{animation\+\_\+set\+\_\+n\+\_\+images}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int n\+\_\+images)
+\begin{DoxyCompactList}\small\item\em Sets the animation number of images. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_a805fe51d3c9023162deedd24763c2f53}{animation\+\_\+get\+\_\+width}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation width. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a528b3e9be62be1d1d703665f1b8e41e3}{animation\+\_\+set\+\_\+width}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int width)
+\begin{DoxyCompactList}\small\item\em Sets the animation width. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_aaac08d5c64feac1555b08a1a77416f67}{animation\+\_\+get\+\_\+height}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation height. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a1c8ee44f997fdefe63cd10b4266c539a}{animation\+\_\+set\+\_\+height}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int height)
+\begin{DoxyCompactList}\small\item\em Sets the animation height. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_a092ef6265bf4da1c0264cb3edb09e6b7}{animation\+\_\+get\+\_\+side\+\_\+padding}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation side padding. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a020ac69d6c18d78eccad5228d8ff9232}{animation\+\_\+set\+\_\+side\+\_\+padding}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int side\+\_\+padding)
+\begin{DoxyCompactList}\small\item\em Sets the animation side padding. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_a11e528429dc1ce1659aac227a5fcfffb}{animation\+\_\+get\+\_\+height\+\_\+padding}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation height padding. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_acf728a53b64ae19c55692011c3d81e3e}{animation\+\_\+set\+\_\+height\+\_\+padding}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int height\+\_\+padding)
+\begin{DoxyCompactList}\small\item\em Sets the animation height padding. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{animation_8c_aa6a939207f74dd7a93f2b1a87655c448}{animation\+\_\+get\+\_\+refresh\+\_\+rate}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation refresh rate. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a2bdad0d09827d0f1b496a5a28d7d5db5}{animation\+\_\+set\+\_\+refresh\+\_\+rate}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, float refresh\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Sets the animation refresh rate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_ac21c5a8d3f45ce5223cca003a5b184f8}{animation\+\_\+get\+\_\+background\+\_\+color}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation background color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_ac591376ad22ae715ca804987a502175f}{animation\+\_\+set\+\_\+background\+\_\+color}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int background\+\_\+color)
+\begin{DoxyCompactList}\small\item\em Sets the animation background color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_ab7eac0f651aaabe3aa314fa4abd6ca32}{animation\+\_\+get\+\_\+font\+\_\+color}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim)
+\begin{DoxyCompactList}\small\item\em Gets the animation font color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_abe00f5561aa4f9d41d7cb73a902e3a13}{animation\+\_\+set\+\_\+font\+\_\+color}} (\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}anim, int font\+\_\+color)
+\begin{DoxyCompactList}\small\item\em Sets the animation font color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animation_8c_af58987d4ba3fe21273440996a5eb93aa}{animation\+\_\+manager\+\_\+get\+\_\+n\+\_\+animations}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am)
+\begin{DoxyCompactList}\small\item\em Gets the number of animations in the manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_aa4e4a59520c497d78bf9810402eba4fc}{animation\+\_\+manager\+\_\+get\+\_\+animation\+\_\+by\+\_\+id}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
+\begin{DoxyCompactList}\small\item\em Gets the animation from the manager by its id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animation_8c_ac131650fba4381eb92522091e7cda33b}{animation\+\_\+manager\+\_\+get\+\_\+animation\+\_\+by\+\_\+name}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Gets the animation from the manager by its name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{animation_8c_a46d71abe43cf07c0f3d073a13e358ddc}{animation\+\_\+run}} (\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}am, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} anim\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Runs a certain animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{animation_8c_a0fd916977d83dc2ddd879f82c49a527d}{color}} \mbox{[}\mbox{\hyperlink{animation_8c_aa1ca982cd5aa9c974edfddab55fb994b}{N\+\_\+\+COL}}\mbox{]}\mbox{[}\mbox{\hyperlink{animation_8c_a06e884cefba9e5c96e18ba7e0891a896}{MAX\+\_\+\+COLOR}}\mbox{]}\mbox{[}\mbox{\hyperlink{animation_8c_a3851cb64a3d59149a8decc5d66191392}{ESCAPE\+\_\+\+CODE\+\_\+\+LEN}}\mbox{]} = \{\{\mbox{\hyperlink{animation_8c_a8b92bcd3859081e6f73f85b7e9c08a33}{BLACK\+\_\+T}}, \mbox{\hyperlink{animation_8c_ac95bff74598a07803c6640b13e5638c9}{RED\+\_\+T}}, \mbox{\hyperlink{animation_8c_a146aa4ab92c754e64cb513e08b8458e7}{GREEN\+\_\+T}}, \mbox{\hyperlink{animation_8c_aabe5e9a612a590c43abb1c0078cae1ec}{YELLOW\+\_\+T}}, \mbox{\hyperlink{animation_8c_a87a9d9a9e3ea3e523f7fdc41a35bd2d8}{BLUE\+\_\+T}}, \mbox{\hyperlink{animation_8c_aa0fd7d8b2730f9a0a373f119a5eab24f}{MAGENTA\+\_\+T}}, \mbox{\hyperlink{animation_8c_a7cb807f796eaf4fe84b51aa7e379afd6}{CYAN\+\_\+T}}, \mbox{\hyperlink{animation_8c_af9ac8f0080dd468af4272856f6f08e78}{WHITE\+\_\+T}}\}, \{\mbox{\hyperlink{animation_8c_a4cab736dc2dbe88e2fbc2e4bc82523c3}{BLACK\+\_\+F}}, \mbox{\hyperlink{animation_8c_a42c7209a1db62e99858db30bd7bde43e}{RED\+\_\+F}}, \mbox{\hyperlink{animation_8c_ad317bbd8f86c4377ee80521463127043}{GREEN\+\_\+F}}, \mbox{\hyperlink{animation_8c_a8cd43f9068415d1fc1503a959c50035d}{YELLOW\+\_\+F}}, \mbox{\hyperlink{animation_8c_af3de3e929ec5a9d64d482657258a9787}{BLUE\+\_\+F}}, \mbox{\hyperlink{animation_8c_a1a5f188ffb7b991ac6e38b45f201cb0c}{MAGENTA\+\_\+F}}, \mbox{\hyperlink{animation_8c_aaa5e9b8d9005c0c216c44a35f42c7f6b}{CYAN\+\_\+F}}, \mbox{\hyperlink{animation_8c_ac66d0418ae76a9d28ddb074575da363f}{WHITE\+\_\+F}}\}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements animations into the game. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+14-\/04-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{animation_8c_a61ae6f1ae401c962137f2ae1d2a158df}\label{animation_8c_a61ae6f1ae401c962137f2ae1d2a158df} 
+\index{animation.c@{animation.c}!BACKGROUND\_COLOR@{BACKGROUND\_COLOR}}
+\index{BACKGROUND\_COLOR@{BACKGROUND\_COLOR}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_COLOR}{BACKGROUND\_COLOR}}
+{\footnotesize\ttfamily \#define BACKGROUND\+\_\+\+COLOR~1}
+
+Background color. \Hypertarget{animation_8c_a4cab736dc2dbe88e2fbc2e4bc82523c3}\label{animation_8c_a4cab736dc2dbe88e2fbc2e4bc82523c3} 
+\index{animation.c@{animation.c}!BLACK\_F@{BLACK\_F}}
+\index{BLACK\_F@{BLACK\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{BLACK\_F}{BLACK\_F}}
+{\footnotesize\ttfamily \#define BLACK\+\_\+F~"{}\textbackslash{}x1b\mbox{[}40m"{}}
+
+Black background color. \Hypertarget{animation_8c_a8b92bcd3859081e6f73f85b7e9c08a33}\label{animation_8c_a8b92bcd3859081e6f73f85b7e9c08a33} 
+\index{animation.c@{animation.c}!BLACK\_T@{BLACK\_T}}
+\index{BLACK\_T@{BLACK\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{BLACK\_T}{BLACK\_T}}
+{\footnotesize\ttfamily \#define BLACK\+\_\+T~"{}\textbackslash{}x1b\mbox{[}30m"{}}
+
+Black text color. \Hypertarget{animation_8c_af3de3e929ec5a9d64d482657258a9787}\label{animation_8c_af3de3e929ec5a9d64d482657258a9787} 
+\index{animation.c@{animation.c}!BLUE\_F@{BLUE\_F}}
+\index{BLUE\_F@{BLUE\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{BLUE\_F}{BLUE\_F}}
+{\footnotesize\ttfamily \#define BLUE\+\_\+F~"{}\textbackslash{}x1b\mbox{[}44m"{}}
+
+Blue background color. \Hypertarget{animation_8c_a87a9d9a9e3ea3e523f7fdc41a35bd2d8}\label{animation_8c_a87a9d9a9e3ea3e523f7fdc41a35bd2d8} 
+\index{animation.c@{animation.c}!BLUE\_T@{BLUE\_T}}
+\index{BLUE\_T@{BLUE\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{BLUE\_T}{BLUE\_T}}
+{\footnotesize\ttfamily \#define BLUE\+\_\+T~"{}\textbackslash{}x1b\mbox{[}34m"{}}
+
+Blue text color. \Hypertarget{animation_8c_aaa5e9b8d9005c0c216c44a35f42c7f6b}\label{animation_8c_aaa5e9b8d9005c0c216c44a35f42c7f6b} 
+\index{animation.c@{animation.c}!CYAN\_F@{CYAN\_F}}
+\index{CYAN\_F@{CYAN\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{CYAN\_F}{CYAN\_F}}
+{\footnotesize\ttfamily \#define CYAN\+\_\+F~"{}\textbackslash{}x1b\mbox{[}46m"{}}
+
+Cyan background color. \Hypertarget{animation_8c_a7cb807f796eaf4fe84b51aa7e379afd6}\label{animation_8c_a7cb807f796eaf4fe84b51aa7e379afd6} 
+\index{animation.c@{animation.c}!CYAN\_T@{CYAN\_T}}
+\index{CYAN\_T@{CYAN\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{CYAN\_T}{CYAN\_T}}
+{\footnotesize\ttfamily \#define CYAN\+\_\+T~"{}\textbackslash{}x1b\mbox{[}36m"{}}
+
+Cyan text color. \Hypertarget{animation_8c_a3851cb64a3d59149a8decc5d66191392}\label{animation_8c_a3851cb64a3d59149a8decc5d66191392} 
+\index{animation.c@{animation.c}!ESCAPE\_CODE\_LEN@{ESCAPE\_CODE\_LEN}}
+\index{ESCAPE\_CODE\_LEN@{ESCAPE\_CODE\_LEN}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{ESCAPE\_CODE\_LEN}{ESCAPE\_CODE\_LEN}}
+{\footnotesize\ttfamily \#define ESCAPE\+\_\+\+CODE\+\_\+\+LEN~6}
+
+Escape code lenght with the final /0. \Hypertarget{animation_8c_ad317bbd8f86c4377ee80521463127043}\label{animation_8c_ad317bbd8f86c4377ee80521463127043} 
+\index{animation.c@{animation.c}!GREEN\_F@{GREEN\_F}}
+\index{GREEN\_F@{GREEN\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{GREEN\_F}{GREEN\_F}}
+{\footnotesize\ttfamily \#define GREEN\+\_\+F~"{}\textbackslash{}x1b\mbox{[}42m"{}}
+
+Green background color. \Hypertarget{animation_8c_a146aa4ab92c754e64cb513e08b8458e7}\label{animation_8c_a146aa4ab92c754e64cb513e08b8458e7} 
+\index{animation.c@{animation.c}!GREEN\_T@{GREEN\_T}}
+\index{GREEN\_T@{GREEN\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{GREEN\_T}{GREEN\_T}}
+{\footnotesize\ttfamily \#define GREEN\+\_\+T~"{}\textbackslash{}x1b\mbox{[}32m"{}}
+
+Green text color. \Hypertarget{animation_8c_a1a5f188ffb7b991ac6e38b45f201cb0c}\label{animation_8c_a1a5f188ffb7b991ac6e38b45f201cb0c} 
+\index{animation.c@{animation.c}!MAGENTA\_F@{MAGENTA\_F}}
+\index{MAGENTA\_F@{MAGENTA\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{MAGENTA\_F}{MAGENTA\_F}}
+{\footnotesize\ttfamily \#define MAGENTA\+\_\+F~"{}\textbackslash{}x1b\mbox{[}45m"{}}
+
+Magenta background color. \Hypertarget{animation_8c_aa0fd7d8b2730f9a0a373f119a5eab24f}\label{animation_8c_aa0fd7d8b2730f9a0a373f119a5eab24f} 
+\index{animation.c@{animation.c}!MAGENTA\_T@{MAGENTA\_T}}
+\index{MAGENTA\_T@{MAGENTA\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{MAGENTA\_T}{MAGENTA\_T}}
+{\footnotesize\ttfamily \#define MAGENTA\+\_\+T~"{}\textbackslash{}x1b\mbox{[}35m"{}}
+
+Magenta text color. \Hypertarget{animation_8c_a99f9cfd68ef4237b568bda6e3e63312f}\label{animation_8c_a99f9cfd68ef4237b568bda6e3e63312f} 
+\index{animation.c@{animation.c}!MAX\_ANIMATIONS@{MAX\_ANIMATIONS}}
+\index{MAX\_ANIMATIONS@{MAX\_ANIMATIONS}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ANIMATIONS}{MAX\_ANIMATIONS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+ANIMATIONS~100}
+
+Max animation number. \Hypertarget{animation_8c_a06e884cefba9e5c96e18ba7e0891a896}\label{animation_8c_a06e884cefba9e5c96e18ba7e0891a896} 
+\index{animation.c@{animation.c}!MAX\_COLOR@{MAX\_COLOR}}
+\index{MAX\_COLOR@{MAX\_COLOR}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_COLOR}{MAX\_COLOR}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+COLOR~8}
+
+Max number of colors. \Hypertarget{animation_8c_a842ed03f27719bc87666bfd1f75415b8}\label{animation_8c_a842ed03f27719bc87666bfd1f75415b8} 
+\index{animation.c@{animation.c}!MAX\_LINE@{MAX\_LINE}}
+\index{MAX\_LINE@{MAX\_LINE}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_LINE}{MAX\_LINE}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+LINE~128}
+
+Max number of cheracters per line. \Hypertarget{animation_8c_aa1ca982cd5aa9c974edfddab55fb994b}\label{animation_8c_aa1ca982cd5aa9c974edfddab55fb994b} 
+\index{animation.c@{animation.c}!N\_COL@{N\_COL}}
+\index{N\_COL@{N\_COL}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{N\_COL}{N\_COL}}
+{\footnotesize\ttfamily \#define N\+\_\+\+COL~2}
+
+Number color-\/modifiable parts. \Hypertarget{animation_8c_a42c7209a1db62e99858db30bd7bde43e}\label{animation_8c_a42c7209a1db62e99858db30bd7bde43e} 
+\index{animation.c@{animation.c}!RED\_F@{RED\_F}}
+\index{RED\_F@{RED\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{RED\_F}{RED\_F}}
+{\footnotesize\ttfamily \#define RED\+\_\+F~"{}\textbackslash{}x1b\mbox{[}41m"{}}
+
+Red background color. \Hypertarget{animation_8c_ac95bff74598a07803c6640b13e5638c9}\label{animation_8c_ac95bff74598a07803c6640b13e5638c9} 
+\index{animation.c@{animation.c}!RED\_T@{RED\_T}}
+\index{RED\_T@{RED\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{RED\_T}{RED\_T}}
+{\footnotesize\ttfamily \#define RED\+\_\+T~"{}\textbackslash{}x1b\mbox{[}31m"{}}
+
+Red text color. \Hypertarget{animation_8c_ad7c3b975e5552a122f836b02fa138502}\label{animation_8c_ad7c3b975e5552a122f836b02fa138502} 
+\index{animation.c@{animation.c}!RESET\_COLOR@{RESET\_COLOR}}
+\index{RESET\_COLOR@{RESET\_COLOR}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{RESET\_COLOR}{RESET\_COLOR}}
+{\footnotesize\ttfamily \#define RESET\+\_\+\+COLOR~"{}\textbackslash{}x1b\mbox{[}0m"{}}
+
+Reset color escape code. \Hypertarget{animation_8c_a21d8d1acc9bd2ed93b1960661f09cbf6}\label{animation_8c_a21d8d1acc9bd2ed93b1960661f09cbf6} 
+\index{animation.c@{animation.c}!TEXT\_COLOR@{TEXT\_COLOR}}
+\index{TEXT\_COLOR@{TEXT\_COLOR}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{TEXT\_COLOR}{TEXT\_COLOR}}
+{\footnotesize\ttfamily \#define TEXT\+\_\+\+COLOR~0}
+
+Text color. \Hypertarget{animation_8c_ac66d0418ae76a9d28ddb074575da363f}\label{animation_8c_ac66d0418ae76a9d28ddb074575da363f} 
+\index{animation.c@{animation.c}!WHITE\_F@{WHITE\_F}}
+\index{WHITE\_F@{WHITE\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{WHITE\_F}{WHITE\_F}}
+{\footnotesize\ttfamily \#define WHITE\+\_\+F~"{}\textbackslash{}x1b\mbox{[}47m"{}}
+
+White background color. \Hypertarget{animation_8c_af9ac8f0080dd468af4272856f6f08e78}\label{animation_8c_af9ac8f0080dd468af4272856f6f08e78} 
+\index{animation.c@{animation.c}!WHITE\_T@{WHITE\_T}}
+\index{WHITE\_T@{WHITE\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{WHITE\_T}{WHITE\_T}}
+{\footnotesize\ttfamily \#define WHITE\+\_\+T~"{}\textbackslash{}x1b\mbox{[}37m"{}}
+
+White text color. \Hypertarget{animation_8c_a8cd43f9068415d1fc1503a959c50035d}\label{animation_8c_a8cd43f9068415d1fc1503a959c50035d} 
+\index{animation.c@{animation.c}!YELLOW\_F@{YELLOW\_F}}
+\index{YELLOW\_F@{YELLOW\_F}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{YELLOW\_F}{YELLOW\_F}}
+{\footnotesize\ttfamily \#define YELLOW\+\_\+F~"{}\textbackslash{}x1b\mbox{[}43m"{}}
+
+Yellow background color. \Hypertarget{animation_8c_aabe5e9a612a590c43abb1c0078cae1ec}\label{animation_8c_aabe5e9a612a590c43abb1c0078cae1ec} 
+\index{animation.c@{animation.c}!YELLOW\_T@{YELLOW\_T}}
+\index{YELLOW\_T@{YELLOW\_T}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{YELLOW\_T}{YELLOW\_T}}
+{\footnotesize\ttfamily \#define YELLOW\+\_\+T~"{}\textbackslash{}x1b\mbox{[}33m"{}}
+
+Yellow text color. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{animation_8c_ad67bb26b929744962d0c6b1dbd640388}\label{animation_8c_ad67bb26b929744962d0c6b1dbd640388} 
+\index{animation.c@{animation.c}!animation\_destroy@{animation\_destroy}}
+\index{animation\_destroy@{animation\_destroy}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_destroy()}{animation\_destroy()}}
+{\footnotesize\ttfamily void animation\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Destroys an animation. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to destroy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{animation_8c_ac21c5a8d3f45ce5223cca003a5b184f8}\label{animation_8c_ac21c5a8d3f45ce5223cca003a5b184f8} 
+\index{animation.c@{animation.c}!animation\_get\_background\_color@{animation\_get\_background\_color}}
+\index{animation\_get\_background\_color@{animation\_get\_background\_color}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_background\_color()}{animation\_get\_background\_color()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+background\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation background color. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the background color from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation background color or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_aeec6369fc7ac3b4671681b832f049a69}\label{animation_8c_aeec6369fc7ac3b4671681b832f049a69} 
+\index{animation.c@{animation.c}!animation\_get\_file\_name@{animation\_get\_file\_name}}
+\index{animation\_get\_file\_name@{animation\_get\_file\_name}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_file\_name()}{animation\_get\_file\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} animation\+\_\+get\+\_\+file\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation file name. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the file name from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation file name or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_ab7eac0f651aaabe3aa314fa4abd6ca32}\label{animation_8c_ab7eac0f651aaabe3aa314fa4abd6ca32} 
+\index{animation.c@{animation.c}!animation\_get\_font\_color@{animation\_get\_font\_color}}
+\index{animation\_get\_font\_color@{animation\_get\_font\_color}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_font\_color()}{animation\_get\_font\_color()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+font\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation font color. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the font color from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation font color or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_aaac08d5c64feac1555b08a1a77416f67}\label{animation_8c_aaac08d5c64feac1555b08a1a77416f67} 
+\index{animation.c@{animation.c}!animation\_get\_height@{animation\_get\_height}}
+\index{animation\_get\_height@{animation\_get\_height}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_height()}{animation\_get\_height()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation height. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the height from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation height or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a11e528429dc1ce1659aac227a5fcfffb}\label{animation_8c_a11e528429dc1ce1659aac227a5fcfffb} 
+\index{animation.c@{animation.c}!animation\_get\_height\_padding@{animation\_get\_height\_padding}}
+\index{animation\_get\_height\_padding@{animation\_get\_height\_padding}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_height\_padding()}{animation\_get\_height\_padding()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+height\+\_\+padding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation height padding. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the height padding from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation height padding or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_af4b3b68e8b51ada8076380f751790d8c}\label{animation_8c_af4b3b68e8b51ada8076380f751790d8c} 
+\index{animation.c@{animation.c}!animation\_get\_id@{animation\_get\_id}}
+\index{animation\_get\_id@{animation\_get\_id}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_id()}{animation\_get\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} animation\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation id. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the id from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation id or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a308f54feb2b37b270d4c669aa11757de}\label{animation_8c_a308f54feb2b37b270d4c669aa11757de} 
+\index{animation.c@{animation.c}!animation\_get\_n\_images@{animation\_get\_n\_images}}
+\index{animation\_get\_n\_images@{animation\_get\_n\_images}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_n\_images()}{animation\_get\_n\_images()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+n\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation number of images. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the number of images from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation number of images or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a1252672d639bc83ba97ad9fc57093f14}\label{animation_8c_a1252672d639bc83ba97ad9fc57093f14} 
+\index{animation.c@{animation.c}!animation\_get\_name@{animation\_get\_name}}
+\index{animation\_get\_name@{animation\_get\_name}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_name()}{animation\_get\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} animation\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation name. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the name from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation name or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_aa6a939207f74dd7a93f2b1a87655c448}\label{animation_8c_aa6a939207f74dd7a93f2b1a87655c448} 
+\index{animation.c@{animation.c}!animation\_get\_refresh\_rate@{animation\_get\_refresh\_rate}}
+\index{animation\_get\_refresh\_rate@{animation\_get\_refresh\_rate}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_refresh\_rate()}{animation\_get\_refresh\_rate()}}
+{\footnotesize\ttfamily float animation\+\_\+get\+\_\+refresh\+\_\+rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation refresh rate. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the refresh rate from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation refresh rate or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a092ef6265bf4da1c0264cb3edb09e6b7}\label{animation_8c_a092ef6265bf4da1c0264cb3edb09e6b7} 
+\index{animation.c@{animation.c}!animation\_get\_side\_padding@{animation\_get\_side\_padding}}
+\index{animation\_get\_side\_padding@{animation\_get\_side\_padding}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_side\_padding()}{animation\_get\_side\_padding()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+side\+\_\+padding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation side padding. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the side padding from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation side padding or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a805fe51d3c9023162deedd24763c2f53}\label{animation_8c_a805fe51d3c9023162deedd24763c2f53} 
+\index{animation.c@{animation.c}!animation\_get\_width@{animation\_get\_width}}
+\index{animation\_get\_width@{animation\_get\_width}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_get\_width()}{animation\_get\_width()}}
+{\footnotesize\ttfamily int animation\+\_\+get\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Gets the animation width. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to get the width from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation width or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a9460c50e73bf5010b0174c13398ab868}\label{animation_8c_a9460c50e73bf5010b0174c13398ab868} 
+\index{animation.c@{animation.c}!animation\_init@{animation\_init}}
+\index{animation\_init@{animation\_init}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_init()}{animation\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} animation\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Initialises an animation. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Animation id. \\
+\hline
+{\em filename} & File where the animation is stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{animation_8c_a2f2816fbf0dd9aa7e841c9d6ad33a034}\label{animation_8c_a2f2816fbf0dd9aa7e841c9d6ad33a034} 
+\index{animation.c@{animation.c}!animation\_manager\_add\_animation@{animation\_manager\_add\_animation}}
+\index{animation\_manager\_add\_animation@{animation\_manager\_add\_animation}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_add\_animation()}{animation\_manager\_add\_animation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+manager\+\_\+add\+\_\+animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am,  }\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim }\end{DoxyParamCaption})}
+
+
+
+Adds a certain animation to the manager. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+{\em anim} & Pointer to the animation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_aae14fa858dc4f6cfb5f89db8c59f4650}\label{animation_8c_aae14fa858dc4f6cfb5f89db8c59f4650} 
+\index{animation.c@{animation.c}!animation\_manager\_del\_animation@{animation\_manager\_del\_animation}}
+\index{animation\_manager\_del\_animation@{animation\_manager\_del\_animation}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_del\_animation()}{animation\_manager\_del\_animation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+manager\+\_\+del\+\_\+animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Deletes a certain animation from the manager. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+{\em pos} & Position of the animation to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a6dff1023f4be1deb4407de2e2c159193}\label{animation_8c_a6dff1023f4be1deb4407de2e2c159193} 
+\index{animation.c@{animation.c}!animation\_manager\_destroy@{animation\_manager\_destroy}}
+\index{animation\_manager\_destroy@{animation\_manager\_destroy}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_destroy()}{animation\_manager\_destroy()}}
+{\footnotesize\ttfamily void animation\+\_\+manager\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am }\end{DoxyParamCaption})}
+
+
+
+Destroys the animator manager. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager to destroy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{animation_8c_aa4e4a59520c497d78bf9810402eba4fc}\label{animation_8c_aa4e4a59520c497d78bf9810402eba4fc} 
+\index{animation.c@{animation.c}!animation\_manager\_get\_animation\_by\_id@{animation\_manager\_get\_animation\_by\_id}}
+\index{animation\_manager\_get\_animation\_by\_id@{animation\_manager\_get\_animation\_by\_id}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_get\_animation\_by\_id()}{animation\_manager\_get\_animation\_by\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} animation\+\_\+manager\+\_\+get\+\_\+animation\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id }\end{DoxyParamCaption})}
+
+
+
+Gets the animation from the manager by its id. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+{\em id} & Animation id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_ac131650fba4381eb92522091e7cda33b}\label{animation_8c_ac131650fba4381eb92522091e7cda33b} 
+\index{animation.c@{animation.c}!animation\_manager\_get\_animation\_by\_name@{animation\_manager\_get\_animation\_by\_name}}
+\index{animation\_manager\_get\_animation\_by\_name@{animation\_manager\_get\_animation\_by\_name}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_get\_animation\_by\_name()}{animation\_manager\_get\_animation\_by\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*} animation\+\_\+manager\+\_\+get\+\_\+animation\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets the animation from the manager by its name. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+{\em name} & Animation name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Animation or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_af58987d4ba3fe21273440996a5eb93aa}\label{animation_8c_af58987d4ba3fe21273440996a5eb93aa} 
+\index{animation.c@{animation.c}!animation\_manager\_get\_n\_animations@{animation\_manager\_get\_n\_animations}}
+\index{animation\_manager\_get\_n\_animations@{animation\_manager\_get\_n\_animations}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_get\_n\_animations()}{animation\_manager\_get\_n\_animations()}}
+{\footnotesize\ttfamily int animation\+\_\+manager\+\_\+get\+\_\+n\+\_\+animations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am }\end{DoxyParamCaption})}
+
+
+
+Gets the number of animations in the manager. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of animations or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a5539bf9160e134e0f8ec487d61d31437}\label{animation_8c_a5539bf9160e134e0f8ec487d61d31437} 
+\index{animation.c@{animation.c}!animation\_manager\_init@{animation\_manager\_init}}
+\index{animation\_manager\_init@{animation\_manager\_init}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_manager\_init()}{animation\_manager\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*} animation\+\_\+manager\+\_\+init (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{animation\+\_\+route }\end{DoxyParamCaption})}
+
+
+
+Initialises the animator manager. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+\_\+route} & Directory route where the animations are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the struct of NULL. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a46d71abe43cf07c0f3d073a13e358ddc}\label{animation_8c_a46d71abe43cf07c0f3d073a13e358ddc} 
+\index{animation.c@{animation.c}!animation\_run@{animation\_run}}
+\index{animation\_run@{animation\_run}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_run()}{animation\_run()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_ad16aa433b4608edc5b2f5f79958a0bb1}{Animation\+\_\+\+Manager}} \texorpdfstring{$\ast$}{*}}]{am,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{anim\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Runs a certain animation. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em am} & Animator manager. \\
+\hline
+{\em anim\+\_\+id} & Aniamtion id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_ac591376ad22ae715ca804987a502175f}\label{animation_8c_ac591376ad22ae715ca804987a502175f} 
+\index{animation.c@{animation.c}!animation\_set\_background\_color@{animation\_set\_background\_color}}
+\index{animation\_set\_background\_color@{animation\_set\_background\_color}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_background\_color()}{animation\_set\_background\_color()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+background\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{background\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+Sets the animation background color. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the background color to. \\
+\hline
+{\em background\+\_\+color} & Animation background color. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a214a3107b87a08d2c8691291aedf2beb}\label{animation_8c_a214a3107b87a08d2c8691291aedf2beb} 
+\index{animation.c@{animation.c}!animation\_set\_file\_name@{animation\_set\_file\_name}}
+\index{animation\_set\_file\_name@{animation\_set\_file\_name}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_file\_name()}{animation\_set\_file\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+file\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Sets the animation file name. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the file name to. \\
+\hline
+{\em filename} & Animation file name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_abe00f5561aa4f9d41d7cb73a902e3a13}\label{animation_8c_abe00f5561aa4f9d41d7cb73a902e3a13} 
+\index{animation.c@{animation.c}!animation\_set\_font\_color@{animation\_set\_font\_color}}
+\index{animation\_set\_font\_color@{animation\_set\_font\_color}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_font\_color()}{animation\_set\_font\_color()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+font\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{font\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+Sets the animation font color. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the font color to. \\
+\hline
+{\em font\+\_\+color} & Animation font color. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a1c8ee44f997fdefe63cd10b4266c539a}\label{animation_8c_a1c8ee44f997fdefe63cd10b4266c539a} 
+\index{animation.c@{animation.c}!animation\_set\_height@{animation\_set\_height}}
+\index{animation\_set\_height@{animation\_set\_height}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_height()}{animation\_set\_height()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Sets the animation height. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the height to. \\
+\hline
+{\em height} & Animation height. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_acf728a53b64ae19c55692011c3d81e3e}\label{animation_8c_acf728a53b64ae19c55692011c3d81e3e} 
+\index{animation.c@{animation.c}!animation\_set\_height\_padding@{animation\_set\_height\_padding}}
+\index{animation\_set\_height\_padding@{animation\_set\_height\_padding}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_height\_padding()}{animation\_set\_height\_padding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+height\+\_\+padding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{height\+\_\+padding }\end{DoxyParamCaption})}
+
+
+
+Sets the animation height padding. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the height padding to. \\
+\hline
+{\em height\+\_\+padding} & Animation height padding. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a38ebe7558ebbeb50f8f72874e1d9185f}\label{animation_8c_a38ebe7558ebbeb50f8f72874e1d9185f} 
+\index{animation.c@{animation.c}!animation\_set\_n\_images@{animation\_set\_n\_images}}
+\index{animation\_set\_n\_images@{animation\_set\_n\_images}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_n\_images()}{animation\_set\_n\_images()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+n\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{n\+\_\+images }\end{DoxyParamCaption})}
+
+
+
+Sets the animation number of images. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the number of images to. \\
+\hline
+{\em n\+\_\+images} & Animation number of images. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_acc3a4b129f3bed882a8a8be3d13fd0b4}\label{animation_8c_acc3a4b129f3bed882a8a8be3d13fd0b4} 
+\index{animation.c@{animation.c}!animation\_set\_name@{animation\_set\_name}}
+\index{animation\_set\_name@{animation\_set\_name}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_name()}{animation\_set\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the animation name. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the name to. \\
+\hline
+{\em name} & Animation name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a2bdad0d09827d0f1b496a5a28d7d5db5}\label{animation_8c_a2bdad0d09827d0f1b496a5a28d7d5db5} 
+\index{animation.c@{animation.c}!animation\_set\_refresh\_rate@{animation\_set\_refresh\_rate}}
+\index{animation\_set\_refresh\_rate@{animation\_set\_refresh\_rate}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_refresh\_rate()}{animation\_set\_refresh\_rate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+refresh\+\_\+rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{float}]{refresh\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+Sets the animation refresh rate. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the refresh rate to. \\
+\hline
+{\em refresh\+\_\+rate} & Animation refresh rate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a020ac69d6c18d78eccad5228d8ff9232}\label{animation_8c_a020ac69d6c18d78eccad5228d8ff9232} 
+\index{animation.c@{animation.c}!animation\_set\_side\_padding@{animation\_set\_side\_padding}}
+\index{animation\_set\_side\_padding@{animation\_set\_side\_padding}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_side\_padding()}{animation\_set\_side\_padding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+side\+\_\+padding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{side\+\_\+padding }\end{DoxyParamCaption})}
+
+
+
+Sets the animation side padding. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the side padding to. \\
+\hline
+{\em side\+\_\+padding} & Animation side padding. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a528b3e9be62be1d1d703665f1b8e41e3}\label{animation_8c_a528b3e9be62be1d1d703665f1b8e41e3} 
+\index{animation.c@{animation.c}!animation\_set\_width@{animation\_set\_width}}
+\index{animation\_set\_width@{animation\_set\_width}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{animation\_set\_width()}{animation\_set\_width()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} animation\+\_\+set\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animation_8h_a7164f4b6850f6eb7ace4147d71a2b467}{Animation}} \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Sets the animation width. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em anim} & Animation to set the width to. \\
+\hline
+{\em width} & Animation width. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animation_8c_a38ff5209931d57a3306132694d19edf8}\label{animation_8c_a38ff5209931d57a3306132694d19edf8} 
+\index{animation.c@{animation.c}!wait@{wait}}
+\index{wait@{wait}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{wait()}{wait()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} wait (\begin{DoxyParamCaption}\item[{float}]{time }\end{DoxyParamCaption})}
+
+
+
+Waits a certain amount of time in miliseconds. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Time to wait in miliseconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes as expected, ERROR otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{animation_8c_a0fd916977d83dc2ddd879f82c49a527d}\label{animation_8c_a0fd916977d83dc2ddd879f82c49a527d} 
+\index{animation.c@{animation.c}!color@{color}}
+\index{color@{color}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily char color\mbox{[}\mbox{\hyperlink{animation_8c_aa1ca982cd5aa9c974edfddab55fb994b}{N\+\_\+\+COL}}\mbox{]}\mbox{[}\mbox{\hyperlink{animation_8c_a06e884cefba9e5c96e18ba7e0891a896}{MAX\+\_\+\+COLOR}}\mbox{]}\mbox{[}\mbox{\hyperlink{animation_8c_a3851cb64a3d59149a8decc5d66191392}{ESCAPE\+\_\+\+CODE\+\_\+\+LEN}}\mbox{]} = \{\{\mbox{\hyperlink{animation_8c_a8b92bcd3859081e6f73f85b7e9c08a33}{BLACK\+\_\+T}}, \mbox{\hyperlink{animation_8c_ac95bff74598a07803c6640b13e5638c9}{RED\+\_\+T}}, \mbox{\hyperlink{animation_8c_a146aa4ab92c754e64cb513e08b8458e7}{GREEN\+\_\+T}}, \mbox{\hyperlink{animation_8c_aabe5e9a612a590c43abb1c0078cae1ec}{YELLOW\+\_\+T}}, \mbox{\hyperlink{animation_8c_a87a9d9a9e3ea3e523f7fdc41a35bd2d8}{BLUE\+\_\+T}}, \mbox{\hyperlink{animation_8c_aa0fd7d8b2730f9a0a373f119a5eab24f}{MAGENTA\+\_\+T}}, \mbox{\hyperlink{animation_8c_a7cb807f796eaf4fe84b51aa7e379afd6}{CYAN\+\_\+T}}, \mbox{\hyperlink{animation_8c_af9ac8f0080dd468af4272856f6f08e78}{WHITE\+\_\+T}}\}, \{\mbox{\hyperlink{animation_8c_a4cab736dc2dbe88e2fbc2e4bc82523c3}{BLACK\+\_\+F}}, \mbox{\hyperlink{animation_8c_a42c7209a1db62e99858db30bd7bde43e}{RED\+\_\+F}}, \mbox{\hyperlink{animation_8c_ad317bbd8f86c4377ee80521463127043}{GREEN\+\_\+F}}, \mbox{\hyperlink{animation_8c_a8cd43f9068415d1fc1503a959c50035d}{YELLOW\+\_\+F}}, \mbox{\hyperlink{animation_8c_af3de3e929ec5a9d64d482657258a9787}{BLUE\+\_\+F}}, \mbox{\hyperlink{animation_8c_a1a5f188ffb7b991ac6e38b45f201cb0c}{MAGENTA\+\_\+F}}, \mbox{\hyperlink{animation_8c_aaa5e9b8d9005c0c216c44a35f42c7f6b}{CYAN\+\_\+F}}, \mbox{\hyperlink{animation_8c_ac66d0418ae76a9d28ddb074575da363f}{WHITE\+\_\+F}}\}\}}
+
+Text Colors. 

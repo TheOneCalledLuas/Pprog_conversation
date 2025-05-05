@@ -1,0 +1,74 @@
+\doxysection{gamerules.\+h}
+\hypertarget{gamerules_8h_source}{}\label{gamerules_8h_source}\index{include/gamerules.h@{include/gamerules.h}}
+\mbox{\hyperlink{gamerules_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ GAMERULES\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ GAMERULES\_H\ }}
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Game__values}{\_Game\_values}}\ \mbox{\hyperlink{struct__Game__values}{Game\_values}};\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Gamerule}{\_Gamerule}}\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8h}{game.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ (*\mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\_func}})(\mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *\mbox{\hyperlink{gamerules_8h_af47afc4c1ec9896c6bb26a2671f2d5b7}{gamerules\_values\_init}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00038\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ *\mbox{\hyperlink{gamerules_8h_ac7a1f6db1a1969cc34556706a78dfda5}{gamerules\_get\_all\_gamerules}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gamerules_8h_a01e40a91e4023de24fb568727be6e625}{gamerules\_values\_destroy}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gamerules_8h_ac60a5cdbc21d0e81efe96565fc16eaf8}{gamerules\_get\_n\_gamerules}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00065\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_ad1dc95a3242ff83ed86acb1f6d1d462a}{gamerules\_values\_add}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv,\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00074\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *\mbox{\hyperlink{gamerules_8h_ad6a1034c6449cb91340f40c4547aab5e}{gamerules\_values\_delete\_last}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00083\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *\mbox{\hyperlink{gamerules_8h_a8c84afc0a40364bf92122154bd90f616}{gamerules\_gamerule\_create}}(\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gamerules_8h_a8afba77bae6f1530c049f8459e623a38}{gamerules\_gamerule\_destroy}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00101\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a69e08e8eca3b93a612cf127df88bf7bb}{gamerules\_gamerule\_set\_func}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\_func}}\ g\_func);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00110\ \mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\_func}}\ \mbox{\hyperlink{gamerules_8h_a2e2e80cee7b390ac68a70d0b07a893a4}{gamerules\_gamerule\_get\_func}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00120\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a946675b5c268727a417e658080075f12}{gamerule\_try\_exec}}(\mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \mbox{\hyperlink{gamerules_8h_ab4b22efcc19e6248b066bcede3231af4}{gamerules\_get\_id}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{gamerules_8h_ab51f82cffa79d356baffbc17b21712bb}{gamerules\_get\_name}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00147\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ \mbox{\hyperlink{gamerules_8h_a5c3f4fb6bc570c6b38a5b83d66bed4fd}{gamerules\_get\_valid}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00156\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gamerules_8h_ae675094f742cbb2d9c9893088b60130f}{gamerules\_get\_n\_exec\_times}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00165\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ \mbox{\hyperlink{gamerules_8h_a43068c2fc7425210dbfcfa3661bf0a47}{gamerules\_get\_do\_once}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gamerules_8h_a922117b2e41217e6cbe486b59b8ef43f}{gamerules\_get\_value}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00184\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a2ba3ed4046051e48ca58d50f76380f08}{gamerules\_set\_name}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Gamerule_a253705f223fc573e591443409e7699f3}{name}});}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00194\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_aebaa8645f16ce15d2a5662398c20e651}{gamerules\_set\_valid}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ \mbox{\hyperlink{struct__Gamerule_ae76f1026c4d4d5bbb3a6aa9b9c8a2e88}{value}});}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gamerules_8h_a6e8e2cfd8db77324cee63b71d9bb810f}{gamerules\_increment\_has\_exec}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00213\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_ab41755e03ab419f58ec6b9fcaa7fdd59}{gamerules\_set\_do\_once}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ \mbox{\hyperlink{struct__Gamerule_ae76f1026c4d4d5bbb3a6aa9b9c8a2e88}{value}});}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00223\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_ab28b43c6ca6d753aac3ef5f38693d2bf}{gamerules\_set\_value}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Gamerule_ae76f1026c4d4d5bbb3a6aa9b9c8a2e88}{value}});}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00233\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a44a15cc79179b81a24721e9f92fdc190}{gamerules\_try\_exec\_all}}(\mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00243\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a35fe0223f4f4cc72ddeaaeb684f80aeb}{gamerules\_set\_n\_exec\_times}}(\mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Gamerule_a9fb77d41343b2595e6986b2c881936a6}{has\_exec}});}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00253\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *\mbox{\hyperlink{gamerules_8h_abeacec4113836aad98164ba4e034a74c}{gamerules\_get\_gamerule\_by\_name}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Gamerule_a253705f223fc573e591443409e7699f3}{name}});}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00263\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *\mbox{\hyperlink{gamerules_8h_a0be39e7eadc2b9284b7fb44f41487103}{gamerules\_get\_gamerule\_by\_id}}(\mbox{\hyperlink{struct__Game__values}{Game\_values}}\ *gv,\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{comment}{/*Now\ we\ have\ the\ actual\ gamerule\ functions.*/}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00275\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_a82fec0767e63fcae002380400497dc7e}{gamerules\_open\_gate}}(\mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00285\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{gamerules_8h_abd674e40301b101fc5b0f5734698936f}{gamerules\_use\_train\_pass}}(\mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{struct__Gamerule}{Gamerule}}\ *gr);}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

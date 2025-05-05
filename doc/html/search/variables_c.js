@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['player_5fid_0',['player_id',['../struct__Player.html#a97523810b1e2cff5d159f461c1acca69',1,'_Player']]],
-  ['player_5flocation_1',['player_location',['../struct__Player.html#ace02a497c4bba6c50e45c70c352038ee',1,'_Player']]],
-  ['player_5fname_2',['player_name',['../struct__Player.html#a5d11c0ca8ca623fe4f658e4dd966e60d',1,'_Player']]],
-  ['players_3',['players',['../struct__Game.html#a1376a128e019ecadf837c32c40d05c9b',1,'_Game']]]
+  ['objects_0',['objects',['../struct__Game.html#ad45bf5645a26e546d0060a2e61f9cf81',1,'_Game::objects'],['../struct__Space.html#a661ed8b0fc8085b6db70188aa5085625',1,'_Space::objects']]],
+  ['objs_1',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
+  ['open_2',['open',['../struct__Object.html#a0922dd9891e6aa617ce1d51ae27c0175',1,'_Object']]],
+  ['origin_3',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
 ];

@@ -93,7 +93,6 @@ Status game_reader_load_animations(Game *game, char *filename);
  * @author Fernando Mijangos
  * 
  * @param game Pointer to the game
- * @param filename Name of the file where the savefile names are stored.
  * @return OK if everything went well, ERROR otherwise.
  */
 Status game_reader_load_savefile_names(Game *game);

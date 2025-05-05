@@ -6,11 +6,12 @@ It implements the character module.
 
 
 {\ttfamily \#include "{}types.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
 Include dependency graph for character.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=189pt]{character_8h__incl}
+\includegraphics[width=326pt]{character_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
@@ -20,6 +21,13 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \includegraphics[width=350pt]{character_8h__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{character_8h_ab74d1e920c50b2f1304abbea240d17e1}{CHARACTER\+\_\+\+TEXTURE\+\_\+\+LINES}}~5
+\item 
+\#define \mbox{\hyperlink{character_8h_a660521315dc9e6f487d72aeafed5d7aa}{CHARACTER\+\_\+\+TEXTURE\+\_\+\+SIZE}}~10
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,6 +42,10 @@ void \mbox{\hyperlink{character_8h_ac98557390cd237b1a840f57c9bef6564}{character\
 \begin{DoxyCompactList}\small\item\em Frees all the memory that was allocated in character, and sets character to NULL. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{character_8h_ab909e43e2cfc3a8588056409edd43a64}{character\+\_\+get\+\_\+id}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character)
 \begin{DoxyCompactList}\small\item\em Returns the id of the character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{character_8h_a516e71b2f9754d8f5c8422b2ad5030bb}{character\+\_\+set\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character, int line, char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Sets a line of the texture. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{character_8h_a411f133c65d8c9a3c38bddbddac9371d}{character\+\_\+get\+\_\+texture\+\_\+line}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character, int line)
+\begin{DoxyCompactList}\small\item\em Gets a determined line of the texture. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{character_8h_a922232474a13885a323c7a4889873f57}{character\+\_\+set\+\_\+name}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character, char \texorpdfstring{$\ast$}{*}name)
 \begin{DoxyCompactList}\small\item\em Sets the name of the character to what you want. \end{DoxyCompactList}\item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{character_8h_a663fad1a34f5514fef098d67582b15b6}{character\+\_\+get\+\_\+name}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character)
@@ -54,8 +66,12 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{character_8h_a552477d9d3d16c871
 \begin{DoxyCompactList}\small\item\em Sets the amount of live the character has. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{character_8h_a76626ec669fc81adfb5abb97f636006a}{character\+\_\+get\+\_\+health}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character)
 \begin{DoxyCompactList}\small\item\em Gets the amount of health of the character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{character_8h_aa1f20e6c60e9d44e5d76b140ed139c3a}{character\+\_\+set\+\_\+follow}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} player)
+\begin{DoxyCompactList}\small\item\em Prints the information of the character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{character_8h_a70fbb3e42a1088e2e86ac510634aa9e4}{character\+\_\+get\+\_\+follow}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character)
+\begin{DoxyCompactList}\small\item\em Gets the id of the player the character follows. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{character_8h_a9aadc03e7f931721a3ec9c39e715acde}{character\+\_\+print}} (\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}character)
-\begin{DoxyCompactList}\small\item\em Prints the information of the character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the id of the player the character follows. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -74,6 +90,21 @@ Fernando Mijangos
 GNU Public License 
 \end{DoxyCopyright}
 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{character_8h_ab74d1e920c50b2f1304abbea240d17e1}\label{character_8h_ab74d1e920c50b2f1304abbea240d17e1} 
+\index{character.h@{character.h}!CHARACTER\_TEXTURE\_LINES@{CHARACTER\_TEXTURE\_LINES}}
+\index{CHARACTER\_TEXTURE\_LINES@{CHARACTER\_TEXTURE\_LINES}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_TEXTURE\_LINES}{CHARACTER\_TEXTURE\_LINES}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+TEXTURE\+\_\+\+LINES~5}
+
+Lines of each texture. \Hypertarget{character_8h_a660521315dc9e6f487d72aeafed5d7aa}\label{character_8h_a660521315dc9e6f487d72aeafed5d7aa} 
+\index{character.h@{character.h}!CHARACTER\_TEXTURE\_SIZE@{CHARACTER\_TEXTURE\_SIZE}}
+\index{CHARACTER\_TEXTURE\_SIZE@{CHARACTER\_TEXTURE\_SIZE}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_TEXTURE\_SIZE}{CHARACTER\_TEXTURE\_SIZE}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+TEXTURE\+\_\+\+SIZE~10}
+
+Size of the texture. 
 
 \doxysubsection{Typedef Documentation}
 \Hypertarget{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}\label{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6} 
@@ -144,6 +175,27 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Character\textquotesingle{}s description, NULL if error. 
+\end{DoxyReturn}
+\Hypertarget{character_8h_a70fbb3e42a1088e2e86ac510634aa9e4}\label{character_8h_a70fbb3e42a1088e2e86ac510634aa9e4} 
+\index{character.h@{character.h}!character\_get\_follow@{character\_get\_follow}}
+\index{character\_get\_follow@{character\_get\_follow}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{character\_get\_follow()}{character\_get\_follow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} character\+\_\+get\+\_\+follow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character }\end{DoxyParamCaption})}
+
+
+
+Gets the id of the player the character follows. 
+
+\begin{DoxyAuthor}{Author}
+Irene García.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em character} & Pointer to the character. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the player that the character follows, ID\+\_\+\+ERROR if error. 
 \end{DoxyReturn}
 \Hypertarget{character_8h_a373f10e169eaeacde49908a4fce470f4}\label{character_8h_a373f10e169eaeacde49908a4fce470f4} 
 \index{character.h@{character.h}!character\_get\_friendly@{character\_get\_friendly}}
@@ -250,15 +302,15 @@ Fernando Mijangos
 \begin{DoxyReturn}{Returns}
 Character\textquotesingle{}s name, NULL if error. 
 \end{DoxyReturn}
-\Hypertarget{character_8h_a9aadc03e7f931721a3ec9c39e715acde}\label{character_8h_a9aadc03e7f931721a3ec9c39e715acde} 
-\index{character.h@{character.h}!character\_print@{character\_print}}
-\index{character\_print@{character\_print}!character.h@{character.h}}
-\doxysubsubsection{\texorpdfstring{character\_print()}{character\_print()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} character\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character }\end{DoxyParamCaption})}
+\Hypertarget{character_8h_a411f133c65d8c9a3c38bddbddac9371d}\label{character_8h_a411f133c65d8c9a3c38bddbddac9371d} 
+\index{character.h@{character.h}!character\_get\_texture\_line@{character\_get\_texture\_line}}
+\index{character\_get\_texture\_line@{character\_get\_texture\_line}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{character\_get\_texture\_line()}{character\_get\_texture\_line()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} character\+\_\+get\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character,  }\item[{int}]{line }\end{DoxyParamCaption})}
 
 
 
-Prints the information of the character. 
+Gets a determined line of the texture. 
 
 \begin{DoxyAuthor}{Author}
 Fernando Mijangos.
@@ -267,9 +319,32 @@ Fernando Mijangos.
 \begin{DoxyParams}{Parameters}
 {\em character} & Pointer to the character. \\
 \hline
+{\em line} & line to be given. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-OK if it works, ERROR otherwise. 
+NULL if an error takes place, the line otherwise. 
+\end{DoxyReturn}
+\Hypertarget{character_8h_a9aadc03e7f931721a3ec9c39e715acde}\label{character_8h_a9aadc03e7f931721a3ec9c39e715acde} 
+\index{character.h@{character.h}!character\_print@{character\_print}}
+\index{character\_print@{character\_print}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{character\_print()}{character\_print()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} character\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character }\end{DoxyParamCaption})}
+
+
+
+Gets the id of the player the character follows. 
+
+\begin{DoxyAuthor}{Author}
+Irene García.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em character} & Pointer to the character. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the player that the character follows, ID\+\_\+\+ERROR if error. 
 \end{DoxyReturn}
 \Hypertarget{character_8h_a9cddc527fedc19ae50fb1d040110a287}\label{character_8h_a9cddc527fedc19ae50fb1d040110a287} 
 \index{character.h@{character.h}!character\_set\_description@{character\_set\_description}}
@@ -293,6 +368,29 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK, if everything went as it should, ERROR if it didn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{character_8h_aa1f20e6c60e9d44e5d76b140ed139c3a}\label{character_8h_aa1f20e6c60e9d44e5d76b140ed139c3a} 
+\index{character.h@{character.h}!character\_set\_follow@{character\_set\_follow}}
+\index{character\_set\_follow@{character\_set\_follow}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{character\_set\_follow()}{character\_set\_follow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} character\+\_\+set\+\_\+follow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{player }\end{DoxyParamCaption})}
+
+
+
+Prints the information of the character. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em character} & Pointer to the character. \\
+\hline
+{\em player} & Player id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works, ERROR otherwise. 
 \end{DoxyReturn}
 \Hypertarget{character_8h_a5a1320df0c507b9b256000787ca0e805}\label{character_8h_a5a1320df0c507b9b256000787ca0e805} 
 \index{character.h@{character.h}!character\_set\_friendly@{character\_set\_friendly}}
@@ -385,4 +483,29 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK, if everything went well, ERROR if it didn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{character_8h_a516e71b2f9754d8f5c8422b2ad5030bb}\label{character_8h_a516e71b2f9754d8f5c8422b2ad5030bb} 
+\index{character.h@{character.h}!character\_set\_texture\_line@{character\_set\_texture\_line}}
+\index{character\_set\_texture\_line@{character\_set\_texture\_line}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{character\_set\_texture\_line()}{character\_set\_texture\_line()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} character\+\_\+set\+\_\+texture\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_a2cd4b80780220bc0f0f1d7424f104fa6}{Character}} \texorpdfstring{$\ast$}{*}}]{character,  }\item[{int}]{line,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Sets a line of the texture. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em character} & Pointer to the character. \\
+\hline
+{\em line} & line to be modified. \\
+\hline
+{\em str} & to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if all goes as planned, ERROR otherwise. 
 \end{DoxyReturn}

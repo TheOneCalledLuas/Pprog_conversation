@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['damage_5fdealt_0',['DAMAGE_DEALT',['../game__actions_8c.html#a1dd81749117c3dc713a1fd487647f6d7',1,'game_actions.c']]],
-  ['default_5fhealth_1',['DEFAULT_HEALTH',['../player_8c.html#a1da6bd0b256c5cd560a2b3e83ba792a9',1,'player.c']]],
-  ['default_5fmax_5fobj_2',['DEFAULT_MAX_OBJ',['../inventory_8c.html#a39715259dc443997ba42925ee4fc4edb',1,'inventory.c']]],
-  ['desc_5flength_3',['DESC_LENGTH',['../game__reader_8c.html#a8606b2e3a4d6e1d1d27f513374fcb265',1,'game_reader.c']]],
-  ['desc_5flines_4',['DESC_LINES',['../game__reader_8c.html#a9626a13d94da9d536ebb27e605a800dc',1,'game_reader.c']]],
-  ['desc_5fsize_5',['desc_size',['../game__reader_8c.html#a550a75944350b926760a1bf0c553d87f',1,'DESC_SIZE:&#160;game_reader.c'],['../space_8c.html#a550a75944350b926760a1bf0c553d87f',1,'DESC_SIZE:&#160;space.c']]]
+  ['character_5ftexture_5flines_0',['CHARACTER_TEXTURE_LINES',['../character_8h.html#ab74d1e920c50b2f1304abbea240d17e1',1,'character.h']]],
+  ['character_5ftexture_5fsize_1',['CHARACTER_TEXTURE_SIZE',['../character_8h.html#a660521315dc9e6f487d72aeafed5d7aa',1,'character.h']]],
+  ['cmd_5flenght_2',['CMD_LENGHT',['../command_8c.html#a2b1bd24d2eddf8081d8c541e4cc4fd4b',1,'command.c']]],
+  ['cmd_5fshortcut_3',['CMD_SHORTCUT',['../command_8c.html#a5d69aa83ad3929fba7ff0e38924096de',1,'command.c']]],
+  ['commands_5fsaved_4',['COMMANDS_SAVED',['../game_8h.html#a7e982545c2556ce0318c9bbfc19c8b42',1,'game.h']]],
+  ['cyan_5ff_5',['CYAN_F',['../animation_8c.html#aaa5e9b8d9005c0c216c44a35f42c7f6b',1,'animation.c']]],
+  ['cyan_5ft_6',['CYAN_T',['../animation_8c.html#a7cb807f796eaf4fe84b51aa7e379afd6',1,'animation.c']]]
 ];

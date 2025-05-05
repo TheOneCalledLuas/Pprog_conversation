@@ -14,6 +14,12 @@ char \mbox{\hyperlink{struct__Character_af1a4555204e64158f1fb7bb1f592c876}{descr
 char \mbox{\hyperlink{struct__Character_a2dc9b8dfb8fe9e9bf0c06d2e741570fb}{message}} \mbox{[}\mbox{\hyperlink{character_8c_a8cea0c1cc1fc60a52e79998580bbf1a7}{MAX\+\_\+\+MESSAGE}}\mbox{]}
 \item 
 int \mbox{\hyperlink{struct__Character_a1e1daf65298eecf5777947f86d6b2568}{health}}
+\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Character_aaeb072002ac3e76a1f5dffd3e043ccf3}{follow}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Character_adedd913520530f43f3410e07c5a32c84}{texture}} \mbox{[}\mbox{\hyperlink{character_8h_ab74d1e920c50b2f1304abbea240d17e1}{CHARACTER\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct__Character_abda48d9edbd1b26cee61772b8d79e563}{\+\_\+\+\_\+texture\+\_\+data}}
 \end{DoxyCompactItemize}
 
 
@@ -21,13 +27,25 @@ int \mbox{\hyperlink{struct__Character_a1e1daf65298eecf5777947f86d6b2568}{health
 Character TAD. 
 
 \doxysubsection{Field Documentation}
-\Hypertarget{struct__Character_af1a4555204e64158f1fb7bb1f592c876}\label{struct__Character_af1a4555204e64158f1fb7bb1f592c876} 
+\Hypertarget{struct__Character_abda48d9edbd1b26cee61772b8d79e563}\label{struct__Character_abda48d9edbd1b26cee61772b8d79e563} 
+\index{\_Character@{\_Character}!\_\_texture\_data@{\_\_texture\_data}}
+\index{\_\_texture\_data@{\_\_texture\_data}!\_Character@{\_Character}}
+\doxysubsubsection{\texorpdfstring{\_\_texture\_data}{\_\_texture\_data}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Character\+::\+\_\+\+\_\+texture\+\_\+data}
+
+Actual matrix with the texture. \Hypertarget{struct__Character_af1a4555204e64158f1fb7bb1f592c876}\label{struct__Character_af1a4555204e64158f1fb7bb1f592c876} 
 \index{\_Character@{\_Character}!description@{description}}
 \index{description@{description}!\_Character@{\_Character}}
 \doxysubsubsection{\texorpdfstring{description}{description}}
 {\footnotesize\ttfamily char \+\_\+\+Character\+::description\mbox{[}\mbox{\hyperlink{character_8c_a06ea269956fb652c4f4853e593813b26}{MAX\+\_\+\+DESC}}\mbox{]}}
 
-Description of the character. \Hypertarget{struct__Character_a3cbca4d3292eb9713b0eb75609ab931c}\label{struct__Character_a3cbca4d3292eb9713b0eb75609ab931c} 
+Description of the character. \Hypertarget{struct__Character_aaeb072002ac3e76a1f5dffd3e043ccf3}\label{struct__Character_aaeb072002ac3e76a1f5dffd3e043ccf3} 
+\index{\_Character@{\_Character}!follow@{follow}}
+\index{follow@{follow}!\_Character@{\_Character}}
+\doxysubsubsection{\texorpdfstring{follow}{follow}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Character\+::follow}
+
+Id of the character it follows. \Hypertarget{struct__Character_a3cbca4d3292eb9713b0eb75609ab931c}\label{struct__Character_a3cbca4d3292eb9713b0eb75609ab931c} 
 \index{\_Character@{\_Character}!friendly@{friendly}}
 \index{friendly@{friendly}!\_Character@{\_Character}}
 \doxysubsubsection{\texorpdfstring{friendly}{friendly}}
@@ -57,7 +75,13 @@ Message of the character. \Hypertarget{struct__Character_aee69f12fd056869d3f3ea8
 \doxysubsubsection{\texorpdfstring{name}{name}}
 {\footnotesize\ttfamily char \+\_\+\+Character\+::name\mbox{[}\mbox{\hyperlink{character_8c_ac7c0207aa5a0e10d378be03b68041350}{MAX\+\_\+\+NAME}}\mbox{]}}
 
-Name of the character. 
+Name of the character. \Hypertarget{struct__Character_adedd913520530f43f3410e07c5a32c84}\label{struct__Character_adedd913520530f43f3410e07c5a32c84} 
+\index{\_Character@{\_Character}!texture@{texture}}
+\index{texture@{texture}!\_Character@{\_Character}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} \+\_\+\+Character\+::texture\mbox{[}\mbox{\hyperlink{character_8h_ab74d1e920c50b2f1304abbea240d17e1}{CHARACTER\+\_\+\+TEXTURE\+\_\+\+LINES}}\mbox{]}}
+
+Strings which create the texture of the character. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

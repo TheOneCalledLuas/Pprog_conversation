@@ -1,0 +1,29 @@
+<map id="_Gamerule" name="_Gamerule">
+<area shape="rect" id="Node000001" title="TAD gamerule." alt="" coords="78,108,171,133"/>
+<area shape="rect" id="Node000011" href="$struct__Game__values.html" title="Structure to store all the gamerules." alt="" coords="5,207,124,232"/>
+<area shape="poly" id="edge12_Node000011_Node000001" title=" " alt="" coords="98,144,84,159,73,184,69,207,63,206,68,182,80,156,94,140"/>
+<area shape="rect" id="Node000002" href="$struct__Game.html" title=" " alt="" coords="483,309,551,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,325,405,321,329,308,289,296,251,280,216,260,184,234,171,215,166,197,162,179,153,159,134,135,139,132,158,156,167,178,171,196,176,213,188,230,219,256,254,276,291,291,330,303,406,315,469,319"/>
+<area shape="rect" id="Node000003" href="$struct__Player.html" title="Player." alt="" coords="288,207,359,232"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,246,327,266,337,283,361,296,399,306,483,316,482,321,398,311,359,301,333,287,322,268,319,247"/>
+<area shape="rect" id="Node000004" href="$struct__Inventory.html" title=" " alt="" coords="273,108,363,133"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="311,147,308,164,309,182,318,205,313,207,303,183,302,164,306,146"/>
+<area shape="rect" id="Node000005" href="$struct__Set.html" title=" " alt="" coords="334,5,385,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="352,44,325,109,320,107,347,42"/>
+<area shape="rect" id="Node000006" href="$struct__Space.html" title="Space." alt="" coords="385,157,453,183"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="375,42,380,54,418,156,413,158,376,56,370,44"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="418,196,418,214,422,231,437,255,456,276,498,307,494,311,453,280,432,259,417,233,412,215,412,196"/>
+<area shape="rect" id="Node000007" href="$struct__Object.html" title="Object." alt="" coords="481,207,552,232"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="519,246,519,309,514,309,514,246"/>
+<area shape="rect" id="Node000008" href="$struct__Character.html" title=" " alt="" coords="576,207,668,232"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="610,245,576,287,541,311,538,307,572,283,606,242"/>
+<area shape="rect" id="Node000009" href="$struct__link.html" title=" " alt="" coords="693,207,746,232"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="712,246,699,268,680,287,648,304,614,315,552,323,551,318,613,310,646,299,676,283,695,265,707,243"/>
+<area shape="rect" id="Node000010" href="$struct__Command.html" title="Command." alt="" coords="770,207,866,232"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="801,245,777,268,746,288,695,306,641,317,551,324,551,319,641,312,693,301,743,283,773,264,798,241"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="59,246,58,266,65,283,86,293,127,301,246,312,483,318,482,323,246,317,126,306,85,298,61,287,53,267,54,245"/>
+<area shape="rect" id="Node000012" href="$struct__Animation__Manager.html" title="This struct is in charge of handling all the game animations." alt="" coords="890,207,1050,232"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="947,243,912,267,870,288,806,301,717,311,551,322,551,317,716,306,805,296,868,283,909,263,944,239"/>
+<area shape="rect" id="Node000013" href="$struct__Animation.html" title="Animation stucture." alt="" coords="922,108,1018,133"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="973,147,973,207,967,207,967,147"/>
+</map>

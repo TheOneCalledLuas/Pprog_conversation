@@ -8,6 +8,8 @@ It loads and makes all the actions related to space management.
 {\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
 {\ttfamily \#include "{}game.\+h"{}}\newline
 {\ttfamily \#include "{}link.\+h"{}}\newline
+{\ttfamily \#include "{}gamerules.\+h"{}}\newline
+{\ttfamily \#include "{}animation.\+h"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
@@ -29,6 +31,8 @@ Include dependency graph for game\+\_\+reader.\+c\+:\nopagebreak
 \#define \mbox{\hyperlink{game__reader_8c_a8606b2e3a4d6e1d1d27f513374fcb265}{DESC\+\_\+\+LENGTH}}~10
 \item 
 \#define \mbox{\hyperlink{game__reader_8c_a77f61f9d08cce5be70639d3ab9a996b4}{IDENTIFIER\+\_\+\+LENGTH}}~3
+\item 
+\#define \mbox{\hyperlink{game__reader_8c_a0bf730075379ba8cb5551e8137813059}{SPACE\+\_\+\+DESC}}~5
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -39,10 +43,20 @@ Include dependency graph for game\+\_\+reader.\+c\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Loads all the objects from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_abb9c617888c6718713ab0ff35992de98}{game\+\_\+reader\+\_\+load\+\_\+characters}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}name\+\_\+file)
 \begin{DoxyCompactList}\small\item\em Loads all the characters from the data file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_adc5b6daa9380d4d9f36a8dc566f81c8f}{game\+\_\+reader\+\_\+load\+\_\+last\+\_\+turn}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads the last turn of the game. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a5060525810704f10a6a1772981b207a5}{game\+\_\+reader\+\_\+load\+\_\+players}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
 \begin{DoxyCompactList}\small\item\em Loads all the players from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a00cc7cb1731d6ea69ac880d654ba66e5}{game\+\_\+reader\+\_\+load\+\_\+links}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
-\begin{DoxyCompactList}\small\item\em Loads all the links from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Loads all the links from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_ad7da2162d2b4a98821e8551a3104a6e1}{game\+\_\+reader\+\_\+load\+\_\+gamerules}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the gamerules from the data file. Should be called the last one. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a8c1025cbe8fc598687c56c177fc32e5c}{game\+\_\+reader\+\_\+load\+\_\+savefile\+\_\+names}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Loads all the savefile names from the data file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_af103309d005d4bfa00fa7bbcb08904b9}{game\+\_\+reader\+\_\+save\+\_\+game}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Saves the game in a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__reader_8c_a50a652676ffcc4bdf041168ca9d39841}{game\+\_\+reader\+\_\+load\+\_\+animations}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the animations from the data file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -87,9 +101,38 @@ Maximun size of a description line. \Hypertarget{game__reader_8c_a77f61f9d08cce5
 \doxysubsubsection{\texorpdfstring{IDENTIFIER\_LENGTH}{IDENTIFIER\_LENGTH}}
 {\footnotesize\ttfamily \#define IDENTIFIER\+\_\+\+LENGTH~3}
 
-Number of characters the identifier occupies in the data file. 
+Number of characters the identifier occupies in the data file. \Hypertarget{game__reader_8c_a0bf730075379ba8cb5551e8137813059}\label{game__reader_8c_a0bf730075379ba8cb5551e8137813059} 
+\index{game\_reader.c@{game\_reader.c}!SPACE\_DESC@{SPACE\_DESC}}
+\index{SPACE\_DESC@{SPACE\_DESC}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{SPACE\_DESC}{SPACE\_DESC}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+DESC~5}
+
+Number of lines the space description occupies. 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{game__reader_8c_a50a652676ffcc4bdf041168ca9d39841}\label{game__reader_8c_a50a652676ffcc4bdf041168ca9d39841} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_animations@{game\_reader\_load\_animations}}
+\index{game\_reader\_load\_animations@{game\_reader\_load\_animations}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_animations()}{game\_reader\_load\_animations()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+animations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the animations from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the animations are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
 \Hypertarget{game__reader_8c_abb9c617888c6718713ab0ff35992de98}\label{game__reader_8c_abb9c617888c6718713ab0ff35992de98} 
 \index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_characters@{game\_reader\_load\_characters}}
 \index{game\_reader\_load\_characters@{game\_reader\_load\_characters}!game\_reader.c@{game\_reader.c}}
@@ -108,6 +151,52 @@ Raquel Anguita.
 {\em game} & Pointer to the game. \\
 \hline
 {\em filename} & NAme of the data file where the characters are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__reader_8c_ad7da2162d2b4a98821e8551a3104a6e1}\label{game__reader_8c_ad7da2162d2b4a98821e8551a3104a6e1} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_gamerules@{game\_reader\_load\_gamerules}}
+\index{game\_reader\_load\_gamerules@{game\_reader\_load\_gamerules}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_gamerules()}{game\_reader\_load\_gamerules()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+gamerules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the gamerules from the data file. Should be called the last one. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the gamerules are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__reader_8c_adc5b6daa9380d4d9f36a8dc566f81c8f}\label{game__reader_8c_adc5b6daa9380d4d9f36a8dc566f81c8f} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_last\_turn@{game\_reader\_load\_last\_turn}}
+\index{game\_reader\_load\_last\_turn@{game\_reader\_load\_last\_turn}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_last\_turn()}{game\_reader\_load\_last\_turn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+last\+\_\+turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads the last turn of the game. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & Name of the file where the last turn is stored. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -182,6 +271,27 @@ Saúl López Romero
 \begin{DoxyReturn}{Returns}
 OK for a clean exit, otherwise ERROR. 
 \end{DoxyReturn}
+\Hypertarget{game__reader_8c_a8c1025cbe8fc598687c56c177fc32e5c}\label{game__reader_8c_a8c1025cbe8fc598687c56c177fc32e5c} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_savefile\_names@{game\_reader\_load\_savefile\_names}}
+\index{game\_reader\_load\_savefile\_names@{game\_reader\_load\_savefile\_names}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_load\_savefile\_names()}{game\_reader\_load\_savefile\_names()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+load\+\_\+savefile\+\_\+names (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Loads all the savefile names from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
 \Hypertarget{game__reader_8c_a70e1ab8e805fb12edcb77dcf542cb699}\label{game__reader_8c_a70e1ab8e805fb12edcb77dcf542cb699} 
 \index{game\_reader.c@{game\_reader.c}!game\_reader\_load\_spaces@{game\_reader\_load\_spaces}}
 \index{game\_reader\_load\_spaces@{game\_reader\_load\_spaces}!game\_reader.c@{game\_reader.c}}
@@ -204,4 +314,27 @@ Saúl López Romero
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__reader_8c_af103309d005d4bfa00fa7bbcb08904b9}\label{game__reader_8c_af103309d005d4bfa00fa7bbcb08904b9} 
+\index{game\_reader.c@{game\_reader.c}!game\_reader\_save\_game@{game\_reader\_save\_game}}
+\index{game\_reader\_save\_game@{game\_reader\_save\_game}!game\_reader.c@{game\_reader.c}}
+\doxysubsubsection{\texorpdfstring{game\_reader\_save\_game()}{game\_reader\_save\_game()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+reader\+\_\+save\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Saves the game in a file. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & Name of the file where the game is going to be saved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
 \end{DoxyReturn}

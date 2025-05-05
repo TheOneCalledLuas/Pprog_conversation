@@ -15,6 +15,7 @@ It defines the game loop.
 {\ttfamily \#include "{}game\+\_\+actions.\+h"{}}\newline
 {\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
 {\ttfamily \#include "{}graphic\+\_\+engine.\+h"{}}\newline
+{\ttfamily \#include "{}gamerules.\+h"{}}\newline
 Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -27,17 +28,51 @@ Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
 \item 
 \#define \mbox{\hyperlink{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}{MAX\+\_\+\+ARG}}~64
 \item 
-\#define \mbox{\hyperlink{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}{READING\+\_\+\+SECONDS}}~4
+\#define \mbox{\hyperlink{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}{READING\+\_\+\+SECONDS}}~1
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540}{NUMBER\+\_\+\+OF\+\_\+\+BAD\+\_\+\+LETTERS}}~13
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_a834e9a379307f869a10f4da078be5786}{NAME\+\_\+\+SIZE}}~100
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_acd57dd6e0cdebe9f0e0f71584e7b5368}{SECOND\+\_\+\+CHAR}}~1
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297}{N\+\_\+\+LOOPS\+\_\+\+MUSIC}}~-\/1
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_a4ee670d5eafa0001088f911dca0b07ba}{DEFAULT\+\_\+\+CHUNKSIZE}}~2048
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{game__loop_8c_a55a10ee9c2a75fda2da8e86922b6dcfd}\label{game__loop_8c_a55a10ee9c2a75fda2da8e86922b6dcfd} 
+typedef enum \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\+actions}} {\bfseries Menu\+\_\+actions}
+\begin{DoxyCompactList}\small\item\em It defines the menu actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\+actions}} \{ \newline
+\mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa473b49382a20dcc5b0ee10ddbc6338b4}{CREATE}} = 1
+, \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa972dbcdf74cff71e20bdcfb53be9c391}{LOAD}}
+, \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa9d61e82a9a12752f10aece1b22183913}{DELETE}}
+, \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa5c0d1c2cc18859a1432892b71b4d6279}{EXIT\+\_\+\+MENU}}
+, \newline
+\mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aacd3fe2276479c7ce7d5026cb11590895}{GO\+\_\+\+BACK}}
+, \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa7217340e5c188d109dd433bab42d625c}{OK\+\_\+\+MENU}}
+, \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa1b9cdcdd5f5b29036becff3d1c12fade}{FAIL\+\_\+\+MENU}}
+ \}
+\begin{DoxyCompactList}\small\item\em It defines the menu actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{game__loop_8c_a1c78d6052c905d10401d2424b6979772}{game\+\_\+loop\+\_\+init}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
+int \mbox{\hyperlink{game__loop_8c_ae22007fb4218e430c1f7b2cba27c61c3}{game\+\_\+loop\+\_\+init}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine\+\_\+menu, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Initialises the game. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__loop_8c_a078154d0aafde8b73e17211585e1a444}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, FILE \texorpdfstring{$\ast$}{*}f)
+void \mbox{\hyperlink{game__loop_8c_adcf796ab052441535eaa19efe53f25d6}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine\+\_\+menu, FILE \texorpdfstring{$\ast$}{*}f, char \texorpdfstring{$\ast$}{*}base\+\_\+savefile)
 \begin{DoxyCompactList}\small\item\em Main game loop, where all the actions take place. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}{game\+\_\+loop\+\_\+cleanup}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine)
+void \mbox{\hyperlink{game__loop_8c_afc2be832086ddfa31bbdefd6cfda0aa6}{game\+\_\+loop\+\_\+cleanup}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine\+\_\+menu)
 \begin{DoxyCompactList}\small\item\em Frees the memory and closes the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\+actions}} \mbox{\hyperlink{game__loop_8c_ae4e746054d8d0d6b318b9dff032314dc}{game\+\_\+loop\+\_\+menu}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge\+\_\+menu, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads or creates a new game, asks the user to chose. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Main game function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -60,26 +95,105 @@ GNU Public License
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}\label{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e} 
+\Hypertarget{game__loop_8c_a4ee670d5eafa0001088f911dca0b07ba}\label{game__loop_8c_a4ee670d5eafa0001088f911dca0b07ba} 
+\index{game\_loop.c@{game\_loop.c}!DEFAULT\_CHUNKSIZE@{DEFAULT\_CHUNKSIZE}}
+\index{DEFAULT\_CHUNKSIZE@{DEFAULT\_CHUNKSIZE}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_CHUNKSIZE}{DEFAULT\_CHUNKSIZE}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+CHUNKSIZE~2048}
+
+Audio buffer size \Hypertarget{game__loop_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{game__loop_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{game\_loop.c@{game\_loop.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to get inputs in menu \Hypertarget{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e}\label{game__loop_8c_a2e7620041ccf5bc13755c9f28524d22e} 
 \index{game\_loop.c@{game\_loop.c}!MAX\_ARG@{MAX\_ARG}}
 \index{MAX\_ARG@{MAX\_ARG}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_ARG}{MAX\_ARG}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+ARG~64}
 
-Maximun argument length. \Hypertarget{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}\label{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0} 
+Maximun argument length. \Hypertarget{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297}\label{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297} 
+\index{game\_loop.c@{game\_loop.c}!N\_LOOPS\_MUSIC@{N\_LOOPS\_MUSIC}}
+\index{N\_LOOPS\_MUSIC@{N\_LOOPS\_MUSIC}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{N\_LOOPS\_MUSIC}{N\_LOOPS\_MUSIC}}
+{\footnotesize\ttfamily \#define N\+\_\+\+LOOPS\+\_\+\+MUSIC~-\/1}
+
+Number of loops the music will do, -\/1 means indefinately \Hypertarget{game__loop_8c_a834e9a379307f869a10f4da078be5786}\label{game__loop_8c_a834e9a379307f869a10f4da078be5786} 
+\index{game\_loop.c@{game\_loop.c}!NAME\_SIZE@{NAME\_SIZE}}
+\index{NAME\_SIZE@{NAME\_SIZE}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{NAME\_SIZE}{NAME\_SIZE}}
+{\footnotesize\ttfamily \#define NAME\+\_\+\+SIZE~100}
+
+Max size of the name of the savefile. \Hypertarget{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540}\label{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540} 
+\index{game\_loop.c@{game\_loop.c}!NUMBER\_OF\_BAD\_LETTERS@{NUMBER\_OF\_BAD\_LETTERS}}
+\index{NUMBER\_OF\_BAD\_LETTERS@{NUMBER\_OF\_BAD\_LETTERS}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{NUMBER\_OF\_BAD\_LETTERS}{NUMBER\_OF\_BAD\_LETTERS}}
+{\footnotesize\ttfamily \#define NUMBER\+\_\+\+OF\+\_\+\+BAD\+\_\+\+LETTERS~13}
+
+Number of possible invalid letters for a new savefile name \Hypertarget{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0}\label{game__loop_8c_a77a188708d8f4d51931fa348c1ced7d0} 
 \index{game\_loop.c@{game\_loop.c}!READING\_SECONDS@{READING\_SECONDS}}
 \index{READING\_SECONDS@{READING\_SECONDS}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{READING\_SECONDS}{READING\_SECONDS}}
-{\footnotesize\ttfamily \#define READING\+\_\+\+SECONDS~4}
+{\footnotesize\ttfamily \#define READING\+\_\+\+SECONDS~1}
 
-Seconds to read the screen. 
+Seconds to read the screen. \Hypertarget{game__loop_8c_acd57dd6e0cdebe9f0e0f71584e7b5368}\label{game__loop_8c_acd57dd6e0cdebe9f0e0f71584e7b5368} 
+\index{game\_loop.c@{game\_loop.c}!SECOND\_CHAR@{SECOND\_CHAR}}
+\index{SECOND\_CHAR@{SECOND\_CHAR}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{SECOND\_CHAR}{SECOND\_CHAR}}
+{\footnotesize\ttfamily \#define SECOND\+\_\+\+CHAR~1}
+
+Position number 1 of a string, used to get inputs in menu 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a} 
+\index{game\_loop.c@{game\_loop.c}!Menu\_actions@{Menu\_actions}}
+\index{Menu\_actions@{Menu\_actions}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{Menu\_actions}{Menu\_actions}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\+actions}}}
+
+
+
+It defines the menu actions. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CREATE@{CREATE}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!CREATE@{CREATE}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa473b49382a20dcc5b0ee10ddbc6338b4}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa473b49382a20dcc5b0ee10ddbc6338b4} 
+CREATE&Code for create savefile \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOAD@{LOAD}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!LOAD@{LOAD}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa972dbcdf74cff71e20bdcfb53be9c391}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa972dbcdf74cff71e20bdcfb53be9c391} 
+LOAD&Code for load savefile \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DELETE@{DELETE}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!DELETE@{DELETE}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa9d61e82a9a12752f10aece1b22183913}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa9d61e82a9a12752f10aece1b22183913} 
+DELETE&Code for delete savefile \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT\_MENU@{EXIT\_MENU}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!EXIT\_MENU@{EXIT\_MENU}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa5c0d1c2cc18859a1432892b71b4d6279}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa5c0d1c2cc18859a1432892b71b4d6279} 
+EXIT\+\_\+\+MENU&Code for exit menu \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GO\_BACK@{GO\_BACK}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!GO\_BACK@{GO\_BACK}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aacd3fe2276479c7ce7d5026cb11590895}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aacd3fe2276479c7ce7d5026cb11590895} 
+GO\+\_\+\+BACK&Code for go back to the previous menu \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OK\_MENU@{OK\_MENU}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!OK\_MENU@{OK\_MENU}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa7217340e5c188d109dd433bab42d625c}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa7217340e5c188d109dd433bab42d625c} 
+OK\+\_\+\+MENU&Code for ok menu exit \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAIL\_MENU@{FAIL\_MENU}!game\_loop.c@{game\_loop.c}}\index{game\_loop.c@{game\_loop.c}!FAIL\_MENU@{FAIL\_MENU}}}\Hypertarget{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa1b9cdcdd5f5b29036becff3d1c12fade}\label{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199aa1b9cdcdd5f5b29036becff3d1c12fade} 
+FAIL\+\_\+\+MENU&Code for fail menu exit \\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \doxysubsection{Function Documentation}
-\Hypertarget{game__loop_8c_aaa6e18336e5d688eb618a9307997195d}\label{game__loop_8c_aaa6e18336e5d688eb618a9307997195d} 
+\Hypertarget{game__loop_8c_afc2be832086ddfa31bbdefd6cfda0aa6}\label{game__loop_8c_afc2be832086ddfa31bbdefd6cfda0aa6} 
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_cleanup@{game\_loop\_cleanup}}
 \index{game\_loop\_cleanup@{game\_loop\_cleanup}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_cleanup()}{game\_loop\_cleanup()}}
-{\footnotesize\ttfamily void game\+\_\+loop\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+loop\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine\+\_\+menu }\end{DoxyParamCaption})}
 
 
 
@@ -94,12 +208,14 @@ Fernando Mijangos
 \hline
 {\em gengine} & The graphic engine you are using. \\
 \hline
+{\em gengine\+\_\+menu} & The graphic engine for the menu. \\
+\hline
 \end{DoxyParams}
-\Hypertarget{game__loop_8c_a1c78d6052c905d10401d2424b6979772}\label{game__loop_8c_a1c78d6052c905d10401d2424b6979772} 
+\Hypertarget{game__loop_8c_ae22007fb4218e430c1f7b2cba27c61c3}\label{game__loop_8c_ae22007fb4218e430c1f7b2cba27c61c3} 
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_init@{game\_loop\_init}}
 \index{game\_loop\_init@{game\_loop\_init}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_init()}{game\_loop\_init()}}
-{\footnotesize\ttfamily int game\+\_\+loop\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int game\+\_\+loop\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{gengine\+\_\+menu,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -114,17 +230,44 @@ Fernando Mijangos
 \hline
 {\em gengine} & The graphic\+\_\+engine you are going to be using. \\
 \hline
+{\em gengine\+\_\+menu} & The graphic\+\_\+engine for the menu. \\
+\hline
 {\em file\+\_\+name} & Name of the file where the information about the spaces is.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 1 if it goes wrong, 0 otherwise. 
 \end{DoxyReturn}
-\Hypertarget{game__loop_8c_a078154d0aafde8b73e17211585e1a444}\label{game__loop_8c_a078154d0aafde8b73e17211585e1a444} 
+\Hypertarget{game__loop_8c_ae4e746054d8d0d6b318b9dff032314dc}\label{game__loop_8c_ae4e746054d8d0d6b318b9dff032314dc} 
+\index{game\_loop.c@{game\_loop.c}!game\_loop\_menu@{game\_loop\_menu}}
+\index{game\_loop\_menu@{game\_loop\_menu}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{game\_loop\_menu()}{game\_loop\_menu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\+actions}} game\+\_\+loop\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge\+\_\+menu,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads or creates a new game, asks the user to chose. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em ge\+\_\+menu} & The graphic engine for the menu. \\
+\hline
+{\em filename} & Name of the file where the information for new games is stored, so it doesnt write over it. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__loop_8c_adcf796ab052441535eaa19efe53f25d6}\label{game__loop_8c_adcf796ab052441535eaa19efe53f25d6} 
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_run@{game\_loop\_run}}
 \index{game\_loop\_run@{game\_loop\_run}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_run()}{game\_loop\_run()}}
-{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine\+\_\+menu,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f,  }\item[{char \texorpdfstring{$\ast$}{*}}]{base\+\_\+savefile }\end{DoxyParamCaption})}
 
 
 
@@ -139,7 +282,11 @@ Saul Lopez Romero
 \hline
 {\em gengine} & Pointer to the graphic engine. \\
 \hline
+{\em gengine\+\_\+menu} & Pointer to the graphic engine for the menu. \\
+\hline
 {\em f} & Pointer to the file for the log. \\
+\hline
+{\em base\+\_\+savefile} & named of the file that is used a template for new games \\
 \hline
 \end{DoxyParams}
 \Hypertarget{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97} 

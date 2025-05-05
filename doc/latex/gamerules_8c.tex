@@ -1,0 +1,750 @@
+\doxysection{src/gamerules.c File Reference}
+\hypertarget{gamerules_8c}{}\label{gamerules_8c}\index{src/gamerules.c@{src/gamerules.c}}
+
+
+It implements gamerules into the game.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
+{\ttfamily \#include "{}gamerules.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}link.\+h"{}}\newline
+{\ttfamily \#include "{}command.\+h"{}}\newline
+{\ttfamily \#include "{}types.\+h"{}}\newline
+Include dependency graph for gamerules.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gamerules_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Gamerule}{\+\_\+\+Gamerule}}
+\begin{DoxyCompactList}\small\item\em TAD gamerule. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct__Game__values}{\+\_\+\+Game\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em Structure to store all the gamerules. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gamerules_8c_aa138e4391665f125f792a5e1f4b8c35c}{MAX\+\_\+\+GAMERULES}}~100
+\item 
+\#define \mbox{\hyperlink{gamerules_8c_ac7c0207aa5a0e10d378be03b68041350}{MAX\+\_\+\+NAME}}~64
+\item 
+\#define \mbox{\hyperlink{gamerules_8c_a70dc6a57ec8af399841c1fe1ef930463}{P3\+\_\+\+P4\+\_\+\+GATE}}~49
+\item 
+\#define \mbox{\hyperlink{gamerules_8c_abf02675d4a49b32f97ac61f7ce7b6642}{START\+\_\+\+ROOM\+\_\+\+ID}}~111
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_ac7a1f6db1a1969cc34556706a78dfda5}{gamerules\+\_\+get\+\_\+all\+\_\+gamerules}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv)
+\begin{DoxyCompactList}\small\item\em It returns an initialised array with the ids of the gamerules. IMPORTANT The array must be freed after use. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_af47afc4c1ec9896c6bb26a2671f2d5b7}{gamerules\+\_\+values\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em It initialises the game values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gamerules_8c_a01e40a91e4023de24fb568727be6e625}{gamerules\+\_\+values\+\_\+destroy}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv)
+\begin{DoxyCompactList}\small\item\em It destroys the game values. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gamerules_8c_ac60a5cdbc21d0e81efe96565fc16eaf8}{gamerules\+\_\+get\+\_\+n\+\_\+gamerules}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv)
+\begin{DoxyCompactList}\small\item\em It returns the number of gamerules. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_ad1dc95a3242ff83ed86acb1f6d1d462a}{gamerules\+\_\+values\+\_\+add}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It adds a gamerule to the game values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a44a15cc79179b81a24721e9f92fdc190}{gamerules\+\_\+try\+\_\+exec\+\_\+all}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv)
+\begin{DoxyCompactList}\small\item\em It tries to execute all the gamerules on a game values struct. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_ad6a1034c6449cb91340f40c4547aab5e}{gamerules\+\_\+values\+\_\+delete\+\_\+last}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv)
+\begin{DoxyCompactList}\small\item\em It deletes the last gamerule added to the game values structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_a8c84afc0a40364bf92122154bd90f616}{gamerules\+\_\+gamerule\+\_\+create}} (\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
+\begin{DoxyCompactList}\small\item\em It initialises a new gamerule struct. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gamerules_8c_a8afba77bae6f1530c049f8459e623a38}{gamerules\+\_\+gamerule\+\_\+destroy}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It destroys a gamerule struct. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a69e08e8eca3b93a612cf127df88bf7bb}{gamerules\+\_\+gamerule\+\_\+set\+\_\+func}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, \mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\+\_\+func}} g\+\_\+func)
+\begin{DoxyCompactList}\small\item\em It sets the function pointer of a gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\+\_\+func}} \mbox{\hyperlink{gamerules_8c_a2e2e80cee7b390ac68a70d0b07a893a4}{gamerules\+\_\+gamerule\+\_\+get\+\_\+func}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It gets the function pointer of a gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a946675b5c268727a417e658080075f12}{gamerule\+\_\+try\+\_\+exec}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It tries to execute a gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{gamerules_8c_ab4b22efcc19e6248b066bcede3231af4}{gamerules\+\_\+get\+\_\+id}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It returns the gamerule id. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_ab51f82cffa79d356baffbc17b21712bb}{gamerules\+\_\+get\+\_\+name}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It returns the name of the gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{gamerules_8c_a5c3f4fb6bc570c6b38a5b83d66bed4fd}{gamerules\+\_\+get\+\_\+valid}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It returns the validity of the gamerule; the value which determines if a gamerule can be executed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gamerules_8c_ae675094f742cbb2d9c9893088b60130f}{gamerules\+\_\+get\+\_\+n\+\_\+exec\+\_\+times}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It returns the number of times a gamerule has been executed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{gamerules_8c_a43068c2fc7425210dbfcfa3661bf0a47}{gamerules\+\_\+get\+\_\+do\+\_\+once}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It determines if a gamerule is a one use one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gamerules_8c_a922117b2e41217e6cbe486b59b8ef43f}{gamerules\+\_\+get\+\_\+value}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em It returns the value of the gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a2ba3ed4046051e48ca58d50f76380f08}{gamerules\+\_\+set\+\_\+name}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em It sets the name of the gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_aebaa8645f16ce15d2a5662398c20e651}{gamerules\+\_\+set\+\_\+valid}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} value)
+\begin{DoxyCompactList}\small\item\em It sets the validity of the gamerule. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gamerules_8c_a6e8e2cfd8db77324cee63b71d9bb810f}{gamerules\+\_\+increment\+\_\+has\+\_\+exec}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em adds an execution to the gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_ab41755e03ab419f58ec6b9fcaa7fdd59}{gamerules\+\_\+set\+\_\+do\+\_\+once}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} value)
+\begin{DoxyCompactList}\small\item\em It sets if a gamerule is a one use one. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_ab28b43c6ca6d753aac3ef5f38693d2bf}{gamerules\+\_\+set\+\_\+value}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, int value)
+\begin{DoxyCompactList}\small\item\em It sets the value of the gamerule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a35fe0223f4f4cc72ddeaaeb684f80aeb}{gamerules\+\_\+set\+\_\+n\+\_\+exec\+\_\+times}} (\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr, int has\+\_\+exec)
+\begin{DoxyCompactList}\small\item\em Sets the number of times a gamerule has been executed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_a0be39e7eadc2b9284b7fb44f41487103}{gamerules\+\_\+get\+\_\+gamerule\+\_\+by\+\_\+id}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
+\begin{DoxyCompactList}\small\item\em It gets a gamerule by its id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8c_abeacec4113836aad98164ba4e034a74c}{gamerules\+\_\+get\+\_\+gamerule\+\_\+by\+\_\+name}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv, char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em It gets a gamerule by its id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_a82fec0767e63fcae002380400497dc7e}{gamerules\+\_\+open\+\_\+gate}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em opens the gate between P3 and P4. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8c_abd674e40301b101fc5b0f5734698936f}{gamerules\+\_\+use\+\_\+train\+\_\+pass}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
+\begin{DoxyCompactList}\small\item\em Uses the train and ends the tutorial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements gamerules into the game. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15-\/04-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gamerules_8c_aa138e4391665f125f792a5e1f4b8c35c}\label{gamerules_8c_aa138e4391665f125f792a5e1f4b8c35c} 
+\index{gamerules.c@{gamerules.c}!MAX\_GAMERULES@{MAX\_GAMERULES}}
+\index{MAX\_GAMERULES@{MAX\_GAMERULES}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_GAMERULES}{MAX\_GAMERULES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+GAMERULES~100}
+
+Max gamerule number. Can be modified if required. \Hypertarget{gamerules_8c_ac7c0207aa5a0e10d378be03b68041350}\label{gamerules_8c_ac7c0207aa5a0e10d378be03b68041350} 
+\index{gamerules.c@{gamerules.c}!MAX\_NAME@{MAX\_NAME}}
+\index{MAX\_NAME@{MAX\_NAME}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_NAME}{MAX\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+NAME~64}
+
+Max name for a gamerule. \Hypertarget{gamerules_8c_a70dc6a57ec8af399841c1fe1ef930463}\label{gamerules_8c_a70dc6a57ec8af399841c1fe1ef930463} 
+\index{gamerules.c@{gamerules.c}!P3\_P4\_GATE@{P3\_P4\_GATE}}
+\index{P3\_P4\_GATE@{P3\_P4\_GATE}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{P3\_P4\_GATE}{P3\_P4\_GATE}}
+{\footnotesize\ttfamily \#define P3\+\_\+\+P4\+\_\+\+GATE~49}
+
+Id of the gate between P3 and P4. \Hypertarget{gamerules_8c_abf02675d4a49b32f97ac61f7ce7b6642}\label{gamerules_8c_abf02675d4a49b32f97ac61f7ce7b6642} 
+\index{gamerules.c@{gamerules.c}!START\_ROOM\_ID@{START\_ROOM\_ID}}
+\index{START\_ROOM\_ID@{START\_ROOM\_ID}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{START\_ROOM\_ID}{START\_ROOM\_ID}}
+{\footnotesize\ttfamily \#define START\+\_\+\+ROOM\+\_\+\+ID~111}
+
+Id of the start room. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gamerules_8c_a946675b5c268727a417e658080075f12}\label{gamerules_8c_a946675b5c268727a417e658080075f12} 
+\index{gamerules.c@{gamerules.c}!gamerule\_try\_exec@{gamerule\_try\_exec}}
+\index{gamerule\_try\_exec@{gamerule\_try\_exec}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerule\_try\_exec()}{gamerule\_try\_exec()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerule\+\_\+try\+\_\+exec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It tries to execute a gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game struct. \\
+\hline
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a8c84afc0a40364bf92122154bd90f616}\label{gamerules_8c_a8c84afc0a40364bf92122154bd90f616} 
+\index{gamerules.c@{gamerules.c}!gamerules\_gamerule\_create@{gamerules\_gamerule\_create}}
+\index{gamerules\_gamerule\_create@{gamerules\_gamerule\_create}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_gamerule\_create()}{gamerules\_gamerule\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+gamerule\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id }\end{DoxyParamCaption})}
+
+
+
+It initialises a new gamerule struct. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the gamerule struct, NULL otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a8afba77bae6f1530c049f8459e623a38}\label{gamerules_8c_a8afba77bae6f1530c049f8459e623a38} 
+\index{gamerules.c@{gamerules.c}!gamerules\_gamerule\_destroy@{gamerules\_gamerule\_destroy}}
+\index{gamerules\_gamerule\_destroy@{gamerules\_gamerule\_destroy}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_gamerule\_destroy()}{gamerules\_gamerule\_destroy()}}
+{\footnotesize\ttfamily void gamerules\+\_\+gamerule\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It destroys a gamerule struct. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gamerules_8c_a2e2e80cee7b390ac68a70d0b07a893a4}\label{gamerules_8c_a2e2e80cee7b390ac68a70d0b07a893a4} 
+\index{gamerules.c@{gamerules.c}!gamerules\_gamerule\_get\_func@{gamerules\_gamerule\_get\_func}}
+\index{gamerules\_gamerule\_get\_func@{gamerules\_gamerule\_get\_func}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_gamerule\_get\_func()}{gamerules\_gamerule\_get\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\+\_\+func}} gamerules\+\_\+gamerule\+\_\+get\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It gets the function pointer of a gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the function of the gamerule, NULL otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a69e08e8eca3b93a612cf127df88bf7bb}\label{gamerules_8c_a69e08e8eca3b93a612cf127df88bf7bb} 
+\index{gamerules.c@{gamerules.c}!gamerules\_gamerule\_set\_func@{gamerules\_gamerule\_set\_func}}
+\index{gamerules\_gamerule\_set\_func@{gamerules\_gamerule\_set\_func}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_gamerule\_set\_func()}{gamerules\_gamerule\_set\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+gamerule\+\_\+set\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{\mbox{\hyperlink{gamerules_8h_ad5c5efe6adb26d0402d732786ca5a30c}{Gamerule\+\_\+func}}}]{g\+\_\+func }\end{DoxyParamCaption})}
+
+
+
+It sets the function pointer of a gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em g\+\_\+func} & Pointer to the function to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ac7a1f6db1a1969cc34556706a78dfda5}\label{gamerules_8c_ac7a1f6db1a1969cc34556706a78dfda5} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_all\_gamerules@{gamerules\_get\_all\_gamerules}}
+\index{gamerules\_get\_all\_gamerules@{gamerules\_get\_all\_gamerules}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_all\_gamerules()}{gamerules\_get\_all\_gamerules()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+get\+\_\+all\+\_\+gamerules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv }\end{DoxyParamCaption})}
+
+
+
+It returns an initialised array with the ids of the gamerules. IMPORTANT The array must be freed after use. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the array with the ids of the gamerules or NULL if an error takes place. IMPORTANT The array must be freed after use. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a43068c2fc7425210dbfcfa3661bf0a47}\label{gamerules_8c_a43068c2fc7425210dbfcfa3661bf0a47} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_do\_once@{gamerules\_get\_do\_once}}
+\index{gamerules\_get\_do\_once@{gamerules\_get\_do\_once}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_do\_once()}{gamerules\_get\_do\_once()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} gamerules\+\_\+get\+\_\+do\+\_\+once (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It determines if a gamerule is a one use one. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the gamerule or 0 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a0be39e7eadc2b9284b7fb44f41487103}\label{gamerules_8c_a0be39e7eadc2b9284b7fb44f41487103} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_gamerule\_by\_id@{gamerules\_get\_gamerule\_by\_id}}
+\index{gamerules\_get\_gamerule\_by\_id@{gamerules\_get\_gamerule\_by\_id}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_gamerule\_by\_id()}{gamerules\_get\_gamerule\_by\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+get\+\_\+gamerule\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id }\end{DoxyParamCaption})}
+
+
+
+It gets a gamerule by its id. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+{\em id} & Id of the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the gamerule struct or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_abeacec4113836aad98164ba4e034a74c}\label{gamerules_8c_abeacec4113836aad98164ba4e034a74c} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_gamerule\_by\_name@{gamerules\_get\_gamerule\_by\_name}}
+\index{gamerules\_get\_gamerule\_by\_name@{gamerules\_get\_gamerule\_by\_name}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_gamerule\_by\_name()}{gamerules\_get\_gamerule\_by\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+get\+\_\+gamerule\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+It gets a gamerule by its id. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+{\em name} & Gamerule name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the gamerule struct or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ab4b22efcc19e6248b066bcede3231af4}\label{gamerules_8c_ab4b22efcc19e6248b066bcede3231af4} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_id@{gamerules\_get\_id}}
+\index{gamerules\_get\_id@{gamerules\_get\_id}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_id()}{gamerules\_get\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} gamerules\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It returns the gamerule id. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the gamerule or ID\+\_\+\+ERROR. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ae675094f742cbb2d9c9893088b60130f}\label{gamerules_8c_ae675094f742cbb2d9c9893088b60130f} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_n\_exec\_times@{gamerules\_get\_n\_exec\_times}}
+\index{gamerules\_get\_n\_exec\_times@{gamerules\_get\_n\_exec\_times}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_n\_exec\_times()}{gamerules\_get\_n\_exec\_times()}}
+{\footnotesize\ttfamily int gamerules\+\_\+get\+\_\+n\+\_\+exec\+\_\+times (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It returns the number of times a gamerule has been executed. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of times the gamerule has been executed or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ac60a5cdbc21d0e81efe96565fc16eaf8}\label{gamerules_8c_ac60a5cdbc21d0e81efe96565fc16eaf8} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_n\_gamerules@{gamerules\_get\_n\_gamerules}}
+\index{gamerules\_get\_n\_gamerules@{gamerules\_get\_n\_gamerules}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_n\_gamerules()}{gamerules\_get\_n\_gamerules()}}
+{\footnotesize\ttfamily int gamerules\+\_\+get\+\_\+n\+\_\+gamerules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv }\end{DoxyParamCaption})}
+
+
+
+It returns the number of gamerules. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of gamerules or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ab51f82cffa79d356baffbc17b21712bb}\label{gamerules_8c_ab51f82cffa79d356baffbc17b21712bb} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_name@{gamerules\_get\_name}}
+\index{gamerules\_get\_name@{gamerules\_get\_name}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_name()}{gamerules\_get\_name()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} gamerules\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It returns the name of the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name of the gamerule or NULL. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a5c3f4fb6bc570c6b38a5b83d66bed4fd}\label{gamerules_8c_a5c3f4fb6bc570c6b38a5b83d66bed4fd} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_valid@{gamerules\_get\_valid}}
+\index{gamerules\_get\_valid@{gamerules\_get\_valid}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_valid()}{gamerules\_get\_valid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} gamerules\+\_\+get\+\_\+valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It returns the validity of the gamerule; the value which determines if a gamerule can be executed. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TRUE if the gamerule is valid, FALSE otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a922117b2e41217e6cbe486b59b8ef43f}\label{gamerules_8c_a922117b2e41217e6cbe486b59b8ef43f} 
+\index{gamerules.c@{gamerules.c}!gamerules\_get\_value@{gamerules\_get\_value}}
+\index{gamerules\_get\_value@{gamerules\_get\_value}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_get\_value()}{gamerules\_get\_value()}}
+{\footnotesize\ttfamily int gamerules\+\_\+get\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It returns the value of the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the gamerule or -\/1 if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a6e8e2cfd8db77324cee63b71d9bb810f}\label{gamerules_8c_a6e8e2cfd8db77324cee63b71d9bb810f} 
+\index{gamerules.c@{gamerules.c}!gamerules\_increment\_has\_exec@{gamerules\_increment\_has\_exec}}
+\index{gamerules\_increment\_has\_exec@{gamerules\_increment\_has\_exec}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_increment\_has\_exec()}{gamerules\_increment\_has\_exec()}}
+{\footnotesize\ttfamily int gamerules\+\_\+increment\+\_\+has\+\_\+exec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+adds an execution to the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a82fec0767e63fcae002380400497dc7e}\label{gamerules_8c_a82fec0767e63fcae002380400497dc7e} 
+\index{gamerules.c@{gamerules.c}!gamerules\_open\_gate@{gamerules\_open\_gate}}
+\index{gamerules\_open\_gate@{gamerules\_open\_gate}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_open\_gate()}{gamerules\_open\_gate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+open\+\_\+gate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+opens the gate between P3 and P4. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em gr} & Pointer to the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ab41755e03ab419f58ec6b9fcaa7fdd59}\label{gamerules_8c_ab41755e03ab419f58ec6b9fcaa7fdd59} 
+\index{gamerules.c@{gamerules.c}!gamerules\_set\_do\_once@{gamerules\_set\_do\_once}}
+\index{gamerules\_set\_do\_once@{gamerules\_set\_do\_once}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_set\_do\_once()}{gamerules\_set\_do\_once()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+set\+\_\+do\+\_\+once (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{value }\end{DoxyParamCaption})}
+
+
+
+It sets if a gamerule is a one use one. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em value} & Value to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a35fe0223f4f4cc72ddeaaeb684f80aeb}\label{gamerules_8c_a35fe0223f4f4cc72ddeaaeb684f80aeb} 
+\index{gamerules.c@{gamerules.c}!gamerules\_set\_n\_exec\_times@{gamerules\_set\_n\_exec\_times}}
+\index{gamerules\_set\_n\_exec\_times@{gamerules\_set\_n\_exec\_times}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_set\_n\_exec\_times()}{gamerules\_set\_n\_exec\_times()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+set\+\_\+n\+\_\+exec\+\_\+times (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{int}]{has\+\_\+exec }\end{DoxyParamCaption})}
+
+
+
+Sets the number of times a gamerule has been executed. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em has\+\_\+exec} & Number of times the gamerule has been executed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a2ba3ed4046051e48ca58d50f76380f08}\label{gamerules_8c_a2ba3ed4046051e48ca58d50f76380f08} 
+\index{gamerules.c@{gamerules.c}!gamerules\_set\_name@{gamerules\_set\_name}}
+\index{gamerules\_set\_name@{gamerules\_set\_name}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_set\_name()}{gamerules\_set\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+It sets the name of the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em name} & Name of the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_aebaa8645f16ce15d2a5662398c20e651}\label{gamerules_8c_aebaa8645f16ce15d2a5662398c20e651} 
+\index{gamerules.c@{gamerules.c}!gamerules\_set\_valid@{gamerules\_set\_valid}}
+\index{gamerules\_set\_valid@{gamerules\_set\_valid}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_set\_valid()}{gamerules\_set\_valid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+set\+\_\+valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{value }\end{DoxyParamCaption})}
+
+
+
+It sets the validity of the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em value} & Value of the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ab28b43c6ca6d753aac3ef5f38693d2bf}\label{gamerules_8c_ab28b43c6ca6d753aac3ef5f38693d2bf} 
+\index{gamerules.c@{gamerules.c}!gamerules\_set\_value@{gamerules\_set\_value}}
+\index{gamerules\_set\_value@{gamerules\_set\_value}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_set\_value()}{gamerules\_set\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+set\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+It sets the value of the gamerule. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+{\em value} & Value of the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a44a15cc79179b81a24721e9f92fdc190}\label{gamerules_8c_a44a15cc79179b81a24721e9f92fdc190} 
+\index{gamerules.c@{gamerules.c}!gamerules\_try\_exec\_all@{gamerules\_try\_exec\_all}}
+\index{gamerules\_try\_exec\_all@{gamerules\_try\_exec\_all}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_try\_exec\_all()}{gamerules\_try\_exec\_all()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+try\+\_\+exec\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv }\end{DoxyParamCaption})}
+
+
+
+It tries to execute all the gamerules on a game values struct. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game struct. \\
+\hline
+{\em gv} & Pointer to the game values struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_abd674e40301b101fc5b0f5734698936f}\label{gamerules_8c_abd674e40301b101fc5b0f5734698936f} 
+\index{gamerules.c@{gamerules.c}!gamerules\_use\_train\_pass@{gamerules\_use\_train\_pass}}
+\index{gamerules\_use\_train\_pass@{gamerules\_use\_train\_pass}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_use\_train\_pass()}{gamerules\_use\_train\_pass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+use\+\_\+train\+\_\+pass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+Uses the train and ends the tutorial. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em gr} & Pointer to the gamerule. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ad1dc95a3242ff83ed86acb1f6d1d462a}\label{gamerules_8c_ad1dc95a3242ff83ed86acb1f6d1d462a} 
+\index{gamerules.c@{gamerules.c}!gamerules\_values\_add@{gamerules\_values\_add}}
+\index{gamerules\_values\_add@{gamerules\_values\_add}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_values\_add()}{gamerules\_values\_add()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+values\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv,  }\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
+
+
+
+It adds a gamerule to the game values. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+{\em gr} & Pointer to the gamerule struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything goes well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_ad6a1034c6449cb91340f40c4547aab5e}\label{gamerules_8c_ad6a1034c6449cb91340f40c4547aab5e} 
+\index{gamerules.c@{gamerules.c}!gamerules\_values\_delete\_last@{gamerules\_values\_delete\_last}}
+\index{gamerules\_values\_delete\_last@{gamerules\_values\_delete\_last}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_values\_delete\_last()}{gamerules\_values\_delete\_last()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+values\+\_\+delete\+\_\+last (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv }\end{DoxyParamCaption})}
+
+
+
+It deletes the last gamerule added to the game values structure. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the deleted gamerule or NULL if an error takes place. 
+\end{DoxyReturn}
+\Hypertarget{gamerules_8c_a01e40a91e4023de24fb568727be6e625}\label{gamerules_8c_a01e40a91e4023de24fb568727be6e625} 
+\index{gamerules.c@{gamerules.c}!gamerules\_values\_destroy@{gamerules\_values\_destroy}}
+\index{gamerules\_values\_destroy@{gamerules\_values\_destroy}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_values\_destroy()}{gamerules\_values\_destroy()}}
+{\footnotesize\ttfamily void gamerules\+\_\+values\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}}]{gv }\end{DoxyParamCaption})}
+
+
+
+It destroys the game values. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & Pointer to the game values struct. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gamerules_8c_af47afc4c1ec9896c6bb26a2671f2d5b7}\label{gamerules_8c_af47afc4c1ec9896c6bb26a2671f2d5b7} 
+\index{gamerules.c@{gamerules.c}!gamerules\_values\_init@{gamerules\_values\_init}}
+\index{gamerules\_values\_init@{gamerules\_values\_init}!gamerules.c@{gamerules.c}}
+\doxysubsubsection{\texorpdfstring{gamerules\_values\_init()}{gamerules\_values\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*} gamerules\+\_\+values\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+It initialises the game values. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Pointer to the game values struct. 
+\end{DoxyReturn}

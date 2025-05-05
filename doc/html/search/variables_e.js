@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['turn_0',['turn',['../struct__Game.html#a2a01590499ec911a85a61cd2eb945a99',1,'_Game']]]
+  ['refresh_5frate_0',['refresh_rate',['../struct__Animation.html#a814c3d9c695a0dbf4ae75bacf5f8a356',1,'_Animation']]],
+  ['room_1',['room',['../struct__Graphic__engine.html#a76424a456fa79b87c5e44e2da8bf617f',1,'_Graphic_engine']]]
 ];

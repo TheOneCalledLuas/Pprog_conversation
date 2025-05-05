@@ -13,13 +13,33 @@
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{space_8h}{space.h}}"{}}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{set_8h}{set.h}}"{}}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Graphic__engine}{\_Graphic\_engine}}\ \mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}};\ }
-\DoxyCodeLine{00029\ \mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *\mbox{\hyperlink{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16}{graphic\_engine\_create}}();}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\_engine\_destroy}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge);}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_a3f37ee25263b8fa49264a7d3d4d5bd27}{graphic\_engine\_paint\_game}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge,\ \mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ refresh);}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66a0ed6f4fc2c64f6cd0eccdc9d9428581d}{NO\_SAVES}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66a5a823d0b9f8c545f129c8dda9fc6eb39}{EXISTING\_SAVES}},\ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66ab0d67229edf24dec844ee736a5c95694}{LIMIT\_SAVEFILES}},\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66ad869eda6d5a5ef8172f11a102c96a11b}{LOAD\_GAME}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66af9d8320afbbf4186c498be28bb0a7e3d}{FAIL\_LOAD\_GAME}},\ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66ac9e8468c9768465a565bc176a753e261}{NEW\_GAME}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66a1b4681ddb0181cdf2320ffd4ed59e8ea}{FAIL\_NEW\_GAME}},\ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66ade6a6dd1dce07d76a1fc69e617ecb3df}{DELETE\_FILE}},\ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66afb43b8264ea4d3dd9957ba1b3fd3f3d5}{FINAL}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66a97b1885770be9f2bb1a6565f55300e7c}{N\_MENU\_SITUATIONS}}\ }
+\DoxyCodeLine{00036\ \}\ \mbox{\hyperlink{graphic__engine_8h_aa49d837fc26d86afcc43d024422c8a66}{Menu\_states}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Graphic__engine}{\_Graphic\_engine}}\ \mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}};\ }
+\DoxyCodeLine{00046\ \mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *\mbox{\hyperlink{graphic__engine_8h_a943c75487b750e5b0aafde34ac739b16}{graphic\_engine\_create}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\_engine\_destroy}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_a3f37ee25263b8fa49264a7d3d4d5bd27}{graphic\_engine\_paint\_game}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge,\ \mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}\ refresh);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *\mbox{\hyperlink{graphic__engine_8h_a47409d66a48381d25ede56c92ed48ec9}{graphic\_engine\_menu\_create}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_a28889c261e77762bb14c011878160ca4}{graphic\_engine\_menu\_destroy}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graphic__engine_8h_ae4b98eeb9b9cde0802b0ccb576149e2d}{graphic\_engine\_menu\_paint}}(\mbox{\hyperlink{struct__Graphic__engine}{Graphic\_engine}}\ *ge,\ \mbox{\hyperlink{struct__Game}{Game}}\ *game,\ \textcolor{keywordtype}{int}\ state);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

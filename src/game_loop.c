@@ -53,6 +53,7 @@ typedef enum Menu_actions
  * @author Fernando Mijangos
  * @param game Pointer to the game.
  * @param gengine The graphic_engine you are going to be using.
+ * @param gengine_menu The graphic_engine for the menu.
  * @param file_name Name of the file where the information about the spaces is.
  *
  * @return 1 if it goes wrong, 0 otherwise.
@@ -65,6 +66,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengi
  * @author Saul Lopez Romero
  * @param game Pointer to the game.
  * @param gengine Pointer to the graphic engine.
+ * @param gengine_menu Pointer to the graphic engine for the menu.
  * @param f Pointer to the file for the log.
  * @param base_savefile named of the file that is used a template for new games
  */
@@ -76,6 +78,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
  * @author Fernando Mijangos
  * @param game Pointer to the game.
  * @param gengine The graphic engine you are using.
+ * @param gengine_menu The graphic engine for the menu.
  */
 void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu);
 
@@ -84,6 +87,7 @@ void game_loop_cleanup(Game **game, Graphic_engine *gengine, Graphic_engine *gen
  *
  * @author Fernando Mijangos
  * @param game Pointer to the game.
+ * @param ge_menu The graphic engine for the menu.
  * @param filename Name of the file where the information for new games is stored, so it doesnt write over it.
  * @return OK if everything went well, ERROR otherwise.
  */

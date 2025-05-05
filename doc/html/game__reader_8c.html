@@ -86,6 +86,8 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="game__reader_8h_source.html">game_reader.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="link_8h_source.html">link.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gamerules_8h_source.html">gamerules.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="animation_8h_source.html">animation.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -95,53 +97,63 @@ Include dependency graph for game_reader.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="game__reader_8c__incl.png" border="0" usemap="#asrc_2game__reader_8c" alt=""/></div>
 <map name="asrc_2game__reader_8c" id="asrc_2game__reader_8c">
-<area shape="rect" title="It loads and makes all the actions related to space management." alt="" coords="615,5,756,31"/>
-<area shape="rect" href="game__reader_8h.html" title="It loads all the game data into the program." alt="" coords="441,79,559,104"/>
-<area shape="poly" title=" " alt="" coords="657,33,544,76,542,71,655,28"/>
-<area shape="rect" href="game_8h.html" title="It defines the game interface." alt="" coords="465,152,535,177"/>
-<area shape="poly" title=" " alt="" coords="672,33,527,145,524,141,669,29"/>
-<area shape="rect" title=" " alt="" coords="43,299,109,324"/>
-<area shape="poly" title=" " alt="" coords="620,33,529,53,429,81,329,109,248,129,212,142,177,161,141,189,103,227,88,255,81,285,75,284,83,253,99,224,138,185,174,157,210,137,247,124,327,104,427,76,528,48,619,28"/>
-<area shape="rect" href="link_8h.html" title="It defines the link module." alt="" coords="656,225,715,251"/>
-<area shape="poly" title=" " alt="" coords="688,31,688,211,683,211,683,31"/>
-<area shape="rect" title=" " alt="" coords="759,299,830,324"/>
-<area shape="poly" title=" " alt="" coords="692,30,788,285,783,286,687,32"/>
-<area shape="rect" title=" " alt="" coords="790,79,861,104"/>
-<area shape="poly" title=" " alt="" coords="709,28,792,70,789,75,707,33"/>
-<area shape="rect" title=" " alt="" coords="885,79,960,104"/>
-<area shape="poly" title=" " alt="" coords="724,28,873,72,871,77,723,33"/>
-<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="345,445,415,471"/>
-<area shape="poly" title=" " alt="" coords="441,100,317,114,174,141,109,159,56,181,36,194,21,207,11,221,8,237,8,312,10,324,17,336,43,358,83,379,131,397,238,427,331,446,330,451,237,432,129,402,80,384,40,363,13,339,5,326,3,313,3,236,6,219,17,204,33,189,54,176,107,154,173,135,316,109,440,95"/>
-<area shape="poly" title=" " alt="" coords="503,104,503,138,497,138,497,104"/>
-<area shape="poly" title=" " alt="" coords="512,176,526,197,539,225,541,238,539,251,525,297,509,331,488,362,458,399,435,421,412,440,408,435,432,417,454,396,484,359,505,328,520,295,533,250,536,238,533,226,522,200,507,179"/>
-<area shape="rect" href="command_8h.html" title="It defines the command interpreter interface." alt="" coords="113,225,212,251"/>
-<area shape="poly" title=" " alt="" coords="465,176,226,226,225,221,464,171"/>
-<area shape="rect" href="space_8h.html" title="It defines the space module interface." alt="" coords="452,225,524,251"/>
-<area shape="poly" title=" " alt="" coords="501,178,495,212,490,211,495,177"/>
-<area shape="rect" href="object_8h.html" title="It handles object related tasks." alt="" coords="355,299,429,324"/>
-<area shape="poly" title=" " alt="" coords="488,179,466,201,442,227,406,287,401,285,438,224,462,197,485,175"/>
-<area shape="rect" href="player_8h.html" title="It defines the player module." alt="" coords="256,225,331,251"/>
-<area shape="poly" title=" " alt="" coords="468,180,341,223,339,218,466,175"/>
-<area shape="rect" href="character_8h.html" title="It implements the character module." alt="" coords="589,372,683,397"/>
-<area shape="poly" title=" " alt="" coords="526,175,559,195,589,224,608,257,622,294,636,358,631,359,617,295,604,260,585,227,556,199,524,180"/>
-<area shape="poly" title=" " alt="" coords="531,175,644,218,642,223,529,180"/>
-<area shape="poly" title=" " alt="" coords="169,250,196,317,220,359,251,395,290,422,332,441,330,445,288,427,248,399,216,362,191,320,164,252"/>
-<area shape="poly" title=" " alt="" coords="150,253,102,292,99,288,147,249"/>
-<area shape="poly" title=" " alt="" coords="490,251,485,285,473,325,438,387,401,436,397,433,434,384,468,323,480,284,484,250"/>
-<area shape="poly" title=" " alt="" coords="474,253,420,292,417,288,471,249"/>
-<area shape="rect" href="set_8h.html" title="It defines sets for the whole project." alt="" coords="321,372,375,397"/>
-<area shape="poly" title=" " alt="" coords="486,252,470,287,443,326,416,349,387,368,384,363,413,345,439,322,466,284,481,250"/>
-<area shape="poly" title=" " alt="" coords="394,324,389,398,386,432,380,432,384,397,389,324"/>
-<area shape="poly" title=" " alt="" coords="356,397,372,432,367,434,351,399"/>
-<area shape="poly" title=" " alt="" coords="273,253,246,272,225,300,222,311,225,323,247,361,278,392,312,418,344,437,341,441,309,422,274,396,243,364,220,325,217,311,220,297,243,269,270,249"/>
-<area shape="poly" title=" " alt="" coords="311,249,366,288,363,293,308,253"/>
-<area shape="rect" href="inventory_8h.html" title="It handles inventory related tasks." alt="" coords="235,299,330,324"/>
-<area shape="poly" title=" " alt="" coords="294,251,289,286,284,285,289,251"/>
-<area shape="poly" title=" " alt="" coords="287,324,294,358,310,396,329,417,350,435,347,439,325,421,306,399,289,360,281,325"/>
-<area shape="poly" title=" " alt="" coords="295,323,330,360,326,364,291,326"/>
-<area shape="poly" title=" " alt="" coords="596,400,429,446,428,441,594,395"/>
-<area shape="poly" title=" " alt="" coords="693,250,705,279,714,318,715,361,709,381,698,399,680,413,652,425,581,442,501,452,430,457,429,452,500,447,580,437,651,420,677,409,694,396,704,379,709,360,709,319,700,281,688,252"/>
-<area shape="poly" title=" " alt="" coords="704,248,767,289,764,293,701,253"/>
+<area shape="rect" title="It loads and makes all the actions related to space management." alt="" coords="725,5,866,31"/>
+<area shape="rect" href="game__reader_8h.html" title="It loads all the game data into the program." alt="" coords="5,79,124,104"/>
+<area shape="poly" title=" " alt="" coords="725,27,468,48,144,81,138,82,138,77,143,76,468,43,724,22"/>
+<area shape="rect" href="game_8h.html" title="It defines the game interface." alt="" coords="487,152,557,177"/>
+<area shape="poly" title=" " alt="" coords="775,33,557,148,554,143,772,29"/>
+<area shape="rect" title=" " alt="" coords="118,299,185,324"/>
+<area shape="poly" title=" " alt="" coords="725,25,607,39,535,53,460,72,383,98,309,132,240,175,179,227,162,255,155,286,150,285,157,253,175,224,237,170,306,127,381,93,458,67,534,47,606,34,724,20"/>
+<area shape="rect" href="link_8h.html" title="It defines the link module." alt="" coords="766,225,825,251"/>
+<area shape="poly" title=" " alt="" coords="798,31,798,211,793,211,793,31"/>
+<area shape="rect" title=" " alt="" coords="833,299,904,324"/>
+<area shape="poly" title=" " alt="" coords="802,30,817,78,866,284,861,286,811,79,797,32"/>
+<area shape="rect" href="gamerules_8h.html" title="It implements gamerules into the game." alt="" coords="639,225,741,251"/>
+<area shape="poly" title=" " alt="" coords="792,32,704,214,699,212,787,30"/>
+<area shape="rect" href="animation_8h.html" title="It implements animations into the game." alt="" coords="900,225,1000,251"/>
+<area shape="poly" title=" " alt="" coords="820,28,852,49,883,77,906,111,924,147,946,211,941,213,919,149,901,113,879,80,848,53,817,33"/>
+<area shape="rect" title=" " alt="" coords="951,79,1021,104"/>
+<area shape="poly" title=" " alt="" coords="827,28,943,71,941,76,825,33"/>
+<area shape="rect" title=" " alt="" coords="1046,79,1121,104"/>
+<area shape="poly" title=" " alt="" coords="842,28,1034,75,1032,80,841,33"/>
+<area shape="rect" href="types_8h.html" title="It defines common types for the whole project." alt="" coords="497,519,568,544"/>
+<area shape="poly" title=" " alt="" coords="69,104,76,161,81,237,81,386,84,400,93,414,126,439,176,461,237,480,371,507,484,522,483,528,370,512,236,485,174,466,123,444,89,417,79,402,75,386,75,237,71,161,64,105"/>
+<area shape="poly" title=" " alt="" coords="125,99,474,153,473,158,124,105"/>
+<area shape="poly" title=" " alt="" coords="487,177,429,195,367,226,341,245,322,268,312,294,313,324,323,369,335,404,353,435,384,469,407,486,433,500,485,518,483,523,430,505,404,491,380,473,348,439,330,406,318,371,307,324,307,293,318,265,338,241,365,221,427,190,485,172"/>
+<area shape="rect" href="command_8h.html" title="It defines the command interpreter interface." alt="" coords="189,225,287,251"/>
+<area shape="poly" title=" " alt="" coords="487,177,298,225,296,219,486,172"/>
+<area shape="rect" href="space_8h.html" title="It defines the space module interface." alt="" coords="322,299,394,324"/>
+<area shape="poly" title=" " alt="" coords="493,180,454,199,414,227,390,257,371,288,367,285,385,254,411,223,451,195,491,175"/>
+<area shape="rect" href="object_8h.html" title="It handles object related tasks." alt="" coords="411,372,486,397"/>
+<area shape="poly" title=" " alt="" coords="520,179,502,226,459,360,454,358,497,224,515,177"/>
+<area shape="rect" href="player_8h.html" title="It defines the player module." alt="" coords="521,299,595,324"/>
+<area shape="poly" title=" " alt="" coords="519,179,508,212,506,231,510,250,521,270,536,288,532,291,517,273,505,252,501,231,503,211,514,177"/>
+<area shape="rect" href="character_8h.html" title="It implements the character module." alt="" coords="520,225,615,251"/>
+<area shape="poly" title=" " alt="" coords="532,176,555,212,550,215,527,179"/>
+<area shape="poly" title=" " alt="" coords="558,172,754,223,752,228,557,177"/>
+<area shape="poly" title=" " alt="" coords="543,175,644,218,642,223,541,180"/>
+<area shape="poly" title=" " alt="" coords="558,169,887,224,886,229,557,174"/>
+<area shape="poly" title=" " alt="" coords="237,251,228,292,222,350,223,382,228,413,239,443,256,469,271,480,293,490,353,506,422,517,484,524,483,529,421,523,352,512,291,495,268,485,252,472,234,445,223,415,218,382,217,350,223,291,232,250"/>
+<area shape="poly" title=" " alt="" coords="226,253,178,292,174,288,222,249"/>
+<area shape="poly" title=" " alt="" coords="361,324,362,353,369,391,382,432,404,469,422,485,442,498,485,516,483,521,439,503,418,489,400,472,377,434,363,392,357,353,355,324"/>
+<area shape="poly" title=" " alt="" coords="374,322,425,361,421,365,371,326"/>
+<area shape="rect" href="set_8h.html" title="It defines sets for the whole project." alt="" coords="415,445,469,471"/>
+<area shape="poly" title=" " alt="" coords="365,323,402,396,427,433,423,436,397,399,361,326"/>
+<area shape="poly" title=" " alt="" coords="458,396,521,505,517,508,453,399"/>
+<area shape="poly" title=" " alt="" coords="458,469,509,508,505,512,455,473"/>
+<area shape="poly" title=" " alt="" coords="577,322,600,343,619,371,622,385,619,398,607,430,590,461,554,510,550,506,585,458,602,428,614,397,617,385,614,373,596,346,573,326"/>
+<area shape="poly" title=" " alt="" coords="542,326,480,367,477,362,539,322"/>
+<area shape="rect" href="inventory_8h.html" title="It handles inventory related tasks." alt="" coords="511,372,605,397"/>
+<area shape="poly" title=" " alt="" coords="561,324,561,358,555,358,555,324"/>
+<area shape="poly" title=" " alt="" coords="559,398,540,505,534,505,553,397"/>
+<area shape="poly" title=" " alt="" coords="541,400,474,440,471,436,538,395"/>
+<area shape="poly" title=" " alt="" coords="580,249,601,275,623,311,639,353,642,375,641,398,631,437,609,472,588,495,565,513,562,509,585,491,605,469,626,435,635,397,637,375,634,354,619,313,597,278,576,253"/>
+<area shape="poly" title=" " alt="" coords="568,251,564,286,559,285,563,251"/>
+<area shape="poly" title=" " alt="" coords="794,252,779,293,752,351,713,415,690,445,664,473,624,500,582,518,580,513,622,495,660,469,686,442,709,412,747,349,774,291,789,250"/>
+<area shape="poly" title=" " alt="" coords="809,249,849,287,845,291,806,253"/>
+<area shape="poly" title=" " alt="" coords="693,251,693,291,687,349,670,413,656,444,637,472,610,497,579,515,576,511,607,493,633,469,651,442,665,412,681,348,687,291,688,251"/>
+<area shape="poly" title=" " alt="" coords="668,228,567,185,569,180,670,223"/>
+<area shape="poly" title=" " alt="" coords="950,252,940,287,919,326,882,365,840,399,794,429,747,455,657,495,582,520,581,515,655,490,745,450,792,425,837,395,878,361,915,322,935,285,945,250"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -155,6 +167,8 @@ Macros</h2></td></tr>
 <tr class="separator:a8606b2e3a4d6e1d1d27f513374fcb265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77f61f9d08cce5be70639d3ab9a996b4" id="r_a77f61f9d08cce5be70639d3ab9a996b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a77f61f9d08cce5be70639d3ab9a996b4">IDENTIFIER_LENGTH</a>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:a77f61f9d08cce5be70639d3ab9a996b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bf730075379ba8cb5551e8137813059" id="r_a0bf730075379ba8cb5551e8137813059"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a0bf730075379ba8cb5551e8137813059">SPACE_DESC</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a0bf730075379ba8cb5551e8137813059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -167,12 +181,27 @@ Functions</h2></td></tr>
 <tr class="memitem:abb9c617888c6718713ab0ff35992de98" id="r_abb9c617888c6718713ab0ff35992de98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#abb9c617888c6718713ab0ff35992de98">game_reader_load_characters</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *name_file)</td></tr>
 <tr class="memdesc:abb9c617888c6718713ab0ff35992de98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the characters from the data file.  <br /></td></tr>
 <tr class="separator:abb9c617888c6718713ab0ff35992de98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5b6daa9380d4d9f36a8dc566f81c8f" id="r_adc5b6daa9380d4d9f36a8dc566f81c8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#adc5b6daa9380d4d9f36a8dc566f81c8f">game_reader_load_last_turn</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
+<tr class="memdesc:adc5b6daa9380d4d9f36a8dc566f81c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the last turn of the game.  <br /></td></tr>
+<tr class="separator:adc5b6daa9380d4d9f36a8dc566f81c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5060525810704f10a6a1772981b207a5" id="r_a5060525810704f10a6a1772981b207a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a5060525810704f10a6a1772981b207a5">game_reader_load_players</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
 <tr class="memdesc:a5060525810704f10a6a1772981b207a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the players from the data file. Should be called once all the spaces have been loaded in.  <br /></td></tr>
 <tr class="separator:a5060525810704f10a6a1772981b207a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00cc7cb1731d6ea69ac880d654ba66e5" id="r_a00cc7cb1731d6ea69ac880d654ba66e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a00cc7cb1731d6ea69ac880d654ba66e5">game_reader_load_links</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
 <tr class="memdesc:a00cc7cb1731d6ea69ac880d654ba66e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the links from the data file. Should be called once all the spaces have been loaded in.  <br /></td></tr>
 <tr class="separator:a00cc7cb1731d6ea69ac880d654ba66e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7da2162d2b4a98821e8551a3104a6e1" id="r_ad7da2162d2b4a98821e8551a3104a6e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#ad7da2162d2b4a98821e8551a3104a6e1">game_reader_load_gamerules</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
+<tr class="memdesc:ad7da2162d2b4a98821e8551a3104a6e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the gamerules from the data file. Should be called the last one.  <br /></td></tr>
+<tr class="separator:ad7da2162d2b4a98821e8551a3104a6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1025cbe8fc598687c56c177fc32e5c" id="r_a8c1025cbe8fc598687c56c177fc32e5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a8c1025cbe8fc598687c56c177fc32e5c">game_reader_load_savefile_names</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game)</td></tr>
+<tr class="memdesc:a8c1025cbe8fc598687c56c177fc32e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the savefile names from the data file.  <br /></td></tr>
+<tr class="separator:a8c1025cbe8fc598687c56c177fc32e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af103309d005d4bfa00fa7bbcb08904b9" id="r_af103309d005d4bfa00fa7bbcb08904b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#af103309d005d4bfa00fa7bbcb08904b9">game_reader_save_game</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
+<tr class="memdesc:af103309d005d4bfa00fa7bbcb08904b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the game in a file.  <br /></td></tr>
+<tr class="separator:af103309d005d4bfa00fa7bbcb08904b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50a652676ffcc4bdf041168ca9d39841" id="r_a50a652676ffcc4bdf041168ca9d39841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__reader_8c.html#a50a652676ffcc4bdf041168ca9d39841">game_reader_load_animations</a> (<a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *game, char *filename)</td></tr>
+<tr class="memdesc:a50a652676ffcc4bdf041168ca9d39841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the animations from the data file.  <br /></td></tr>
+<tr class="separator:a50a652676ffcc4bdf041168ca9d39841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It loads and makes all the actions related to space management. </p>
@@ -241,7 +270,61 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a0bf730075379ba8cb5551e8137813059" name="a0bf730075379ba8cb5551e8137813059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf730075379ba8cb5551e8137813059">&#9670;&#160;</a></span>SPACE_DESC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPACE_DESC&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of lines the space description occupies. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a50a652676ffcc4bdf041168ca9d39841" name="a50a652676ffcc4bdf041168ca9d39841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a652676ffcc4bdf041168ca9d39841">&#9670;&#160;</a></span>game_reader_load_animations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> game_reader_load_animations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads all the animations from the data file. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game structure, where all the information related to game is included. </td></tr>
+    <tr><td class="paramname">filename</td><td>Name of the data file where the animations are stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK for a clean exit, otherwise ERROR. </dd></dl>
+
+</div>
+</div>
 <a id="abb9c617888c6718713ab0ff35992de98" name="abb9c617888c6718713ab0ff35992de98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb9c617888c6718713ab0ff35992de98">&#9670;&#160;</a></span>game_reader_load_characters()</h2>
 
@@ -274,6 +357,84 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">game</td><td>Pointer to the game. </td></tr>
     <tr><td class="paramname">filename</td><td>NAme of the data file where the characters are stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if everything went well, ERROR otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ad7da2162d2b4a98821e8551a3104a6e1" name="ad7da2162d2b4a98821e8551a3104a6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7da2162d2b4a98821e8551a3104a6e1">&#9670;&#160;</a></span>game_reader_load_gamerules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> game_reader_load_gamerules </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads all the gamerules from the data file. Should be called the last one. </p>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game structure, where all the information related to game is included. </td></tr>
+    <tr><td class="paramname">filename</td><td>Name of the data file where the gamerules are stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK for a clean exit, otherwise ERROR. </dd></dl>
+
+</div>
+</div>
+<a id="adc5b6daa9380d4d9f36a8dc566f81c8f" name="adc5b6daa9380d4d9f36a8dc566f81c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5b6daa9380d4d9f36a8dc566f81c8f">&#9670;&#160;</a></span>game_reader_load_last_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> game_reader_load_last_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads the last turn of the game. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game. </td></tr>
+    <tr><td class="paramname">filename</td><td>Name of the file where the last turn is stored. </td></tr>
   </table>
   </dd>
 </dl>
@@ -398,6 +559,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a8c1025cbe8fc598687c56c177fc32e5c" name="a8c1025cbe8fc598687c56c177fc32e5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1025cbe8fc598687c56c177fc32e5c">&#9670;&#160;</a></span>game_reader_load_savefile_names()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> game_reader_load_savefile_names </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads all the savefile names from the data file. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if everything went well, ERROR otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a70e1ab8e805fb12edcb77dcf542cb699" name="a70e1ab8e805fb12edcb77dcf542cb699"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70e1ab8e805fb12edcb77dcf542cb699">&#9670;&#160;</a></span>game_reader_load_spaces()</h2>
 
@@ -434,6 +623,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>OK for a clean exit, otherwise ERROR. </dd></dl>
+
+</div>
+</div>
+<a id="af103309d005d4bfa00fa7bbcb08904b9" name="af103309d005d4bfa00fa7bbcb08904b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af103309d005d4bfa00fa7bbcb08904b9">&#9670;&#160;</a></span>game_reader_save_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a> game_reader_save_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="game_8h.html#a57156d39c530aec3fba3a9dad8c2dc6a">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the game in a file. </p>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Pointer to the game. </td></tr>
+    <tr><td class="paramname">filename</td><td>Name of the file where the game is going to be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OK if everything went well, ERROR otherwise. </dd></dl>
 
 </div>
 </div>

@@ -5,11 +5,9 @@
  * @author Saul Lopez Romero && Fernando Mijangos
  * @version 7
  * @date 2-03-2025
- * @copyright GNU Public License
- .*/
+ * @copyright GNU Public License.*/
 
 #include "graphic_engine.h"
-
 #include "game.h"
 #include "command.h"
 #include "libscreen.h"
@@ -66,8 +64,7 @@
 #define NO_SPACE 0          /*!<No space, use in ge init*/
 
 /**
- * @brief Numbers used for the lines that form the sapce description.
- .*/
+ * @brief Numbers used for the lines that form the sapce description.*/
 typedef enum
 {
     FIRST_LINE,   /*!<First line of a space.*/
@@ -81,6 +78,7 @@ typedef enum
     NINETH_LINE,  /*!<Nineth line of a space.*/
     HEIGHT_SPACE  /*!<Space height.*/
 } space_information;
+
 /**
  * Space positions in array
  * This is like this so that later when printing its easier with a for
@@ -103,8 +101,7 @@ typedef enum
 /**
  * @brief _Graphic_engine
  *
- * This struct stores all the information of the dimmensions needed for the graphic engine.
- .*/
+ * This struct stores all the information of the dimmensions needed for the graphic engine.*/
 struct _Graphic_engine
 {
     Area *room;     /*!< Room area dimensions.*/
@@ -124,8 +121,7 @@ struct _Graphic_engine
  * @param game Pointer to the game.
  * @param space_id Id of the space you are searching information from.
  * @param destination the array where you are storing the information.
- * @return OK if everything went well, ERROR otherwise.
- .*/
+ * @return OK if everything went well, ERROR otherwise.*/
 Status graphic_engine_print_space(Game *game, Id space_id, char **destination);
 
 /**
@@ -133,8 +129,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination);
  * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
- * @param map Map to be initialised.
- .*/
+ * @param map Map to be initialised.*/
 Status map_init(Game *game, char **map);
 
 /* END OF PRIVATE FUNCTIONS.*/
@@ -890,7 +885,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     else
     {
         screen_area_clear_menu(ge->map);
-        screen_area_puts_menu(ge->map,"");
+        screen_area_puts_menu(ge->map, "");
         screen_area_puts_menu(ge->map, "    ____ ____  _____ ____ ___ _____ ____  ");
         screen_area_puts_menu(ge->map, "   / ___|  _ \\| ____|  _ \\_ _|_   _/ ___| ");
         screen_area_puts_menu(ge->map, "  | |   | |_) |  _| | | | | |  | | \\___ \\ ");
@@ -901,7 +896,6 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         screen_area_puts_menu(ge->map, "          /_\\| | | |_   _| || |/ _ \\| _ \\/ __|");
         screen_area_puts_menu(ge->map, "         / _ \\ |_| | | | | __ | (_) |   /\\__ \\");
         screen_area_puts_menu(ge->map, "        /_/ \\_\\___/  |_| |_||_|\\___/|_|_\\|___/");
-        
     }
     screen_menu_paint(game_get_turn(game));
     return;

@@ -32,13 +32,13 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_aac38b3188d51727be5b2ee2bf3f9d856}{WIDTH\+\_\+\+MAP}}~67
 \item 
-\#define \mbox{\hyperlink{graphic__engine_8c_aa32d744a92a5326f0cd6e0be9488f28a}{WIDTH\+\_\+\+DES}}~30
+\#define \mbox{\hyperlink{graphic__engine_8c_aa32d744a92a5326f0cd6e0be9488f28a}{WIDTH\+\_\+\+DES}}~35
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf}{WIDTH\+\_\+\+BAN}}~23
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_ad02fab50eba3e27969ad00f27a73ea92}{HEIGHT\+\_\+\+MAP}}~29
 \item 
-\#define \mbox{\hyperlink{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}{HEIGHT\+\_\+\+BAN}}~1
+\#define \mbox{\hyperlink{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}{HEIGHT\+\_\+\+BAN}}~10
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a8b64afdab082949b22941eec34a07f13}{HEIGHT\+\_\+\+HLP}}~3
 \item 
@@ -57,6 +57,8 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \#define \mbox{\hyperlink{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}{LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS}}~2
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}{EXTRA\+\_\+\+LINE}}~1
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3}{NO\+\_\+\+SPACE}}~0
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -100,10 +102,16 @@ enum \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111}{Posi
 \begin{DoxyCompactList}\small\item\em Initalises all the data to be printed in an array structure. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphic__engine_8c_a943c75487b750e5b0aafde34ac739b16}{graphic\+\_\+engine\+\_\+create}} ()
 \begin{DoxyCompactList}\small\item\em It creates a new Graphic engine structure with all its variables initialized. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphic__engine_8c_a47409d66a48381d25ede56c92ed48ec9}{graphic\+\_\+engine\+\_\+menu\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em It creates a new Graphic engine structure with all its varialbes initialized in menu mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphic__engine_8c_a28889c261e77762bb14c011878160ca4}{graphic\+\_\+engine\+\_\+menu\+\_\+destroy}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge)
+\begin{DoxyCompactList}\small\item\em It destroyes a graphic engine structure in menu mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{graphic__engine_8c_a5a5eac4ef2033c5ad71aa6895f362f79}{graphic\+\_\+engine\+\_\+destroy}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge)
 \begin{DoxyCompactList}\small\item\em It destroys a graphic engine structure. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{graphic__engine_8c_a3f37ee25263b8fa49264a7d3d4d5bd27}{graphic\+\_\+engine\+\_\+paint\+\_\+game}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge, \mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} refresh)
-\begin{DoxyCompactList}\small\item\em It prints on the terminal an image of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em It prints on the terminal an image of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphic__engine_8c_ae4b98eeb9b9cde0802b0ccb576149e2d}{graphic\+\_\+engine\+\_\+menu\+\_\+paint}} (\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}ge, \mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, int state)
+\begin{DoxyCompactList}\small\item\em It paints the menu in the terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -119,7 +127,7 @@ Saul Lopez Romero \&\& Fernando Mijangos
 2-\/03-\/2025 
 \end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
-GNU Public License 
+GNU Public License. 
 \end{DoxyCopyright}
 
 
@@ -134,7 +142,7 @@ Number of extra lines beetween elements of the ge. \Hypertarget{graphic__engine_
 \index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_BAN@{HEIGHT\_BAN}}
 \index{HEIGHT\_BAN@{HEIGHT\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{HEIGHT\_BAN}{HEIGHT\_BAN}}
-{\footnotesize\ttfamily \#define HEIGHT\+\_\+\+BAN~1}
+{\footnotesize\ttfamily \#define HEIGHT\+\_\+\+BAN~10}
 
 Banner height. \Hypertarget{graphic__engine_8c_aec4928b7d7a0e91ad936d76d79bedbf2}\label{graphic__engine_8c_aec4928b7d7a0e91ad936d76d79bedbf2} 
 \index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_FDB@{HEIGHT\_FDB}}
@@ -166,7 +174,13 @@ Number of elements that can\textquotesingle{}t be written on when printing each 
 \doxysubsubsection{\texorpdfstring{MAX\_STRING\_GE}{MAX\_STRING\_GE}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+STRING\+\_\+\+GE~255}
 
-Max string lenght. \Hypertarget{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}\label{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33} 
+Max string lenght. \Hypertarget{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3}\label{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3} 
+\index{graphic\_engine.c@{graphic\_engine.c}!NO\_SPACE@{NO\_SPACE}}
+\index{NO\_SPACE@{NO\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{NO\_SPACE}{NO\_SPACE}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+SPACE~0}
+
+No space, use in ge init \Hypertarget{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}\label{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33} 
 \index{graphic\_engine.c@{graphic\_engine.c}!NON\_WRITTABLE\_ELEMS@{NON\_WRITTABLE\_ELEMS}}
 \index{NON\_WRITTABLE\_ELEMS@{NON\_WRITTABLE\_ELEMS}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{NON\_WRITTABLE\_ELEMS}{NON\_WRITTABLE\_ELEMS}}
@@ -194,7 +208,7 @@ Banner width. \Hypertarget{graphic__engine_8c_aa32d744a92a5326f0cd6e0be9488f28a}
 \index{graphic\_engine.c@{graphic\_engine.c}!WIDTH\_DES@{WIDTH\_DES}}
 \index{WIDTH\_DES@{WIDTH\_DES}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{WIDTH\_DES}{WIDTH\_DES}}
-{\footnotesize\ttfamily \#define WIDTH\+\_\+\+DES~30}
+{\footnotesize\ttfamily \#define WIDTH\+\_\+\+DES~35}
 
 Description width. \Hypertarget{graphic__engine_8c_aac38b3188d51727be5b2ee2bf3f9d856}\label{graphic__engine_8c_aac38b3188d51727be5b2ee2bf3f9d856} 
 \index{graphic\_engine.c@{graphic\_engine.c}!WIDTH\_MAP@{WIDTH\_MAP}}
@@ -217,7 +231,7 @@ Space width.
 \doxysubsubsection{\texorpdfstring{Positions}{Positions}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111}{Positions}}}
 
-Space positions in array This is like this so that later when printing its easier with a for \mbox{[}0\mbox{]} \mbox{[}1\mbox{]} \mbox{[}2\mbox{]} \mbox{[}3\mbox{]} \mbox{[}4\mbox{]} \mbox{[}5\mbox{]} \mbox{[}6\mbox{]} \mbox{[}7\mbox{]} \mbox{[}8\mbox{]} \begin{DoxyEnumFields}{Enumerator}
+Space positions in array This is like this so that later when printing its easier with a for \mbox{[}0\mbox{]} \mbox{[}1\mbox{]} \mbox{[}2\mbox{]} \mbox{[}3\mbox{]} \mbox{[}4\mbox{]} \mbox{[}5\mbox{]} \mbox{[}6\mbox{]} \mbox{[}7\mbox{]} \mbox{[}8\mbox{]} . \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NORTH\_WEST@{NORTH\_WEST}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!NORTH\_WEST@{NORTH\_WEST}}}\Hypertarget{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111ab75c2136aaf25d9ed387c66e251582c5}\label{graphic__engine_8c_adb1fad3b6a121acd6db0b9eda7fd5111ab75c2136aaf25d9ed387c66e251582c5} 
 NORTH\+\_\+\+WEST&North west direction. \\
 \hline
@@ -271,43 +285,43 @@ Numbers used for the lines that form the sapce description.
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FIRST\_LINE@{FIRST\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FIRST\_LINE@{FIRST\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96} 
-FIRST\+\_\+\+LINE&First line of a space \\
+FIRST\+\_\+\+LINE&First line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SECOND\_LINE@{SECOND\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SECOND\_LINE@{SECOND\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9dac6c2ac1a47062752989c7ef9ead7b8f1} 
-SECOND\+\_\+\+LINE&Second line of a space \\
+SECOND\+\_\+\+LINE&Second line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{THIRD\_LINE@{THIRD\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!THIRD\_LINE@{THIRD\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da61334112bc07b71bc5ddb73be716fa2d}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da61334112bc07b71bc5ddb73be716fa2d} 
-THIRD\+\_\+\+LINE&Third line of a space \\
+THIRD\+\_\+\+LINE&Third line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FOURTH\_LINE@{FOURTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FOURTH\_LINE@{FOURTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489} 
-FOURTH\+\_\+\+LINE&Fourth line of a space \\
+FOURTH\+\_\+\+LINE&Fourth line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{FIFTH\_LINE@{FIFTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!FIFTH\_LINE@{FIFTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da9268cc4bb27f47616ae772babfba3ddd} 
-FIFTH\+\_\+\+LINE&Fifth line of a space \\
+FIFTH\+\_\+\+LINE&Fifth line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SIXTH\_LINE@{SIXTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SIXTH\_LINE@{SIXTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3} 
-SIXTH\+\_\+\+LINE&Sixth line of a space \\
+SIXTH\+\_\+\+LINE&Sixth line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SEVENTH\_LINE@{SEVENTH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!SEVENTH\_LINE@{SEVENTH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da45aa99293c8a7608b5cb963bbef269c2} 
-SEVENTH\+\_\+\+LINE&Seventh line of a space \\
+SEVENTH\+\_\+\+LINE&Seventh line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{EIGHT\_LINE@{EIGHT\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!EIGHT\_LINE@{EIGHT\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daf9e352c28a5e562b4f4cd00acada0d13}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daf9e352c28a5e562b4f4cd00acada0d13} 
-EIGHT\+\_\+\+LINE&Eight line of a space \\
+EIGHT\+\_\+\+LINE&Eight line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NINETH\_LINE@{NINETH\_LINE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!NINETH\_LINE@{NINETH\_LINE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9da6be21c157aeb8dbd69f1bdea427a8eaf} 
-NINETH\+\_\+\+LINE&Nineth line of a space \\
+NINETH\+\_\+\+LINE&Nineth line of a space. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{HEIGHT\_SPACE@{HEIGHT\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}\index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_SPACE@{HEIGHT\_SPACE}}}\Hypertarget{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}\label{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985} 
-HEIGHT\+\_\+\+SPACE&Space height \\
+HEIGHT\+\_\+\+SPACE&Space height. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -348,6 +362,77 @@ Saul Lopez Romero
 {\em ge} & The graphic engine structure you want to destroy. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{graphic__engine_8c_a47409d66a48381d25ede56c92ed48ec9}\label{graphic__engine_8c_a47409d66a48381d25ede56c92ed48ec9} 
+\index{graphic\_engine.c@{graphic\_engine.c}!graphic\_engine\_menu\_create@{graphic\_engine\_menu\_create}}
+\index{graphic\_engine\_menu\_create@{graphic\_engine\_menu\_create}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{graphic\_engine\_menu\_create()}{graphic\_engine\_menu\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*} graphic\+\_\+engine\+\_\+menu\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+It creates a new Graphic engine structure with all its varialbes initialized in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Pointer to the initialized graphic engine. 
+\end{DoxyReturn}
+\Hypertarget{graphic__engine_8c_a28889c261e77762bb14c011878160ca4}\label{graphic__engine_8c_a28889c261e77762bb14c011878160ca4} 
+\index{graphic\_engine.c@{graphic\_engine.c}!graphic\_engine\_menu\_destroy@{graphic\_engine\_menu\_destroy}}
+\index{graphic\_engine\_menu\_destroy@{graphic\_engine\_menu\_destroy}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{graphic\_engine\_menu\_destroy()}{graphic\_engine\_menu\_destroy()}}
+{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+menu\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+
+
+
+It destroyes a graphic engine structure in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em ge} & The graphic engine structure you want to destroy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{graphic__engine_8c_ae4b98eeb9b9cde0802b0ccb576149e2d}\label{graphic__engine_8c_ae4b98eeb9b9cde0802b0ccb576149e2d} 
+\index{graphic\_engine.c@{graphic\_engine.c}!graphic\_engine\_menu\_paint@{graphic\_engine\_menu\_paint}}
+\index{graphic\_engine\_menu\_paint@{graphic\_engine\_menu\_paint}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{graphic\_engine\_menu\_paint()}{graphic\_engine\_menu\_paint()}}
+{\footnotesize\ttfamily void graphic\+\_\+engine\+\_\+menu\+\_\+paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{ge,  }\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+It paints the menu in the terminal. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em ge} & Pointer to the graphic engine you are using. \\
+\hline
+{\em game} & Pointer to the game you are running. \\
+\hline
+{\em state} & The state of the game you are in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+0-\/\texorpdfstring{$>$}{>}Prints screen where there arent saves 
+
+1-\/\texorpdfstring{$>$}{>}Prints screen where there are saves 
+
+2-\/\texorpdfstring{$>$}{>}Prints screen where you can load a game 
+
+3-\/\texorpdfstring{$>$}{>}Prints screen where you tried to load a game that doesnt exist 
+
+4-\/\texorpdfstring{$>$}{>}Prints screen where you create a new game 
+
+5-\/\texorpdfstring{$>$}{>}Prints a screen where you try to create a game that already exists or cant be created 
+
+6-\/\texorpdfstring{$>$}{>}Prints screen where you chose which file to delete 
+\end{DoxyNote}
 \Hypertarget{graphic__engine_8c_a3f37ee25263b8fa49264a7d3d4d5bd27}\label{graphic__engine_8c_a3f37ee25263b8fa49264a7d3d4d5bd27} 
 \index{graphic\_engine.c@{graphic\_engine.c}!graphic\_engine\_paint\_game@{graphic\_engine\_paint\_game}}
 \index{graphic\_engine\_paint\_game@{graphic\_engine\_paint\_game}!graphic\_engine.c@{graphic\_engine.c}}

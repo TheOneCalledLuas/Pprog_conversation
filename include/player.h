@@ -54,7 +54,6 @@ Id player_get_team(Player *player);
  *
  * @param player Pointer to the player.
  * @param line line to be modified.
- * @param str to be set.
  * @return OK if all goes as planned, ERROR otherwise.
  */
 char *player_get_texture_line(Player *player, int line);

@@ -15,7 +15,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \+\_\+\+Area \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}
+typedef struct \mbox{\hyperlink{struct__Area}{\+\_\+\+Area}} \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -38,20 +38,34 @@ enum \mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\
 \item 
 void \mbox{\hyperlink{libscreen_8h_a3c7e0099996732d34b143dde1a40f02c}{screen\+\_\+init}} (int rows, int columns)
 \begin{DoxyCompactList}\small\item\em It creates a new screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a1481e21431750a9ad75cb14697e52b3f}{screen\+\_\+menu\+\_\+init}} (int rows, int columns)
+\begin{DoxyCompactList}\small\item\em It creates a new screen in menu mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a3d6d82dde2bb4f3ddc4d276dabe313ef}{screen\+\_\+destroy}} ()
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\+\_\+paint}} (\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}} color)
+void \mbox{\hyperlink{libscreen_8h_ad9777a67bb7c538bee8b271149687fbc}{screen\+\_\+menu\+\_\+destroy}} ()
+\begin{DoxyCompactList}\small\item\em It destroys a new screen area in menu mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}{screen\+\_\+paint}} (\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}} \mbox{\hyperlink{animation_8c_a0fd916977d83dc2ddd879f82c49a527d}{color}})
 \begin{DoxyCompactList}\small\item\em It paints in the terminal the actual screen composition. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a33edacc0eee646e438d2ab3120db91d1}{screen\+\_\+menu\+\_\+paint}} (\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}} \mbox{\hyperlink{animation_8c_a0fd916977d83dc2ddd879f82c49a527d}{color}})
+\begin{DoxyCompactList}\small\item\em It paints in the terminal the actual screen composition in menu mode. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libscreen_8h_a4c601f4602ad83e212facc1f53da8f88}{screen\+\_\+area\+\_\+init}} (int x, int y, int width, int height)
 \begin{DoxyCompactList}\small\item\em It creates a new area inside a screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libscreen_8h_a3c5a397ba171fbde9c010cc5188ea825}{screen\+\_\+area\+\_\+init\+\_\+menu}} (int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em It creates a new area inside a screen in menu mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_aca5123ed5a7afb75e79c0001e5d1df4f}{screen\+\_\+area\+\_\+destroy}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It destroys a new screen area. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a0950dc68cba3d491b909a8abaac1c666}{screen\+\_\+area\+\_\+clear}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It cleares an area, eraising all its content. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a4c7a42bbe53a5b8e9e3d169e7d6d499c}{screen\+\_\+area\+\_\+clear\+\_\+menu}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
+\begin{DoxyCompactList}\small\item\em It cleares an area in menu mode, eraising all its content. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}{screen\+\_\+area\+\_\+reset\+\_\+cursor}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
 \begin{DoxyCompactList}\small\item\em It resets the cursor of an area. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a80634fddfbc2530f2d74938c31e3c05e}{screen\+\_\+area\+\_\+reset\+\_\+cursor\+\_\+menu}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area)
+\begin{DoxyCompactList}\small\item\em It resets the cursor of an area in menu mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}{screen\+\_\+area\+\_\+puts}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area, char \texorpdfstring{$\ast$}{*}str)
-\begin{DoxyCompactList}\small\item\em It introduces some information inside an area. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em It introduces some information inside an area. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{libscreen_8h_a399b7147225723690b01997e635314d1}{screen\+\_\+area\+\_\+puts\+\_\+menu}} (\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}area, char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em It introduces some information inside an area in menu mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -76,7 +90,7 @@ GNU Public License
 \index{libscreen.h@{libscreen.h}!Area@{Area}}
 \index{Area@{Area}!libscreen.h@{libscreen.h}}
 \doxysubsubsection{\texorpdfstring{Area}{Area}}
-{\footnotesize\ttfamily typedef struct \+\_\+\+Area \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct__Area}{\+\_\+\+Area}} \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}}}
 
 Area type. 
 
@@ -93,6 +107,24 @@ It cleares an area, eraising all its content.
 
 \begin{DoxyAuthor}{Author}
 Profesores PPROG
+\end{DoxyAuthor}
+This function should be called for earaising all the information in an area, before introducing a new state of it. 
+\begin{DoxyParams}{Parameters}
+{\em area} & the area to be cleared \\
+\hline
+\end{DoxyParams}
+\Hypertarget{libscreen_8h_a4c7a42bbe53a5b8e9e3d169e7d6d499c}\label{libscreen_8h_a4c7a42bbe53a5b8e9e3d169e7d6d499c} 
+\index{libscreen.h@{libscreen.h}!screen\_area\_clear\_menu@{screen\_area\_clear\_menu}}
+\index{screen\_area\_clear\_menu@{screen\_area\_clear\_menu}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_area\_clear\_menu()}{screen\_area\_clear\_menu()}}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+clear\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
+
+
+
+It cleares an area in menu mode, eraising all its content. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
 \end{DoxyAuthor}
 This function should be called for earaising all the information in an area, before introducing a new state of it. 
 \begin{DoxyParams}{Parameters}
@@ -144,6 +176,33 @@ screen\+\_\+area\+\_\+init allocates memory for a new area and initializes its m
 \begin{DoxyReturn}{Returns}
 a new area, initialized 
 \end{DoxyReturn}
+\Hypertarget{libscreen_8h_a3c5a397ba171fbde9c010cc5188ea825}\label{libscreen_8h_a3c5a397ba171fbde9c010cc5188ea825} 
+\index{libscreen.h@{libscreen.h}!screen\_area\_init\_menu@{screen\_area\_init\_menu}}
+\index{screen\_area\_init\_menu@{screen\_area\_init\_menu}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_area\_init\_menu()}{screen\_area\_init\_menu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*} screen\+\_\+area\+\_\+init\+\_\+menu (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+It creates a new area inside a screen in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+it allocates memory for a new area and initializes its members. 
+\begin{DoxyParams}{Parameters}
+{\em x} & the x-\/coordinate of the up-\/left corner of the area \\
+\hline
+{\em y} & the x-\/coordinate of the up-\/left corner of the area \\
+\hline
+{\em width} & the width of the area \\
+\hline
+{\em height} & the height of the area \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new area, initialized 
+\end{DoxyReturn}
 \Hypertarget{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814}\label{libscreen_8h_a4f4cd4c7899c096d6c90cc33de9a9814} 
 \index{libscreen.h@{libscreen.h}!screen\_area\_puts@{screen\_area\_puts}}
 \index{screen\_area\_puts@{screen\_area\_puts}!libscreen.h@{libscreen.h}}
@@ -164,6 +223,26 @@ This function sets the string that will be shown in an area. Each string introdu
 {\em str} & a string that contains the information to be included in a particular area \\
 \hline
 \end{DoxyParams}
+\Hypertarget{libscreen_8h_a399b7147225723690b01997e635314d1}\label{libscreen_8h_a399b7147225723690b01997e635314d1} 
+\index{libscreen.h@{libscreen.h}!screen\_area\_puts\_menu@{screen\_area\_puts\_menu}}
+\index{screen\_area\_puts\_menu@{screen\_area\_puts\_menu}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_area\_puts\_menu()}{screen\_area\_puts\_menu()}}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+puts\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+It introduces some information inside an area in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+This function sets the string that will be shown in an area. Each string introduced will be a line in the specified area. 
+\begin{DoxyParams}{Parameters}
+{\em area} & the area to be modified \\
+\hline
+{\em str} & a string that contains the information to be included in a particular area \\
+\hline
+\end{DoxyParams}
 \Hypertarget{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2}\label{libscreen_8h_af77fa9df4f7170e1e3bf1c6209b7f0c2} 
 \index{libscreen.h@{libscreen.h}!screen\_area\_reset\_cursor@{screen\_area\_reset\_cursor}}
 \index{screen\_area\_reset\_cursor@{screen\_area\_reset\_cursor}!libscreen.h@{libscreen.h}}
@@ -176,6 +255,24 @@ It resets the cursor of an area.
 
 \begin{DoxyAuthor}{Author}
 Profesores PPROG
+\end{DoxyAuthor}
+This function reset the cursor to the up-\/left corner of the area. 
+\begin{DoxyParams}{Parameters}
+{\em area} & the involved area \\
+\hline
+\end{DoxyParams}
+\Hypertarget{libscreen_8h_a80634fddfbc2530f2d74938c31e3c05e}\label{libscreen_8h_a80634fddfbc2530f2d74938c31e3c05e} 
+\index{libscreen.h@{libscreen.h}!screen\_area\_reset\_cursor\_menu@{screen\_area\_reset\_cursor\_menu}}
+\index{screen\_area\_reset\_cursor\_menu@{screen\_area\_reset\_cursor\_menu}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_area\_reset\_cursor\_menu()}{screen\_area\_reset\_cursor\_menu()}}
+{\footnotesize\ttfamily void screen\+\_\+area\+\_\+reset\+\_\+cursor\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_acfdfc42f6522d75fa3c16713afde8127}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})}
+
+
+
+It resets the cursor of an area in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
 \end{DoxyAuthor}
 This function reset the cursor to the up-\/left corner of the area. 
 \begin{DoxyParams}{Parameters}
@@ -215,6 +312,57 @@ This function should be called at the beginning of the program, so the complete 
 {\em columns} & the number of columns that will have the full screen \\
 \hline
 \end{DoxyParams}
+\Hypertarget{libscreen_8h_ad9777a67bb7c538bee8b271149687fbc}\label{libscreen_8h_ad9777a67bb7c538bee8b271149687fbc} 
+\index{libscreen.h@{libscreen.h}!screen\_menu\_destroy@{screen\_menu\_destroy}}
+\index{screen\_menu\_destroy@{screen\_menu\_destroy}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_menu\_destroy()}{screen\_menu\_destroy()}}
+{\footnotesize\ttfamily void screen\+\_\+menu\+\_\+destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+It destroys a new screen area in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+As it frees the screen, it must be called at the end of the program, once the areas created have been freed. \Hypertarget{libscreen_8h_a1481e21431750a9ad75cb14697e52b3f}\label{libscreen_8h_a1481e21431750a9ad75cb14697e52b3f} 
+\index{libscreen.h@{libscreen.h}!screen\_menu\_init@{screen\_menu\_init}}
+\index{screen\_menu\_init@{screen\_menu\_init}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_menu\_init()}{screen\_menu\_init()}}
+{\footnotesize\ttfamily void screen\+\_\+menu\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+It creates a new screen in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+This function should be called at the beginning of the program, so the complete screen is allocated before starting defining areas. 
+\begin{DoxyParams}{Parameters}
+{\em rows} & the number of rows that will have the full screen \\
+\hline
+{\em columns} & the number of columns that will have the full screen \\
+\hline
+\end{DoxyParams}
+\Hypertarget{libscreen_8h_a33edacc0eee646e438d2ab3120db91d1}\label{libscreen_8h_a33edacc0eee646e438d2ab3120db91d1} 
+\index{libscreen.h@{libscreen.h}!screen\_menu\_paint@{screen\_menu\_paint}}
+\index{screen\_menu\_paint@{screen\_menu\_paint}!libscreen.h@{libscreen.h}}
+\doxysubsubsection{\texorpdfstring{screen\_menu\_paint()}{screen\_menu\_paint()}}
+{\footnotesize\ttfamily void screen\+\_\+menu\+\_\+paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libscreen_8h_a4c3428b53f6697616d5d3ab9f41419c7}{Frame\+\_\+color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+It paints in the terminal the actual screen composition in menu mode. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+This function should be called when some updates in the screen want to be shown. 
+\begin{DoxyParams}{Parameters}
+{\em color} & the color of the frame \\
+\hline
+\end{DoxyParams}
 \Hypertarget{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c}\label{libscreen_8h_a98b385ae7a8e7de10f9e66acf478c00c} 
 \index{libscreen.h@{libscreen.h}!screen\_paint@{screen\_paint}}
 \index{screen\_paint@{screen\_paint}!libscreen.h@{libscreen.h}}
@@ -229,3 +377,7 @@ It paints in the terminal the actual screen composition.
 Profesores PPROG
 \end{DoxyAuthor}
 This function should be called when some updates in the screen want to be shown. 
+\begin{DoxyParams}{Parameters}
+{\em color} & the color of the frame \\
+\hline
+\end{DoxyParams}

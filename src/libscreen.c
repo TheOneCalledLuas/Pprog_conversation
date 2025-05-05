@@ -19,16 +19,19 @@ int MENU_COLUMNS = 80; /*!<Columns of the area in menu mode*/
 #define ACCESS_MENU(d, x, y) (d + ((y) * MENU_COLUMNS) + (x)) /*!<Function to get the information of a point in the area when in menu mode*/
 
 /**
- * @brief It defines the area type
+ * @brief It defines the area type.
  */
 struct _Area
 {
-  int x, y, width, height; /*!< Area position and size */
-  char *cursor;            /*!< Pointer to the cursor of that area */
+  int x;        /*!< Stating x position.*/
+  int y;        /*!< Starting y position.*/
+  int width;    /*!< Width.*/
+  int height;   /*!< Height.*/
+  char *cursor; /*!< Pointer to the cursor of that area. */
 };
 
-char *__data;      /*!<Pointer to the information of the whole area*/
-char *__data_menu; /*!<Pointer to the information of the whole area in menu mode*/
+char *__data;      /*!<Pointer to the information of the whole area.*/
+char *__data_menu; /*!<Pointer to the information of the whole area in menu mode.*/
 
 /****************************/
 /*     Private functions    */

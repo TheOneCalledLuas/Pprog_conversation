@@ -1,9 +1,26 @@
 var searchData=
 [
-  ['n_5fcmd_0',['N_CMD',['../command_8h.html#ae180fe89f0ae48ce5c80ffaa18de9271',1,'command.h']]],
-  ['n_5fcmdt_1',['N_CMDT',['../command_8h.html#a8d93932dcdc527c13e06b688b68c7ffc',1,'command.h']]],
-  ['n_5fdirections_2',['N_DIRECTIONS',['../game__actions_8c.html#a715c6b7045a6431702aace89ccdf9ad0',1,'game_actions.c']]],
-  ['n_5fvariations_3',['N_VARIATIONS',['../game__actions_8c.html#a80069636d5272c3e8faa89f450700175',1,'game_actions.c']]],
-  ['no_5fid_4',['NO_ID',['../types_8h.html#a642e16f35aa1e585c25e405ede76e115',1,'types.h']]],
-  ['non_5fwrittable_5felems_5',['NON_WRITTABLE_ELEMS',['../graphic__engine_8c.html#ae0d3b3ad3ed7302dd28bfa1618e50d33',1,'graphic_engine.c']]]
+  ['magenta_5ff_0',['MAGENTA_F',['../animation_8c.html#a1a5f188ffb7b991ac6e38b45f201cb0c',1,'animation.c']]],
+  ['magenta_5ft_1',['MAGENTA_T',['../animation_8c.html#aa0fd7d8b2730f9a0a373f119a5eab24f',1,'animation.c']]],
+  ['max_5fanimations_2',['max_animations',['../animation_8h.html#a99f9cfd68ef4237b568bda6e3e63312f',1,'MAX_ANIMATIONS:&#160;animation.h'],['../animation_8c.html#a99f9cfd68ef4237b568bda6e3e63312f',1,'MAX_ANIMATIONS:&#160;animation.c']]],
+  ['max_5farg_3',['MAX_ARG',['../game__loop_8c.html#a2e7620041ccf5bc13755c9f28524d22e',1,'game_loop.c']]],
+  ['max_5fcharacters_4',['MAX_CHARACTERS',['../game_8h.html#a55994b6ed33f6a399931df0517c6b205',1,'game.h']]],
+  ['max_5fcolor_5',['MAX_COLOR',['../animation_8c.html#a06e884cefba9e5c96e18ba7e0891a896',1,'animation.c']]],
+  ['max_5fdesc_6',['MAX_DESC',['../character_8c.html#a06ea269956fb652c4f4853e593813b26',1,'character.c']]],
+  ['max_5fdescription_7',['MAX_DESCRIPTION',['../object_8c.html#a2b9d4cb1200ff8c085b0a4902e0d7229',1,'object.c']]],
+  ['max_5fgamerules_8',['MAX_GAMERULES',['../gamerules_8c.html#aa138e4391665f125f792a5e1f4b8c35c',1,'gamerules.c']]],
+  ['max_5fgdesc_9',['MAX_GDESC',['../player_8c.html#ad5e6bf0470b64b198a22be7c9dc06181',1,'player.c']]],
+  ['max_5fline_10',['MAX_LINE',['../animation_8c.html#a842ed03f27719bc87666bfd1f75415b8',1,'animation.c']]],
+  ['max_5flinks_11',['MAX_LINKS',['../game_8h.html#a660ed1ec8604982002a0d6eced0e0367',1,'game.h']]],
+  ['max_5fmessage_12',['MAX_MESSAGE',['../character_8c.html#a8cea0c1cc1fc60a52e79998580bbf1a7',1,'character.c']]],
+  ['max_5fname_13',['max_name',['../link_8c.html#ac7c0207aa5a0e10d378be03b68041350',1,'MAX_NAME:&#160;link.c'],['../object_8c.html#ac7c0207aa5a0e10d378be03b68041350',1,'MAX_NAME:&#160;object.c'],['../character_8c.html#ac7c0207aa5a0e10d378be03b68041350',1,'MAX_NAME:&#160;character.c'],['../gamerules_8c.html#ac7c0207aa5a0e10d378be03b68041350',1,'MAX_NAME:&#160;gamerules.c']]],
+  ['max_5fobjects_14',['MAX_OBJECTS',['../game_8h.html#acdc7844fbd4d45737d4aa56834d37829',1,'game.h']]],
+  ['max_5fplayers_15',['MAX_PLAYERS',['../game_8c.html#a1c346c944e8204fd06dc057393c7c96d',1,'game.c']]],
+  ['max_5fsavefiles_16',['MAX_SAVEFILES',['../types_8h.html#a284e246efd84eaaf67d80a1228c1cf0c',1,'types.h']]],
+  ['max_5fset_17',['MAX_SET',['../set_8h.html#abc21882f4958e6b56aaf2f3c18f80d43',1,'set.h']]],
+  ['max_5fspaces_18',['MAX_SPACES',['../game_8h.html#a5f54fd55f983a2e33ce076cd9f587e82',1,'game.h']]],
+  ['max_5fstring_5fge_19',['MAX_STRING_GE',['../graphic__engine_8c.html#a93f77e0da33047629e309031a791b8f1',1,'graphic_engine.c']]],
+  ['max_5ftests_20',['max_tests',['../character__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;character_test.c'],['../space__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;space_test.c'],['../set__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;set_test.c'],['../player__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;player_test.c'],['../object__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;object_test.c'],['../link__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;link_test.c'],['../inventory__test_8c.html#a2a77d2f2c5b698c69c19e1f8782bf709',1,'MAX_TESTS:&#160;inventory_test.c']]],
+  ['max_5fword_21',['MAX_WORD',['../player__test_8c.html#a95b015e2f596dc86ea9220be04427e1a',1,'player_test.c']]],
+  ['min_5fhealth_22',['MIN_HEALTH',['../game__actions_8c.html#a36df6f396287daf8f889751934e4856c',1,'game_actions.c']]]
 ];
