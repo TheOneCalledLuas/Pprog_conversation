@@ -1,4 +1,4 @@
-Las habitaciones son de 29 x 66 (filas x columnas)
+, ¡Las habitaciones son de 29 x 66 (filas x columnas)
 Los jugadores son de 7x9
 Los characters son de 5x9
 Los objectos son de 5x9
@@ -189,8 +189,8 @@ EXTRA el caracter '&' actua como caracter transparente
 #o:212
 &&&---&&&
 &&_|&|_&&
-&/&&&&&\&
-/~~~~~~~\
+&/~~~~~\&
+/&&&&&&&\
 \&&&&&&&/
 &\.___./&
 &&&&&&&&&
@@ -208,10 +208,52 @@ EXTRA el caracter '&' actua como caracter transparente
 &&&---&&&
 &&_|&|_&&
 &/&&&&&\&
-/~~~~~~~\
-\&&&&&&&/
+/&&&&&&&\
+\~~~~~~~/
 &\.___./&
 &&&&&&&&&
+
+
+#o:216|dynamite|722|dynamite desc|-25|1|-1|-1|0|0
+&&&&&&&&&
+&&&&@&&&&
+&&&&|&&&&
+&&-----&&
+&&|TNT|&&
+&&-----&&
+&&&&&&&&&
+
+
+#o:217|lever_1|723|lever desc|0|0|-1|-1|0|0
+
+
+#o:218|lever_2|733|lever desc|0|0|-1|-1|0|0
+
+
+#o:219|breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
+
+
+#o:220|treasure|731|treasure desc|0|1|-1|-1|0|0
+ 
+
+#o:221
+&&&&&&&&&
+&&&___&&&
+&_|___)&&
+|___)&&&&
+&|___)&&&
+&&&&&&&&&
+&&&&&&&&&
+
+#o:222|spider_food|132|food desc|5|1|-1|-1|0|0
+
+
+#o:223|baby_food|713|food desc|5|1|-1|-1|0|0
+
+
+#o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0
+
+
 
 #o:21
 ---------
