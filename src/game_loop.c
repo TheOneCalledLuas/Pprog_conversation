@@ -372,7 +372,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                 else if (number == DELETE)
                 {
                     /*Prints the menu*/
-                    graphic_engine_menu_paint(ge_menu, *game, DELETE);
+                    graphic_engine_menu_paint(ge_menu, *game, DELETE_FILE);
                     /*Gets the name of the savefile*/
                     printf("prompt>");
                     scanf("%s", str);
@@ -383,6 +383,8 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                         {
                             /*If it finds it, it deletes it and sets condition to TRUE*/
                             game_delete_savefile(*game, str);
+                            /*If there arent any savefiles, set the current savfile to /0*/
+                            game_set_current_savefile(*game, "\0");
                         }
                     }
                     /*Even if it doesn't find the file, as we dont want to force the player to delete a savefile.*/
@@ -434,6 +436,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                 return FAIL_MENU;
             }
             game_reader_save_game(*game, str);
+            game_set_current_savefile(*game, str);
 
             /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
             fgets(str, WORD_SIZE, stdin);
@@ -454,14 +457,18 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     Command *last_cmd = NULL;
     CommandCode last_code = UNKNOWN;
     Bool do_log = FALSE;
+    char *str;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
     graphic_engine_paint_game(gengine, *game, TRUE);
-    while ((last_code != EXIT) && (game_get_finished(*game) == FALSE))
+    str = game_get_current_savefile(*game);
+    while ((last_code != EXIT) && (game_get_finished(*game) == FALSE) && str[FIRST_CHAR] != '\0')
     {
         if (last_code == MENU)
         {
             game_loop_menu(game, gengine_menu, base_savefile);
+            if(str[FIRST_CHAR]=='\0')
+                return;
         }
         if (last_code == MOVE)
             graphic_engine_paint_game(gengine, *game, TRUE);
@@ -518,6 +525,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
                 game_next_turn(*game);
 
             game_next_command(*game);
+            str = game_get_current_savefile(*game);
         }
     }
     /*Prints the final screen*/

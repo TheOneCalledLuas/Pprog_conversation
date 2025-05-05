@@ -331,20 +331,8 @@ Status game_add_savefile(Game *game, char *name)
 }
 
 Status game_set_current_savefile(Game *game, char *name)
-{
-    int i;
-    Bool condition = FALSE;
-    /*Error management*/
+{    /*Error management*/
     if (!(game) || !name)
-        return ERROR;
-    /*Checks that it exists*/
-    for (i = 0; i < game->n_savefiles; i++)
-    {
-        if (strcmp(name, game->savefiles[i]) == 0)
-            condition = TRUE;
-    }
-    /*If it dint't exist return ERROR*/
-    if (condition == FALSE)
         return ERROR;
     /*Sets the name of the current savefile*/
     strcpy(game->current_savefile, name);
