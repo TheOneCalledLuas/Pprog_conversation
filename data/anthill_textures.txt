@@ -48,8 +48,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &&-----&&
 &&| T |&&
 &&-----&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:14
 &&&___&&&
@@ -57,8 +55,7 @@ EXTRA el caracter '&' actua como caracter transparente
 &&&< |&&&
 &&&< |&&&
 &&&< |&&&
-&&&&-&&&&
-&&&&&&&&&
+
 
 #o:15
 &_______&
@@ -66,8 +63,7 @@ EXTRA el caracter '&' actua como caracter transparente
 &|     |&
 &|    o|&
 &|     |&
-&|     |&
-&&&&&&&&&
+
 
 #o:16
 &&&&&&&&&
@@ -75,8 +71,7 @@ EXTRA el caracter '&' actua como caracter transparente
 /* * * *\
 :_.:":._:
 &&&(_)&&&
-&&&(_)&&&
-&&&&&&&&&
+
 
 #o:17
 &&&&&&&&&
@@ -84,8 +79,7 @@ EXTRA el caracter '&' actua como caracter transparente
 &&&.-.&&&
 &&/___\&&
 &&&&&&&&&
-&&&&&&&&&
-&&&&&&&&&
+
 
 #o:18
 &&&&&&&&&
@@ -94,8 +88,7 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
+
 
 #o:19
 &&&&&&&&&
@@ -104,8 +97,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:20
 &&&&&&&&&
@@ -114,8 +105,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:21
 &&&&&&&&&
@@ -124,8 +113,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:22
 &&&&&&&&&
@@ -134,8 +121,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:23
 &&&&&&&&&
@@ -144,8 +129,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:24
 &&&&&&&&&
@@ -154,8 +137,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:25
 &&&&&&&&&
@@ -164,8 +145,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:26
 &&&&&&&&&
@@ -174,8 +153,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &|_____|&
 &&&|&|&&&
 &&&|_|&&&
-&&&&&&&&&
-&&&&&&&&&
 
 #o:27
 &&&&&&&&&
@@ -183,55 +160,36 @@ EXTRA el caracter '&' actua como caracter transparente
 &_T__|[]|
 >|___|__|
 /00-@-@-@
-&&&&&&&&&
-&&&&&&&&&
 
 #o:212
-&&&&&&&&&
-&&&&-&&&&
-&&_|~|_&&
-&/     \&
-&\     /&
-&&\___/&&
-&&&&&&&&&
-
-#o:213
-&&&&&&&&&
 &&&&-&&&&
 &&_| |_&&
 &/~~~~~\&
 &\     /&
 &&\___/&&
-&&&&&&&&&
 
-#o:214
-&&&&&&&&&
+#o:213
 &&&&-&&&&
 &&_| |_&&
-&/     \&
-&\~~~~~/&
+&/~~~~~\&
+&\     /&
 &&\___/&&
-&&&&&&&&&
 
 
-#o:216|dynamite|722|dynamite desc|-25|1|-1|-1|0|0
-&&&&&&&&&
+#o:214
+&&&&-&&&&
+&&_| |_&&
+&/~~~~~\&
+&\     /&
+&&\___/&&
+
+
+#o:216
 &&&&@*&&&
 &&&*|&&&&
 &&-----&&
 &&|TNT|&&
 &&-----&&
-&&&&&&&&&
-
-
-#o:217|lever_1|723|lever desc|0|0|-1|-1|0|0
-
-
-#o:218|lever_2|733|lever desc|0|0|-1|-1|0|0
-
-
-#o:219|breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
-
 
 #o:220
 &&&&&&&&&
@@ -239,8 +197,6 @@ EXTRA el caracter '&' actua como caracter transparente
 /_||-||_\
 | ||$|| |
 |_______|
-&&&&&&&&&
-&&&&&&&&&
 
 #o:221
 &&&&&&&&&
@@ -248,18 +204,6 @@ EXTRA el caracter '&' actua como caracter transparente
 &_|___)&&
 |___)&&&&
 &|___)&&&
-&&&&&&&&&
-&&&&&&&&&
-
-#o:222|spider_food|132|food desc|5|1|-1|-1|0|0
-
-
-#o:223|baby_food|713|food desc|5|1|-1|-1|0|0
-
-
-#o:224|mystery_water|123|toilet desc|-3|1|-1|-1|0|0
-
-
 
 #o:21
 ---------

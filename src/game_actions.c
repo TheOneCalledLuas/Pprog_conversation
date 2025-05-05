@@ -168,6 +168,22 @@ void game_actions_coop(Game *game);
 void game_actions_uncoop(Game *game);
 
 /**
+ * @brief IT shows up your inventory inside the map section
+ * @author Fernando Mijangos
+ * 
+ * @param game
+ */
+void game_actions_bag(Game *game);
+
+/**
+ * @brief It shows up the map in the map section
+ * @author Fernando Mijangos
+ * 
+ * @param game
+ */
+void game_actions_map(Game *game);
+
+/**
  * @brief Returns a random number in a range.
  * @author Saul López Romero
  *
@@ -250,6 +266,10 @@ Status game_actions_update(Game *game, Command *command)
     case OPEN:
         game_actions_open(game);
         break;
+    case BAG:
+        game_actions_bag(game);
+    case MAP:
+        game_actions_map(game);
     default:
         break;
     }
@@ -845,6 +865,21 @@ void game_actions_uncoop(Game *game)
     Status result = ERROR;
     result = game_destroy_team(game, player_get_player_id(game_get_actual_player(game)));
     command_set_status(game_get_last_command(game), result);
+    return;
+}
+
+
+void game_actions_bag(Game *game)
+{
+    /*This action is managed by graphic_engine, its first to ERROR, and then graphic engine sets it to OK, if evrything went well*/
+    command_set_status(game_get_last_command(game), ERROR);
+    return;
+}
+
+void game_actions_map(Game *game)
+{
+    /*This action is magned by graphic engine, its first to ERROR, and the graphic engine sets it to OK, if everything went well*/
+    command_set_status(game_get_last_command(game), ERROR);
     return;
 }
 

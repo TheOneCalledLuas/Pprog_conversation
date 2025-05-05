@@ -193,11 +193,12 @@ char *player_get_player_name(Player *player);
 Id player_get_player_location(Player *player);
 
 /**
- * @brief It gets the id of the object the player has.
+ * @brief It gets an allocated array of ids of the objects the player has.
  * @author Fernando Mijangos
  *
  * @param player Pointer to the player.
- * @return Id of the object the player has.
+ * @return Array of ids of the obejcts the player has.
+ * @note IMPORTANT, you have to free the memory after using this
  */
 Id *player_get_inventory(Player *player);
 

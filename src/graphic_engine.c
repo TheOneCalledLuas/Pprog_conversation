@@ -61,6 +61,7 @@
 #define NON_WRITTABLE_ELEMS 5
 #define LIMIT_OF_ELEMENTS 2 /*!<Number of elements that can't be written on when printing each line of each space.*/
 #define EXTRA_LINE 1        /*!<Number of extra lines beetween elements of the ge.*/
+#define EXTRA_SPACE 4       /*!<Number of extra spaces bettween the object and its description in the bag*/
 #define NO_SPACE 0          /*!<No space, use in ge init*/
 
 /**
@@ -383,6 +384,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     {
         return;
     }
+
     for (i = 0; i < HEIGHT_MAP; i++)
     {
         if (!(map[i] = (char *)calloc(WIDTH_MAP, sizeof(char))))
@@ -396,22 +398,109 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             return;
         }
     }
-
-    /*2-Fills the map that we modify and later print.*/
-    if (map_init(game, map) == ERROR)
+    /*2-If the code of the last command is different from bag, it prints the map*/
+    if (command_get_code(game_get_last_command(game)) != BAG)
     {
+        /*Fills the map that we modify and later print.*/
+        if (map_init(game, map) == ERROR)
+        {
+            for (i = 0; i < HEIGHT_MAP; i++)
+            {
+                if (map[i])
+                    free(map[i]);
+            }
+            free(map);
+            return;
+        }
+
+        /*Prints the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
-            if (map[i])
-                free(map[i]);
+            screen_area_puts(ge->map, map[i]);
         }
-        return;
+        /*If the last command was MAP, its sets it to OK*/
+        if (command_get_code(game_get_last_command(game)) == MAP)
+            command_set_status(game_get_last_command(game), OK);
     }
-
-    /*3-Prints the map.*/
-    for (i = 0; i < HEIGHT_MAP; i++)
+    /*3-Else it prints the bag*/
+    else
     {
-        screen_area_puts(ge->map, map[i]);
+        /*Gets the number of objects the player has, and the objects*/
+        n_objects = player_get_n_objects(player);
+        if (n_objects > 0)
+        {
+            if (!(id_list = player_get_inventory(player)))
+            {
+                for (i = 0; i < HEIGHT_MAP; i++)
+                {
+                    if (map[i])
+                        free(map[i]);
+                }
+                free(map);
+                return;
+            }
+        }
+
+        /*Prints the bag icon in the map*/
+        strcpy(map[FIRST_LINE], "       ___   _   ___   _ ");
+        strcpy(map[SECOND_LINE], "      | _ ) /_\\ / __| (_)");
+        strcpy(map[THIRD_LINE], "      | _ \\/ _ \\ (_ |  _ ");
+        strcpy(map[FOURTH_LINE], "      |___/_/ \\_\\___| (_)");
+
+        /*For each object, it prints its correspondent description*/
+        if (n_objects > 0)
+        {
+            for (i = 0; i < n_objects; i++)
+            {
+                /*Puts the object descriptions*/
+                j = 0;
+                /*First the ones that will also include the name */
+                sprintf(str, "   %s    %s ", object_get_texture_line(game_get_object(game, id_list[i]), j), object_get_name(game_get_object(game, id_list[i])));
+                for (k = 0; k < strlen(str) || k < WIDTH_MAP - EXTRA_LINE; k++)
+                    if (str[k] == '&')
+                        map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = ' ';
+                    else
+                        map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = str[k];
+                map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = '\0';
+                j++;
+                /*Then the one that will include the description*/
+                sprintf(str, "   %s    %s ", object_get_texture_line(game_get_object(game, id_list[i]), j), object_get_description(game_get_object(game, id_list[i])));
+                for (k = 0; k < strlen(str); k++)
+                    if (str[k] == '&')
+                        map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = ' ';
+                    else
+                        map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = str[k];
+                map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = '\0';
+                /*And the prints the rest*/
+                for (j = THIRD_LINE; j < OBJECT_TEXTURE_LINES; j++)
+                {
+                    sprintf(str, "   %s ", object_get_texture_line(game_get_object(game, id_list[i]), j));
+                    for (k = 0; k < strlen(str); k++)
+                        if (str[k] == '&')
+                            map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = ' ';
+                        else
+                            map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = str[k];
+                    map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = '\0';
+                }
+            }
+        }
+        else
+        {
+            strcpy(map[SIXTH_LINE], "               _  _  ___    ___ _____ ___ __  __ ___ ");
+            strcpy(map[SEVENTH_LINE], "              | \\| |/ _ \\  |_ _|_   _| __|  \\/  / __|");
+            strcpy(map[EIGHT_LINE], "              | .` | (_) |  | |  | | | _|| |\\/| \\__ \\");
+            strcpy(map[NINETH_LINE], "              |_|\\_|\\___/  |___| |_| |___|_|  |_|___/");
+        }
+        if(id_list)
+            free(id_list);
+        id_list=NULL;
+
+        /*Prints the map.*/
+        for (i = 0; i < HEIGHT_MAP; i++)
+        {
+            screen_area_puts(ge->map, map[i]);
+        }
+        command_set_status(game_get_last_command(game), OK);
     }
     /*We dont free map here cause we use it again later.*/
 
@@ -660,7 +749,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i, recruit or r, forsake or f");
+    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i, recruit or r, forsake or f, use or u, o or open, s or save, co or coop, un or uncoop,     w or wait, menu, b or bag, map");
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/
@@ -907,16 +996,15 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         screen_area_puts_menu(ge->map, "        ,()-()( )        |   / _` / _` | || / -_) |");
         screen_area_puts_menu(ge->map, "         / /   \\\\        |_|_\\__,_\\__, |\\_,_\\___|_|");
         screen_area_puts_menu(ge->map, "                          ___        |_|               _     ");
-        screen_area_puts_menu(ge->map,"         |__/ _    _     | __|__ _ _ _ _  __ _ _ _  __| |___ ");
-        screen_area_puts_menu(ge->map,"        (o_o)(_`>( _ )   | _/ -_) '_| ' \\/ _` | ' \\/ _` / _ \\");
-        screen_area_puts_menu(ge->map,"            //  \\\\       |_|\\___|_| |_||_\\__,_|_||_\\__,_\\___/");
+        screen_area_puts_menu(ge->map, "         |__/ _    _     | __|__ _ _ _ _  __ _ _ _  __| |___ ");
+        screen_area_puts_menu(ge->map, "        (o_o)(_`>( _ )   | _/ -_) '_| ' \\/ _` | ' \\/ _` / _ \\");
+        screen_area_puts_menu(ge->map, "            //  \\\\       |_|\\___|_| |_||_\\__,_|_||_\\__,_\\___/");
         screen_area_puts_menu(ge->map, "                          ___         __ _ ");
         screen_area_puts_menu(ge->map, "           __     ,      / __| __ _ _/_/| |");
-        screen_area_puts_menu(ge->map,"          (__).o.@c      \\__ \\/ _` | || | | ");
+        screen_area_puts_menu(ge->map, "          (__).o.@c      \\__ \\/ _` | || | | ");
         screen_area_puts_menu(ge->map, "          /  |  \\        |___/\\__,_|\\_,_|_|");
 
-
-        /*END OF CREDITS*/        
+        /*END OF CREDITS*/
     }
     screen_menu_paint(game_get_turn(game));
     return;
