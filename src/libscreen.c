@@ -15,8 +15,8 @@ int MENU_COLUMNS = 80; /*!<Columns of the area in menu mode*/
 #define TOTAL_DATA (ROWS * COLUMNS) + 1                       /*!< Total data/points of the screen */
 #define BG_CHAR '~'                                           /*!< Background base character */
 #define FG_CHAR ' '                                           /*!< Foreground base characters */
-#define ACCESS(d, x, y) (d + ((y) * COLUMNS) + (x))           /*!<Function to get the information of a point in the area*/
-#define ACCESS_MENU(d, x, y) (d + ((y) * MENU_COLUMNS) + (x)) /*!<Function to get the information of a point in the area when in menu mode*/
+#define ACCESS(d, x, y) (d + ((y) * COLUMNS) + (x))           /*!< Function to get the information of a point in the area*/
+#define ACCESS_MENU(d, x, y) (d + ((y) * MENU_COLUMNS) + (x)) /*!< Function to get the information of a point in the area when in menu mode*/
 
 /**
  * @brief It defines the area type.

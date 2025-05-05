@@ -645,6 +645,6 @@ Status wait(float time)
         elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     } while (elapsed_time < time);
 
-    /*Cleean exit.*/
+    /*Clean exit.*/
     return OK;
 }
