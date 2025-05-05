@@ -1,19 +1,19 @@
 Datos del Tutorial
 #s:13|Starting_Room|xxxxxxxxx| inspect |Woody_sign|xxxxxxxxx|xxxxxxxxx|1|
-#s:14|Direction_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:15|Up_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:16|Down_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:17|Object_Room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:18|Use_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:19|Attack_room_1|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:20|Attack_room_2|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:21|Follow_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:22|Open_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:23|Abandon_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:24|Lore_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:25|Antrain_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:26|North_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
-#s:27|South_Room|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:14|Direction_Room|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:15|Up_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
+#s:16|Down_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:17|Object_Room_1|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:18|Use_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
+#s:19|Attack_room_1|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|0|
+#s:20|Attack_room_2|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|0|
+#s:21|Follow_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
+#s:22|Open_Room|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
+#s:23|Abandon_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:24|Lore_Room|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|0|
+#s:25|Antrain_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
+#s:26|North_Room|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:27|South_Room|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|0|
 
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
