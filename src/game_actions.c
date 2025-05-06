@@ -183,15 +183,7 @@ void game_actions_bag(Game *game);
  */
 void game_actions_map(Game *game);
 
-/**
- * @brief Returns a random number in a range.
- * @author Saul López Romero
- *
- * @param start First number of the range.
- * @param end Last number in the range.
- * @return Random int number in the range.
- */
-int random_int(int start, int end);
+
 
 /*
     Game actions implementation.
@@ -558,11 +550,11 @@ void game_actions_attack(Game *game)
         /*Checks if the game is in determinist mode.*/
         if (!game_get_determined(game))
         {
-            rand_num = random_int(0, ATTACK_PROB);
+            rand_num = game_random_int(0, ATTACK_PROB);
         }
         else
         {
-            /*If the game is in determinist mode, the player always wins. */
+            /*If the game is in determinist mode, the player always wins.*/
             rand_num = ATTACK_PROB + 1;
         }
         if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
@@ -986,12 +978,4 @@ void game_actions_map(Game *game)
     /*This action is magned by graphic engine, its first to ERROR, and the graphic engine sets it to OK, if everything went well*/
     command_set_status(game_get_last_command(game), ERROR);
     return;
-}
-
-int random_int(int start, int end)
-{
-    /*Srand was called beforehand.*/
-
-    /*Returns the number.*/
-    return (start + rand() % (start - end + 1));
 }

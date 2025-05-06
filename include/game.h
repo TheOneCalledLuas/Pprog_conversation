@@ -78,6 +78,16 @@ Status game_set_determined(Game *game, Bool is_determined);
 Bool game_get_determined(Game *game);
 
 /**
+ * @brief Returns a random number in a range.
+ * @author Saul López Romero
+ *
+ * @param start First number of the range.
+ * @param end Last number in the range.
+ * @return Random int number in the range.
+ */
+int game_random_int(int start, int end);
+
+/**
  * @brief Sets the number of teams.
  * @author Saúl López Romero
  *

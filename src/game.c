@@ -289,6 +289,14 @@ Status game_set_current_savefile(Game *game, char *name)
     return OK;
 }
 
+int game_random_int(int start, int end)
+{
+    /*Srand was called beforehand.*/
+
+    /*Returns the number.*/
+    return (start + rand() % (start - end + 1));
+}
+
 char *game_get_current_savefile(Game *game)
 {
     /*Error management*/
