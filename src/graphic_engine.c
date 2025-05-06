@@ -358,14 +358,15 @@ Status map_init(Game *game, char **map)
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
 {
-    Id id_aux = 0, *id_aux_2 = NULL, *id_list = NULL, desc_id = 0, *objects = NULL, *characters = NULL;
+    Id id_aux = 0, *id_list = NULL, desc_id = 0, *objects = NULL, *characters = NULL;
     Character *character = NULL;
     Player *player = NULL;
     Space *space_act = NULL, *last_space = NULL;
     Object *object = NULL;
-    char str[MAX_STRING_GE] = {'\0'}, str2[MAX_STRING_GE / 2], **map = NULL, *obj_name = NULL;
+    char str[MAX_STRING_GE] = {'\0'}, str2[MAX_STRING_GE / 2], **map = NULL;
     int i = 0, j = 0, k = 0, n_objects = 0;
     CommandCode last_cmd = UNKNOWN;
+    Id actual_id[NUM_IDS] = {NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID};
     extern char *cmd_to_str[N_CMD][N_CMDT];
     player = game_get_actual_player(game);
     space_act = game_get_space(game, player_get_player_location(player));
@@ -373,6 +374,17 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     /*Error management.*/
     if (!ge || !game)
         return;
+
+    /*Gets the ids of the different places around the player that are accsible, use later for information,*/
+    actual_id[ACTUAL_POSITION] = player_get_player_location(player);
+    if (game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], N) == OPENED)
+        actual_id[NORTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], N);
+    if (game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], S) == OPENED)
+        actual_id[SOUTH] = game_get_space_at(game, actual_id[ACTUAL_POSITION], S);
+    if (game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], E) == OPENED)
+        actual_id[EAST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], E);
+    if (game_get_space_outcoming_connection_info(game, actual_id[ACTUAL_POSITION], W) == OPENED)
+        actual_id[WEST] = game_get_space_at(game, actual_id[ACTUAL_POSITION], W);
 
     /*Sets the space where the player is to discovered.*/
     space_set_discovered((game_get_space(game, player_get_player_location(game_get_actual_player(game)))), TRUE);
@@ -491,9 +503,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strcpy(map[EIGHT_LINE], "              | .` | (_) |  | |  | | | _|| |\\/| \\__ \\");
             strcpy(map[NINETH_LINE], "              |_|\\_|\\___/  |___| |_| |___|_|  |_|___/");
         }
-        if(id_list)
+        if (id_list)
             free(id_list);
-        id_list=NULL;
+        id_list = NULL;
 
         /*Prints the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -608,44 +620,57 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     /*1-Clears the area.*/
     screen_area_clear(ge->descript);
     /*2-Prints the information about the objects inside space the player has discovered.*/
-    sprintf(str, "  OBJECTS:");
-    screen_area_puts(ge->descript, str);
     if (game_get_n_objects(game) >= 1)
     {
-        /*Prints the objects.*/
-        id_list = game_get_objects(game);
-        for (i = 0; i < game_get_n_objects(game); i++)
+        /*Prints the objects, but only the ones on the north, south, west and east directions.*/
+        sprintf(str, "  NEARBY OBJECTS:");
+        screen_area_puts(ge->descript, str);
+        for (i = 0; i < NUM_IDS; i++)
         {
-            if ((id_aux = game_get_object_location(game, id_list[i])) != NO_ID)
+            if (actual_id[i] != NO_ID)
             {
-                /*If the object is inside a discovered space it prints it.*/
-                if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
+                space_act = game_get_space(game, actual_id[i]);
+                if (space_get_n_objects(space_act) > 0 && space_is_discovered(space_act) == TRUE)
                 {
-                    sprintf(str, "   %-12s : %ld", object_get_name(game_get_object(game, id_list[i])), id_aux);
-                    screen_area_puts(ge->descript, str);
+                    id_list = space_get_objects(space_act);
+                    for (j = 0; j < space_get_n_objects(space_act); j++)
+                    {
+                        sprintf(str, "   -%s in space:%ld", object_get_name(game_get_object(game, id_list[j])), space_get_id(space_act));
+                        screen_area_puts(ge->descript, str);
+                    }
+                    free(id_list);
                 }
             }
         }
-        free(id_list);
+        space_act = game_get_space(game, player_get_player_location(player));
     }
 
     /*3-Prints the information about the characters that have been discovered.*/
     screen_area_puts(ge->descript, " ");
-    screen_area_puts(ge->descript, "  CHARACTERS");
-    id_aux_2 = game_get_characters(game);
-    for (i = 0; i < game_get_num_characters(game); i++)
+    screen_area_puts(ge->descript, "  NEARBY CHARACTERS");
+    for (i = 0; i < NUM_IDS; i++)
     {
-        id_aux = game_get_character_location(game, id_aux_2[i]);
-        /*If the character is in a discovered space it prints its information.*/
-        if (space_is_discovered(game_get_space(game, id_aux)) == TRUE)
+        if (actual_id[i] != NO_ID)
         {
-            character = game_get_character(game, id_aux_2[i]);
-            sprintf(str, "   %-6s (%s): %ld (%d)", character_get_description(character), character_get_name(character), game_get_character_location(game, character_get_id(character)), character_get_health(character));
-            screen_area_puts(ge->descript, str);
+            space_act = game_get_space(game, actual_id[i]);
+            if (space_is_discovered(space_act) == TRUE && space_get_n_characters(space_act) > 0)
+            {
+                if (!(id_list = space_get_characters(space_act)))
+                    return;
+                for (j = 0; j < space_get_n_characters(space_act); j++)
+                {
+                    character = game_get_character(game, id_list[j]);
+                    sprintf(str, "   -%s in space:%ld", character_get_name(character), game_get_character_location(game, character_get_id(character)));
+                    screen_area_puts(ge->descript, str);
+                    sprintf(str, "     description->%s  health->%d", character_get_description(character), character_get_health(character));
+                    screen_area_puts(ge->descript, str);
+                }
+                free(id_list);
+            }
         }
     }
     screen_area_puts(ge->descript, " ");
-    free(id_aux_2);
+    space_act = game_get_space(game, player_get_player_location(player));
 
     /*4-Prints the player information.*/
     sprintf(str, "  PLAYERS INFORMATION");
@@ -654,31 +679,27 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     for (i = 0; i < game_get_n_players(game); i++)
     {
         player = game_get_player(game, i);
-        sprintf(str, "   %-9s: %ld (%d)", player_get_player_name(player), player_get_player_location(player), player_get_health(player));
+        sprintf(str, "   -%-9s in space %ld", player_get_player_name(player), player_get_player_location(player));
         screen_area_puts(ge->descript, str);
-    }
-    screen_area_puts(ge->descript, " ");
-    player = game_get_actual_player(game);
-    if ((n_objects = player_get_n_objects(player)) <= 0)
-    {
-        sprintf(str, "   %s has no objects", player_get_player_name(player));
+        sprintf(str, "    with %d points of health", player_get_health(player));
         screen_area_puts(ge->descript, str);
-        screen_area_puts(ge->descript, " ");
-    }
-    else
-    {
-        sprintf(str, "   %s inventory:", player_get_player_name(player));
-        screen_area_puts(ge->descript, str);
-        objects = player_get_inventory(player);
-        for (i = 0; i < n_objects; i++)
+        if ((n_objects = player_get_n_objects(player)) <= 0)
         {
-            obj_name = object_get_name(game_get_object(game, objects[i]));
-            sprintf(str, "    %s", obj_name);
+            sprintf(str, "   -%s has no objects", player_get_player_name(player));
             screen_area_puts(ge->descript, str);
+            screen_area_puts(ge->descript, " ");
         }
-        screen_area_puts(ge->descript, " ");
-        free(objects);
-        objects = NULL;
+        else
+        {
+            sprintf(str, "   -%s has objects in his bag.", player_get_player_name(player));
+            screen_area_puts(ge->descript, str);
+            if (player == game_get_actual_player(game))
+            {
+                sprintf(str, "   Type \"bag\" to see it");
+                screen_area_puts(ge->descript, str);
+                screen_area_puts(ge->descript, "  ");
+            }
+        }
     }
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     id_aux = NO_ID;
@@ -796,7 +817,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
         screen_area_puts_menu(ge->banner, "     `. \\ ^-.  oOOo. |         |  |  |    |    \\|  |  |  | |  | ");
         screen_area_puts_menu(ge->banner, "       `.; / ^.  OO: |  |'.'|  | (|  '--. |  .     |  |  | |  | ");
         screen_area_puts_menu(ge->banner, "       .'  ;-- `.o.' |  |   |  |  |  .--' |  |\\    |  |  | |  | ");
-        screen_area_puts_menu(ge->banner, "      ,'  ; .---'/   |  |   |  |  |  `--.--.--.--.--.--.\\_/'  / ");
+        screen_area_puts_menu(ge->banner, "      ,'  ; .---'/   |  |   |  |  |  `--.--.--.--.--.--..\\_/' / ");
         screen_area_puts_menu(ge->banner, "      ;  ;           `--'   `--'  `----(__(__(__(__(__(__(\")-'  ");
         screen_area_puts_menu(ge->banner, " __\\\\;_\\\\//_\\/______\\\\;_\\\\//_\\///\\\\//\\\\/\"\" \"\" \"\" \"\" \"\" \"\" ^ \\\\//");
 
@@ -926,8 +947,6 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
                 screen_area_puts_menu(ge->map, str);
                 number_rows++;
             }
-            screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
-            number_rows++;
             screen_area_puts_menu(ge->map, "   CREATE NEW GAME SELECTED");
             number_rows++;
             screen_area_puts_menu(ge->map, "   - Chose a name for the new savefile that doesn't match the ones ");

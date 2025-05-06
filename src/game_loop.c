@@ -299,6 +299,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                                         printf("Error while saving game.\n");
                                         return FAIL_MENU;
                                     }
+                                    game_set_current_savefile(*game, str);
                                 }
                                 /*Else, it continues looping*/
                                 else
@@ -347,6 +348,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                                         fprintf(stderr, "Error while loading game.\n");
                                         return FAIL_MENU;
                                     }
+                                    game_set_current_savefile(*game, str2);
                                     /*Sets the condition to TRUE so that it stops looping*/
                                     condition = TRUE;
                                 }
@@ -462,13 +464,15 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     /*It runs the game while you dont want to exit or the game is terminated.*/
     graphic_engine_paint_game(gengine, *game, TRUE);
     str = game_get_current_savefile(*game);
-    while ((last_code != EXIT) && (game_get_finished(*game) == FALSE) && str[FIRST_CHAR] != '\0')
+    while ((last_code != EXIT) && (game_get_finished(*game) == FALSE) && str[FIRST_CHAR] != '\0' && game)
     {
         if (last_code == MENU)
         {
             game_loop_menu(game, gengine_menu, base_savefile);
-            if(str[FIRST_CHAR]=='\0')
-                return;
+            str=game_get_current_savefile(*game);
+            if (str)
+                if (str[FIRST_CHAR] == '\0')
+                    return;
         }
         if (last_code == MOVE)
             graphic_engine_paint_game(gengine, *game, TRUE);
