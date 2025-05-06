@@ -50,8 +50,6 @@ struct _Game
     int n_savefiles;                                 /*!< Number of savefiles that currently exist.*/
     Animation_Manager *animation_manager;            /*!< Animation manager.*/
     int n_teams;                                     /*!< Number of teams.*/
-    Id to_team;                                      /*!< Id of the player who is asked to team. */
-    Id team_req;                                     /*!< Id of the player who asked to team. */
 };
 
 int game_get_n_teams(Game *game)
@@ -64,32 +62,6 @@ int game_get_n_teams(Game *game)
 
     /*Returns the number of teams.*/
     return game->n_teams;
-}
-
-Status game_set_player_to_team(Game *game, Id player)
-{
-    /*Error management. */
-    if (!game || player <= NO_ID)
-    {
-        return ERROR;
-    }
-
-    /*Sets the id of the player who asked to team. */
-    game->team_req = player;
-
-    return OK;
-}
-
-Id game_get_player_to_team(Game *game)
-{
-    /*Error management. */
-    if (!game)
-    {
-        return NO_ID;
-    }
-
-    /*Returns the id of the player who asked to team. */
-    return game->team_req;
 }
 
 Status game_set_n_teams(Game *game, int n_teams)
@@ -106,18 +78,6 @@ Status game_set_n_teams(Game *game, int n_teams)
     return OK;
 }
 
-Id game_get_team_request(Game *game)
-{
-    /*Error management.*/
-    if (!game)
-    {
-        return ID_ERROR;
-    }
-
-    /*Returns the id of the player who asked to team.*/
-    return game->to_team;
-}
-
 Status game_create_team(Game *game, Id player_leader, Id player_member)
 {
     /*Error management.*/
@@ -128,34 +88,12 @@ Status game_create_team(Game *game, Id player_leader, Id player_member)
     if (player_leader == player_member)
         return ERROR;
 
-    /*Checks that the coop request is for this player.*/
-    if (player_member != player_get_player_id(game_get_actual_player(game)))
-    {
-        return ERROR;
-    }
-
-    /*Checks that both players are in the same place.*/
-    if (player_get_player_location(game_get_player(game, player_leader)) != player_get_player_location(game_get_player(game, player_member)))
-    {
-        return ERROR;
-    }
-
-    /*Checks that the players aren't already in a team.*/
-    if (player_get_team(game_get_player(game, player_leader)) != NO_ID || player_get_team(game_get_player(game, player_member)) != NO_ID)
-    {
-        return ERROR;
-    }
-
     /*Teams the players.*/
-    player_set_team(game_get_player(game, player_leader), player_leader);
-    player_set_team(game_get_player(game, player_member), player_leader);
+    player_set_team(game_get_player_by_id(game, player_leader), player_leader);
+    player_set_team(game_get_player_by_id(game, player_member), player_leader);
 
     /*Actualises the number of teams.*/
     game_set_n_teams(game, game_get_n_teams(game) + 1);
-
-    /*Actualises the game struct values.*/
-    game->to_team = NO_ID;
-    game->team_req = NO_ID;
 
     /*Clean exit.*/
     return OK;
@@ -202,7 +140,7 @@ Id game_get_teammate_from_player(Game *game, Id player)
         return NO_ID;
     }
 
-    act_team = player_get_team(game_get_player(game, player));
+    act_team = player_get_team(game_get_player_by_id(game, player));
 
     /*Searches for the player. */
     for (i = 0; i < game->n_players; i++)
@@ -216,20 +154,6 @@ Id game_get_teammate_from_player(Game *game, Id player)
 
     /*Returns the id of the team, which will be NO_ID if the teeammate wasn't found. */
     return team;
-}
-
-Status game_set_team_request(Game *game, Id id)
-{
-    /*Error management.*/
-    if (!game || id <= NO_ID)
-    {
-        return ERROR;
-    }
-
-    /*Sets the id of the player who asked to team.*/
-    game->to_team = id;
-
-    return OK;
 }
 
 Status game_create(Game **game)
@@ -307,8 +231,6 @@ Status game_create(Game **game)
     (*game)->finished = FALSE;
     (*game)->n_savefiles = 0;
     (*game)->n_teams = 0;
-    (*game)->to_team = NO_ID;
-    (*game)->team_req = NO_ID;
     return OK;
 }
 
@@ -331,7 +253,7 @@ Status game_add_savefile(Game *game, char *name)
 }
 
 Status game_set_current_savefile(Game *game, char *name)
-{    /*Error management*/
+{ /*Error management*/
     if (!(game) || !name)
         return ERROR;
     /*Sets the name of the current savefile*/
@@ -1038,7 +960,7 @@ Status game_next_command(Game *game)
         return ERROR;
 
     /*Actualises the last command.*/
-    game->command_num[game->turn] = (game->command_num[game->turn] +1) % COMMANDS_SAVED;
+    game->command_num[game->turn] = (game->command_num[game->turn] + 1) % COMMANDS_SAVED;
 
     return OK;
 }

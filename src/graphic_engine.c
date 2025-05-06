@@ -491,9 +491,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strcpy(map[EIGHT_LINE], "              | .` | (_) |  | |  | | | _|| |\\/| \\__ \\");
             strcpy(map[NINETH_LINE], "              |_|\\_|\\___/  |___| |_| |___|_|  |_|___/");
         }
-        if(id_list)
+        if (id_list)
             free(id_list);
-        id_list=NULL;
+        id_list = NULL;
 
         /*Prints the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -724,13 +724,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             screen_area_puts(ge->descript, str);
             command_set_status(game_get_last_command(game), OK);
         }
-    }
-    /*7.Prints if a coop request was made.*/
-    if ((game_get_player_to_team(game) == player_get_player_id(player)))
-    {
-        screen_area_puts(ge->descript, " ");
-        sprintf(str, "  COOP REQUEST: %s", player_get_player_name(game_get_player_by_id(game, game_get_team_request(game))));
-        screen_area_puts(ge->descript, str);
     }
 
     /*BANNER AREA.*/

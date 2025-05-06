@@ -467,7 +467,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
         if (last_code == MENU)
         {
             game_loop_menu(game, gengine_menu, base_savefile);
-            if(str[FIRST_CHAR]=='\0')
+            if (str[FIRST_CHAR] == '\0')
                 return;
         }
         if (last_code == MOVE)
@@ -521,7 +521,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             }
 
             /*Goes to the next turn if a command that changes turn is used.*/
-            if (last_code == MOVE)
+            if (last_code == MOVE || last_code == COOP || last_code == WAIT)
                 game_next_turn(*game);
 
             game_next_command(*game);

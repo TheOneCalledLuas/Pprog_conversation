@@ -59,25 +59,6 @@ Animation_Manager *game_get_animation_manager(Game *game);
 int game_get_n_teams(Game *game);
 
 /**
- * @brief Sets the id of the player who is asked to team.
- * @author Saúl López Romero
- *
- * @param game Game structure, where all the information related to game is included.
- * @param player Id of the player who is asked to team.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Status game_set_player_to_team(Game *game, Id player);
-
-/**
- * @brief Returns the id of the player who is asked to team.
- * @author Saúl López Romero
- *
- * @param game Game structure, where all the information related to game is included.
- * @return Id of the player who is asked to team or NO_ID if an error takes place.
- */
-Id game_get_player_to_team(Game *game);
-
-/**
  * @brief Sets the number of teams.
  * @author Saúl López Romero
  *
@@ -86,25 +67,6 @@ Id game_get_player_to_team(Game *game);
  * @return OK for a clean exit, otherwise ERROR.
  */
 Status game_set_n_teams(Game *game, int n_teams);
-
-/**
- * @brief Returns the id of the player who asked to team.
- * @author Saúl López Romero
- *
- * @param game Game structure, where all the information related to game is included.
- * @return Id of the player who asked to team or NO_ID if an error takes place.
- */
-Id game_get_team_request(Game *game);
-
-/**
- * @brief Sets the id of the player who asked to team.
- * @author Saúl López Romero
- *
- * @param game Game structure, where all the information related to game is included.
- * @param id Id of the player who asked to team.
- * @return OK for a clean exit, otherwise ERROR.
- */
-Status game_set_team_request(Game *game, Id id);
 
 /**
  * @brief Creates a team with two players, the id of the team will be the id of the leader one.
@@ -774,6 +736,6 @@ Status game_set_current_savefile(Game *game, char *name);
  * @param room Id of the room where you want to move the players.
  * @return OK if everything went well, ERROR otherwise.
  */
-Status game_move_all_players(Game * game, Id room);
+Status game_move_all_players(Game *game, Id room);
 
 #endif
