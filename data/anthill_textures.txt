@@ -71,7 +71,7 @@ EXTRA el caracter '&' actua como caracter transparente
 &=ppqq&&&
 &&&&&&&&&
 
-#c:67|
+#c:67
 &&&&&&&&&
 &&_[_]_&&
 &&(-.o)&&
@@ -240,8 +240,8 @@ EXTRA el caracter '&' actua como caracter transparente
 &&<>/<>&&
 &&&/\&&&&
 &&/  \&&&
-&{    }&&
 &&\__/&&&
+&&&&&&&&&
 
 
 #o:212
