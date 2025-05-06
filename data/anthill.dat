@@ -170,3 +170,4 @@ Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|7|
+#a:2|game_over|game_over.anim|15|1|14|3|1|1|1|0|7|
