@@ -767,4 +767,23 @@ Status game_set_current_savefile(Game *game, char *name);
  */
 Status game_move_all_players(Game *game, Id room);
 
+/**
+ * @brief Gets all the character to unfollow.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @return OK or ERROR.
+ */
+Status game_unfollow_all(Game *game);
+
+/**
+ * @brief Vanishes an object from the game.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param object Id of the object to be taken.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_vanish_object(Game *game, Id object);
+
 #endif

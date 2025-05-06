@@ -284,4 +284,162 @@ Status gamerules_open_gate(Game *game, Gamerule *gr);
  */
 Status gamerules_use_train_pass(Game *game, Gamerule *gr);
 
+/**
+ * @brief Activates the bad ending.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_bad_ending(Game *game, Gamerule *gr);
+
+/**
+ * @brief controls the lever challenge.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_lever_challenge(Game *game, Gamerule *gr);
+
+/**
+ * @brief Actions to be done if the spider boss is killed.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_spider_boss_killed(Game *game, Gamerule *gr);
+
+/**
+ * @brief random damage to the player.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_random_damage(Game *game, Gamerule *gr);
+
+/**
+ * @brief random heal to the player.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_random_heal(Game *game, Gamerule *gr);
+
+/**
+ * @brief Blue potion mechanics.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_blue_potion(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles dinamite interactivity.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ */
+Status gamerules_dinamite_interactivity(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles the misterious spider kill.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ */
+Status gamerules_misterious_spider_kill(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles the guard spider kill.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_guard_spider_kill(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles exploration progress.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_exploration_progress(Game *game, Gamerule *gr);
+
+/**
+ * @brief Boosts merchant when precise.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_merchant_boost(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles merchant bad ending.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_merchant_bad_ending(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles merchant good ending.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_merchant_good_ending(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles bad ending attached to any of the players dying.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_merchant_neutral_ending(Game *game, Gamerule *gr);
+
+/**
+ * @brief Handles the merchant interactivity.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_merchant_interactivity(Game *game, Gamerule *gr);
+
+/**
+ * @brief handles red potion mechanics.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_red_potion(Game *game, Gamerule *gr);
+
 #endif

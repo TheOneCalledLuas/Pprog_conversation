@@ -11,8 +11,26 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
-#define P3_P4_GATE 49     /*!< Id of the gate between P3 and P4.*/
-#define START_ROOM_ID 111 /*!< Id of the start room.*/
+#define P3_P4_GATE 49              /*!< Id of the gate between P3 and P4.*/
+#define START_ROOM_ID 111          /*!< Id of the start room.*/
+#define SPIDER_BOSS_ID 60          /*!< Id of Arachne.*/
+#define SPIDER_1 63                /*!< Id of the first spider. */
+#define SPIDER_2 64                /*!< Id of the second spider. */
+#define SPIDER_3 67                /*!< Id of the third spider. */
+#define SPIDER_4 69                /*!< Id of the fourth spider. */
+#define ANIMATION_BAD_ENDING_1 13  /*!< Animation for the bad ending of the spiders.*/
+#define LEVER_1_ID 217             /*!< Id of the first lever.*/
+#define LEVER_2_ID 218             /*!< Id of the second lever.*/
+#define LINK_LEVER_1 411           /*!< Id of the link between the first lever and the second one.*/
+#define LINK_LEVER_2 412           /*!< Id of the link for the second lever.*/
+#define MAX_TURNS_LEVER 4          /*!< Max turns for the lever to be activated.*/
+#define DINAMITE_ID 216            /*!< Id of the dynamite.*/
+#define VICTIM_ID 66               /*!< Id of the victim of the lever task.*/
+#define ANIMATION_ARACHNE_DEATH 14 /*!< Animation for the death of Arachne.*/
+#define POST_BOSS_ROOM_ID 113      /*!< Id of the room after the boss.*/
+#define HOLE_LAIR 301              /*!< Id of the hole in the lair. */
+#define MERCHANT_ID 62             /*!< Id of the merchant.*/
+#define ZERO_LINK 310              /*!< Id of link to the zero room. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -446,6 +464,9 @@ Status gamerules_use_train_pass(Game *game, Gamerule *gr)
         /*The pass was used correctly.*/
         game_move_all_players(game, START_ROOM_ID);
 
+        /*Takes the followers out.*/
+        game_unfollow_all(game);
+
         /*Attempts to move the pass out of the inventory.*/
         player_del_object(game_get_actual_player(game), pass_id);
 
@@ -460,4 +481,165 @@ Status gamerules_use_train_pass(Game *game, Gamerule *gr)
         command_set_status(cmd, ERROR);
         return OK;
     }
+}
+
+Status gamerules_bad_ending(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks in which stage of the gamerule we are.*/
+    switch (gamerules_get_value(gr))
+    {
+    case 0:
+        /*We are waiting for the player to talk to the ant on room 711.*/
+        if (command_get_code(game_get_last_command(game)) == CHAT && strcasecmp(command_get_argument(game_get_last_command(game), 0), "Vengeful_Ant") == 0)
+        {
+            /*The player talked to the ant, we go to the next stage.*/
+            gamerules_set_value(gr, 1);
+        }
+        return OK;
+        break;
+    case 1:
+        /*We are waiting for the player to kill the spider boss and all the spiders.*/
+
+        if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) > 0 ||
+            character_get_health(game_get_character(game, SPIDER_1)) > 0 ||
+            character_get_health(game_get_character(game, SPIDER_2)) > 0 ||
+            character_get_health(game_get_character(game, SPIDER_3)) > 0 ||
+            character_get_health(game_get_character(game, SPIDER_4)) > 0)
+        {
+            /*Some enemies are missing to be killed.*/
+            return OK;
+        }
+
+        /*The player killed all the spiders, we activate the ending..*/
+        animation_run(game_get_animation_manager(game), ANIMATION_BAD_ENDING_1);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+        return OK;
+        break;
+    default:
+        return ERROR;
+    }
+    return ERROR;
+}
+
+Status gamerules_lever_challenge(Game *game, Gamerule *gr)
+{
+    Bool lever_1 = FALSE, lever_2 = FALSE;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks the gamerule state.*/
+    switch (gamerules_get_value(gr))
+    {
+    case 0:
+        /*We are waiting for the player to talk with Worried ant.*/
+        if (command_get_code(game_get_last_command(game)) == CHAT && strcasecmp(command_get_argument(game_get_last_command(game), 0), "Worried_Ant") == 0)
+        {
+            /*The player talked to the ant, we go to the next stage.*/
+            gamerules_set_value(gr, 1);
+        }
+        return OK;
+        break;
+    case -1:
+        /*The lost the challenge, but the links can be opened.*/
+        /*Opens links if required.*/
+        lever_1 = object_get_is_used(game_get_object(game, LEVER_1_ID));
+        lever_2 = object_get_is_used(game_get_object(game, LEVER_2_ID));
+        if (lever_1)
+        {
+            /*The first lever was used, we open the link.*/
+            link_set_state(game_find_link(game, LINK_LEVER_1), TRUE);
+        }
+        if (lever_2)
+        {
+            /*The second lever was used, we open the link.*/
+            link_set_state(game_find_link(game, LINK_LEVER_2), TRUE);
+        }
+        if (lever_1 && lever_2)
+        {
+            /*The gamerule stops.*/
+            gamerules_increment_has_exec(gr);
+            return OK;
+        }
+        return OK;
+        break;
+    default:
+        /*Forwads the timer.*/
+        gamerules_set_value(gr, gamerules_get_value(gr) + 1);
+        /*Opens links if required.*/
+        lever_1 = object_get_is_used(game_get_object(game, LEVER_1_ID));
+        lever_2 = object_get_is_used(game_get_object(game, LEVER_2_ID));
+        if (lever_1)
+        {
+            /*The first lever was used, we open the link.*/
+            link_set_state(game_find_link(game, LINK_LEVER_1), TRUE);
+        }
+        if (lever_2)
+        {
+            /*The second lever was used, we open the link.*/
+            link_set_state(game_find_link(game, LINK_LEVER_2), TRUE);
+        }
+
+        /*We are waiting for the player to pull the levers.*/
+        if (lever_1 && lever_2)
+        {
+            /*As both levers were used, the timer stops ant one item is used.*/
+            game_vanish_object(game, DINAMITE_ID);
+
+            /*Stops the timer.*/
+            gamerules_increment_has_exec(gr);
+            return OK;
+        }
+
+        /*If the timer has run out.*/
+        if (gamerules_get_value(gr) >= MAX_TURNS_LEVER * game_get_n_players(game))
+        {
+            /*The player didn't pull the levers in time.*/
+            character_set_health(game_get_character(game, VICTIM_ID), -10);
+            gamerules_set_value(gr, -1);
+            return OK;
+        }
+
+        return OK;
+        break;
+    }
+}
+
+Status gamerules_spider_boss_killed(Game *game, Gamerule *gr)
+{
+    Character *merchant = NULL;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+    /*Checks if the Spider boss was killed.*/
+    if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) <= 0)
+    {
+        /*The spider boss was killed.*/
+        game_move_all_players(game, POST_BOSS_ROOM_ID);
+        animation_run(game_get_animation_manager(game), ANIMATION_ARACHNE_DEATH);
+
+        /*Closes the gate.*/
+        link_set_state(game_find_link(game, HOLE_LAIR), FALSE);
+
+        /*Opens the zero room.*/
+        link_set_state(game_find_link(game, ZERO_LINK), TRUE);
+
+        /*Changes merchant.*/
+        merchant = game_get_character(game, MERCHANT_ID);
+        character_set_friendly(merchant, FALSE);
+        character_set_follow(merchant, -1);
+        space_take_character(game_get_space(game, game_get_character_location(game, MERCHANT_ID)), MERCHANT_ID);
+        space_add_character(game_get_space(game, 0), MERCHANT_ID);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+        return OK;
+    }
+    return OK;
 }

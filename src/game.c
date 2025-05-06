@@ -1439,3 +1439,56 @@ Status game_move_all_players(Game *game, Id room)
     /*Clean exit*/
     return OK;
 }
+
+Status game_unfollow_all(Game *game)
+{
+    int i = 0;
+
+    /*Error management.*/
+    if (!game)
+    {
+        return ERROR;
+    }
+
+    /*Unfollows all the characters.*/
+    for (i = 0; i < game->n_characters; i++)
+    {
+        character_set_follow(game->characters[i], NO_ID);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status game_vanish_object(Game *game, Id object)
+{
+    int i = 0;
+    Id space = 0;
+
+    /*Error management.*/
+    if (!game || object == NO_ID)
+    {
+        return ERROR;
+    }
+
+    /*Searches for the object in the players.*/
+    for (i = 0; i < game->n_players; i++)
+    {
+        if (player_has_object(game->players[i], object))
+        {
+            /*If it finds it, takes it out and returns OK.*/
+            player_del_object(game->players[i], object);
+            return OK;
+        }
+    }
+
+    /*Searches the object in the spaces.*/
+    if ((space = game_get_object_location(game, object)) != NO_ID)
+    {
+        /*If it finds it, takes it out and returns OK*/
+        space_take_object(game_get_space(game, space), object);
+        return OK;
+    }
+    /*If it doesn't find it, returns ERROR.*/
+    return ERROR;
+}

@@ -100,13 +100,13 @@ Datos de la zona Principal
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
 #o:211|Seed|711|seed desc|4|1|-1|-1|0|0
-#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0
-#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0
+#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|1
+#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|1
 #o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
 #o:215|Artifact|123|gun desc|0|1|221|-1|0|0
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
-#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0
-#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0
+#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|1
+#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|1
 #o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
 #o:220|Treasure|731|treasure desc|-2|0|-1|-1|0|0
 #o:221|Rocks|132|ammo desc|0|1|-1|-1|0|0
