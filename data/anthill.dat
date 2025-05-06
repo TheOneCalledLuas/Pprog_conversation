@@ -103,13 +103,13 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0
 #o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0
 #o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
-#o:215|Eldritch_artifact|123|gun desc|-20|1|221|-1|0|0
+#o:215|Artifact|123|gun desc|-20|1|221|-1|0|0
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
 #o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0
 #o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0
 #o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
 #o:220|Treasure|731|treasure desc|-2|0|-1|-1|0|0
-#o:221|Eldritch_rocks|132|ammo desc|0|1|-1|-1|0|0
+#o:221|Rocks|132|ammo desc|0|1|-1|-1|0|0
 #o:222|Spider_food|132|food desc|5|1|-1|-1|0|0
 #o:223|Baby_food|713|food desc|5|1|-1|-1|0|0
 #o:224|Mystery_water|123|toilet desc|-3|0|-1|-1|0|0
@@ -123,7 +123,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:331|Entry-Stairs_1|112|714|2|1|
 #l:341|Entry-Hole|112|113|1|1|
 #l:351|Corridor_11-Corridor_12|711|712|1|1|
-#l:361|Corridor_12-Corridor_13|712|713|1|1|
+#l:361|Corridor_12-Corridor_13|712|713|1|0|
 #l:371|Stairs_1-Stairs_2|714|121|4|1|
 #l:381|Stairs_2-Corridor_21|121|721|0|1|
 #l:391|Corridor_21-Corridor_22|721|722|2|1|
@@ -157,7 +157,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:470|Pantry-Hallway|123|122|3|1|
 #l:480|Laboratory-Hole|131|113|4|1|
 #l:490|Cell-Laboratory|132|131|0|1|
-#l:300|Lair-Hole|114|113|0|1|
+#l:300|Lair-Hole|114|113|0||
 
 #g:20|do_open_gate|1|0|1|22|
 #g:21|use_train_pass|1|0|1|13
