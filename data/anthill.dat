@@ -172,3 +172,4 @@ Las animaciones tienen la siguiente estructura:
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|7|
 #a:2|game_over|game_over.anim|15|1|14|3|1|1|1|0|7|
 #a:3|lair_unlocked|lair_unlocked.anim|20|2|3|3|2|1|0|7|
+#a:4|initial_dialog|initial_dialog.anim|30|2|7|4|1|1|0|7|
