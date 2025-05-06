@@ -525,7 +525,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             }
 
             /*Goes to the next turn if a command that changes turn is used.*/
-            if (last_code == MOVE)
+            if (last_code == MOVE || last_code == COOP || last_code == WAIT)
                 game_next_turn(*game);
 
             game_next_command(*game);

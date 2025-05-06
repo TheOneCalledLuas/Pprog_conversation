@@ -170,7 +170,7 @@ void game_actions_uncoop(Game *game);
 /**
  * @brief IT shows up your inventory inside the map section
  * @author Fernando Mijangos
- * 
+ *
  * @param game
  */
 void game_actions_bag(Game *game);
@@ -178,7 +178,7 @@ void game_actions_bag(Game *game);
 /**
  * @brief It shows up the map in the map section
  * @author Fernando Mijangos
- * 
+ *
  * @param game
  */
 void game_actions_map(Game *game);
@@ -268,8 +268,19 @@ Status game_actions_update(Game *game, Command *command)
         break;
     case BAG:
         game_actions_bag(game);
+        break;
     case MAP:
         game_actions_map(game);
+        break;
+    case WAIT:
+        game_actions_wait(game);
+        break;
+    case COOP:
+        game_actions_coop(game);
+        break;
+    case UNCOOP:
+        game_actions_uncoop(game);
+        break;
     default:
         break;
     }
@@ -289,14 +300,29 @@ void game_actions_move(Game *game)
     Id current_id = NO_ID;
     Id space_id = NO_ID;
     Id *characters = NULL;
+    Player *player = NULL, *mate = NULL;
     Direction direction = UNK_DIRECTION;
     int i = 0;
+    Bool is_teamed = FALSE;
 
     /*List with all the possible directions the player can move towards.*/
     char *dir_from_string[N_DIRECTIONS][N_VARIATIONS] = {{"n", "north"}, {"s", "south"}, {"e", "east"}, {"w", "west"}, {"u", "up"}, {"d", "down"}};
 
     /*Gets the player location.*/
-    space_id = player_get_player_location(game_get_actual_player(game));
+    player = game_get_actual_player(game);
+    if (!player)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Gets the player team, if existent.*/
+    if (player_get_team(player) != NO_ID)
+    {
+        is_teamed = TRUE;
+        mate = game_get_player_by_id(game, game_get_teammate_from_player(game, player_get_player_id(player)));
+    }
+    space_id = player_get_player_location(player);
     if (NO_ID == space_id || ID_ERROR == space_id)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -339,15 +365,34 @@ void game_actions_move(Game *game)
         }
         for (i = 0; i < game_get_num_characters(game); i++)
         {
-            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
+            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(player))
             {
                 space_take_character(game_get_space(game, space_id), characters[i]);
             }
         }
-        player_set_player_location(game_get_actual_player(game), current_id);
+        player_set_player_location(player, current_id);
+
+        /*If the player is teamed moves his teammate to the other room.*/
+        if (is_teamed)
+        {
+            player_set_player_location(mate, current_id);
+            /*Moves the characters that are following the player to the new space*/
+            for (i = 0; i < game_get_num_characters(game); i++)
+            {
+                if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(mate))
+                {
+                    space_take_character(game_get_space(game, space_id), characters[i]);
+                    if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(mate))
+                    {
+                        space_add_character(game_get_space(game, current_id), characters[i]);
+                    }
+                }
+            }
+        }
+
         for (i = 0; i < game_get_num_characters(game); i++)
         {
-            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(game_get_actual_player(game)))
+            if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(player))
             {
                 space_add_character(game_get_space(game, current_id), characters[i]);
             }
@@ -623,8 +668,9 @@ void game_actions_use(Game *game)
     Player *player = NULL;
     Object *object = NULL;
     char *entity = NULL;
-    Id target = NO_ID;
+    Id target = NO_ID, team_id = NO_ID;
     Bool do_take = FALSE;
+    Bool coop_reeachable = FALSE;
 
     /*Error handling.*/
     if (!game)
@@ -645,8 +691,17 @@ void game_actions_use(Game *game)
         return;
     }
 
+    /*Searches if the object is reachable via a coop.*/
+    if (player_get_team(player) != NO_ID)
+    {
+        if ((team_id = game_get_teammate_from_player(game, player_get_player_id(player))) != NO_ID)
+        {
+            coop_reeachable = player_has_object(game_get_player(game, team_id), object_id);
+        }
+    }
+
     /*Searches if the object is reachable.*/
-    if (object_id >= 0 && (space_find_object(last_space, object_id) != -1 || player_has_object(player, object_id)))
+    if (object_id >= 0 && (space_find_object(last_space, object_id) != -1 || player_has_object(player, object_id) || coop_reeachable))
     {
         /*If the object was found anywhere accesible by the player.*/
         object = game_get_object(game, object_id);
@@ -716,6 +771,10 @@ void game_actions_use(Game *game)
     {
         /*Tries to take the object from the space AND inventory. If the object isn't there, it must be on one of them
           and it won't happen anything if the object isn't there  when we try to take it out.*/
+        if (coop_reeachable && player_has_object(game_get_player_by_id(game, team_id), object_id))
+        {
+            player_del_object(game_get_player_by_id(game, team_id), object_id);
+        }
         player_del_object(player, object_id);
         space_take_object(last_space, object_id);
     }
@@ -736,7 +795,10 @@ void game_actions_open(Game *game)
     Space *act_space = NULL;
     Link *link = NULL;
     Object *object = NULL;
+    Player *player = NULL;
     Bool condition1 = FALSE, condition2 = FALSE;
+    Id team_id = NO_ID, object_id;
+    Bool coop_reachable = FALSE;
 
     /*Error handling.*/
     if (!game)
@@ -761,12 +823,23 @@ void game_actions_open(Game *game)
     act_space = game_get_space(game, player_get_player_location(game_get_actual_player(game)));
     link = game_get_link_by_name(game, command_get_argument(command, FIRST_ARG));
     object = game_get_object(game, game_get_object_by_name(game, command_get_argument(command, THIRD_ARG)));
+    player = game_get_actual_player(game);
+    object_id = object_get_id(object);
 
     /*More error management.*/
-    if (!act_space || !link || !object)
+    if (!act_space || !link || !object || !player)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
+    }
+
+    /*Searches if the object is reachable via a coop.*/
+    if (player_get_team(player) != NO_ID)
+    {
+        if ((team_id = game_get_teammate_from_player(game, player_get_player_id(player))) != NO_ID)
+        {
+            coop_reachable = player_has_object(game_get_player(game, team_id), object_id);
+        }
     }
 
     /*Checks if the object opens the link.*/
@@ -801,6 +874,12 @@ void game_actions_open(Game *game)
         link_set_state(link, OPENED);
         space_take_object(act_space, object_get_id(object));
     }
+    else if (coop_reachable)
+    {
+        /*Executes the command and takes the object out of the space of the other player.*/
+        link_set_state(link, OPENED);
+        player_del_object(game_get_player_by_id(game, team_id), object_get_id(object));
+    }
     else
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -830,6 +909,9 @@ void game_actions_coop(Game *game)
 {
     Status result = ERROR;
     Id player_id = NO_ID;
+    Id team_id = NO_ID;
+    Player *player = NULL, *mate = NULL;
+
     /*Error handling.*/
     if (!game)
     {
@@ -837,26 +919,41 @@ void game_actions_coop(Game *game)
         return;
     }
 
-    switch (game_get_team_request(game))
+    /*Gets all the information.*/
+    player = game_get_actual_player(game);
+    player_id = player_get_player_id(player);
+    mate = game_get_player_by_id(game, game_get_player_by_name(game, command_get_argument(game_get_last_command(game), 0)));
+    team_id = player_get_player_id(mate);
+
+    if (!player || !mate)
     {
-    case NO_ID:
-        /*Checks if a number was introduced.*/
-        if (strcmp(command_get_argument(game_get_last_command(game), 0), "") == 0)
-        {
-            command_set_status(game_get_last_command(game), ERROR);
-            return;
-        }
-        /*Sets it up for the other player to respond.*/
-        player_id = game_get_player_by_name(game, command_get_argument(game_get_last_command(game), 0));
-        game_set_team_request(game, player_get_player_id(game_get_actual_player(game)));
-        game_set_player_to_team(game, player_id);
-        command_set_status(game_get_last_command(game), OK);
-        break;
-    default:
-        result = game_create_team(game, game_get_team_request(game), player_get_player_id(game_get_actual_player(game)));
-        command_set_status(game_get_last_command(game), result);
+        command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+    /*Checks that the players aren't already teamed.*/
+    if (player_get_team(player) != NO_ID || player_get_team(mate) != NO_ID)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Checks that the players are in the same location.*/
+    if (player_get_player_location(player) != player_get_player_location(mate))
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Allies the players.*/
+    result = game_create_team(game, player_id, team_id);
+    if (result == ERROR)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+
+    /*Clean exit.*/
+    command_set_status(game_get_last_command(game), OK);
     return;
 }
 
@@ -867,7 +964,6 @@ void game_actions_uncoop(Game *game)
     command_set_status(game_get_last_command(game), result);
     return;
 }
-
 
 void game_actions_bag(Game *game)
 {
