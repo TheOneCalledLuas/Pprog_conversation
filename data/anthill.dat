@@ -103,7 +103,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0
 #o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0
 #o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
-#o:215|Artifact|123|gun desc|-20|1|221|-1|0|0
+#o:215|Artifact|123|gun desc|0|1|221|-1|0|0
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
 #o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0
 #o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0
