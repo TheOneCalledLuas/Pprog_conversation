@@ -50,6 +50,7 @@ struct _Game
     int n_savefiles;                                 /*!< Number of savefiles that currently exist.*/
     Animation_Manager *animation_manager;            /*!< Animation manager.*/
     int n_teams;                                     /*!< Number of teams.*/
+    Bool is_determined;                              /*!< Whether the game is determined or not.*/
 };
 
 int game_get_n_teams(Game *game)
@@ -74,6 +75,32 @@ Status game_set_n_teams(Game *game, int n_teams)
 
     /*Sets the number of teams.*/
     game->n_teams = n_teams;
+
+    return OK;
+}
+
+Bool game_get_determined(Game *game)
+{
+    /*Error management.*/
+    if (!game)
+    {
+        return FALSE;
+    }
+
+    /*Returns the value of the determined mode. */
+    return game->is_determined;
+}
+
+Status game_set_determined(Game *game, Bool is_determined)
+{
+    /*Error management.*/
+    if (!game)
+    {
+        return ERROR;
+    }
+
+    /*Sets the value of the determined mode. */
+    game->is_determined = is_determined;
 
     return OK;
 }
@@ -231,6 +258,7 @@ Status game_create(Game **game)
     (*game)->finished = FALSE;
     (*game)->n_savefiles = 0;
     (*game)->n_teams = 0;
+    (*game)->is_determined = FALSE;
     return OK;
 }
 
@@ -240,7 +268,7 @@ Status game_add_savefile(Game *game, char *name)
     /*Error management*/
     if (!(game) || !name || game->n_savefiles >= MAX_SAVEFILES)
         return ERROR;
-    /*Looks that the savefile doesnt exist already*/
+    /*Looks that the savefile doesnt exist already.*/
     for (i = 0; i < game->n_savefiles; i++)
     {
         if (strcmp(name, game->savefiles[i]) == 0)

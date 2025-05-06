@@ -555,7 +555,16 @@ void game_actions_attack(Game *game)
     if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
     {
         /*Starts a fight between the entities.*/
-        rand_num = random_int(0, ATTACK_PROB);
+        /*Checks if the game is in determinist mode.*/
+        if (!game_get_determined(game))
+        {
+            rand_num = random_int(0, ATTACK_PROB);
+        }
+        else
+        {
+            /*If the game is in determinist mode, the player always wins. */
+            rand_num = ATTACK_PROB + 1;
+        }
         if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
         {
             /*Hits player.*/

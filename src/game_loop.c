@@ -106,6 +106,7 @@ int main(int argc, char *argv[])
     Graphic_engine *gengine = NULL;
     Graphic_engine *gengine_menu = NULL;
     FILE *f = NULL;
+    Bool is_determined = FALSE;
     int i = 0;
 
     /*Sets the random seed for the use of random numbers later on.*/
@@ -117,19 +118,32 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
         return 1;
     }
-    /*Searches if a log file has to be creeated.*/
+    /*Searches if a log file has to be creeated or if detemined mode is created.*/
     for (i = 0; i < argc; i++)
     {
         if (!strcmp("-l", argv[i]) && i + 1 < argc)
         {
             /*Sets up the log creation.*/
             f = fopen(argv[i + 1], "w");
+            if (!f)
+            {
+                fprintf(stderr, "Error while creating log file.\n");
+                return EXIT_FAILURE;
+            }
+        }
+        else if (!strcmp("-d", argv[i]))
+        {
+            /*Sets the determined mode*/
+            is_determined = TRUE;
         }
     }
 
     /*Game loop is initated and terminated when its supposed to.*/
     if (!game_loop_init(&game, &gengine, &gengine_menu, argv[1]))
     {
+        /*Sets the determinist mode activated if it proceeds.*/
+        game_set_determinist_mode(game, is_determined);
+        /*Runs the game.*/
         game_loop_run(&game, gengine, gengine_menu, f, argv[1]);
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
@@ -469,7 +483,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
         if (last_code == MENU)
         {
             game_loop_menu(game, gengine_menu, base_savefile);
-            str=game_get_current_savefile(*game);
+            str = game_get_current_savefile(*game);
             if (str)
                 if (str[FIRST_CHAR] == '\0')
                     return;

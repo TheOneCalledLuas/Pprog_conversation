@@ -59,6 +59,25 @@ Animation_Manager *game_get_animation_manager(Game *game);
 int game_get_n_teams(Game *game);
 
 /**
+ * @brief Sets if the game is determined.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @param is_determined If the game is determined or not.
+ * @return OK for a clean exit, otherwise ERROR.
+ */
+Status game_set_determined(Game *game, Bool is_determined);
+
+/**
+ * @brief Gets if the game is determined.
+ * @author Saúl López Romero
+ *
+ * @param game Game structure, where all the information related to game is included.
+ * @return If the game is determined or not, or FALSE if an error takes place.
+ */
+Bool game_get_determined(Game *game);
+
+/**
  * @brief Sets the number of teams.
  * @author Saúl López Romero
  *
