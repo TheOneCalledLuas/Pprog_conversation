@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     if (!game_loop_init(&game, &gengine, &gengine_menu, argv[1]))
     {
         /*Sets the determinist mode activated if it proceeds.*/
-        game_set_determinist_mode(game, is_determined);
+        game_set_determined(game, is_determined);
         /*Runs the game.*/
         game_loop_run(&game, gengine, gengine_menu, f, argv[1]);
         game_loop_cleanup(&game, gengine, gengine_menu);
