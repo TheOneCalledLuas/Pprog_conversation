@@ -64,7 +64,7 @@ Datos del Tutorial
 #c:14|Weak_spider|/o\|19|1|0|Death for the ants.|
 #c:14|Spidey|/o\|20|3|0|Death for the ants.|
 
-Datos de La zona Principal
+Datos de la zona Principal
 #s:0|Room_0|// ___ \\|\\(___)//| //(*)\\ | \\ " // |  o`w´o  |0|
 #s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|0|
 #s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
@@ -86,24 +86,25 @@ Datos de La zona Principal
 #s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
 #s:132|Cell|/-/-/-/-/|-/-/-/-/-|         | mo'    0|       o0|0|
 
-#c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant|
-#c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders!|
+#c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant. I don't have anything left after the spider invasion, but I'll gladly help you!|
+#c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders! They killed everyone I care about when they invaded us, they deserve it.|
 #c:63|Mysterious_Spider|/\OO/\|712|5|0|I wont't talk to you!|
 #c:64|Spider_Guard|/\OO/\|714|5|0|I won't talk to you!|
-#c:65|Worried_Ant|mo^|121|5|1|Help me save the baby!|
+#c:65|Worried_Ant|mo^|121|5|1|Help me save the baby! You have to split and pull the levers soon or they'll die! Head north and south to get there.|
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
 #c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
-#c:68|Imprisoned_Ant|mo^|132|5|1|Get me out of here!|
+#c:68|Imprisoned_Ant||131|5|1|Get me out of here quick and I'll give you something!|
+#c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|
 #c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
 #o:211|Seed|711|seed desc|4|1|-1|-1|0|0
-#o:212|Potion_1|131|potion desc|6|1|-1|-1|0|0
-#o:213|Potion_2|131|potion desc|6|1|-1|-1|0|0
-#o:214|Potion_3|131|potion desc|6|1|-1|-1|0|0
+#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0
+#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0
+#o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
 #o:215|Eldritch_artifact|123|gun desc|-20|1|221|-1|0|0
-#o:216|Dynamite|722|dynamite desc|-25|1|-1|-1|0|0
+#o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
 #o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0
 #o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0
 #o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
@@ -127,17 +128,17 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:381|Stairs_2-Corridor_21|121|721|0|1|
 #l:391|Corridor_21-Corridor_22|721|722|2|1|
 #l:401|Corridor_22-Lever_1|722|723|2|1|
-#l:411|Lever_1-Pantry|723|123|1|1|
+#l:411|Lever_1-Pantry|723|123|1|0|
 #l:421|Stairs_2-Corridor_23|121|731|1|1|
 #l:431|Corridor_23-Corridor_24|731|732|2|1|
 #l:441|Corridor_24-Lever_2|732|733|2|1|
-#l:451|Lever_2-Pantry|733|123|0|1|
+#l:451|Lever_2-Pantry|733|123|0|0|
 #l:461|Stairs_2-Hallway|121|122|2|1|
 #l:471|Hallway-Pantry|122|123|2|1|
 #l:481|Hole-Laboratory|113|131|5|1|
-#l:491|Laboratory-Cell|131|132|1|1|
+#l:491|Laboratory-Cell|131|132|1|0|
 #l:301|Hole-Lair|113|114|1|1|
-#l:310|Entry-Room_0|112|0|4|1|
+#l:310|Entry-Room_0|112|0|4|0|
 #l:320|Corridor_11-Entry|711|112|2|1|
 #l:330|Stairs_1-Entry|714|112|3|1|
 #l:340|Hole-Entry|113|112|0|1|
@@ -154,7 +155,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:450|Pantry-Lever_2|123|733|1|1|
 #l:460|Hallway-Stairs_2|122|121|3|1|
 #l:470|Pantry-Hallway|123|122|3|1|
-#l:480|Laboratory-Hole|131|113|4|0|
+#l:480|Laboratory-Hole|131|113|4|1|
 #l:490|Cell-Laboratory|132|131|0|1|
 #l:300|Lair-Hole|114|113|0|1|
 
