@@ -32,3 +32,4 @@ gamerules por hacer:
 - si vences a merchAnt de alguna otra forma, las hormigas les felicitan y dicen que el resto de arañas han huido, y les nombran a ambos jefes del hormiguero. es un final felz :D (excepto para las hormigas).
 - si las hormigas mueren ambas en cualquier momento, es game over (id a2) y se desbloquea una cutscene de que las hormigas lloraron su muerte pero siguieron bajo el control de las arañas, porque sin ellos no hay nadie que pueda salvarlos de las arañas.
 - si se usa el objeto de id o212 se consigue un boost de ataque de +1 (permanente o exclusivamente contra la reinaraña id c60, lo que sea más fácil). si no, simplemente ignora este gamerule y cambia para que de como 5 de vida o algo, este es el menos importante de los gamerules.
+- al iniciar el juego, se utiliza la animación de id a4
