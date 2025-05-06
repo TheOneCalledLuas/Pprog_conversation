@@ -21,7 +21,7 @@
 #include <string.h>
 
 #define MAX_PLAYERS 8       /*!<Max number of players.*/
-#define IDENTIFIER_LENGHT 3 /*!<Size of the weord that identifies a str*/
+#define IDENTIFIER_LENGHT 3 /*!<Size of the weord that identifies a str.*/
 
 /**
    Game interface implementation.
