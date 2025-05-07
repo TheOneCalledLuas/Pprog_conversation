@@ -582,18 +582,21 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             {
                 if (characters[i] != NO_ID && characters[i] != ID_ERROR)
                 {
-                    for (j = 0; j < CHARACTER_TEXTURE_LINES; j++)
+                    if (character_get_health(game_get_character(game, characters[i]))>0)
                     {
-                        strncpy(str, character_get_texture_line(game_get_character(game, characters[i]), j), CHARACTER_TEXTURE_SIZE);
-                        for (k = 0; k < CHARACTER_TEXTURE_SIZE - 1; k++)
+                        for (j = 0; j < CHARACTER_TEXTURE_LINES; j++)
                         {
-                            if (i < 3)
+                            strncpy(str, character_get_texture_line(game_get_character(game, characters[i]), j), CHARACTER_TEXTURE_SIZE);
+                            for (k = 0; k < CHARACTER_TEXTURE_SIZE - 1; k++)
                             {
-                                if (str[k] != '&')
-                                    map[j + 11 + i * 5][k + 45 + 2 * i] = str[k];
+                                if (i < 3)
+                                {
+                                    if (str[k] != '&')
+                                        map[j + 11 + i * 5][k + 45 + 2 * i] = str[k];
+                                }
+                                else if (str[k] != '&')
+                                    map[j + 11 + (i - 3) * 5][k + 12 - 2 * i] = str[k];
                             }
-                            else if (str[k] != '&')
-                                map[j + 11 + (i - 3) * 5][k + 12 - 2 * i] = str[k];
                         }
                     }
                 }
@@ -701,6 +704,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             }
         }
     }
+    player=game_get_actual_player(game);
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     id_aux = NO_ID;
     if (command_get_code(game_get_last_command(game)) == CHAT)
