@@ -531,7 +531,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
-                if (str[k] != '&')
+                if (str[j] != '&')
                     map[i + 9][j + 27] = str[j];
             }
         }

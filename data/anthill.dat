@@ -49,8 +49,8 @@ Datos del Tutorial
 #o:15|Wooden_Door|22|A wooden door which might need a wooden key.|0|0|-1|-1|0|0|
 #o:16|Mushroom|17|A suspicious mushroom. Is it edible?|3|1|-1|-1|0|0|
 #o:17|Rock|20|A small rock, or is it a projectile?|-3|1|-1|-1|0|0|
-#o:18|Woody_sign|13|Let me gide you. In order to move yourself use "move e".|0|0|-1|-1|0|0|
-#o:19|Wooden_sign|14|You can move anywhere by using move and "n s e w u d"|0|0|-1|-1|0|0|
+#o:18|Woody_sign|13|Let me guide you. In order to move yourself use "move e".|0|0|-1|-1|0|0|
+#o:19|Wooden_sign|14|You can move anywhere by using    move and "n s e w u d"|0|0|-1|-1|0|0|
 #o:20|Stone_sign|17|Do you see that object? Take it with "take" command.|0|0|-1|-1|0|0|
 #o:21|Ancient_sign|18|Let's eat that yummy mushroom. Use the "use" command.|0|0|-1|-1|0|0|
 #o:22|Dirty_sign|19|Oh no, an enemy. Attack it with the "attack" command.|0|0|-1|-1|0|0|
@@ -93,20 +93,20 @@ Datos de la zona Principal
 #c:65|Worried_Ant|mo^|121|5|1|Help me save the baby! You have to split and pull the levers soon or they'll die! Head north and south to get there.|
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
 #c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
-#c:68|Imprisoned_Ant||131|5|1|Get me out of here quick and I'll give you something!|
+#c:68|Imprisoned_Ant|.o.o.|131|5|1|Get me out of here quick and I'll give you something!|
 #c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|
 #c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
 #o:211|Seed|711|seed desc|4|1|-1|-1|0|0
-#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|1
-#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|1
+#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0
+#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0
 #o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
 #o:215|Artifact|123|gun desc|0|1|221|-1|0|0
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
-#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|1
-#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|1
+#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0
+#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0
 #o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
 #o:220|Treasure|731|treasure desc|-2|0|-1|-1|0|0
 #o:221|Rocks|132|ammo desc|0|1|-1|-1|0|0
@@ -175,5 +175,3 @@ Las animaciones tienen la siguiente estructura:
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|7|
 #a:2|game_over|game_over.anim|15|1|14|3|1|1|1|0|7|
-#a:3|lair_unlocked|lair_unlocked.anim|20|2|3|3|2|1|0|7|
-#a:4|initial_dialog|initial_dialog.anim|30|2|7|4|1|1|0|7|
