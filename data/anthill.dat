@@ -159,8 +159,12 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:490|Cell-Laboratory|132|131|0|1|
 #l:300|Lair-Hole|114|113|0||
 
+La estructura es: id|name|is_valid|has_exec|do_once|value|
 #g:20|do_open_gate|1|0|1|22|
-#g:21|use_train_pass|1|0|1|13
+#g:21|use_train_pass|1|0|1|13|
+#g:22|bad_ending|1|0|1|0|
+#g:23|lever_challenge|1|0|1|0|
+#g:24|spider_boss|1|0|1|0|
 
 esto es para saber de quien es el turno
 #T:0|

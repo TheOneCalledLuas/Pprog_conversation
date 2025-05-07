@@ -637,8 +637,8 @@ Status game_reader_load_players(Game *game, char *filename)
                 }
             }
             /*Puts the player in his team*/
-            toks=strtok(NULL, "|");
-            player_team=atol(toks);
+            toks = strtok(NULL, "|");
+            player_team = atol(toks);
             player_set_team(player, player_team);
             /*Searches for the player texture.*/
             status = ERROR;
@@ -799,6 +799,15 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             case 21:
                 gamerules_gamerule_set_func(gr, gamerules_use_train_pass);
                 break;
+            case 22:
+                gamerules_gamerule_set_func(gr, gamerules_bad_ending);
+                break;
+            case 23:
+                gamerules_gamerule_set_func(gr, gamerules_lever_challenge);
+                break;
+            case 24:
+                gamerules_gamerule_set_func(gr, gamerules_spider_boss_killed);
+                break;
 
             default:
                 break;
@@ -958,9 +967,8 @@ Status game_reader_save_game(Game *game, char *filename)
             /*Writes the information of the object*/
             sprintf(str, "#o:%ld|%s|%ld|%s|%d|%d|%ld|%ld|%d|%d|\n", object_get_id(aux_structure), object_get_name(aux_structure),
                     game_get_object_location(game, object_get_id(aux_structure)), object_get_description(aux_structure),
-                    object_get_health(aux_structure),object_get_movable(aux_structure),object_get_dependency(aux_structure)
-                    , object_get_open(aux_structure), object_get_is_used(aux_structure),object_get_special_use(aux_structure));
-                    
+                    object_get_health(aux_structure), object_get_movable(aux_structure), object_get_dependency(aux_structure), object_get_open(aux_structure), object_get_is_used(aux_structure), object_get_special_use(aux_structure));
+
             fprintf(f, "%s", str);
         }
         free(ids);

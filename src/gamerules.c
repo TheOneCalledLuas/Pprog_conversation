@@ -31,6 +31,12 @@
 #define HOLE_LAIR 301              /*!< Id of the hole in the lair. */
 #define MERCHANT_ID 62             /*!< Id of the merchant.*/
 #define ZERO_LINK 310              /*!< Id of link to the zero room. */
+#define DAMAGE_PROB 2              /*!< Probability of random damage. */
+#define HEAL_PROB 2                /*!< Probability of random healing. */
+#define RANDOM_START 1             /*!< Start of the random number. */
+#define RANDOM_END 10              /*!< End of the random number. */
+#define HEAL_MSG 15                /*!< Message for the healing. */
+#define DAMAGE_MSG 16              /*!< Message for the damage. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -641,5 +647,59 @@ Status gamerules_spider_boss_killed(Game *game, Gamerule *gr)
         gamerules_increment_has_exec(gr);
         return OK;
     }
+    return OK;
+}
+
+Status gamerules_random_damage(Game *game, Gamerule *gr)
+{
+    int num = 0;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*If the game is determined, this doesn't apply.*/
+    if (game_get_determined(game))
+    {
+        return OK;
+    }
+
+    /*Checks if the damage is dealt.*/
+    if (game_random_int(1, 10) <= HEAL_PROB)
+    {
+        player_set_health(game_get_actual_player(game), player_get_health(game_get_actual_player(game)) - 1);
+        animation_run(game_get_animation_manager(game), DAMAGE_MSG);
+
+        /*Refreshes the gamerule.*/
+        gamerules_increment_has_exec(gr);
+        return OK;
+    }
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_random_heal(Game *game, Gamerule *gr)
+{
+    int num = 0;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*If the game is determined, this doesn't apply.*/
+    if (game_get_determined(game))
+    {
+        return OK;
+    }
+
+    /*Checks if the damage is dealt.*/
+    if (game_random_int(1, 10) <= DAMAGE_PROB)
+    {
+        player_set_health(game_get_actual_player(game), player_get_health(game_get_actual_player(game)) + 1);
+        animation_run(game_get_animation_manager(game), HEAL_MSG);
+
+        /*Refreshes the gamerule.*/
+        gamerules_increment_has_exec(gr);
+        return OK;
+    }
+    /*Clean exit.*/
     return OK;
 }
