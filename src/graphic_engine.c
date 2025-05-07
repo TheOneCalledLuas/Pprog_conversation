@@ -48,6 +48,8 @@
 /**
  * Space width.*/
 #define WIDTH_SPACE 21
+
+#define TRAIN_ROOM 25 /*!<Room where the train is.*/
 /**
  * Space height.*/
 /**
@@ -526,13 +528,17 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strncpy(map[i], space_get_texture_line(space_act, i), SPACE_TEXTURE_SIZE);
         }
         /*1.2-Prints the player.*/
+        if (player_get_player_location(player) == TRAIN_ROOM)
+            k = 7;
+        else
+            k = 0;
         for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
         {
             strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
                 if (str[j] != '&')
-                    map[i + 9][j + 27] = str[j];
+                    map[i + 9+k][j + 27] = str[j];
             }
         }
         /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four.*/
@@ -582,7 +588,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             {
                 if (characters[i] != NO_ID && characters[i] != ID_ERROR)
                 {
-                    if (character_get_health(game_get_character(game, characters[i]))>0)
+                    if (character_get_health(game_get_character(game, characters[i])) > 0)
                     {
                         for (j = 0; j < CHARACTER_TEXTURE_LINES; j++)
                         {
@@ -663,10 +669,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 for (j = 0; j < space_get_n_characters(space_act); j++)
                 {
                     character = game_get_character(game, id_list[j]);
-                    sprintf(str, "   -%s in space:%ld", character_get_name(character), game_get_character_location(game, character_get_id(character)));
-                    screen_area_puts(ge->descript, str);
-                    sprintf(str, "     description->%s  health->%d", character_get_description(character), character_get_health(character));
-                    screen_area_puts(ge->descript, str);
+                    if (character_get_health(character) > 0)
+                    {
+                        sprintf(str, "   -%s in space:%ld", character_get_name(character), game_get_character_location(game, character_get_id(character)));
+                        screen_area_puts(ge->descript, str);
+                        sprintf(str, "     description->%s  health->%d", character_get_description(character), character_get_health(character));
+                        screen_area_puts(ge->descript, str);
+                    }
                 }
                 free(id_list);
             }
@@ -704,7 +713,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             }
         }
     }
-    player=game_get_actual_player(game);
+    player = game_get_actual_player(game);
     /*5-Prints the message if the conditions for it appearing are satisfied.*/
     id_aux = NO_ID;
     if (command_get_code(game_get_last_command(game)) == CHAT)
@@ -863,7 +872,9 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
 
             screen_area_puts_menu(ge->map, "   - Do you want to create(1), load(2) or delete(3) a game:");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - Type ,1 ,2 or 3:");
+            number_rows++;
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
             break;
         case LIMIT_SAVEFILES:
@@ -879,7 +890,9 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "   - Do you want to load(2), or delete(3) a game:");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - Type ,2 or 3:");
+            number_rows++;
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
             break;
         case LOAD_GAME:
@@ -895,7 +908,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "   - Chose one of the savefiles mentioned above");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
             break;
         case FAIL_LOAD_GAME:
@@ -911,7 +924,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "   - Chose one of the savefiles mentioned above");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
             screen_area_puts_menu(ge->map, "   - That name isn't available, please chose one");
             number_rows++;
@@ -931,7 +944,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "     above");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
 
             break;
@@ -950,7 +963,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "     above");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
             screen_area_puts_menu(ge->map, "   - That name is taken, please chose another one");
             number_rows++;
@@ -972,7 +985,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
             number_rows++;
             screen_area_puts_menu(ge->map, "     you don't want to delete a savefile");
             number_rows++;
-            screen_area_puts_menu(ge->map, "   - If u want to exit type \"4\"");
+            screen_area_puts_menu(ge->map, "   - If u want to exit type 4");
             number_rows++;
 
             break;
@@ -1064,7 +1077,10 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
             return ERROR;
         if (!(characters = space_get_characters(space)))
             return ERROR;
-        aux_3 = character_get_description(game_get_character(game, characters[0]));
+        if (character_get_health(game_get_character(game, characters[0])) > 0)
+        {
+            aux_3 = character_get_description(game_get_character(game, characters[0]));
+        }
         free(characters);
     }
     /*Looks if the given space id fits in the space given*/

@@ -1,11 +1,9 @@
-t grain
-t water_drop
-m s
-m n
-t seed
+2
+1
 m e
-m s
-t soil
+m e
+m e
+m e
 m e
 m e
 m e
@@ -15,14 +13,17 @@ m e
 m e
 m s
 m s
-m n
-m n
-d soil
-d grain
-d water_drop
-d seed
-m n
-i soil
-a
-c
-e
+m s
+m s
+m s
+m s
+o wood_door with wood_key
+m e
+m e
+m e
+m e
+m e
+m e
+m e
+m e
+m e

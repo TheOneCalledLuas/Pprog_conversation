@@ -1070,7 +1070,7 @@ Link *game_get_link_by_name(Game *game, char *name)
     /*Searches for the link and returns it. */
     for (i = 0; i < game->n_links; i++)
     {
-        if (link_get_name(game->links[i]) && strcmp(link_get_name(game->links[i]), name) == 0)
+        if (link_get_name(game->links[i]) && strcasecmp(link_get_name(game->links[i]), name) == 0)
             return game->links[i];
     }
 

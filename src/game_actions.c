@@ -121,7 +121,7 @@ void game_actions_use(Game *game);
 
 /**
  * @brief Action to be executed when exit is given.
- * @author Profesores PProg.
+ * @author Saul Lopez.
  *
  * @param game Pointer to the game structure.
  */

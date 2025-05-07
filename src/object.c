@@ -16,7 +16,7 @@
 
 /**
  * Maximun word description.*/
-#define MAX_DESCRIPTION 64
+#define MAX_DESCRIPTION 256
 #define MAX_NAME 64 /*!< Max name length.*/
 
 /**
