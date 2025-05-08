@@ -476,6 +476,9 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     char *str;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
+    /*Tries to show the initial animation.*/
+
+    gamerules_initial_animation(*game, gamerules_get_gamerule_by_name(game_get_game_values(*game), "initial_animation"));
     graphic_engine_paint_game(gengine, *game, TRUE);
     str = game_get_current_savefile(*game);
     while ((last_code != EXIT) && (game_get_finished(*game) == FALSE) && str[FIRST_CHAR] != '\0' && game)
