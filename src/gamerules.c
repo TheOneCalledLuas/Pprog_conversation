@@ -11,32 +11,68 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
-#define P3_P4_GATE 49              /*!< Id of the gate between P3 and P4.*/
-#define START_ROOM_ID 111          /*!< Id of the start room.*/
-#define SPIDER_BOSS_ID 60          /*!< Id of Arachne.*/
-#define SPIDER_1 63                /*!< Id of the first spider. */
-#define SPIDER_2 64                /*!< Id of the second spider. */
-#define SPIDER_3 67                /*!< Id of the third spider. */
-#define SPIDER_4 69                /*!< Id of the fourth spider. */
-#define ANIMATION_BAD_ENDING_1 13  /*!< Animation for the bad ending of the spiders.*/
-#define LEVER_1_ID 217             /*!< Id of the first lever.*/
-#define LEVER_2_ID 218             /*!< Id of the second lever.*/
-#define LINK_LEVER_1 411           /*!< Id of the link between the first lever and the second one.*/
-#define LINK_LEVER_2 412           /*!< Id of the link for the second lever.*/
-#define MAX_TURNS_LEVER 4          /*!< Max turns for the lever to be activated.*/
-#define DINAMITE_ID 216            /*!< Id of the dynamite.*/
-#define VICTIM_ID 66               /*!< Id of the victim of the lever task.*/
-#define ANIMATION_ARACHNE_DEATH 14 /*!< Animation for the death of Arachne.*/
-#define POST_BOSS_ROOM_ID 113      /*!< Id of the room after the boss.*/
-#define HOLE_LAIR 301              /*!< Id of the hole in the lair. */
-#define MERCHANT_ID 62             /*!< Id of the merchant.*/
-#define ZERO_LINK 310              /*!< Id of link to the zero room. */
-#define DAMAGE_PROB 2              /*!< Probability of random damage. */
-#define HEAL_PROB 2                /*!< Probability of random healing. */
-#define RANDOM_START 1             /*!< Start of the random number. */
-#define RANDOM_END 10              /*!< End of the random number. */
-#define HEAL_MSG 15                /*!< Message for the healing. */
-#define DAMAGE_MSG 16              /*!< Message for the damage. */
+#define P3_P4_GATE 49                 /*!< Id of the gate between P3 and P4.*/
+#define START_ROOM_ID 111             /*!< Id of the start room.*/
+#define SPIDER_BOSS_ID 60             /*!< Id of Arachne.*/
+#define SPIDER_1 63                   /*!< Id of the first spider. */
+#define SPIDER_2 64                   /*!< Id of the second spider. */
+#define SPIDER_3 67                   /*!< Id of the third spider. */
+#define SPIDER_4 69                   /*!< Id of the fourth spider. */
+#define PRISON_ANT_ID 70              /*!< Id of the prison ant. */
+#define WORRIED_ANT 68                /*!< Id of the worried ant. */
+#define ANIMATION_BAD_ENDING_1 13     /*!< Animation for the bad ending of the spiders.*/
+#define LEVER_1_ID 217                /*!< Id of the first lever.*/
+#define LEVER_2_ID 218                /*!< Id of the second lever.*/
+#define LINK_LEVER_1 411              /*!< Id of the link between the first lever and the second one.*/
+#define LINK_LEVER_2 412              /*!< Id of the link for the second lever.*/
+#define MAX_TURNS_LEVER 4             /*!< Max turns for the lever to be activated.*/
+#define DINAMITE_ID 216               /*!< Id of the dynamite.*/
+#define VICTIM_ID 66                  /*!< Id of the victim of the lever task.*/
+#define ANIMATION_ARACHNE_DEATH 14    /*!< Animation for the death of Arachne.*/
+#define POST_BOSS_ROOM_ID 113         /*!< Id of the room after the boss.*/
+#define HOLE_LAIR 301                 /*!< Id of the hole in the lair. */
+#define MERCHANT_ID 62                /*!< Id of the merchant.*/
+#define ZERO_LINK 310                 /*!< Id of link to the zero room. */
+#define DAMAGE_PROB 2                 /*!< Probability of random damage. */
+#define HEAL_PROB 2                   /*!< Probability of random healing. */
+#define RANDOM_START 1                /*!< Start of the random number. */
+#define RANDOM_END 10                 /*!< End of the random number. */
+#define HEAL_MSG 15                   /*!< Message for the healing. */
+#define DAMAGE_MSG 16                 /*!< Message for the damage. */
+#define BLUE_POTION 213               /*!< Id of the blue potion. */
+#define BLUE_POTION_LINK 491          /*!< Id of the link for the blue potion. */
+#define DINAMITE_ROOM 131             /*!< Id of the room where the dynamite can be used. */
+#define DINAMITE_LINK 310             /*!< Id of the link for the dynamite. */
+#define SPIDER_1_LINK 361             /*!< Id of the link for the first spider. */
+#define SPIDER_2_LINK 371             /*!< Id of the link for the second spider. */
+#define OPEN_ANIM 3                   /*!< Animation for the opening of any link. */
+#define GUN_ID 123                    /*!< Id of the gun. */
+#define BULLET_ID 221                 /*!< Id of the bullet. */
+#define MERCHANT_BOOST 5              /*!< Boost for the merchant. */
+#define ANIMATION_MERCHANT_ENDING_1 5 /*!< Animation for the merchant bad ending. */
+#define ANIMATION_MERCHANT_ENDING_2 6 /*!< Animation for the merchant good ending. */
+#define PLAYER_DEAD 7                 /*!< Animation for the player dead. */
+#define FIRST_ANIMATION 4             /*!< Animation for the first action. */
+
+/*The following IDS are the ids of the rooms to reach completion.*/
+#define ROOM_1 111          /*!< Id of the first room. */
+#define ROOM_2 112          /*!< Id of the second room. */
+#define ROOM_3 113          /*!< Id of the third room. */
+#define ROOM_4 114          /*!< Id of the fourth room. */
+#define ROOM_5 115          /*!< Id of the fifth room. */
+#define ROOM_6 116          /*!< Id of the sixth room. */
+#define ROOM_7 117          /*!< Id of the seventh room. */
+#define ROOM_8 118          /*!< Id of the eighth room. */
+#define ROOM_9 119          /*!< Id of the ninth room. */
+#define ROOM_10 120         /*!< Id of the tenth room. */
+#define ROOM_11 121         /*!< Id of the eleventh room. */
+#define ROOM_12 122         /*!< Id of the twelfth room. */
+#define ROOM_13 123         /*!< Id of the thirteenth room. */
+#define ROOM_14 124         /*!< Id of the fourteenth room. */
+#define ROOM_15 125         /*!< Id of the fifteenth room. */
+#define ROOM_16 126         /*!< Id of the sixteenth room. */
+#define ROOM_17 127         /*!< Id of the seventeenth room. */
+#define COMPLETION_ROOMS 17 /*!< Number of rooms to reach completion. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,6 +84,9 @@
 #include "link.h"
 #include "command.h"
 #include "types.h"
+
+Id rooms[COMPLETION_ROOMS] = {ROOM_1, ROOM_2, ROOM_3, ROOM_4, ROOM_5, ROOM_6, ROOM_7, ROOM_8, ROOM_9,
+                              ROOM_10, ROOM_11, ROOM_12, ROOM_13, ROOM_14, ROOM_15, ROOM_16, ROOM_17}; /*!<Array with all the essencial rooms.*/
 
 /**
  * @brief TAD gamerule.
@@ -699,5 +738,234 @@ Status gamerules_random_heal(Game *game, Gamerule *gr)
         return OK;
     }
     /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_blue_potion(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+    if (object_get_is_used(game_get_object(game, BLUE_POTION)))
+    {
+        /*The potion was used.*/
+        link_set_state(game_find_link(game, BLUE_POTION_LINK), TRUE);
+        /*The potion is taken out of the game.*/
+        game_vanish_object(game, BLUE_POTION);
+        game_vanish_object(game, DINAMITE_ID);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_dinamite_interactivity(Game *game, Gamerule *gr)
+{
+    Object *dynamite = NULL;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Gets the dinamite.*/
+    if (!(dynamite = game_get_object(game, DINAMITE_ID)))
+    {
+        return ERROR;
+    }
+
+    /*Checks if the dinamite was used.*/
+    if (object_get_is_used(dynamite))
+    {
+        /*The dinamite was used.*/
+        object_set_is_used(dynamite, FALSE);
+        /*Checks if the player was in the correct room.*/
+        if (player_get_player_location(game_get_actual_player(game)) == DINAMITE_ROOM)
+        {
+            /*We take the dinamite out.*/
+            game_vanish_object(game, DINAMITE_ID);
+            if (link_get_state(game_find_link(game, DINAMITE_LINK)) == (Bool)CLOSED)
+            {
+                link_set_state(game_find_link(game, DINAMITE_LINK), TRUE);
+                /*We kill all the corresponding charracters.*/
+                character_set_health(game_get_character(game, PRISON_ANT_ID), -10);
+                character_set_health(game_get_character(game, WORRIED_ANT), -10);
+            }
+            /*Actualises the gamerule.*/
+            gamerules_increment_has_exec(gr);
+        }
+    }
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_misterious_spider_kill(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if the spider was killed.*/
+    if (character_get_health(game_get_character(game, SPIDER_1)))
+    {
+        /*The spider was killed.*/
+        link_set_state(game_find_link(game, SPIDER_1_LINK), TRUE);
+        animation_run(game_get_animation_manager(game), OPEN_ANIM);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_guard_spider_kill(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if the spider was killed.*/
+    if (character_get_health(game_get_character(game, SPIDER_2)))
+    {
+        /*The spider was killed.*/
+        link_set_state(game_find_link(game, SPIDER_2_LINK), TRUE);
+        animation_run(game_get_animation_manager(game), OPEN_ANIM);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_exploration_progress(Game *game, Gamerule *gr)
+{
+    int i = 0;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if all the rooms are explored.*/
+    for (i = 0; i < COMPLETION_ROOMS; i++)
+    {
+        if (space_is_discovered(game_get_space(game, rooms[i])) == (Bool)FALSE)
+        {
+            /*The room wasn't explored.*/
+            return OK;
+        }
+    }
+    /*All the rooms were explored.*/
+    link_set_state(game_find_link(game, HOLE_LAIR), TRUE);
+    animation_run(game_get_animation_manager(game), OPEN_ANIM);
+
+    /*Actualises the gamerule.*/
+    gamerules_increment_has_exec(gr);
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_merchant_boost(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if any player has the bullets AND the gun.*/
+    if (player_has_object(game_get_actual_player(game), GUN_ID) && player_has_object(game_get_actual_player(game), BULLET_ID))
+    {
+        /*The player has the bullets and the gun, we give him the boost.*/
+        character_set_health(game_get_character(game, MERCHANT_ID), character_get_health(game_get_character(game, MERCHANT_ID)) + MERCHANT_BOOST);
+        animation_run(game_get_animation_manager(game), OPEN_ANIM);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_merchant_bad_ending(Game *game, Gamerule *gr)
+{
+    Command *cmd = NULL;
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Gets the last command.*/
+    if (!(cmd = game_get_last_command(game)))
+        return ERROR;
+
+    /*Checks if the last command was using the gun against merchant.*/
+    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, FIRST_ARG), "artifact") == 0 && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == 0 && strcasecmp(command_get_argument(cmd, THIRD_ARG), "Merchant") == 0)
+    {
+        /*The player used the gun against the merchant.*/
+        character_set_health(game_get_character(game, MERCHANT_ID), -10);
+        animation_run(game_get_animation_manager(game), ANIMATION_MERCHANT_ENDING_1);
+        game_set_finished(game, TRUE);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_merchant_good_ending(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if the merchant is dead.*/
+    if (character_get_health(game_get_character(game, MERCHANT_ID)) <= 0)
+    {
+        /*The merchant is dead, we set the game as finished.*/
+        game_set_finished(game, TRUE);
+        animation_run(game_get_animation_manager(game), ANIMATION_MERCHANT_ENDING_2);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_neutral_ending(Game *game, Gamerule *gr)
+{
+    /*Error handling.*/
+    if (!game || !gr)
+        return ERROR;
+
+    /*Checks if any player is dead.*/
+    if (player_get_health(game_get_actual_player(game)) <= 0)
+    {
+        /*The player is dead, we set the game as finished.*/
+        game_set_finished(game, TRUE);
+        animation_run(game_get_animation_manager(game), PLAYER_DEAD);
+
+        /*Actualises the gamerule.*/
+        gamerules_increment_has_exec(gr);
+    }
+
+    /*Clean exit.*/
+    return OK;
+}
+
+Status gamerules_initial_animation(Game *game, Gamerule *gr)
+{
+    if (!game || !gr)
+        return ERROR;
+
+    /*Executes the initial animation.*/
+    animation_run(game_get_animation_manager(game), FIRST_ANIMATION);
+
+    /*Actualises the gamerule.*/
+    gamerules_increment_has_exec(gr);
     return OK;
 }

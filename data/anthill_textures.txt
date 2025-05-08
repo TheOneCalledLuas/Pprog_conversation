@@ -599,7 +599,7 @@ EXTRA el caracter '&' actua como caracter transparente
 
 
 
-----------------------------------(no las he hecho uwu)
+----------------------------------
 
 
 
@@ -1208,7 +1208,7 @@ EXTRA el caracter '&' actua como caracter transparente
 .##     .                  on the right                  .   ##...
 ##      #   Also attacking an enemy can damage you instead    ##..
 #         .............   ...  .  . ..  ...  ............      ##.
-         #.... .    .   .          Spiders are bad  ....# ..    ##
+         #.... .    .   .   Spiders seem to be bad  ....# ..    ##
       /|           /\/\                         \       . |\.     
      / |  #_____##/_/########################### _| ##### |.\     
     /  | #(_   _)( ")  . . .              ..  .   . ...## |  \    

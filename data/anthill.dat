@@ -95,7 +95,7 @@ Datos de la zona Principal
 #c:65|Worried_Ant|mo^|121|5|1|Help me save the baby! You have to split and pull the levers soon or they'll die! Head north and south to get there.|
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
 #c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
-#c:68|Imprisoned_Ant||131|5|1|Get me out of here quick and I'll give you something!|
+#c:68|Imprisoned_Ant|.o.o.|131|5|1|Get me out of here quick and I'll give you something!|
 #c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|
 #c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
@@ -167,6 +167,18 @@ La estructura es: id|name|is_valid|has_exec|do_once|value|
 #g:22|bad_ending|1|0|1|0|
 #g:23|lever_challenge|1|0|1|0|
 #g:24|spider_boss|1|0|1|0|
+#g:25|random_damage|1|0|0|0|
+#g:26|random_heal|1|0|0|0|
+#g:27|blue_potion|1|0|1|0|
+#g:28|dynamite|1|0|1|0|
+#g:29|misterious_spider_kill|1|0|1|0|
+#g:30|guard_kill|1|0|1|0|
+#g:31|exploration_progress|1|0|1|0|
+#g:32|merchant_boost|1|0|1|0|
+#g:33|merchant_bad_ending|1|0|1|0|
+#g:34|merchant_good_ending|1|0|1|0|
+#g:35|neutral_ending|1|0|1|0|
+#g:36|initial_animation|1|0|1|0|
 
 esto es para saber de quien es el turno
 #T:0|

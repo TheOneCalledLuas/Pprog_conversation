@@ -808,6 +808,42 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             case 24:
                 gamerules_gamerule_set_func(gr, gamerules_spider_boss_killed);
                 break;
+            case 25:
+                gamerules_gamerule_set_func(gr, gamerules_random_damage);
+                break;
+            case 26:
+                gamerules_gamerule_set_func(gr, gamerules_random_heal);
+                break;
+            case 27:
+                gamerules_gamerule_set_func(gr, gamerules_blue_potion);
+                break;
+            case 28:
+                gamerules_gamerule_set_func(gr, gamerules_dinamite_interactivity);
+                break;
+            case 29:
+                gamerules_gamerule_set_func(gr, gamerules_misterious_spider_kill);
+                break;
+            case 30:
+                gamerules_gamerule_set_func(gr, gamerules_guard_spider_kill);
+                break;
+            case 31:
+                gamerules_gamerule_set_func(gr, gamerules_exploration_progress);
+                break;
+            case 32:
+                gamerules_gamerule_set_func(gr, gamerules_merchant_boost);
+                break;
+            case 33:
+                gamerules_gamerule_set_func(gr, gamerules_merchant_bad_ending);
+                break;
+            case 34:
+                gamerules_gamerule_set_func(gr, gamerules_merchant_good_ending);
+                break;
+            case 35:
+                gamerules_gamerule_set_func(gr, gamerules_neutral_ending);
+                break;
+            case 36:
+                gamerules_gamerule_set_func(gr, gamerules_initial_animation);
+                break;
 
             default:
                 break;

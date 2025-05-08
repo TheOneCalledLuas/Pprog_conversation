@@ -420,17 +420,7 @@ Status gamerules_merchant_good_ending(Game *game, Gamerule *gr);
  * @param gr Pointer to the gamerule.
  * @return OK if everything goes well, ERROR otherwise.
  */
-Status gamerules_merchant_neutral_ending(Game *game, Gamerule *gr);
-
-/**
- * @brief Handles the merchant interactivity.
- * @author Saúl López Romero
- *
- * @param game Pointer to the game.
- * @param gr Pointer to the gamerule.
- * @return OK if everything goes well, ERROR otherwise.
- */
-Status gamerules_merchant_interactivity(Game *game, Gamerule *gr);
+Status gamerules_neutral_ending(Game *game, Gamerule *gr);
 
 /**
  * @brief handles red potion mechanics.
@@ -441,5 +431,15 @@ Status gamerules_merchant_interactivity(Game *game, Gamerule *gr);
  * @return OK if everything goes well, ERROR otherwise.
  */
 Status gamerules_red_potion(Game *game, Gamerule *gr);
+
+/**
+ * @brief handles the initial animation.
+ * @author Saúl López Romero
+ *
+ * @param game Pointer to the game.
+ * @param gr Pointer to the gamerule.
+ * @return OK if everything goes well, ERROR otherwise.
+ */
+Status gamerules_initial_animation(Game *game, Gamerule *gr);
 
 #endif
