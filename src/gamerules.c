@@ -652,7 +652,6 @@ Status gamerules_spider_boss_killed(Game *game, Gamerule *gr)
 
 Status gamerules_random_damage(Game *game, Gamerule *gr)
 {
-    int num = 0;
     /*Error handling.*/
     if (!game || !gr)
         return ERROR;
@@ -679,7 +678,6 @@ Status gamerules_random_damage(Game *game, Gamerule *gr)
 
 Status gamerules_random_heal(Game *game, Gamerule *gr)
 {
-    int num = 0;
     /*Error handling.*/
     if (!game || !gr)
         return ERROR;
