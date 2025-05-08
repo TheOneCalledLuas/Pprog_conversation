@@ -1141,7 +1141,7 @@ Status game_create_from_file(Game **game, char *filename)
     }
 
     /*Loads all the animations.*/
-    if (game_reader_load_animations(*game, filename) == ERROR)
+    if (game_reader_load_animations(*game, "data/anthill.dat") == ERROR)
     {
         game_destroy(game);
         return ERROR;

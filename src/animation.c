@@ -600,6 +600,14 @@ Status animation_run(Animation_Manager *am, Id anim_id)
                 j--;
                 continue;
             }
+            for(k = 0; k < strlen(line); k++)
+            {
+                /*If the line is too long, it is cut.*/
+                if (line[k] == '\n' || line[k] == '\r')
+                {
+                    line[k] = '\0';
+                }
+            }
             /*Adds the side padding to the line.*/
             for (k = 0; k < anim->side_padding; k++)
             {

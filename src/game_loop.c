@@ -475,6 +475,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     Bool do_log = FALSE;
     char *str;
 
+    animation_run(game_get_animation_manager(*game), 4);
     /*It runs the game while you dont want to exit or the game is terminated.*/
     graphic_engine_paint_game(gengine, *game, TRUE);
     str = game_get_current_savefile(*game);

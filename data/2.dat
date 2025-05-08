@@ -62,20 +62,20 @@
 #o:16|Mushroom|17|A suspicious mushroom. Is it edible?|3|1|-1|-1|0|0|
 #o:17|Rock|20|A small rock, or is it a       projectile?|-3|1|-1|-1|0|0|
 #o:13|Train_Pass|24|Ticket you can use for the train.|0|1|-1|-1|0|1|
-#o:211|Seed|711|seed desc|4|1|-1|-1|0|0|
-#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|0|
-#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|0|
-#o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0|
-#o:215|Artifact|123|gun desc|0|1|221|-1|0|0|
+#o:211|Seed|711|A yummy seed.|4|1|-1|-1|0|0|
+#o:212|Red_Potion|131|A red potion. Should I drink it?|0|0|-1|-1|0|1|
+#o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1|
+#o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0|
+#o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|221|-1|0|0|
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0|
-#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|0|
-#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|0|
-#o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0|
-#o:220|Treasure|731|treasure desc|-2|0|-1|-1|0|0|
-#o:221|Rocks|132|ammo desc|0|1|-1|-1|0|0|
-#o:222|Spider_food|132|food desc|5|1|-1|-1|0|0|
-#o:223|Baby_food|713|food desc|5|1|-1|-1|0|0|
-#o:224|Mystery_water|123|toilet desc|-3|0|-1|-1|0|0|
+#o:217|Lever_1|723|Pull the lever, KRONK!|0|0|-1|-1|0|1|
+#o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1|
+#o:219|Breadcrumbs|122|Some bytes of bread.|6|1|-1|-1|0|0|
+#o:220|Treasure|731|A treasure which can't be opened, but could be thrown.|-2|0|-1|-1|0|0|
+#o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|-1|-1|0|0|
+#o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
+#o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
+#o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
 #p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
 #p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
 #l:13|Start_Move|13|14|2|1|
@@ -148,5 +148,20 @@
 #l:300|Lair-Hole|114|113|0|0|
 #g:20|do_open_gate|1|0|1|22|
 #g:21|use_train_pass|1|0|1|13|
+#g:22|bad_ending|1|0|1|0|
+#g:23|lever_challenge|1|0|1|0|
+#g:24|spider_boss|1|0|1|0|
+#g:25|random_damage|1|0|0|0|
+#g:26|random_heal|1|0|0|0|
+#g:27|blue_potion|1|0|1|0|
+#g:28|dynamite|1|0|1|0|
+#g:29|misterious_spider_kill|1|0|1|0|
+#g:30|guard_kill|1|0|1|0|
+#g:31|exploration_progress|1|0|1|0|
+#g:32|merchant_boost|1|0|1|0|
+#g:33|merchant_bad_ending|1|0|1|0|
+#g:34|merchant_good_ending|1|0|1|0|
+#g:35|neutral_ending|1|0|1|0|
+#g:36|initial_animation|1|0|1|0|
 #t:data/anthill_textures.txt
 #T:0|
