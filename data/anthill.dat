@@ -101,20 +101,20 @@ Datos de la zona Principal
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
-#o:211|Seed|711|seed desc|4|1|-1|-1|0|0
-#o:212|Red_Potion|131|potion desc|0|0|-1|-1|0|1
-#o:213|Blue_Potion|131|potion desc|0|0|-1|-1|0|1
-#o:214|Green_Potion|131|potion desc|-3|0|-1|-1|0|0
-#o:215|Artifact|123|gun desc|0|1|221|-1|0|0
+#o:211|Seed|711|A yummy seed.|4|1|-1|-1|0|0
+#o:212|Red_Potion|131|A red potion. Should I drink it?|0|0|-1|-1|0|1
+#o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1
+#o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0
+#o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|221|-1|0|0
 #o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
-#o:217|Lever_1|723|lever desc|0|0|-1|-1|0|1
-#o:218|Lever_2|733|lever desc|0|0|-1|-1|0|1
-#o:219|Breadcrumbs|122|crumbs desc|6|1|-1|-1|0|0
-#o:220|Treasure|731|treasure desc|-2|0|-1|-1|0|0
-#o:221|Rocks|132|ammo desc|0|1|-1|-1|0|0
-#o:222|Spider_food|132|food desc|5|1|-1|-1|0|0
-#o:223|Baby_food|713|food desc|5|1|-1|-1|0|0
-#o:224|Mystery_water|123|toilet desc|-3|0|-1|-1|0|0
+#o:217|Lever_1|723|Pull the lever, KRONK!|0|0|-1|-1|0|1
+#o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1
+#o:219|Breadcrumbs|122|Some bytes of bread.|6|1|-1|-1|0|0
+#o:220|Treasure|731|A treasure which can't be opened, but could be thrown.|-2|0|-1|-1|0|0
+#o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|-1|-1|0|0
+#o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0
+#o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0
+#o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0
 
 #p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
 #p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
