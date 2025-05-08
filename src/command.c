@@ -160,6 +160,7 @@ Status command_get_user_input(Command *command)
         command->word[i][0] = '\0';
     }
     i = UNKNOWN - NO_CMD + 1;
+
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))
     {
