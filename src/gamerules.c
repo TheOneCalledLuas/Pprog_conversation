@@ -807,7 +807,7 @@ Status gamerules_misterious_spider_kill(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the spider was killed.*/
-    if (character_get_health(game_get_character(game, SPIDER_1)))
+    if (character_get_health(game_get_character(game, SPIDER_1)) <= 0)
     {
         /*The spider was killed.*/
         link_set_state(game_find_link(game, SPIDER_1_LINK), TRUE);
@@ -827,7 +827,7 @@ Status gamerules_guard_spider_kill(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the spider was killed.*/
-    if (character_get_health(game_get_character(game, SPIDER_2)))
+    if (character_get_health(game_get_character(game, SPIDER_2)) <= 0)
     {
         /*The spider was killed.*/
         link_set_state(game_find_link(game, SPIDER_2_LINK), TRUE);
