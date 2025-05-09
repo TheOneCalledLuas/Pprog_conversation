@@ -1,5 +1,5 @@
 #s:13|Starting_Room|xxxxxxxxx| inspect |         |xxxxxxxxx|xxxxxxxxx|1|
-#s:14|Direction_Room|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:14|Direction_Room|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
 #s:15|Up_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
 #s:16|Down_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
 #s:17|Object_Room_1|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
@@ -76,7 +76,7 @@
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
 #o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
-#p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
+#p:2|Ant|mO^|14|10|3|-1|-1|-1|-1|
 #p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
@@ -151,8 +151,8 @@
 #g:22|bad_ending|1|0|1|0|
 #g:23|lever_challenge|1|0|1|0|
 #g:24|spider_boss|1|0|1|0|
-#g:25|random_damage|1|0|0|0|
-#g:26|random_heal|1|0|0|0|
+#g:25|random_damage|1|1|0|0|
+#g:26|random_heal|1|1|0|0|
 #g:27|blue_potion|1|0|1|0|
 #g:28|dynamite|1|0|1|0|
 #g:29|misterious_spider_kill|1|0|1|0|
@@ -162,6 +162,6 @@
 #g:33|merchant_bad_ending|1|0|1|0|
 #g:34|merchant_good_ending|1|0|1|0|
 #g:35|neutral_ending|1|0|1|0|
-#g:36|initial_animation|1|0|1|0|
+#g:36|initial_animation|1|3|1|0|
 #t:data/anthill_textures.txt
-#T:0|
+#T:1|
