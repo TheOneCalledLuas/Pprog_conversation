@@ -139,7 +139,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:471|Hallway-Pantry|122|123|2|1|
 #l:481|Hole-Laboratory|113|131|5|1|
 #l:491|Laboratory-Cell|131|132|1|0|
-#l:301|Hole-Lair|113|114|1|1|
+#l:301|Hole-Lair|113|114|1|0|
 #l:310|Entry-Room_0|112|0|4|0|
 #l:320|Corridor_11-Entry|711|112|2|1|
 #l:330|Stairs_1-Entry|714|112|3|1|
@@ -159,7 +159,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:470|Pantry-Hallway|123|122|3|1|
 #l:480|Laboratory-Hole|131|113|4|1|
 #l:490|Cell-Laboratory|132|131|0|1|
-#l:300|Lair-Hole|114|113|0||
+#l:300|Lair-Hole|114|113|0|0|
 
 La estructura es: id|name|is_valid|has_exec|do_once|value|
 #g:20|do_open_gate|1|0|1|22|
