@@ -18,8 +18,8 @@
 #s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
 #s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |0|
-#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |1|
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
 #s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
 #s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
 #s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|_/   \__ |0|
@@ -76,8 +76,8 @@
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
 #o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
-#p:2|Ant|mO^|111|8|3|-1|-1|-1|-1|
-#p:3|Worm|-^-^-|111|9|3|-1|-1|-1|-1|
+#p:2|Ant|mO^|714|7|3|-1|-1|-1|-1|
+#p:3|Worm|-^-^-|714|9|3|-1|-1|-1|-1|
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
 #l:15|Move_Up|14|15|4|1|
@@ -151,7 +151,7 @@
 #g:22|bad_ending|1|0|1|0|
 #g:23|lever_challenge|1|0|1|0|
 #g:24|spider_boss|1|0|1|0|
-#g:25|random_damage|1|9|0|0|
+#g:25|random_damage|1|10|0|0|
 #g:26|random_heal|1|6|0|0|
 #g:27|blue_potion|1|0|1|0|
 #g:28|dynamite|1|0|1|0|

@@ -16,6 +16,7 @@
 #include "types.h"
 
 #include <stdio.h>
+#include <strings.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -50,6 +51,7 @@
 #define WIDTH_SPACE 21
 
 #define TRAIN_ROOM 25 /*!<Room where the train is.*/
+#define END_TUTORIAL_ROOM 111 /*!<Room where you end the tutorial*/
 /**
  * Space height.*/
 /**
@@ -565,7 +567,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strncpy(map[i], space_get_texture_line(space_act, i), SPACE_TEXTURE_SIZE);
         }
         /*1.2-Prints the player.*/
-        if (player_get_player_location(player) == TRAIN_ROOM)
+        if (player_get_player_location(player) == TRAIN_ROOM ||player_get_player_location(player) == END_TUTORIAL_ROOM)
             k = 7;
         else
             k = 0;
@@ -761,13 +763,13 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         /*5.2-Searches for the character the argument of the last action provides.*/
         for (i = 0; i < space_get_n_characters(space_act); i++)
         {
-            if (strcmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
+            if (strcasecmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
             {
                 id_aux = characters[i];
             }
             if (id_aux != NO_ID)
             {
-                if (character_get_friendly(game_get_character(game, id_aux)) == TRUE && character_get_health(game_get_character(game, id_aux)) > 0)
+                if (character_get_health(game_get_character(game, id_aux)) > 0)
                 {
                     screen_area_puts(ge->descript, " ");
                     sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
