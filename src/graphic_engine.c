@@ -712,7 +712,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                     {
                         sprintf(str, "   -%s in space:%ld", character_get_name(character), game_get_character_location(game, character_get_id(character)));
                         screen_area_puts(ge->descript, str);
-                        sprintf(str, "     description->%s  health->%d", character_get_description(character), character_get_health(character));
+                        sprintf(str, "     description->%s health->%d", character_get_description(character), character_get_health(character));
                         screen_area_puts(ge->descript, str);
                     }
                 }
