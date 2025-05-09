@@ -491,7 +491,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
                 if (str[FIRST_CHAR] == '\0')
                     return;
         }
-        if (last_code == MOVE)
+        if (last_code == MOVE || last_code == WAIT ||last_code == COOP)
             graphic_engine_paint_game(gengine, *game, TRUE);
 
         last_cmd = game_get_last_command(*game);
@@ -545,6 +545,9 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             if (last_code == MOVE || last_code == COOP || last_code == WAIT)
                 game_next_turn(*game);
 
+            if (last_code == WAIT)
+                command_set_status(last_cmd, OK);
+            
             game_next_command(*game);
             str = game_get_current_savefile(*game);
         }
