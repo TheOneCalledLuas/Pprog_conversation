@@ -2,24 +2,24 @@
 #s:14|Direction_Room|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
 #s:15|Up_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
 #s:16|Down_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
-#s:17|Object_Room_1|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:18|Use_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
-#s:19|Attack_room_1|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|0|
-#s:20|Attack_room_2|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|0|
-#s:21|Follow_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
-#s:22|Open_Room|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
-#s:23|Abandon_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
-#s:24|Lore_Room|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|0|
-#s:25|Antrain_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
+#s:17|Object_Room_1|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
+#s:18|Use_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
+#s:19|Attack_room_1|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|1|
+#s:20|Attack_room_2|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|1|
+#s:21|Follow_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|1|
+#s:22|Open_Room|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|1|
+#s:23|Abandon_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|1|
+#s:24|Lore_Room|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|1|
+#s:25|Antrain_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
 #s:26|North_Room|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
 #s:27|South_Room|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|0|
 #s:0|Room_0|// ___ \\|\\(___)//| //(*)\\ | \\ " // |         |0|
-#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|0|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|1|
 #s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
 #s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
-#s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |0|
-#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |1|
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
 #s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
 #s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
 #s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|_/   \__ |0|
@@ -47,7 +47,7 @@
 #c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|
 #c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
 #c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
-#o:14|Wood_Key|22|A wood key for a wood door,       isn't it?|0|1|-1|35|0|0|
+#o:14|Wood_Key|-1|A wood key for a wood door,       isn't it?|0|1|-1|35|0|0|
 #o:15|Wood_Door|22|A wood door which might need         a wood key.|0|0|-1|-1|0|0|
 #o:18|Woody_sign|13|Let me guide you. In order to      move yourself use "move e".|0|0|-1|-1|0|0|
 #o:19|Wooden_sign|14|You can move anywhere by using       move and "n or norht" "s or       south" "e or east" "w or west"      "u or up" "d or down"|0|0|-1|-1|0|0|
@@ -61,7 +61,7 @@
 #o:27|AnTrain|25|An ant train. It requires a pass to work, though. I wouldn't use it much.|0|0|-1|-1|0|0|
 #o:16|Mushroom|17|A suspicious mushroom. Is it edible?|3|1|-1|-1|0|0|
 #o:17|Rock|20|A small rock, or is it a       projectile?|-3|1|-1|-1|0|0|
-#o:13|Train_Pass|24|Ticket you can use for the train.|0|1|-1|-1|0|1|
+#o:13|Train_Pass|-1|Ticket you can use for the train.|0|1|-1|-1|1|1|
 #o:211|Seed|711|A yummy seed.|4|1|-1|-1|0|0|
 #o:212|Red_Potion|131|A red potion. Should I drink it?|0|0|-1|-1|0|1|
 #o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1|
@@ -76,8 +76,8 @@
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
 #o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
-#p:2|Ant|mO^|14|10|3|-1|-1|-1|-1|
-#p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
+#p:2|Ant|mO^|714|7|3|-1|-1|-1|-1|
+#p:3|Worm|-^-^-|714|9|3|-1|-1|-1|-1|
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
 #l:15|Move_Up|14|15|4|1|
@@ -100,7 +100,7 @@
 #l:32|Follow_Attack2|21|20|0|1|
 #l:33|Follow_Open|21|22|1|1|
 #l:34|Open_Follow|22|21|0|1|
-#l:35|Wood_Door|22|23|2|0|
+#l:35|Wood_Door|22|23|2|1|
 #l:36|Abandon_Open|23|22|3|1|
 #l:37|Abandon_Lore|23|24|2|1|
 #l:38|Lore_Abandon|24|23|3|1|
@@ -147,12 +147,12 @@
 #l:490|Cell-Laboratory|132|131|0|1|
 #l:300|Lair-Hole|114|113|0|0|
 #g:20|do_open_gate|1|0|1|22|
-#g:21|use_train_pass|1|0|1|13|
+#g:21|use_train_pass|1|1|1|13|
 #g:22|bad_ending|1|0|1|0|
 #g:23|lever_challenge|1|0|1|0|
 #g:24|spider_boss|1|0|1|0|
-#g:25|random_damage|1|1|0|0|
-#g:26|random_heal|1|1|0|0|
+#g:25|random_damage|1|10|0|0|
+#g:26|random_heal|1|6|0|0|
 #g:27|blue_potion|1|0|1|0|
 #g:28|dynamite|1|0|1|0|
 #g:29|misterious_spider_kill|1|0|1|0|
@@ -164,4 +164,4 @@
 #g:35|neutral_ending|1|0|1|0|
 #g:36|initial_animation|1|3|1|0|
 #t:data/anthill_textures.txt
-#T:1|
+#T:0|
