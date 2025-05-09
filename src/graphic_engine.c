@@ -50,7 +50,7 @@
  * Space width.*/
 #define WIDTH_SPACE 21
 
-#define TRAIN_ROOM 25 /*!<Room where the train is.*/
+#define TRAIN_ROOM 25         /*!<Room where the train is.*/
 #define END_TUTORIAL_ROOM 111 /*!<Room where you end the tutorial*/
 /**
  * Space height.*/
@@ -567,7 +567,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             strncpy(map[i], space_get_texture_line(space_act, i), SPACE_TEXTURE_SIZE);
         }
         /*1.2-Prints the player.*/
-        if (player_get_player_location(player) == TRAIN_ROOM ||player_get_player_location(player) == END_TUTORIAL_ROOM)
+        if (player_get_player_location(player) == TRAIN_ROOM || player_get_player_location(player) == END_TUTORIAL_ROOM)
             k = 7;
         else
             k = 0;
@@ -758,27 +758,30 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
         /*5.1-Gets the characters in the space.*/
-        if (!(characters = space_get_characters(space_act)))
-            return;
-        /*5.2-Searches for the character the argument of the last action provides.*/
-        for (i = 0; i < space_get_n_characters(space_act); i++)
+        if (space_get_n_characters(space_act) > 0)
         {
-            if (strcasecmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
+            if (!(characters = space_get_characters(space_act)))
+                return;
+            /*5.2-Searches for the character the argument of the last action provides.*/
+            for (i = 0; i < space_get_n_characters(space_act); i++)
             {
-                id_aux = characters[i];
-            }
-            if (id_aux != NO_ID)
-            {
-                if (character_get_health(game_get_character(game, id_aux)) > 0)
+                if (strcasecmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
                 {
-                    screen_area_puts(ge->descript, " ");
-                    sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
-                    screen_area_puts(ge->descript, str);
-                    command_set_status(game_get_last_command(game), OK);
+                    id_aux = characters[i];
+                }
+                if (id_aux != NO_ID)
+                {
+                    if (character_get_health(game_get_character(game, id_aux)) > 0)
+                    {
+                        screen_area_puts(ge->descript, " ");
+                        sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
+                        screen_area_puts(ge->descript, str);
+                        command_set_status(game_get_last_command(game), OK);
+                    }
                 }
             }
+            free(characters);
         }
-        free(characters);
     }
     /*6.Prints the object information if the conditions for it appearing are satisfied.*/
     if (command_get_code(game_get_last_command(game)) == INSPECT)
