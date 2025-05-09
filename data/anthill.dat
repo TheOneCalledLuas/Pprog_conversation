@@ -192,5 +192,6 @@ Las animaciones tienen la siguiente estructura:
 #a:3|lair_unlocked|lair_unlocked.anim|20|2|3|3|2|1|0|7|
 #a:4|initial_dialog|initial_dialog.anim|99|30|7|4|20|20|0|7|
 #a:5|good_ending|good_ending.anim|99|30|20|0.5|1|20|20|0|1|
+#a:5|secret_ending|secret_ending.anim|99|30|20|0.5|1|20|20|0|1|
 #a:16|random_damage|random_damage.anim|21|10|8|0.7|9|9|0|1|
 #a:15|random_heal|random_heal.anim|16|10|5|0.7|9|9|0|2|
