@@ -17,11 +17,11 @@
 #s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|1|
 #s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
 #s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|1|
-#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
 #s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |1|
 #s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
-#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
-#s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|1|
+#s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |1|
 #s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|_/   \__ |0|
 #s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
 #s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
@@ -38,15 +38,15 @@
 #c:15|Spidey|/o\|20|3|0|Death for the ants.|
 #c:61|MerchAnt|o^w^o|712|5|1|Hello fellow ant. I don't have anything left after the spider invasion, but I'll gladly help you!|
 #c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders! They killed everyone I care about when they invaded us, they deserve it.|
-#c:63|Mysterious_Spider|/\OO/\|712|5|0|I wont't talk to you!|
+#c:63|Mysterious_Spider|/\OO/\|712|0|0|I wont't talk to you!|
 #c:64|Spider_Guard|/\OO/\|714|5|0|I won't talk to you!|
 #c:65|Worried_Ant|mo^|121|5|1|Help me save the baby! You have to split and pull the levers soon or they'll die! Head north and so|
 #c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|
 #c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|
 #c:68|Imprisoned_Ant|.o.o.|131|5|1|Get me out of here quick and I'll give you something!|
 #c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|
-#c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|
-#c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|
+#c:69|Baby_Spider|/\oo/\|713|0|0|I won't talk to you...|
+#c:60|Arachne|/\00/\|114|1|0|I won't talk to you, peasant!|
 #o:14|Wood_Key|-1|A wood key for a wood door,       isn't it?|0|1|-1|35|0|0|
 #o:15|Wood_Door|22|A wood door which might need         a wood key.|0|0|-1|-1|0|0|
 #o:18|Woody_sign|13|Let me guide you. In order to      move yourself use "move e".|0|0|-1|-1|0|0|
@@ -74,10 +74,10 @@
 #o:220|Treasure|731|A treasure which can't be opened, but could be thrown.|-2|0|-1|-1|0|0|
 #o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|-1|-1|0|0|
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
-#o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
+#o:223|Baby_food|-1|Baby food, also made with potAnto.|5|1|-1|-1|1|0|
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
-#p:2|Ant|mO^|712|8|3|211|-1|-1|3|
-#p:3|Worm|-^-^-|712|11|3|-1|-1|-1|3|
+#p:2|Ant|mO^|114|13|3|211|-1|-1|3|
+#p:3|Worm|-^-^-|114|6|3|-1|-1|-1|3|
 #l:13|Start_Move|13|14|2|1|
 #l:14|Move_Start|14|13|3|1|
 #l:15|Move_Up|14|15|4|1|
@@ -111,7 +111,7 @@
 #l:331|Entry-Stairs_1|112|714|2|1|
 #l:341|Entry-Hole|112|113|1|1|
 #l:351|Corridor_11-Corridor_12|711|712|1|1|
-#l:361|Corridor_12-Corridor_13|712|713|1|0|
+#l:361|Corridor_12-Corridor_13|712|713|1|1|
 #l:371|Stairs_1-Stairs_2|714|121|4|1|
 #l:381|Stairs_2-Corridor_21|121|721|0|1|
 #l:391|Corridor_21-Corridor_22|721|722|2|1|
@@ -151,11 +151,11 @@
 #g:22|bad_ending|1|0|1|1|
 #g:23|lever_challenge|1|0|1|0|
 #g:24|spider_boss|1|0|1|0|
-#g:25|random_damage|1|8|0|0|
-#g:26|random_heal|1|8|0|0|
+#g:25|random_damage|1|11|0|0|
+#g:26|random_heal|1|10|0|0|
 #g:27|blue_potion|1|0|1|0|
 #g:28|dynamite|1|0|1|0|
-#g:29|misterious_spider_kill|1|0|1|0|
+#g:29|misterious_spider_kill|1|1|1|0|
 #g:30|guard_kill|1|0|1|0|
 #g:31|exploration_progress|1|0|1|0|
 #g:32|merchant_boost|1|0|1|0|
@@ -164,4 +164,4 @@
 #g:35|neutral_ending|1|0|1|0|
 #g:36|initial_animation|1|1|1|0|
 #t:data/anthill_textures.txt
-#T:1|
+#T:0|

@@ -33,10 +33,10 @@
 #define HOLE_LAIR 301                 /*!< Id of the hole in the lair. */
 #define MERCHANT_ID 62                /*!< Id of the merchant.*/
 #define ZERO_LINK 310                 /*!< Id of link to the zero room. */
-#define DAMAGE_PROB 2                 /*!< Probability of random damage. */
-#define HEAL_PROB 2                   /*!< Probability of random healing. */
+#define DAMAGE_PROB 1                 /*!< Probability of random damage. */
+#define HEAL_PROB 1                   /*!< Probability of random healing. */
 #define RANDOM_START 1                /*!< Start of the random number. */
-#define RANDOM_END 10                 /*!< End of the random number. */
+#define RANDOM_END 20                 /*!< End of the random number. */
 #define HEAL_MSG 15                   /*!< Message for the healing. */
 #define DAMAGE_MSG 16                 /*!< Message for the damage. */
 #define BLUE_POTION 213               /*!< Id of the blue potion. */
@@ -51,7 +51,7 @@
 #define MERCHANT_BOOST 5              /*!< Boost for the merchant. */
 #define ANIMATION_MERCHANT_ENDING_1 5 /*!< Animation for the merchant bad ending. */
 #define ANIMATION_MERCHANT_ENDING_2 6 /*!< Animation for the merchant good ending. */
-#define PLAYER_DEAD 7                 /*!< Animation for the player dead. */
+#define PLAYER_DEAD 2                 /*!< Animation for the player dead. */
 #define FIRST_ANIMATION 4             /*!< Animation for the first action. */
 
 /*The following IDS are the ids of the rooms to reach completion.*/

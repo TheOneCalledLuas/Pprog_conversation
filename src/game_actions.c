@@ -21,12 +21,13 @@
 #include "set.h"
 #include "character.h"
 
-#define ATTACK_PROB 9  /*!<Chances to attack.*/
-#define SUCCESS_PROB 2 /*!<Chances to strike (the smaller the better).*/
-#define DAMAGE_DEALT 1 /*!<Amount of health the entity losses when hurt.*/
-#define MIN_HEALTH 0   /*!<Minimum health the entity can have before dying.*/
-#define N_DIRECTIONS 6 /*!<Number of directions.*/
-#define N_VARIATIONS 2 /*!<Number of possible ways to call each direction.*/
+#define ATTACK_PROB 9    /*!<Chances to attack.*/
+#define SUCCESS_PROB 2   /*!<Chances to strike (the smaller the better).*/
+#define DAMAGE_DEALT 1   /*!<Amount of health the entity losses when hurt.*/
+#define MIN_HEALTH 0     /*!<Minimum health the entity can have before dying.*/
+#define N_DIRECTIONS 6   /*!<Number of directions.*/
+#define N_VARIATIONS 2   /*!<Number of possible ways to call each direction.*/
+#define DEAD_ANIMATION 2 /*!<Animation for the player dead.*/
 
 /**
    Private functions
@@ -182,8 +183,6 @@ void game_actions_bag(Game *game);
  * @param game
  */
 void game_actions_map(Game *game);
-
-
 
 /*
     Game actions implementation.
@@ -570,7 +569,7 @@ void game_actions_attack(Game *game)
         /*Checks if the player died.*/
         if (player_get_health(player) <= MIN_HEALTH)
         {
-            game_set_finished(game, TRUE);
+            animation_run(game_get_animation_manager(game), DEAD_ANIMATION);
         }
         command_set_status(game_get_last_command(game), OK);
         return;
