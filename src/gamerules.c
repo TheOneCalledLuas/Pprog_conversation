@@ -701,6 +701,12 @@ Status gamerules_random_damage(Game *game, Gamerule *gr)
         return OK;
     }
 
+    /*Checks if the player moved.*/
+    if (command_get_code(game_get_last_command(game)) != MOVE)
+    {
+        return OK;
+    }
+
     /*Checks if the damage is dealt.*/
     if (game_random_int(1, 10) <= HEAL_PROB)
     {
@@ -723,6 +729,12 @@ Status gamerules_random_heal(Game *game, Gamerule *gr)
 
     /*If the game is determined, this doesn't apply.*/
     if (game_get_determined(game))
+    {
+        return OK;
+    }
+
+    /*Checks if the player moved.*/
+    if (command_get_code(game_get_last_command(game)) != MOVE)
     {
         return OK;
     }
@@ -959,8 +971,15 @@ Status gamerules_neutral_ending(Game *game, Gamerule *gr)
 
 Status gamerules_initial_animation(Game *game, Gamerule *gr)
 {
+    /* Error handling.*/
     if (!game || !gr)
         return ERROR;
+
+    if (gamerules_get_n_exec_times(gr) > 0)
+    {
+        /*The animation was already executed, we don't need to do it again.*/
+        return OK;
+    }
 
     /*Executes the initial animation.*/
     animation_run(game_get_animation_manager(game), FIRST_ANIMATION);
