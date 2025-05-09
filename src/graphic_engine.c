@@ -413,7 +413,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
     }
     /*2-If the code of the last command is different from bag, it prints the map*/
-    if (command_get_code(game_get_last_command(game)) != BAG)
+    last_cmd = command_get_code(game_get_last_command(game));
+    if (last_cmd != BAG && last_cmd != HELP)
     {
         /*Fills the map that we modify and later print.*/
         if (map_init(game, map) == ERROR)
@@ -433,11 +434,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             screen_area_puts(ge->map, map[i]);
         }
         /*If the last command was MAP, its sets it to OK*/
-        if (command_get_code(game_get_last_command(game)) == MAP)
+        if (last_cmd == MAP)
             command_set_status(game_get_last_command(game), OK);
     }
-    /*3-Else it prints the bag*/
-    else
+    /*3-If the last command was bag, it prints the bag*/
+    else if (last_cmd == BAG)
     {
         /*Gets the number of objects the player has, and the objects*/
         n_objects = player_get_n_objects(player);
@@ -516,6 +517,42 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
         command_set_status(game_get_last_command(game), OK);
     }
+    /*Prints the help area*/
+    else
+    {
+        /*Prints the help area.*/
+        screen_area_clear(ge->map);
+        screen_area_puts(ge->map, "  ");
+        screen_area_puts(ge->map, "  HELP AREA:");
+        screen_area_puts(ge->map, "  ");
+        screen_area_puts(ge->map, "  -Type \"help\" to see this help area.");
+        screen_area_puts(ge->map, "  -Type \"map\" to see the map.");
+        screen_area_puts(ge->map, "  -Type \"move\" + \"direction\" to move in that direction.");
+        screen_area_puts(ge->map, "    directions are n, s, e, w, u, d.");
+        screen_area_puts(ge->map, "  -Type \"take\" + \"object_name\" to take an object.");
+        screen_area_puts(ge->map, "  -Type \"drop\" + \"object_name\" to drop an object.");
+        screen_area_puts(ge->map, "  -Type \"inspect\" + \"object_name\" to get info about an object.");
+        screen_area_puts(ge->map, "  -Type \"use\" + \"object_name\" to use an object.");
+        screen_area_puts(ge->map, "  -Type \"use\" + \"object_name\" + \"over\" +\"object_name\" to use an");
+        screen_area_puts(ge->map, "    an object on an object. Eg \"use train_pass over train\".");
+        screen_area_puts(ge->map, "  -Type \"open\" + \"object_to_open\" + \"with\" + \"object_that_opens\"");
+        screen_area_puts(ge->map, "    to open an object. Eg \"open door with key\".");
+        screen_area_puts(ge->map, "  -Type \"bag\" to see the objects you have.");
+        screen_area_puts(ge->map, "  -Type \"exit\" to exit the game.");
+        screen_area_puts(ge->map, "  -Type \"attack\" + \"character_name\" to attack someone.");
+        screen_area_puts(ge->map, "  -Type \"chat\" + \"character_name\" to chat with someone.");
+        screen_area_puts(ge->map, "  -Type \"wait\" to wait.");
+        screen_area_puts(ge->map, "  -Type \"recruit\" + \"character_name\" to recruit someone.");
+        screen_area_puts(ge->map, "  -Type \"forsake\" + \"character_name\" to forsake someone.");
+        screen_area_puts(ge->map, "  -Type \"coop\" + \"player_name\" to cooperate with someone.");
+        screen_area_puts(ge->map, "  -Type \"uncoop\" + \"player_name\" to uncooperate with someone.");
+        screen_area_puts(ge->map, "  -Type \"wait\" to skip your current turn");
+        screen_area_puts(ge->map, "  -Type \"menu\" to see the menu.");
+        screen_area_puts(ge->map, "  -Type \"save\" to save the game.");
+        screen_area_puts(ge->map, "  -Type \"exit\" to exit the game, IMPORTANT it doesn't save the game");
+        command_set_status(game_get_last_command(game), OK);
+    }
+
     /*We dont free map here cause we use it again later.*/
 
     /*SPACE SECTION.*/
@@ -538,7 +575,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
                 if (str[j] != '&')
-                    map[i + 9+k][j + 27] = str[j];
+                    map[i + 9 + k][j + 27] = str[j];
             }
         }
         /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four.*/
@@ -776,7 +813,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i, recruit or r, forsake or f, use or u, o or open, s or save, co or coop, un or uncoop,     w or wait, menu, b or bag, map");
+    sprintf(str, "     move or m, exit or e, take or t, drop or d, chat or c, attack or a, inspect or i, recruit or r, forsake or f, use or u, o or open, s or save, co or coop, un or uncoop,     w or wait, menu, b or bag, map. If any confussion might appear, type help.");
     screen_area_puts(ge->help, str);
 
     /*FEEDBACK AREA.*/

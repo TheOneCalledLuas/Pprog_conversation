@@ -184,6 +184,16 @@ void game_actions_bag(Game *game);
  */
 void game_actions_map(Game *game);
 
+/**
+ * @brief It shows up the help place
+ * @author Fernando Mijangos
+ * 
+ * @param game
+ */
+void game_actions_help(Game *game);
+
+
+
 /*
     Game actions implementation.
 */
@@ -271,6 +281,9 @@ Status game_actions_update(Game *game, Command *command)
         break;
     case UNCOOP:
         game_actions_uncoop(game);
+        break;
+    case HELP:
+        game_actions_help(game);
         break;
     default:
         break;
@@ -975,6 +988,13 @@ void game_actions_bag(Game *game)
 void game_actions_map(Game *game)
 {
     /*This action is magned by graphic engine, its first to ERROR, and the graphic engine sets it to OK, if everything went well*/
+    command_set_status(game_get_last_command(game), ERROR);
+    return;
+}
+
+void game_actions_help(Game *game)
+{
+    /*This action is managed by graphic engine, its first to ERROR, and then graphic engine sets it to OK, if evrything went well*/
     command_set_status(game_get_last_command(game), ERROR);
     return;
 }

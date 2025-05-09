@@ -19,7 +19,7 @@
 #define N_CMDT 2
 /**
  * Number of commands.*/
-#define N_CMD 20
+#define N_CMD 21
 
 /**
  * @brief Ways of calling a command (extended or short way.)
@@ -55,7 +55,8 @@ typedef enum
     WAIT,        /*!< Wait command.*/
     MENU,        /*!< Menu command.*/
     BAG,         /*!<Bag command*/
-    MAP          /*!<Map command*/
+    MAP,         /*!<Map command*/
+    HELP         /*!<Help command*/
 } CommandCode;
 
 /**
