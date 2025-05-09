@@ -586,6 +586,12 @@ Status animation_run(Animation_Manager *am, Id anim_id)
         /*Clears the screen.*/
         system("clear");
 
+        /*Adds the padding*/
+        for (k = 0; k < anim->height_padding; k++)
+        {
+            printf("\n");
+        }
+
         /*Prints the frame.*/
         for (j = 0; j < anim->height; j++)
         {
@@ -600,9 +606,8 @@ Status animation_run(Animation_Manager *am, Id anim_id)
                 j--;
                 continue;
             }
-            for(k = 0; k < strlen(line); k++)
+            for (k = 0; k < strlen(line); k++)
             {
-                /*If the line is too long, it is cut.*/
                 if (line[k] == '\n' || line[k] == '\r')
                 {
                     line[k] = '\0';
@@ -614,14 +619,8 @@ Status animation_run(Animation_Manager *am, Id anim_id)
                 printf(" ");
             }
             /*Prints the line on the screen.*/
-            printf("%s%s%s%s", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line, RESET_COLOR);
-            /*Adds the height padding to the line.*/
-            for (k = 0; k < anim->height_padding; k++)
-            {
-                printf("\n");
-            }
+            printf("%s%s%s%s\n", color[TEXT_COLOR][anim->font_color], color[BACKGROUND_COLOR][anim->background_color], line, RESET_COLOR);
         }
-
         /*Sleeps the program for the frame duration.*/
         wait(anim->refresh_rate);
     }
