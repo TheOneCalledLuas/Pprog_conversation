@@ -538,7 +538,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
                 if (str[j] != '&')
-                    map[i + 9+k][j + 27] = str[j];
+                    map[i + 9 + k][j + 27] = str[j];
             }
         }
         /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four.*/
