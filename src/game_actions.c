@@ -543,7 +543,7 @@ void game_actions_chat(Game *game)
 
 void game_actions_attack(Game *game)
 {
-    int rand_num = 0;
+    int rand_num = 0, coop_dmg = 0;
     Id player_location = NO_ID;
     Player *player = NULL;
     Character *character = NULL;
@@ -570,6 +570,8 @@ void game_actions_attack(Game *game)
         return;
     }
 
+    coop_dmg = (player_get_team(player) != NO_ID) ? 1 : 0;
+
     /*2-If that character isnt friendly, attack it*/
     if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
     {
@@ -592,7 +594,7 @@ void game_actions_attack(Game *game)
         else
         {
             /*Hits character.*/
-            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + game_get_n_followers(game, player_get_player_id(player))));
+            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + coop_dmg + game_get_n_followers(game, player_get_player_id(player))));
         }
         /*Checks if the player died.*/
         if (player_get_health(player) <= MIN_HEALTH)
@@ -613,7 +615,6 @@ void game_actions_inspect(Game *game)
     return;
 }
 
-/*Recruit y abandon son provisionales hasta que follow esté implementado.*/
 void game_actions_recruit(Game *game)
 {
     Player *player = NULL;

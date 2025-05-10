@@ -356,7 +356,7 @@ Status game_reader_load_characters(Game *game, char *name_file)
     Status status = OK;
     char texture_file[WORD_SIZE] = "";
     Character *character;
-    Id id = NO_ID, id_sp = NO_ID;
+    Id id = NO_ID, id_sp = NO_ID, follow = NO_ID;
     Bool friendly = FALSE;
     int health = 0;
     char data[WORD_SIZE] = "";
@@ -415,24 +415,24 @@ Status game_reader_load_characters(Game *game, char *name_file)
             id = atol(toks);
             if (!(character = character_create(id)))
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
             toks = strtok(NULL, "|");
 
             /*Gets the name of the character and sets it.*/
             if ((character_set_name(character, toks)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
 
             /*Gets the description of the character and sets it.*/
             toks = strtok(NULL, "|");
             if ((character_set_description(character, toks)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
 
             /*Gets the space where the character is at and sets it there.*/
@@ -440,8 +440,8 @@ Status game_reader_load_characters(Game *game, char *name_file)
             id_sp = atol(toks);
             if ((space_add_character(game_get_space(game, id_sp), id)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
 
             /*Gets the amount of health of the character and sets it.*/
@@ -449,8 +449,8 @@ Status game_reader_load_characters(Game *game, char *name_file)
             health = atoi(toks);
             if ((character_set_health(character, health)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
 
             /*Gets the status of friendly for that character and sets it.*/
@@ -458,17 +458,27 @@ Status game_reader_load_characters(Game *game, char *name_file)
             friendly = atoi(toks);
             if ((character_set_friendly(character, friendly)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
 
             /*Gets the message of the player and sets it.*/
             toks = strtok(NULL, "|");
             if ((character_set_message(character, toks)) == ERROR)
             {
-                return ERROR;
                 fclose(file);
+                return ERROR;
             }
+
+            /*Gets the id of the player that the character is following and sets it.*/
+            toks = strtok(NULL, "|");
+            follow = atol(toks);
+            if ((character_set_follow(character, follow)) == ERROR)
+            {
+                fclose(file);
+                return ERROR;
+            }
+
             /*Searches for the correct texture to save it*/
             status = ERROR;
             sprintf(aux, "#c:%ld", id);
@@ -970,10 +980,10 @@ Status game_reader_save_game(Game *game, char *filename)
             /*Gets the character*/
             aux_structure = game_get_character(game, ids[i]);
             /*Writes the information of the character*/
-            sprintf(str, "#c:%ld|%s|%s|%ld|%d|%d|%s|\n", character_get_id(aux_structure), character_get_name(aux_structure),
+            sprintf(str, "#c:%ld|%s|%s|%ld|%d|%d|%s|%ld\n", character_get_id(aux_structure), character_get_name(aux_structure),
                     character_get_description(aux_structure), game_get_character_location(game, character_get_id(aux_structure)),
                     character_get_health(aux_structure), character_get_friendly(aux_structure),
-                    character_get_message(aux_structure));
+                    character_get_message(aux_structure), character_get_follow(aux_structure));
             fprintf(f, "%s", str);
         }
         free(ids);
