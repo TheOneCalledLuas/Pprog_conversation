@@ -117,8 +117,8 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0
 #o:225|Useless_thing|122|Some useless thing|0|1|-1|-1|0|0
 
-#p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
-#p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
+#p:2|Anthony|mO^|13|10|3|-1|-1|-1|-1|
+#p:3|Anthriw|-^-^-|13|10|3|-1|-1|-1|-1|
 
 0=NORTH 1=SOUTH 2=EAST 3=WEST 4=UP 5=DOWN
 #l:311|Tutorial-Entry|111|112|1|1|

@@ -137,7 +137,7 @@ Status game_destroy_team(Game *game, Id player)
     }
 
     /*Checks that the players are in a team.*/
-    if (player_get_team(game_get_player(game, player)) == NO_ID)
+    if (player_get_team(game_get_player_by_id(game, player)) == NO_ID)
     {
         return ERROR;
     }
@@ -606,7 +606,7 @@ Animation_Manager *game_get_animation_manager(Game *game)
 
 Status game_destroy(Game **game)
 {
-    int i = 0;
+    int i = 0, j = 0;
     Gamerule *gr = NULL;
 
     /*Error management.*/
@@ -666,9 +666,10 @@ Status game_destroy(Game **game)
     (*game)->game_values = NULL;
 
     /*Destroys the animation manager and all the animations.*/
-    for (i = 0; i < game_get_n_animations(*game); i++)
+    j = game_get_n_animations(*game) - 1;
+    for (; j >= 0; j--)
     {
-        animation_manager_del_animation((*game)->animation_manager, i);
+        animation_manager_del_animation((*game)->animation_manager, j);
     }
 
     if ((*game)->animation_manager)

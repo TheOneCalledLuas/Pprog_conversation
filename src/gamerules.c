@@ -31,7 +31,7 @@
 #define ANIMATION_ARACHNE_DEATH 14    /*!< Animation for the death of Arachne.*/
 #define POST_BOSS_ROOM_ID 113         /*!< Id of the room after the boss.*/
 #define HOLE_LAIR 301                 /*!< Id of the hole in the lair. */
-#define MERCHANT_ID 62                /*!< Id of the merchant.*/
+#define MERCHANT_ID 61                /*!< Id of the merchant.*/
 #define ZERO_LINK 310                 /*!< Id of link to the zero room. */
 #define DAMAGE_PROB 1                 /*!< Probability of random damage. */
 #define HEAL_PROB 1                   /*!< Probability of random healing. */

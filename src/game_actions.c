@@ -353,7 +353,6 @@ void game_actions_move(Game *game)
     current_id = game_get_space_at(game, space_id, direction);
     if (game_get_space_outcoming_connection_info(game, space_id, direction) != OPENED)
     {
-        free(characters);
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
