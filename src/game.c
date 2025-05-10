@@ -146,8 +146,8 @@ Status game_destroy_team(Game *game, Id player)
     player_member = game_get_teammate_from_player(game, player);
 
     /*Destroys the team.*/
-    player_set_team(game_get_player(game, player), NO_ID);
-    player_set_team(game_get_player(game, player_member), NO_ID);
+    player_set_team(game_get_player_by_id(game, player), NO_ID);
+    player_set_team(game_get_player_by_id(game, player_member), NO_ID);
 
     /*Actualises the number of teams.*/
     game_set_n_teams(game, game_get_n_teams(game) - 1);
