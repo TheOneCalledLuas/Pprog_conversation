@@ -552,6 +552,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         screen_area_puts(ge->map, "  -Type \"menu\" to see the menu.");
         screen_area_puts(ge->map, "  -Type \"save\" to save the game.");
         screen_area_puts(ge->map, "  -Type \"exit\" to exit the game, IMPORTANT it doesn't save the game");
+        screen_area_puts(ge->map, "  -Type \"coop + \"player_name\" to cooperate with someone.");
+        screen_area_puts(ge->map, "  -Type \"uncoop\" + \"player_name\" to uncooperate with someone.");
         command_set_status(game_get_last_command(game), OK);
     }
 
