@@ -1,0 +1,46 @@
+Mecánicas:
+The Anthill Game utiliza una mecánica básica como la de cualquier adventura conversacional cooperativa. Los jugadores son presentado scon una serie de comandos que puede ejecutar junto con un argumento que le permiten llevar a cabo todas las acciones necesarias para completar el juego. Estas acciones son:
+Acciones básicas:
+- Move: Este comando permite mover al jugador que lo ejecuta un espacio en la dirección indicada en el argumento, con estas opciones siendo North, South, East, West, Up y Down.
+- Bag: Este comando permite al jugador que lo ejecuta ver su inventario.
+- Map: Este comando permite al jugador que lo ejecuta ver el mapa.
+
+Acciones relacionadas con objetos:
+- Take: Este comando permite al jugador que lo ejecuta coger un objeto de la habitación en la que está.
+- Drop: Este comando permite al jugador que lo ejecuta soltar un objeto del inventario a la habitación en la que está.
+- Use: Este comando permite al jugador que lo ejecuta utilizar un objeto del inventario o de la habitación en la que esta. También puede usarse use [objeto] over [objeto 2], que tiene otro efecto distinto.
+- Inspect: Este comando permite al jugador que lo ejecuta inspeccionar un objeto del espacio para ver su descripción.
+- Open: Este comando permite al jugador que lo ejecuta abrir un objeto del inventario o de la habitación en la que está.
+
+Acciones relacionadas con personajes:
+- Chat: Este comando permite al jugador que lo ejecuta hablar con un personaje amigable en su habitación.
+- Attack: Este comando permite al jugador que lo ejecuta atacar a un personaje enemigo en su habitación.
+- Recruit: Este comando permite al jugador que lo ejecuta pedir a un personaje amigable en su habitación que lo siga, lo cual tiene efecto en el daño que hace el jugador al atacar.
+- Forsake: Este comando permite al jugador que lo ejecuta pedir a un personaje amigable que le está siguiendo que deje de seguirle.
+
+Acciones relacionadas con el juego:
+- Save: Este comando permite al jugador que lo ejecuta guardar la partida.
+- Exit: Este comando permite al jugador que lo ejecuta salir de la partida.
+- Coop: Este comando permite al jugador que lo ejecuta cooperar con otro jugador de la partida. Esto desbloquea ciertas cosas como compartir el inventario.
+- Uncoop: Este comando permite al jugador que lo ejecuta dejar de cooperar con otro jugador de la partida.
+- Help: Este comando permite al jugador que lo ejecuta veer la lista de comandos y sus acciones dentro del juego.
+
+Estos comandos se introducen al inicio del juego en una zona de tutorial diseñada para que los jugadores se familiaricen con los comandos.
+
+Trama:
+The Anthill Game sigue la historia de dos hormigas cuyo hormiguero se ve invadido por un grupo de arañas y que se ven, por tanto, obligadas a escapar. La historia empieza con las hormigas encontrando otro hormiguero pero descubriendo que ha sufrido la misma suerte que el suyo, pero se ven obligadas a descansar de todas formas.
+
+Dentro del hormiguero encuentran hormigas con misiones secundarias y arañas que derrotar, todo antes de poder llegar a la guarida de la reina araña, Arachne. Las hormigas deciden que vencer a Arachne es la forma más fácil de expulsar a las arañas, así que investigan todo el hormiguero y acaban luchando contra ella.
+
+Sin embargo, vencer a Arachne no soluciona todos sus problemas, al contrario de lo que originalmente habían pensando. Incluso en el mundo de los insectos y arácnidos, las acciones no son exclusivamente buenas o malas.
+
+Finales:
+The Anthill Game cuenta con tres finales implementados basados en las acciones de los jugadores. El final por defecto (el "buen" final) se da cuando después de matar a Arachne las hormigas descubren un pasadizo a una habitación que no habían descubierto en su primera investigación del terreno. Ahí encuentran a una de las primeras hormigas que encontraron en el hormiguero, MerchAnt.
+
+MerchAnt es una hormiga mercader que se encuentra sin mercancía tras la invasión de las arañas. Aunque parece inofensiva en un principio, demuestra ser un rival de la fuerza de Arachne, y aunque las hormigas consigan vencer, se dan cuenta de que la guerra entre arañas y hormigas les ha llevado a matar a uno de los suyos. Movidas por la muerte de MerchAnt, las dos hormigas consiguen convencer a todos en el hormiguero de firmar una tregua que acabe con la guerra.
+
+El final "malo" se desbloquea completando una misión secundaria de una de las hormigas del hormiguero, que te pide que mates a todas las arañas por lo que han hecho. Aunque normalmente los jugadores deban matar a casi todas las arañas para completar el juego, hay otra araña escondida, una araña bebé, la cual puede dejarse con vida para completar la historia pero que los jugadores deberán demostrar que son capaces de matar para desbloquear este final.
+
+Aquí también luchan con MerchAnt tras la muerte de Arachne, pero como todas las arañas ya están muertas, no hay motivo por el que firmar ninguna tregua... ni por el que compartir el poder sobre el hormiguero. Las hormigas discuten por esto, pero al parecer no todas las arañas estaban muertas, y tras las acciones de las hormigas, deciden matarlas.
+
+El tercer final es un final secreto sólo desbloqueable con una serie de acciones específicas: alguno de los jugadores debe coger los objetos Artifact y Rocks y luego usarlos en la batalla final contra MerchAnt, lo cual lo mata instantáneamente. Dándose cuenta del poder que tiene el artefacto, la hormiga que lo haya usado lo usa contra su compañera para matarla, quedándose así con el control absoluto del hormiguero.

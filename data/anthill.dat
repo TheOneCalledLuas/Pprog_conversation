@@ -88,7 +88,7 @@ Datos de la zona Principal
 #s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
 #s:132|Cell|/-/-/-/-/|-/-/-/-/-|         | mo'    0|       o0|0|
 
-#c:61|MerchAnt|o^w^o|112|5|1|Hello fellow ant. I don't have anything left after the spider invasion, but I'll gladly help you!|
+#c:61|MerchAnt|o^w^o|112|8|1|Hello fellow ant. I don't have anything left after the spider invasion, but I'll gladly help you!|
 #c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders! They killed everyone I care about when they invaded us, they deserve it.|
 #c:63|Mysterious_Spider|/\OO/\|712|5|0|I wont't talk to you!|
 #c:64|Spider_Guard|/\OO/\|714|5|0|I won't talk to you!|
@@ -106,7 +106,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1
 #o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0
 #o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|221|-1|0|0
-#o:216|Dynamite|722|dynamite desc|-5|1|-1|-1|0|0
+#o:216|Dynamite|722|Seems like a dangerous way to open a path, but at least its open.|-5|1|-1|-1|0|0
 #o:217|Lever_1|723|Pull the lever, KRONK!|0|0|-1|-1|0|1
 #o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1
 #o:219|Breadcrumbs|122|Some bytes of bread.|6|1|-1|-1|0|0
@@ -115,6 +115,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0
 #o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0
+#o:225|Useless_thing|122|Some useless thing|0|1|-1|-1|0|0
 
 #p:2|Ant|mO^|13|10|3|-1|-1|-1|-1|
 #p:3|Worm|-^-^-|13|10|3|-1|-1|-1|-1|
@@ -188,8 +189,10 @@ Las animaciones tienen la siguiente estructura:
  id|name|path|width|height|frames|time_per_frame|
  widht_padding|height_padding|back_colour|char_colour|
 #a:1|test_dialogue|test_dialogue.anim|10|2|3|1|1|1|0|7|
-#a:2|game_over|game_over.anim|99|30|20|0.5|1|20|20|0|1|
+#a:2|game_over|game_over.anim|99|30|20|0.5|7|20|20|0|1|
 #a:3|lair_unlocked|lair_unlocked.anim|20|2|3|3|2|1|0|7|
 #a:4|initial_dialog|initial_dialog.anim|99|30|7|4|20|20|0|7|
+#a:5|good_ending|good_ending.anim|99|30|20|0.5|1|20|20|0|1|
+#a:5|secret_ending|secret_ending.anim|99|30|20|0.5|1|20|20|0|1|
 #a:16|random_damage|random_damage.anim|21|10|8|0.7|9|9|0|1|
 #a:15|random_heal|random_heal.anim|16|10|5|0.7|9|9|0|2|
