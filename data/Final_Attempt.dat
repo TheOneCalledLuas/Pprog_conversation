@@ -1,0 +1,168 @@
+#s:13|Starting_Room|xxxxxxxxx| inspect |         |xxxxxxxxx|xxxxxxxxx|1|
+#s:14|Direction_Room|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|1|
+#s:15|Up_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|1|
+#s:16|Down_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:17|Object_Room_1|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
+#s:18|Use_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
+#s:19|Attack_room_1|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|1|
+#s:20|Attack_room_2|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|1|
+#s:21|Follow_Room|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|1|
+#s:22|Open_Room|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|1|
+#s:23|Abandon_Room|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|1|
+#s:24|Lore_Room|    V    |  \(")/  |  -(_)-  |o/(_-_)\o|o o\_/o o|1|
+#s:25|Antrain_Room|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|1|
+#s:26|North_Room|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|1|
+#s:27|South_Room|    _    |\ \___   |\ mo'\_  |\ @ _    | \__/ \__|0|
+#s:0|Room_0|// ___ \\|\\(___)//| //(*)\\ | \\ " // |         |0|
+#s:111|Tutorial|xxxxxxxxx|xxxxxxxxx|xxxWIPxxx|xxxxxxxxx|xxxxxxxxx|1|
+#s:711|Corridor_11|xxx/ \xxx|x==   ==x|{      Q}|{  mo'  }|x\_   _/x|0|
+#s:712|Corridor_12|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
+#s:713|Corridor_13|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:714|Stairs_1|____     |  \_\_   |    \_\_ | mo'  \ \|__/ \___ |0|
+#s:112|Entry|xxx___xxx|xx/Q#o\xx|x{     }x|{  mo'  }|x\_   _/x|0|
+#s:113|Hole|  ___    |_/   \__ |    o o )|mo^ _ 0o]|__/ \___)|0|
+#s:114|Lair|mo'   'om|         | _\\o//_ |/ /(_)\ \|  \   /  |0|
+#s:121|Stairs_2|  ___    |_/   \__ |  [=] ^om|mo' _   ]|_/   \__ |0|
+#s:721|Corridor_21|xxx/ \xxx|/^^   ^^-|\        |/  mo'  _|x\_   _/x|0|
+#s:722|Corridor_22|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:723|Lever_1|_/   \__ |         |       \{|         |_/   \__ |0|
+#s:122|Hallway|oo0o0oOOo|         |         |         |oOOo0o00o|0|
+#s:731|Corridor_23|xxxl lxxx|!^^  \___|!       !|!_ mo'__!|xxl  !xxX|0|
+#s:732|Corridor_24|x__! lxxx|!    \___|!    'oml|!_    __!|xx!  !xxX|0|
+#s:733|Lever_2|_/   \__ |         |       \{|         |_/   \__ |0|
+#s:123|Pantry|xxxl lxxx|___/ \___|!Q    Oo!|!o mo' o!|!_______!|0|
+#s:131|Laboratory|  mo'    |   ^^^   |  +---+  |    _   ]|__/ \___ |0|
+#s:132|Cell|/-/-/-/-/|-/-/-/-/-|         | mo'    0|       o0|0|
+#c:13|Trantveler|m0'|21|5|1|Hello fellow traveler.     Wanna team up?|-1
+#c:14|Weak_spider|/o\|19|-1|0|Death for the ants.|-1
+#c:15|Spidey|/o\|20|0|0|Death for the ants.|-1
+#c:61|MerchAnt|o^w^o|112|8|1|Hello fellow ant. I don't have anything left after the spider invasion, but I'll gladly help you!|-1
+#c:62|Vengeful_Ant|mo^|711|5|1|Kill all spiders! They killed everyone I care about when they invaded us, they deserve it.|-1
+#c:63|Mysterious_Spider|/\OO/\|712|5|0|I wont't talk to you!|-1
+#c:64|Spider_Guard|/\OO/\|714|5|0|I won't talk to you!|-1
+#c:65|Worried_Ant|mo^|121|5|1|Help me save the baby! You have to split and pull the levers soon or they'll die! Head north and so|-1
+#c:66|Baby_Ant|mo|123|2|1|[Baby gibberish]|-1
+#c:67|Alchemist_Spider|/\OO/\|131|5|0|I won't talk to you!|-1
+#c:68|Imprisoned_Ant|.o.o.|131|5|1|Get me out of here quick and I'll give you something!|-1
+#c:70|Free_Ant|mo^|132|5|1|Thank you for getting me out of here! Take that spider food and those weird rocks as a thank you.|-1
+#c:69|Baby_Spider|/\oo/\|713|2|0|I won't talk to you...|-1
+#c:60|Arachne|/\00/\|114|8|0|I won't talk to you, peasant!|-1
+#o:14|Wood_Key|-1|A wood key for a wood door,       isn't it?|0|1|-1|35|0|0|
+#o:15|Wood_Door|22|A wood door which might need         a wood key.|0|0|-1|-1|0|0|
+#o:18|Woody_sign|13|Let me guide you. In order to      move yourself use "move e".|0|0|-1|-1|0|0|
+#o:19|Wooden_sign|14|You can move anywhere by using       move and "n or norht" "s or       south" "e or east" "w or west"      "u or up" "d or down"|0|0|-1|-1|0|0|
+#o:20|Stone_sign|17|Do you see that object? Take it    with "take" command, and u can     also inspect it.|0|0|-1|-1|0|0|
+#o:21|Ancient_sign|18|Let's eat that yummy mushroom.    Use the "use" command.|0|0|-1|-1|0|0|
+#o:22|Dirty_sign|19|Oh no, an enemy. Attack it with     the "attack" "name" command.|0|0|-1|-1|0|0|
+#o:23|Bloody_sign|20|This enemy is tough, use that     rock "use Rock over "name"".|0|0|-1|-1|0|0|
+#o:24|Wet_sign|21|A fellow explorer. Invite him to     play with the "recruit" command     and it will follow you     use "abandon "name""to leave     them.|0|0|-1|-1|0|0|
+#o:25|New_sign|22|Maybe you can open that door with   that key with "open door name      with key name" command.|0|0|-1|-1|0|0|
+#o:26|Rusty_sign|23|The path ahead is too narrow.      Tell your friend to stop here     with "forsake" command.|0|0|-1|-1|0|0|
+#o:27|AnTrain|25|An ant train. It requires a pass to work, though. I wouldn't use it much.|0|0|-1|-1|0|0|
+#o:16|Mushroom|-1|A suspicious mushroom. Is it edible?|3|1|-1|-1|0|0|
+#o:17|Rock|-1|A small rock, or is it a       projectile?|-3|1|-1|-1|1|0|
+#o:13|Train_Pass|-1|Ticket you can use for the train.|0|1|-1|-1|1|1|
+#o:211|Seed|711|A yummy seed.|4|1|-1|-1|0|0|
+#o:212|Red_Potion|131|A red potion. Should I drink it?|-3|0|-1|-1|0|1|
+#o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1|
+#o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0|
+#o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|-1|-1|0|0|
+#o:216|Dynamite|722|Seems like a dangerous way to open a path, but at least its open.|-5|1|-1|-1|0|0|
+#o:217|Lever_1|723|Pull the lever, KRONK!|0|0|-1|-1|0|1|
+#o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1|
+#o:219|Breadcrumbs|122|Some bytes of bread.|6|1|-1|-1|0|0|
+#o:220|Treasure|731|A treasure which can't be opened, but could be thrown.|-2|0|-1|-1|0|0|
+#o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|215|-1|0|0|
+#o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0|
+#o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0|
+#o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0|
+#o:225|Useless_thing|122|Some useless thing|0|1|-1|-1|0|0|
+#p:2|Anthony|mO^|111|10|3|-1|-1|-1|3|
+#p:3|Anthriw|-^-^-|111|10|3|16|-1|-1|3|
+#l:13|Start_Move|13|14|2|1|
+#l:14|Move_Start|14|13|3|1|
+#l:15|Move_Up|14|15|4|1|
+#l:16|Up_move|15|14|5|1|
+#l:17|Move_Down|14|16|5|1|
+#l:18|Down_Move|16|14|4|1|
+#l:19|Move_North|14|26|0|1|
+#l:20|North_Move|26|14|1|1|
+#l:21|Move_South|14|27|1|1|
+#l:22|South_Move|27|14|0|1|
+#l:23|Move_Object|14|17|2|1|
+#l:24|Object_Move|17|14|3|1|
+#l:25|Object_Use|17|18|2|1|
+#l:26|Use_Object|18|17|3|1|
+#l:27|Use_Attack1|18|19|2|1|
+#l:28|Attack1_Use|19|18|3|1|
+#l:29|Attack1_Attack2|19|20|2|1|
+#l:30|Attack2_Attack1|20|19|3|1|
+#l:31|Attack2_Follow|20|21|1|1|
+#l:32|Follow_Attack2|21|20|0|1|
+#l:33|Follow_Open|21|22|1|1|
+#l:34|Open_Follow|22|21|0|1|
+#l:35|Wood_Door|22|23|2|1|
+#l:36|Abandon_Open|23|22|3|1|
+#l:37|Abandon_Lore|23|24|2|1|
+#l:38|Lore_Abandon|24|23|3|1|
+#l:39|Lore_Antrain|24|25|2|1|
+#l:40|Antrain_Lore|25|24|3|1|
+#l:311|Tutorial-Entry|111|112|1|1|
+#l:321|Entry-Corridor_11|112|711|3|1|
+#l:331|Entry-Stairs_1|112|714|2|1|
+#l:341|Entry-Hole|112|113|1|1|
+#l:351|Corridor_11-Corridor_12|711|712|1|1|
+#l:361|Corridor_12-Corridor_13|712|713|1|0|
+#l:371|Stairs_1-Stairs_2|714|121|4|0|
+#l:381|Stairs_2-Corridor_21|121|721|0|1|
+#l:391|Corridor_21-Corridor_22|721|722|2|1|
+#l:401|Corridor_22-Lever_1|722|723|2|1|
+#l:411|Lever_1-Pantry|723|123|1|0|
+#l:421|Stairs_2-Corridor_23|121|731|1|1|
+#l:431|Corridor_23-Corridor_24|731|732|2|1|
+#l:441|Corridor_24-Lever_2|732|733|2|1|
+#l:451|Lever_2-Pantry|733|123|0|0|
+#l:461|Stairs_2-Hallway|121|122|2|1|
+#l:471|Hallway-Pantry|122|123|2|0|
+#l:481|Hole-Laboratory|113|131|5|1|
+#l:491|Laboratory-Cell|131|132|1|0|
+#l:301|Hole-Lair|113|114|1|0|
+#l:310|Entry-Room_0|112|0|4|0|
+#l:320|Corridor_11-Entry|711|112|2|1|
+#l:330|Stairs_1-Entry|714|112|3|1|
+#l:340|Hole-Entry|113|112|0|1|
+#l:350|Corridor_12-Corridor_11|712|711|0|1|
+#l:360|Corridor_13-Corridor_12|713|712|0|1|
+#l:370|Stairs_2-Stairs_1|121|714|5|1|
+#l:380|Corridor_21-Stairs_2|721|121|1|1|
+#l:390|Corridor_22-Corridor_21|722|721|3|1|
+#l:400|Lever_1-Corridor_22|723|722|3|1|
+#l:410|Pantry-Lever_1|123|723|0|1|
+#l:420|Corridor_23-Stairs_2|731|121|0|1|
+#l:430|Corridor_24-Corridor_23|732|731|3|1|
+#l:440|Lever_2-Corridor_24|733|732|3|1|
+#l:450|Pantry-Lever_2|123|733|1|1|
+#l:460|Hallway-Stairs_2|122|121|3|1|
+#l:470|Pantry-Hallway|123|122|3|1|
+#l:480|Laboratory-Hole|131|113|4|1|
+#l:490|Cell-Laboratory|132|131|0|1|
+#l:300|Lair-Hole|114|113|0|0|
+#g:20|do_open_gate|1|0|1|22|
+#g:21|use_train_pass|1|1|1|13|
+#g:22|bad_ending|1|0|1|0|
+#g:23|lever_challenge|1|0|1|0|
+#g:24|spider_boss|1|0|1|0|
+#g:25|random_damage|1|0|0|0|
+#g:26|random_heal|1|0|0|0|
+#g:27|blue_potion|1|0|1|0|
+#g:28|dynamite|1|0|1|0|
+#g:29|misterious_spider_kill|1|0|1|0|
+#g:30|guard_kill|1|0|1|0|
+#g:31|exploration_progress|1|0|1|0|
+#g:32|merchant_boost|1|0|1|0|
+#g:33|merchant_bad_ending|1|0|1|0|
+#g:34|merchant_good_ending|1|0|1|0|
+#g:35|neutral_ending|1|0|1|0|
+#g:36|initial_animation|1|1|1|0|
+#t:data/anthill_textures.txt
+#T:1|

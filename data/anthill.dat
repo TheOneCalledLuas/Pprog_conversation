@@ -105,7 +105,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:212|Red_Potion|131|A red potion. Should I drink it?|-3|0|-1|-1|0|1
 #o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1
 #o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0
-#o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|221|-1|0|0
+#o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|-1|-1|0|0
 #o:216|Dynamite|722|Seems like a dangerous way to open a path, but at least its open.|-5|1|-1|-1|0|0
 #o:217|Lever_1|723|Pull the lever, KRONK!|0|0|-1|-1|0|1
 #o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1
@@ -137,7 +137,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:441|Corridor_24-Lever_2|732|733|2|1|
 #l:451|Lever_2-Pantry|733|123|0|0|
 #l:461|Stairs_2-Hallway|121|122|2|1|
-#l:471|Hallway-Pantry|122|123|2|1|
+#l:471|Hallway-Pantry|122|123|2|0|
 #l:481|Hole-Laboratory|113|131|5|1|
 #l:491|Laboratory-Cell|131|132|1|0|
 #l:301|Hole-Lair|113|114|1|0|

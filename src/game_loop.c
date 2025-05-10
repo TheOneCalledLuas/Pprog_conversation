@@ -69,8 +69,9 @@ int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengi
  * @param gengine_menu Pointer to the graphic engine for the menu.
  * @param f Pointer to the file for the log.
  * @param base_savefile named of the file that is used a template for new games
+ * @param do_log Boolean that indicates if the log has to be created or not.
  */
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile);
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log);
 
 /**
  * @brief Frees the memory and closes the game.
@@ -144,7 +145,7 @@ int main(int argc, char *argv[])
         /*Sets the determinist mode activated if it proceeds.*/
         game_set_determined(game, is_determined);
         /*Runs the game.*/
-        game_loop_run(&game, gengine, gengine_menu, f, argv[1]);
+        game_loop_run(&game, gengine, gengine_menu, f, argv[1], (f != NULL));
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
@@ -468,11 +469,10 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
     return OK_MENU;
 }
 
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile)
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log)
 {
     Command *last_cmd = NULL;
     CommandCode last_code = UNKNOWN;
-    Bool do_log = FALSE;
     char *str;
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
