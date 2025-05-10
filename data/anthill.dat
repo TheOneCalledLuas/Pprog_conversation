@@ -102,7 +102,7 @@ Datos de la zona Principal
 
 Los objetos son ; id|name|location|description|health|movable|dependency|open|is_used|special_use
 #o:211|Seed|711|A yummy seed.|4|1|-1|-1|0|0
-#o:212|Red_Potion|131|A red potion. Should I drink it?|0|0|-1|-1|0|1
+#o:212|Red_Potion|131|A red potion. Should I drink it?|-3|0|-1|-1|0|1
 #o:213|Blue_Potion|131|A blue potion. Should I drink it?|0|0|-1|-1|0|1
 #o:214|Green_Potion|131|A green potion. Should I drink it?|-3|0|-1|-1|0|0
 #o:215|Artifact|123|An strange artifact. Seems dangerous to me.|0|1|221|-1|0|0
@@ -111,7 +111,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #o:218|Lever_2|733|Pull the lever, KRONK!|0|0|-1|-1|0|1
 #o:219|Breadcrumbs|122|Some bytes of bread.|6|1|-1|-1|0|0
 #o:220|Treasure|731|A treasure which can't be opened, but could be thrown.|-2|0|-1|-1|0|0
-#o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|-1|-1|0|0
+#o:221|Rocks|132|Some strange steel rocks. Seems dangerous to me.|0|1|215|-1|0|0
 #o:222|Spider_food|132|Spider food a guard forgot here.|5|1|-1|-1|0|0
 #o:223|Baby_food|713|Baby food, also made with potAnto.|5|1|-1|-1|0|0
 #o:224|Mystery_water|123|Some nasty water, seems acid,|-3|0|-1|-1|0|0
@@ -127,7 +127,7 @@ Los objetos son ; id|name|location|description|health|movable|dependency|open|is
 #l:341|Entry-Hole|112|113|1|1|
 #l:351|Corridor_11-Corridor_12|711|712|1|1|
 #l:361|Corridor_12-Corridor_13|712|713|1|0|
-#l:371|Stairs_1-Stairs_2|714|121|4|1|
+#l:371|Stairs_1-Stairs_2|714|121|4|0|
 #l:381|Stairs_2-Corridor_21|121|721|0|1|
 #l:391|Corridor_21-Corridor_22|721|722|2|1|
 #l:401|Corridor_22-Lever_1|722|723|2|1|

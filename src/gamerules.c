@@ -25,7 +25,7 @@
 #define LEVER_2_ID 218                /*!< Id of the second lever.*/
 #define LINK_LEVER_1 411              /*!< Id of the link between the first lever and the second one.*/
 #define LINK_LEVER_2 451              /*!< Id of the link for the second lever.*/
-#define MAX_TURNS_LEVER 4             /*!< Max turns for the lever to be activated.*/
+#define MAX_TURNS_LEVER 10            /*!< Max turns for the lever to be activated.*/
 #define DINAMITE_ID 216               /*!< Id of the dynamite.*/
 #define VICTIM_ID 66                  /*!< Id of the victim of the lever task.*/
 #define ANIMATION_ARACHNE_DEATH 14    /*!< Animation for the death of Arachne.*/
@@ -55,23 +55,23 @@
 #define FIRST_ANIMATION 4             /*!< Animation for the first action. */
 
 /*The following IDS are the ids of the rooms to reach completion.*/
-#define ROOM_1 111          /*!< Id of the first room. */
-#define ROOM_2 112          /*!< Id of the second room. */
-#define ROOM_3 113          /*!< Id of the third room. */
-#define ROOM_4 114          /*!< Id of the fourth room. */
-#define ROOM_5 115          /*!< Id of the fifth room. */
-#define ROOM_6 116          /*!< Id of the sixth room. */
-#define ROOM_7 117          /*!< Id of the seventh room. */
-#define ROOM_8 118          /*!< Id of the eighth room. */
-#define ROOM_9 119          /*!< Id of the ninth room. */
-#define ROOM_10 120         /*!< Id of the tenth room. */
-#define ROOM_11 121         /*!< Id of the eleventh room. */
-#define ROOM_12 122         /*!< Id of the twelfth room. */
-#define ROOM_13 123         /*!< Id of the thirteenth room. */
-#define ROOM_14 124         /*!< Id of the fourteenth room. */
-#define ROOM_15 125         /*!< Id of the fifteenth room. */
-#define ROOM_16 126         /*!< Id of the sixteenth room. */
-#define ROOM_17 127         /*!< Id of the seventeenth room. */
+#define ROOM_1 711          /*!< Id of the first room. */
+#define ROOM_2 712          /*!< Id of the second room. */
+#define ROOM_3 713          /*!< Id of the third room. */
+#define ROOM_4 714          /*!< Id of the fourth room. */
+#define ROOM_5 112          /*!< Id of the fifth room. */
+#define ROOM_6 113          /*!< Id of the sixth room. */
+#define ROOM_7 121          /*!< Id of the seventh room. */
+#define ROOM_8 721          /*!< Id of the eighth room. */
+#define ROOM_9 722          /*!< Id of the ninth room. */
+#define ROOM_10 723         /*!< Id of the tenth room. */
+#define ROOM_11 122         /*!< Id of the eleventh room. */
+#define ROOM_12 731         /*!< Id of the twelfth room. */
+#define ROOM_13 732         /*!< Id of the thirteenth room. */
+#define ROOM_14 733         /*!< Id of the fourteenth room. */
+#define ROOM_15 123         /*!< Id of the fifteenth room. */
+#define ROOM_16 131         /*!< Id of the sixteenth room. */
+#define ROOM_17 132         /*!< Id of the seventeenth room. */
 #define COMPLETION_ROOMS 17 /*!< Number of rooms to reach completion. */
 
 #include <stdio.h>
@@ -641,6 +641,10 @@ Status gamerules_lever_challenge(Game *game, Gamerule *gr)
 
             /*Stops the timer.*/
             gamerules_increment_has_exec(gr);
+
+            /*Sets other value so  that the gamerule stops cheching this.*/
+            gamerules_set_value(gr, -1);
+
             return OK;
         }
 

@@ -187,12 +187,10 @@ void game_actions_map(Game *game);
 /**
  * @brief It shows up the help place
  * @author Fernando Mijangos
- * 
+ *
  * @param game
  */
 void game_actions_help(Game *game);
-
-
 
 /*
     Game actions implementation.
@@ -418,7 +416,7 @@ void game_actions_take(Game *game)
 {
     Player *player = NULL;
     Space *space = NULL;
-    Id object = NO_ID;
+    Id object = NO_ID, dependency = NO_ID;
 
     /*Error management.*/
     if (!game)
@@ -449,6 +447,16 @@ void game_actions_take(Game *game)
         return;
     }
 
+    /*1.3.-Checks the object dependency.*/
+    if ((dependency = object_get_dependency(game_get_object(game, object))) > NO_ID)
+    {
+        if (!player_has_object(player, dependency))
+        {
+            command_set_status(game_get_last_command(game), ERROR);
+            return;
+        }
+    }
+
     /*3-Player takes the object and error management.*/
     if (!player_add_object(player, object))
     {
@@ -471,6 +479,7 @@ void game_actions_drop(Game *game)
     Player *player = NULL;
     Space *space = NULL;
     Id object = NO_ID;
+    Object *p_object = NULL;
 
     /*Error management.*/
     if (!game)
@@ -494,14 +503,14 @@ void game_actions_drop(Game *game)
     }
     player = game_get_actual_player(game);
 
-    /*2-Checks if the player hasn't got an object.*/
+    /*2-Checks if the player hasn't got the object.*/
     if (player_has_object(player, object) == FALSE)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
-    /*3-The player drops his object.*/
+    /*3-The player drops his object and all the ones which depended of it.*/
     if (player_del_object(player, object) == ERROR)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -512,6 +521,13 @@ void game_actions_drop(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
+    p_object = game_get_object(game, object);
+    if (!p_object)
+    {
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
+    }
+    game_drop_all_dependant(game, p_object, player);
 
     /*4-Clean exit.*/
     command_set_status(game_get_last_command(game), OK);

@@ -786,4 +786,15 @@ Status game_unfollow_all(Game *game);
  */
 Status game_vanish_object(Game *game, Id object);
 
+/**
+ * @brief makes the player, drop all the objects in his inventory dependent on another object.
+ * @author Saul López Romero
+ *
+ * @param game Pointer to the game.
+ * @param object Pointer to the object.
+ * @param player Pointer to the player.
+ * @return OK if everything went well, ERROR otherwise.
+ */
+Status game_drop_all_dependant(Game *game, Object *object, Player *player);
+
 #endif

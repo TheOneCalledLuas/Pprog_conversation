@@ -1492,3 +1492,35 @@ Status game_vanish_object(Game *game, Id object)
     /*If it doesn't find it, returns ERROR.*/
     return ERROR;
 }
+
+Status game_drop_all_dependant(Game *game, Object *object, Player *player)
+{
+    Space *space = NULL;
+    int i = 0;
+    /*Error management.*/
+    if (!game || !object || !player)
+    {
+        return ERROR;
+    }
+
+    /*Gets the space.*/
+    space = game_get_space(game, player_get_player_location(player));
+
+    /*Drops all the objects that depend on the object given.*/
+    for (i = 0; i < game->n_objects; i++)
+    {
+        if (object_get_dependency(game->objects[i]) == object_get_id(object))
+        {
+            /*Checks if the player has it.*/
+            if (player_has_object(player, object_get_id(game->objects[i])))
+            {
+                /*If it has it, drops it.*/
+                player_del_object(player, object_get_id(game->objects[i]));
+                space_add_object(space, object_get_id(game->objects[i]));
+            }
+        }
+    }
+
+    /*Clean exit*/
+    return OK;
+}
