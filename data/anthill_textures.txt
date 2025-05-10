@@ -341,7 +341,7 @@ EXTRA el caracter '&' actua como caracter transparente
 #o:225
 &&&&&&&&&
 &&&_()&&&
-&&(___)&
+&&(___)&&
 &(_____)&
 &&&&&&&&&
 
