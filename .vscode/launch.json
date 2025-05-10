@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["data/anthill.dat","-l", "./log/output.log"],
+            "args": ["data/anthill.dat","-l", "./log/output.log", "-d"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],

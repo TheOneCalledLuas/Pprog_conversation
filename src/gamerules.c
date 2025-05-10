@@ -24,7 +24,7 @@
 #define LEVER_1_ID 217                /*!< Id of the first lever.*/
 #define LEVER_2_ID 218                /*!< Id of the second lever.*/
 #define LINK_LEVER_1 411              /*!< Id of the link between the first lever and the second one.*/
-#define LINK_LEVER_2 412              /*!< Id of the link for the second lever.*/
+#define LINK_LEVER_2 451              /*!< Id of the link for the second lever.*/
 #define MAX_TURNS_LEVER 4             /*!< Max turns for the lever to be activated.*/
 #define DINAMITE_ID 216               /*!< Id of the dynamite.*/
 #define VICTIM_ID 66                  /*!< Id of the victim of the lever task.*/
@@ -600,11 +600,13 @@ Status gamerules_lever_challenge(Game *game, Gamerule *gr)
         {
             /*The first lever was used, we open the link.*/
             link_set_state(game_find_link(game, LINK_LEVER_1), TRUE);
+            object_set_is_used(game_get_object(game, LEVER_1_ID), FALSE);
         }
         if (lever_2)
         {
             /*The second lever was used, we open the link.*/
             link_set_state(game_find_link(game, LINK_LEVER_2), TRUE);
+            object_set_is_used(game_get_object(game, LEVER_2_ID), FALSE);
         }
         if (lever_1 && lever_2)
         {
