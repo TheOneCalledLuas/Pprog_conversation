@@ -135,4 +135,5 @@ a arachne
 a arachne
 m n
 m u
+s
 use artifact over Merchant

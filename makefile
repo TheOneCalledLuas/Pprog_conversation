@@ -199,6 +199,7 @@ run_cmd_check:
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log < game1.cmd
 
 make run_autotutorial:
-	mkfifo pipe
-	(cat tutorial.cmd; cat) > pipe &
-	./anthill data/anthill.dat -l ./log/output.log -d  < pipe
+	./anthill data/anthill.dat -l ./log/output.log -d < tutorial.cmd
+
+make run_autogame:
+	./anthill data/anthill.dat -l ./log/output.log -d < Test_all_things.cmd
