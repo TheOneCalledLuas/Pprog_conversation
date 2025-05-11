@@ -62,9 +62,9 @@
 #define CHARACTER_STARTING_COLUMN_TWO 12      /*!<Column where the characters start to get printed*/
 #define CHARACTER_VARIANCE_POSITION_COLUM 2   /*!<Variance of the position in a colum where a character is printed when there are several*/
 #define CHARACTER_VARIANCE_POSITION_ROW 5     /*!<Variance of the position in a row where a character is printed when there are several*/
-#define MAX_CHARACTERS_PER_ROOM 4             /*!MAximum number of characters that can be printed in a room*/ 
+#define MAX_CHARACTERS_PER_ROOM 4             /*!<MAximum number of characters that can be printed in a room*/
 
-#define MAX_ID 999   /*Max id of a space that can be printed in the map area*/
+#define MAX_ID 999   /*!<Max id of a space that can be printed in the map area*/
 #define NO_HEALTH 0  /*!<No health value*/
 #define FIRST_CHAR 0 /*!<Position number 0 of a string, used to intitialize things*/
 /**
@@ -688,7 +688,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 return;
             }
             /*For each character, it gets its texture line by line and puts it where it belongs*/
-            for (i = 0; i < space_get_n_characters(space_act) && i<MAX_CHARACTERS_PER_ROOM; i++)
+            for (i = 0; i < space_get_n_characters(space_act) && i < MAX_CHARACTERS_PER_ROOM; i++)
             {
                 if (characters[i] != NO_ID && characters[i] != ID_ERROR)
                 {
@@ -837,7 +837,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 }
                 if (id_aux != NO_ID)
                 {
-                    if (character_get_health(game_get_character(game, id_aux)) > NO_HEALTH && character_get_friendly(game_get_character(game, id_aux))==TRUE)
+                    if (character_get_health(game_get_character(game, id_aux)) > NO_HEALTH && character_get_friendly(game_get_character(game, id_aux)) == TRUE)
                     {
                         screen_area_puts(ge->descript, " ");
                         sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));

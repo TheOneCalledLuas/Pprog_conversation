@@ -81,7 +81,9 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a16a96ed8541bcd1c51127936438720f2}{CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+COLUM}}~2
 \item 
-\#define \mbox{\hyperlink{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14}{CHATEACTE\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW}}~5
+\#define \mbox{\hyperlink{graphic__engine_8c_ac5532694a87ec8f19d0b32b29ceba59f}{CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW}}~5
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_abb18510e6f82e4c8febc42f1d3bc8f1b}{MAX\+\_\+\+CHARACTERS\+\_\+\+PER\+\_\+\+ROOM}}~4
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4}{MAX\+\_\+\+ID}}~999
 \item 
@@ -207,19 +209,19 @@ Row where the characters start to get printed if there are less than three \Hype
 \doxysubsubsection{\texorpdfstring{CHARACTER\_VARIANCE\_POSITION\_COLUM}{CHARACTER\_VARIANCE\_POSITION\_COLUM}}
 {\footnotesize\ttfamily \#define CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+COLUM~2}
 
-Variance of the position in a colum where a character is printed when there are several \Hypertarget{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653}\label{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653} 
+Variance of the position in a colum where a character is printed when there are several \Hypertarget{graphic__engine_8c_ac5532694a87ec8f19d0b32b29ceba59f}\label{graphic__engine_8c_ac5532694a87ec8f19d0b32b29ceba59f} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTER\_VARIANCE\_POSITION\_ROW@{CHARACTER\_VARIANCE\_POSITION\_ROW}}
+\index{CHARACTER\_VARIANCE\_POSITION\_ROW@{CHARACTER\_VARIANCE\_POSITION\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_VARIANCE\_POSITION\_ROW}{CHARACTER\_VARIANCE\_POSITION\_ROW}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW~5}
+
+Variance of the position in a row where a character is printed when there are several \Hypertarget{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653}\label{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653} 
 \index{graphic\_engine.c@{graphic\_engine.c}!CHARACTERS\_PER\_ZONE@{CHARACTERS\_PER\_ZONE}}
 \index{CHARACTERS\_PER\_ZONE@{CHARACTERS\_PER\_ZONE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{CHARACTERS\_PER\_ZONE}{CHARACTERS\_PER\_ZONE}}
 {\footnotesize\ttfamily \#define CHARACTERS\+\_\+\+PER\+\_\+\+ZONE~3}
 
-Number of characters that can be printed in a zone \Hypertarget{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14}\label{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14} 
-\index{graphic\_engine.c@{graphic\_engine.c}!CHATEACTE\_VARIANCE\_POSITION\_ROW@{CHATEACTE\_VARIANCE\_POSITION\_ROW}}
-\index{CHATEACTE\_VARIANCE\_POSITION\_ROW@{CHATEACTE\_VARIANCE\_POSITION\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
-\doxysubsubsection{\texorpdfstring{CHATEACTE\_VARIANCE\_POSITION\_ROW}{CHATEACTE\_VARIANCE\_POSITION\_ROW}}
-{\footnotesize\ttfamily \#define CHATEACTE\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW~5}
-
-Variance of the position in a row where a character is printed when there are several \Hypertarget{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}\label{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2} 
+Number of characters that can be printed in a zone \Hypertarget{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}\label{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2} 
 \index{graphic\_engine.c@{graphic\_engine.c}!END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}}
 \index{END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{END\_TUTORIAL\_ROOM}{END\_TUTORIAL\_ROOM}}
@@ -285,7 +287,13 @@ Number of columns in the map \Hypertarget{graphic__engine_8c_abeb9c94c1e5b0cb6b5
 \doxysubsubsection{\texorpdfstring{MAP\_ROWS}{MAP\_ROWS}}
 {\footnotesize\ttfamily \#define MAP\+\_\+\+ROWS~3}
 
-Number of rows in the map \Hypertarget{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4}\label{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4} 
+Number of rows in the map \Hypertarget{graphic__engine_8c_abb18510e6f82e4c8febc42f1d3bc8f1b}\label{graphic__engine_8c_abb18510e6f82e4c8febc42f1d3bc8f1b} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MAX\_CHARACTERS\_PER\_ROOM@{MAX\_CHARACTERS\_PER\_ROOM}}
+\index{MAX\_CHARACTERS\_PER\_ROOM@{MAX\_CHARACTERS\_PER\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_CHARACTERS\_PER\_ROOM}{MAX\_CHARACTERS\_PER\_ROOM}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+CHARACTERS\+\_\+\+PER\+\_\+\+ROOM~4}
+
+MAximum number of characters that can be printed in a room \Hypertarget{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4}\label{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4} 
 \index{graphic\_engine.c@{graphic\_engine.c}!MAX\_ID@{MAX\_ID}}
 \index{MAX\_ID@{MAX\_ID}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_ID}{MAX\_ID}}
