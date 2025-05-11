@@ -495,6 +495,9 @@ Status gamerules_use_train_pass(Game *game, Gamerule *gr)
         /*Attempts to move the pass out of the inventory.*/
         player_del_object(game_get_actual_player(game), pass_id);
 
+        /*Runs the animation*/
+        animation_run(game_get_animation_manager(game), 17);
+
         /*Actualises the gamerule.*/
         gamerules_increment_has_exec(gr);
         return OK;
