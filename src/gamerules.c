@@ -54,6 +54,7 @@
 #define ANIMATION_MERCHANT_ENDING_2 6 /*!< Animation for the merchant good ending. */
 #define PLAYER_DEAD 2                 /*!< Animation for the player dead. */
 #define FIRST_ANIMATION 4             /*!< Animation for the first action. */
+#define TRAIN_ANIM 7                  /*!< Animation for the train. */
 
 /*The following IDS are the ids of the rooms to reach completion.*/
 #define ROOM_1 711          /*!< Id of the first room. */
@@ -494,6 +495,9 @@ Status gamerules_use_train_pass(Game *game, Gamerule *gr)
 
         /*Attempts to move the pass out of the inventory.*/
         player_del_object(game_get_actual_player(game), pass_id);
+
+        /*We run the animation.*/
+        animation_run(game_get_animation_manager(game), TRAIN_ANIM);
 
         /*Actualises the gamerule.*/
         gamerules_increment_has_exec(gr);

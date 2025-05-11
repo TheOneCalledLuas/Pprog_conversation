@@ -485,7 +485,7 @@ void test1_space_get_character()
     Space *s = NULL;
     s = space_create(5);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_get_character(s) == NO_ID);
+    PRINT_TEST_RESULT(space_find_character(s, 5) == NO_ID);
     /*Frees the memory.*/
     space_destroy(s);
 }
@@ -495,9 +495,9 @@ void test2_space_get_character()
     /*Creates the space.*/
     Space *s = NULL;
     s = space_create(5);
-    space_set_character(s, 5);
+    space_add_character(s, 5);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_get_character(s) == 5);
+    PRINT_TEST_RESULT(space_find_character(s, 5) != -1);
     /*Frees the memory.*/
     space_destroy(s);
 }
@@ -506,7 +506,7 @@ void test3_space_get_character()
 {
     Space *s = NULL;
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_get_character(s) == ID_ERROR);
+    PRINT_TEST_RESULT(space_get_characters(s) == NULL);
 }
 
 void test4_space_get_character()
@@ -514,9 +514,9 @@ void test4_space_get_character()
     /*Creates the space.*/
     Space *s = NULL;
     s = space_create(5);
-    space_set_character(s, 3);
+    space_add_character(s, 3);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_get_character(s) == 3);
+    PRINT_TEST_RESULT(space_find_character(s, 3) != -1);
     /*Frees the memory.*/
     space_destroy(s);
 }
@@ -527,7 +527,7 @@ void test1_space_set_character()
     Space *s = NULL;
     s = space_create(5);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_set_character(s, NO_ID) == OK);
+    PRINT_TEST_RESULT(space_find_character(s, NO_ID) == -1);
     /*Frees the memory.*/
     space_destroy(s);
 }
@@ -536,7 +536,7 @@ void test2_space_set_character()
 {
     Space *s = NULL;
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_set_character(s, 5) == ERROR);
+    PRINT_TEST_RESULT(space_add_character(s, 5) == ERROR);
 }
 
 void test3_space_set_character()
@@ -545,7 +545,7 @@ void test3_space_set_character()
     Space *s = NULL;
     s = space_create(5);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_set_character(s, 5) == OK);
+    PRINT_TEST_RESULT(space_add_character(s, 5) == OK);
     /*Frees the memory.*/
     space_destroy(s);
 }
@@ -556,7 +556,7 @@ void test4_space_set_character()
     Space *s = NULL;
     s = space_create(5);
     /*Checks what is needed.*/
-    PRINT_TEST_RESULT(space_set_character(s, ID_ERROR) == ERROR);
+    PRINT_TEST_RESULT(space_add_character(s, ID_ERROR) == ERROR);
     /*Frees the memory.*/
     space_destroy(s);
 }
