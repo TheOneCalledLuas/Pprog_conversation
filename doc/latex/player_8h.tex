@@ -76,7 +76,7 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_a00cd7a095538830ae4f0
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{player_8h_a2bc150d1066f143612fc0ab7654911ba}{player\+\_\+get\+\_\+player\+\_\+location}} (\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em It gets the player location id. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_add3847b806a897ecb0069b267a23397d}{player\+\_\+get\+\_\+inventory}} (\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player)
-\begin{DoxyCompactList}\small\item\em It gets the id of the object the player has. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It gets an allocated array of ids of the objects the player has. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{player_8h_adc37044dd10f828fd54b27c8e088f4e7}{player\+\_\+get\+\_\+health}} (\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em Gets the amount of health the player has. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{player_8h_a6cebe2ad51da9f7a3af1b4c4e4a13668}{player\+\_\+has\+\_\+object}} (\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} object)
@@ -273,7 +273,7 @@ amount of health, -\/1 if an error takes place.
 
 
 
-It gets the id of the object the player has. 
+It gets an allocated array of ids of the objects the player has. 
 
 \begin{DoxyAuthor}{Author}
 Fernando Mijangos
@@ -284,8 +284,11 @@ Fernando Mijangos
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Id of the object the player has. 
+Array of ids of the obejcts the player has. 
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+IMPORTANT, you have to free the memory after using this 
+\end{DoxyNote}
 \Hypertarget{player_8h_a3a699c541dc8924c72d31593764e4772}\label{player_8h_a3a699c541dc8924c72d31593764e4772} 
 \index{player.h@{player.h}!player\_get\_inventory\_capacity@{player\_get\_inventory\_capacity}}
 \index{player\_get\_inventory\_capacity@{player\_get\_inventory\_capacity}!player.h@{player.h}}

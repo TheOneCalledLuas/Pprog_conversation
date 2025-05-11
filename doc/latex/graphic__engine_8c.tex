@@ -13,9 +13,11 @@ It implements a textual graphic engine.
 {\ttfamily \#include "{}set.\+h"{}}\newline
 {\ttfamily \#include "{}types.\+h"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$strings.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-Include dependency graph for graphic\+\_\+engine.\+c\+:\nopagebreak
+Include dependency graph for graphic\+\_\+engine.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,6 +50,10 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a4231e3c06e2b46e4681d7254aa4dd303}{WIDTH\+\_\+\+SPACE}}~21
 \item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ac982997e3ab37d5be0800f24be731a8c}{TRAIN\+\_\+\+ROOM}}~25
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}{END\+\_\+\+TUTORIAL\+\_\+\+ROOM}}~111
+\item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a13be888792778f0d468152138531d586}{STARING\+\_\+\+POINT}}~1
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e}{PLAYER\+\_\+\+LENGTH}}~7
@@ -57,6 +63,8 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \#define \mbox{\hyperlink{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}{LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS}}~2
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}{EXTRA\+\_\+\+LINE}}~1
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ae32812dd02476b8d30d33de490856e53}{EXTRA\+\_\+\+SPACE}}~4
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3}{NO\+\_\+\+SPACE}}~0
 \end{DoxyCompactItemize}
@@ -132,13 +140,25 @@ GNU Public License.
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}\label{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e} 
+\Hypertarget{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}\label{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2} 
+\index{graphic\_engine.c@{graphic\_engine.c}!END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}}
+\index{END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{END\_TUTORIAL\_ROOM}{END\_TUTORIAL\_ROOM}}
+{\footnotesize\ttfamily \#define END\+\_\+\+TUTORIAL\+\_\+\+ROOM~111}
+
+Room where you end the tutorial \Hypertarget{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e}\label{graphic__engine_8c_a9d97432ee1f6f95594dc9d4844f1525e} 
 \index{graphic\_engine.c@{graphic\_engine.c}!EXTRA\_LINE@{EXTRA\_LINE}}
 \index{EXTRA\_LINE@{EXTRA\_LINE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{EXTRA\_LINE}{EXTRA\_LINE}}
 {\footnotesize\ttfamily \#define EXTRA\+\_\+\+LINE~1}
 
-Number of extra lines beetween elements of the ge. \Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
+Number of extra lines beetween elements of the ge. \Hypertarget{graphic__engine_8c_ae32812dd02476b8d30d33de490856e53}\label{graphic__engine_8c_ae32812dd02476b8d30d33de490856e53} 
+\index{graphic\_engine.c@{graphic\_engine.c}!EXTRA\_SPACE@{EXTRA\_SPACE}}
+\index{EXTRA\_SPACE@{EXTRA\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{EXTRA\_SPACE}{EXTRA\_SPACE}}
+{\footnotesize\ttfamily \#define EXTRA\+\_\+\+SPACE~4}
+
+Number of extra spaces bettween the object and its description in the bag \Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
 \index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_BAN@{HEIGHT\_BAN}}
 \index{HEIGHT\_BAN@{HEIGHT\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{HEIGHT\_BAN}{HEIGHT\_BAN}}
@@ -198,7 +218,13 @@ The amount of charactes the icon for tha player occupies. \Hypertarget{graphic__
 \doxysubsubsection{\texorpdfstring{STARING\_POINT}{STARING\_POINT}}
 {\footnotesize\ttfamily \#define STARING\+\_\+\+POINT~1}
 
-Space height. Start of the gap when placed. \Hypertarget{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf}\label{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf} 
+Space height. Start of the gap when placed. \Hypertarget{graphic__engine_8c_ac982997e3ab37d5be0800f24be731a8c}\label{graphic__engine_8c_ac982997e3ab37d5be0800f24be731a8c} 
+\index{graphic\_engine.c@{graphic\_engine.c}!TRAIN\_ROOM@{TRAIN\_ROOM}}
+\index{TRAIN\_ROOM@{TRAIN\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{TRAIN\_ROOM}{TRAIN\_ROOM}}
+{\footnotesize\ttfamily \#define TRAIN\+\_\+\+ROOM~25}
+
+Room where the train is. \Hypertarget{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf}\label{graphic__engine_8c_a97de83fefb8df621ae70e3e34ad308cf} 
 \index{graphic\_engine.c@{graphic\_engine.c}!WIDTH\_BAN@{WIDTH\_BAN}}
 \index{WIDTH\_BAN@{WIDTH\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{WIDTH\_BAN}{WIDTH\_BAN}}

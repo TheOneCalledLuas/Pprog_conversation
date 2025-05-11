@@ -36,6 +36,8 @@ Include dependency graph for game\+\_\+actions.\+c\+:\nopagebreak
 \#define \mbox{\hyperlink{game__actions_8c_a715c6b7045a6431702aace89ccdf9ad0}{N\+\_\+\+DIRECTIONS}}~6
 \item 
 \#define \mbox{\hyperlink{game__actions_8c_a80069636d5272c3e8faa89f450700175}{N\+\_\+\+VARIATIONS}}~2
+\item 
+\#define \mbox{\hyperlink{game__actions_8c_ad5445fbf8ff35feb903c5ea59955fe40}{DEAD\+\_\+\+ANIMATION}}~2
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -74,8 +76,12 @@ void \mbox{\hyperlink{game__actions_8c_a2a06ee84e22237e1b750c1f28114493c}{game\+
 \begin{DoxyCompactList}\small\item\em Action to be executed when coop command is given. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__actions_8c_a68eff16361fb2dfa2067d972bd109d72}{game\+\_\+actions\+\_\+uncoop}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Action to be executed when coop command is given. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}{random\+\_\+int}} (int start, int end)
-\begin{DoxyCompactList}\small\item\em Returns a random number in a range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_add0c151db732a03aba3fcf353d7769b7}{game\+\_\+actions\+\_\+bag}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em IT shows up your inventory inside the map section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_adec562399f82b9adff6fd11df36839e8}{game\+\_\+actions\+\_\+map}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em It shows up the map in the map section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__actions_8c_ab14b82ab03a3d41ccb06c47bb23930d1}{game\+\_\+actions\+\_\+help}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em It shows up the help place. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__actions_8c_a0693694a3e70b4a4129e2da4ddb1f1a7}{game\+\_\+actions\+\_\+update}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command}} \texorpdfstring{$\ast$}{*}command)
 \begin{DoxyCompactList}\small\item\em It changes the player location space, or other things depending on the command entered. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -110,7 +116,13 @@ Chances to attack. \Hypertarget{game__actions_8c_a1dd81749117c3dc713a1fd487647f6
 \doxysubsubsection{\texorpdfstring{DAMAGE\_DEALT}{DAMAGE\_DEALT}}
 {\footnotesize\ttfamily \#define DAMAGE\+\_\+\+DEALT~1}
 
-Amount of health the entity losses when hurt. \Hypertarget{game__actions_8c_a36df6f396287daf8f889751934e4856c}\label{game__actions_8c_a36df6f396287daf8f889751934e4856c} 
+Amount of health the entity losses when hurt. \Hypertarget{game__actions_8c_ad5445fbf8ff35feb903c5ea59955fe40}\label{game__actions_8c_ad5445fbf8ff35feb903c5ea59955fe40} 
+\index{game\_actions.c@{game\_actions.c}!DEAD\_ANIMATION@{DEAD\_ANIMATION}}
+\index{DEAD\_ANIMATION@{DEAD\_ANIMATION}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{DEAD\_ANIMATION}{DEAD\_ANIMATION}}
+{\footnotesize\ttfamily \#define DEAD\+\_\+\+ANIMATION~2}
+
+Animation for the player dead. \Hypertarget{game__actions_8c_a36df6f396287daf8f889751934e4856c}\label{game__actions_8c_a36df6f396287daf8f889751934e4856c} 
 \index{game\_actions.c@{game\_actions.c}!MIN\_HEALTH@{MIN\_HEALTH}}
 \index{MIN\_HEALTH@{MIN\_HEALTH}!game\_actions.c@{game\_actions.c}}
 \doxysubsubsection{\texorpdfstring{MIN\_HEALTH}{MIN\_HEALTH}}
@@ -171,6 +183,24 @@ Saul López Romero
 
 \begin{DoxyParams}{Parameters}
 {\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_add0c151db732a03aba3fcf353d7769b7}\label{game__actions_8c_add0c151db732a03aba3fcf353d7769b7} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_bag@{game\_actions\_bag}}
+\index{game\_actions\_bag@{game\_actions\_bag}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_bag()}{game\_actions\_bag()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+bag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+IT shows up your inventory inside the map section. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
 \hline
 \end{DoxyParams}
 \Hypertarget{game__actions_8c_af712cf743e59ba4c75c95c1bae96a6c9}\label{game__actions_8c_af712cf743e59ba4c75c95c1bae96a6c9} 
@@ -245,6 +275,24 @@ Profesores PProg.
 {\em game} & Pointer to the game structure. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{game__actions_8c_ab14b82ab03a3d41ccb06c47bb23930d1}\label{game__actions_8c_ab14b82ab03a3d41ccb06c47bb23930d1} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_help@{game\_actions\_help}}
+\index{game\_actions\_help@{game\_actions\_help}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_help()}{game\_actions\_help()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+help (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+It shows up the help place. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
 \Hypertarget{game__actions_8c_aba91c42bed50e457b994452bfd717e5d}\label{game__actions_8c_aba91c42bed50e457b994452bfd717e5d} 
 \index{game\_actions.c@{game\_actions.c}!game\_actions\_inspect@{game\_actions\_inspect}}
 \index{game\_actions\_inspect@{game\_actions\_inspect}!game\_actions.c@{game\_actions.c}}
@@ -261,6 +309,24 @@ Saul López Romero
 
 \begin{DoxyParams}{Parameters}
 {\em game} & Pointer to the game structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game__actions_8c_adec562399f82b9adff6fd11df36839e8}\label{game__actions_8c_adec562399f82b9adff6fd11df36839e8} 
+\index{game\_actions.c@{game\_actions.c}!game\_actions\_map@{game\_actions\_map}}
+\index{game\_actions\_map@{game\_actions\_map}!game\_actions.c@{game\_actions.c}}
+\doxysubsubsection{\texorpdfstring{game\_actions\_map()}{game\_actions\_map()}}
+{\footnotesize\ttfamily void game\+\_\+actions\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+It shows up the map in the map section. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
 \hline
 \end{DoxyParams}
 \Hypertarget{game__actions_8c_a22ed2c729dd327e02fa4d40e093ba4bf}\label{game__actions_8c_a22ed2c729dd327e02fa4d40e093ba4bf} 
@@ -310,7 +376,7 @@ Fernando Mijangos.
 Action to be executed when exit is given. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PProg.
+Saul Lopez.
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -466,26 +532,3 @@ Saul López Romero
 {\em game} & Pointer to the game structure. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab}\label{game__actions_8c_a3d4c13b7cc2fb056ec159f82df4e77ab} 
-\index{game\_actions.c@{game\_actions.c}!random\_int@{random\_int}}
-\index{random\_int@{random\_int}!game\_actions.c@{game\_actions.c}}
-\doxysubsubsection{\texorpdfstring{random\_int()}{random\_int()}}
-{\footnotesize\ttfamily int random\+\_\+int (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
-
-
-
-Returns a random number in a range. 
-
-\begin{DoxyAuthor}{Author}
-Saul López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em start} & First number of the range. \\
-\hline
-{\em end} & Last number in the range. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Random int number in the range. 
-\end{DoxyReturn}

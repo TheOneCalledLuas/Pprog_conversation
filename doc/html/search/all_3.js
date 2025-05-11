@@ -38,7 +38,7 @@ var searchData=
   ['command_35',['Command',['../command_8h.html#a7d2935971c252377cb0fc1c8545dc2bc',1,'command.h']]],
   ['command_2ec_36',['command.c',['../command_8c.html',1,'']]],
   ['command_2eh_37',['command.h',['../command_8h.html',1,'']]],
-  ['command_5fcreate_38',['command_create',['../command_8c.html#aa3d3d6bdeb73c7bbaff6ee913569f456',1,'command_create():&#160;command.c'],['../command_8h.html#aa3d3d6bdeb73c7bbaff6ee913569f456',1,'command_create():&#160;command.c']]],
+  ['command_5fcreate_38',['command_create',['../command_8h.html#aa3d3d6bdeb73c7bbaff6ee913569f456',1,'command_create():&#160;command.c'],['../command_8c.html#aa3d3d6bdeb73c7bbaff6ee913569f456',1,'command_create():&#160;command.c']]],
   ['command_5fdestroy_39',['command_destroy',['../command_8h.html#abfb6dbf1977dc1a9a6136baefd91b451',1,'command_destroy(Command *command):&#160;command.c'],['../command_8c.html#abfb6dbf1977dc1a9a6136baefd91b451',1,'command_destroy(Command *command):&#160;command.c']]],
   ['command_5fget_5fargument_40',['command_get_argument',['../command_8h.html#a6fe27055884fb7856f863f11a85b479b',1,'command_get_argument(Command *command, int number):&#160;command.c'],['../command_8c.html#af3e5f01ffec72a60fbbf0b638299a4d8',1,'command_get_argument(Command *command, int position):&#160;command.c']]],
   ['command_5fget_5fcode_41',['command_get_code',['../command_8h.html#a2206702025ffe5340d172decb4ceea52',1,'command_get_code(Command *command):&#160;command.c'],['../command_8c.html#a2206702025ffe5340d172decb4ceea52',1,'command_get_code(Command *command):&#160;command.c']]],
@@ -54,11 +54,12 @@ var searchData=
   ['commands_51',['commands',['../struct__Game.html#af92f329cddb12581d3ba60cbd5568a6f',1,'_Game']]],
   ['commands_5fsaved_52',['COMMANDS_SAVED',['../game_8h.html#a7e982545c2556ce0318c9bbfc19c8b42',1,'game.h']]],
   ['commandtype_53',['CommandType',['../command_8h.html#a21e038f5b8958e203d28bc4f18472352',1,'command.h']]],
-  ['content_54',['content',['../struct__Set.html#a4e659e218311fcf9f6306044ab5775f5',1,'_Set']]],
-  ['coop_55',['COOP',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2af4306af1972d5a780d56e269ed29c9d6',1,'command.h']]],
-  ['create_56',['CREATE',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa473b49382a20dcc5b0ee10ddbc6338b4',1,'game_loop.c']]],
-  ['current_5fsavefile_57',['current_savefile',['../struct__Game.html#a1e22ebad77c62e516c9be485282fd5b2',1,'_Game']]],
-  ['cursor_58',['cursor',['../struct__Area.html#aa042b0549789b75fd133b67ad7d0fd9d',1,'_Area']]],
-  ['cyan_5ff_59',['CYAN_F',['../animation_8c.html#aaa5e9b8d9005c0c216c44a35f42c7f6b',1,'animation.c']]],
-  ['cyan_5ft_60',['CYAN_T',['../animation_8c.html#a7cb807f796eaf4fe84b51aa7e379afd6',1,'animation.c']]]
+  ['completion_5frooms_54',['COMPLETION_ROOMS',['../gamerules_8c.html#aaf45d2f344add04094b10c31dc482fec',1,'gamerules.c']]],
+  ['content_55',['content',['../struct__Set.html#a4e659e218311fcf9f6306044ab5775f5',1,'_Set']]],
+  ['coop_56',['COOP',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2af4306af1972d5a780d56e269ed29c9d6',1,'command.h']]],
+  ['create_57',['CREATE',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa473b49382a20dcc5b0ee10ddbc6338b4',1,'game_loop.c']]],
+  ['current_5fsavefile_58',['current_savefile',['../struct__Game.html#a1e22ebad77c62e516c9be485282fd5b2',1,'_Game']]],
+  ['cursor_59',['cursor',['../struct__Area.html#aa042b0549789b75fd133b67ad7d0fd9d',1,'_Area']]],
+  ['cyan_5ff_60',['CYAN_F',['../animation_8c.html#aaa5e9b8d9005c0c216c44a35f42c7f6b',1,'animation.c']]],
+  ['cyan_5ft_61',['CYAN_T',['../animation_8c.html#a7cb807f796eaf4fe84b51aa7e379afd6',1,'animation.c']]]
 ];

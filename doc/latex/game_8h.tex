@@ -61,16 +61,14 @@ typedef struct \mbox{\hyperlink{struct__Game}{\+\_\+\+Game}} \mbox{\hyperlink{ga
 \begin{DoxyCompactList}\small\item\em Returns the animation manager. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{game_8h_a766d8e002bfa53abd73443ff56e07f5b}{game\+\_\+get\+\_\+n\+\_\+teams}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Returns the number of teams. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a5820bdef61e9f79a833846b3fa249437}{game\+\_\+set\+\_\+player\+\_\+to\+\_\+team}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} player)
-\begin{DoxyCompactList}\small\item\em Sets the id of the player who is asked to team. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{game_8h_afcd96c324a83cb791391fc1437863c60}{game\+\_\+get\+\_\+player\+\_\+to\+\_\+team}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Returns the id of the player who is asked to team. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a89bfe562ba506faedd3b7e278643c0c7}{game\+\_\+set\+\_\+determined}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} is\+\_\+determined)
+\begin{DoxyCompactList}\small\item\em Sets if the game is determined. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{game_8h_a3a06936f95009cbd8df406be787ab051}{game\+\_\+get\+\_\+determined}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets if the game is determined. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8h_a50989f80d8a9ad7ae8786f08f74dcc33}{game\+\_\+random\+\_\+int}} (int start, int end)
+\begin{DoxyCompactList}\small\item\em Returns a random number in a range. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a5a7693c43921c0e02158911c61c69d79}{game\+\_\+set\+\_\+n\+\_\+teams}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, int n\+\_\+teams)
 \begin{DoxyCompactList}\small\item\em Sets the number of teams. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{game_8h_ac6041dc7caadf47bfe5760bcc91d73ba}{game\+\_\+get\+\_\+team\+\_\+request}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
-\begin{DoxyCompactList}\small\item\em Returns the id of the player who asked to team. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_afb52f0c9200cbfc1dd7e7851bcc23fa2}{game\+\_\+set\+\_\+team\+\_\+request}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
-\begin{DoxyCompactList}\small\item\em Sets the id of the player who asked to team. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_ab4ef2f28633536aa32697ae3fb154386}{game\+\_\+create\+\_\+team}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} player\+\_\+leader, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} player\+\_\+member)
 \begin{DoxyCompactList}\small\item\em Creates a team with two players, the id of the team will be the id of the leader one. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_aa3243b126d9af9195774e10ceae847d3}{game\+\_\+destroy\+\_\+team}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} player)
@@ -206,7 +204,13 @@ char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8h_ace864d62c57e1d8c726ef5
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_aec77f87747eca7f62c5950bbc1886038}{game\+\_\+set\+\_\+current\+\_\+savefile}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}name)
 \begin{DoxyCompactList}\small\item\em It sets the name of the current savefile to what you want. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a01a362300ebfd4c3e45f051fba3edf25}{game\+\_\+move\+\_\+all\+\_\+players}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} room)
-\begin{DoxyCompactList}\small\item\em It moves all the players to a room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em It moves all the players to a room. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a99b61588d97036ab8783a57c188d66ca}{game\+\_\+unfollow\+\_\+all}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Gets all the character to unfollow. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_a851fca9c6aa268a62fc9cf8f9162bc5c}{game\+\_\+vanish\+\_\+object}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} object)
+\begin{DoxyCompactList}\small\item\em Vanishes an object from the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8h_acbb7d9355cdc338fbe061a5e23cfb565}{game\+\_\+drop\+\_\+all\+\_\+dependant}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em makes the player, drop all the objects in his inventory dependent on another object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -617,6 +621,31 @@ Saúl López Romero
 \begin{DoxyReturn}{Returns}
 OK for a clean exit, otherwise ERROR. 
 \end{DoxyReturn}
+\Hypertarget{game_8h_acbb7d9355cdc338fbe061a5e23cfb565}\label{game_8h_acbb7d9355cdc338fbe061a5e23cfb565} 
+\index{game.h@{game.h}!game\_drop\_all\_dependant@{game\_drop\_all\_dependant}}
+\index{game\_drop\_all\_dependant@{game\_drop\_all\_dependant}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_drop\_all\_dependant()}{game\_drop\_all\_dependant()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+drop\+\_\+all\+\_\+dependant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{\mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+makes the player, drop all the objects in his inventory dependent on another object. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em object} & Pointer to the object. \\
+\hline
+{\em player} & Pointer to the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
 \Hypertarget{game_8h_a94b9cec4efb057e7eb0d3ff637ca5a18}\label{game_8h_a94b9cec4efb057e7eb0d3ff637ca5a18} 
 \index{game.h@{game.h}!game\_find\_link@{game\_find\_link}}
 \index{game\_find\_link@{game\_find\_link}!game.h@{game.h}}
@@ -792,6 +821,27 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Pointer to the name of the current savefile, NULL if ERROR 
+\end{DoxyReturn}
+\Hypertarget{game_8h_a3a06936f95009cbd8df406be787ab051}\label{game_8h_a3a06936f95009cbd8df406be787ab051} 
+\index{game.h@{game.h}!game\_get\_determined@{game\_get\_determined}}
+\index{game\_get\_determined@{game\_get\_determined}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_determined()}{game\_get\_determined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} game\+\_\+get\+\_\+determined (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Gets if the game is determined. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Game structure, where all the information related to game is included. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the game is determined or not, or FALSE if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8h_a7def4a688e3db8aa7261b677b79943c4}\label{game_8h_a7def4a688e3db8aa7261b677b79943c4} 
 \index{game.h@{game.h}!game\_get\_finished@{game\_get\_finished}}
@@ -1354,27 +1404,6 @@ Saul Lopez Romero.
 \begin{DoxyReturn}{Returns}
 Id of the player, NO\+\_\+\+ID if it doesn\textquotesingle{}t exist, ID\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
-\Hypertarget{game_8h_afcd96c324a83cb791391fc1437863c60}\label{game_8h_afcd96c324a83cb791391fc1437863c60} 
-\index{game.h@{game.h}!game\_get\_player\_to\_team@{game\_get\_player\_to\_team}}
-\index{game\_get\_player\_to\_team@{game\_get\_player\_to\_team}!game.h@{game.h}}
-\doxysubsubsection{\texorpdfstring{game\_get\_player\_to\_team()}{game\_get\_player\_to\_team()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} game\+\_\+get\+\_\+player\+\_\+to\+\_\+team (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
-
-
-
-Returns the id of the player who is asked to team. 
-
-\begin{DoxyAuthor}{Author}
-Saúl López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Game structure, where all the information related to game is included. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Id of the player who is asked to team or NO\+\_\+\+ID if an error takes place. 
-\end{DoxyReturn}
 \Hypertarget{game_8h_a0c4ba0f18d295b554fe3a7377cbac8ba}\label{game_8h_a0c4ba0f18d295b554fe3a7377cbac8ba} 
 \index{game.h@{game.h}!game\_get\_players@{game\_get\_players}}
 \index{game\_get\_players@{game\_get\_players}!game.h@{game.h}}
@@ -1559,27 +1588,6 @@ Fernando Mijangos.
 \begin{DoxyReturn}{Returns}
 Array of ids of the spaces, NULL if an error takes place. IMPORTANT you have to free it after using it. 
 \end{DoxyReturn}
-\Hypertarget{game_8h_ac6041dc7caadf47bfe5760bcc91d73ba}\label{game_8h_ac6041dc7caadf47bfe5760bcc91d73ba} 
-\index{game.h@{game.h}!game\_get\_team\_request@{game\_get\_team\_request}}
-\index{game\_get\_team\_request@{game\_get\_team\_request}!game.h@{game.h}}
-\doxysubsubsection{\texorpdfstring{game\_get\_team\_request()}{game\_get\_team\_request()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} game\+\_\+get\+\_\+team\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
-
-
-
-Returns the id of the player who asked to team. 
-
-\begin{DoxyAuthor}{Author}
-Saúl López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Game structure, where all the information related to game is included. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Id of the player who asked to team or NO\+\_\+\+ID if an error takes place. 
-\end{DoxyReturn}
 \Hypertarget{game_8h_aec40e0e704193b95c2c55e117f8131d5}\label{game_8h_aec40e0e704193b95c2c55e117f8131d5} 
 \index{game.h@{game.h}!game\_get\_teammate\_from\_player@{game\_get\_teammate\_from\_player}}
 \index{game\_get\_teammate\_from\_player@{game\_get\_teammate\_from\_player}!game.h@{game.h}}
@@ -1730,6 +1738,29 @@ Profesores PPROG
 {\em game} & Pointer to the game. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{game_8h_a50989f80d8a9ad7ae8786f08f74dcc33}\label{game_8h_a50989f80d8a9ad7ae8786f08f74dcc33} 
+\index{game.h@{game.h}!game\_random\_int@{game\_random\_int}}
+\index{game\_random\_int@{game\_random\_int}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_random\_int()}{game\_random\_int()}}
+{\footnotesize\ttfamily int game\+\_\+random\+\_\+int (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Returns a random number in a range. 
+
+\begin{DoxyAuthor}{Author}
+Saul López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & First number of the range. \\
+\hline
+{\em end} & Last number in the range. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random int number in the range. 
+\end{DoxyReturn}
 \Hypertarget{game_8h_aec77f87747eca7f62c5950bbc1886038}\label{game_8h_aec77f87747eca7f62c5950bbc1886038} 
 \index{game.h@{game.h}!game\_set\_current\_savefile@{game\_set\_current\_savefile}}
 \index{game\_set\_current\_savefile@{game\_set\_current\_savefile}!game.h@{game.h}}
@@ -1752,6 +1783,29 @@ Fernando Mijangos
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK if everything went well, ERROR otherwise 
+\end{DoxyReturn}
+\Hypertarget{game_8h_a89bfe562ba506faedd3b7e278643c0c7}\label{game_8h_a89bfe562ba506faedd3b7e278643c0c7} 
+\index{game.h@{game.h}!game\_set\_determined@{game\_set\_determined}}
+\index{game\_set\_determined@{game\_set\_determined}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_set\_determined()}{game\_set\_determined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+set\+\_\+determined (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{is\+\_\+determined }\end{DoxyParamCaption})}
+
+
+
+Sets if the game is determined. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Game structure, where all the information related to game is included. \\
+\hline
+{\em is\+\_\+determined} & If the game is determined or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
 \end{DoxyReturn}
 \Hypertarget{game_8h_aaeb153fbe0298a054b6b29ed0b7debae}\label{game_8h_aaeb153fbe0298a054b6b29ed0b7debae} 
 \index{game.h@{game.h}!game\_set\_finished@{game\_set\_finished}}
@@ -1868,52 +1922,6 @@ Saúl López Romero
 \begin{DoxyReturn}{Returns}
 OK for a clean exit, otherwise ERROR. 
 \end{DoxyReturn}
-\Hypertarget{game_8h_a5820bdef61e9f79a833846b3fa249437}\label{game_8h_a5820bdef61e9f79a833846b3fa249437} 
-\index{game.h@{game.h}!game\_set\_player\_to\_team@{game\_set\_player\_to\_team}}
-\index{game\_set\_player\_to\_team@{game\_set\_player\_to\_team}!game.h@{game.h}}
-\doxysubsubsection{\texorpdfstring{game\_set\_player\_to\_team()}{game\_set\_player\_to\_team()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+set\+\_\+player\+\_\+to\+\_\+team (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{player }\end{DoxyParamCaption})}
-
-
-
-Sets the id of the player who is asked to team. 
-
-\begin{DoxyAuthor}{Author}
-Saúl López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Game structure, where all the information related to game is included. \\
-\hline
-{\em player} & Id of the player who is asked to team. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OK for a clean exit, otherwise ERROR. 
-\end{DoxyReturn}
-\Hypertarget{game_8h_afb52f0c9200cbfc1dd7e7851bcc23fa2}\label{game_8h_afb52f0c9200cbfc1dd7e7851bcc23fa2} 
-\index{game.h@{game.h}!game\_set\_team\_request@{game\_set\_team\_request}}
-\index{game\_set\_team\_request@{game\_set\_team\_request}!game.h@{game.h}}
-\doxysubsubsection{\texorpdfstring{game\_set\_team\_request()}{game\_set\_team\_request()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+set\+\_\+team\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{id }\end{DoxyParamCaption})}
-
-
-
-Sets the id of the player who asked to team. 
-
-\begin{DoxyAuthor}{Author}
-Saúl López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Game structure, where all the information related to game is included. \\
-\hline
-{\em id} & Id of the player who asked to team. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OK for a clean exit, otherwise ERROR. 
-\end{DoxyReturn}
 \Hypertarget{game_8h_a7e73029af4a81214bceba63f2defb013}\label{game_8h_a7e73029af4a81214bceba63f2defb013} 
 \index{game.h@{game.h}!game\_set\_turn@{game\_set\_turn}}
 \index{game\_set\_turn@{game\_set\_turn}!game.h@{game.h}}
@@ -1959,4 +1967,48 @@ Saúl López Romero
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 OK for a clean exit, otherwise ERROR (not found or other error.). 
+\end{DoxyReturn}
+\Hypertarget{game_8h_a99b61588d97036ab8783a57c188d66ca}\label{game_8h_a99b61588d97036ab8783a57c188d66ca} 
+\index{game.h@{game.h}!game\_unfollow\_all@{game\_unfollow\_all}}
+\index{game\_unfollow\_all@{game\_unfollow\_all}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_unfollow\_all()}{game\_unfollow\_all()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+unfollow\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Gets all the character to unfollow. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK or ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game_8h_a851fca9c6aa268a62fc9cf8f9162bc5c}\label{game_8h_a851fca9c6aa268a62fc9cf8f9162bc5c} 
+\index{game.h@{game.h}!game\_vanish\_object@{game\_vanish\_object}}
+\index{game\_vanish\_object@{game\_vanish\_object}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_vanish\_object()}{game\_vanish\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+vanish\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}}]{object }\end{DoxyParamCaption})}
+
+
+
+Vanishes an object from the game. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em object} & Id of the object to be taken. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
 \end{DoxyReturn}

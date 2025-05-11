@@ -56,9 +56,7 @@ int \mbox{\hyperlink{struct__Game_a4278bdafc6c2376a55281981a51b1888}{n\+\_\+save
 \item 
 int \mbox{\hyperlink{struct__Game_a205d03d9e61df682c9cd057fe3f5ac46}{n\+\_\+teams}}
 \item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Game_ab0cde12d0fc34fd4c6160836ec50f28c}{to\+\_\+team}}
-\item 
-\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{struct__Game_a81573357169903bfb231c0052e6dcd07}{team\+\_\+req}}
+\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct__Game_a09ec45538aa04c71b4c2cf7ca0821102}{is\+\_\+determined}}
 \end{DoxyCompactItemize}
 
 
@@ -108,7 +106,13 @@ Whether the game has finished or not. \Hypertarget{struct__Game_afc4b85cd8db61e6
 \doxysubsubsection{\texorpdfstring{game\_values}{game\_values}}
 {\footnotesize\ttfamily \mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::game\+\_\+values}
 
-Structure whi\+Zch holds all the gamerule handling inside. \Hypertarget{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449}\label{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449} 
+Structure whi\+Zch holds all the gamerule handling inside. \Hypertarget{struct__Game_a09ec45538aa04c71b4c2cf7ca0821102}\label{struct__Game_a09ec45538aa04c71b4c2cf7ca0821102} 
+\index{\_Game@{\_Game}!is\_determined@{is\_determined}}
+\index{is\_determined@{is\_determined}!\_Game@{\_Game}}
+\doxysubsubsection{\texorpdfstring{is\_determined}{is\_determined}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} \+\_\+\+Game\+::is\+\_\+determined}
+
+Whether the game is determined or not. \Hypertarget{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449}\label{struct__Game_a8cbf4a2a5c64b7880abbd02d8dc06449} 
 \index{\_Game@{\_Game}!last\_cmd@{last\_cmd}}
 \index{last\_cmd@{last\_cmd}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{last\_cmd}{last\_cmd}}
@@ -192,19 +196,7 @@ Maximum number of savefiles that can exist. \Hypertarget{struct__Game_ad5f218aa9
 \doxysubsubsection{\texorpdfstring{spaces}{spaces}}
 {\footnotesize\ttfamily \mbox{\hyperlink{space_8h_a67533ffc2b70463baecc38fb0629bbfc}{Space}}\texorpdfstring{$\ast$}{*} \+\_\+\+Game\+::spaces\mbox{[}\mbox{\hyperlink{game_8h_a5f54fd55f983a2e33ce076cd9f587e82}{MAX\+\_\+\+SPACES}}\mbox{]}}
 
-An array with the information of every space. \Hypertarget{struct__Game_a81573357169903bfb231c0052e6dcd07}\label{struct__Game_a81573357169903bfb231c0052e6dcd07} 
-\index{\_Game@{\_Game}!team\_req@{team\_req}}
-\index{team\_req@{team\_req}!\_Game@{\_Game}}
-\doxysubsubsection{\texorpdfstring{team\_req}{team\_req}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Game\+::team\+\_\+req}
-
-Id of the player who asked to team. \Hypertarget{struct__Game_ab0cde12d0fc34fd4c6160836ec50f28c}\label{struct__Game_ab0cde12d0fc34fd4c6160836ec50f28c} 
-\index{\_Game@{\_Game}!to\_team@{to\_team}}
-\index{to\_team@{to\_team}!\_Game@{\_Game}}
-\doxysubsubsection{\texorpdfstring{to\_team}{to\_team}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \+\_\+\+Game\+::to\+\_\+team}
-
-Id of the player who is asked to team. \Hypertarget{struct__Game_a2a01590499ec911a85a61cd2eb945a99}\label{struct__Game_a2a01590499ec911a85a61cd2eb945a99} 
+An array with the information of every space. \Hypertarget{struct__Game_a2a01590499ec911a85a61cd2eb945a99}\label{struct__Game_a2a01590499ec911a85a61cd2eb945a99} 
 \index{\_Game@{\_Game}!turn@{turn}}
 \index{turn@{turn}!\_Game@{\_Game}}
 \doxysubsubsection{\texorpdfstring{turn}{turn}}

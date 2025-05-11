@@ -5,6 +5,7 @@ var searchData=
   ['cmd_5flenght_2',['CMD_LENGHT',['../command_8c.html#a2b1bd24d2eddf8081d8c541e4cc4fd4b',1,'command.c']]],
   ['cmd_5fshortcut_3',['CMD_SHORTCUT',['../command_8c.html#a5d69aa83ad3929fba7ff0e38924096de',1,'command.c']]],
   ['commands_5fsaved_4',['COMMANDS_SAVED',['../game_8h.html#a7e982545c2556ce0318c9bbfc19c8b42',1,'game.h']]],
-  ['cyan_5ff_5',['CYAN_F',['../animation_8c.html#aaa5e9b8d9005c0c216c44a35f42c7f6b',1,'animation.c']]],
-  ['cyan_5ft_6',['CYAN_T',['../animation_8c.html#a7cb807f796eaf4fe84b51aa7e379afd6',1,'animation.c']]]
+  ['completion_5frooms_5',['COMPLETION_ROOMS',['../gamerules_8c.html#aaf45d2f344add04094b10c31dc482fec',1,'gamerules.c']]],
+  ['cyan_5ff_6',['CYAN_F',['../animation_8c.html#aaa5e9b8d9005c0c216c44a35f42c7f6b',1,'animation.c']]],
+  ['cyan_5ft_7',['CYAN_T',['../animation_8c.html#a7cb807f796eaf4fe84b51aa7e379afd6',1,'animation.c']]]
 ];
