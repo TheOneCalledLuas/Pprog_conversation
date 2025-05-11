@@ -2,7 +2,7 @@
  * @brief It tests player module.
  *
  * @file player_test.c
- * @author Saul Lopez Romero, Raquel Anguita Martínez de Velasco
+ * @author Saúl Lopez Romero, Raquel Anguita Martínez de Velasco
  * @version 1.0
  * @date 27-03-2025
  * @copyright GNU Public License
@@ -29,7 +29,7 @@
  *  You can decide which test you want to run
  *  or run all the tests.
  *
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  */
 int main(int argc, char **argv)
 {

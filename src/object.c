@@ -2,7 +2,7 @@
  * @brief It implements the object functionality.
  *
  * @file object.c
- * @author Saúl López Romero, Irene García
+ * @author Saúl López Romero
  * @version 2
  * @date 01-02-2025
  * @copyright GNU Public License
@@ -194,7 +194,7 @@ Status object_set_description(Object *object, char *desc)
 Status object_set_texture_line(Object *object, int line, char *str)
 {
     /*Checks the arguments.*/
-    if (!object || line < 0 || line > OBJECT_TEXTURE_LINES - 1 || !str || strlen(str) != OBJECT_TEXTURE_SIZE - 1)
+    if (!object || line < 0 || line > OBJECT_TEXTURE_LINES - 1 || !str)
     {
         return ERROR;
     }

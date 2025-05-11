@@ -2,7 +2,7 @@
  * @brief It handles object related tasks.
  *
  * @file object.h
- * @author Saúl López Romero, Irene García
+ * @author Saúl López Romero, Irene García, Fernando Mijangos
  * @version 2
  * @date 2-02-2025
  * @copyright GNU Public License
@@ -173,7 +173,7 @@ Id object_get_dependency(Object *object);
 Status object_set_open(Object *object, Id open);
 
 /**
- * @brief Gets the open value of an object.
+ * @brief Gets the link id that an object can open.
  * @author Irene García
  *
  * @param object Pointer to the object.
@@ -183,7 +183,7 @@ Id object_get_open(Object *object);
 
 /**
  * @brief Sets the is_used value of an object.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param object Pointer to the object.
  * @param is_used Wether the object is used or not.
@@ -193,7 +193,7 @@ Status object_set_is_used(Object *object, Bool is_used);
 
 /**
  * @brief Gets the is_used value of an object.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param object Pointer to the object.
  * @return Object's is_used value or FALSE if an error takes place.
@@ -202,7 +202,7 @@ Bool object_get_is_used(Object *object);
 
 /**
  * @brief Sets the special_use value of an object.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param object Pointer to the object.
  * @param special_use Wether the object is used in a special way or not.
@@ -212,7 +212,7 @@ Status object_set_special_use(Object *object, Bool special_use);
 
 /**
  * @brief Gets the special_use value of an object.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param object Pointer to the object.
  * @return Object's special_use value or FALSE if an error takes place.

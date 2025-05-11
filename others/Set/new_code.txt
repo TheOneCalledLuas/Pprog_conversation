@@ -240,7 +240,7 @@ Status player_print(Player *player)
  * @brief It implements a textual graphic engine
  *
  * @file graphic_engine.c
- * @author Saul Lopez Romero && Fernando Mijangos
+ * @author Saúl Lopez Romero && Fernando Mijangos
  * @version 1
  * @date 27-01-2025
  * @copyright GNU Public License

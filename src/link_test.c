@@ -2,7 +2,7 @@
  * @brief It tests link module
  *
  * @file link_test.c
- * @author Irene García
+ * @author Irene García && Fernando Mijangos && Saúl López
  * @version 3.2
  * @date 19-02-2025
  * @copyright GNU Public License

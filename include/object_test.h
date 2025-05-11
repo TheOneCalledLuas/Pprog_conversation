@@ -153,79 +153,184 @@ void test3_object_get_id();
 
 /**
  * @test Test set health function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Object_new_health=7
+ * @post OK.
  */
 void test1_object_set_health();
 
 /**
  * @test Test get health function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Object_health=7
+ * @post 7.
  */
 void test1_object_get_health();
 
 /**
  * @test Test set movable function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | New_movable_cond=FALSE
+ * @post OK.
  */
 void test1_object_set_movable();
 
 /**
  * @test Test set movable function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Movable_cond=TRUE
+ * @post TRUE.
  */
 void test1_object_get_movable();
 
 /**
  * @test Test get movable function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=NULL | Movable_cond=FALSE
+ * @post FALSE.
  */
 void test2_object_get_movable();
 
 /**
  * @test Test set dependency function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | New_dependency=1
+ * @post OK.
  */
 void test1_object_set_dependency();
 
 /**
  * @test Test set dependency function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | New_dependency=ID_ERROR
+ * @post ERROR.
  */
 void test2_object_set_dependency();
 
 /**
  * @test Test get dependency function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Dependency=1
+ * @post 1.
  */
 void test1_object_get_dependency();
 
 /**
  * @test Test set open function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Link_that_opens=1
+ * @post OK.
  */
 void test1_object_set_open();
 
 /**
  * @test Test set open function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Link_that_opens=ID_ERROR
+ * @post ERROR.
  */
 void test2_object_set_open();
 
 /**
  * @test Test get open function.
- * @pre Pointer to object=Non NULL | Object id=-6
- * @post 5.
+ * @pre Pointer to object=Non NULL | Link_that_opens=1
+ * @post 1.
  */
 void test1_object_get_open();
+
+/**
+ * @test Test set texture line function.
+ * @pre Pointer to object=Non NULL | Line=1 | Texture="potato"
+ * @post ERROR.
+ */
+void test1_object_set_texture_line();
+
+/**
+ * @test Test set texture line function.
+ * @pre Pointer to object=Non NULL | Line=1 | Texture=NULL
+ * @post ERROR.
+ */
+void test2_object_set_texture_line();
+
+/**
+ * @test Test set texture line function.
+ * @pre Pointer to object=NULL | Line=70 | Texture="potato"
+ * @post ERROR.
+ */
+void test3_object_set_texture_line();
+
+/**
+ * @test Test set texture line function.
+ * @pre Pointer to object=Non NULL | Line=72 (not a valid line) | Texture="potato"
+ * @post ERROR.
+ */
+void test4_object_set_texture_line();
+
+/**
+ * @test Test get texture line function.
+ * @pre Pointer to object=Non NULL | Line=1 | Texture="potato"
+ * @post "potato".
+ */
+void test1_object_get_texture_line();
+
+/**
+ * @test Test get texture line function.
+ * @pre Pointer to object=NULL | Line=10
+ * @post NULL.
+ */
+void test2_object_get_texture_line();
+
+/**
+ * @test Test get texture line function.
+ * @pre Pointer to object=Non NULL | Line=10
+ * @post NULL.
+ */
+void test3_object_get_texture_line();
+
+/**
+ * @test Test get texture line function.
+ * @pre Pointer to object=Non NULL | used_new_value=TRUE
+ * @post OK.
+ */
+void test1_object_set_is_used();
+
+/**
+ * @test Test set is_used function.
+ * @pre Pointer to object=NULL | used_new_value=TRUE
+ * @post ERROR.
+ */
+void test2_object_set_is_used();
+
+/**
+ * @test Test get is_used function.
+ * @pre Pointer to object=Non NULL | used_value=TRUE
+ * @post TRUE.
+ */
+void test1_object_get_is_used();
+
+/**
+ * @test Test get is_used function.
+ * @pre Pointer to object=NULL | used_value=TRUE
+ * @post FALSE.
+ */
+void test2_object_get_is_used();
+
+/**
+ * @test Test set special_use function.
+ * @pre Pointer to object=Non NULL | special_use_new_value=TRUE
+ * @post OK.
+ */
+void test1_object_set_special_use();
+
+/**
+ * @test Test set special_use function.
+ * @pre Pointer to object=NULL | special_use_new_value=TRUE
+ * @post ERROR.
+ */
+void test2_object_set_special_use();
+
+/**
+ * @test Test get special_use function.
+ * @pre Pointer to object=Non NULL | special_use_value=TRUE
+ * @post TRUE.
+ */
+void test1_object_get_special_use();
+
+/**
+ * @test Test get special_use function.
+ * @pre Pointer to object=NULL | special_use_value=TRUE
+ * @post FALSE.
+ */
+void test2_object_get_special_use();
 
 #endif

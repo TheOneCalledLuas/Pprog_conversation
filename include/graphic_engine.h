@@ -2,7 +2,7 @@
  * @brief It defines the textual graphic engine interface
  *
  * @file graphic_engine.h
- * @author Fernando Mijangos, Saul Lopez Romero
+ * @author Fernando Mijangos, Saúl Lopez Romero
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -39,7 +39,7 @@ typedef struct _Graphic_engine Graphic_engine; /*!< Graphic engine type.*/
 
 /**
  * @brief It creates a new Graphic engine structure with all its variables initialized
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @return Pointer to the initialized graphic engine.
  */
@@ -47,7 +47,7 @@ Graphic_engine *graphic_engine_create();
 
 /**
  * @brief It destroys a graphic engine structure
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param ge The graphic engine structure you want to destroy.
  */
@@ -94,6 +94,7 @@ void graphic_engine_menu_destroy(Graphic_engine *ge);
  * @note             4->Prints screen where you create a new game
  * @note             5->Prints a screen where you try to create a game that already exists or cant be created
  * @note             6->Prints screen where you chose which file to delete
+ * @note             7->Prints screen where you get help
  */
 void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state);
 

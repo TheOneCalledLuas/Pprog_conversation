@@ -2,7 +2,7 @@
  * @brief It tests set module
  *
  * @file set_test.c
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  * @version 3.2
  * @date 19-02-2025
  * @copyright GNU Public License
@@ -27,7 +27,7 @@
  *  You can decide which test you want to run
  *  or run all the tests.
  *
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  */
 int main(int argc, char **argv)
 {

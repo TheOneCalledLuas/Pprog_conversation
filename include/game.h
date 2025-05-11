@@ -2,7 +2,7 @@
  * @brief It defines the game interface
  *
  * @file game.h
- * @author Saul Lopez Romero, Fernando Mijangos, Raquel Anguita Martínez de Velasco
+ * @author Saúl Lopez Romero, Fernando Mijangos, Raquel Anguita Martínez de Velasco
  * @version 3
  * @date 29-02-2025
  * @copyright GNU Public License
@@ -79,7 +79,7 @@ Bool game_get_determined(Game *game);
 
 /**
  * @brief Returns a random number in a range.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param start First number of the range.
  * @param end Last number in the range.
@@ -229,7 +229,7 @@ Status game_create(Game **game);
 
 /**
  * @brief It loads all spaces data from the file and sets all the other values to zero.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game you want to create.
  * @param filename Name of the file with all the data.
@@ -239,7 +239,7 @@ Status game_create_from_file(Game **game, char *filename);
 
 /**
  * @brief It returns the number of animations loaded in the game.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game structure.
  * @return Number of animations in the game or FUNCTION_ERROR if an error takes place.
@@ -258,7 +258,7 @@ Link *game_get_link_by_name(Game *game, char *name);
 
 /**
  * @brief It destroys all the information about the spaces, and the last command.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game you want to destroy.
  * @return OK, if everything goes well or ERROR if there was some mistake.
@@ -286,7 +286,7 @@ Game_values *game_get_game_values(Game *game);
 
 /**
  * @brief Returns the id of the space at that position.
- * @author Profesores PPROG
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @param position Position of the space you are looking for.
@@ -314,7 +314,7 @@ int game_get_turn(Game *game);
 
 /**
  * @brief Returns a player by its turn number.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game.
  * @param player_number Turn number.
@@ -390,7 +390,7 @@ Status game_add_player(Game *game, Player *player);
 
 /**
  * @brief It returns a pointer to the object with the specified id.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game.
  * @param id Id of the object to be added.
@@ -400,7 +400,7 @@ Object *game_get_object(Game *game, Id id);
 
 /**
  * @brief It returns the id of the space where an object is located.
- * @author Saul Lopez Romero
+ * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game.
  * @param id Object's id.
@@ -410,7 +410,7 @@ Id game_get_object_location(Game *game, Id id);
 
 /**
  * @brief It returns a pointer to the last command.
- * @author Profesores PPROG
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @return Pointer to the last command.
@@ -419,7 +419,7 @@ Command *game_get_last_command(Game *game);
 
 /**
  * @brief It sets the last command to the command you want
- * @author Profesores PPROG
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @param command The command you want to set.
@@ -429,7 +429,7 @@ Status game_set_last_command(Game *game, Command *command);
 
 /**
  * @brief Returns TRUE if the game has finished or FALSE if it hasn't.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  * @return TRUE if the game has finished or FALSE if it hasn't.
@@ -438,7 +438,7 @@ Bool game_get_finished(Game *game);
 
 /**
  * @brief it changes the value of the finished condition to what you want.
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  * @param finished The Bool value you want to set it to (TRUE/FALSE).
@@ -448,7 +448,7 @@ Status game_set_finished(Game *game, Bool finished);
 
 /**
  * @brief Prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object
- * @author Profesores PPROG
+ * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
  */
@@ -589,7 +589,7 @@ Link_Property game_get_space_outcoming_connection_info(Game *game, Id space, Dir
 
 /**
  * @brief It gets the player by its name.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param game Pointer to the game.
  * @param name Name of the player.
@@ -599,7 +599,7 @@ Id game_get_player_by_name(Game *game, char *name);
 
 /**
  * @brief It gets the player by its id.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param game Pointer to the game.
  * @param id Id of the player.
@@ -788,7 +788,7 @@ Status game_vanish_object(Game *game, Id object);
 
 /**
  * @brief makes the player, drop all the objects in his inventory dependent on another object.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game.
  * @param object Pointer to the object.

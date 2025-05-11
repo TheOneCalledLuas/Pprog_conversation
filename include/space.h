@@ -2,7 +2,7 @@
  * @brief It defines the space module interface
  *
  * @file space.h
- * @author Fernando Mijangos && Saul Lopez && Irene García
+ * @author Fernando Mijangos && Saúl Lopez 
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -38,7 +38,7 @@ void space_destroy(Space *space);
 
 /**
  * @brief Gets a determined line of the graphic description.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param space Pointer to the space.
  * @param line line to be given.
@@ -80,7 +80,7 @@ Status space_set_texture_line(Space *space, int line, char *str);
 
 /**
  * @brief It gets the id of a space
- * @author Irene García
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space
  * @return Id of space
@@ -89,7 +89,7 @@ Id space_get_id(Space *space);
 
 /**
  * @brief It sets the name of a space
- * @author Irene García
+ * @author Fernando Mijangos
  *
  * @param space Pointer to the space
  * @param name a string with the name to store

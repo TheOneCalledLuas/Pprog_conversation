@@ -2,7 +2,7 @@
  * @brief It implements the space module
  *
  * @file space.c
- * @author Fernando Mijangos && Saul Lopez
+ * @author Fernando Mijangos && Saúl Lopez
  * @version 2
  * @date 27-01-2025
  * @copyright GNU Public License

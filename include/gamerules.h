@@ -2,7 +2,7 @@
  * @brief It implements gamerules into the game.
  *
  * @file gamerules.h
- * @author Saúl López Romero
+ * @author Saúl López Romero && Fernando Mijangos
  * @version 1
  * @date 15-04-2025
  * @copyright GNU Public License

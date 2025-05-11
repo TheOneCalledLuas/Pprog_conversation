@@ -2,7 +2,7 @@
  * @brief It implements a textual graphic engine.
  *
  * @file graphic_engine.c
- * @author Saul Lopez Romero && Fernando Mijangos
+ * @author Saúl Lopez Romero && Fernando Mijangos
  * @version 7
  * @date 2-03-2025
  * @copyright GNU Public License.*/

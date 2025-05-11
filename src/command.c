@@ -2,7 +2,7 @@
  * @brief It implements the command interpreter
  *
  * @file command.c
- * @author Fernando Mijangos, Saul Lopez Romero, Raquel Anguita Martínez de Velasco
+ * @author Fernando Mijangos, Saúl Lopez Romero, Raquel Anguita Martínez de Velasco
  * @version 3
  * @date 29-02-2025
  * @copyright GNU Public License

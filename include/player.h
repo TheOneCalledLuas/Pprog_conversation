@@ -204,7 +204,7 @@ Id *player_get_inventory(Player *player);
 
 /**
  * @brief Gets the amount of health the player has.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param player Pointer to the player.
  * @return amount of health, FUNCTION_ERROR if an error takes place.
@@ -223,7 +223,7 @@ Bool player_has_object(Player *player, Id object);
 
 /**
  * @brief Sets the player health to a value.
- * @author Saul López Romero.
+ * @author Saúl López Romero.
  *
  * @param player Pointer to the player.
  * @param health Amount of health to be set.

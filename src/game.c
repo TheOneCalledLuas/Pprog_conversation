@@ -2,7 +2,7 @@
  * @brief It implements the game structure
  *
  * @file game.c
- * @author Saul Lopez Romero, Fernando Mijangos
+ * @author Saúl Lopez Romero, Fernando Mijangos
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License

@@ -20,13 +20,13 @@
 
 /**
  * @brief Set TAD.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  */
 typedef struct _Set Set;
 
 /**
  * @brief Creates a new set structure.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @return Pointer to the new set, NULL if an error takes place.
  */
@@ -34,7 +34,7 @@ Set *set_create();
 
 /**
  * @brief Frees the memory.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param set Pointer to the set.
  */
@@ -42,7 +42,7 @@ void set_destroy(Set *set);
 
 /**
  * @brief Searches for an id in a set.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param set Pointer to the set.
  * @param id Id to be searched.
@@ -52,7 +52,7 @@ int set_find(Set *set, Id id);
 
 /**
  * @brief Adds an element to the set.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param set Pointer to the set.
  * @param element Id to be added.
@@ -62,7 +62,7 @@ Status set_add(Set *set, Id element);
 
 /**
  * @brief Takes an element out of the set.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  *
  * @param set Pointer to the set.
  * @param id Id to be taken out.
@@ -72,7 +72,7 @@ Id set_take(Set *set, Id id);
 
 /**
  * @brief Gets the number of ids in the set.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  * 
  * @param set Pointer to the set.
  * @return Number of Ids in the set, FUNCTION_ERROR otherwise.
@@ -91,7 +91,7 @@ Id *set_get_content(Set *set);
 
 /**
  * @brief Prints set information.
- * @author Saul Lopez Romero.
+ * @author Saúl Lopez Romero.
  * 
  * @param s Pointer to the set.
  * @return OK if everything goes as it should, ERROR otherwise.

@@ -2,7 +2,7 @@
  * @brief It implements the game update through user actions.
  *
  * @file game_actions.c
- * @author Fernando Mijangos, Saul López Romero
+ * @author Fernando Mijangos, Saúl López Romero, Raquel Anguita
  * @version 3
  * @date 27-01-2025
  * @copyright GNU Public License
@@ -36,7 +36,7 @@
 
 /**
  * @brief Action to be executed when an unknown command is given.
- * @author Profesores PProg.
+ * @author Raquel Anguita.
  *
  * @param game Pointer to the game structure.
  */
@@ -44,7 +44,7 @@ void game_actions_unknown(Game *game);
 
 /**
  * @brief Action to be executed when exit is given.
- * @author Profesores PProg.
+ * @author Raquel Anguita.
  *
  * @param game Pointer to the game structure.
  */
@@ -75,7 +75,7 @@ void game_actions_drop(Game *game);
 
 /**
  * @brief Action to be executed when chat command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -83,7 +83,7 @@ void game_actions_chat(Game *game);
 
 /**
  * @brief Action to be executed when attack command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -91,7 +91,7 @@ void game_actions_attack(Game *game);
 
 /**
  * @brief Action to be executed when inspect command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -115,7 +115,7 @@ void game_actions_recruit(Game *game);
 
 /**
  * @brief Action to be executed when exit is given.
- * @author Profesores PProg.
+ * @author Raquel Anguita.
  *
  * @param game Pointer to the game structure.
  */
@@ -123,7 +123,7 @@ void game_actions_use(Game *game);
 
 /**
  * @brief Action to be executed when exit is given.
- * @author Saul Lopez.
+ * @author Saúl Lopez.
  *
  * @param game Pointer to the game structure.
  */
@@ -147,7 +147,7 @@ void game_actions_menu(Game *game);
 
 /**
  * @brief Action to be executed when wait command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -155,7 +155,7 @@ void game_actions_wait(Game *game);
 
 /**
  * @brief Action to be executed when coop command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
@@ -163,7 +163,7 @@ void game_actions_coop(Game *game);
 
 /**
  * @brief Action to be executed when coop command is given.
- * @author Saul López Romero
+ * @author Saúl López Romero
  *
  * @param game Pointer to the game structure.
  */
