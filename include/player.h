@@ -103,7 +103,7 @@ Status player_del_object(Player *player, Id object);
  * @author Saúl López Romero.
  *
  * @param player Pinter to the player.
- * @return Number of objects the player has, or -1 if an error takes place.
+ * @return Number of objects the player has, or FUNCTION_ERROR if an error takes place.
  */
 int player_get_n_objects(Player *player);
 
@@ -122,7 +122,7 @@ Status player_set_inventory_capacity(Player *player, long capacity);
  * @author Saúl López Romero
  *
  * @param player Pointer to the player.
- * @return Number of objects or -1 if an error takes place.
+ * @return Number of objects or FUNCTION_ERROR if an error takes place.
  */
 long player_get_inventory_capacity(Player *player);
 
@@ -207,7 +207,7 @@ Id *player_get_inventory(Player *player);
  * @author Saul Lopez Romero.
  *
  * @param player Pointer to the player.
- * @return amount of health, -1 if an error takes place.
+ * @return amount of health, FUNCTION_ERROR if an error takes place.
  */
 int player_get_health(Player *player);
 
@@ -217,7 +217,7 @@ int player_get_health(Player *player);
  *
  * @param player Pointer to the player.
  * @param object Id of the object to be searched for.
- * @return -1 if the object wasn't found or
+ * @return NO_POSITION if the object wasn't found or
  */
 Bool player_has_object(Player *player, Id object);
 

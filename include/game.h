@@ -54,7 +54,7 @@ Animation_Manager *game_get_animation_manager(Game *game);
  * @author Saúl López Romero
  *
  * @param game Game structure, where all the information related to game is included.
- * @return Number of teams or -1 if an error takes place.
+ * @return Number of teams or FUNCTION_ERROR if an error takes place.
  */
 int game_get_n_teams(Game *game);
 
@@ -174,7 +174,7 @@ Id *game_get_characters(Game *game);
  *
  * @param game Game structure, where all the information related to game is included.
  * @param id id of the character to be searched for.
- * @return Id of the space with the character, -1 if it wasn't found or -2 if an error takes place.
+ * @return Id of the space with the character, FUNCTION_ERROR if it wasn't found or -2 if an error takes place.
  */
 Id game_get_character_location(Game *game, Id id);
 
@@ -193,7 +193,7 @@ Status game_add_character(Game *game, Character *character);
  * @author Saúl Lopez Romero
  *
  * @param game Pointer to the game.
- * @return Object number or -1 if an error takes place.
+ * @return Object number or FUNCTION_ERROR if an error takes place.
  */
 int game_get_num_characters(Game *game);
 
@@ -242,7 +242,7 @@ Status game_create_from_file(Game **game, char *filename);
  * @author Saul Lopez Romero
  *
  * @param game Pointer to the game structure.
- * @return Number of animations in the game or -1 if an error takes place.
+ * @return Number of animations in the game or FUNCTION_ERROR if an error takes place.
  */
 int game_get_n_animations(Game *game);
 
@@ -299,7 +299,7 @@ Id game_get_space_id_at(Game *game, int position);
  * @author Saúl López Romero
  *
  * @param game pointer to the game.
- * @return number of players or -1 if an error takees place.
+ * @return number of players or FUNCTION_ERROR if an error takees place.
  */
 int game_get_n_players(Game *game);
 
@@ -308,7 +308,7 @@ int game_get_n_players(Game *game);
  * @author Saúl López Romero
  *
  * @param game pointer to the game.
- * @return actual game turn or -1 if an error takes place.
+ * @return actual game turn or FUNCTION_ERROR if an error takes place.
  */
 int game_get_turn(Game *game);
 
@@ -345,7 +345,7 @@ Status game_set_turn(Game *game, int turn);
  * @author Saúl López Romero
  *
  * @param game pointer to the game.
- * @return next turn or -1 if an error takes place.
+ * @return next turn or FUNCTION_ERROR if an error takes place.
  */
 int game_get_next_turn(Game *game);
 
@@ -491,7 +491,7 @@ Id *game_get_objects(Game *game);
  *
  * @param game Game structure, where all the information related to game is included.
  * @param id Object's id.
- * @return -1 if an error takes place of the object wasn't found, the position of the object in the array otherwise.
+ * @return FUNCTION_ERROR if an error takes place of the object wasn't found, the position of the object in the array otherwise.
  */
 int game_has_object(Game *game, Id id);
 
@@ -500,7 +500,7 @@ int game_has_object(Game *game, Id id);
  * @author Saúl López Romero
  *
  * @param game Game structure, where all the information related to game is included.
- * @return Number ob objects, -1 for an error.
+ * @return Number ob objects, FUNCTION_ERROR for an error.
  */
 int game_get_n_objects(Game *game);
 
@@ -572,7 +572,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction);
  *
  * @param game Pointer to the game
  * @param player Id of the player you want the information from
- * @return Number of followers of that player, -1 if error
+ * @return Number of followers of that player, FUNCTION_ERROR if error
  */
 int game_get_n_followers(Game *game, Id player);
 
@@ -635,7 +635,7 @@ Id *game_get_spaces(Game *game);
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game.
- * @return Number of spaces in the game, -1 if an error takes place.
+ * @return Number of spaces in the game, FUNCTION_ERROR if an error takes place.
  */
 int game_get_n_spaces(Game *game);
 
@@ -655,7 +655,7 @@ Id *game_get_links(Game *game);
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game.
- * @return Number of links in the game, -1 if an error takes place.
+ * @return Number of links in the game, FUNCTION_ERROR if an error takes place.
  */
 int game_get_n_links(Game *game);
 
@@ -675,7 +675,7 @@ Id *game_get_gamerules(Game *game);
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game.
- * @return Number of gamerules in the game, -1 if an error takes place.
+ * @return Number of gamerules in the game, FUNCTION_ERROR if an error takes place.
  */
 int game_get_n_gamerules(Game *game);
 
@@ -714,7 +714,7 @@ Status game_delete_savefile(Game *game, char *name);
  * @author Fernando Mijangos
  *
  * @param game Pointer to the game
- * @return Number of existing savefiles, -1 if error
+ * @return Number of existing savefiles, FUNCTION_ERROR if error
  */
 int game_get_n_savefiles(Game *game);
 

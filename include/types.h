@@ -16,6 +16,10 @@
 #define ID_ERROR -2                                /*!<Major error code.*/
 #define SAVEFILES_NAMES "data/savefiles_names.txt" /*!<Name of the file where the savefiles names are stored.*/
 #define MAX_SAVEFILES 10                           /*!<Maximum number of savefiles*/
+#define FUNCTION_ERROR -1                          /*!< Function error code.*/
+#define NO_POSITION -1                             /*!< No position code. */
+#define EQUAL_WORDS 0                              /*!< Equal words code. */
+#define NO_THINGS 0                                /*!< No things code. */
 
 typedef long Id; /*!< Id type. */
 
@@ -39,8 +43,8 @@ typedef enum
  */
 typedef enum
 {
-    ERROR,      /*!< Error value.*/
-    OK         /*!< Good functioning value.*/
+    ERROR, /*!< Error value.*/
+    OK     /*!< Good functioning value.*/
 } Status;
 
 /**

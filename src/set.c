@@ -64,7 +64,7 @@ int set_find(Set *set, Id id)
     int i = 0;
     /*Error management.*/
     if (!set)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Searches for the id.*/
     for (i = 0; i < set->n_ids; i++)
@@ -73,19 +73,19 @@ int set_find(Set *set, Id id)
             return i;
     }
     /*The id wasn't found.*/
-    return -1;
+    return FUNCTION_ERROR;
 }
 
 Status set_add(Set *set, Id element)
 {
     /*Checks the parameters.*/
-    if (!set || element < -1)
+    if (!set || element <= NO_ID)
     {
         return ERROR;
     }
 
     /*Checks if the id already is in the set.*/
-    if (set_find(set, element) != -1)
+    if (set_find(set, element) != NO_ID)
     {
         return OK;
     }
@@ -113,7 +113,7 @@ Id set_take(Set *set, Id id)
         return ID_ERROR;
 
     /*Searches for the element.*/
-    if ((pos = set_find(set, id)) == -1)
+    if ((pos = set_find(set, id)) == NO_POSITION)
     {
         return ID_ERROR;
     }
@@ -133,7 +133,7 @@ int set_len(Set *set)
 {
     /*Error handling.*/
     if (!set)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the value.*/
     return set->n_ids;
@@ -145,7 +145,7 @@ Id *set_get_content(Set *set)
     int i;
 
     /*Error management.*/
-    if (!set || set->n_ids < 1)
+    if (!set || set->n_ids <= NO_THINGS)
     {
         return NULL;
     }

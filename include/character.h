@@ -155,7 +155,7 @@ Status character_set_health(Character *character, int health);
  * @author Fernando Mijangos.
  *
  * @param character Pointer to the character.
- * @return Health amount of the character, -1 if error.
+ * @return Health amount of the character, FUNCTION_ERROR if error.
  */
 int character_get_health(Character *character);
 

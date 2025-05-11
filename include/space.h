@@ -133,7 +133,7 @@ Status space_add_object(Space *space, Id object);
  *
  * @param space Pointer to the space
  * @param object Id of the object you are searching
- * @return Possition of the id in the set if found, -1 otherwise
+ * @return Possition of the id in the set if found, FUNCTION_ERROR otherwise
  */
 int space_find_object(Space *space, Id object);
 
@@ -183,7 +183,7 @@ Status space_add_character(Space *space, Id character);
  * 
  * @param space Pointer to the space
  * @param character Id of the character you searching for
- * @return position of the id in the set of characters, -1 otherwise
+ * @return position of the id in the set of characters, FUNCTION_ERROR otherwise
  */
 int space_find_character(Space *space, Id character);
 
@@ -202,7 +202,7 @@ Id space_take_character(Space *space, Id character);
  * @author Fernando Mijangos
  * 
  * @param space Pointer to the space
- * @return  Number of characters, -1 if ERROR
+ * @return  Number of characters, FUNCTION_ERROR if ERROR
  */
 int space_get_n_characters(Space *space);
 

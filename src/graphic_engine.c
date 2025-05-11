@@ -43,6 +43,29 @@
 /**
  * FDB height.*/
 #define HEIGHT_FDB 3
+#define NO_WIDTH 0                            /*!<No width, use in ge init*/
+#define NO_HEIGHT 0                           /*!<No height, use in ge init*/
+#define MAP_ROWS 3                            /*!<Number of rows in the map*/
+#define MAP_COLS 3                            /*!<Number of columns in the map*/
+#define MID_MAP_COLUM WIDTH_SPACE * 3 / 2 + 1 /*!<Middle column of the map*/
+#define MID_MAP_ROW HEIGHT_SPACE * 2 - 4      /*!<Middle row of the map*/
+#define MID_ROOM_ROW 7                        /*!<Middle row of the room*/
+#define PLAYER_STARTING_ROW 9                 /*!<Row where the player starts to get printed*/
+#define PLAYER_STARTING_COLUMN 27             /*!<Column where the player starts to get printed*/
+#define MAX_OBJECTS_PER_ROOM 6                /*!<Max number of objects that are printed per room*/
+#define OBJECTS_STARTING_ROW 22               /*!<Row where the objects start to get printed*/
+#define OBJECTS_STARTING_COLUMN 1             /*!<Column where the objects start to get printed*/
+#define OBJECTS_VARIANCE_POSITION 10          /*!<Variance of the position where an object is printed when there are several*/
+#define CHARACTERS_PER_ZONE 3                 /*!<Number of characters that can be printed in a zone*/
+#define CHARACTER_STARTING_ROW 11             /*!<Row where the characters start to get printed if there are less than three*/
+#define CHARACTER_STARTING_COLUMN_ONE 45      /*!<Column where the characters start to get printed if there are more than three characters*/
+#define CHARACTER_STARTING_COLUMN_TWO 12      /*!<Column where the characters start to get printed*/
+#define CHARACTER_VARIANCE_POSITION_COLUM 2   /*!<Variance of the position in a colum where a character is printed when there are several*/
+#define CHATEACTE_VARIANCE_POSITION_ROW 5     /*!<Variance of the position in a row where a character is printed when there are several*/
+
+#define MAX_ID 999  /*Max id of a space that can be printed in the map area*/
+#define NO_HEALTH 0 /*!<No health value*/
+#define FIRST_CHAR 0 /*!<Position number 0 of a string, used to intitialize things*/
 /**
  * Max string lenght.*/
 #define MAX_STRING_GE 255
@@ -178,10 +201,10 @@ Graphic_engine *graphic_engine_menu_create()
     /*It gives the value needed for each variable.*/
     ge->banner = screen_area_init_menu(2 * STARING_POINT, STARING_POINT, WIDTH_MAP, HEIGHT_BAN);
     ge->map = screen_area_init_menu(2 * STARING_POINT, STARING_POINT + HEIGHT_BAN + EXTRA_LINE, WIDTH_MAP, HEIGHT_MAP);
-    ge->descript = screen_area_init_menu(0, 0, 0, 0);
-    ge->room = screen_area_init_menu(0, 0, 0, 0);
-    ge->help = screen_area_init_menu(0, 0, 0, 0);
-    ge->feedback = screen_area_init_menu(0, 0, 0, 0);
+    ge->descript = screen_area_init_menu(STARING_POINT, STARING_POINT, NO_WIDTH, NO_HEIGHT);
+    ge->room = screen_area_init_menu(STARING_POINT, STARING_POINT, NO_WIDTH, NO_HEIGHT);
+    ge->help = screen_area_init_menu(STARING_POINT, STARING_POINT, NO_WIDTH, NO_HEIGHT);
+    ge->feedback = screen_area_init_menu(STARING_POINT, STARING_POINT, NO_WIDTH, NO_HEIGHT);
 
     /*Clean exit*/
     return ge;
@@ -231,8 +254,10 @@ Status map_init(Game *game, char **map)
 {
     int i = 0, j = 0, t = 0, v = 0;
     char **aux_map = NULL;
-    Id actual_id[NUM_IDS] = {NO_ID};
-    Link_Property link_statuses[NUM_IDS] = {CLOSED};
+    Id actual_id[NUM_IDS];
+    Link_Property link_statuses[NUM_IDS];
+    memset(link_statuses, CLOSED, sizeof(link_statuses));
+    memset(actual_id, NO_ID, sizeof(actual_id));
 
     /*Error control.*/
     if (!game || !map)
@@ -311,14 +336,14 @@ Status map_init(Game *game, char **map)
         }
 
         /*3-Fills the map.*/
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < MAP_ROWS; i++)
         {
-            for (j = 0; j < 3; j++)
+            for (j = 0; j < MAP_COLS; j++)
             {
-                if (!(graphic_engine_print_space(game, actual_id[i * 3 + j], aux_map)))
+                if (!(graphic_engine_print_space(game, actual_id[i * MAP_ROWS + j], aux_map)))
                     continue;
 
-                if (link_statuses[i * 3 + j] != OPENED && actual_id[i * 3 + j] != actual_id[ACTUAL_POSITION])
+                if (link_statuses[i * MAP_ROWS + j] != OPENED && actual_id[i * MAP_ROWS + j] != actual_id[ACTUAL_POSITION])
                     continue;
 
                 for (t = 0; t < HEIGHT_SPACE; t++)
@@ -326,7 +351,7 @@ Status map_init(Game *game, char **map)
                     /*The -1 after width_space in the loop is so that it doesnt copy the '\0'.*/
                     for (v = 0; v < WIDTH_SPACE - 1; v++)
                     {
-                        map[i * (HEIGHT_SPACE + 1) + t][j * (WIDTH_SPACE + 2) + v] = aux_map[t][v];
+                        map[i * (HEIGHT_SPACE + EXTRA_LINE) + t][j * (WIDTH_SPACE + 2 * EXTRA_LINE) + v] = aux_map[t][v];
                     }
                 }
             }
@@ -334,13 +359,13 @@ Status map_init(Game *game, char **map)
 
         /*4-Puts the arrows.*/
         if (actual_id[NORTH] != NO_ID)
-            map[HEIGHT_SPACE][WIDTH_SPACE * 3 / 2 + 1] = (link_statuses[NORTH] == OPENED ? '^' : 'X');
+            map[HEIGHT_SPACE][MID_MAP_COLUM] = (link_statuses[NORTH] == OPENED ? '^' : 'X');
         if (actual_id[WEST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][WIDTH_SPACE] = (link_statuses[WEST] == OPENED ? '<' : 'X');
+            map[MID_MAP_ROW][WIDTH_SPACE] = (link_statuses[WEST] == OPENED ? '<' : 'X');
         if (actual_id[EAST] != NO_ID)
-            map[HEIGHT_SPACE * 2 - 4][2 * WIDTH_SPACE + 2] = (link_statuses[EAST] == OPENED ? '>' : 'X');
+            map[MID_MAP_ROW][2 * WIDTH_SPACE + 2 * EXTRA_LINE] = (link_statuses[EAST] == OPENED ? '>' : 'X');
         if (actual_id[SOUTH] != NO_ID)
-            map[HEIGHT_SPACE * 2 + 1][1 + WIDTH_SPACE * 3 / 2] = (link_statuses[SOUTH] == OPENED ? 'v' : 'X');
+            map[HEIGHT_SPACE * 2 + EXTRA_LINE][MID_MAP_COLUM] = (link_statuses[SOUTH] == OPENED ? 'v' : 'X');
         /*5-puts \0.*/
         for (i = 0; i < HEIGHT_MAP; i++)
         {
@@ -444,7 +469,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     {
         /*Gets the number of objects the player has, and the objects*/
         n_objects = player_get_n_objects(player);
-        if (n_objects > 0)
+        if (n_objects > NO_THINGS)
         {
             if (!(id_list = player_get_inventory(player)))
             {
@@ -465,13 +490,22 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         strcpy(map[FOURTH_LINE], "      |___/_/ \\_\\___| (_)");
 
         /*For each object, it prints its correspondent description*/
-        if (n_objects > 0)
+        if (n_objects > NO_THINGS)
         {
             for (i = 0; i < n_objects; i++)
             {
-                /*Puts the object descriptions*/
+                /*j is the counter of lines, its printed for each object, thats why i intitialize it to zero for every object.*/
                 j = 0;
-                /*First the ones that will also include the name */
+                /*Puts the object descriptions*/
+
+                /*Each object will be like this*/
+                /*   ----------   name       */
+                /*   - OBJECT -   description*/
+                /*   - TEXTURE-              */
+                /*   -        -              */
+                /*   ----------              */
+
+                /*First it puts the lines that also include the name */
                 sprintf(str, "   %s    %s ", object_get_texture_line(game_get_object(game, id_list[i]), j), object_get_name(game_get_object(game, id_list[i])));
                 for (k = 0; k < strlen(str) || k < WIDTH_MAP - EXTRA_LINE; k++)
                     if (str[k] == '&')
@@ -480,7 +514,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                         map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = str[k];
                 map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = '\0';
                 j++;
-                /*Then the one that will include the description*/
+                /*Then the ones that will include the description*/
                 sprintf(str, "   %s    %s ", object_get_texture_line(game_get_object(game, id_list[i]), j), object_get_description(game_get_object(game, id_list[i])));
                 for (k = 0; k < strlen(str); k++)
                     if (str[k] == '&')
@@ -488,8 +522,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                     else
                         map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = str[k];
                 map[j + NINETH_LINE + i * OBJECT_TEXTURE_LINES + EXTRA_SPACE][k] = '\0';
-                /*And the prints the rest*/
-                for (j = THIRD_LINE; j < OBJECT_TEXTURE_LINES; j++)
+                j++;
+                /*And then prints the rest*/
+                for (; j < OBJECT_TEXTURE_LINES; j++)
                 {
                     sprintf(str, "   %s ", object_get_texture_line(game_get_object(game, id_list[i]), j));
                     for (k = 0; k < strlen(str); k++)
@@ -568,16 +603,17 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
         /*1.2-Prints the player.*/
         if (player_get_player_location(player) == TRAIN_ROOM || player_get_player_location(player) == END_TUTORIAL_ROOM)
-            k = 7;
+            k = MID_ROOM_ROW;
         else
-            k = 0;
+            k = FIRST_LINE;
         for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
         {
             strncpy(str, player_get_texture_line(player, i), PLAYER_TEXTURE_SIZE);
             for (j = 0; j < PLAYER_TEXTURE_SIZE - 1; j++)
             {
+                /*If the character isn't the character we use as "transparent", it puts it on the screen*/
                 if (str[j] != '&')
-                    map[i + 9 + k][j + 27] = str[j];
+                    map[i + PLAYER_STARTING_ROW + k][j + PLAYER_STARTING_COLUMN] = str[j];
             }
         }
         /*1.3-Then prints the objects there are in the corresponding spaces, if there are more than four it only prints the first four.*/
@@ -593,7 +629,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 free(map);
                 return;
             }
-            for (i = 0; i < space_get_n_objects(space_act) && i < 6; i++)
+            /*For each object, it gets its texture line by line and puts it where it belongs*/
+            for (i = 0; i < space_get_n_objects(space_act) && i < MAX_OBJECTS_PER_ROOM; i++)
             {
                 if (objects[i] != NO_ID && objects[i] != ID_ERROR)
                 {
@@ -602,12 +639,14 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                         strncpy(str, object_get_texture_line(game_get_object(game, objects[i]), j), OBJECT_TEXTURE_SIZE);
                         for (k = 0; k < OBJECT_TEXTURE_SIZE - 1; k++)
                         {
+                            /*If the character isn't the character we use as "transparent", it puts it on the screen*/
                             if (str[k] != '&')
-                                map[j + 22][k + 1 + i * 10] = str[k];
+                                map[j + OBJECTS_STARTING_ROW][k + OBJECTS_STARTING_COLUMN + i * OBJECTS_VARIANCE_POSITION] = str[k];
                         }
                     }
                 }
             }
+            /*Frees the array*/
             free(objects);
         }
         /*1.4-Prints the characters there are.*/
@@ -623,6 +662,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 free(map);
                 return;
             }
+            /*For each object, it gets its texture line by line and puts it where it belongs*/
             for (i = 0; i < space_get_n_characters(space_act); i++)
             {
                 if (characters[i] != NO_ID && characters[i] != ID_ERROR)
@@ -634,18 +674,19 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                             strncpy(str, character_get_texture_line(game_get_character(game, characters[i]), j), CHARACTER_TEXTURE_SIZE);
                             for (k = 0; k < CHARACTER_TEXTURE_SIZE - 1; k++)
                             {
-                                if (i < 3)
+                                if (i < CHARACTERS_PER_ZONE)
                                 {
                                     if (str[k] != '&')
-                                        map[j + 11 + i * 5][k + 45 + 2 * i] = str[k];
+                                        map[j + CHARACTER_STARTING_ROW + i * CHARACTER_STARTING_ROW][k + CHARACTER_STARTING_COLUMN_ONE + CHARACTER_VARIANCE_POSITION_COLUM * i] = str[k];
                                 }
                                 else if (str[k] != '&')
-                                    map[j + 11 + (i - 3) * 5][k + 12 - 2 * i] = str[k];
+                                    map[j + CHARACTER_STARTING_ROW + (i - CHARACTERS_PER_ZONE) * CHATEACTE_VARIANCE_POSITION_ROW][k + CHARACTER_STARTING_COLUMN_TWO - CHARACTER_VARIANCE_POSITION_COLUM * i] = str[k];
                             }
                         }
                     }
                 }
             }
+            /*Frees the array*/
             free(characters);
         }
     }
@@ -668,7 +709,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     /*1-Clears the area.*/
     screen_area_clear(ge->descript);
     /*2-Prints the information about the objects inside space the player has discovered.*/
-    if (game_get_n_objects(game) >= 1)
+    if (game_get_n_objects(game) > NO_THINGS)
     {
         /*Prints the objects, but only the ones on the north, south, west and east directions.*/
         sprintf(str, "  NEARBY OBJECTS:");
@@ -678,7 +719,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
             if (actual_id[i] != NO_ID)
             {
                 space_act = game_get_space(game, actual_id[i]);
-                if (space_get_n_objects(space_act) > 0 && space_is_discovered(space_act) == TRUE)
+                if (space_get_n_objects(space_act) > NO_THINGS && space_is_discovered(space_act) == TRUE)
                 {
                     id_list = space_get_objects(space_act);
                     for (j = 0; j < space_get_n_objects(space_act); j++)
@@ -708,7 +749,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
                 for (j = 0; j < space_get_n_characters(space_act); j++)
                 {
                     character = game_get_character(game, id_list[j]);
-                    if (character_get_health(character) > 0)
+                    if (character_get_health(character) > NO_HEALTH)
                     {
                         sprintf(str, "   -%s in space:%ld", character_get_name(character), game_get_character_location(game, character_get_id(character)));
                         screen_area_puts(ge->descript, str);
@@ -734,7 +775,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         screen_area_puts(ge->descript, str);
         sprintf(str, "    with %d points of health", player_get_health(player));
         screen_area_puts(ge->descript, str);
-        if ((n_objects = player_get_n_objects(player)) <= 0)
+        if ((n_objects = player_get_n_objects(player)) <= NO_THINGS)
         {
             sprintf(str, "   -%s has no objects", player_get_player_name(player));
             screen_area_puts(ge->descript, str);
@@ -758,20 +799,20 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     if (command_get_code(game_get_last_command(game)) == CHAT)
     {
         /*5.1-Gets the characters in the space.*/
-        if (space_get_n_characters(space_act) > 0)
+        if (space_get_n_characters(space_act) > NO_THINGS)
         {
             if (!(characters = space_get_characters(space_act)))
                 return;
             /*5.2-Searches for the character the argument of the last action provides.*/
             for (i = 0; i < space_get_n_characters(space_act); i++)
             {
-                if (strcasecmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == 0)
+                if (strcasecmp(character_get_name(game_get_character(game, characters[i])), command_get_argument(game_get_last_command(game), 0)) == FIRST_ARG)
                 {
                     id_aux = characters[i];
                 }
                 if (id_aux != NO_ID)
                 {
-                    if (character_get_health(game_get_character(game, id_aux)) > 0)
+                    if (character_get_health(game_get_character(game, id_aux)) > NO_HEALTH)
                     {
                         screen_area_puts(ge->descript, " ");
                         sprintf(str, "  MESSAGE: %s", character_get_message(game_get_character(game, id_aux)));
@@ -788,8 +829,8 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
     {
         last_space = game_get_space(game, player_get_player_location(player));
         /*Searches for the object.*/
-        desc_id = game_get_object_by_name(game, command_get_argument(game_get_last_command(game), 0));
-        if (desc_id >= 0 && (space_find_object(last_space, desc_id) != -1 || player_has_object(player, desc_id)))
+        desc_id = game_get_object_by_name(game, command_get_argument(game_get_last_command(game), FIRST_ARG));
+        if (desc_id > NO_ID && (space_find_object(last_space, desc_id) != -1 || player_has_object(player, desc_id)))
         {
             /*If the object was found anywhere accesible by the player.*/
             object = game_get_object(game, desc_id);
@@ -827,7 +868,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         last_cmd = command_get_code(game_get_previous_command(game, i + refresh));
         if (last_cmd != NO_CMD)
         {
-            sprintf(str2, "%s %s %s %s", command_get_argument(game_get_previous_command(game, i + refresh), 0), command_get_argument(game_get_previous_command(game, i + refresh), 1), command_get_argument(game_get_previous_command(game, i + refresh), 2), command_get_argument(game_get_previous_command(game, i + refresh), 3));
+            sprintf(str2, "%s %s %s %s", command_get_argument(game_get_previous_command(game, i + refresh), FIRST_ARG), command_get_argument(game_get_previous_command(game, i + refresh), SECOND_ARG), command_get_argument(game_get_previous_command(game, i + refresh), THIRD_ARG), command_get_argument(game_get_previous_command(game, i + refresh), FOURTH_ARG));
             sprintf(str, " -%s %s(%1s):%s", cmd_to_str[last_cmd - NO_CMD][CMDL], str2, cmd_to_str[last_cmd - NO_CMD][CMDS], (command_get_status(game_get_previous_command(game, i + refresh)) == OK ? "OK" : "ERROR"));
             screen_area_puts(ge->feedback, str);
         }
@@ -847,7 +888,7 @@ void graphic_engine_menu_paint(Graphic_engine *ge, Game *game, int state)
     int i, number_rows = 0;
 
     /*Error management*/
-    if (!(game) || !(ge) || state < 0 || state >= N_MENU_SITUATIONS)
+    if (!(game) || !(ge) || state < NO_SAVES || state >= N_MENU_SITUATIONS)
         return;
 
     if (state != FINAL)
@@ -1119,15 +1160,15 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
             return ERROR;
         if (!(characters = space_get_characters(space)))
             return ERROR;
-        if (character_get_health(game_get_character(game, characters[0])) > 0)
+        if (character_get_health(game_get_character(game, characters[0])) > NO_HEALTH)
         {
-            aux_3 = character_get_description(game_get_character(game, characters[0]));
+            aux_3 = character_get_description(game_get_character(game, characters[FIRST_CHAR]));
         }
         free(characters);
     }
     /*Looks if the given space id fits in the space given*/
-    if (space_id > 999)
-        sprintf(destination[SECOND_LINE], "|%-7s %6s %3d|", aux, ((aux_3) != NULL ? aux_3 : ""), 999);
+    if (space_id > MAX_ID)
+        sprintf(destination[SECOND_LINE], "|%-7s %6s %3d|", aux, ((aux_3) != NULL ? aux_3 : ""), MAX_ID);
     else
         sprintf(destination[SECOND_LINE], "|%-7s %6s %3ld|", aux, ((aux_3) != NULL ? aux_3 : " "), space_id);
     for (i = THIRD_LINE; i < EIGHT_LINE; i++)
@@ -1148,25 +1189,25 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
         {
             for (j = 0; j < i; j++)
             {
-                cond += 1 + strlen(object_get_name(game_get_object(game, set[j])));
+                cond += strlen(",") + strlen(object_get_name(game_get_object(game, set[j])));
             }
 
             if (cond > WIDTH_SPACE - NON_WRITTABLE_ELEMS)
             {
-                cond = 0;
+                cond = FALSE;
             }
         }
 
         /*2-If there are any objects that can't be printed, set cond to 1 to later print an extra thing.*/
         if (i < n_objs_space - 1)
             cond = TRUE;
-        aux_2[0] = '\0';
+        aux_2[FIRST_CHAR] = '\0';
 
         /*3-Fills the string with the tags of the objects that fit.*/
         for (j = 0; j <= i; j++)
         {
             aux_3 = object_get_name(game_get_object(game, set[j]));
-            if (aux_2[0] != '\0')
+            if (aux_2[FIRST_CHAR] != '\0')
             {
                 strcpy(aux_4, aux_2);
                 sprintf(aux_2, "%s%c%s", aux_4, ',', aux_3);
@@ -1194,7 +1235,7 @@ Status graphic_engine_print_space(Game *game, Id space_id, char **destination)
     }
     else
     {
-        aux_2[0] = '\0';
+        aux_2[FIRST_CHAR] = '\0';
     }
 
     /*Finishes printing the spaces.*/

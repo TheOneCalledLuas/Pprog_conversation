@@ -11,6 +11,7 @@
 #define MAX_GAMERULES 100 /*!< Max gamerule number. Can be modified if required.*/
 #define MAX_NAME 64       /*!< Max name for a gamerule.*/
 
+#define NO_HEALTH 0                   /*!< No health value. */
 #define P3_P4_GATE 49                 /*!< Id of the gate between P3 and P4.*/
 #define START_ROOM_ID 111             /*!< Id of the start room.*/
 #define SPIDER_BOSS_ID 60             /*!< Id of Arachne.*/
@@ -119,7 +120,7 @@ Id *gamerules_get_all_gamerules(Game_values *gv)
     if (!gv)
         return NULL;
     len = gv->n_gamerules;
-    if (len == 0)
+    if (len == NO_THINGS)
         return NULL;
     /*Allocates memory.*/
     if (!(ids = (Id *)calloc(len, sizeof(Id))))
@@ -146,7 +147,7 @@ Game_values *gamerules_values_init()
     }
 
     /*Sets the values.*/
-    gv->n_gamerules = 0;
+    gv->n_gamerules = NO_THINGS;
 
     /*Clean exit.*/
     return gv;
@@ -165,7 +166,7 @@ void gamerules_values_destroy(Game_values *gv)
 
 int gamerules_get_n_gamerules(Game_values *gv)
 {
-    return (gv ? gv->n_gamerules : -1);
+    return (gv ? gv->n_gamerules : FUNCTION_ERROR);
 }
 
 Status gamerules_values_add(Game_values *gv, Gamerule *gr)
@@ -202,7 +203,7 @@ Status gamerules_try_exec_all(Game *game, Game_values *gv)
 Gamerule *gamerules_values_delete_last(Game_values *gv)
 {
     /*Error handling.*/
-    if (!gv || gv->n_gamerules <= 0)
+    if (!gv || gv->n_gamerules <= NO_THINGS)
         return NULL;
 
     /*Takes the item out.*/
@@ -448,7 +449,7 @@ Gamerule *gamerules_get_gamerule_by_name(Game_values *gv, char *name)
     /*Searches the gamerule by its name.*/
     for (i = 0; i < gv->n_gamerules; i++)
     {
-        if (strcmp(gv->gamerules[i]->name, name) == 0)
+        if (strcmp(gv->gamerules[i]->name, name) == EQUAL_WORDS)
             return gv->gamerules[i];
     }
 
@@ -504,7 +505,7 @@ Status gamerules_use_train_pass(Game *game, Gamerule *gr)
         if (!(cmd = game_get_last_command(game)))
             return ERROR;
     }
-    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, 0), object_get_name(pass)) == 0 && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == 0 && strcasecmp(command_get_argument(cmd, THIRD_ARG), "AnTrain") == 0)
+    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, 0), object_get_name(pass)) == EQUAL_WORDS && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == EQUAL_WORDS && strcasecmp(command_get_argument(cmd, THIRD_ARG), "AnTrain") == EQUAL_WORDS)
     {
         /*The pass was used correctly.*/
         game_move_all_players(game, START_ROOM_ID);
@@ -549,11 +550,11 @@ Status gamerules_bad_ending(Game *game, Gamerule *gr)
     case 1:
         /*We are waiting for the player to kill the spider boss and all the spiders.*/
 
-        if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) > 0 ||
-            character_get_health(game_get_character(game, SPIDER_1)) > 0 ||
-            character_get_health(game_get_character(game, SPIDER_2)) > 0 ||
-            character_get_health(game_get_character(game, SPIDER_3)) > 0 ||
-            character_get_health(game_get_character(game, SPIDER_4)) > 0)
+        if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) > NO_HEALTH ||
+            character_get_health(game_get_character(game, SPIDER_1)) > NO_HEALTH ||
+            character_get_health(game_get_character(game, SPIDER_2)) > NO_HEALTH ||
+            character_get_health(game_get_character(game, SPIDER_3)) > NO_HEALTH ||
+            character_get_health(game_get_character(game, SPIDER_4)) > NO_HEALTH)
         {
             /*Some enemies are missing to be killed.*/
             return OK;
@@ -584,7 +585,7 @@ Status gamerules_lever_challenge(Game *game, Gamerule *gr)
     {
     case 0:
         /*We are waiting for the player to talk with Worried ant.*/
-        if (command_get_code(game_get_last_command(game)) == CHAT && strcasecmp(command_get_argument(game_get_last_command(game), 0), "Worried_Ant") == 0)
+        if (command_get_code(game_get_last_command(game)) == CHAT && strcasecmp(command_get_argument(game_get_last_command(game), 0), "Worried_Ant") == EQUAL_WORDS)
         {
             /*The player talked to the ant, we go to the next stage.*/
             gamerules_set_value(gr, 1);
@@ -669,7 +670,7 @@ Status gamerules_spider_boss_killed(Game *game, Gamerule *gr)
     if (!game || !gr)
         return ERROR;
     /*Checks if the Spider boss was killed.*/
-    if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) <= 0)
+    if (character_get_health(game_get_character(game, SPIDER_BOSS_ID)) <= NO_HEALTH)
     {
         /*The spider boss was killed.*/
         game_move_all_players(game, POST_BOSS_ROOM_ID);
@@ -684,7 +685,7 @@ Status gamerules_spider_boss_killed(Game *game, Gamerule *gr)
         /*Changes merchant.*/
         merchant = game_get_character(game, MERCHANT_ID);
         character_set_friendly(merchant, FALSE);
-        character_set_follow(merchant, -1);
+        character_set_follow(merchant, NO_ID);
         space_take_character(game_get_space(game, game_get_character_location(game, MERCHANT_ID)), MERCHANT_ID);
         space_add_character(game_get_space(game, 0), MERCHANT_ID);
 
@@ -714,7 +715,7 @@ Status gamerules_random_damage(Game *game, Gamerule *gr)
     }
 
     /*Checks if the damage is dealt.*/
-    if (game_random_int(1, 10) <= HEAL_PROB)
+    if (game_random_int(1, 15) <= HEAL_PROB)
     {
         player_set_health(game_get_actual_player(game), player_get_health(game_get_actual_player(game)) - 1);
         animation_run(game_get_animation_manager(game), DAMAGE_MSG);
@@ -746,7 +747,7 @@ Status gamerules_random_heal(Game *game, Gamerule *gr)
     }
 
     /*Checks if the damage is dealt.*/
-    if (game_random_int(1, 10) <= DAMAGE_PROB)
+    if (game_random_int(1, 15) <= DAMAGE_PROB)
     {
         player_set_health(game_get_actual_player(game), player_get_health(game_get_actual_player(game)) + 1);
         animation_run(game_get_animation_manager(game), HEAL_MSG);
@@ -807,8 +808,8 @@ Status gamerules_dinamite_interactivity(Game *game, Gamerule *gr)
             {
                 link_set_state(game_find_link(game, DINAMITE_LINK), TRUE);
                 /*We kill all the corresponding charracters.*/
-                character_set_health(game_get_character(game, PRISON_ANT_ID), -10);
-                character_set_health(game_get_character(game, WORRIED_ANT), -10);
+                character_set_health(game_get_character(game, PRISON_ANT_ID), NO_HEALTH);
+                character_set_health(game_get_character(game, WORRIED_ANT), NO_HEALTH);
             }
             /*Actualises the gamerule.*/
             gamerules_increment_has_exec(gr);
@@ -825,7 +826,7 @@ Status gamerules_misterious_spider_kill(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the spider was killed.*/
-    if (character_get_health(game_get_character(game, SPIDER_1)) <= 0)
+    if (character_get_health(game_get_character(game, SPIDER_1)) <= NO_HEALTH)
     {
         /*The spider was killed.*/
         link_set_state(game_find_link(game, SPIDER_1_LINK), TRUE);
@@ -845,7 +846,7 @@ Status gamerules_guard_spider_kill(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the spider was killed.*/
-    if (character_get_health(game_get_character(game, SPIDER_2)) <= 0)
+    if (character_get_health(game_get_character(game, SPIDER_2)) <= NO_HEALTH)
     {
         /*The spider was killed.*/
         link_set_state(game_find_link(game, SPIDER_2_LINK), TRUE);
@@ -918,10 +919,10 @@ Status gamerules_merchant_bad_ending(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the last command was using the gun against merchant.*/
-    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, FIRST_ARG), "artifact") == 0 && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == 0 && strcasecmp(command_get_argument(cmd, THIRD_ARG), "Merchant") == 0)
+    if (command_get_code(cmd) == USE && strcasecmp(command_get_argument(cmd, FIRST_ARG), "artifact") == EQUAL_WORDS && strcasecmp(command_get_argument(cmd, SECOND_ARG), "over") == EQUAL_WORDS && strcasecmp(command_get_argument(cmd, THIRD_ARG), "Merchant") == EQUAL_WORDS)
     {
         /*The player used the gun against the merchant.*/
-        character_set_health(game_get_character(game, MERCHANT_ID), -10);
+        character_set_health(game_get_character(game, MERCHANT_ID), NO_HEALTH);
         animation_run(game_get_animation_manager(game), ANIMATION_MERCHANT_ENDING_1);
         game_set_finished(game, TRUE);
 
@@ -940,7 +941,7 @@ Status gamerules_merchant_good_ending(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if the merchant is dead.*/
-    if (character_get_health(game_get_character(game, MERCHANT_ID)) <= 0)
+    if (character_get_health(game_get_character(game, MERCHANT_ID)) <= NO_HEALTH)
     {
         /*The merchant is dead, we set the game as finished.*/
         game_set_finished(game, TRUE);
@@ -961,7 +962,7 @@ Status gamerules_neutral_ending(Game *game, Gamerule *gr)
         return ERROR;
 
     /*Checks if any player is dead.*/
-    if (player_get_health(game_get_actual_player(game)) <= 0)
+    if (player_get_health(game_get_actual_player(game)) <= NO_HEALTH)
     {
         /*The player is dead, we set the game as finished.*/
         game_set_finished(game, TRUE);
@@ -981,7 +982,7 @@ Status gamerules_initial_animation(Game *game, Gamerule *gr)
     if (!game || !gr)
         return ERROR;
 
-    if (gamerules_get_n_exec_times(gr) > 0)
+    if (gamerules_get_n_exec_times(gr) > NO_THINGS)
     {
         /*The animation was already executed, we don't need to do it again.*/
         return OK;

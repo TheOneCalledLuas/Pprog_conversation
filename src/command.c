@@ -20,6 +20,8 @@
 #define CMD_LENGHT 50
 #define CMD_SHORTCUT 1 /*!< Command shortcut position. */
 #define N_ARGS 4       /*!< Number of possible arguments you can input*/
+#define FIRST_CHAR 0   /*!< Position number 0 of a string, used to intitialize things*/
+#define STOP_CHAR 1    /*!< Size of the \0, cause we need to include it*/
 
 /**
  * @brief structure with all the possible commands and the key words to triger them.
@@ -54,7 +56,7 @@ Command *command_create()
     newCommand->code = NO_CMD;
     for (i = 0; i < N_ARGS; i++)
     {
-        newCommand->word[i][0] = '\0';
+        newCommand->word[i][FIRST_CHAR] = '\0';
     }
     newCommand->status = OK;
 
@@ -121,7 +123,7 @@ Status command_set_argument(Command *command, char *word, int position)
 
     /*Copies all the letters it can before overflowing to the destionation and the las character is set to \0.*/
     strncpy(command->word[position], word, CMD_LENGHT);
-    command->word[position][CMD_LENGHT - 1] = '\0';
+    command->word[position][CMD_LENGHT - STOP_CHAR] = '\0';
 
     return OK;
 }
@@ -147,7 +149,7 @@ Status command_get_status(Command *command)
 Status command_get_user_input(Command *command)
 {
     char input[CMD_LENGHT] = "", *token = NULL;
-    int i = UNKNOWN - NO_CMD + 1;
+    int i = UNKNOWN;
     CommandCode cmd;
 
     /* Error control.*/
@@ -157,9 +159,9 @@ Status command_get_user_input(Command *command)
     }
     for (i = 0; i < N_ARGS; i++)
     {
-        command->word[i][0] = '\0';
+        command->word[i][FIRST_CHAR] = '\0';
     }
-    i = UNKNOWN - NO_CMD + 1;
+    i = UNKNOWN;
 
     /*1. Gets user input.*/
     if (fgets(input, CMD_LENGHT, stdin))

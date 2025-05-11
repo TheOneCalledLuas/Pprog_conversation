@@ -15,24 +15,27 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_NAME 20     /*!<Max name length.*/
-#define MAX_DESC 7      /*!<Max description line.*/
-#define MAX_MESSAGE 100 /*!<Max message length.*/
+#define MAX_NAME 20      /*!<Max name length.*/
+#define MAX_DESC 7       /*!<Max description line.*/
+#define MAX_MESSAGE 100  /*!<Max message length.*/
+#define NO_HEALTH 0      /*!<No health value.*/
+#define FIRST_CHAR 0     /*!<Position number 0 of a string, used to intitialize things*/
+#define STOP_CHARACTER 1 /*!Size of the \0, cause we need to include it*/
 
 /**
  * Character TAD.
  */
 struct _Character
 {
-    Id id;                      /*!< Id of the character.*/
-    char name[MAX_NAME];        /*!< Name of the character.*/
-    char description[MAX_DESC]; /*!< Description of the character.*/
-    Bool friendly;              /*!< Whether the character is friendly or not.*/
-    char message[MAX_MESSAGE];  /*!< Message of the character.*/
-    int health;                 /*!< Amount of health of the character.*/
-    Id follow;                  /*!< Id of the character it follows.*/
+    Id id;                                  /*!< Id of the character.*/
+    char name[MAX_NAME];                    /*!< Name of the character.*/
+    char description[MAX_DESC];             /*!< Description of the character.*/
+    Bool friendly;                          /*!< Whether the character is friendly or not.*/
+    char message[MAX_MESSAGE];              /*!< Message of the character.*/
+    int health;                             /*!< Amount of health of the character.*/
+    Id follow;                              /*!< Id of the character it follows.*/
     char *texture[CHARACTER_TEXTURE_LINES]; /*!< Strings which create the texture of the character.*/
-    char *__texture_data;       /*!< Actual matrix with the texture.*/
+    char *__texture_data;                   /*!< Actual matrix with the texture.*/
 };
 
 Character *character_create(Id id)
@@ -40,7 +43,7 @@ Character *character_create(Id id)
     Character *character = NULL;
     int i;
     /*Error management.*/
-    if (id < 0)
+    if (id <= NO_ID)
         return NULL;
 
     /*Memory allocation.*/
@@ -51,21 +54,21 @@ Character *character_create(Id id)
 
     /*Establishes the values to default ones.*/
     character->id = id;
-    character->name[0] = '\0';
-    character->description[0] = '\0';
+    character->name[FIRST_CHAR] = '\0';
+    character->description[FIRST_CHAR] = '\0';
     character->friendly = FALSE;
-    character->message[0] = '\0';
+    character->message[FIRST_CHAR] = '\0';
     character->follow = NO_ID;
-    character->health = 0;
-    character->__texture_data = (char*)calloc(CHARACTER_TEXTURE_SIZE*CHARACTER_TEXTURE_LINES, sizeof(char));
+    character->health = NO_HEALTH;
+    character->__texture_data = (char *)calloc(CHARACTER_TEXTURE_SIZE * CHARACTER_TEXTURE_LINES, sizeof(char));
     if (!character->__texture_data)
     {
         free(character);
         return NULL;
     }
-    for(i=0;i<CHARACTER_TEXTURE_LINES;i++)
+    for (i = 0; i < CHARACTER_TEXTURE_LINES; i++)
     {
-        character->texture[i]=&(character->__texture_data[i*CHARACTER_TEXTURE_SIZE]);
+        character->texture[i] = &(character->__texture_data[i * CHARACTER_TEXTURE_SIZE]);
     }
     /*Clean exit.*/
     return character;
@@ -90,7 +93,8 @@ Status character_set_texture_line(Character *character, int line, char *str)
     }
     /*Sets the value.*/
     strncpy(character->texture[line], str, CHARACTER_TEXTURE_SIZE);
-    character->texture[line][CHARACTER_TEXTURE_SIZE - 1] = '\0';
+    /*Adds a \0 in case the string is to long*/
+    character->texture[line][CHARACTER_TEXTURE_SIZE - STOP_CHARACTER] = '\0';
     return OK;
 }
 
@@ -125,7 +129,7 @@ Status character_set_name(Character *character, char *name)
     }
     /*Sets the value.*/
     strncpy(character->name, name, MAX_NAME);
-    character->name[MAX_NAME - 1] = '\0';
+    character->name[MAX_NAME - STOP_CHARACTER] = '\0';
     return OK;
 }
 
@@ -144,7 +148,7 @@ Status character_set_description(Character *character, char *description)
 
     /*Sets the value.*/
     strncpy(character->description, description, MAX_DESC);
-    character->description[MAX_DESC - 1] = '\0';
+    character->description[MAX_DESC - STOP_CHARACTER] = '\0';
 
     return OK;
 }
@@ -184,7 +188,7 @@ Status character_set_message(Character *character, char *message)
 
     /*Sets the value.*/
     strncpy(character->message, message, MAX_MESSAGE);
-    character->message[MAX_MESSAGE - 1] = '\0';
+    character->message[MAX_MESSAGE - STOP_CHARACTER] = '\0';
 
     return OK;
 }
@@ -209,7 +213,7 @@ Status character_set_health(Character *character, int health)
 
 int character_get_health(Character *character)
 {
-    return (character ? character->health : -1);
+    return (character ? character->health : FUNCTION_ERROR);
 }
 
 Status character_set_follow(Character *character, Id player)
@@ -234,7 +238,6 @@ Id character_get_follow(Character *character)
     /*Returns the value.*/
     return character->follow;
 }
-
 
 Status character_print(Character *character)
 {

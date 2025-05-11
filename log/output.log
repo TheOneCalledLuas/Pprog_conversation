@@ -1,0 +1,12 @@
+Player 3 executed Command move with arguments "s""""""" and exit code ERROR
+Player 2 executed Command Attack with arguments """""""" and exit code ERROR
+Player 2 executed Command Drop with arguments """""""" and exit code ERROR
+Player 2 executed Command Take with arguments """""""" and exit code ERROR
+Player 2 executed Command Chat with arguments """""""" and exit code ERROR
+Player 2 executed Command Inspect with arguments """""""" and exit code ERROR
+Player 2 executed Command recruit with arguments """""""" and exit code ERROR
+Player 2 executed Command forsake with arguments """""""" and exit code ERROR
+Player 2 executed Command menu with arguments """""""" and exit code ERROR
+Player 2 executed Command menu with arguments """""""" and exit code ERROR
+Player 2 executed Command save with arguments "game""saved""as""2" and exit code OK
+Player 2 executed Command menu with arguments """""""" and exit code ERROR

@@ -27,6 +27,28 @@
 #define DESC_LENGTH 10      /*!< Max description length. */
 #define IDENTIFIER_LENGTH 3 /*!< Number of characters the identifier occupies in the data file. */
 #define SPACE_DESC 5        /*!< Number of lines the space description occupies. */
+#define STOP_CHARACTER 1    /*!Size of the \0, cause we need to include it*/
+
+typedef enum
+{
+    OPEN_GATE = 20,         /*!id for open gate gamerule.*/
+    USE_TRAIN_PASS,         /*!id for use train pass gamerule*/
+    BAD_ENDING,             /*!id for bad ending gamerule*/
+    LEVER_CHALLENGE,        /*!id for lever challenge gamerule*/
+    SPIDER_BOOS_KILLED,     /*!id for spider boss killed gamerule*/
+    RANDOM_DAMAGE,          /*!id for random damage gamerule*/
+    RANDOM_HEAL,            /*!id for random heal gamerule*/
+    BLUE_POTION,            /*!id for blue potion gamerule*/
+    DINAMITE,               /*!id for dinamite gamerule*/
+    MISTERIOUS_SPIDER_KILL, /*!id for misterious spider kill gamerule*/
+    GUARD_SPIDER_KILL,      /*!id for guard spider kill gamerule*/
+    EXPLORATION_PROGRESS,   /*!id for exploration progress gamerule*/
+    MERCHANT_BOOST,         /*!id for merchant boost gamerule*/
+    MERCHANT_BAD_ENDING,    /*!id for merchant bad ending gamerule*/
+    MERCHANT_GOOD_ENDING,   /*!id for merchant good ending gamerule*/
+    NEUTRAL_ENDING,         /*!id for neutral ending gamerule*/
+    INTIAL_ANIMATION        /*!id for initial animation gamerule*/
+} Gamerules_ids;
 
 Status game_reader_load_spaces(Game *game, char *filename)
 {
@@ -153,7 +175,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
                         for (i = 0; i < SPACE_TEXTURE_LINES; i++)
                         {
                             fgets(line, WORD_SIZE, textures);
-                            line[SPACE_TEXTURE_SIZE - 1] = '\0';
+                            line[SPACE_TEXTURE_SIZE - STOP_CHARACTER] = '\0';
                             space_set_texture_line(space, i, line);
                         }
                     }
@@ -227,7 +249,7 @@ Status game_reader_load_objects(Game *game, char *filename)
     status = ERROR;
     while (status == ERROR && fgets(line, WORD_SIZE, file))
     {
-        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             status = OK;
             strcpy(texture_file, line + IDENTIFIER_LENGTH);
@@ -261,7 +283,7 @@ Status game_reader_load_objects(Game *game, char *filename)
     {
         rewind(textures);
         /*Checks that the line contains an object.*/
-        if (strncmp("#o:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#o:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
@@ -309,14 +331,14 @@ Status game_reader_load_objects(Game *game, char *filename)
             sprintf(name, "#o:%ld", id);
             while (status == ERROR && fgets(line, WORD_SIZE, textures))
             {
-                if (strncmp(name, line, strlen(name)) == 0)
+                if (strncmp(name, line, strlen(name)) == EQUAL_WORDS)
                 {
                     status = OK;
                     /*Sets the texture.*/
                     for (i = 0; i < OBJECT_TEXTURE_LINES; i++)
                     {
                         fgets(line, WORD_SIZE, textures);
-                        line[OBJECT_TEXTURE_SIZE - 1] = '\0';
+                        line[OBJECT_TEXTURE_SIZE - STOP_CHARACTER] = '\0';
                         object_set_texture_line(object, i, line);
                     }
                 }
@@ -329,7 +351,7 @@ Status game_reader_load_objects(Game *game, char *filename)
                 }
             }
             /*Places the object in its initial place.*/
-            if (space_id != -1)
+            if (space_id != NO_ID)
             {
                 space_add_object(game_get_space(game, space_id), id);
             }
@@ -373,7 +395,7 @@ Status game_reader_load_characters(Game *game, char *name_file)
     status = ERROR;
     while (fgets(data, WORD_SIZE, file) && status == ERROR)
     {
-        if (strncmp("#t:", data, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#t:", data, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             status = OK;
             strcpy(texture_file, data + IDENTIFIER_LENGTH);
@@ -406,7 +428,7 @@ Status game_reader_load_characters(Game *game, char *name_file)
     /*Reads the rest of the file*/
     while (fgets(data, WORD_SIZE, file))
     {
-        if (strncmp("#c:", data, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#c:", data, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Rewinds the texture file*/
             rewind(textures);
@@ -484,13 +506,13 @@ Status game_reader_load_characters(Game *game, char *name_file)
             sprintf(aux, "#c:%ld", id);
             while (fgets(data, WORD_SIZE, textures) && status == ERROR)
             {
-                if (strncmp(aux, data, strlen(aux)) == 0)
+                if (strncmp(aux, data, strlen(aux)) == EQUAL_WORDS)
                 {
                     status = OK;
                     for (i = 0; i < CHARACTER_TEXTURE_LINES; i++)
                     {
                         fgets(data, WORD_SIZE, textures);
-                        data[CHARACTER_TEXTURE_SIZE - 1] = '\0';
+                        data[CHARACTER_TEXTURE_SIZE - STOP_CHARACTER] = '\0';
                         character_set_texture_line(character, i, data);
                     }
                 }
@@ -530,7 +552,7 @@ Status game_reader_load_last_turn(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, file))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#T:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#T:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
@@ -555,7 +577,7 @@ Status game_reader_load_players(Game *game, char *filename)
     char name[WORD_SIZE];
     char gdesc[WORD_SIZE];
     char line[WORD_SIZE];
-    Id player_id = 0, space_id = 0, aux_id = 0, player_team;
+    Id player_id = NO_ID, space_id = NO_ID, aux_id = NO_ID, player_team = NO_ID;
     char *toks = NULL;
     int player_inventory = 0, player_health = 0, i = 0;
 
@@ -571,7 +593,7 @@ Status game_reader_load_players(Game *game, char *filename)
     status = ERROR;
     while (fgets(line, WORD_SIZE, f))
     {
-        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#t:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             status = OK;
             strcpy(texture_file, line + IDENTIFIER_LENGTH);
@@ -605,7 +627,7 @@ Status game_reader_load_players(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#p:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#p:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Rewinds the texture file*/
             rewind(textures);
@@ -655,13 +677,13 @@ Status game_reader_load_players(Game *game, char *filename)
             sprintf(name, "#p:%ld", player_id);
             while (fgets(line, WORD_SIZE, textures) && status == ERROR)
             {
-                if (strncmp(name, line, strlen(name)) == 0)
+                if (strncmp(name, line, strlen(name)) == EQUAL_WORDS)
                 {
                     status = OK;
                     for (i = 0; i < PLAYER_TEXTURE_LINES; i++)
                     {
                         fgets(line, WORD_SIZE, textures);
-                        line[PLAYER_TEXTURE_SIZE - 1] = '\0';
+                        line[PLAYER_TEXTURE_SIZE - STOP_CHARACTER] = '\0';
                         player_set_texture_line(player, i, line);
                     }
                 }
@@ -692,10 +714,10 @@ Status game_reader_load_links(Game *game, char *filename)
     Link *link = NULL;
     char name[WORD_SIZE];
     char line[WORD_SIZE];
-    Id dest_id = 0, origin_id = 0, id = 0;
+    Id dest_id = NO_ID, origin_id = NO_ID, id = NO_ID;
     char *toks = NULL;
-    Direction direction;
-    Bool state;
+    Direction direction = UNK_DIRECTION;
+    Bool state = FALSE;
 
     /*Error handling.*/
     if (!game || !filename)
@@ -709,7 +731,7 @@ Status game_reader_load_links(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#l:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#l:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
@@ -754,10 +776,10 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     Gamerule *gr = NULL;
     char name[WORD_SIZE];
     char line[WORD_SIZE];
-    Id id = 0;
+    Id id = NO_ID;
     char *toks = NULL;
     int value = 0, has_exec = 0;
-    Bool is_valid = 0, do_once = 0;
+    Bool is_valid = FALSE, do_once = FALSE;
 
     /*Error handling.*/
     if (!game || !filename)
@@ -771,7 +793,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#g:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#g:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");
@@ -803,55 +825,55 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             /*Assigns the gamerule func to the structure.*/
             switch (id)
             {
-            case 20:
+            case OPEN_GATE:
                 gamerules_gamerule_set_func(gr, gamerules_open_gate);
                 break;
-            case 21:
+            case USE_TRAIN_PASS:
                 gamerules_gamerule_set_func(gr, gamerules_use_train_pass);
                 break;
-            case 22:
+            case BAD_ENDING:
                 gamerules_gamerule_set_func(gr, gamerules_bad_ending);
                 break;
-            case 23:
+            case LEVER_CHALLENGE:
                 gamerules_gamerule_set_func(gr, gamerules_lever_challenge);
                 break;
-            case 24:
+            case SPIDER_BOOS_KILLED:
                 gamerules_gamerule_set_func(gr, gamerules_spider_boss_killed);
                 break;
-            case 25:
+            case RANDOM_DAMAGE:
                 gamerules_gamerule_set_func(gr, gamerules_random_damage);
                 break;
-            case 26:
+            case RANDOM_HEAL:
                 gamerules_gamerule_set_func(gr, gamerules_random_heal);
                 break;
-            case 27:
+            case BLUE_POTION:
                 gamerules_gamerule_set_func(gr, gamerules_blue_potion);
                 break;
-            case 28:
+            case DINAMITE:
                 gamerules_gamerule_set_func(gr, gamerules_dinamite_interactivity);
                 break;
-            case 29:
+            case MISTERIOUS_SPIDER_KILL:
                 gamerules_gamerule_set_func(gr, gamerules_misterious_spider_kill);
                 break;
-            case 30:
+            case GUARD_SPIDER_KILL:
                 gamerules_gamerule_set_func(gr, gamerules_guard_spider_kill);
                 break;
-            case 31:
+            case EXPLORATION_PROGRESS:
                 gamerules_gamerule_set_func(gr, gamerules_exploration_progress);
                 break;
-            case 32:
+            case MERCHANT_BOOST:
                 gamerules_gamerule_set_func(gr, gamerules_merchant_boost);
                 break;
-            case 33:
+            case MERCHANT_BAD_ENDING:
                 gamerules_gamerule_set_func(gr, gamerules_merchant_bad_ending);
                 break;
-            case 34:
+            case MERCHANT_GOOD_ENDING:
                 gamerules_gamerule_set_func(gr, gamerules_merchant_good_ending);
                 break;
-            case 35:
+            case NEUTRAL_ENDING:
                 gamerules_gamerule_set_func(gr, gamerules_neutral_ending);
                 break;
-            case 36:
+            case INTIAL_ANIMATION:
                 gamerules_gamerule_set_func(gr, gamerules_initial_animation);
                 break;
 
@@ -872,7 +894,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
 Status game_reader_load_savefile_names(Game *game)
 {
     FILE *file = NULL;
-    int i = 0, j=0;
+    int i = 0, j = 0;
     char str[WORD_SIZE] = "";
 
     /*Error management*/
@@ -910,7 +932,7 @@ Status game_reader_save_game(Game *game, char *filename)
     void *aux_structure = NULL;
 
     /*Error management*/
-    if (!(game) || !(filename) || strlen(filename) == 0 || strlen(filename) > WORD_SIZE)
+    if (!(game) || !(filename) || strlen(filename) > WORD_SIZE)
         return ERROR;
 
     /*Writes the name of the filename*/
@@ -926,12 +948,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*1-SAVES THE SPACES*/
     /*Gets the numbe of spaces*/
     n_things = game_get_n_spaces(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the spaces*/
         if (!(ids = game_get_spaces(game)))
@@ -961,12 +983,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*2-SAVES THE CHARACTERS*/
     /*Gets the number of characters*/
     n_things = game_get_num_characters(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the characters*/
         if (!(ids = game_get_characters(game)))
@@ -992,12 +1014,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*3-SAVES THE OBJECTS*/
     /*Gets the number of objects*/
     n_things = game_get_n_objects(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the objects*/
         if (!(ids = game_get_objects(game)))
@@ -1023,12 +1045,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*4-SAVES THE PLAYERS*/
     /*Gets the number of players*/
     n_things = game_get_n_players(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the players*/
         if (!(ids = game_get_players(game)))
@@ -1092,12 +1114,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*5-SAVES THE LINKS*/
     /*Gets the number of links*/
     n_things = game_get_n_links(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the links*/
         if (!(ids = game_get_links(game)))
@@ -1122,12 +1144,12 @@ Status game_reader_save_game(Game *game, char *filename)
     /*6-SAVES THE GAMERULES*/
     /*Gets the number of gamerules*/
     n_things = game_get_n_gamerules(game);
-    if (n_things == -1)
+    if (n_things == FUNCTION_ERROR)
     {
         fclose(f);
         return ERROR;
     }
-    if (n_things != 0)
+    if (n_things != NO_THINGS)
     {
         /*Gets the ids of the gamerules*/
         if (!(ids = game_get_gamerules(game)))
@@ -1170,7 +1192,7 @@ Status game_reader_load_animations(Game *game, char *filename)
     Id id = 0;
     char *toks = NULL;
     int widht, height, frames, widht_padding, height_padding, background_color, font_color;
-    float refresh_rate = 0.0;
+    float refresh_rate = 0;
 
     /*Error handling.*/
     if (!game || !filename)
@@ -1184,7 +1206,7 @@ Status game_reader_load_animations(Game *game, char *filename)
     while (fgets(line, WORD_SIZE, f))
     {
         /*Checks that the line contains a player.*/
-        if (strncmp("#a:", line, IDENTIFIER_LENGTH) == 0)
+        if (strncmp("#a:", line, IDENTIFIER_LENGTH) == EQUAL_WORDS)
         {
             /*Takes the information data by data.*/
             toks = strtok(line + IDENTIFIER_LENGTH, "|");

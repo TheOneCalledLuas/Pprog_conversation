@@ -80,7 +80,7 @@ Status inventory_add(Inventory *inventory, Id id);
  *
  * @param inventory Pointer to the inventory to change.
  * @param id Id of the object to be taken out.
- * @return Id taken out; -2 if anything went wrong.
+ * @return Id taken out; ID_ERROR if anything went wrong.
  */
 Id inventory_take(Inventory *inventory, Id id);
 
@@ -89,7 +89,7 @@ Id inventory_take(Inventory *inventory, Id id);
  * @author Raquel Anguita Martínez de Velasco.
  *
  * @param inventory Pointer to the inventory to change.
- * @return Number of objects in the inventory; -1 if there were any errors.
+ * @return Number of objects in the inventory; FUNCTION_ERROR if there were any errors.
  */
 int inventory_len(Inventory *inventory);
 

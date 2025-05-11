@@ -58,7 +58,7 @@ int game_get_n_teams(Game *game)
     /*Error management.*/
     if (!game)
     {
-        return -1;
+        return FUNCTION_ERROR;
     }
 
     /*Returns the number of teams.*/
@@ -68,7 +68,7 @@ int game_get_n_teams(Game *game)
 Status game_set_n_teams(Game *game, int n_teams)
 {
     /*Error management.*/
-    if (!game || n_teams < 0)
+    if (!game || n_teams < NO_THINGS || n_teams > MAX_PLAYERS)
     {
         return ERROR;
     }
@@ -248,16 +248,16 @@ Status game_create(Game **game)
     }
 
     /*Initializes all members of the game structure.*/
-    (*game)->n_spaces = 0;
-    (*game)->n_objects = 0;
-    (*game)->n_characters = 0;
-    (*game)->n_players = 0;
-    (*game)->n_links = 0;
-    (*game)->n_commands = 0;
-    (*game)->turn = 0;
+    (*game)->n_spaces = NO_THINGS;
+    (*game)->n_objects = NO_THINGS;
+    (*game)->n_characters = NO_THINGS;
+    (*game)->n_players = NO_THINGS;
+    (*game)->n_links = NO_THINGS;
+    (*game)->n_commands = NO_THINGS;
+    (*game)->turn = NO_THINGS;
     (*game)->finished = FALSE;
-    (*game)->n_savefiles = 0;
-    (*game)->n_teams = 0;
+    (*game)->n_savefiles = NO_THINGS;
+    (*game)->n_teams = NO_THINGS;
     (*game)->is_determined = FALSE;
     return OK;
 }
@@ -271,7 +271,7 @@ Status game_add_savefile(Game *game, char *name)
     /*Looks that the savefile doesnt exist already.*/
     for (i = 0; i < game->n_savefiles; i++)
     {
-        if (strcmp(name, game->savefiles[i]) == 0)
+        if (strcmp(name, game->savefiles[i]) == EQUAL_WORDS)
             return ERROR;
     }
     /*Adds the savfile*/
@@ -320,7 +320,7 @@ Status game_add_new_savefile(Game *game, char *name)
     /*Checks the it doesnt exist alreay*/
     for (i = 0; i < game->n_savefiles; i++)
     {
-        if (strcmp(name, game->savefiles[i]) == 0)
+        if (strcmp(name, game->savefiles[i]) == EQUAL_WORDS)
             return ERROR;
     }
     /*Adds the new savefile to the game structure*/
@@ -341,7 +341,7 @@ Status game_delete_savefile(Game *game, char *name)
     int i = 0;
     char str[WORD_SIZE] = "";
     /*Error management*/
-    if (!(game) || !(name) || game->n_savefiles <= 0)
+    if (!(game) || !(name) || game->n_savefiles <= NO_THINGS)
         return ERROR;
 
     /*Tries to open the file with the savefiles names*/
@@ -352,9 +352,9 @@ Status game_delete_savefile(Game *game, char *name)
     for (i = 0; i < game->n_savefiles; i++)
     {
         /*If it finds it do this*/
-        if (strcmp(name, game->savefiles[i]) == 0)
+        if (strcmp(name, game->savefiles[i]) == EQUAL_WORDS)
         {
-            /*1-Deletes it from the list of names in the game structure*/
+            /*1-Deletes it from the list of names in the game structure, and repositions the rest*/
             while (i < game->n_savefiles - 1)
             {
                 strcpy(game->savefiles[i], game->savefiles[i + 1]);
@@ -381,13 +381,13 @@ Status game_delete_savefile(Game *game, char *name)
 int game_get_n_savefiles(Game *game)
 {
     /*Error management and returns the value*/
-    return (game ? game->n_savefiles : -1);
+    return (game ? game->n_savefiles : FUNCTION_ERROR);
 }
 
 Status game_set_n_savefiles(Game *game, int n)
 {
     /*Error managment*/
-    if (!(game) || n < 0 || n > MAX_SAVEFILES)
+    if (!(game) || n < NO_THINGS || n > MAX_SAVEFILES)
         return ERROR;
 
     /*Sets the new value*/
@@ -398,7 +398,7 @@ Status game_set_n_savefiles(Game *game, int n)
 char *game_get_savefile(Game *game, int n)
 {
     /*Error management*/
-    if (!(game) || n < 0 || n >= MAX_SAVEFILES)
+    if (!(game) || n < NO_THINGS || n >= MAX_SAVEFILES)
         return NULL;
     /*Returns what was asked*/
     return game->savefiles[n];
@@ -451,7 +451,7 @@ Character *game_get_character(Game *game, Id id)
 {
     int i = 0;
     /*Error handling.*/
-    if (!game || id == -1)
+    if (!game || id == NO_ID || id == ID_ERROR)
         return NULL;
 
     /*Searches for the id.*/
@@ -486,7 +486,7 @@ int game_get_num_characters(Game *game)
 {
     /*Error handling.*/
     if (!game)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the value.*/
     return game->n_characters;
@@ -587,7 +587,7 @@ Id game_get_character_location(Game *game, Id id)
     /*Searches for the object.*/
     for (i = 0; i < game->n_spaces; i++)
     {
-        if (space_find_character(game->spaces[i], id) != -1)
+        if (space_find_character(game->spaces[i], id) != NO_POSITION)
             return space_get_id(game->spaces[i]);
     }
     /*The character wasn't found in any space.*/
@@ -656,7 +656,7 @@ Status game_destroy(Game **game)
     /*Destroys the gamerules and game values.*/
     if ((*game)->game_values)
     {
-        while (gamerules_get_n_gamerules((*game)->game_values) > 0)
+        while (gamerules_get_n_gamerules((*game)->game_values) > NO_THINGS)
         {
             gr = gamerules_values_delete_last((*game)->game_values);
             gamerules_gamerule_destroy(gr);
@@ -668,9 +668,7 @@ Status game_destroy(Game **game)
     /*Destroys the animation manager and all the animations.*/
     j = game_get_n_animations(*game) - 1;
     for (; j >= 0; j--)
-    {
         animation_manager_del_animation((*game)->animation_manager, j);
-    }
 
     if ((*game)->animation_manager)
     {
@@ -690,7 +688,7 @@ int game_get_n_animations(Game *game)
 {
     /*Error handling.*/
     if (!game)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the number of animations. */
     return animation_manager_get_n_animations(game->animation_manager);
@@ -700,7 +698,7 @@ int game_get_turn(Game *game)
 {
     /*Error handling.*/
     if (!game)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the game.*/
     return game->turn;
@@ -710,7 +708,7 @@ int game_get_n_players(Game *game)
 {
     /*Error handling.*/
     if (!game)
-        return -1;
+        return FUNCTION_ERROR;
     /*Returns the value.*/
     return game->n_players;
 }
@@ -718,7 +716,7 @@ int game_get_n_players(Game *game)
 Player *game_get_player(Game *game, int player_number)
 {
     /*Error handling.*/
-    if (!game || player_number < 0 || player_number >= game->n_players)
+    if (!game || player_number < NO_THINGS || player_number >= game->n_players)
         return NULL;
 
     /*Returns the player.*/
@@ -735,14 +733,14 @@ Status game_next_turn(Game *game)
     if (!game_next_command(game))
         return ERROR;
     /*Goes to the next turn.*/
-    game->turn = ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
+    game->turn = ((game->turn) + 1 == game->n_players ? NO_THINGS : (game->turn) + 1);
     return OK;
 }
 
 Status game_set_turn(Game *game, int turn)
 {
     /*Error handling.*/
-    if (!game || turn < 0 || turn >= game->n_players)
+    if (!game || turn < NO_THINGS || turn >= game->n_players)
         return ERROR;
 
     /*Sets the turn.*/
@@ -756,7 +754,7 @@ int game_get_next_turn(Game *game)
     if (!game)
         return -1;
     /*Returns the next turn.*/
-    return ((game->turn) + 1 == game->n_players ? 0 : (game->turn) + 1);
+    return ((game->turn) + 1 == game->n_players ? NO_THINGS : (game->turn) + 1);
 }
 
 Status game_add_player(Game *game, Player *player)
@@ -825,7 +823,7 @@ Id *game_get_objects(Game *game)
         return NULL;
 
     len = game_get_n_objects(game);
-    if (len == 0)
+    if (len == NO_THINGS)
         return NULL;
 
     /*Allocates memory.*/
@@ -911,7 +909,7 @@ Status game_take_object(Game *game, Object *object)
     Id id = 0;
     int position = 0;
     /*Error handling.*/
-    if (!game || !object)
+    if (!game || !object || game_get_n_objects(game) <= NO_THINGS)
         return ERROR;
 
     /*Takes the id.*/
@@ -1071,7 +1069,7 @@ Link *game_get_link_by_name(Game *game, char *name)
     /*Searches for the link and returns it. */
     for (i = 0; i < game->n_links; i++)
     {
-        if (link_get_name(game->links[i]) && strcasecmp(link_get_name(game->links[i]), name) == 0)
+        if (link_get_name(game->links[i]) && strcasecmp(link_get_name(game->links[i]), name) == EQUAL_WORDS)
             return game->links[i];
     }
 
@@ -1172,6 +1170,7 @@ Status game_create_from_file(Game **game, char *filename)
             if (!((*game)->commands[(*game)->n_commands]))
                 return ERROR;
             (*game)->last_cmd[i][j] = (*game)->commands[(*game)->n_commands];
+            /*Increases the number of commands*/
             (*game)->n_commands = (*game)->n_commands + 1;
         }
     }
@@ -1200,9 +1199,13 @@ Status game_add_link(Game *game, Link *link)
 Status game_delete_link(Game *game, int position)
 {
     /*Error management*/
-    if (!(game) || position < 0)
+    if (!(game) || position < NO_THINGS || position >= game->n_links)
         return ERROR;
 
+    if (game->links[position] == NULL)
+        return ERROR;
+    /*Decreases the number of links*/
+    game->n_links--;
     /*Destroys the link.*/
     return link_destroy(game->links[position]);
 }
@@ -1229,7 +1232,7 @@ Id game_get_space_at(Game *game, Id space, Direction direction)
 {
     int i;
     /*Error managment.*/
-    if (!(game) || space == ID_ERROR || direction < 0 || direction > D)
+    if (!(game) || space == ID_ERROR || direction < N || direction > D)
         return ID_ERROR;
 
     /*Finds the links with origin the space given, and if they are facing that direction, returns the destination.*/
@@ -1248,7 +1251,7 @@ int game_get_n_followers(Game *game, Id player)
     int i = 0, n = 0;
     /*Error management*/
     if (!(game) || player == NO_ID || player == ID_ERROR)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Counts the number of followers.*/
     for (i = 0; i < game->n_characters; i++)
@@ -1328,7 +1331,7 @@ Id *game_get_players(Game *game)
         return NULL;
 
     len = game->n_players;
-    if (len == 0)
+    if (len == NO_THINGS)
         return NULL;
 
     /*Allocates memory.*/
@@ -1353,7 +1356,7 @@ Id *game_get_spaces(Game *game)
         return NULL;
 
     len = game->n_spaces;
-    if (len == 0)
+    if (len == NO_THINGS)
         return NULL;
 
     /*Allocates memory.*/
@@ -1378,7 +1381,7 @@ Id *game_get_links(Game *game)
         return NULL;
 
     len = game->n_links;
-    if (len == 0)
+    if (len == NO_THINGS)
         return NULL;
 
     /*Allocates memory.*/
@@ -1406,19 +1409,19 @@ Id *game_get_gamerules(Game *game)
 int game_get_n_gamerules(Game *game)
 {
     /*Error management and gets the number of gamerules*/
-    return (game ? gamerules_get_n_gamerules(game->game_values) : -1);
+    return (game ? gamerules_get_n_gamerules(game->game_values) : FUNCTION_ERROR);
 }
 
 int game_get_n_links(Game *game)
 {
     /*ERror management and gets the number of links*/
-    return (game ? game->n_links : -1);
+    return (game ? game->n_links : FUNCTION_ERROR);
 }
 
 int game_get_n_spaces(Game *game)
 {
     /*Error management and gets the number of spaces*/
-    return (game ? game->n_spaces : -1);
+    return (game ? game->n_spaces : FUNCTION_ERROR);
 }
 
 Status game_move_all_players(Game *game, Id room)

@@ -20,6 +20,7 @@
  */
 #define G_DESC_LINES 5
 #define DESC_SIZE 10     /*!< Description size.*/
+#define FIRST_CHAR 0    /*!< Position number 0 of a string, used to initialize things*/
 
 /**
  * @brief Space
@@ -56,7 +57,7 @@ Space *space_create(Id id)
 
     /*Initialization of an empty space.*/
     newSpace->id = id;
-    newSpace->name[0] = '\0';
+    newSpace->name[FIRST_CHAR] = '\0';
     newSpace->objects = set_create();
     newSpace->characters = set_create();
     newSpace->discovered = FALSE;
@@ -115,7 +116,7 @@ void space_destroy(Space *space)
 char *space_get_gdesc_line(Space *space, int line)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > G_DESC_LINES - 1)
+    if (!space || line < NO_THINGS || line > G_DESC_LINES - 1)
         return NULL;
 
     /*Returns the line.*/
@@ -125,7 +126,7 @@ char *space_get_gdesc_line(Space *space, int line)
 Status space_set_gdesc_line(Space *space, int line, char *str)
 {
     /*Error handling*/
-    if (!space || line < 0 || line > G_DESC_LINES - 1 || !str || strlen(str) != DESC_SIZE - 1)
+    if (!space || line < NO_THINGS || line > G_DESC_LINES - 1 || !str || strlen(str) != DESC_SIZE - 1)
         return ERROR;
 
     /*Sets the line.*/
@@ -138,7 +139,7 @@ Status space_set_gdesc_line(Space *space, int line, char *str)
 char *space_get_texture_line(Space *space, int line)
 {
     /*Error management*/
-    if (!space || line < 0 || line > SPACE_TEXTURE_LINES - 1)
+    if (!space || line < NO_THINGS || line > SPACE_TEXTURE_LINES - 1)
         return NULL;
 
     /*Returns the line.*/
@@ -148,7 +149,7 @@ char *space_get_texture_line(Space *space, int line)
 Status space_set_texture_line(Space *space, int line, char *str)
 {
     /*Error management*/
-    if (!space || line < 0 || line > SPACE_TEXTURE_LINES - 1)
+    if (!space || line < NO_THINGS || line > SPACE_TEXTURE_LINES - 1)
         return ERROR;
 
     /*Sets the line.*/
@@ -265,7 +266,7 @@ int space_find_character(Space *space, Id character)
 {
     if (!space || character == NO_ID || character == ID_ERROR)
     {
-        return -1;
+        return FUNCTION_ERROR;
     }
     return set_find(space->characters, character);
 }
@@ -281,12 +282,12 @@ Id space_take_character(Space *space, Id character)
 
 int space_get_n_characters(Space *space)
 {
-    return (!space ? -1 : set_len(space->characters));
+    return (!space ? FUNCTION_ERROR : set_len(space->characters));
 }
 
 int space_get_n_objects(Space *space)
 {
-    return (!space ? -1 : set_len(space->objects));
+    return (!space ? FUNCTION_ERROR : set_len(space->objects));
 }
 
 Bool space_is_discovered(Space *space)

@@ -46,7 +46,7 @@ void set_destroy(Set *set);
  *
  * @param set Pointer to the set.
  * @param id Id to be searched.
- * @return position of the id in the set if found, -1 otherwise.
+ * @return position of the id in the set if found, FUNCTION_ERROR otherwise.
  */
 int set_find(Set *set, Id id);
 
@@ -75,7 +75,7 @@ Id set_take(Set *set, Id id);
  * @author Saul Lopez Romero.
  * 
  * @param set Pointer to the set.
- * @return Number of Ids in the set, -1 otherwise.
+ * @return Number of Ids in the set, FUNCTION_ERROR otherwise.
  */
 int set_len(Set * set);
 
