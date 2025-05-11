@@ -619,12 +619,19 @@ void game_actions_attack(Game *game)
                 }
             }
         }
+        else
+        {
+            /*Hits character.*/
+            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + coop_dmg + game_get_n_followers(game, player_get_player_id(player))));
+        }
     }
+    /*If the character that was going to get attacked didnt met the right conditions, return ERRROR*/
     else
     {
-        /*Hits character.*/
-        character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + coop_dmg + game_get_n_followers(game, player_get_player_id(player))));
+        command_set_status(game_get_last_command(game), ERROR);
+        return;
     }
+
     /*Checks if the player died.*/
     if (player_get_health(player) <= MIN_HEALTH)
     {
