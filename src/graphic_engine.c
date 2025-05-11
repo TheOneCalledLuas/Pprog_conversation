@@ -63,7 +63,7 @@
 #define CHARACTER_VARIANCE_POSITION_COLUM 2   /*!<Variance of the position in a colum where a character is printed when there are several*/
 #define CHATEACTE_VARIANCE_POSITION_ROW 5     /*!<Variance of the position in a row where a character is printed when there are several*/
 
-#define MAX_ID 999  /*Max id of a space that can be printed in the map area*/
+#define MAX_ID 999  /*!< Max id of a space that can be printed in the map area*/
 #define NO_HEALTH 0 /*!<No health value*/
 #define FIRST_CHAR 0 /*!<Position number 0 of a string, used to intitialize things*/
 /**

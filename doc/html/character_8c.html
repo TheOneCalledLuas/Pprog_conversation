@@ -136,6 +136,12 @@ Macros</h2></td></tr>
 <tr class="separator:a06ea269956fb652c4f4853e593813b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cea0c1cc1fc60a52e79998580bbf1a7" id="r_a8cea0c1cc1fc60a52e79998580bbf1a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a8cea0c1cc1fc60a52e79998580bbf1a7">MAX_MESSAGE</a>&#160;&#160;&#160;100</td></tr>
 <tr class="separator:a8cea0c1cc1fc60a52e79998580bbf1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c3856a81fc3bf2d0d3849bb1c19625" id="r_a73c3856a81fc3bf2d0d3849bb1c19625"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625">NO_HEALTH</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a73c3856a81fc3bf2d0d3849bb1c19625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c5fd90d1b8a22169133f549223f2e1" id="r_af1c5fd90d1b8a22169133f549223f2e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#af1c5fd90d1b8a22169133f549223f2e1">FIRST_CHAR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:af1c5fd90d1b8a22169133f549223f2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f1570f9e77f53406eb1c4f25564064" id="r_a05f1570f9e77f53406eb1c4f25564064"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="character_8c.html#a05f1570f9e77f53406eb1c4f25564064">STOP_CHARACTER</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a05f1570f9e77f53406eb1c4f25564064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -201,6 +207,21 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>23-03-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af1c5fd90d1b8a22169133f549223f2e1" name="af1c5fd90d1b8a22169133f549223f2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c5fd90d1b8a22169133f549223f2e1">&#9670;&#160;</a></span>FIRST_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIRST_CHAR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position number 0 of a string, used to intitialize things </p>
+
+</div>
+</div>
 <a id="a06ea269956fb652c4f4853e593813b26" name="a06ea269956fb652c4f4853e593813b26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06ea269956fb652c4f4853e593813b26">&#9670;&#160;</a></span>MAX_DESC</h2>
 
@@ -243,6 +264,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Max name length. </p>
+
+</div>
+</div>
+<a id="a73c3856a81fc3bf2d0d3849bb1c19625" name="a73c3856a81fc3bf2d0d3849bb1c19625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c3856a81fc3bf2d0d3849bb1c19625">&#9670;&#160;</a></span>NO_HEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NO_HEALTH&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>No health value. </p>
+
+</div>
+</div>
+<a id="a05f1570f9e77f53406eb1c4f25564064" name="a05f1570f9e77f53406eb1c4f25564064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f1570f9e77f53406eb1c4f25564064">&#9670;&#160;</a></span>STOP_CHARACTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STOP_CHARACTER&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Size of the \0, cause we need to include it </p>
 
 </div>
 </div>
@@ -410,7 +461,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Health amount of the character, -1 if error. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Health amount of the character, FUNCTION_ERROR if error. </dd></dl>
 
 </div>
 </div>

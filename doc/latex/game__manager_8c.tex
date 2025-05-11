@@ -1,0 +1,454 @@
+\doxysection{src/game\+\_\+manager.c File Reference}
+\hypertarget{game__manager_8c}{}\label{game__manager_8c}\index{src/game\_manager.c@{src/game\_manager.c}}
+
+
+It loads and makes all the actions related to space management.  
+
+
+{\ttfamily \#include "{}game\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}link.\+h"{}}\newline
+{\ttfamily \#include "{}gamerules.\+h"{}}\newline
+{\ttfamily \#include "{}animation.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for game\+\_\+manager.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__manager_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a550a75944350b926760a1bf0c553d87f}{DESC\+\_\+\+SIZE}}~9
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a9626a13d94da9d536ebb27e605a800dc}{DESC\+\_\+\+LINES}}~5
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a8606b2e3a4d6e1d1d27f513374fcb265}{DESC\+\_\+\+LENGTH}}~10
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a77f61f9d08cce5be70639d3ab9a996b4}{IDENTIFIER\+\_\+\+LENGTH}}~3
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a0bf730075379ba8cb5551e8137813059}{SPACE\+\_\+\+DESC}}~5
+\item 
+\#define \mbox{\hyperlink{game__manager_8c_a05f1570f9e77f53406eb1c4f25564064}{STOP\+\_\+\+CHARACTER}}~1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13}{Gamerules\+\_\+ids}} \{ \newline
+\mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a1b9ba50d779e178a8dbd17de669b16ea}{OPEN\+\_\+\+GATE}} = 20
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad5811c23c4d3390c9c3f5dd3b3b40176}{USE\+\_\+\+TRAIN\+\_\+\+PASS}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a070222da823ac0f5b541f9744792e650}{BAD\+\_\+\+ENDING}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7e69270bc7ab5811140f6bb4dae8ec7e}{LEVER\+\_\+\+CHALLENGE}}
+, \newline
+\mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13aca9d8652d4002ba10d22676500c35a3d}{SPIDER\+\_\+\+BOOS\+\_\+\+KILLED}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a04cf65aec488b3c28916a24e93b4680a}{RANDOM\+\_\+\+DAMAGE}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a2de415e2fc50ac5e2a6bc0a79f089281}{RANDOM\+\_\+\+HEAL}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afbf4fbe4bc7c83f889ec3a6feef066f7}{BLUE\+\_\+\+POTION}}
+, \newline
+\mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a8ab147104bea66928a1e4964d8ae072b}{DINAMITE}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a94e710353a5cba88527c4222090c2267}{MISTERIOUS\+\_\+\+SPIDER\+\_\+\+KILL}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afc66a284878a741c39f35ffd5ac75a05}{GUARD\+\_\+\+SPIDER\+\_\+\+KILL}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a182c1ccf8adeaa2092715953cb0cce1f}{EXPLORATION\+\_\+\+PROGRESS}}
+, \newline
+\mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad75163ca47b5f1382e240c311fc3b785}{MERCHANT\+\_\+\+BOOST}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7c4b72c3ff040a6969a64f910ab3b717}{MERCHANT\+\_\+\+BAD\+\_\+\+ENDING}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a77b7019c2e6f11961fa0871c8d67c1f3}{MERCHANT\+\_\+\+GOOD\+\_\+\+ENDING}}
+, \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a51de7d7ec8aec4fd00b6ab8f200f32c4}{NEUTRAL\+\_\+\+ENDING}}
+, \newline
+\mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a782aeb16cd839bd26812702c95b40b9f}{INTIAL\+\_\+\+ANIMATION}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_a133bacf9af50f34719231fe3b121f4f7}{game\+\_\+manager\+\_\+load\+\_\+spaces}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the spaces from the data file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_ae522ac1c083b4b7da51ea3ae3b551140}{game\+\_\+manager\+\_\+load\+\_\+objects}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the objects from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_a7a7655035804f71244b5010e9ad3afe8}{game\+\_\+manager\+\_\+load\+\_\+characters}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}name\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Loads all the characters from the data file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_a8f2c288e94c3fb3a7b1cbbf2c88f0d46}{game\+\_\+manager\+\_\+load\+\_\+last\+\_\+turn}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads the last turn of the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_ad99cbe0e57d1d7aacddbd469c3d51e7c}{game\+\_\+manager\+\_\+load\+\_\+players}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the players from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_afbc23e543b28241b3d769e72e3af9a35}{game\+\_\+manager\+\_\+load\+\_\+links}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the links from the data file. Should be called once all the spaces have been loaded in. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_ae027102638b59bd83031310674011cdb}{game\+\_\+manager\+\_\+load\+\_\+gamerules}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the gamerules from the data file. Should be called the last one. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_a47cb0063828d95bb0c896f3c77c351f2}{game\+\_\+manager\+\_\+load\+\_\+savefile\+\_\+names}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Loads all the savefile names from the data file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_acaf087e953a55f1b9f59f75780c6ce5f}{game\+\_\+manager\+\_\+save\+\_\+game}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Saves the game in a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game__manager_8c_a875b75352e618b22272e61c9af916083}{game\+\_\+manager\+\_\+load\+\_\+animations}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads all the animations from the data file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It loads and makes all the actions related to space management. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero, Raquel Anguita Martínez de Velasco, Fernando Mijangos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+30-\/01-\/2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+GNU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game__manager_8c_a8606b2e3a4d6e1d1d27f513374fcb265}\label{game__manager_8c_a8606b2e3a4d6e1d1d27f513374fcb265} 
+\index{game\_manager.c@{game\_manager.c}!DESC\_LENGTH@{DESC\_LENGTH}}
+\index{DESC\_LENGTH@{DESC\_LENGTH}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{DESC\_LENGTH}{DESC\_LENGTH}}
+{\footnotesize\ttfamily \#define DESC\+\_\+\+LENGTH~10}
+
+Max description length. \Hypertarget{game__manager_8c_a9626a13d94da9d536ebb27e605a800dc}\label{game__manager_8c_a9626a13d94da9d536ebb27e605a800dc} 
+\index{game\_manager.c@{game\_manager.c}!DESC\_LINES@{DESC\_LINES}}
+\index{DESC\_LINES@{DESC\_LINES}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{DESC\_LINES}{DESC\_LINES}}
+{\footnotesize\ttfamily \#define DESC\+\_\+\+LINES~5}
+
+Max description lines. \Hypertarget{game__manager_8c_a550a75944350b926760a1bf0c553d87f}\label{game__manager_8c_a550a75944350b926760a1bf0c553d87f} 
+\index{game\_manager.c@{game\_manager.c}!DESC\_SIZE@{DESC\_SIZE}}
+\index{DESC\_SIZE@{DESC\_SIZE}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{DESC\_SIZE}{DESC\_SIZE}}
+{\footnotesize\ttfamily \#define DESC\+\_\+\+SIZE~9}
+
+Maximun size of a description line. \Hypertarget{game__manager_8c_a77f61f9d08cce5be70639d3ab9a996b4}\label{game__manager_8c_a77f61f9d08cce5be70639d3ab9a996b4} 
+\index{game\_manager.c@{game\_manager.c}!IDENTIFIER\_LENGTH@{IDENTIFIER\_LENGTH}}
+\index{IDENTIFIER\_LENGTH@{IDENTIFIER\_LENGTH}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{IDENTIFIER\_LENGTH}{IDENTIFIER\_LENGTH}}
+{\footnotesize\ttfamily \#define IDENTIFIER\+\_\+\+LENGTH~3}
+
+Number of characters the identifier occupies in the data file. \Hypertarget{game__manager_8c_a0bf730075379ba8cb5551e8137813059}\label{game__manager_8c_a0bf730075379ba8cb5551e8137813059} 
+\index{game\_manager.c@{game\_manager.c}!SPACE\_DESC@{SPACE\_DESC}}
+\index{SPACE\_DESC@{SPACE\_DESC}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{SPACE\_DESC}{SPACE\_DESC}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+DESC~5}
+
+Number of lines the space description occupies. \Hypertarget{game__manager_8c_a05f1570f9e77f53406eb1c4f25564064}\label{game__manager_8c_a05f1570f9e77f53406eb1c4f25564064} 
+\index{game\_manager.c@{game\_manager.c}!STOP\_CHARACTER@{STOP\_CHARACTER}}
+\index{STOP\_CHARACTER@{STOP\_CHARACTER}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{STOP\_CHARACTER}{STOP\_CHARACTER}}
+{\footnotesize\ttfamily \#define STOP\+\_\+\+CHARACTER~1}
+
+Size of the \textbackslash{}0, cause we need to include it 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13} 
+\index{game\_manager.c@{game\_manager.c}!Gamerules\_ids@{Gamerules\_ids}}
+\index{Gamerules\_ids@{Gamerules\_ids}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{Gamerules\_ids}{Gamerules\_ids}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13}{Gamerules\+\_\+ids}}}
+
+Ids for the gamerules. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPEN\_GATE@{OPEN\_GATE}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!OPEN\_GATE@{OPEN\_GATE}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a1b9ba50d779e178a8dbd17de669b16ea}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a1b9ba50d779e178a8dbd17de669b16ea} 
+OPEN\+\_\+\+GATE&id for open gate gamerule. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USE\_TRAIN\_PASS@{USE\_TRAIN\_PASS}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!USE\_TRAIN\_PASS@{USE\_TRAIN\_PASS}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad5811c23c4d3390c9c3f5dd3b3b40176}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad5811c23c4d3390c9c3f5dd3b3b40176} 
+USE\+\_\+\+TRAIN\+\_\+\+PASS&id for use train pass gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAD\_ENDING@{BAD\_ENDING}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!BAD\_ENDING@{BAD\_ENDING}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a070222da823ac0f5b541f9744792e650}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a070222da823ac0f5b541f9744792e650} 
+BAD\+\_\+\+ENDING&id for bad ending gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVER\_CHALLENGE@{LEVER\_CHALLENGE}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!LEVER\_CHALLENGE@{LEVER\_CHALLENGE}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7e69270bc7ab5811140f6bb4dae8ec7e}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7e69270bc7ab5811140f6bb4dae8ec7e} 
+LEVER\+\_\+\+CHALLENGE&id for lever challenge gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPIDER\_BOOS\_KILLED@{SPIDER\_BOOS\_KILLED}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!SPIDER\_BOOS\_KILLED@{SPIDER\_BOOS\_KILLED}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13aca9d8652d4002ba10d22676500c35a3d}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13aca9d8652d4002ba10d22676500c35a3d} 
+SPIDER\+\_\+\+BOOS\+\_\+\+KILLED&id for spider boss killed gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RANDOM\_DAMAGE@{RANDOM\_DAMAGE}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!RANDOM\_DAMAGE@{RANDOM\_DAMAGE}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a04cf65aec488b3c28916a24e93b4680a}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a04cf65aec488b3c28916a24e93b4680a} 
+RANDOM\+\_\+\+DAMAGE&id for random damage gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RANDOM\_HEAL@{RANDOM\_HEAL}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!RANDOM\_HEAL@{RANDOM\_HEAL}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a2de415e2fc50ac5e2a6bc0a79f089281}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a2de415e2fc50ac5e2a6bc0a79f089281} 
+RANDOM\+\_\+\+HEAL&id for random heal gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLUE\_POTION@{BLUE\_POTION}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!BLUE\_POTION@{BLUE\_POTION}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afbf4fbe4bc7c83f889ec3a6feef066f7}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afbf4fbe4bc7c83f889ec3a6feef066f7} 
+BLUE\+\_\+\+POTION&id for blue potion gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DINAMITE@{DINAMITE}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!DINAMITE@{DINAMITE}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a8ab147104bea66928a1e4964d8ae072b}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a8ab147104bea66928a1e4964d8ae072b} 
+DINAMITE&id for dinamite gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MISTERIOUS\_SPIDER\_KILL@{MISTERIOUS\_SPIDER\_KILL}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!MISTERIOUS\_SPIDER\_KILL@{MISTERIOUS\_SPIDER\_KILL}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a94e710353a5cba88527c4222090c2267}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a94e710353a5cba88527c4222090c2267} 
+MISTERIOUS\+\_\+\+SPIDER\+\_\+\+KILL&id for misterious spider kill gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUARD\_SPIDER\_KILL@{GUARD\_SPIDER\_KILL}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!GUARD\_SPIDER\_KILL@{GUARD\_SPIDER\_KILL}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afc66a284878a741c39f35ffd5ac75a05}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13afc66a284878a741c39f35ffd5ac75a05} 
+GUARD\+\_\+\+SPIDER\+\_\+\+KILL&id for guard spider kill gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPLORATION\_PROGRESS@{EXPLORATION\_PROGRESS}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!EXPLORATION\_PROGRESS@{EXPLORATION\_PROGRESS}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a182c1ccf8adeaa2092715953cb0cce1f}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a182c1ccf8adeaa2092715953cb0cce1f} 
+EXPLORATION\+\_\+\+PROGRESS&id for exploration progress gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MERCHANT\_BOOST@{MERCHANT\_BOOST}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!MERCHANT\_BOOST@{MERCHANT\_BOOST}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad75163ca47b5f1382e240c311fc3b785}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13ad75163ca47b5f1382e240c311fc3b785} 
+MERCHANT\+\_\+\+BOOST&id for merchant boost gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MERCHANT\_BAD\_ENDING@{MERCHANT\_BAD\_ENDING}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!MERCHANT\_BAD\_ENDING@{MERCHANT\_BAD\_ENDING}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7c4b72c3ff040a6969a64f910ab3b717}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a7c4b72c3ff040a6969a64f910ab3b717} 
+MERCHANT\+\_\+\+BAD\+\_\+\+ENDING&id for merchant bad ending gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MERCHANT\_GOOD\_ENDING@{MERCHANT\_GOOD\_ENDING}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!MERCHANT\_GOOD\_ENDING@{MERCHANT\_GOOD\_ENDING}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a77b7019c2e6f11961fa0871c8d67c1f3}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a77b7019c2e6f11961fa0871c8d67c1f3} 
+MERCHANT\+\_\+\+GOOD\+\_\+\+ENDING&id for merchant good ending gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEUTRAL\_ENDING@{NEUTRAL\_ENDING}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!NEUTRAL\_ENDING@{NEUTRAL\_ENDING}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a51de7d7ec8aec4fd00b6ab8f200f32c4}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a51de7d7ec8aec4fd00b6ab8f200f32c4} 
+NEUTRAL\+\_\+\+ENDING&id for neutral ending gamerule \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTIAL\_ANIMATION@{INTIAL\_ANIMATION}!game\_manager.c@{game\_manager.c}}\index{game\_manager.c@{game\_manager.c}!INTIAL\_ANIMATION@{INTIAL\_ANIMATION}}}\Hypertarget{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a782aeb16cd839bd26812702c95b40b9f}\label{game__manager_8c_a5d3b8632050f5704f834cce50d55fb13a782aeb16cd839bd26812702c95b40b9f} 
+INTIAL\+\_\+\+ANIMATION&id for initial animation gamerule \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__manager_8c_a875b75352e618b22272e61c9af916083}\label{game__manager_8c_a875b75352e618b22272e61c9af916083} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_animations@{game\_manager\_load\_animations}}
+\index{game\_manager\_load\_animations@{game\_manager\_load\_animations}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_animations()}{game\_manager\_load\_animations()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+animations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the animations from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the animations are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_a7a7655035804f71244b5010e9ad3afe8}\label{game__manager_8c_a7a7655035804f71244b5010e9ad3afe8} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_characters@{game\_manager\_load\_characters}}
+\index{game\_manager\_load\_characters@{game\_manager\_load\_characters}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_characters()}{game\_manager\_load\_characters()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+characters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the characters from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Raquel Anguita.
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & NAme of the data file where the characters are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_ae027102638b59bd83031310674011cdb}\label{game__manager_8c_ae027102638b59bd83031310674011cdb} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_gamerules@{game\_manager\_load\_gamerules}}
+\index{game\_manager\_load\_gamerules@{game\_manager\_load\_gamerules}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_gamerules()}{game\_manager\_load\_gamerules()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+gamerules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the gamerules from the data file. Should be called the last one. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the gamerules are stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_a8f2c288e94c3fb3a7b1cbbf2c88f0d46}\label{game__manager_8c_a8f2c288e94c3fb3a7b1cbbf2c88f0d46} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_last\_turn@{game\_manager\_load\_last\_turn}}
+\index{game\_manager\_load\_last\_turn@{game\_manager\_load\_last\_turn}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_last\_turn()}{game\_manager\_load\_last\_turn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+last\+\_\+turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads the last turn of the game. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & Name of the file where the last turn is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_afbc23e543b28241b3d769e72e3af9a35}\label{game__manager_8c_afbc23e543b28241b3d769e72e3af9a35} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_links@{game\_manager\_load\_links}}
+\index{game\_manager\_load\_links@{game\_manager\_load\_links}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_links()}{game\_manager\_load\_links()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+links (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the links from the data file. Should be called once all the spaces have been loaded in. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the map is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_ae522ac1c083b4b7da51ea3ae3b551140}\label{game__manager_8c_ae522ac1c083b4b7da51ea3ae3b551140} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_objects@{game\_manager\_load\_objects}}
+\index{game\_manager\_load\_objects@{game\_manager\_load\_objects}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_objects()}{game\_manager\_load\_objects()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the objects from the data file. Should be called once all the spaces have been loaded in. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the map is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_ad99cbe0e57d1d7aacddbd469c3d51e7c}\label{game__manager_8c_ad99cbe0e57d1d7aacddbd469c3d51e7c} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_players@{game\_manager\_load\_players}}
+\index{game\_manager\_load\_players@{game\_manager\_load\_players}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_players()}{game\_manager\_load\_players()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+players (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the players from the data file. Should be called once all the spaces have been loaded in. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the map is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_a47cb0063828d95bb0c896f3c77c351f2}\label{game__manager_8c_a47cb0063828d95bb0c896f3c77c351f2} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_savefile\_names@{game\_manager\_load\_savefile\_names}}
+\index{game\_manager\_load\_savefile\_names@{game\_manager\_load\_savefile\_names}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_savefile\_names()}{game\_manager\_load\_savefile\_names()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+savefile\+\_\+names (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game }\end{DoxyParamCaption})}
+
+
+
+Loads all the savefile names from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_a133bacf9af50f34719231fe3b121f4f7}\label{game__manager_8c_a133bacf9af50f34719231fe3b121f4f7} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_load\_spaces@{game\_manager\_load\_spaces}}
+\index{game\_manager\_load\_spaces@{game\_manager\_load\_spaces}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_load\_spaces()}{game\_manager\_load\_spaces()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+load\+\_\+spaces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads all the spaces from the data file. 
+
+\begin{DoxyAuthor}{Author}
+Saúl López Romero
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game structure, where all the information related to game is included. \\
+\hline
+{\em filename} & Name of the data file where the map is stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK for a clean exit, otherwise ERROR. 
+\end{DoxyReturn}
+\Hypertarget{game__manager_8c_acaf087e953a55f1b9f59f75780c6ce5f}\label{game__manager_8c_acaf087e953a55f1b9f59f75780c6ce5f} 
+\index{game\_manager.c@{game\_manager.c}!game\_manager\_save\_game@{game\_manager\_save\_game}}
+\index{game\_manager\_save\_game@{game\_manager\_save\_game}!game\_manager.c@{game\_manager.c}}
+\doxysubsubsection{\texorpdfstring{game\_manager\_save\_game()}{game\_manager\_save\_game()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} game\+\_\+manager\+\_\+save\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Saves the game in a file. 
+
+\begin{DoxyAuthor}{Author}
+Fernando Mijangos
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Pointer to the game. \\
+\hline
+{\em filename} & Name of the file where the game is going to be saved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if everything went well, ERROR otherwise. 
+\end{DoxyReturn}

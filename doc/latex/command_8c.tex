@@ -30,6 +30,10 @@ struct \mbox{\hyperlink{struct__Command}{\+\_\+\+Command}}
 \#define \mbox{\hyperlink{command_8c_a5d69aa83ad3929fba7ff0e38924096de}{CMD\+\_\+\+SHORTCUT}}~1
 \item 
 \#define \mbox{\hyperlink{command_8c_a45427030a543a1fe5b6a6ad24b0415a5}{N\+\_\+\+ARGS}}~4
+\item 
+\#define \mbox{\hyperlink{command_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
+\item 
+\#define \mbox{\hyperlink{command_8c_a9cabeb8b2886fd6bd67fb8cf4ccb2bc2}{STOP\+\_\+\+CHAR}}~1
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -92,13 +96,25 @@ Max lenght for a command. \Hypertarget{command_8c_a5d69aa83ad3929fba7ff0e3892409
 \doxysubsubsection{\texorpdfstring{CMD\_SHORTCUT}{CMD\_SHORTCUT}}
 {\footnotesize\ttfamily \#define CMD\+\_\+\+SHORTCUT~1}
 
-Command shortcut position. \Hypertarget{command_8c_a45427030a543a1fe5b6a6ad24b0415a5}\label{command_8c_a45427030a543a1fe5b6a6ad24b0415a5} 
+Command shortcut position. \Hypertarget{command_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{command_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{command.c@{command.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to intitialize things \Hypertarget{command_8c_a45427030a543a1fe5b6a6ad24b0415a5}\label{command_8c_a45427030a543a1fe5b6a6ad24b0415a5} 
 \index{command.c@{command.c}!N\_ARGS@{N\_ARGS}}
 \index{N\_ARGS@{N\_ARGS}!command.c@{command.c}}
 \doxysubsubsection{\texorpdfstring{N\_ARGS}{N\_ARGS}}
 {\footnotesize\ttfamily \#define N\+\_\+\+ARGS~4}
 
-Number of possible arguments you can input 
+Number of possible arguments you can input \Hypertarget{command_8c_a9cabeb8b2886fd6bd67fb8cf4ccb2bc2}\label{command_8c_a9cabeb8b2886fd6bd67fb8cf4ccb2bc2} 
+\index{command.c@{command.c}!STOP\_CHAR@{STOP\_CHAR}}
+\index{STOP\_CHAR@{STOP\_CHAR}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{STOP\_CHAR}{STOP\_CHAR}}
+{\footnotesize\ttfamily \#define STOP\+\_\+\+CHAR~1}
+
+Size of the \textbackslash{}0, cause we need to include it 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456}\label{command_8c_aa3d3d6bdeb73c7bbaff6ee913569f456} 

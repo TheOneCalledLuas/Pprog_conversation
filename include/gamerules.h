@@ -262,18 +262,6 @@ Gamerule *gamerules_get_gamerule_by_name(Game_values *gv, char *name);
  */
 Gamerule *gamerules_get_gamerule_by_id(Game_values *gv, Id id);
 
-/*Now we have the actual gamerule functions.*/
-
-/**
- * @brief opens the gate between P3 and P4.
- * @author Saúl López Romero
- *
- * @param game Pointer to the game.
- * @param gr Pointer to the gamerule.
- * @return OK if everything goes well, ERROR otherwise.
- */
-Status gamerules_open_gate(Game *game, Gamerule *gr);
-
 /**
  * @brief Uses the train and ends the tutorial.
  * @author Saúl López Romero

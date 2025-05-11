@@ -17,7 +17,7 @@
 #include "command.h"
 #include "game.h"
 #include "game_actions.h"
-#include "game_reader.h"
+#include "game_manager.h"
 #include "graphic_engine.h"
 #include "gamerules.h"
 
@@ -311,7 +311,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                                         return FAIL_MENU;
                                     }
                                     /*Saves the game*/
-                                    if (game_reader_save_game(*game, str) == ERROR)
+                                    if (game_manager_save_game(*game, str) == ERROR)
                                     {
                                         printf("Error while saving game.\n");
                                         return FAIL_MENU;
@@ -454,7 +454,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                 graphic_engine_menu_paint(ge_menu, *game, NO_SAVES);
                 return FAIL_MENU;
             }
-            game_reader_save_game(*game, str);
+            game_manager_save_game(*game, str);
             game_set_current_savefile(*game, str);
 
             /*Does an fgets cause if not the first game loop gets skiped as it reads a \n*/
@@ -508,7 +508,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
         /*If the command was save, it saves it*/
         if (last_code == SAVE)
         {
-            if (game_reader_save_game(*game, game_get_current_savefile(*game)) == ERROR)
+            if (game_manager_save_game(*game, game_get_current_savefile(*game)) == ERROR)
             {
                 fprintf(stderr, "Error while saving game.\n");
                 return;

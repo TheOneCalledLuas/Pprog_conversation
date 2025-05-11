@@ -10,7 +10,7 @@ var searchData=
   ['finished_7',['finished',['../struct__Game.html#a2718393f54af772d89a41047d8d26682',1,'_Game']]],
   ['first_5fanimation_8',['FIRST_ANIMATION',['../gamerules_8c.html#ad724bf7cb455fc02c8a14b895d30bd53',1,'gamerules.c']]],
   ['first_5farg_9',['FIRST_ARG',['../command_8h.html#a0cbd7a216c9f7a9b484523bf8417434eab8e09b0db95a65a26588278fdb9f8c8b',1,'command.h']]],
-  ['first_5fchar_10',['FIRST_CHAR',['../game__loop_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'game_loop.c']]],
+  ['first_5fchar_10',['first_char',['../character_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;character.c'],['../space_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;space.c'],['../player_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;player.c'],['../object_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;object.c'],['../graphic__engine_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;graphic_engine.c'],['../game__loop_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;game_loop.c'],['../command_8c.html#af1c5fd90d1b8a22169133f549223f2e1',1,'FIRST_CHAR:&#160;command.c']]],
   ['first_5flast_5fcommand_11',['FIRST_LAST_COMMAND',['../game_8h.html#a0bf1321f0491968e98b7b2ec596503fc',1,'game.h']]],
   ['first_5fline_12',['FIRST_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da259a887dde5b6fb83a5a6ae8893eaf96',1,'graphic_engine.c']]],
   ['follow_13',['follow',['../struct__Character.html#aaeb072002ac3e76a1f5dffd3e043ccf3',1,'_Character']]],
@@ -18,5 +18,6 @@ var searchData=
   ['fourth_5farg_15',['FOURTH_ARG',['../command_8h.html#a0cbd7a216c9f7a9b484523bf8417434ea8857ef31333b80126f84d4f5b3fbc2be',1,'command.h']]],
   ['fourth_5fline_16',['FOURTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9da991b03d90f7e370f8629e576737c2489',1,'graphic_engine.c']]],
   ['frame_5fcolor_17',['Frame_color',['../libscreen_8h.html#a4c3428b53f6697616d5d3ab9f41419c7',1,'libscreen.h']]],
-  ['friendly_18',['friendly',['../struct__Character.html#a3cbca4d3292eb9713b0eb75609ab931c',1,'_Character']]]
+  ['friendly_18',['friendly',['../struct__Character.html#a3cbca4d3292eb9713b0eb75609ab931c',1,'_Character']]],
+  ['function_5ferror_19',['FUNCTION_ERROR',['../types_8h.html#a4016d1059c0643bb5a6b3d512d8aef58',1,'types.h']]]
 ];

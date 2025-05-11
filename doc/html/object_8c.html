@@ -119,6 +119,10 @@ Macros</h2></td></tr>
 <tr class="separator:a2b9d4cb1200ff8c085b0a4902e0d7229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7c0207aa5a0e10d378be03b68041350" id="r_ac7c0207aa5a0e10d378be03b68041350"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html#ac7c0207aa5a0e10d378be03b68041350">MAX_NAME</a>&#160;&#160;&#160;64</td></tr>
 <tr class="separator:ac7c0207aa5a0e10d378be03b68041350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c3856a81fc3bf2d0d3849bb1c19625" id="r_a73c3856a81fc3bf2d0d3849bb1c19625"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625">NO_HEALTH</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a73c3856a81fc3bf2d0d3849bb1c19625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c5fd90d1b8a22169133f549223f2e1" id="r_af1c5fd90d1b8a22169133f549223f2e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html#af1c5fd90d1b8a22169133f549223f2e1">FIRST_CHAR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:af1c5fd90d1b8a22169133f549223f2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -183,7 +187,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac35d6934bd5e39f1907599ffaf2c8446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines wether an object can open a link between spaces or not.  <br /></td></tr>
 <tr class="separator:ac35d6934bd5e39f1907599ffaf2c8446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49dbce205db36230c53fb0ccf0a73174" id="r_a49dbce205db36230c53fb0ccf0a73174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a845e604fb28f7e3d97549da3448149d3">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html#a49dbce205db36230c53fb0ccf0a73174">object_get_open</a> (<a class="el" href="object_8h.html#a7f8bbcda919b65ce67f92fba08e0212f">Object</a> *object)</td></tr>
-<tr class="memdesc:a49dbce205db36230c53fb0ccf0a73174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the open value of an object.  <br /></td></tr>
+<tr class="memdesc:a49dbce205db36230c53fb0ccf0a73174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the link id that an object can open.  <br /></td></tr>
 <tr class="separator:a49dbce205db36230c53fb0ccf0a73174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03653b29058fcde7ce5ee2e3187f84e7" id="r_a03653b29058fcde7ce5ee2e3187f84e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8c.html#a03653b29058fcde7ce5ee2e3187f84e7">object_print_info</a> (<a class="el" href="object_8h.html#a7f8bbcda919b65ce67f92fba08e0212f">Object</a> *object)</td></tr>
 <tr class="memdesc:a03653b29058fcde7ce5ee2e3187f84e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the object info (debug intended).  <br /></td></tr>
@@ -191,11 +195,26 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It implements the object functionality. </p>
-<dl class="section author"><dt>Author</dt><dd>Saúl López Romero, Irene García </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Saúl López Romero </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>2 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>01-02-2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af1c5fd90d1b8a22169133f549223f2e1" name="af1c5fd90d1b8a22169133f549223f2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c5fd90d1b8a22169133f549223f2e1">&#9670;&#160;</a></span>FIRST_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIRST_CHAR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position number 0 of a string, used to initialize things </p>
+
+</div>
+</div>
 <a id="a2b9d4cb1200ff8c085b0a4902e0d7229" name="a2b9d4cb1200ff8c085b0a4902e0d7229"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b9d4cb1200ff8c085b0a4902e0d7229">&#9670;&#160;</a></span>MAX_DESCRIPTION</h2>
 
@@ -223,6 +242,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Max name length. </p>
+
+</div>
+</div>
+<a id="a73c3856a81fc3bf2d0d3849bb1c19625" name="a73c3856a81fc3bf2d0d3849bb1c19625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c3856a81fc3bf2d0d3849bb1c19625">&#9670;&#160;</a></span>NO_HEALTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NO_HEALTH&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>No health value. </p>
 
 </div>
 </div>
@@ -495,7 +529,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the open value of an object. </p>
+<p>Gets the link id that an object can open. </p>
 <dl class="section author"><dt>Author</dt><dd>Irene García</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

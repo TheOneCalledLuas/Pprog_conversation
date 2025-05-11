@@ -7,7 +7,7 @@ It implements the game structure.
 
 {\ttfamily \#include "{}game.\+h"{}}\newline
 {\ttfamily \#include "{}character.\+h"{}}\newline
-{\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+manager.\+h"{}}\newline
 {\ttfamily \#include "{}link.\+h"{}}\newline
 {\ttfamily \#include "{}gamerules.\+h"{}}\newline
 {\ttfamily \#include "{}animation.\+h"{}}\newline
@@ -108,7 +108,7 @@ int \mbox{\hyperlink{game_8c_a2583559b080c939dd011e987e4299925}{game\+\_\+get\+\
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8c_a538daf6cad2c591f9fe47396b284944c}{game\+\_\+next\+\_\+turn}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Advances to the next turn. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8c_a7e73029af4a81214bceba63f2defb013}{game\+\_\+set\+\_\+turn}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, int turn)
-\begin{DoxyCompactList}\small\item\em Sets the turn to the one you want, this should only be used by game\+\_\+reader. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the turn to the one you want, this should only be used by game\+\_\+manager. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{game_8c_ad87d59f8663bc6a2dc06cb53337b7078}{game\+\_\+get\+\_\+next\+\_\+turn}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game)
 \begin{DoxyCompactList}\small\item\em Returns the next turn. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8c_a8460d4135806f650eed4545be196776a}{game\+\_\+add\+\_\+player}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}} \texorpdfstring{$\ast$}{*}player)
@@ -156,7 +156,7 @@ void \mbox{\hyperlink{game_8c_a6a00b3f5db99150d9180e439d400e083}{game\+\_\+print
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8c_ae60231f9c7fe9ede847e1d10366f1808}{game\+\_\+add\+\_\+link}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{link_8h_a669dc22e9af2486a28a9727ffdb7c98b}{Link}} \texorpdfstring{$\ast$}{*}link)
 \begin{DoxyCompactList}\small\item\em Adds a link to the link array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{game_8c_aeed0219b7face311668b7fd1ee098b03}{game\+\_\+delete\+\_\+link}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, int position)
-\begin{DoxyCompactList}\small\item\em Deletes a link from the link array (used to delete all the information of the links in game\+\_\+reader). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Deletes a link from the link array (used to delete all the information of the links in game\+\_\+manager). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{link_8h_a669dc22e9af2486a28a9727ffdb7c98b}{Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8c_a94b9cec4efb057e7eb0d3ff637ca5a18}{game\+\_\+find\+\_\+link}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} link\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Takes a link from the link array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{game_8c_adf85ace43fb6de7195ed17fba20c53b4}{game\+\_\+get\+\_\+space\+\_\+at}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} space, \mbox{\hyperlink{types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} direction)
@@ -464,7 +464,7 @@ OK for a clean exit, otherwise ERROR.
 
 
 
-Deletes a link from the link array (used to delete all the information of the links in game\+\_\+reader). 
+Deletes a link from the link array (used to delete all the information of the links in game\+\_\+manager). 
 
 \begin{DoxyAuthor}{Author}
 Fernando Mijangos.
@@ -703,7 +703,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Id of the space with the character, -\/1 if it wasn\textquotesingle{}t found or -\/2 if an error takes place. 
+Id of the space with the character, FUNCTION\+\_\+\+ERROR if it wasn\textquotesingle{}t found or -\/2 if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a38cc1fb271f4d14642d554432dbe41e2}\label{game_8c_a38cc1fb271f4d14642d554432dbe41e2} 
 \index{game.c@{game.c}!game\_get\_characters@{game\_get\_characters}}
@@ -779,7 +779,7 @@ If the game is determined or not, or FALSE if an error takes place.
 Returns TRUE if the game has finished or FALSE if it hasn\textquotesingle{}t. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -842,7 +842,7 @@ Array of ids of the objects, NULL if an error takes place. IMPORTANT you have to
 It returns a pointer to the last command. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Saúl López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -959,7 +959,7 @@ Saúl Lopez Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of animations in the game or -\/1 if an error takes place. 
+Number of animations in the game or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a5d822336b55bc6f149da0f65101a537e}\label{game_8c_a5d822336b55bc6f149da0f65101a537e} 
 \index{game.c@{game.c}!game\_get\_n\_followers@{game\_get\_n\_followers}}
@@ -982,7 +982,7 @@ Raquel Anguita
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of followers of that player, -\/1 if error 
+Number of followers of that player, FUNCTION\+\_\+\+ERROR if error 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a186e6fe12130b1172c902c1dfd20776e}\label{game_8c_a186e6fe12130b1172c902c1dfd20776e} 
 \index{game.c@{game.c}!game\_get\_n\_gamerules@{game\_get\_n\_gamerules}}
@@ -1003,7 +1003,7 @@ Fernando Mijangos.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of gamerules in the game, -\/1 if an error takes place. 
+Number of gamerules in the game, FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_ab7c229b1b394b863d5763b3449ac12f7}\label{game_8c_ab7c229b1b394b863d5763b3449ac12f7} 
 \index{game.c@{game.c}!game\_get\_n\_links@{game\_get\_n\_links}}
@@ -1024,7 +1024,7 @@ Fernando Mijangos.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of links in the game, -\/1 if an error takes place. 
+Number of links in the game, FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a5274b51d2717040376e3a590e9a219d9}\label{game_8c_a5274b51d2717040376e3a590e9a219d9} 
 \index{game.c@{game.c}!game\_get\_n\_objects@{game\_get\_n\_objects}}
@@ -1045,7 +1045,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number ob objects, -\/1 for an error. 
+Number ob objects, FUNCTION\+\_\+\+ERROR for an error. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a2583559b080c939dd011e987e4299925}\label{game_8c_a2583559b080c939dd011e987e4299925} 
 \index{game.c@{game.c}!game\_get\_n\_players@{game\_get\_n\_players}}
@@ -1066,7 +1066,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-number of players or -\/1 if an error takees place. 
+number of players or FUNCTION\+\_\+\+ERROR if an error takees place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a1e8780a0ab551575bb5dde8ccde4271d}\label{game_8c_a1e8780a0ab551575bb5dde8ccde4271d} 
 \index{game.c@{game.c}!game\_get\_n\_savefiles@{game\_get\_n\_savefiles}}
@@ -1087,7 +1087,7 @@ Fernando Mijangos
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of existing savefiles, -\/1 if error 
+Number of existing savefiles, FUNCTION\+\_\+\+ERROR if error 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a709ed8dfc77bf5f672285999a6baf038}\label{game_8c_a709ed8dfc77bf5f672285999a6baf038} 
 \index{game.c@{game.c}!game\_get\_n\_spaces@{game\_get\_n\_spaces}}
@@ -1108,7 +1108,7 @@ Fernando Mijangos.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of spaces in the game, -\/1 if an error takes place. 
+Number of spaces in the game, FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a766d8e002bfa53abd73443ff56e07f5b}\label{game_8c_a766d8e002bfa53abd73443ff56e07f5b} 
 \index{game.c@{game.c}!game\_get\_n\_teams@{game\_get\_n\_teams}}
@@ -1129,7 +1129,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of teams or -\/1 if an error takes place. 
+Number of teams or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_ad87d59f8663bc6a2dc06cb53337b7078}\label{game_8c_ad87d59f8663bc6a2dc06cb53337b7078} 
 \index{game.c@{game.c}!game\_get\_next\_turn@{game\_get\_next\_turn}}
@@ -1150,7 +1150,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-next turn or -\/1 if an error takes place. 
+next turn or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_ae23e4035f5fe5e3656e9077b2038167b}\label{game_8c_ae23e4035f5fe5e3656e9077b2038167b} 
 \index{game.c@{game.c}!game\_get\_num\_characters@{game\_get\_num\_characters}}
@@ -1171,7 +1171,7 @@ Saúl Lopez Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Object number or -\/1 if an error takes place. 
+Object number or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_acc758a4f28d6a97c8adbd978a5133248}\label{game_8c_acc758a4f28d6a97c8adbd978a5133248} 
 \index{game.c@{game.c}!game\_get\_object@{game\_get\_object}}
@@ -1455,7 +1455,7 @@ If it finds a space in that direction, it returns the id of that space, otherwis
 Returns the id of the space at that position. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Saúl López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -1555,7 +1555,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-actual game turn or -\/1 if an error takes place. 
+actual game turn or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_ab388712b445d3362555bc96f5b1fbb77}\label{game_8c_ab388712b445d3362555bc96f5b1fbb77} 
 \index{game.c@{game.c}!game\_has\_object@{game\_has\_object}}
@@ -1578,7 +1578,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
--\/1 if an error takes place of the object wasn\textquotesingle{}t found, the position of the object in the array otherwise. 
+FUNCTION\+\_\+\+ERROR if an error takes place of the object wasn\textquotesingle{}t found, the position of the object in the array otherwise. 
 \end{DoxyReturn}
 \Hypertarget{game_8c_a01a362300ebfd4c3e45f051fba3edf25}\label{game_8c_a01a362300ebfd4c3e45f051fba3edf25} 
 \index{game.c@{game.c}!game\_move\_all\_players@{game\_move\_all\_players}}
@@ -1656,7 +1656,7 @@ OK or ERROR.
 Prints on the terminal the number of spaces, the spaces, the location of the player, and the location of the object. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -1743,7 +1743,7 @@ OK for a clean exit, otherwise ERROR.
 it changes the value of the finished condition to what you want. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -1766,7 +1766,7 @@ OK, if everything goes well or ERROR if there was some mistake.
 It sets the last command to the command you want. 
 
 \begin{DoxyAuthor}{Author}
-Profesores PPROG
+Saúl López Romero
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -1855,7 +1855,7 @@ OK for a clean exit, otherwise ERROR.
 
 
 
-Sets the turn to the one you want, this should only be used by game\+\_\+reader. 
+Sets the turn to the one you want, this should only be used by game\+\_\+manager. 
 
 \begin{DoxyAuthor}{Author}
 Fernando Mijangos

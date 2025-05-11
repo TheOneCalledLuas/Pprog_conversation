@@ -86,7 +86,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="game__reader_8h_source.html">game_reader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__manager_8h_source.html">game_manager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="space_8h_source.html">space.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="set_8h_source.html">set.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -98,12 +98,12 @@ Include dependency graph for graphic_engine.h:</div>
 <area shape="rect" title=" " alt="" coords="364,299,431,324"/>
 <area shape="poly" title=" " alt="" coords="330,31,331,124,338,187,356,250,366,269,379,287,375,290,362,272,351,252,333,188,325,124,325,31"/>
 <area shape="rect" href="game_8h.html" title="It defines the game interface." alt="" coords="466,152,537,177"/>
-<area shape="poly" title=" " alt="" coords="343,29,431,102,479,141,475,145,428,106,340,33"/>
+<area shape="poly" title=" " alt="" coords="342,29,423,102,476,142,472,146,420,106,338,33"/>
 <area shape="rect" href="space_8h.html" title="It defines the space module interface." alt="" coords="93,299,165,324"/>
 <area shape="poly" title=" " alt="" coords="309,33,266,62,212,105,159,161,136,192,118,226,115,241,115,256,121,285,116,286,109,256,109,240,114,224,132,190,154,157,208,101,263,57,306,29"/>
 <area shape="rect" href="set_8h.html" title="It defines sets for the whole project." alt="" coords="195,445,250,471"/>
 <area shape="poly" title=" " alt="" coords="236,25,160,37,122,47,86,60,55,79,30,101,14,129,8,164,8,239,13,275,27,307,47,337,73,363,131,407,185,437,182,442,128,411,69,367,43,340,22,310,8,276,3,240,3,163,9,128,26,98,52,74,84,56,120,42,159,31,236,20"/>
-<area shape="rect" href="game__reader_8h.html" title="It loads all the game data into the program." alt="" coords="442,79,561,104"/>
+<area shape="rect" href="game__manager_8h.html" title="It loads all the game data into the program." alt="" coords="434,79,569,104"/>
 <area shape="poly" title=" " alt="" coords="357,28,461,71,459,76,355,33"/>
 <area shape="rect" href="command_8h.html" title="It defines the command interpreter interface." alt="" coords="365,225,464,251"/>
 <area shape="poly" title=" " alt="" coords="489,179,441,219,438,214,486,175"/>
@@ -144,7 +144,7 @@ Include dependency graph for graphic_engine.h:</div>
 <area shape="poly" title=" " alt="" coords="591,252,571,344,554,407,533,472,518,507,513,505,528,470,549,406,566,342,586,251"/>
 <area shape="poly" title=" " alt="" coords="641,473,543,516,541,511,639,468"/>
 <area shape="poly" title=" " alt="" coords="504,104,504,138,499,138,499,104"/>
-<area shape="poly" title=" " alt="" coords="561,99,660,118,771,147,820,165,861,186,888,210,896,223,899,236,899,386,894,417,881,438,861,456,833,473,781,493,705,508,552,528,551,523,704,503,779,488,831,468,857,452,877,435,889,415,893,386,893,237,891,225,884,213,858,191,818,170,769,152,659,123,560,104"/>
+<area shape="poly" title=" " alt="" coords="569,100,668,120,775,149,823,167,862,187,889,210,896,223,899,236,899,386,894,417,881,438,861,456,833,473,781,493,705,508,552,528,551,523,704,503,779,488,831,468,857,452,877,435,889,415,893,386,893,237,891,225,885,214,859,192,821,172,774,154,667,125,568,106"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -422,7 +422,9 @@ Functions</h2></td></tr>
 <dd>
 5-&gt;Prints a screen where you try to create a game that already exists or cant be created </dd>
 <dd>
-6-&gt;Prints screen where you chose which file to delete </dd></dl>
+6-&gt;Prints screen where you chose which file to delete </dd>
+<dd>
+7-&gt;Prints screen where you get help </dd></dl>
 
 </div>
 </div>

@@ -8,8 +8,15 @@ var searchData=
   ['n_5floops_5fmusic_5',['N_LOOPS_MUSIC',['../game__loop_8c.html#aaa39e5fedc5a50a0a098695fbf00e297',1,'game_loop.c']]],
   ['n_5fvariations_6',['N_VARIATIONS',['../game__actions_8c.html#a80069636d5272c3e8faa89f450700175',1,'game_actions.c']]],
   ['name_5fsize_7',['NAME_SIZE',['../game__loop_8c.html#a834e9a379307f869a10f4da078be5786',1,'game_loop.c']]],
-  ['no_5fid_8',['NO_ID',['../types_8h.html#a642e16f35aa1e585c25e405ede76e115',1,'types.h']]],
-  ['no_5fspace_9',['NO_SPACE',['../graphic__engine_8c.html#ab941b11bd9f3f24a015bfae03f6be3f3',1,'graphic_engine.c']]],
-  ['non_5fwrittable_5felems_10',['NON_WRITTABLE_ELEMS',['../graphic__engine_8c.html#ae0d3b3ad3ed7302dd28bfa1618e50d33',1,'graphic_engine.c']]],
-  ['number_5fof_5fbad_5fletters_11',['NUMBER_OF_BAD_LETTERS',['../game__loop_8c.html#a1e6abba5f8c184a1f7707ecc43828540',1,'game_loop.c']]]
+  ['next_5farg_8',['NEXT_ARG',['../game__loop_8c.html#a790ac0f97b1164d4897ab55ad3a82277',1,'game_loop.c']]],
+  ['no_5fdamage_9',['NO_DAMAGE',['../game__actions_8c.html#a13901238324eda79f1cf0767778fd0ec',1,'game_actions.c']]],
+  ['no_5fhealth_10',['no_health',['../gamerules_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625',1,'NO_HEALTH:&#160;gamerules.c'],['../object_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625',1,'NO_HEALTH:&#160;object.c'],['../graphic__engine_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625',1,'NO_HEALTH:&#160;graphic_engine.c'],['../character_8c.html#a73c3856a81fc3bf2d0d3849bb1c19625',1,'NO_HEALTH:&#160;character.c']]],
+  ['no_5fheight_11',['NO_HEIGHT',['../graphic__engine_8c.html#a6d1a0ee9b8c311973128f4c247ed34cc',1,'graphic_engine.c']]],
+  ['no_5fid_12',['NO_ID',['../types_8h.html#a642e16f35aa1e585c25e405ede76e115',1,'types.h']]],
+  ['no_5fposition_13',['NO_POSITION',['../types_8h.html#a1db3df5858004f874173065800671f2f',1,'types.h']]],
+  ['no_5fspace_14',['NO_SPACE',['../graphic__engine_8c.html#ab941b11bd9f3f24a015bfae03f6be3f3',1,'graphic_engine.c']]],
+  ['no_5fthings_15',['NO_THINGS',['../types_8h.html#a5020a74dc922644d7bc5bfbe1aba1916',1,'types.h']]],
+  ['no_5fwidth_16',['NO_WIDTH',['../graphic__engine_8c.html#aeee26bdc625b1fc19277f79ec22ae388',1,'graphic_engine.c']]],
+  ['non_5fwrittable_5felems_17',['NON_WRITTABLE_ELEMS',['../graphic__engine_8c.html#ae0d3b3ad3ed7302dd28bfa1618e50d33',1,'graphic_engine.c']]],
+  ['number_5fof_5fbad_5fletters_18',['NUMBER_OF_BAD_LETTERS',['../game__loop_8c.html#a1e6abba5f8c184a1f7707ecc43828540',1,'game_loop.c']]]
 ];

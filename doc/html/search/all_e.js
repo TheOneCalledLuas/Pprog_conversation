@@ -30,11 +30,15 @@ var searchData=
   ['object_5ftexture_5flines_27',['OBJECT_TEXTURE_LINES',['../object_8h.html#af0778807508bcdf84829a129fb37c5cb',1,'object.h']]],
   ['object_5ftexture_5fsize_28',['OBJECT_TEXTURE_SIZE',['../object_8h.html#a195751500124e2c6b2a1d41e5dca335d',1,'object.h']]],
   ['objects_29',['objects',['../struct__Space.html#a661ed8b0fc8085b6db70188aa5085625',1,'_Space::objects'],['../struct__Game.html#ad45bf5645a26e546d0060a2e61f9cf81',1,'_Game::objects']]],
-  ['objs_30',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
-  ['ok_31',['OK',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59',1,'types.h']]],
-  ['ok_5fmenu_32',['OK_MENU',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa7217340e5c188d109dd433bab42d625c',1,'game_loop.c']]],
-  ['open_33',['open',['../struct__Object.html#a0922dd9891e6aa617ce1d51ae27c0175',1,'_Object::open'],['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a0e0143636c29971736eab47415868eae',1,'OPEN:&#160;command.h']]],
-  ['open_5fanim_34',['OPEN_ANIM',['../gamerules_8c.html#a39c9b4cdc18297e4dc231d9773c9093b',1,'gamerules.c']]],
-  ['opened_35',['OPENED',['../types_8h.html#a86510721209a8e5ede12ab30088010a8a45c1c97bdcce420fc01045ee101a0cf2',1,'types.h']]],
-  ['origin_36',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
+  ['objects_5fstarting_5fcolumn_30',['OBJECTS_STARTING_COLUMN',['../graphic__engine_8c.html#a376bbfbdc577cc8a5feaf9b67b99ffb4',1,'graphic_engine.c']]],
+  ['objects_5fstarting_5frow_31',['OBJECTS_STARTING_ROW',['../graphic__engine_8c.html#adf084db41b897b0842376a00fcc76758',1,'graphic_engine.c']]],
+  ['objects_5fvariance_5fposition_32',['OBJECTS_VARIANCE_POSITION',['../graphic__engine_8c.html#a1185086230264f8c9b0ccccc87810741',1,'graphic_engine.c']]],
+  ['objs_33',['objs',['../struct__Inventory.html#a9b5dc77b98754ec177f5062acbc18e8b',1,'_Inventory']]],
+  ['ok_34',['OK',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2bc49ec37d6a5715dd23e85f1ff5bb59',1,'types.h']]],
+  ['ok_5fmenu_35',['OK_MENU',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa7217340e5c188d109dd433bab42d625c',1,'game_loop.c']]],
+  ['open_36',['open',['../struct__Object.html#a0922dd9891e6aa617ce1d51ae27c0175',1,'_Object::open'],['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a0e0143636c29971736eab47415868eae',1,'OPEN:&#160;command.h']]],
+  ['open_5fanim_37',['OPEN_ANIM',['../gamerules_8c.html#a39c9b4cdc18297e4dc231d9773c9093b',1,'gamerules.c']]],
+  ['open_5fgate_38',['OPEN_GATE',['../game__manager_8c.html#a5d3b8632050f5704f834cce50d55fb13a1b9ba50d779e178a8dbd17de669b16ea',1,'game_manager.c']]],
+  ['opened_39',['OPENED',['../types_8h.html#a86510721209a8e5ede12ab30088010a8a45c1c97bdcce420fc01045ee101a0cf2',1,'types.h']]],
+  ['origin_40',['origin',['../struct__link.html#acc797d1273446a7c27863510715fa1be',1,'_link']]]
 ];

@@ -6,5 +6,6 @@ var searchData=
   ['error_3',['ERROR',['../types_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba2fd6f336d08340583bd620a7f5694c90',1,'types.h']]],
   ['existing_5fsaves_4',['EXISTING_SAVES',['../graphic__engine_8h.html#aa49d837fc26d86afcc43d024422c8a66a5a823d0b9f8c545f129c8dda9fc6eb39',1,'graphic_engine.h']]],
   ['exit_5',['EXIT',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a7a10b5d68d31711288e1fe0fa17dbf4f',1,'command.h']]],
-  ['exit_5fmenu_6',['EXIT_MENU',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa5c0d1c2cc18859a1432892b71b4d6279',1,'game_loop.c']]]
+  ['exit_5fmenu_6',['EXIT_MENU',['../game__loop_8c.html#a0a56a618b7f7ab9bb05f7d9dbdea199aa5c0d1c2cc18859a1432892b71b4d6279',1,'game_loop.c']]],
+  ['exploration_5fprogress_7',['EXPLORATION_PROGRESS',['../game__manager_8c.html#a5d3b8632050f5704f834cce50d55fb13a182c1ccf8adeaa2092715953cb0cce1f',1,'game_manager.c']]]
 ];

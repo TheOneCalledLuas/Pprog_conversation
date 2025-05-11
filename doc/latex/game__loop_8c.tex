@@ -13,7 +13,7 @@ It defines the game loop.
 {\ttfamily \#include "{}command.\+h"{}}\newline
 {\ttfamily \#include "{}game.\+h"{}}\newline
 {\ttfamily \#include "{}game\+\_\+actions.\+h"{}}\newline
-{\ttfamily \#include "{}game\+\_\+reader.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+manager.\+h"{}}\newline
 {\ttfamily \#include "{}graphic\+\_\+engine.\+h"{}}\newline
 {\ttfamily \#include "{}gamerules.\+h"{}}\newline
 Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
@@ -39,6 +39,10 @@ Include dependency graph for game\+\_\+loop.\+c\+:\nopagebreak
 \#define \mbox{\hyperlink{game__loop_8c_acd57dd6e0cdebe9f0e0f71584e7b5368}{SECOND\+\_\+\+CHAR}}~1
 \item 
 \#define \mbox{\hyperlink{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297}{N\+\_\+\+LOOPS\+\_\+\+MUSIC}}~-\/1
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_ae1add6f526187515e192f251e5eb7b58}{MIN\+\_\+\+NEXXESARY\+\_\+\+ARGS}}~2
+\item 
+\#define \mbox{\hyperlink{game__loop_8c_a790ac0f97b1164d4897ab55ad3a82277}{NEXT\+\_\+\+ARG}}~1
 \item 
 \#define \mbox{\hyperlink{game__loop_8c_a4ee670d5eafa0001088f911dca0b07ba}{DEFAULT\+\_\+\+CHUNKSIZE}}~2048
 \end{DoxyCompactItemize}
@@ -113,7 +117,13 @@ Position number 0 of a string, used to get inputs in menu \Hypertarget{game__loo
 \doxysubsubsection{\texorpdfstring{MAX\_ARG}{MAX\_ARG}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+ARG~64}
 
-Maximun argument length. \Hypertarget{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297}\label{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297} 
+Maximun argument length. \Hypertarget{game__loop_8c_ae1add6f526187515e192f251e5eb7b58}\label{game__loop_8c_ae1add6f526187515e192f251e5eb7b58} 
+\index{game\_loop.c@{game\_loop.c}!MIN\_NEXXESARY\_ARGS@{MIN\_NEXXESARY\_ARGS}}
+\index{MIN\_NEXXESARY\_ARGS@{MIN\_NEXXESARY\_ARGS}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{MIN\_NEXXESARY\_ARGS}{MIN\_NEXXESARY\_ARGS}}
+{\footnotesize\ttfamily \#define MIN\+\_\+\+NEXXESARY\+\_\+\+ARGS~2}
+
+Minimum number of arguments needed to run the game \Hypertarget{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297}\label{game__loop_8c_aaa39e5fedc5a50a0a098695fbf00e297} 
 \index{game\_loop.c@{game\_loop.c}!N\_LOOPS\_MUSIC@{N\_LOOPS\_MUSIC}}
 \index{N\_LOOPS\_MUSIC@{N\_LOOPS\_MUSIC}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{N\_LOOPS\_MUSIC}{N\_LOOPS\_MUSIC}}
@@ -125,7 +135,13 @@ Number of loops the music will do, -\/1 means indefinately \Hypertarget{game__lo
 \doxysubsubsection{\texorpdfstring{NAME\_SIZE}{NAME\_SIZE}}
 {\footnotesize\ttfamily \#define NAME\+\_\+\+SIZE~100}
 
-Max size of the name of the savefile. \Hypertarget{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540}\label{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540} 
+Max size of the name of the savefile. \Hypertarget{game__loop_8c_a790ac0f97b1164d4897ab55ad3a82277}\label{game__loop_8c_a790ac0f97b1164d4897ab55ad3a82277} 
+\index{game\_loop.c@{game\_loop.c}!NEXT\_ARG@{NEXT\_ARG}}
+\index{NEXT\_ARG@{NEXT\_ARG}!game\_loop.c@{game\_loop.c}}
+\doxysubsubsection{\texorpdfstring{NEXT\_ARG}{NEXT\_ARG}}
+{\footnotesize\ttfamily \#define NEXT\+\_\+\+ARG~1}
+
+Position of the next argument \Hypertarget{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540}\label{game__loop_8c_a1e6abba5f8c184a1f7707ecc43828540} 
 \index{game\_loop.c@{game\_loop.c}!NUMBER\_OF\_BAD\_LETTERS@{NUMBER\_OF\_BAD\_LETTERS}}
 \index{NUMBER\_OF\_BAD\_LETTERS@{NUMBER\_OF\_BAD\_LETTERS}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{NUMBER\_OF\_BAD\_LETTERS}{NUMBER\_OF\_BAD\_LETTERS}}

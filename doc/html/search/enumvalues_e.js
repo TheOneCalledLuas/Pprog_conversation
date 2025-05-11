@@ -8,5 +8,6 @@ var searchData=
   ['sixth_5fline_5',['SIXTH_LINE',['../graphic__engine_8c.html#a1c111d6f765d32013ab164b485992e9daa56e414031974ba4d0747139d72780c3',1,'graphic_engine.c']]],
   ['south_6',['SOUTH',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a8ef5c0bce69283a9986011a63eea8a6b',1,'graphic_engine.c']]],
   ['south_5feast_7',['SOUTH_EAST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111ad9ab50fab1cc6f797e75ef86ee46a926',1,'graphic_engine.c']]],
-  ['south_5fwest_8',['SOUTH_WEST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a90b239afc7fa8d4642b326cc0fce0ddc',1,'graphic_engine.c']]]
+  ['south_5fwest_8',['SOUTH_WEST',['../graphic__engine_8c.html#adb1fad3b6a121acd6db0b9eda7fd5111a90b239afc7fa8d4642b326cc0fce0ddc',1,'graphic_engine.c']]],
+  ['spider_5fboos_5fkilled_9',['SPIDER_BOOS_KILLED',['../game__manager_8c.html#a5d3b8632050f5704f834cce50d55fb13aca9d8652d4002ba10d22676500c35a3d',1,'game_manager.c']]]
 ];

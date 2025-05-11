@@ -16,8 +16,7 @@ It implements a textual graphic engine.
 {\ttfamily \#include $<$strings.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-Include dependency graph for graphic\+\_\+engine.\+c\+:
-\nopagebreak
+Include dependency graph for graphic\+\_\+engine.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,6 +44,50 @@ struct \mbox{\hyperlink{struct__Graphic__engine}{\+\_\+\+Graphic\+\_\+engine}}
 \#define \mbox{\hyperlink{graphic__engine_8c_a8b64afdab082949b22941eec34a07f13}{HEIGHT\+\_\+\+HLP}}~3
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_aec4928b7d7a0e91ad936d76d79bedbf2}{HEIGHT\+\_\+\+FDB}}~3
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_aeee26bdc625b1fc19277f79ec22ae388}{NO\+\_\+\+WIDTH}}~0
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a6d1a0ee9b8c311973128f4c247ed34cc}{NO\+\_\+\+HEIGHT}}~0
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_abeb9c94c1e5b0cb6b5aea0884b1fb942}{MAP\+\_\+\+ROWS}}~3
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a0c8fa5f924e3cb0ab18aa9ef5563ec23}{MAP\+\_\+\+COLS}}~3
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ab8b313f43b5d4811478b1b3bdaa31eaa}{MID\+\_\+\+MAP\+\_\+\+COLUM}}~\mbox{\hyperlink{graphic__engine_8c_a4231e3c06e2b46e4681d7254aa4dd303}{WIDTH\+\_\+\+SPACE}} \texorpdfstring{$\ast$}{*} 3 / 2 + 1
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a53ed0ed62020de500a5b16332fc3b4a1}{MID\+\_\+\+MAP\+\_\+\+ROW}}~\mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}{HEIGHT\+\_\+\+SPACE}} \texorpdfstring{$\ast$}{*} 2 -\/ 4
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a766af47d551a8b2fd209f63e5c2b675d}{MID\+\_\+\+ROOM\+\_\+\+ROW}}~7
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ad141efef46f9e9a6da9bb467fed9e1d3}{PLAYER\+\_\+\+STARTING\+\_\+\+ROW}}~9
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_aa619c7806844ad84014bdf1f03ee3f23}{PLAYER\+\_\+\+STARTING\+\_\+\+COLUMN}}~27
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_ab62cb880fc84192b4d930a9347c7edd1}{MAX\+\_\+\+OBJECTS\+\_\+\+PER\+\_\+\+ROOM}}~6
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_adf084db41b897b0842376a00fcc76758}{OBJECTS\+\_\+\+STARTING\+\_\+\+ROW}}~22
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a376bbfbdc577cc8a5feaf9b67b99ffb4}{OBJECTS\+\_\+\+STARTING\+\_\+\+COLUMN}}~1
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a1185086230264f8c9b0ccccc87810741}{OBJECTS\+\_\+\+VARIANCE\+\_\+\+POSITION}}~10
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653}{CHARACTERS\+\_\+\+PER\+\_\+\+ZONE}}~3
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_af30fd3580eca7f32c7ceda05173ca75c}{CHARACTER\+\_\+\+STARTING\+\_\+\+ROW}}~11
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a4823dd79fbe41894027d04f71dd119e4}{CHARACTER\+\_\+\+STARTING\+\_\+\+COLUMN\+\_\+\+ONE}}~45
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a6ae387e4bd9bb6da2fe8045e14cffd62}{CHARACTER\+\_\+\+STARTING\+\_\+\+COLUMN\+\_\+\+TWO}}~12
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a16a96ed8541bcd1c51127936438720f2}{CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+COLUM}}~2
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14}{CHATEACTE\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW}}~5
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4}{MAX\+\_\+\+ID}}~999
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_a73c3856a81fc3bf2d0d3849bb1c19625}{NO\+\_\+\+HEALTH}}~0
+\item 
+\#define \mbox{\hyperlink{graphic__engine_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
 \item 
 \#define \mbox{\hyperlink{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}{MAX\+\_\+\+STRING\+\_\+\+GE}}~255
 \item 
@@ -140,7 +183,43 @@ GNU Public License.
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}\label{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2} 
+\Hypertarget{graphic__engine_8c_a4823dd79fbe41894027d04f71dd119e4}\label{graphic__engine_8c_a4823dd79fbe41894027d04f71dd119e4} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTER\_STARTING\_COLUMN\_ONE@{CHARACTER\_STARTING\_COLUMN\_ONE}}
+\index{CHARACTER\_STARTING\_COLUMN\_ONE@{CHARACTER\_STARTING\_COLUMN\_ONE}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_STARTING\_COLUMN\_ONE}{CHARACTER\_STARTING\_COLUMN\_ONE}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+STARTING\+\_\+\+COLUMN\+\_\+\+ONE~45}
+
+Column where the characters start to get printed if there are more than three characters \Hypertarget{graphic__engine_8c_a6ae387e4bd9bb6da2fe8045e14cffd62}\label{graphic__engine_8c_a6ae387e4bd9bb6da2fe8045e14cffd62} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTER\_STARTING\_COLUMN\_TWO@{CHARACTER\_STARTING\_COLUMN\_TWO}}
+\index{CHARACTER\_STARTING\_COLUMN\_TWO@{CHARACTER\_STARTING\_COLUMN\_TWO}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_STARTING\_COLUMN\_TWO}{CHARACTER\_STARTING\_COLUMN\_TWO}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+STARTING\+\_\+\+COLUMN\+\_\+\+TWO~12}
+
+Column where the characters start to get printed \Hypertarget{graphic__engine_8c_af30fd3580eca7f32c7ceda05173ca75c}\label{graphic__engine_8c_af30fd3580eca7f32c7ceda05173ca75c} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTER\_STARTING\_ROW@{CHARACTER\_STARTING\_ROW}}
+\index{CHARACTER\_STARTING\_ROW@{CHARACTER\_STARTING\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_STARTING\_ROW}{CHARACTER\_STARTING\_ROW}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+STARTING\+\_\+\+ROW~11}
+
+Row where the characters start to get printed if there are less than three \Hypertarget{graphic__engine_8c_a16a96ed8541bcd1c51127936438720f2}\label{graphic__engine_8c_a16a96ed8541bcd1c51127936438720f2} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTER\_VARIANCE\_POSITION\_COLUM@{CHARACTER\_VARIANCE\_POSITION\_COLUM}}
+\index{CHARACTER\_VARIANCE\_POSITION\_COLUM@{CHARACTER\_VARIANCE\_POSITION\_COLUM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTER\_VARIANCE\_POSITION\_COLUM}{CHARACTER\_VARIANCE\_POSITION\_COLUM}}
+{\footnotesize\ttfamily \#define CHARACTER\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+COLUM~2}
+
+Variance of the position in a colum where a character is printed when there are several \Hypertarget{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653}\label{graphic__engine_8c_a25d616c84c7dd7307e50f1171ffd9653} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHARACTERS\_PER\_ZONE@{CHARACTERS\_PER\_ZONE}}
+\index{CHARACTERS\_PER\_ZONE@{CHARACTERS\_PER\_ZONE}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHARACTERS\_PER\_ZONE}{CHARACTERS\_PER\_ZONE}}
+{\footnotesize\ttfamily \#define CHARACTERS\+\_\+\+PER\+\_\+\+ZONE~3}
+
+Number of characters that can be printed in a zone \Hypertarget{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14}\label{graphic__engine_8c_a8ff25a1fdf48796c5843cd111e498d14} 
+\index{graphic\_engine.c@{graphic\_engine.c}!CHATEACTE\_VARIANCE\_POSITION\_ROW@{CHATEACTE\_VARIANCE\_POSITION\_ROW}}
+\index{CHATEACTE\_VARIANCE\_POSITION\_ROW@{CHATEACTE\_VARIANCE\_POSITION\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{CHATEACTE\_VARIANCE\_POSITION\_ROW}{CHATEACTE\_VARIANCE\_POSITION\_ROW}}
+{\footnotesize\ttfamily \#define CHATEACTE\+\_\+\+VARIANCE\+\_\+\+POSITION\+\_\+\+ROW~5}
+
+Variance of the position in a row where a character is printed when there are several \Hypertarget{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2}\label{graphic__engine_8c_a6c57c99bb1a715db6440cea41d12ccb2} 
 \index{graphic\_engine.c@{graphic\_engine.c}!END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}}
 \index{END\_TUTORIAL\_ROOM@{END\_TUTORIAL\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{END\_TUTORIAL\_ROOM}{END\_TUTORIAL\_ROOM}}
@@ -158,7 +237,13 @@ Number of extra lines beetween elements of the ge. \Hypertarget{graphic__engine_
 \doxysubsubsection{\texorpdfstring{EXTRA\_SPACE}{EXTRA\_SPACE}}
 {\footnotesize\ttfamily \#define EXTRA\+\_\+\+SPACE~4}
 
-Number of extra spaces bettween the object and its description in the bag \Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
+Number of extra spaces bettween the object and its description in the bag \Hypertarget{graphic__engine_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{graphic__engine_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{graphic\_engine.c@{graphic\_engine.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to intitialize things \Hypertarget{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15}\label{graphic__engine_8c_a514109fafd6de00710e3a287d51e8e15} 
 \index{graphic\_engine.c@{graphic\_engine.c}!HEIGHT\_BAN@{HEIGHT\_BAN}}
 \index{HEIGHT\_BAN@{HEIGHT\_BAN}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{HEIGHT\_BAN}{HEIGHT\_BAN}}
@@ -188,31 +273,121 @@ Map height. \Hypertarget{graphic__engine_8c_a6683e255d32063a314b7edc03c7ef80f}\l
 \doxysubsubsection{\texorpdfstring{LIMIT\_OF\_ELEMENTS}{LIMIT\_OF\_ELEMENTS}}
 {\footnotesize\ttfamily \#define LIMIT\+\_\+\+OF\+\_\+\+ELEMENTS~2}
 
-Number of elements that can\textquotesingle{}t be written on when printing each line of each space. \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
+Number of elements that can\textquotesingle{}t be written on when printing each line of each space. \Hypertarget{graphic__engine_8c_a0c8fa5f924e3cb0ab18aa9ef5563ec23}\label{graphic__engine_8c_a0c8fa5f924e3cb0ab18aa9ef5563ec23} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MAP\_COLS@{MAP\_COLS}}
+\index{MAP\_COLS@{MAP\_COLS}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MAP\_COLS}{MAP\_COLS}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+COLS~3}
+
+Number of columns in the map \Hypertarget{graphic__engine_8c_abeb9c94c1e5b0cb6b5aea0884b1fb942}\label{graphic__engine_8c_abeb9c94c1e5b0cb6b5aea0884b1fb942} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MAP\_ROWS@{MAP\_ROWS}}
+\index{MAP\_ROWS@{MAP\_ROWS}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MAP\_ROWS}{MAP\_ROWS}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+ROWS~3}
+
+Number of rows in the map \Hypertarget{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4}\label{graphic__engine_8c_a1cdef4472847c938fc165b7d2737c4e4} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MAX\_ID@{MAX\_ID}}
+\index{MAX\_ID@{MAX\_ID}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ID}{MAX\_ID}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+ID~999}
+
+Max id of a space that can be printed in the map area \Hypertarget{graphic__engine_8c_ab62cb880fc84192b4d930a9347c7edd1}\label{graphic__engine_8c_ab62cb880fc84192b4d930a9347c7edd1} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MAX\_OBJECTS\_PER\_ROOM@{MAX\_OBJECTS\_PER\_ROOM}}
+\index{MAX\_OBJECTS\_PER\_ROOM@{MAX\_OBJECTS\_PER\_ROOM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_OBJECTS\_PER\_ROOM}{MAX\_OBJECTS\_PER\_ROOM}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+OBJECTS\+\_\+\+PER\+\_\+\+ROOM~6}
+
+Max number of objects that are printed per room \Hypertarget{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1}\label{graphic__engine_8c_a93f77e0da33047629e309031a791b8f1} 
 \index{graphic\_engine.c@{graphic\_engine.c}!MAX\_STRING\_GE@{MAX\_STRING\_GE}}
 \index{MAX\_STRING\_GE@{MAX\_STRING\_GE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_STRING\_GE}{MAX\_STRING\_GE}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+STRING\+\_\+\+GE~255}
 
-Max string lenght. \Hypertarget{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3}\label{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3} 
+Max string lenght. \Hypertarget{graphic__engine_8c_ab8b313f43b5d4811478b1b3bdaa31eaa}\label{graphic__engine_8c_ab8b313f43b5d4811478b1b3bdaa31eaa} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MID\_MAP\_COLUM@{MID\_MAP\_COLUM}}
+\index{MID\_MAP\_COLUM@{MID\_MAP\_COLUM}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MID\_MAP\_COLUM}{MID\_MAP\_COLUM}}
+{\footnotesize\ttfamily \#define MID\+\_\+\+MAP\+\_\+\+COLUM~\mbox{\hyperlink{graphic__engine_8c_a4231e3c06e2b46e4681d7254aa4dd303}{WIDTH\+\_\+\+SPACE}} \texorpdfstring{$\ast$}{*} 3 / 2 + 1}
+
+Middle column of the map \Hypertarget{graphic__engine_8c_a53ed0ed62020de500a5b16332fc3b4a1}\label{graphic__engine_8c_a53ed0ed62020de500a5b16332fc3b4a1} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MID\_MAP\_ROW@{MID\_MAP\_ROW}}
+\index{MID\_MAP\_ROW@{MID\_MAP\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MID\_MAP\_ROW}{MID\_MAP\_ROW}}
+{\footnotesize\ttfamily \#define MID\+\_\+\+MAP\+\_\+\+ROW~\mbox{\hyperlink{graphic__engine_8c_a1c111d6f765d32013ab164b485992e9daa356540b5cc960896da489bbb30ba985}{HEIGHT\+\_\+\+SPACE}} \texorpdfstring{$\ast$}{*} 2 -\/ 4}
+
+Middle row of the map \Hypertarget{graphic__engine_8c_a766af47d551a8b2fd209f63e5c2b675d}\label{graphic__engine_8c_a766af47d551a8b2fd209f63e5c2b675d} 
+\index{graphic\_engine.c@{graphic\_engine.c}!MID\_ROOM\_ROW@{MID\_ROOM\_ROW}}
+\index{MID\_ROOM\_ROW@{MID\_ROOM\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{MID\_ROOM\_ROW}{MID\_ROOM\_ROW}}
+{\footnotesize\ttfamily \#define MID\+\_\+\+ROOM\+\_\+\+ROW~7}
+
+Middle row of the room \Hypertarget{graphic__engine_8c_a73c3856a81fc3bf2d0d3849bb1c19625}\label{graphic__engine_8c_a73c3856a81fc3bf2d0d3849bb1c19625} 
+\index{graphic\_engine.c@{graphic\_engine.c}!NO\_HEALTH@{NO\_HEALTH}}
+\index{NO\_HEALTH@{NO\_HEALTH}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{NO\_HEALTH}{NO\_HEALTH}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+HEALTH~0}
+
+No health value \Hypertarget{graphic__engine_8c_a6d1a0ee9b8c311973128f4c247ed34cc}\label{graphic__engine_8c_a6d1a0ee9b8c311973128f4c247ed34cc} 
+\index{graphic\_engine.c@{graphic\_engine.c}!NO\_HEIGHT@{NO\_HEIGHT}}
+\index{NO\_HEIGHT@{NO\_HEIGHT}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{NO\_HEIGHT}{NO\_HEIGHT}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+HEIGHT~0}
+
+No height, use in ge init \Hypertarget{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3}\label{graphic__engine_8c_ab941b11bd9f3f24a015bfae03f6be3f3} 
 \index{graphic\_engine.c@{graphic\_engine.c}!NO\_SPACE@{NO\_SPACE}}
 \index{NO\_SPACE@{NO\_SPACE}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{NO\_SPACE}{NO\_SPACE}}
 {\footnotesize\ttfamily \#define NO\+\_\+\+SPACE~0}
 
-No space, use in ge init \Hypertarget{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}\label{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33} 
+No space, use in ge init \Hypertarget{graphic__engine_8c_aeee26bdc625b1fc19277f79ec22ae388}\label{graphic__engine_8c_aeee26bdc625b1fc19277f79ec22ae388} 
+\index{graphic\_engine.c@{graphic\_engine.c}!NO\_WIDTH@{NO\_WIDTH}}
+\index{NO\_WIDTH@{NO\_WIDTH}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{NO\_WIDTH}{NO\_WIDTH}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+WIDTH~0}
+
+No width, use in ge init \Hypertarget{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33}\label{graphic__engine_8c_ae0d3b3ad3ed7302dd28bfa1618e50d33} 
 \index{graphic\_engine.c@{graphic\_engine.c}!NON\_WRITTABLE\_ELEMS@{NON\_WRITTABLE\_ELEMS}}
 \index{NON\_WRITTABLE\_ELEMS@{NON\_WRITTABLE\_ELEMS}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{NON\_WRITTABLE\_ELEMS}{NON\_WRITTABLE\_ELEMS}}
 {\footnotesize\ttfamily \#define NON\+\_\+\+WRITTABLE\+\_\+\+ELEMS~5}
 
-Elements that cannot be written per room. \Hypertarget{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e}\label{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e} 
+Elements that cannot be written per room. \Hypertarget{graphic__engine_8c_a376bbfbdc577cc8a5feaf9b67b99ffb4}\label{graphic__engine_8c_a376bbfbdc577cc8a5feaf9b67b99ffb4} 
+\index{graphic\_engine.c@{graphic\_engine.c}!OBJECTS\_STARTING\_COLUMN@{OBJECTS\_STARTING\_COLUMN}}
+\index{OBJECTS\_STARTING\_COLUMN@{OBJECTS\_STARTING\_COLUMN}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{OBJECTS\_STARTING\_COLUMN}{OBJECTS\_STARTING\_COLUMN}}
+{\footnotesize\ttfamily \#define OBJECTS\+\_\+\+STARTING\+\_\+\+COLUMN~1}
+
+Column where the objects start to get printed \Hypertarget{graphic__engine_8c_adf084db41b897b0842376a00fcc76758}\label{graphic__engine_8c_adf084db41b897b0842376a00fcc76758} 
+\index{graphic\_engine.c@{graphic\_engine.c}!OBJECTS\_STARTING\_ROW@{OBJECTS\_STARTING\_ROW}}
+\index{OBJECTS\_STARTING\_ROW@{OBJECTS\_STARTING\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{OBJECTS\_STARTING\_ROW}{OBJECTS\_STARTING\_ROW}}
+{\footnotesize\ttfamily \#define OBJECTS\+\_\+\+STARTING\+\_\+\+ROW~22}
+
+Row where the objects start to get printed \Hypertarget{graphic__engine_8c_a1185086230264f8c9b0ccccc87810741}\label{graphic__engine_8c_a1185086230264f8c9b0ccccc87810741} 
+\index{graphic\_engine.c@{graphic\_engine.c}!OBJECTS\_VARIANCE\_POSITION@{OBJECTS\_VARIANCE\_POSITION}}
+\index{OBJECTS\_VARIANCE\_POSITION@{OBJECTS\_VARIANCE\_POSITION}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{OBJECTS\_VARIANCE\_POSITION}{OBJECTS\_VARIANCE\_POSITION}}
+{\footnotesize\ttfamily \#define OBJECTS\+\_\+\+VARIANCE\+\_\+\+POSITION~10}
+
+Variance of the position where an object is printed when there are several \Hypertarget{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e}\label{graphic__engine_8c_a569fe203c340cef8f7e668c703e3b93e} 
 \index{graphic\_engine.c@{graphic\_engine.c}!PLAYER\_LENGTH@{PLAYER\_LENGTH}}
 \index{PLAYER\_LENGTH@{PLAYER\_LENGTH}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{PLAYER\_LENGTH}{PLAYER\_LENGTH}}
 {\footnotesize\ttfamily \#define PLAYER\+\_\+\+LENGTH~7}
 
-The amount of charactes the icon for tha player occupies. \Hypertarget{graphic__engine_8c_a13be888792778f0d468152138531d586}\label{graphic__engine_8c_a13be888792778f0d468152138531d586} 
+The amount of charactes the icon for tha player occupies. \Hypertarget{graphic__engine_8c_aa619c7806844ad84014bdf1f03ee3f23}\label{graphic__engine_8c_aa619c7806844ad84014bdf1f03ee3f23} 
+\index{graphic\_engine.c@{graphic\_engine.c}!PLAYER\_STARTING\_COLUMN@{PLAYER\_STARTING\_COLUMN}}
+\index{PLAYER\_STARTING\_COLUMN@{PLAYER\_STARTING\_COLUMN}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{PLAYER\_STARTING\_COLUMN}{PLAYER\_STARTING\_COLUMN}}
+{\footnotesize\ttfamily \#define PLAYER\+\_\+\+STARTING\+\_\+\+COLUMN~27}
+
+Column where the player starts to get printed \Hypertarget{graphic__engine_8c_ad141efef46f9e9a6da9bb467fed9e1d3}\label{graphic__engine_8c_ad141efef46f9e9a6da9bb467fed9e1d3} 
+\index{graphic\_engine.c@{graphic\_engine.c}!PLAYER\_STARTING\_ROW@{PLAYER\_STARTING\_ROW}}
+\index{PLAYER\_STARTING\_ROW@{PLAYER\_STARTING\_ROW}!graphic\_engine.c@{graphic\_engine.c}}
+\doxysubsubsection{\texorpdfstring{PLAYER\_STARTING\_ROW}{PLAYER\_STARTING\_ROW}}
+{\footnotesize\ttfamily \#define PLAYER\+\_\+\+STARTING\+\_\+\+ROW~9}
+
+Row where the player starts to get printed \Hypertarget{graphic__engine_8c_a13be888792778f0d468152138531d586}\label{graphic__engine_8c_a13be888792778f0d468152138531d586} 
 \index{graphic\_engine.c@{graphic\_engine.c}!STARING\_POINT@{STARING\_POINT}}
 \index{STARING\_POINT@{STARING\_POINT}!graphic\_engine.c@{graphic\_engine.c}}
 \doxysubsubsection{\texorpdfstring{STARING\_POINT}{STARING\_POINT}}
@@ -458,6 +633,8 @@ Fernando Mijangos
 5-\/\texorpdfstring{$>$}{>}Prints a screen where you try to create a game that already exists or cant be created 
 
 6-\/\texorpdfstring{$>$}{>}Prints screen where you chose which file to delete 
+
+7-\/\texorpdfstring{$>$}{>}Prints screen where you get help 
 \end{DoxyNote}
 \Hypertarget{graphic__engine_8c_a3f37ee25263b8fa49264a7d3d4d5bd27}\label{graphic__engine_8c_a3f37ee25263b8fa49264a7d3d4d5bd27} 
 \index{graphic\_engine.c@{graphic\_engine.c}!graphic\_engine\_paint\_game@{graphic\_engine\_paint\_game}}

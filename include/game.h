@@ -331,7 +331,7 @@ Player *game_get_player(Game *game, int player_number);
 Status game_next_turn(Game *game);
 
 /**
- * @brief Sets the turn to the one you want, this should only be used by game_reader
+ * @brief Sets the turn to the one you want, this should only be used by game_manager
  * @author Fernando Mijangos
  *
  * @param game Pointer to the game.
@@ -535,7 +535,7 @@ Status game_set_n_objects(Game *game, int n_objects);
 Status game_add_link(Game *game, Link *link);
 
 /**
- * @brief Deletes a link from the link array (used to delete all the information of the links in game_reader).
+ * @brief Deletes a link from the link array (used to delete all the information of the links in game_manager).
  * @author Fernando Mijangos.
  *
  * @param game Pointer to the game.
