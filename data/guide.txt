@@ -44,3 +44,9 @@ El final "malo" se desbloquea completando una misión secundaria de una de las h
 Aquí también luchan con MerchAnt tras la muerte de Arachne, pero como todas las arañas ya están muertas, no hay motivo por el que firmar ninguna tregua... ni por el que compartir el poder sobre el hormiguero. Las hormigas discuten por esto, pero al parecer no todas las arañas estaban muertas, y tras las acciones de las hormigas, deciden matarlas.
 
 El tercer final es un final secreto sólo desbloqueable con una serie de acciones específicas: alguno de los jugadores debe coger los objetos Artifact y Rocks y luego usarlos en la batalla final contra MerchAnt, lo cual lo mata instantáneamente. Dándose cuenta del poder que tiene el artefacto, la hormiga que lo haya usado lo usa contra su compañera para matarla, quedándose así con el control absoluto del hormiguero.
+
+
+
+El archivo Test_all_things.cmd tiene una lista de comandos para llegar al final principal.
+
+Las pruebas de integracion y los juegos automáticos se han de usar sin partidas guardadas.
