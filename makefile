@@ -195,6 +195,9 @@ run_cmd:
 run_determined:
 	./anthill data/anthill.dat -l ./log/output.log -d
 
+run_determined_check:
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log -d
+
 run_cmd_check:
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log < game1.cmd
 

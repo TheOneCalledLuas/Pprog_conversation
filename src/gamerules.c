@@ -54,7 +54,7 @@
 #define ANIMATION_MERCHANT_ENDING_2 6 /*!< Animation for the merchant good ending. */
 #define PLAYER_DEAD 2                 /*!< Animation for the player dead. */
 #define FIRST_ANIMATION 4             /*!< Animation for the first action. */
-#define TRAIN_ANIM 7                  /*!< Animation for the train. */
+#define TRAIN_ANIM 17                  /*!< Animation for the train. */
 
 /*The following IDS are the ids of the rooms to reach completion.*/
 #define ROOM_1 711          /*!< Id of the first room. */
