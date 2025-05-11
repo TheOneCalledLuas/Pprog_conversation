@@ -18,6 +18,8 @@
  * Maximun word description.*/
 #define MAX_DESCRIPTION 256
 #define MAX_NAME 64 /*!< Max name length.*/
+#define NO_HEALTH 0 /*!< No health value.*/
+#define FIRST_CHAR 0 /*!< Position number 0 of a string, used to initialize things*/
 
 /**
  * @brief Object
@@ -67,9 +69,9 @@ Object *object_create(Id id)
 
     /*Sets the vaues to default ones and establishes the id.*/
     object->id = id;
-    object->name[0] = '\0';
-    object->description[0] = '\0';
-    object->health = 0;
+    object->name[FIRST_CHAR] = '\0';
+    object->description[FIRST_CHAR] = '\0';
+    object->health = NO_HEALTH;
     object->movable = FALSE;
     object->dependency = NO_ID;
     object->open = NO_ID;
@@ -207,7 +209,7 @@ Status object_set_texture_line(Object *object, int line, char *str)
 char *object_get_texture_line(Object *object, int line)
 {
     /*Checks the arguments.*/
-    if (!object || line < 0 || line > OBJECT_TEXTURE_LINES - 1)
+    if (!object || line < 0 || line >= OBJECT_TEXTURE_LINES)
     {
         return NULL;
     }

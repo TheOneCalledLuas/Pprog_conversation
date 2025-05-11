@@ -50,7 +50,7 @@ Status inventory_set_max_objs(Inventory *inventory, long max_objs);
  * @author Raquel Anguita Martínez de Velasco.
  *
  * @param inventory Pointer to the inventory to change.
- * @return The inventory's maximum number of objects; -1 if something went wrong.
+ * @return The inventory's maximum number of objects; FUNCTION_ERROR if something went wrong.
  */
 long inventory_get_max_objs(Inventory *inventory);
 
@@ -60,7 +60,7 @@ long inventory_get_max_objs(Inventory *inventory);
  *
  * @param inventory Pointer to the inventory to change.
  * @param id Id of the object to be searched.
- * @return Position of the id in the inventory; -1 if not found or anything went wrong.
+ * @return Position of the id in the inventory; FUNCTION_ERROR if not found or anything went wrong.
  */
 int inventory_find(Inventory *inventory, Id id);
 
@@ -80,7 +80,7 @@ Status inventory_add(Inventory *inventory, Id id);
  *
  * @param inventory Pointer to the inventory to change.
  * @param id Id of the object to be taken out.
- * @return Id taken out; -2 if anything went wrong.
+ * @return Id taken out; ID_ERROR if anything went wrong.
  */
 Id inventory_take(Inventory *inventory, Id id);
 
@@ -89,7 +89,7 @@ Id inventory_take(Inventory *inventory, Id id);
  * @author Raquel Anguita Martínez de Velasco.
  *
  * @param inventory Pointer to the inventory to change.
- * @return Number of objects in the inventory; -1 if there were any errors.
+ * @return Number of objects in the inventory; FUNCTION_ERROR if there were any errors.
  */
 int inventory_len(Inventory *inventory);
 

@@ -24,6 +24,7 @@
 #define ATTACK_PROB 9    /*!<Chances to attack.*/
 #define SUCCESS_PROB 2   /*!<Chances to strike (the smaller the better).*/
 #define DAMAGE_DEALT 1   /*!<Amount of health the entity losses when hurt.*/
+#define NO_DAMAGE 0      /*!<Amount of health the entity losses when not hurt.*/
 #define MIN_HEALTH 0     /*!<Minimum health the entity can have before dying.*/
 #define N_DIRECTIONS 6   /*!<Number of directions.*/
 #define N_VARIATIONS 2   /*!<Number of possible ways to call each direction.*/
@@ -570,7 +571,7 @@ void game_actions_attack(Game *game)
         return;
     }
 
-    coop_dmg = (player_get_team(player) != NO_ID) ? 1 : 0;
+    coop_dmg = (player_get_team(player) != NO_ID) ? DAMAGE_DEALT : NO_DAMAGE;
 
     /*2-If that character isnt friendly, attack it*/
     if (character_get_friendly(character) == FALSE && character_get_health(character) > MIN_HEALTH && player_get_health(player) > MIN_HEALTH)
@@ -584,7 +585,7 @@ void game_actions_attack(Game *game)
         else
         {
             /*If the game is in determinist mode, the player always wins.*/
-            rand_num = ATTACK_PROB + 1;
+            rand_num = ATTACK_PROB + SUCCESS_PROB;
         }
         if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
         {
@@ -730,7 +731,7 @@ void game_actions_use(Game *game)
     }
 
     /*Searches if the object is reachable.*/
-    if (object_id >= 0 && (space_find_object(last_space, object_id) != -1 || player_has_object(player, object_id) || coop_reeachable))
+    if (object_id > NO_ID && (space_find_object(last_space, object_id) != NO_POSITION || player_has_object(player, object_id) || coop_reeachable))
     {
         /*If the object was found anywhere accesible by the player.*/
         object = game_get_object(game, object_id);
@@ -751,19 +752,19 @@ void game_actions_use(Game *game)
     }
 
     /*If the object can't be used with use it ends here.*/
-    if (object_get_health(object) == 0)
+    if (object_get_health(object) == MIN_HEALTH)
     {
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
 
     /*Checks where to use the object.*/
-    if (strcasecmp(command_get_argument(game_get_last_command(game), SECOND_ARG), "over") == 0)
+    if (strcasecmp(command_get_argument(game_get_last_command(game), SECOND_ARG), "over") == EQUAL_WORDS)
     {
         /*The object is intended to be used over a specific entity.*/
         entity = command_get_argument(game_get_last_command(game), THIRD_ARG);
         /*Checks if the entity was a player or a character.*/
-        if ((target = game_get_player_by_name(game, entity)) >= 0)
+        if ((target = game_get_player_by_name(game, entity)) > NO_ID)
         {
             /*The object was used over an actual player.*/
             player_set_health(game_get_player_by_id(game, target), player_get_health(player) + object_get_health(object));
@@ -842,8 +843,8 @@ void game_actions_open(Game *game)
         command_set_status(game_get_last_command(game), ERROR);
         return;
     }
-    condition1 = strcasecmp(command_get_argument(command, SECOND_ARG), "with") != 0;
-    condition2 = strlen(command_get_argument(command, FIRST_ARG)) == 0;
+    condition1 = strcasecmp(command_get_argument(command, SECOND_ARG), "with") != EQUAL_WORDS;
+    condition2 = strlen(command_get_argument(command, FIRST_ARG)) == EQUAL_WORDS;
     if (condition1 || condition2)
     {
         command_set_status(game_get_last_command(game), ERROR);
@@ -897,7 +898,7 @@ void game_actions_open(Game *game)
         link_set_state(link, OPENED);
         player_del_object(game_get_actual_player(game), object_get_id(object));
     }
-    else if (space_find_object(act_space, object_get_id(object)) != -1)
+    else if (space_find_object(act_space, object_get_id(object)) != NO_POSITION)
     {
         /*Executes the command and takes the object out of the space.*/
         link_set_state(link, OPENED);
@@ -951,7 +952,7 @@ void game_actions_coop(Game *game)
     /*Gets all the information.*/
     player = game_get_actual_player(game);
     player_id = player_get_player_id(player);
-    mate = game_get_player_by_id(game, game_get_player_by_name(game, command_get_argument(game_get_last_command(game), 0)));
+    mate = game_get_player_by_id(game, game_get_player_by_name(game, command_get_argument(game_get_last_command(game), FIRST_ARG)));
     team_id = player_get_player_id(mate);
 
     if (!player || !mate)

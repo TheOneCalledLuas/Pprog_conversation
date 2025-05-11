@@ -310,7 +310,7 @@ int animation_get_n_images(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->n_images;
@@ -335,7 +335,7 @@ int animation_get_width(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->widht;
@@ -360,7 +360,7 @@ int animation_get_height(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->height;
@@ -385,7 +385,7 @@ int animation_get_side_padding(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->side_padding;
@@ -410,7 +410,7 @@ int animation_get_height_padding(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->height_padding;
@@ -435,7 +435,7 @@ float animation_get_refresh_rate(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->refresh_rate;
@@ -460,7 +460,7 @@ int animation_get_background_color(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->background_color;
@@ -485,7 +485,7 @@ int animation_get_font_color(Animation *anim)
 {
     /*Error handling.*/
     if (!anim)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return anim->font_color;
@@ -510,7 +510,7 @@ int animation_manager_get_n_animations(Animation_Manager *am)
 {
     /*Error handling.*/
     if (!am)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Clean exit.*/
     return am->n_animations;

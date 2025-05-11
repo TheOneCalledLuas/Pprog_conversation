@@ -20,6 +20,7 @@
  * Maximun lenght of a description string for a player.*/
 #define MAX_GDESC 10
 #define DEFAULT_HEALTH 20 /*!< Player's default health. */
+#define FIRST_CHAR 0      /*!< Position number 0 of a string, used to initialize things*/
 
 /**
  * @brief Player
@@ -44,7 +45,7 @@ Player *player_create(Id id)
     Player *player;
     int i;
 
-    if (id < 0)
+    if (id <= NO_ID)
         return NULL;
 
     /*Allocation of memory for player and error management*/
@@ -56,7 +57,7 @@ Player *player_create(Id id)
 
     /*Initialization of the values*/
     player->player_id = id;
-    player->player_name[0] = '\0';
+    player->player_name[FIRST_CHAR] = '\0';
     player->player_location = NO_ID;
     player->inventory = inventory_create();
     player->health = DEFAULT_HEALTH;
@@ -174,7 +175,7 @@ Status player_set_player_location(Player *player, Id id)
 Status player_add_object(Player *player, Id object)
 {
     /*Error management*/
-    if (player == NULL || object <= -1)
+    if (player == NULL || object <= NO_ID)
     {
         return ERROR;
     }
@@ -186,7 +187,7 @@ int player_get_n_objects(Player *player)
 {
     /*Error handling.*/
     if (!player)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the value.*/
     return inventory_len(player->inventory);
@@ -259,7 +260,7 @@ int player_get_health(Player *player)
 {
     /*Error management.*/
     if (!player)
-        return -1;
+        return FUNCTION_ERROR;
 
     /*Returns the health data.*/
     return player->health;
@@ -268,13 +269,13 @@ int player_get_health(Player *player)
 Bool player_has_object(Player *player, Id object)
 {
     /*Error handling.*/
-    if (!player || object <= -1)
+    if (!player || object <= NO_ID)
     {
         return FALSE;
     }
 
     /*Searches for the object.*/
-    return (inventory_find(player->inventory, object) == -1 ? FALSE : TRUE);
+    return (inventory_find(player->inventory, object) == NO_POSITION ? FALSE : TRUE);
 }
 
 Status player_set_inventory_capacity(Player *player, long capacity)
@@ -290,7 +291,7 @@ long player_get_inventory_capacity(Player *player)
 {
     /*Error handling.*/
     if (!player)
-        return -1;
+        return FUNCTION_ERROR;
     /*Returns the value.*/
     return inventory_get_max_objs(player->inventory);
 }
@@ -298,7 +299,7 @@ long player_get_inventory_capacity(Player *player)
 Status player_del_object(Player *player, Id object)
 {
     /*Error handling.*/
-    if (!player || object <= -1)
+    if (!player || object <= NO_ID)
         return ERROR;
     return (inventory_take(player->inventory, object) == object ? OK : ERROR);
 }

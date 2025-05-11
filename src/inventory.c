@@ -59,7 +59,7 @@ void inventory_destroy(Inventory *inventory)
 Status inventory_set_max_objs(Inventory *inventory, long max_objs)
 {
     /* Error control for parameters. */
-    if (!inventory || max_objs < 0 || max_objs < set_len(inventory->objs) || max_objs > MAX_SET)
+    if (!inventory || max_objs < NO_THINGS || max_objs < set_len(inventory->objs) || max_objs > MAX_SET)
     {
         return ERROR;
     }
@@ -74,7 +74,7 @@ long inventory_get_max_objs(Inventory *inventory)
     /* Error control for parameters. */
     if (!inventory)
     {
-        return -1;
+        return FUNCTION_ERROR;
     }
 
     /* Return of the value using the set_len function. */
@@ -86,7 +86,7 @@ int inventory_find(Inventory *inventory, Id id)
     /* Error control for parameters. */
     if (!inventory)
     {
-        return -1;
+        return FUNCTION_ERROR;
     }
     return set_find(inventory->objs, id);
 }
@@ -120,7 +120,7 @@ int inventory_len(Inventory *inventory)
     /* Error control for parameters. */
     if (!inventory)
     {
-        return -1;
+        return FUNCTION_ERROR;
     }
 
     /* Return of the length using the set_len function. */

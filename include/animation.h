@@ -15,6 +15,7 @@
 
 #define MAX_ANIMATIONS 100 /*!< Max animation number.*/
 
+
 typedef struct _Animation_Manager Animation_Manager; /*!< Animation manager type.*/
 typedef struct _Animation Animation;                 /*!< Animation type.*/
 
@@ -60,7 +61,7 @@ Status animation_manager_del_animation(Animation_Manager *am, int pos);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the id from.
- * @returns Animation id or -1 if an error takes place.
+ * @returns Animation id or FUCNTION_ERROR if an error takes place.
  */
 Id animation_get_id(Animation *anim);
 
@@ -87,7 +88,7 @@ char *animation_get_file_name(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the number of images from.
- * @returns Animation number of images or -1 if an error takes place.
+ * @returns Animation number of images or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_n_images(Animation *anim);
 
@@ -96,7 +97,7 @@ int animation_get_n_images(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the width from.
- * @returns Animation width or -1 if an error takes place.
+ * @returns Animation width or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_width(Animation *anim);
 
@@ -105,7 +106,7 @@ int animation_get_width(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the height from.
- * @returns Animation height or -1 if an error takes place.
+ * @returns Animation height or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_height(Animation *anim);
 
@@ -114,7 +115,7 @@ int animation_get_height(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the side padding from.
- * @returns Animation side padding or -1 if an error takes place.
+ * @returns Animation side padding or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_side_padding(Animation *anim);
 
@@ -123,7 +124,7 @@ int animation_get_side_padding(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the height padding from.
- * @returns Animation height padding or -1 if an error takes place.
+ * @returns Animation height padding or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_height_padding(Animation *anim);
 
@@ -132,7 +133,7 @@ int animation_get_height_padding(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the refresh rate from.
- * @returns Animation refresh rate or -1 if an error takes place.
+ * @returns Animation refresh rate or FUNCTION_ERROR if an error takes place.
  */
 float animation_get_refresh_rate(Animation *anim);
 
@@ -141,7 +142,7 @@ float animation_get_refresh_rate(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the background color from.
- * @returns Animation background color or -1 if an error takes place.
+ * @returns Animation background color or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_background_color(Animation *anim);
 
@@ -150,7 +151,7 @@ int animation_get_background_color(Animation *anim);
  * @author Saúl López Romero.
  *
  * @param anim Animation to get the font color from.
- * @returns Animation font color or -1 if an error takes place.
+ * @returns Animation font color or FUNCTION_ERROR if an error takes place.
  */
 int animation_get_font_color(Animation *anim);
 
@@ -179,7 +180,7 @@ Animation *animation_manager_get_animation_by_name(Animation_Manager *am, char *
  * @author Saúl López Romero.
  *
  * @param am Animator manager.
- * @returns Number of animations or -1 if an error takes place.
+ * @returns Number of animations or FUNCTION_ERROR if an error takes place.
  */
 int animation_manager_get_n_animations(Animation_Manager *am);
 

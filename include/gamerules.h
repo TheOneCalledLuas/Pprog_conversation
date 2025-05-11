@@ -50,7 +50,7 @@ void gamerules_values_destroy(Game_values *gv);
  * @author Saúl López Romero
  *
  * @param gv Pointer to the game values struct.
- * @return Number of gamerules or -1 if an error takes place.
+ * @return Number of gamerules or FUNCTION_ERROR if an error takes place.
  */
 int gamerules_get_n_gamerules(Game_values *gv);
 
@@ -151,7 +151,7 @@ Bool gamerules_get_valid(Gamerule *gr);
  * @author Saúl López Romero
  *
  * @param gr Pointer to the gamerule struct.
- * @return Number of times the gamerule has been executed or -1 if an error takes place.
+ * @return Number of times the gamerule has been executed or FUNCTION_ERROR if an error takes place.
  */
 int gamerules_get_n_exec_times(Gamerule *gr);
 
@@ -169,7 +169,7 @@ Bool gamerules_get_do_once(Gamerule *gr);
  * @author Saúl López Romero
  *
  * @param gr Pointer to the gamerule struct.
- * @return Value of the gamerule or -1 if an error takes place.
+ * @return Value of the gamerule or FUNCTION_ERROR if an error takes place.
  */
 int gamerules_get_value(Gamerule *gr);
 

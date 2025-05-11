@@ -31,6 +31,8 @@
 #define FIRST_CHAR 0             /*!< Position number 0 of a string, used to get inputs in menu*/
 #define SECOND_CHAR 1            /*!< Position number 1 of a string, used to get inputs in menu*/
 #define N_LOOPS_MUSIC -1         /*!< Number of loops the music will do, -1 means indefinately*/
+#define MIN_NEXXESARY_ARGS 2     /*!< Minimum number of arguments needed to run the game*/
+#define NEXT_ARG 1               /*!< Position of the next argument*/
 #define DEFAULT_CHUNKSIZE 2048   /*!< Audio buffer size*/
 
 /**
@@ -114,18 +116,18 @@ int main(int argc, char *argv[])
     srand(time(NULL));
 
     /*Checks if a parameter was given.*/
-    if (argc < 2)
+    if (argc < MIN_NEXXESARY_ARGS)
     {
         fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
-        return 1;
+        return EXIT_FAILURE;
     }
     /*Searches if a log file has to be creeated or if detemined mode is created.*/
     for (i = 0; i < argc; i++)
     {
-        if (!strcmp("-l", argv[i]) && i + 1 < argc)
+        if (!strcmp("-l", argv[i]) && i + NEXT_ARG < argc)
         {
             /*Sets up the log creation.*/
-            f = fopen(argv[i + 1], "w");
+            f = fopen(argv[i + NEXT_ARG], "w");
             if (!f)
             {
                 fprintf(stderr, "Error while creating log file.\n");
@@ -140,12 +142,12 @@ int main(int argc, char *argv[])
     }
 
     /*Game loop is initated and terminated when its supposed to.*/
-    if (!game_loop_init(&game, &gengine, &gengine_menu, argv[1]))
+    if (!game_loop_init(&game, &gengine, &gengine_menu, argv[NEXT_ARG]))
     {
         /*Sets the determinist mode activated if it proceeds.*/
         game_set_determined(game, is_determined);
         /*Runs the game.*/
-        game_loop_run(&game, gengine, gengine_menu, f, argv[1], (f != NULL));
+        game_loop_run(&game, gengine, gengine_menu, f, argv[NEXT_ARG], (f != NULL));
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
@@ -288,13 +290,13 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                                     str2[i] = file_name[i];
                                 }
                                 str2[i] = '\0';
-                                if (strcmp(str, str2 + strlen("data/")) == 0)
+                                if (strcmp(str, str2 + strlen("data/")) == EQUAL_WORDS)
                                     condition = TRUE;
 
                                 /*Cheks that the name doesnt match any other existing one*/
                                 for (i = 0; i < game_get_n_savefiles(*game); i++)
                                 {
-                                    if (strcmp(str, game_get_savefile(*game, i)) == 0)
+                                    if (strcmp(str, game_get_savefile(*game, i)) == EQUAL_WORDS)
                                         condition = TRUE;
                                 }
                                 condition = !condition;
@@ -396,7 +398,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
                     /*Checks that savefile exists*/
                     for (i = 0; i < game_get_n_savefiles(*game); i++)
                     {
-                        if (strcmp(str, game_get_savefile(*game, i)) == 0)
+                        if (strcmp(str, game_get_savefile(*game, i)) == EQUAL_WORDS)
                         {
                             /*If it finds it, it deletes it and sets condition to TRUE*/
                             game_delete_savefile(*game, str);
@@ -491,7 +493,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
                 if (str[FIRST_CHAR] == '\0')
                     return;
         }
-        if (last_code == MOVE || last_code == WAIT ||last_code == COOP)
+        if (last_code == MOVE || last_code == WAIT || last_code == COOP)
             graphic_engine_paint_game(gengine, *game, TRUE);
 
         last_cmd = game_get_last_command(*game);
@@ -503,6 +505,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
         last_code = command_get_code(last_cmd);
         /*Checks if the command is valid.*/
         game_actions_update(*game, last_cmd);
+        /*If the command was save, it saves it*/
         if (last_code == SAVE)
         {
             if (game_reader_save_game(*game, game_get_current_savefile(*game)) == ERROR)
@@ -510,10 +513,11 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
                 fprintf(stderr, "Error while saving game.\n");
                 return;
             }
-            command_set_argument(last_cmd, "game", 0);
-            command_set_argument(last_cmd, "saved", 1);
-            command_set_argument(last_cmd, "as", 2);
-            command_set_argument(last_cmd, game_get_current_savefile(*game), 3);
+            command_set_argument(last_cmd, "game", FIRST_ARG);
+            command_set_argument(last_cmd, "saved", SECOND_ARG);
+            command_set_argument(last_cmd, "as", THIRD_ARG);
+            command_set_argument(last_cmd, game_get_current_savefile(*game), FOURTH_ARG);
+            /*If it got up to this point, it sets the status to ok*/
             command_set_status(last_cmd, OK);
         }
 
@@ -547,7 +551,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
 
             if (last_code == WAIT)
                 command_set_status(last_cmd, OK);
-            
+
             game_next_command(*game);
             str = game_get_current_savefile(*game);
         }
