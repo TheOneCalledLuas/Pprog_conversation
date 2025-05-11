@@ -63,8 +63,8 @@
 #define CHARACTER_VARIANCE_POSITION_COLUM 2   /*!<Variance of the position in a colum where a character is printed when there are several*/
 #define CHATEACTE_VARIANCE_POSITION_ROW 5     /*!<Variance of the position in a row where a character is printed when there are several*/
 
-#define MAX_ID 999  /*!< Max id of a space that can be printed in the map area*/
-#define NO_HEALTH 0 /*!<No health value*/
+#define MAX_ID 999   /*Max id of a space that can be printed in the map area*/
+#define NO_HEALTH 0  /*!<No health value*/
 #define FIRST_CHAR 0 /*!<Position number 0 of a string, used to intitialize things*/
 /**
  * Max string lenght.*/
@@ -254,7 +254,7 @@ Status map_init(Game *game, char **map)
 {
     int i = 0, j = 0, t = 0, v = 0;
     char **aux_map = NULL;
-    Id actual_id[NUM_IDS];
+    Id actual_id[NUM_IDS] = {NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID, NO_ID};
     Link_Property link_statuses[NUM_IDS];
     memset(link_statuses, CLOSED, sizeof(link_statuses));
     memset(actual_id, NO_ID, sizeof(actual_id));
@@ -299,32 +299,56 @@ Status map_init(Game *game, char **map)
         {
             actual_id[NORTH_EAST] = game_get_space_at(game, actual_id[EAST], N);
             link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], N);
+            if (link_statuses[EAST] == CLOSED)
+                link_statuses[NORTH_WEST] = CLOSED;
         }
         else
+        {
             link_statuses[NORTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], E);
+            if (link_statuses[NORTH] == CLOSED)
+                link_statuses[NORTH_WEST] = CLOSED;
+        }
         if ((actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[NORTH], W)) == NO_ID)
         {
             actual_id[NORTH_WEST] = game_get_space_at(game, actual_id[WEST], N);
-            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[WEST], W);
+            link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[WEST], N);
+            if (link_statuses[WEST] == CLOSED)
+                link_statuses[NORTH_WEST] = CLOSED;
         }
         else
+        {
             link_statuses[NORTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[NORTH], W);
+            if (link_statuses[NORTH] == CLOSED)
+                link_statuses[NORTH_WEST] = CLOSED;
+        }
 
         if ((actual_id[SOUTH_EAST] = game_get_space_at(game, actual_id[SOUTH], E)) == NO_ID)
         {
             actual_id[SOUTH_EAST] = game_get_space_at(game, actual_id[EAST], S);
             link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[EAST], S);
+            if (link_statuses[EAST] == CLOSED)
+                link_statuses[SOUTH_EAST] = CLOSED;
         }
         else
+        {
             link_statuses[SOUTH_EAST] = game_get_space_outcoming_connection_info(game, actual_id[SOUTH], E);
+            if (link_statuses[SOUTH] == CLOSED)
+                link_statuses[SOUTH_EAST] = CLOSED;
+        }
 
         if ((actual_id[SOUTH_WEST] = game_get_space_at(game, actual_id[SOUTH], W)) == NO_ID)
         {
             actual_id[SOUTH_WEST] = game_get_space_at(game, actual_id[WEST], S);
             link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[WEST], S);
+            if (link_statuses[WEST] == CLOSED)
+                link_statuses[SOUTH_WEST] = CLOSED;
         }
         else
+        {
             link_statuses[SOUTH_WEST] = game_get_space_outcoming_connection_info(game, actual_id[SOUTH], W);
+            if (link_statuses[SOUTH] == CLOSED)
+                link_statuses[SOUTH_WEST] = CLOSED;
+        }
 
         /*2-Cleans the map.*/
         for (i = 0; i < HEIGHT_MAP; i++)
@@ -691,7 +715,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         }
     }
 
-    /*2-Prints the map.*/
+    /*2-Prints the room.*/
     for (i = 0; i < HEIGHT_MAP; i++)
     {
         screen_area_puts(ge->room, map[i]);
