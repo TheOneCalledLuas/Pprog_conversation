@@ -372,7 +372,7 @@ void test1_character_get_follow()
     /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
-    PRINT_TEST_RESULT(character_get_follow(character, 3) == OK);
+    PRINT_TEST_RESULT(character_get_follow(character) == -1);
     /*Frees the character.*/
     character_destroy(character);
 }
@@ -382,7 +382,8 @@ void test2_character_get_follow()
     /*Initializes the variables.*/
     Character *character = NULL;
     character = character_create(5);
-    PRINT_TEST_RESULT(character_get_id(character, ID_ERROR) == ID_ERROR);
+    character_set_follow(character, 5);
+    PRINT_TEST_RESULT(character_get_follow(character) == 5);
     /*Frees the character*/
     character_destroy(character);
 }
