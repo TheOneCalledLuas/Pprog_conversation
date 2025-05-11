@@ -193,7 +193,8 @@ Las animaciones tienen la siguiente estructura:
 #a:3|lair_unlocked|lair_unlocked.anim|20|2|3|3|2|1|0|7|
 #a:4|initial_dialog|initial_dialog.anim|99|30|7|4|20|20|0|7|
 #a:5|secret_ending_1|Merchant_bad_ending.anim|23|3|11|4|3|2|0|7|
-#a:6|secret_ending_2|Merchant_good_ending.anim|23|3|12|4|3|2|0|7|#a:13|spider_ending|spider_ending.anim|99|30|10|4|7|20|20|0|1|
+#a:6|secret_ending_2|Merchant_good_ending.anim|23|3|12|4|3|2|0|7|
+#a:13|spider_ending|spider_ending.anim|99|30|10|4|7|20|20|0|1|
 #a:16|random_damage|random_damage.anim|21|10|8|0.7|9|9|0|1|
 #a:15|random_heal|random_heal.anim|16|10|5|0.7|9|9|0|2|
 #a:17|train|train_ride.anim|66|29|15|.5|9|9|7|4|

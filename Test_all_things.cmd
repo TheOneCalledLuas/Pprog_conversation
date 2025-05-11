@@ -112,7 +112,6 @@ m s
 i baby_food
 t baby_food
 c baby_spider
-save
 a baby_spider
 m n
 m n

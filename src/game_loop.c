@@ -72,8 +72,9 @@ int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengi
  * @param f Pointer to the file for the log.
  * @param base_savefile named of the file that is used a template for new games
  * @param do_log Boolean that indicates if the log has to be created or not.
+ * @param log_file Name of the log file.
  */
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log);
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log, char *log_file);
 
 /**
  * @brief Frees the memory and closes the game.
@@ -110,6 +111,7 @@ int main(int argc, char *argv[])
     Graphic_engine *gengine_menu = NULL;
     FILE *f = NULL;
     Bool is_determined = FALSE;
+    int log_argument = 0;
     int i = 0;
 
     /*Sets the random seed for the use of random numbers later on.*/
@@ -121,13 +123,14 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Use: %s <game_data_file>\n", argv[0]);
         return EXIT_FAILURE;
     }
-    /*Searches if a log file has to be creeated or if detemined mode is created.*/
+    /*Searches if a log file has to be creeated or if determined mode is created.*/
     for (i = 0; i < argc; i++)
     {
         if (!strcmp("-l", argv[i]) && i + NEXT_ARG < argc)
         {
             /*Sets up the log creation.*/
             f = fopen(argv[i + NEXT_ARG], "w");
+            log_argument = i + NEXT_ARG;
             if (!f)
             {
                 fprintf(stderr, "Error while creating log file.\n");
@@ -147,7 +150,7 @@ int main(int argc, char *argv[])
         /*Sets the determinist mode activated if it proceeds.*/
         game_set_determined(game, is_determined);
         /*Runs the game.*/
-        game_loop_run(&game, gengine, gengine_menu, f, argv[NEXT_ARG], (f != NULL));
+        game_loop_run(&game, gengine, gengine_menu, f, argv[NEXT_ARG], (f != NULL), argv[log_argument]);
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
@@ -471,7 +474,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
     return OK_MENU;
 }
 
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log)
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log, char *logfile)
 {
     Command *last_cmd = NULL;
     CommandCode last_code = UNKNOWN;
@@ -479,7 +482,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
 
     /*It runs the game while you dont want to exit or the game is terminated.*/
     /*Tries to show the initial animation.*/
-    
+
     gamerules_initial_animation(*game, gamerules_get_gamerule_by_name(game_get_game_values(*game), "initial_animation"));
     graphic_engine_paint_game(gengine, *game, TRUE);
     str = game_get_current_savefile(*game);
@@ -492,6 +495,16 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             if (str)
                 if (str[FIRST_CHAR] == '\0')
                     return;
+            /*If the log was intended to be made, reopen in append mode*/
+            if (do_log)
+            {
+                f = fopen(logfile, "a");
+                if (!f)
+                {
+                    fprintf(stderr, "Error while opening log file.\n");
+                    return;
+                }
+            }
         }
         if (last_code == MOVE || last_code == WAIT || last_code == COOP)
             graphic_engine_paint_game(gengine, *game, TRUE);
@@ -556,6 +569,8 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             str = game_get_current_savefile(*game);
         }
     }
+    if(do_log)
+        fclose(f);
     /*Prints the final screen*/
     graphic_engine_menu_paint(gengine_menu, *game, FINAL);
     printf("press enter to go out");
