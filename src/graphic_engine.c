@@ -546,8 +546,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game, Bool refresh)
         screen_area_puts(ge->map, "  -Type \"wait\" to wait.");
         screen_area_puts(ge->map, "  -Type \"recruit\" + \"character_name\" to recruit someone.");
         screen_area_puts(ge->map, "  -Type \"forsake\" + \"character_name\" to forsake someone.");
-        screen_area_puts(ge->map, "  -Type \"coop\" + \"player_name\" to cooperate with someone.");
-        screen_area_puts(ge->map, "  -Type \"uncoop\" + \"player_name\" to uncooperate with someone.");
         screen_area_puts(ge->map, "  -Type \"wait\" to skip your current turn");
         screen_area_puts(ge->map, "  -Type \"menu\" to see the menu.");
         screen_area_puts(ge->map, "  -Type \"save\" to save the game.");

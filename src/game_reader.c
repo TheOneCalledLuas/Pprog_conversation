@@ -872,7 +872,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
 Status game_reader_load_savefile_names(Game *game)
 {
     FILE *file = NULL;
-    int i = 0;
+    int i = 0, j=0;
     char str[WORD_SIZE] = "";
 
     /*Error management*/
@@ -886,12 +886,12 @@ Status game_reader_load_savefile_names(Game *game)
     for (i = 0; i < MAX_SAVEFILES && fgets(str, WORD_SIZE, file); i++)
     {
         /*Removes the \n  and \rfrom the name*/
-        for (i = 0; i < strlen(str); i++)
+        for (j = 0; j < strlen(str); j++)
         {
-            if (str[i] == '\n')
-                str[i] = '\0';
-            if (str[i] == '\r')
-                str[i] = '\0';
+            if (str[j] == '\n')
+                str[j] = '\0';
+            if (str[j] == '\r')
+                str[j] = '\0';
         }
 
         /*Saves it in the game structure*/
