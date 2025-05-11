@@ -29,6 +29,8 @@ struct \mbox{\hyperlink{struct__Space}{\+\_\+\+Space}}
 \#define \mbox{\hyperlink{space_8c_ab61b0874acf4e60b6211bfeb55674f68}{G\+\_\+\+DESC\+\_\+\+LINES}}~5
 \item 
 \#define \mbox{\hyperlink{space_8c_a550a75944350b926760a1bf0c553d87f}{DESC\+\_\+\+SIZE}}~10
+\item 
+\#define \mbox{\hyperlink{space_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -103,7 +105,13 @@ GNU Public License
 \doxysubsubsection{\texorpdfstring{DESC\_SIZE}{DESC\_SIZE}}
 {\footnotesize\ttfamily \#define DESC\+\_\+\+SIZE~10}
 
-Description size. \Hypertarget{space_8c_ab61b0874acf4e60b6211bfeb55674f68}\label{space_8c_ab61b0874acf4e60b6211bfeb55674f68} 
+Description size. \Hypertarget{space_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{space_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{space.c@{space.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!space.c@{space.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to initialize things \Hypertarget{space_8c_ab61b0874acf4e60b6211bfeb55674f68}\label{space_8c_ab61b0874acf4e60b6211bfeb55674f68} 
 \index{space.c@{space.c}!G\_DESC\_LINES@{G\_DESC\_LINES}}
 \index{G\_DESC\_LINES@{G\_DESC\_LINES}!space.c@{space.c}}
 \doxysubsubsection{\texorpdfstring{G\_DESC\_LINES}{G\_DESC\_LINES}}
@@ -218,7 +226,7 @@ Fernando Mijangos
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-position of the id in the set of characters, -\/1 otherwise 
+position of the id in the set of characters, FUNCTION\+\_\+\+ERROR otherwise 
 \end{DoxyReturn}
 \Hypertarget{space_8c_a3979d7cdd6e4da84007cf2b6a252df66}\label{space_8c_a3979d7cdd6e4da84007cf2b6a252df66} 
 \index{space.c@{space.c}!space\_find\_object@{space\_find\_object}}
@@ -241,7 +249,7 @@ Fernando Mijangos
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Possition of the id in the set if found, -\/1 otherwise 
+Possition of the id in the set if found, FUNCTION\+\_\+\+ERROR otherwise 
 \end{DoxyReturn}
 \Hypertarget{space_8c_a92c1238bd8008ec3367fb6a1d39cf12b}\label{space_8c_a92c1238bd8008ec3367fb6a1d39cf12b} 
 \index{space.c@{space.c}!space\_get\_characters@{space\_get\_characters}}
@@ -298,7 +306,7 @@ NULL if an error takes place, the line otherwise.
 It gets the id of a space. 
 
 \begin{DoxyAuthor}{Author}
-Irene García
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
@@ -327,7 +335,7 @@ Fernando Mijangos
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of characters, -\/1 if ERROR 
+Number of characters, FUNCTION\+\_\+\+ERROR if ERROR 
 \end{DoxyReturn}
 \Hypertarget{space_8c_a6f263efc24ce0f0ef5ba1ce58d1a0ff1}\label{space_8c_a6f263efc24ce0f0ef5ba1ce58d1a0ff1} 
 \index{space.c@{space.c}!space\_get\_n\_objects@{space\_get\_n\_objects}}
@@ -516,7 +524,7 @@ OK if all goes as planned, ERROR otherwise.
 It sets the name of a space. 
 
 \begin{DoxyAuthor}{Author}
-Irene García
+Fernando Mijangos
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}

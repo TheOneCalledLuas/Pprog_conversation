@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 #include "game.h"
-#include "game_reader.h"
+#include "game_manager.h"
 #include "space.h"
 #include "set.h"
 

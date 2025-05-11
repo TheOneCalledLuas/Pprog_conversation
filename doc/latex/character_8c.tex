@@ -31,6 +31,12 @@ struct \mbox{\hyperlink{struct__Character}{\+\_\+\+Character}}
 \#define \mbox{\hyperlink{character_8c_a06ea269956fb652c4f4853e593813b26}{MAX\+\_\+\+DESC}}~7
 \item 
 \#define \mbox{\hyperlink{character_8c_a8cea0c1cc1fc60a52e79998580bbf1a7}{MAX\+\_\+\+MESSAGE}}~100
+\item 
+\#define \mbox{\hyperlink{character_8c_a73c3856a81fc3bf2d0d3849bb1c19625}{NO\+\_\+\+HEALTH}}~0
+\item 
+\#define \mbox{\hyperlink{character_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
+\item 
+\#define \mbox{\hyperlink{character_8c_a05f1570f9e77f53406eb1c4f25564064}{STOP\+\_\+\+CHARACTER}}~1
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -91,7 +97,13 @@ GNU Public License
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{character_8c_a06ea269956fb652c4f4853e593813b26}\label{character_8c_a06ea269956fb652c4f4853e593813b26} 
+\Hypertarget{character_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{character_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{character.c@{character.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!character.c@{character.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to intitialize things \Hypertarget{character_8c_a06ea269956fb652c4f4853e593813b26}\label{character_8c_a06ea269956fb652c4f4853e593813b26} 
 \index{character.c@{character.c}!MAX\_DESC@{MAX\_DESC}}
 \index{MAX\_DESC@{MAX\_DESC}!character.c@{character.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_DESC}{MAX\_DESC}}
@@ -109,7 +121,19 @@ Max message length. \Hypertarget{character_8c_ac7c0207aa5a0e10d378be03b68041350}
 \doxysubsubsection{\texorpdfstring{MAX\_NAME}{MAX\_NAME}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+NAME~20}
 
-Max name length. 
+Max name length. \Hypertarget{character_8c_a73c3856a81fc3bf2d0d3849bb1c19625}\label{character_8c_a73c3856a81fc3bf2d0d3849bb1c19625} 
+\index{character.c@{character.c}!NO\_HEALTH@{NO\_HEALTH}}
+\index{NO\_HEALTH@{NO\_HEALTH}!character.c@{character.c}}
+\doxysubsubsection{\texorpdfstring{NO\_HEALTH}{NO\_HEALTH}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+HEALTH~0}
+
+No health value. \Hypertarget{character_8c_a05f1570f9e77f53406eb1c4f25564064}\label{character_8c_a05f1570f9e77f53406eb1c4f25564064} 
+\index{character.c@{character.c}!STOP\_CHARACTER@{STOP\_CHARACTER}}
+\index{STOP\_CHARACTER@{STOP\_CHARACTER}!character.c@{character.c}}
+\doxysubsubsection{\texorpdfstring{STOP\_CHARACTER}{STOP\_CHARACTER}}
+{\footnotesize\ttfamily \#define STOP\+\_\+\+CHARACTER~1}
+
+Size of the \textbackslash{}0, cause we need to include it 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{character_8c_a04e381f3485e883f8c5638cbcd67e686}\label{character_8c_a04e381f3485e883f8c5638cbcd67e686} 
@@ -233,7 +257,7 @@ Fernando Mijangos.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Health amount of the character, -\/1 if error. 
+Health amount of the character, FUNCTION\+\_\+\+ERROR if error. 
 \end{DoxyReturn}
 \Hypertarget{character_8c_ab909e43e2cfc3a8588056409edd43a64}\label{character_8c_ab909e43e2cfc3a8588056409edd43a64} 
 \index{character.c@{character.c}!character\_get\_id@{character\_get\_id}}

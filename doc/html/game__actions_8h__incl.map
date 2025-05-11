@@ -1,13 +1,13 @@
 <map id="include/game_actions.h" name="include/game_actions.h">
-<area shape="rect" id="Node000001" title="It defines the game update interface." alt="" coords="175,5,351,31"/>
+<area shape="rect" id="Node000001" title="It defines the game update interface." alt="" coords="169,5,345,31"/>
 <area shape="rect" id="Node000002" href="$command_8h.html" title="It defines the command interpreter interface." alt="" coords="92,225,191,251"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,32,157,214,152,212,254,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,32,156,214,152,212,249,30"/>
 <area shape="rect" id="Node000004" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="434,519,505,544"/>
-<area shape="poly" id="edge34_Node000001_Node000004" title=" " alt="" coords="180,33,121,49,66,75,42,92,24,112,12,136,8,164,8,386,11,401,20,414,55,440,106,462,169,481,306,508,421,523,420,528,305,513,168,486,104,467,52,445,16,418,6,403,3,386,3,163,7,134,20,109,39,88,63,70,120,44,179,28"/>
+<area shape="poly" id="edge34_Node000001_Node000004" title=" " alt="" coords="179,33,121,49,65,75,42,92,24,112,12,136,8,164,8,386,11,401,20,414,55,440,106,462,169,481,306,508,421,523,420,528,305,513,168,486,104,467,52,445,16,418,6,403,3,386,3,163,7,134,20,109,39,88,63,70,119,44,178,28"/>
 <area shape="rect" id="Node000005" href="$game_8h.html" title="It defines the game interface." alt="" coords="395,152,466,177"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="277,29,360,102,407,141,404,145,357,106,274,33"/>
-<area shape="rect" id="Node000016" href="$game__reader_8h.html" title="It loads all the game data into the program." alt="" coords="371,79,490,104"/>
-<area shape="poly" id="edge31_Node000001_Node000016" title=" " alt="" coords="291,28,392,71,390,76,289,33"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="271,29,352,102,405,142,402,146,349,106,267,33"/>
+<area shape="rect" id="Node000016" href="$game__manager_8h.html" title="It loads all the game data into the program." alt="" coords="363,79,498,104"/>
+<area shape="poly" id="edge31_Node000001_Node000016" title=" " alt="" coords="286,28,391,71,389,76,284,33"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="93,299,160,324"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,252,134,286,129,285,136,250"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="125,253,107,267,91,284,82,303,84,323,113,376,146,411,188,438,244,468,289,488,336,504,421,521,420,527,334,509,287,493,241,473,186,443,143,415,109,379,79,325,77,302,87,281,104,263,122,249"/>
@@ -47,6 +47,6 @@
 <area shape="poly" id="edge27_Node000014_Node000004" title=" " alt="" coords="637,252,603,347,573,411,535,472,498,512,494,508,531,469,568,408,598,345,632,250"/>
 <area shape="poly" id="edge28_Node000014_Node000005" title=" " alt="" coords="610,228,479,183,480,178,611,223"/>
 <area shape="poly" id="edge30_Node000015_Node000004" title=" " alt="" coords="686,473,518,519,517,514,685,468"/>
-<area shape="poly" id="edge32_Node000016_Node000004" title=" " alt="" coords="491,97,600,114,723,142,779,161,825,182,856,207,865,221,868,236,868,386,865,415,857,437,842,455,819,473,795,485,763,495,682,511,519,529,518,524,681,506,762,490,793,480,816,468,838,451,852,434,860,413,863,386,863,237,860,223,852,211,822,187,777,166,722,147,599,119,490,102"/>
+<area shape="poly" id="edge32_Node000016_Node000004" title=" " alt="" coords="499,98,608,116,728,144,782,162,827,183,857,208,865,222,868,236,868,386,865,415,857,437,842,455,819,473,795,485,763,495,682,511,519,529,518,524,681,506,762,490,793,480,816,468,838,451,852,434,860,413,863,386,863,237,860,224,853,211,824,188,780,167,727,149,606,121,498,103"/>
 <area shape="poly" id="edge33_Node000016_Node000005" title=" " alt="" coords="433,104,433,138,428,138,428,104"/>
 </map>

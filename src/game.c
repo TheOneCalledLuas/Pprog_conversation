@@ -10,7 +10,7 @@
 
 #include "game.h"
 #include "character.h"
-#include "game_reader.h"
+#include "game_manager.h"
 #include "link.h"
 #include "gamerules.h"
 #include "animation.h"
@@ -1098,63 +1098,63 @@ Status game_create_from_file(Game **game, char *filename)
     }
 
     /*Loads the spaces.*/
-    if (game_reader_load_spaces(*game, filename) == ERROR)
+    if (game_manager_load_spaces(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the objects in.*/
-    if (game_reader_load_objects(*game, filename) == ERROR)
+    if (game_manager_load_objects(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the players.*/
-    if (game_reader_load_players(*game, filename) == ERROR)
+    if (game_manager_load_players(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the links.*/
-    if (game_reader_load_links(*game, filename) == ERROR)
+    if (game_manager_load_links(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the characters.*/
-    if (game_reader_load_characters(*game, filename) == ERROR)
+    if (game_manager_load_characters(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads all the gamerules.*/
-    if (game_reader_load_gamerules(*game, filename) == ERROR)
+    if (game_manager_load_gamerules(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads all the animations.*/
-    if (game_reader_load_animations(*game, "data/anthill.dat") == ERROR)
+    if (game_manager_load_animations(*game, "data/anthill.dat") == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the savefile names*/
-    if (game_reader_load_savefile_names(*game) == ERROR)
+    if (game_manager_load_savefile_names(*game) == ERROR)
     {
         game_destroy(game);
         return ERROR;
     }
 
     /*Loads the turn*/
-    if (game_reader_load_last_turn(*game, filename) == ERROR)
+    if (game_manager_load_last_turn(*game, filename) == ERROR)
     {
         game_destroy(game);
         return ERROR;

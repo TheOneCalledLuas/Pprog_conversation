@@ -129,6 +129,8 @@ Macros</h2></td></tr>
 <tr class="separator:ab61b0874acf4e60b6211bfeb55674f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a550a75944350b926760a1bf0c553d87f" id="r_a550a75944350b926760a1bf0c553d87f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#a550a75944350b926760a1bf0c553d87f">DESC_SIZE</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:a550a75944350b926760a1bf0c553d87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c5fd90d1b8a22169133f549223f2e1" id="r_af1c5fd90d1b8a22169133f549223f2e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="space_8c.html#af1c5fd90d1b8a22169133f549223f2e1">FIRST_CHAR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:af1c5fd90d1b8a22169133f549223f2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -218,6 +220,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Description size. </p>
+
+</div>
+</div>
+<a id="af1c5fd90d1b8a22169133f549223f2e1" name="af1c5fd90d1b8a22169133f549223f2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c5fd90d1b8a22169133f549223f2e1">&#9670;&#160;</a></span>FIRST_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIRST_CHAR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position number 0 of a string, used to initialize things </p>
 
 </div>
 </div>
@@ -405,7 +422,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>position of the id in the set of characters, -1 otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>position of the id in the set of characters, FUNCTION_ERROR otherwise </dd></dl>
 
 </div>
 </div>
@@ -444,7 +461,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Possition of the id in the set if found, -1 otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Possition of the id in the set if found, FUNCTION_ERROR otherwise </dd></dl>
 
 </div>
 </div>
@@ -532,7 +549,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>It gets the id of a space. </p>
-<dl class="section author"><dt>Author</dt><dd>Irene García</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">space</td><td>Pointer to the space </td></tr>
@@ -567,7 +584,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of characters, -1 if ERROR </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters, FUNCTION_ERROR if ERROR </dd></dl>
 
 </div>
 </div>
@@ -862,7 +879,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>It sets the name of a space. </p>
-<dl class="section author"><dt>Author</dt><dd>Irene García</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Fernando Mijangos</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">space</td><td>Pointer to the space </td></tr>

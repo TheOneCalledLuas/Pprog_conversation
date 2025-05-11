@@ -8,70 +8,70 @@
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8h}{types.h}}"{}}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ MAX\_ANIMATIONS\ 100\ }}
-\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Animation__Manager}{\_Animation\_Manager}}\ \mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}};\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Animation}{\_Animation}}\ \mbox{\hyperlink{struct__Animation}{Animation}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00028\ \mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *\mbox{\hyperlink{animation_8h_a10d0503d1367968b398d5e74fd6f61ed}{animation\_manager\_init}}(\textcolor{keywordtype}{char}\ *animation\_route);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{animation_8h_a6dff1023f4be1deb4407de2e2c159193}{animation\_manager\_destroy}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00046\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a2f2816fbf0dd9aa7e841c9d6ad33a034}{animation\_manager\_add\_animation}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00056\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_aae14fa858dc4f6cfb5f89db8c59f4650}{animation\_manager\_del\_animation}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \textcolor{keywordtype}{int}\ pos);}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00065\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \mbox{\hyperlink{animation_8h_af4b3b68e8b51ada8076380f751790d8c}{animation\_get\_id}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00074\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{animation_8h_a1252672d639bc83ba97ad9fc57093f14}{animation\_get\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00083\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{animation_8h_aeec6369fc7ac3b4671681b832f049a69}{animation\_get\_file\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00092\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a308f54feb2b37b270d4c669aa11757de}{animation\_get\_n\_images}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00101\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a805fe51d3c9023162deedd24763c2f53}{animation\_get\_width}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00110\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_aaac08d5c64feac1555b08a1a77416f67}{animation\_get\_height}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00119\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a092ef6265bf4da1c0264cb3edb09e6b7}{animation\_get\_side\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00128\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a11e528429dc1ce1659aac227a5fcfffb}{animation\_get\_height\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00137\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{animation_8h_aa6a939207f74dd7a93f2b1a87655c448}{animation\_get\_refresh\_rate}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00146\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_ac21c5a8d3f45ce5223cca003a5b184f8}{animation\_get\_background\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00155\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_ab7eac0f651aaabe3aa314fa4abd6ca32}{animation\_get\_font\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00165\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_aa4e4a59520c497d78bf9810402eba4fc}{animation\_manager\_get\_animation\_by\_id}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00175\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_ac131650fba4381eb92522091e7cda33b}{animation\_manager\_get\_animation\_by\_name}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Animation_a064888c2e803f14c9e21ccfb8e776a13}{name}});}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00184\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_af58987d4ba3fe21273440996a5eb93aa}{animation\_manager\_get\_n\_animations}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am);}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00194\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_acc3a4b129f3bed882a8a8be3d13fd0b4}{animation\_set\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Animation_a064888c2e803f14c9e21ccfb8e776a13}{name}});}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00204\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a214a3107b87a08d2c8691291aedf2beb}{animation\_set\_file\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{char}\ *filename);}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00214\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a38ebe7558ebbeb50f8f72874e1d9185f}{animation\_set\_n\_images}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_ae12c6fbed0e347fac8a161d001981f9d}{n\_images}});}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00224\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a528b3e9be62be1d1d703665f1b8e41e3}{animation\_set\_width}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ width);}
-\DoxyCodeLine{00225\ }
-\DoxyCodeLine{00234\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a1c8ee44f997fdefe63cd10b4266c539a}{animation\_set\_height}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a33ef7308ce9b71ad2d0ff7d32f4940c8}{height}});}
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00244\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a020ac69d6c18d78eccad5228d8ff9232}{animation\_set\_side\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a1fa97b82a003d82852dcf53ca3c5e873}{side\_padding}});}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00254\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_acf728a53b64ae19c55692011c3d81e3e}{animation\_set\_height\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a662f242a6e3d883f8b7c514d785194fa}{height\_padding}});}
-\DoxyCodeLine{00255\ }
-\DoxyCodeLine{00264\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a2bdad0d09827d0f1b496a5a28d7d5db5}{animation\_set\_refresh\_rate}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct__Animation_a814c3d9c695a0dbf4ae75bacf5f8a356}{refresh\_rate}});}
-\DoxyCodeLine{00265\ }
-\DoxyCodeLine{00274\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_ac591376ad22ae715ca804987a502175f}{animation\_set\_background\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a65cf421ae917d9f159dacb085bd47721}{background\_color}});}
-\DoxyCodeLine{00275\ }
-\DoxyCodeLine{00284\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_abe00f5561aa4f9d41d7cb73a902e3a13}{animation\_set\_font\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a1ec303abb5613e87a45b28be2d068333}{font\_color}});}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00294\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a46d71abe43cf07c0f3d073a13e358ddc}{animation\_run}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ anim\_id);}
-\DoxyCodeLine{00295\ }
-\DoxyCodeLine{00303\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_a9460c50e73bf5010b0174c13398ab868}{animation\_init}}(\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{char}\ *filename);}
-\DoxyCodeLine{00304\ }
-\DoxyCodeLine{00311\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{animation_8h_ad67bb26b929744962d0c6b1dbd640388}{animation\_destroy}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
-\DoxyCodeLine{00312\ }
-\DoxyCodeLine{00313\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Animation__Manager}{\_Animation\_Manager}}\ \mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}};\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__Animation}{\_Animation}}\ \mbox{\hyperlink{struct__Animation}{Animation}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *\mbox{\hyperlink{animation_8h_a10d0503d1367968b398d5e74fd6f61ed}{animation\_manager\_init}}(\textcolor{keywordtype}{char}\ *animation\_route);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{animation_8h_a6dff1023f4be1deb4407de2e2c159193}{animation\_manager\_destroy}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00047\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a2f2816fbf0dd9aa7e841c9d6ad33a034}{animation\_manager\_add\_animation}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00057\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_aae14fa858dc4f6cfb5f89db8c59f4650}{animation\_manager\_del\_animation}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \textcolor{keywordtype}{int}\ pos);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00066\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \mbox{\hyperlink{animation_8h_af4b3b68e8b51ada8076380f751790d8c}{animation\_get\_id}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{animation_8h_a1252672d639bc83ba97ad9fc57093f14}{animation\_get\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{animation_8h_aeec6369fc7ac3b4671681b832f049a69}{animation\_get\_file\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a308f54feb2b37b270d4c669aa11757de}{animation\_get\_n\_images}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a805fe51d3c9023162deedd24763c2f53}{animation\_get\_width}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_aaac08d5c64feac1555b08a1a77416f67}{animation\_get\_height}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a092ef6265bf4da1c0264cb3edb09e6b7}{animation\_get\_side\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_a11e528429dc1ce1659aac227a5fcfffb}{animation\_get\_height\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{animation_8h_aa6a939207f74dd7a93f2b1a87655c448}{animation\_get\_refresh\_rate}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00147\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_ac21c5a8d3f45ce5223cca003a5b184f8}{animation\_get\_background\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00156\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_ab7eac0f651aaabe3aa314fa4abd6ca32}{animation\_get\_font\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00166\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_aa4e4a59520c497d78bf9810402eba4fc}{animation\_manager\_get\_animation\_by\_id}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00176\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_ac131650fba4381eb92522091e7cda33b}{animation\_manager\_get\_animation\_by\_name}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Animation_a064888c2e803f14c9e21ccfb8e776a13}{name}});}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00185\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{animation_8h_af58987d4ba3fe21273440996a5eb93aa}{animation\_manager\_get\_n\_animations}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am);}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00195\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_acc3a4b129f3bed882a8a8be3d13fd0b4}{animation\_set\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct__Animation_a064888c2e803f14c9e21ccfb8e776a13}{name}});}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00205\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a214a3107b87a08d2c8691291aedf2beb}{animation\_set\_file\_name}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00215\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a38ebe7558ebbeb50f8f72874e1d9185f}{animation\_set\_n\_images}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_ae12c6fbed0e347fac8a161d001981f9d}{n\_images}});}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00225\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a528b3e9be62be1d1d703665f1b8e41e3}{animation\_set\_width}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ width);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00235\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a1c8ee44f997fdefe63cd10b4266c539a}{animation\_set\_height}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a33ef7308ce9b71ad2d0ff7d32f4940c8}{height}});}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00245\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a020ac69d6c18d78eccad5228d8ff9232}{animation\_set\_side\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a1fa97b82a003d82852dcf53ca3c5e873}{side\_padding}});}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00255\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_acf728a53b64ae19c55692011c3d81e3e}{animation\_set\_height\_padding}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a662f242a6e3d883f8b7c514d785194fa}{height\_padding}});}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00265\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a2bdad0d09827d0f1b496a5a28d7d5db5}{animation\_set\_refresh\_rate}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct__Animation_a814c3d9c695a0dbf4ae75bacf5f8a356}{refresh\_rate}});}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00275\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_ac591376ad22ae715ca804987a502175f}{animation\_set\_background\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a65cf421ae917d9f159dacb085bd47721}{background\_color}});}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00285\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_abe00f5561aa4f9d41d7cb73a902e3a13}{animation\_set\_font\_color}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct__Animation_a1ec303abb5613e87a45b28be2d068333}{font\_color}});}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00295\ \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}}\ \mbox{\hyperlink{animation_8h_a46d71abe43cf07c0f3d073a13e358ddc}{animation\_run}}(\mbox{\hyperlink{struct__Animation__Manager}{Animation\_Manager}}\ *am,\ \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ anim\_id);}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00304\ \mbox{\hyperlink{struct__Animation}{Animation}}\ *\mbox{\hyperlink{animation_8h_a9460c50e73bf5010b0174c13398ab868}{animation\_init}}(\mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00312\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{animation_8h_ad67bb26b929744962d0c6b1dbd640388}{animation\_destroy}}(\mbox{\hyperlink{struct__Animation}{Animation}}\ *anim);}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

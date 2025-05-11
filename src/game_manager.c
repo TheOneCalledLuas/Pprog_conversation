@@ -1,14 +1,14 @@
 /**
  * @brief It loads and makes all the actions related to space management.
  *
- * @file game_reader.c
+ * @file game_manager.c
  * @author Saúl López Romero, Raquel Anguita Martínez de Velasco, Fernando Mijangos
  * @version 3
  * @date 30-01-2025
  * @copyright GNU Public License
  */
 
-#include "game_reader.h"
+#include "game_manager.h"
 #include "game.h"
 #include "link.h"
 #include "gamerules.h"
@@ -27,30 +27,33 @@
 #define DESC_LENGTH 10      /*!< Max description length. */
 #define IDENTIFIER_LENGTH 3 /*!< Number of characters the identifier occupies in the data file. */
 #define SPACE_DESC 5        /*!< Number of lines the space description occupies. */
-#define STOP_CHARACTER 1    /*!Size of the \0, cause we need to include it*/
+#define STOP_CHARACTER 1    /*!< Size of the \0, cause we need to include it*/
 
+/**
+ * Ids for the gamerules.
+ */
 typedef enum
 {
-    OPEN_GATE = 20,         /*!id for open gate gamerule.*/
-    USE_TRAIN_PASS,         /*!id for use train pass gamerule*/
-    BAD_ENDING,             /*!id for bad ending gamerule*/
-    LEVER_CHALLENGE,        /*!id for lever challenge gamerule*/
-    SPIDER_BOOS_KILLED,     /*!id for spider boss killed gamerule*/
-    RANDOM_DAMAGE,          /*!id for random damage gamerule*/
-    RANDOM_HEAL,            /*!id for random heal gamerule*/
-    BLUE_POTION,            /*!id for blue potion gamerule*/
-    DINAMITE,               /*!id for dinamite gamerule*/
-    MISTERIOUS_SPIDER_KILL, /*!id for misterious spider kill gamerule*/
-    GUARD_SPIDER_KILL,      /*!id for guard spider kill gamerule*/
-    EXPLORATION_PROGRESS,   /*!id for exploration progress gamerule*/
-    MERCHANT_BOOST,         /*!id for merchant boost gamerule*/
-    MERCHANT_BAD_ENDING,    /*!id for merchant bad ending gamerule*/
-    MERCHANT_GOOD_ENDING,   /*!id for merchant good ending gamerule*/
-    NEUTRAL_ENDING,         /*!id for neutral ending gamerule*/
-    INTIAL_ANIMATION        /*!id for initial animation gamerule*/
+    OPEN_GATE = 20,         /*!< id for open gate gamerule.*/
+    USE_TRAIN_PASS,         /*!< id for use train pass gamerule*/
+    BAD_ENDING,             /*!< id for bad ending gamerule*/
+    LEVER_CHALLENGE,        /*!< id for lever challenge gamerule*/
+    SPIDER_BOOS_KILLED,     /*!< id for spider boss killed gamerule*/
+    RANDOM_DAMAGE,          /*!< id for random damage gamerule*/
+    RANDOM_HEAL,            /*!< id for random heal gamerule*/
+    BLUE_POTION,            /*!< id for blue potion gamerule*/
+    DINAMITE,               /*!< id for dinamite gamerule*/
+    MISTERIOUS_SPIDER_KILL, /*!< id for misterious spider kill gamerule*/
+    GUARD_SPIDER_KILL,      /*!< id for guard spider kill gamerule*/
+    EXPLORATION_PROGRESS,   /*!< id for exploration progress gamerule*/
+    MERCHANT_BOOST,         /*!< id for merchant boost gamerule*/
+    MERCHANT_BAD_ENDING,    /*!< id for merchant bad ending gamerule*/
+    MERCHANT_GOOD_ENDING,   /*!< id for merchant good ending gamerule*/
+    NEUTRAL_ENDING,         /*!< id for neutral ending gamerule*/
+    INTIAL_ANIMATION        /*!< id for initial animation gamerule*/
 } Gamerules_ids;
 
-Status game_reader_load_spaces(Game *game, char *filename)
+Status game_manager_load_spaces(Game *game, char *filename)
 {
     FILE *file = NULL;
     FILE *textures = NULL;
@@ -219,7 +222,7 @@ Status game_reader_load_spaces(Game *game, char *filename)
     return status;
 }
 
-Status game_reader_load_objects(Game *game, char *filename)
+Status game_manager_load_objects(Game *game, char *filename)
 {
     FILE *file = NULL;
     FILE *textures = NULL;
@@ -370,7 +373,7 @@ Status game_reader_load_objects(Game *game, char *filename)
     return OK;
 }
 
-Status game_reader_load_characters(Game *game, char *name_file)
+Status game_manager_load_characters(Game *game, char *name_file)
 {
     FILE *file = NULL;
     FILE *textures = NULL;
@@ -533,7 +536,7 @@ Status game_reader_load_characters(Game *game, char *name_file)
     return OK;
 }
 
-Status game_reader_load_last_turn(Game *game, char *filename)
+Status game_manager_load_last_turn(Game *game, char *filename)
 {
     FILE *file = NULL;
     char line[WORD_SIZE] = "";
@@ -567,7 +570,7 @@ Status game_reader_load_last_turn(Game *game, char *filename)
     return ERROR;
 }
 
-Status game_reader_load_players(Game *game, char *filename)
+Status game_manager_load_players(Game *game, char *filename)
 {
     FILE *f = NULL;
     FILE *textures = NULL;
@@ -708,7 +711,7 @@ Status game_reader_load_players(Game *game, char *filename)
     return OK;
 }
 
-Status game_reader_load_links(Game *game, char *filename)
+Status game_manager_load_links(Game *game, char *filename)
 {
     FILE *f = NULL;
     Link *link = NULL;
@@ -770,7 +773,7 @@ Status game_reader_load_links(Game *game, char *filename)
     return OK;
 }
 
-Status game_reader_load_gamerules(Game *game, char *filename)
+Status game_manager_load_gamerules(Game *game, char *filename)
 {
     FILE *f = NULL;
     Gamerule *gr = NULL;
@@ -825,8 +828,6 @@ Status game_reader_load_gamerules(Game *game, char *filename)
             /*Assigns the gamerule func to the structure.*/
             switch (id)
             {
-            case OPEN_GATE:
-                gamerules_gamerule_set_func(gr, gamerules_open_gate);
                 break;
             case USE_TRAIN_PASS:
                 gamerules_gamerule_set_func(gr, gamerules_use_train_pass);
@@ -891,7 +892,7 @@ Status game_reader_load_gamerules(Game *game, char *filename)
     return OK;
 }
 
-Status game_reader_load_savefile_names(Game *game)
+Status game_manager_load_savefile_names(Game *game)
 {
     FILE *file = NULL;
     int i = 0, j = 0;
@@ -923,7 +924,7 @@ Status game_reader_load_savefile_names(Game *game)
     return OK;
 }
 
-Status game_reader_save_game(Game *game, char *filename)
+Status game_manager_save_game(Game *game, char *filename)
 {
     FILE *f = NULL;
     char str[WORD_SIZE] = "", str2[WORD_SIZE] = "";
@@ -1183,7 +1184,7 @@ Status game_reader_save_game(Game *game, char *filename)
     return OK;
 }
 
-Status game_reader_load_animations(Game *game, char *filename)
+Status game_manager_load_animations(Game *game, char *filename)
 {
     FILE *f = NULL;
     Animation *an = NULL;

@@ -134,6 +134,8 @@ Macros</h2></td></tr>
 <tr class="separator:ad5e6bf0470b64b198a22be7c9dc06181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1da6bd0b256c5cd560a2b3e83ba792a9" id="r_a1da6bd0b256c5cd560a2b3e83ba792a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#a1da6bd0b256c5cd560a2b3e83ba792a9">DEFAULT_HEALTH</a>&#160;&#160;&#160;20</td></tr>
 <tr class="separator:a1da6bd0b256c5cd560a2b3e83ba792a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c5fd90d1b8a22169133f549223f2e1" id="r_af1c5fd90d1b8a22169133f549223f2e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8c.html#af1c5fd90d1b8a22169133f549223f2e1">FIRST_CHAR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:af1c5fd90d1b8a22169133f549223f2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -226,6 +228,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Player's default health. </p>
+
+</div>
+</div>
+<a id="af1c5fd90d1b8a22169133f549223f2e1" name="af1c5fd90d1b8a22169133f549223f2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c5fd90d1b8a22169133f549223f2e1">&#9670;&#160;</a></span>FIRST_CHAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIRST_CHAR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position number 0 of a string, used to initialize things </p>
 
 </div>
 </div>
@@ -431,7 +448,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>amount of health, -1 if an error takes place. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>amount of health, FUNCTION_ERROR if an error takes place. </dd></dl>
 
 </div>
 </div>
@@ -488,7 +505,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of objects or -1 if an error takes place. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of objects or FUNCTION_ERROR if an error takes place. </dd></dl>
 
 </div>
 </div>
@@ -516,7 +533,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of objects the player has, or -1 if an error takes place. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of objects the player has, or FUNCTION_ERROR if an error takes place. </dd></dl>
 
 </div>
 </div>
@@ -706,7 +723,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>-1 if the object wasn't found or </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NO_POSITION if the object wasn't found or </dd></dl>
 
 </div>
 </div>

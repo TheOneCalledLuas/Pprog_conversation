@@ -544,8 +544,8 @@ void game_actions_chat(Game *game)
 
 void game_actions_attack(Game *game)
 {
-    int rand_num = 0, coop_dmg = 0;
-    Id player_location = NO_ID;
+    int rand_num = 0, coop_dmg = 0, i = 0, j = 0, to_attack = 0;
+    Id player_location = NO_ID, *characters = NULL;
     Player *player = NULL;
     Character *character = NULL;
 
@@ -589,23 +589,50 @@ void game_actions_attack(Game *game)
         }
         if (rand_num <= (ATTACK_PROB) / SUCCESS_PROB)
         {
-            /*Hits player.*/
-            player_set_health(player, player_get_health(player) - DAMAGE_DEALT);
+            /*Hits player or a companion.*/
+            j = game_get_n_followers(game, player_get_player_id(player));
+            if (j <= 0)
+            {
+                player_set_health(player, player_get_health(player) - DAMAGE_DEALT);
+            }
+            else
+            {
+                to_attack = game_random_int(0, j);
+                if (to_attack == 0)
+                {
+                    player_set_health(player, player_get_health(player) - (DAMAGE_DEALT + coop_dmg));
+                }
+                else
+                {
+                    j = 1;
+                    for (i = 0; i < game_get_num_characters(game); i++)
+                    {
+                        if (character_get_follow(game_get_character(game, characters[i])) == player_get_player_id(player))
+                        {
+                            if (j == to_attack)
+                            {
+                                character_set_health(game_get_character(game, characters[i]), character_get_health(game_get_character(game, characters[i])) - DAMAGE_DEALT);
+                            }
+                            j++;
+                        }
+                    }
+                }
+            }
         }
-        else
-        {
-            /*Hits character.*/
-            character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + coop_dmg + game_get_n_followers(game, player_get_player_id(player))));
-        }
-        /*Checks if the player died.*/
-        if (player_get_health(player) <= MIN_HEALTH)
-        {
-            animation_run(game_get_animation_manager(game), DEAD_ANIMATION);
-        }
-        command_set_status(game_get_last_command(game), OK);
-        return;
     }
-    command_set_status(game_get_last_command(game), ERROR);
+    else
+    {
+        /*Hits character.*/
+        character_set_health(character, character_get_health(character) - (DAMAGE_DEALT + coop_dmg + game_get_n_followers(game, player_get_player_id(player))));
+    }
+    /*Checks if the player died.*/
+    if (player_get_health(player) <= MIN_HEALTH)
+    {
+        animation_run(game_get_animation_manager(game), DEAD_ANIMATION);
+        game_set_finished(game, TRUE);
+    }
+    command_set_status(game_get_last_command(game), OK);
+    return;
 }
 
 void game_actions_inspect(Game *game)

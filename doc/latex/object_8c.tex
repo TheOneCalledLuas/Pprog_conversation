@@ -27,6 +27,10 @@ struct \mbox{\hyperlink{struct__Object}{\+\_\+\+Object}}
 \#define \mbox{\hyperlink{object_8c_a2b9d4cb1200ff8c085b0a4902e0d7229}{MAX\+\_\+\+DESCRIPTION}}~256
 \item 
 \#define \mbox{\hyperlink{object_8c_ac7c0207aa5a0e10d378be03b68041350}{MAX\+\_\+\+NAME}}~64
+\item 
+\#define \mbox{\hyperlink{object_8c_a73c3856a81fc3bf2d0d3849bb1c19625}{NO\+\_\+\+HEALTH}}~0
+\item 
+\#define \mbox{\hyperlink{object_8c_af1c5fd90d1b8a22169133f549223f2e1}{FIRST\+\_\+\+CHAR}}~0
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -72,7 +76,7 @@ int \mbox{\hyperlink{object_8c_a82874ef4a7f8e8f5a14d184006a33e80}{object\+\_\+ge
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_ac35d6934bd5e39f1907599ffaf2c8446}{object\+\_\+set\+\_\+open}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} open)
 \begin{DoxyCompactList}\small\item\em Determines wether an object can open a link between spaces or not. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} \mbox{\hyperlink{object_8c_a49dbce205db36230c53fb0ccf0a73174}{object\+\_\+get\+\_\+open}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
-\begin{DoxyCompactList}\small\item\em Gets the open value of an object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets the link id that an object can open. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{object_8c_a03653b29058fcde7ce5ee2e3187f84e7}{object\+\_\+print\+\_\+info}} (\mbox{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \begin{DoxyCompactList}\small\item\em Prints the object info (debug intended). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -81,7 +85,7 @@ int \mbox{\hyperlink{object_8c_a82874ef4a7f8e8f5a14d184006a33e80}{object\+\_\+ge
 It implements the object functionality. 
 
 \begin{DoxyAuthor}{Author}
-Saúl López Romero, Irene García 
+Saúl López Romero 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 2 
@@ -95,7 +99,13 @@ GNU Public License
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{object_8c_a2b9d4cb1200ff8c085b0a4902e0d7229}\label{object_8c_a2b9d4cb1200ff8c085b0a4902e0d7229} 
+\Hypertarget{object_8c_af1c5fd90d1b8a22169133f549223f2e1}\label{object_8c_af1c5fd90d1b8a22169133f549223f2e1} 
+\index{object.c@{object.c}!FIRST\_CHAR@{FIRST\_CHAR}}
+\index{FIRST\_CHAR@{FIRST\_CHAR}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_CHAR}{FIRST\_CHAR}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+CHAR~0}
+
+Position number 0 of a string, used to initialize things \Hypertarget{object_8c_a2b9d4cb1200ff8c085b0a4902e0d7229}\label{object_8c_a2b9d4cb1200ff8c085b0a4902e0d7229} 
 \index{object.c@{object.c}!MAX\_DESCRIPTION@{MAX\_DESCRIPTION}}
 \index{MAX\_DESCRIPTION@{MAX\_DESCRIPTION}!object.c@{object.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_DESCRIPTION}{MAX\_DESCRIPTION}}
@@ -107,7 +117,13 @@ Maximun word description. \Hypertarget{object_8c_ac7c0207aa5a0e10d378be03b680413
 \doxysubsubsection{\texorpdfstring{MAX\_NAME}{MAX\_NAME}}
 {\footnotesize\ttfamily \#define MAX\+\_\+\+NAME~64}
 
-Max name length. 
+Max name length. \Hypertarget{object_8c_a73c3856a81fc3bf2d0d3849bb1c19625}\label{object_8c_a73c3856a81fc3bf2d0d3849bb1c19625} 
+\index{object.c@{object.c}!NO\_HEALTH@{NO\_HEALTH}}
+\index{NO\_HEALTH@{NO\_HEALTH}!object.c@{object.c}}
+\doxysubsubsection{\texorpdfstring{NO\_HEALTH}{NO\_HEALTH}}
+{\footnotesize\ttfamily \#define NO\+\_\+\+HEALTH~0}
+
+No health value. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{object_8c_a8957c5ad32a83df414b44361d2833c1d}\label{object_8c_a8957c5ad32a83df414b44361d2833c1d} 
@@ -307,7 +323,7 @@ Pointer to the object name.
 
 
 
-Gets the open value of an object. 
+Gets the link id that an object can open. 
 
 \begin{DoxyAuthor}{Author}
 Irene García

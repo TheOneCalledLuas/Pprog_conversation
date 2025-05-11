@@ -459,27 +459,6 @@ Gamerule *gamerules_get_gamerule_by_name(Game_values *gv, char *name)
 
 /*Now we have all the gamerule functions.*/
 
-Status gamerules_open_gate(Game *game, Gamerule *gr)
-{
-    /*Error handling.*/
-    if (!game || !gr)
-        return ERROR;
-
-    /*Checks if the gamerule meets the requirements to be executed.*/
-    if (player_has_object(game_get_actual_player(game), gr->value) == TRUE)
-    {
-        /*Opens the gate.*/
-        link_set_state(game_find_link(game, P3_P4_GATE), TRUE);
-        gamerules_increment_has_exec(gr);
-        return OK;
-    }
-    else
-    {
-        /*The gamerule doesn't have to be executed.*/
-        return OK;
-    }
-}
-
 Status gamerules_use_train_pass(Game *game, Gamerule *gr)
 {
     Object *pass = NULL;

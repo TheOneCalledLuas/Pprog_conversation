@@ -3,7 +3,7 @@ var searchData=
   ['savefiles_5fnames_0',['SAVEFILES_NAMES',['../types_8h.html#ab162d1d3bde02d512ffe5410504e4b9d',1,'types.h']]],
   ['second_5fchar_1',['SECOND_CHAR',['../game__loop_8c.html#acd57dd6e0cdebe9f0e0f71584e7b5368',1,'game_loop.c']]],
   ['second_5flast_5fcommand_2',['SECOND_LAST_COMMAND',['../game_8h.html#af07fb6f6cb9572b5d48c5365422801f9',1,'game.h']]],
-  ['space_5fdesc_3',['SPACE_DESC',['../game__reader_8c.html#a0bf730075379ba8cb5551e8137813059',1,'game_reader.c']]],
+  ['space_5fdesc_3',['SPACE_DESC',['../game__manager_8c.html#a0bf730075379ba8cb5551e8137813059',1,'game_manager.c']]],
   ['space_5ftexture_5flines_4',['SPACE_TEXTURE_LINES',['../space_8h.html#af3fbea34830d16a9f397c1bea02e15e1',1,'space.h']]],
   ['space_5ftexture_5fsize_5',['SPACE_TEXTURE_SIZE',['../space_8h.html#a80de5be625c0595fffa4d37607e76a70',1,'space.h']]],
   ['spider_5f1_6',['SPIDER_1',['../gamerules_8c.html#a6ef2a08d8099ca36ef7b3579a2a673e2',1,'gamerules.c']]],
@@ -15,5 +15,7 @@ var searchData=
   ['spider_5fboss_5fid_12',['SPIDER_BOSS_ID',['../gamerules_8c.html#aa2cc52fba73cbda0275e8bb827098a6e',1,'gamerules.c']]],
   ['staring_5fpoint_13',['STARING_POINT',['../graphic__engine_8c.html#a13be888792778f0d468152138531d586',1,'graphic_engine.c']]],
   ['start_5froom_5fid_14',['START_ROOM_ID',['../gamerules_8c.html#abf02675d4a49b32f97ac61f7ce7b6642',1,'gamerules.c']]],
-  ['success_5fprob_15',['SUCCESS_PROB',['../game__actions_8c.html#a25e6b6c4be7a0299f1de372d29f10449',1,'game_actions.c']]]
+  ['stop_5fchar_15',['STOP_CHAR',['../command_8c.html#a9cabeb8b2886fd6bd67fb8cf4ccb2bc2',1,'command.c']]],
+  ['stop_5fcharacter_16',['stop_character',['../character_8c.html#a05f1570f9e77f53406eb1c4f25564064',1,'STOP_CHARACTER:&#160;character.c'],['../game__manager_8c.html#a05f1570f9e77f53406eb1c4f25564064',1,'STOP_CHARACTER:&#160;game_manager.c']]],
+  ['success_5fprob_17',['SUCCESS_PROB',['../game__actions_8c.html#a25e6b6c4be7a0299f1de372d29f10449',1,'game_actions.c']]]
 ];

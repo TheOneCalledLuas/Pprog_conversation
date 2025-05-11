@@ -15,12 +15,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_NAME 20      /*!<Max name length.*/
-#define MAX_DESC 7       /*!<Max description line.*/
-#define MAX_MESSAGE 100  /*!<Max message length.*/
-#define NO_HEALTH 0      /*!<No health value.*/
-#define FIRST_CHAR 0     /*!<Position number 0 of a string, used to intitialize things*/
-#define STOP_CHARACTER 1 /*!Size of the \0, cause we need to include it*/
+#define MAX_NAME 20      /*!< Max name length.*/
+#define MAX_DESC 7       /*!< Max description line.*/
+#define MAX_MESSAGE 100  /*!< Max message length.*/
+#define NO_HEALTH 0      /*!< No health value.*/
+#define FIRST_CHAR 0     /*!< Position number 0 of a string, used to intitialize things*/
+#define STOP_CHARACTER 1 /*!< Size of the \0, cause we need to include it*/
 
 /**
  * Character TAD.

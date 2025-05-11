@@ -5,5 +5,6 @@ var searchData=
   ['unk_2',['UNK',['../types_8h.html#a86510721209a8e5ede12ab30088010a8a822987746a55a3436f5a30502f32d7b5',1,'types.h']]],
   ['unk_5fdirection_3',['UNK_DIRECTION',['../types_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa8f52d6b86b87827620fcedfe5212ff60',1,'types.h']]],
   ['unknown_4',['UNKNOWN',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a6ce26a62afab55d7606ad4e92428b30c',1,'command.h']]],
-  ['use_5',['USE',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a38fc47ee68141485d1af6a85ff84ed99',1,'command.h']]]
+  ['use_5',['USE',['../command_8h.html#a805cf38fd2b6d5604bf1f1036b80fde2a38fc47ee68141485d1af6a85ff84ed99',1,'command.h']]],
+  ['use_5ftrain_5fpass_6',['USE_TRAIN_PASS',['../game__manager_8c.html#a5d3b8632050f5704f834cce50d55fb13ad5811c23c4d3390c9c3f5dd3b3b40176',1,'game_manager.c']]]
 ];

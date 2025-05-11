@@ -90,8 +90,6 @@ int \mbox{\hyperlink{gamerules_8h_a6e8e2cfd8db77324cee63b71d9bb810f}{gamerules\+
 \begin{DoxyCompactList}\small\item\em It gets a gamerule by its id. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gamerules_8h_a0be39e7eadc2b9284b7fb44f41487103}{gamerules\+\_\+get\+\_\+gamerule\+\_\+by\+\_\+id}} (\mbox{\hyperlink{gamerules_8h_a0627258b5b0128d847077ef963a238b6}{Game\+\_\+values}} \texorpdfstring{$\ast$}{*}gv, \mbox{\hyperlink{types_8h_a845e604fb28f7e3d97549da3448149d3}{Id}} id)
 \begin{DoxyCompactList}\small\item\em It gets a gamerule by its id. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8h_a82fec0767e63fcae002380400497dc7e}{gamerules\+\_\+open\+\_\+gate}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
-\begin{DoxyCompactList}\small\item\em opens the gate between P3 and P4. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8h_abd674e40301b101fc5b0f5734698936f}{gamerules\+\_\+use\+\_\+train\+\_\+pass}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
 \begin{DoxyCompactList}\small\item\em Uses the train and ends the tutorial. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} \mbox{\hyperlink{gamerules_8h_ab1c59e11fe8fd8567e6314b650919ff3}{gamerules\+\_\+bad\+\_\+ending}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}gr)
@@ -132,7 +130,7 @@ int \mbox{\hyperlink{gamerules_8h_a6e8e2cfd8db77324cee63b71d9bb810f}{gamerules\+
 It implements gamerules into the game. 
 
 \begin{DoxyAuthor}{Author}
-Saúl López Romero 
+Saúl López Romero \&\& Fernando Mijangos 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 1 
@@ -499,7 +497,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of times the gamerule has been executed or -\/1 if an error takes place. 
+Number of times the gamerule has been executed or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{gamerules_8h_ac60a5cdbc21d0e81efe96565fc16eaf8}\label{gamerules_8h_ac60a5cdbc21d0e81efe96565fc16eaf8} 
 \index{gamerules.h@{gamerules.h}!gamerules\_get\_n\_gamerules@{gamerules\_get\_n\_gamerules}}
@@ -520,7 +518,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Number of gamerules or -\/1 if an error takes place. 
+Number of gamerules or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{gamerules_8h_ab51f82cffa79d356baffbc17b21712bb}\label{gamerules_8h_ab51f82cffa79d356baffbc17b21712bb} 
 \index{gamerules.h@{gamerules.h}!gamerules\_get\_name@{gamerules\_get\_name}}
@@ -583,7 +581,7 @@ Saúl López Romero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Value of the gamerule or -\/1 if an error takes place. 
+Value of the gamerule or FUNCTION\+\_\+\+ERROR if an error takes place. 
 \end{DoxyReturn}
 \Hypertarget{gamerules_8h_a90da435afc3b251a685575b3f2c4e609}\label{gamerules_8h_a90da435afc3b251a685575b3f2c4e609} 
 \index{gamerules.h@{gamerules.h}!gamerules\_guard\_spider\_kill@{gamerules\_guard\_spider\_kill}}
@@ -773,29 +771,6 @@ Saúl López Romero
 
 
 Handles bad ending attached to any of the players dying. 
-
-\begin{DoxyAuthor}{Author}
-Saúl López Romero
-\end{DoxyAuthor}
-
-\begin{DoxyParams}{Parameters}
-{\em game} & Pointer to the game. \\
-\hline
-{\em gr} & Pointer to the gamerule. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OK if everything goes well, ERROR otherwise. 
-\end{DoxyReturn}
-\Hypertarget{gamerules_8h_a82fec0767e63fcae002380400497dc7e}\label{gamerules_8h_a82fec0767e63fcae002380400497dc7e} 
-\index{gamerules.h@{gamerules.h}!gamerules\_open\_gate@{gamerules\_open\_gate}}
-\index{gamerules\_open\_gate@{gamerules\_open\_gate}!gamerules.h@{gamerules.h}}
-\doxysubsubsection{\texorpdfstring{gamerules\_open\_gate()}{gamerules\_open\_gate()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a67a0db04d321a74b7e7fcfd3f1a3f70b}{Status}} gamerules\+\_\+open\+\_\+gate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{gamerules_8h_a5dfaac5a1995c7f998ca8955b8b775c1}{Gamerule}} \texorpdfstring{$\ast$}{*}}]{gr }\end{DoxyParamCaption})}
-
-
-
-opens the gate between P3 and P4. 
 
 \begin{DoxyAuthor}{Author}
 Saúl López Romero

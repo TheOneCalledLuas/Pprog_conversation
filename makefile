@@ -12,7 +12,7 @@ LOGDIR = ./log
 TESTDIR = ./test
 
 #List with all the object names
-MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_reader.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o animation.o libscreen.o
+MAKE_OBJ = game_loop.o command.o game_actions.o game.o game_manager.o graphic_engine.o space.o object.o player.o set.o character.o link.o inventory.o gamerules.o animation.o libscreen.o
 
 .PHONY = all clean clear check redo run run_cmd run_all_test doxygen
 
@@ -34,19 +34,19 @@ doxygen:
 command.o: command.c command.h types.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_reader.h character.h
+game_actions.o: game_actions.c game_actions.h command.h types.h game.h space.h object.h set.h player.h character.h game_manager.h character.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_reader.h graphic_engine.h gamerules.h
+game_loop.o: game_loop.c command.h types.h game.h space.h object.h set.h player.h character.h game_actions.h game_manager.h graphic_engine.h gamerules.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h gamerules.h
+game.o: game.c game.h command.h types.h space.h object.h set.h player.h character.h game_manager.h gamerules.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 	
-game_reader.o: game_reader.c game_reader.h types.h game.h command.h space.h object.h set.h player.h character.h link.h animation.h
+game_manager.o: game_manager.c game_manager.h types.h game.h command.h space.h object.h set.h player.h character.h link.h animation.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
-graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h set.h player.h character.h game_reader.h libscreen.h
+graphic_engine.o: graphic_engine.c graphic_engine.h game.h command.h types.h space.h object.h set.h player.h character.h game_manager.h libscreen.h
 	$(CC) $(DO_OBJ) $(CFLAGS) $<
 
 space.o: space.c space.h types.h object.h set.h
