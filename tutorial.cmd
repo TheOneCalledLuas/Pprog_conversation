@@ -1,5 +1,5 @@
 1
-Autoplay
+Tutorial
 i Woody_sign
 coop Anthriw
 m e
