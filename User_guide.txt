@@ -50,3 +50,5 @@ El tercer final es un final secreto sólo desbloqueable con una serie de accione
 El archivo Test_all_things.cmd tiene una lista de comandos para llegar al final principal.
 
 Las pruebas de integracion y los juegos automáticos se han de usar sin partidas guardadas.
+
+El mapa viene dado el el archivo map.pdf
