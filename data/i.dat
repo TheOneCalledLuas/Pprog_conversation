@@ -163,6 +163,6 @@
 #g:33|merchant_bad_ending|1|0|1|0|
 #g:34|merchant_good_ending|1|0|1|0|
 #g:35|neutral_ending|1|0|1|0|
-#g:36|initial_animation|1|1|1|0|
+#g:36|initial_animation|1|0|1|0|
 #t:data/anthill_textures.txt
 #T:0|
