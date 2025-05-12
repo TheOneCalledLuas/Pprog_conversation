@@ -907,6 +907,7 @@ Status gamerules_merchant_bad_ending(Game *game, Gamerule *gr)
         /*The player used the gun against the merchant.*/
         character_set_health(game_get_character(game, MERCHANT_ID), NO_HEALTH);
         animation_run(game_get_animation_manager(game), ANIMATION_MERCHANT_ENDING_1);
+        command_set_status(cmd, OK);
         game_set_finished(game, TRUE);
 
         /*Actualises the gamerule.*/

@@ -575,14 +575,14 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             str = game_get_current_savefile(*game);
         }
     }
+    /*Prints the final screen*/
+    graphic_engine_menu_paint(gengine_menu, *game, FINAL);
+    printf("press enter to go out");
     if (do_log)
     {
         fclose(*f);
         *f = NULL;
     }
-    /*Prints the final screen*/
-    graphic_engine_menu_paint(gengine_menu, *game, FINAL);
-    printf("press enter to go out");
     /*If user presses enter it will leave*/
     getchar();
 }
