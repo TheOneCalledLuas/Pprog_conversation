@@ -1,7 +1,2 @@
 1
 Tutorial
-3
-prueba
-save
-2
-test_all

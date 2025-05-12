@@ -212,8 +212,8 @@ make run_autogame_check:
 
 integrity_check_tutorial:
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log -d < tutorial.cmd
-	diff ./log/output.log ./log/Tutorial.log && echo "Test Passed" || echo "Test Failed"
+	diff ./log/output.log ./log/tutorial.log && echo "Test Failed" || echo "Test Passed"
 
 integrity_check_all:
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./anthill data/anthill.dat -l ./log/output.log -d < Test_all_things.cmd
-	diff ./log/output.log ./log/Test_all_things.log && echo "Test Passed" || echo "Test Failed"
+	diff ./log/output.log ./log/Test_all_things.log && echo "Test Failed" || echo "Test Passed"
