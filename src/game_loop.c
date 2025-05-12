@@ -74,7 +74,7 @@ int game_loop_init(Game **game, Graphic_engine **gengine, Graphic_engine **gengi
  * @param do_log Boolean that indicates if the log has to be created or not.
  * @param log_file Name of the log file.
  */
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log, char *log_file);
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE **f, char *base_savefile, Bool do_log, char *log_file);
 
 /**
  * @brief Frees the memory and closes the game.
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
         /*Sets the determinist mode activated if it proceeds.*/
         game_set_determined(game, is_determined);
         /*Runs the game.*/
-        game_loop_run(&game, gengine, gengine_menu, f, argv[NEXT_ARG], (f != NULL), argv[log_argument]);
+        game_loop_run(&game, gengine, gengine_menu, &f, argv[NEXT_ARG], (f != NULL), argv[log_argument]);
         game_loop_cleanup(&game, gengine, gengine_menu);
         /*Closes the log if it proceeds.*/
         if (f)
@@ -474,7 +474,7 @@ Menu_actions game_loop_menu(Game **game, Graphic_engine *ge_menu, char *file_nam
     return OK_MENU;
 }
 
-void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE *f, char *base_savefile, Bool do_log, char *logfile)
+void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine_menu, FILE **f, char *base_savefile, Bool do_log, char *logfile)
 {
     Command *last_cmd = NULL;
     CommandCode last_code = UNKNOWN;
@@ -490,6 +490,12 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
     {
         if (last_code == MENU)
         {
+            if (do_log)
+            {
+                /*If the log was intended to be made, close it*/
+                fclose(*f);
+                *f = NULL;
+            }
             game_loop_menu(game, gengine_menu, base_savefile);
             str = game_get_current_savefile(*game);
             if (str)
@@ -498,7 +504,7 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             /*If the log was intended to be made, reopen in append mode*/
             if (do_log)
             {
-                f = fopen(logfile, "a");
+                *f = fopen(logfile, "a");
                 if (!f)
                 {
                     fprintf(stderr, "Error while opening log file.\n");
@@ -543,9 +549,9 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
         /*Makes the log.*/
         if (do_log)
         {
-            fprintf(f, "Player %ld executed ", player_get_player_id(game_get_actual_player(*game)));
-            command_print(last_cmd, f);
-            fprintf(f, "\n");
+            fprintf(*f, "Player %ld executed ", player_get_player_id(game_get_actual_player(*game)));
+            command_print(last_cmd, *f);
+            fprintf(*f, "\n");
         }
 
         if (last_code != MENU)
@@ -569,8 +575,11 @@ void game_loop_run(Game **game, Graphic_engine *gengine, Graphic_engine *gengine
             str = game_get_current_savefile(*game);
         }
     }
-    if(do_log)
-        fclose(f);
+    if (do_log)
+    {
+        fclose(*f);
+        *f = NULL;
+    }
     /*Prints the final screen*/
     graphic_engine_menu_paint(gengine_menu, *game, FINAL);
     printf("press enter to go out");
