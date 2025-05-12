@@ -54,7 +54,7 @@
 #define ANIMATION_MERCHANT_ENDING_2 6 /*!< Animation for the merchant good ending. */
 #define PLAYER_DEAD 2                 /*!< Animation for the player dead. */
 #define FIRST_ANIMATION 4             /*!< Animation for the first action. */
-#define TRAIN_ANIM 17                  /*!< Animation for the train. */
+#define TRAIN_ANIM 17                 /*!< Animation for the train. */
 
 /*The following IDS are the ids of the rooms to reach completion.*/
 #define ROOM_1 711          /*!< Id of the first room. */
@@ -907,6 +907,7 @@ Status gamerules_merchant_bad_ending(Game *game, Gamerule *gr)
         /*The player used the gun against the merchant.*/
         character_set_health(game_get_character(game, MERCHANT_ID), NO_HEALTH);
         animation_run(game_get_animation_manager(game), ANIMATION_MERCHANT_ENDING_1);
+        gamerules_set_valid(gamerules_get_gamerule_by_name(game, "merchant_good_ending"), FALSE);
         command_set_status(cmd, OK);
         game_set_finished(game, TRUE);
 
