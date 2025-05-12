@@ -93,7 +93,7 @@ var searchData=
   ['game_5floop_5fcleanup_90',['game_loop_cleanup',['../game__loop_8c.html#afc2be832086ddfa31bbdefd6cfda0aa6',1,'game_loop.c']]],
   ['game_5floop_5finit_91',['game_loop_init',['../game__loop_8c.html#ae22007fb4218e430c1f7b2cba27c61c3',1,'game_loop.c']]],
   ['game_5floop_5fmenu_92',['game_loop_menu',['../game__loop_8c.html#ae4e746054d8d0d6b318b9dff032314dc',1,'game_loop.c']]],
-  ['game_5floop_5frun_93',['game_loop_run',['../game__loop_8c.html#af068f2c419c6f50a77aa8f03325a5586',1,'game_loop.c']]],
+  ['game_5floop_5frun_93',['game_loop_run',['../game__loop_8c.html#a9b87eafe2c049c7ed00ec968857efb33',1,'game_loop.c']]],
   ['game_5fmanager_2ec_94',['game_manager.c',['../game__manager_8c.html',1,'']]],
   ['game_5fmanager_2eh_95',['game_manager.h',['../game__manager_8h.html',1,'']]],
   ['game_5fmanager_5fload_5fanimations_96',['game_manager_load_animations',['../game__manager_8c.html#a875b75352e618b22272e61c9af916083',1,'game_manager_load_animations(Game *game, char *filename):&#160;game_manager.c'],['../game__manager_8h.html#a875b75352e618b22272e61c9af916083',1,'game_manager_load_animations(Game *game, char *filename):&#160;game_manager.c']]],

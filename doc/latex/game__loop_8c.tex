@@ -71,7 +71,7 @@ enum \mbox{\hyperlink{game__loop_8c_a0a56a618b7f7ab9bb05f7d9dbdea199a}{Menu\+\_\
 \item 
 int \mbox{\hyperlink{game__loop_8c_ae22007fb4218e430c1f7b2cba27c61c3}{game\+\_\+loop\+\_\+init}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gengine\+\_\+menu, char \texorpdfstring{$\ast$}{*}file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Initialises the game. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{game__loop_8c_af068f2c419c6f50a77aa8f03325a5586}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine\+\_\+menu, FILE \texorpdfstring{$\ast$}{*}f, char \texorpdfstring{$\ast$}{*}base\+\_\+savefile, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} do\+\_\+log)
+void \mbox{\hyperlink{game__loop_8c_a9b87eafe2c049c7ed00ec968857efb33}{game\+\_\+loop\+\_\+run}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine\+\_\+menu, FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}f, char \texorpdfstring{$\ast$}{*}base\+\_\+savefile, \mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}} do\+\_\+log, char \texorpdfstring{$\ast$}{*}log\+\_\+file)
 \begin{DoxyCompactList}\small\item\em Main game loop, where all the actions take place. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{game__loop_8c_afc2be832086ddfa31bbdefd6cfda0aa6}{game\+\_\+loop\+\_\+cleanup}} (\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}game, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine, \mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}gengine\+\_\+menu)
 \begin{DoxyCompactList}\small\item\em Frees the memory and closes the game. \end{DoxyCompactList}\item 
@@ -279,11 +279,11 @@ Fernando Mijangos
 \begin{DoxyReturn}{Returns}
 OK if everything went well, ERROR otherwise. 
 \end{DoxyReturn}
-\Hypertarget{game__loop_8c_af068f2c419c6f50a77aa8f03325a5586}\label{game__loop_8c_af068f2c419c6f50a77aa8f03325a5586} 
+\Hypertarget{game__loop_8c_a9b87eafe2c049c7ed00ec968857efb33}\label{game__loop_8c_a9b87eafe2c049c7ed00ec968857efb33} 
 \index{game\_loop.c@{game\_loop.c}!game\_loop\_run@{game\_loop\_run}}
 \index{game\_loop\_run@{game\_loop\_run}!game\_loop.c@{game\_loop.c}}
 \doxysubsubsection{\texorpdfstring{game\_loop\_run()}{game\_loop\_run()}}
-{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine\+\_\+menu,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f,  }\item[{char \texorpdfstring{$\ast$}{*}}]{base\+\_\+savefile,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{do\+\_\+log }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void game\+\_\+loop\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{game,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine,  }\item[{\mbox{\hyperlink{graphic__engine_8h_ae1bc5cdbfce93098f066274fdea49af1}{Graphic\+\_\+engine}} \texorpdfstring{$\ast$}{*}}]{gengine\+\_\+menu,  }\item[{FILE \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{f,  }\item[{char \texorpdfstring{$\ast$}{*}}]{base\+\_\+savefile,  }\item[{\mbox{\hyperlink{types_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{do\+\_\+log,  }\item[{char \texorpdfstring{$\ast$}{*}}]{log\+\_\+file }\end{DoxyParamCaption})}
 
 
 
@@ -305,6 +305,8 @@ Saúl Lopez Romero
 {\em base\+\_\+savefile} & named of the file that is used a template for new games \\
 \hline
 {\em do\+\_\+log} & Boolean that indicates if the log has to be created or not. \\
+\hline
+{\em log\+\_\+file} & Name of the log file. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{game__loop_8c_a0ddf1224851353fc92bfbff6f499fa97} 
